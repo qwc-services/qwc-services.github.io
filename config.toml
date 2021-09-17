@@ -1,3 +1,16 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "QWC2 Documentation"
+
+# Theme
+theme = "hugo-theme-learn"
+
+[params]
+editURL = "https://github.com/qwc-services/qwc-homepage/edit/master/content/"
+description = "Documentation QWC2 and QWC services"
+disableNextPrev = true
+disableMermaid = true
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
