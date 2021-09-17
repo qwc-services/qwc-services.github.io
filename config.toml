@@ -6,7 +6,7 @@ title = "QWC2 Documentation"
 theme = "hugo-theme-learn"
 
 [params]
-editURL = "https://github.com/qwc-services/qwc-homepage/edit/master/content/"
+editURL = "https://github.com/qwc-services/qwc-website/edit/main/content/"
 description = "Documentation QWC2 and QWC services"
 themeVariant = "green"
 disableNextPrev = true

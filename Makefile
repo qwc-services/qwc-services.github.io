@@ -13,3 +13,5 @@ fetch:
 		curl -s -L https://github.com/qwc-services/$$repo/raw/master/README.md | sed '/^\[/d' >>content/authentication/$$repo.md; \
 		no=$$((no+1)); \
 	done
+	echo "+++\ntitle = \"Viewer\"\nweight = 3\n+++\n" >content/viewer/_index.md; \
+	curl -s -L https://github.com/qgis/qwc2-demo-app/raw/master/doc/QWC2_Documentation.md >>content/viewer/_index.md;
