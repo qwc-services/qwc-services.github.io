@@ -2,12 +2,13 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "QWC2 Documentation"
 
-# Theme
+# https://learn.netlify.app/
 theme = "hugo-theme-learn"
 
 [params]
 editURL = "https://github.com/qwc-services/qwc-homepage/edit/master/content/"
 description = "Documentation QWC2 and QWC services"
+themeVariant = "green"
 disableNextPrev = true
 disableMermaid = true
 
