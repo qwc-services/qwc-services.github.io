@@ -1,5 +1,5 @@
 +++
-title = "DB authentication service"
+title = "DB Authentication Service"
 menuTitle = "qwc-db-auth"
 weight = 1
 +++

@@ -1,5 +1,5 @@
 +++
-title = "LDAP authentication service"
+title = "LDAP Authentication Service"
 menuTitle = "qwc-ldap-auth"
 weight = 2
 +++

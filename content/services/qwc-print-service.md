@@ -5,11 +5,6 @@ weight = 7
 +++
 
 
-API documentation:
-
-    http://localhost:5019/api/
-
-
 Configuration
 -------------
 
