@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://qwc-services.github.io/qwc-website/"
 languageCode = "en-us"
 title = "QWC2 Documentation"
 
