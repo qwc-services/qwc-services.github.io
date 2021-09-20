@@ -1,10 +1,9 @@
 +++
-title = "qwc-feature-info-service"
+title = "QWC FeatureInfo Service"
+menuTitle = "qwc-feature-info-service"
 weight = 3
 +++
 
-QWC FeatureInfo Service
-=======================
 
 Query layers at a geographic position using an API based on WMS GetFeatureInfo.
 

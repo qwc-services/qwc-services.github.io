@@ -1,10 +1,9 @@
 +++
-title = "qwc-mapinfo-service"
+title = "QWC MapInfo Service"
+menuTitle = "qwc-mapinfo-service"
 weight = 8
 +++
 
-QWC MapInfo Service
-===================
 
 Additional information at a geographic position displayed with right mouse click on map.
 

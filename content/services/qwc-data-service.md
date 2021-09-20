@@ -1,10 +1,9 @@
 +++
-title = "qwc-data-service"
+title = "QWC Data Service"
+menuTitle = "qwc-data-service"
 weight = 9
 +++
 
-QWC Data Service
-================
 
 Edit spatial and unlocated features of datasets via GeoJSON.
 

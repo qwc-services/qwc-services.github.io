@@ -1,10 +1,8 @@
 +++
-title = "qwc-admin-gui"
+title = "QWC Admin GUI"
+menuTitle = "qwc-admin-gui"
 weight = 13
 +++
-
-QWC Admin GUI
-=============
 
 GUI for administration of QWC Services.
 

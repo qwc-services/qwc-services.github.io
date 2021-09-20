@@ -1,10 +1,8 @@
 +++
-title = "qwc-db-auth"
+title = "DB authentication service"
+menuTitle = "qwc-db-auth"
 weight = 1
 +++
-
-Authentication with User DB
-===========================
 
 Authentication service with local user database.
 

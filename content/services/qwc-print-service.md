@@ -1,10 +1,9 @@
 +++
-title = "qwc-print-service"
+title = "QWC Print service"
+menuTitle = "qwc-print-service"
 weight = 7
 +++
 
-QWC Print service
-=================
 
 API documentation:
 

@@ -1,9 +1,8 @@
 +++
-title = "Viewer"
+title = "QGIS Web Client 2"
+menuTitle = "Viewer"
 weight = 3
 +++
-
-# QGIS Web Client 2 Documentation
 
 ## Introduction
 

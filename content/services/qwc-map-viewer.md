@@ -1,10 +1,9 @@
 +++
-title = "qwc-map-viewer"
+title = "QWC Map Viewer Service"
+menuTitle = "qwc-map-viewer"
 weight = 1
 +++
 
-QWC Map Viewer
-==============
 
 Provide a [QWC2 Web Client](https://github.com/qgis/qwc2-demo-app) application using QWC services.
 

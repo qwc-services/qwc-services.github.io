@@ -5,8 +5,4 @@ weight = 6
 chapter = true
 +++
 
-### Chapter X
-
-# Some Chapter title
-
-Lorem Ipsum.
+# Authentication services

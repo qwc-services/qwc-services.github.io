@@ -5,8 +5,6 @@ weight = 4
 chapter = true
 +++
 
-### Chapter X
+# QWC Services
 
-# Some Chapter title
-
-Lorem Ipsum.
+The QWC Services are a collection of microservices providing configurations for and authorized access to different QWC Map Viewer components.

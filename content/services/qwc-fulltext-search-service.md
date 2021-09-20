@@ -1,10 +1,9 @@
 +++
-title = "qwc-fulltext-search-service"
+title = "QWC Fulltext Search Service"
+menuTitle = "qwc-fulltext-search-service"
 weight = 4
 +++
 
-QWC Fulltext Search Service
-===========================
 
 Faceted fulltext search and geometry retrieval for search results.
 

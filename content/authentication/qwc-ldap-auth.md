@@ -1,10 +1,10 @@
 +++
-title = "qwc-ldap-auth"
+title = "LDAP authentication service"
+menuTitle = "qwc-ldap-auth"
 weight = 2
 +++
 
 Authentication with LDAP/Active Directory
-=========================================
 
 Configuration
 -------------

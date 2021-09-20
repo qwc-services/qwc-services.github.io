@@ -1,10 +1,9 @@
 +++
-title = "qwc-config-generator"
+title = "QWC Config Generator"
+menuTitle = "qwc-config-generator"
 weight = 15
 +++
 
-QWC Config Generator
-====================
 
 Generate JSON files for service configs and permissions from WMS GetCapabilities, QGS projects and QWC ConfigDB.
 
