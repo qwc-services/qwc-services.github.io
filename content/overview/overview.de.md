@@ -2,7 +2,7 @@
 title = "Übersicht"
 date = 2021-09-17T15:56:40+02:00
 weight = 1
-chapter = false
+draft = true
 +++
 
 The QWC Services are a collection of microservices providing configurations for and authorized access to different QWC Map Viewer components.
@@ -13,7 +13,7 @@ Die GDI besteht aus folgenden Server-Komponenten:
 - **Auth-Service**: Es werden verschiedene Authentisierungs-Methoden unterstützt. Z.B. HTTP Basic Authentication mit User-DB, AD/LDAP, SAML und Kerberos.
   Die direkt zugänglichen Dienste enthalten eine Autorisierungsschicht für alle Zugriffe. 
 - **Map Viewer**: QWC2 Webclient mit konfigurierten Tools, offenen und zugriffsgeschützten Karten.
-- **OGC Service**: Frontend mit Zugriffskontrolle für WMS, WFS und WMTS.
+- **OGC Service**: Frontend mit Zugriffskontrolle für WMS und WFS.
 - **REST Services**: API Funktionen wie Search, GetLegend, etc.
 - **QGIS Server WMS/WFS**: Server für Kartendienste (WMS) und Datendienste (WFS)
 - **Solr**: Apache Solr Search-Engine. Dient als Backend für die Suche von Geodaten und Metadaten.
@@ -74,8 +74,7 @@ Service](/images/10000201000006C1000007848FFF3358691E995D.png)
 Der config-service, welcher für die Verwaltung der
 Service-Konfigurationen und -Permissions zuständig ist, hat ein intern
 zugängliches API für den Update einer Konfiguration und
-Abfrage-Funktionen. Für dieses Projekt wird das API um weitere
-Funktionen zur Anpassung von Konfigurationene erweitert.
+Abfrage-Funktionen.
 
 ### Legende
 
@@ -126,9 +125,6 @@ HTML-Templates gerendert und als GetFeatureInfoResponse an den Webclient
 zurückgeliefert.
 
 ![](/images/feature-info.png)
-
-Die Darstellung der Ergebnisanzeige wird im Rahmen des Projekts den
-Kundenwünschen angepasst (z.B. Löschfunktion).
 
 ### Messen
 
