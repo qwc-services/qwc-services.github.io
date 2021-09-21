@@ -37,6 +37,7 @@ QGIS Web Client 2 (QWC2) and QWC Services on the backend provide a complete Web 
 
 * [Overview](/overview/)
 * [Quickstart](/quick-start/)
+* [Viewer Demo](http://qwc2.sourcepole.ch)
 
 ## Support
 
