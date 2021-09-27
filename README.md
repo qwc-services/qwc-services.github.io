@@ -7,7 +7,7 @@ Homepage and documentation of QWC2 and QWC Services.
 Development
 -----------
 
-Requires [Hugo](https://gohugo.io/) 0.80 or newer.
+Requires [Hugo](https://gohugo.io/).
 
 Get site code:
 
