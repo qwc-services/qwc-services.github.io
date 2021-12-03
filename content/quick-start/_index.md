@@ -28,7 +28,7 @@ Create a secret key:
 Set permissions for writable volumes:
 
     sudo chown -R www-data:www-data volumes/qgs-resources
-    sudo chown -R www-data:www-data demo-config
+    sudo chown -R www-data:www-data volumes/config
     sudo chown -R www-data:www-data volumes/qwc2/assets
 
     sudo chown 8983:8983 volumes/solr/data
