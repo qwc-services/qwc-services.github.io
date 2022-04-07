@@ -37,7 +37,7 @@ QGIS Web Client 2 (QWC2) and QWC Services on the backend provide a complete Web 
 
 * [Overview](/overview/)
 * [Quickstart](/quick-start/)
-* Public viewers: [Demo](http://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [qgisweb.oslandia.net](https://qgisweb.oslandia.net/)
+* Public viewers: [Demo](http://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [qgisweb.oslandia.net](https://qgisweb.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
 
 ## Support
 
