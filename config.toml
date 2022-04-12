@@ -1,4 +1,4 @@
-baseURL = "https://qwc.sourcepole.com/"
+baseURL = "https://qwc-services.github.io/"
 languageCode = "en-us"
 title = "QWC2 Documentation"
 
@@ -6,7 +6,7 @@ title = "QWC2 Documentation"
 theme = "hugo-theme-learn"
 
 [params]
-editURL = "https://github.com/qwc-services/qwc-website/edit/main/content/"
+editURL = "https://github.com/qwc-services/qwc-services.github.io/edit/main/content/"
 description = "Documentation QWC2 and QWC services"
 themeVariant = "green"
 disableNextPrev = true
