@@ -4,7 +4,6 @@ menuTitle = "qwc-map-viewer"
 weight = 1
 +++
 
-
 Provide a [QWC2 Web Client](https://github.com/qgis/qwc2-demo-app) application using QWC services.
 
 **Note:** Requires a QWC OGC service or QGIS server running on `ogc_service_url`. Additional QWC Services are optional.
@@ -220,8 +219,31 @@ Sample requests:
     curl 'http://localhost:5030/themes.json'
 
 
-Docker usage
-------------
+Docker images
+-------------
+
+The following Docker images are available:
+* `sourcepole/qwc-map-viewer-base`: Map viewer service
+* `sourcepole/qwc-map-viewer-demo`: Map viewer service with qwc-demo-app viewer
+
+Dependencies:
+
+        git repos                Docker images
+
+     ┌───────────────┐
+     │     qwc2      │
+     └───────┬───────┘
+             │submodule
+     ┌───────▼───────┐
+     │ qwc-demo-app  ├────────────┐
+     │    config.json│ CI Build   │
+     └───────────────┘      ┌─────▼───────────────┐
+                         ┌──► qwc-map-viewer-demo │
+     ┌───────────────┐   │  └─────────────────────┘
+     │ qwc-map-viewer├───┤
+     └───────────────┘   │  ┌─────────────────────┐
+                         └──► qwc-map-viewer-base │
+                            └─────────────────────┘
 
 ### Run docker image
 
