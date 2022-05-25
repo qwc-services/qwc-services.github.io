@@ -1,6 +1,6 @@
 +++
 title = "Troubleshooting"
-weight = 3
+weight = 7
 +++
 
 Login redirects to http instead of https
