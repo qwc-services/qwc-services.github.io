@@ -16,7 +16,6 @@ case you need to force it in the nginx config:
 
 ```
 location ~ /ldap-auth/ {
-    proxy_set_header Tenant $tenant;
     proxy_set_header Host REPLACE_THIS.WITH.THE.HOSTNAME.OF.YOUR.SERVI.CE:PORTNUMBER;
     proxy_set_header X-Forwarded-Proto https;
     rewrite    ^/[^/]+(.+) $1 break;
