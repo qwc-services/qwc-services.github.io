@@ -43,3 +43,4 @@ QGIS Web Client 2 (QWC2) and QWC Services on the backend provide a complete Web 
 
 * Community support: [Github](https://github.com/qgis/qwc2-demo-app/issues)
 * Commercial Support: [Sourcepole](https://www.sourcepole.com/) and other companies.
+* [Improve this web site](https://github.com/qwc-services/qwc-services.github.io/)
