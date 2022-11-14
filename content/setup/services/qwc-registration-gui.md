@@ -1,9 +1,11 @@
 +++
-title = "Registration GUI"
 menuTitle = "qwc-registration-gui"
-weight = 14
+weight = 13
+chapter = false
 +++
 
+Registration GUI for QWC Services
+=================================
 
 Provides an application form, so users can submit group membership requests.
 

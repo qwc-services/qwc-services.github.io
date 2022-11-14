@@ -1,9 +1,11 @@
 +++
-title = "QWC Fulltext Search Service"
 menuTitle = "qwc-fulltext-search-service"
 weight = 4
+chapter = false
 +++
 
+QWC Fulltext Search Service
+===========================
 
 Faceted fulltext search and geometry retrieval for search results.
 
@@ -172,6 +174,7 @@ Search API:
 Examples:
 
     curl 'http://localhost:5011/fts/?filter=foreground,ne_10m_admin_0_countries&searchtext=austr'
+    curl 'http://localhost:5011/fts/?searchtext=Country:austr'
     curl 'http://localhost:5011/fts/?filter=foreground,ne_10m_admin_0_countries&searchtext=qwc'
 
     curl -g 'http://localhost:5011/geom/ne_10m_admin_0_countries/?filter=[["ogc_fid","=",90]]'
@@ -180,9 +183,9 @@ Examples:
 Docker usage
 ------------
 
-To run this docker image you will need a running Solr search service.
+To run this service you will need a running Solr search service.
 
-The following steps explain how to download the Solr search service docker image and how to run the `qwc-data-service` with `docker-compose`.
+The following steps explain how to download the Solr search service docker image and how to run it with `docker-compose`.
 
 **Step 1: Clone qwc-docker**
 
@@ -195,7 +198,7 @@ The following steps explain how to download the Solr search service docker image
 
 **Step 3: Start docker containers**
 
-    docker-compose up qwc-fulltext-search-service
+    docker-compose up qwc-solr
 
 For more information please visit: https://github.com/qwc-services/qwc-docker
 

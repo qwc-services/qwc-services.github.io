@@ -1,7 +1,7 @@
 +++
 title = "Configuration"
 date = 2021-09-17T15:11:34+02:00
-weight = 3
+weight = 2
 chapter = false
 +++
 

@@ -1,9 +1,11 @@
 +++
-title = "QWC Permalink Service"
 menuTitle = "qwc-permalink-service"
 weight = 6
+chapter = false
 +++
 
+QWC Permalink Service
+=====================
 
 Stores and resolves compact permalinks for the Web Client.
 

@@ -1,8 +1,11 @@
 +++
-title = "DB Authentication Service"
 menuTitle = "qwc-db-auth"
 weight = 1
+chapter = false
 +++
+
+Authentication with User DB
+===========================
 
 Authentication service with local user database.
 
@@ -50,10 +53,32 @@ A minimum password length of `8` with no other constraints is set by default. Op
 
 `password_min_length` and `password_max_length` can be set independently. `password_constraints` is a list of regular expression of which at least `password_min_constraints` have to match for the password to be valid, otherwise the `password_constraints_message` is shown. Note that the regular expression have to be JSON escaped and allow only patterns supported by Python's `re` module.
 
+If the `qwc_config.password_histories` table is present, additional optional password constraints may be set:
+```json
+"config": {
+  "password_expiry": 365,
+  "password_expiry_notice": 10,
+  "password_update_interval": 600,
+  "password_allow_reuse": false
+}
+```
+
+* `password_expiry` (default: `-1`): Number of days until a password expires, or `-1` to disable. Forces a password change once expired.
+* `password_expiry_notice` (default: `-1`): Show an expiry notice within this number of days before a password expires, or `-1` to disable
+* `password_update_interval` (default: `-1`): Min number of seconds before a password may be changed again, or `-1` to disable
+* `password_allow_reuse` (default: `true`): Set whether a user may reuse previous passwords or not
+
 Besides the form based DB login, an (insecure) plain POST login is supported. This method can be
 activated by setting `POST_PARAM_LOGIN=True`. User and password are passed as POST parameters
 `username` and `password`.
 Usage example: `curl -d 'username=demo&password=demo' http://localhost:5017/login`.
+
+Additional user info fields from `qwc_config.user_infos` may be added to the JWT identity by setting `user_info_fields`:
+```json
+"config": {
+  "user_info_fields": ["surname", "first_name"]
+}
+```
 
 * `MAIL_SERVER`: default ‘localhost’
 * `MAIL_PORT`: default 25

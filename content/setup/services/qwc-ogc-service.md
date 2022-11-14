@@ -1,9 +1,11 @@
 +++
-title = "QWC OGC Service"
 menuTitle = "qwc-ogc-service"
 weight = 2
+chapter = false
 +++
 
+QWC OGC Service
+===============
 
 Provide OGC services with permission filters as a proxy to a QGIS server.
 

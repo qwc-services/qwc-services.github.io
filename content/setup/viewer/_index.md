@@ -1,8 +1,10 @@
 +++
-title = "QGIS Web Client 2"
 menuTitle = "Viewer"
 weight = 3
+chapter = false
 +++
+
+# QGIS Web Client 2 Documentation
 
 ## Introduction
 
@@ -103,7 +105,7 @@ Some external services can be used to enhance the application. The reference imp
 |----------------------|-------------|
 |`permalinkServiceUrl` | Generates and resolves compact permalinks for the Share plugin. If empty, the full URL will be used. |
 |`elevationServiceUrl` | Returns elevation values, used to generate a height profile when measuring lines and display elevation information in the map right-click information bubble. If empty, the respective information will not be displayed in the client. |
-|`editServiceUrl`      | Service for editing features of layers served by QGIS Server. Required by the Editing plugin. |
+|`editServiceUrl`      | Service for editing features of layers served by QGIS Server. See [Editing](#editing). |
 |`mapInfoService`      | Returns additional information to be displayed in the map right-click information bubble. If empty, no additional information will be displayed. |
 |`featureReportService`| Returns a custom document associated to a feature. See [`themesConfig.json`](#themesConfig-json). |
 
@@ -193,7 +195,7 @@ Additionally, entries opening external URLs can be defined as follows:
 
 where
 
-* `Key: An arbitrary key name (not used by existing plugins), used to lookup the the label for the entry from the translations.
+* `Key`: An arbitrary key name (not used by existing plugins), used to lookup the label for the entry from the translations.
 * `icon`: As above.
 * `url`: The URL to open. Can contain as placeholders the keys listed in <a href="#url-parameters">URL parameters</a>, encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported.
 * `target`: The target where to open the URL, if empty, `_blank` is assumed. Can be `iframe` to open the link in a iframe window inside QWC2.
@@ -222,7 +224,7 @@ The first step is to prepare a QGIS project. Besides the common tasks of adding 
 | Initial visibility   | Layers Panel                              | Initial visibility of layers and groups.         |
 | Rendering order      | Layer Order Panel or Layers Panel         | Rendering order of the layers. If layer re-ordering is enabled in `config.json`, the order from the Layer Order Panel is ignored. |
 | Print layouts        | Layout manager                            | The print layouts offered in the Print plugin.   |
-| Print layout labels  | Layout manager                            | Print layout labels with an ID will be exposed in the Print plugin. |
+| Print layout labels  | Layout manager                            | Print layout labels with an ID will be exposed in the Print plugin. Note: a label ID starting with `__` will not be exposed. |
 
 #### <a name="themesConfig-json"></a>Configuring the themes in `themesConfig.json`
 
@@ -285,8 +287,9 @@ The format of the theme definitions is as follows:
 | `  {"s": <Scale2>, x: <Interval2>, y: <Interval2>}`  | In this example, `{x: <Interval2>, y: <Interval2>}` will be used for `<Scale1> > Scale >= <Scale2>`.  |
 | `],`                                          |                                                                                  |
 | `"printLabelForSearchResult": "<ID>",`        | Optional, an ID of a print layout label to which the current search result text (if any) will be written to when printing. |
+| `"printLabelForAttribution": "<ID>",`         | Optional, an ID of a print layout label to which the current attribution text (if any) will be written to when printing. |
 | `"printLabelConfig": {`                       | Optional, configuration of the text input fields for print layout labels.        |
-| `  "<LabelId>": {"rows": <n>, "maxLength": <n>},` | Height of the input field in rows and maximum number of allowed characters. |
+| `  "<LabelId>": {"rows": <n>, "maxLength": <n>},` | Height of the input field in rows and maximum number of allowed characters.  |
 | `},`                                          |                                                                                  |
 | `"mapCrs: "<EPSG code>",`                     | Optional, map projection, defaults to `EPSG:3857`.                               |
 | `"extent": [<xmin>, <ymin>, <xmax>, <ymax>],` | Optional, override theme extent. In `mapCrs`.                                    |
@@ -304,7 +307,8 @@ The format of the theme definitions is as follows:
 | `"backgroundLayers": [{,`                     | Optional, list of available background layers.                                   |
 | `  "name": "<Background layer name>",`        | Name of matching `BackgroundLayerDefinition`, see below.                         |
 | `  "printLayer": "<QGis layer name>"\|[<list>],`| Optional, name of layer to use as matching background layer when printing. Alternatively, a list `[{"maxScale": <scale>, "name": "<QGis layer name>"}, ..., {"maxScale": null, "name": "<QGis layer name>"}]` can be provided, ordered in ascending order by `maxScale`. The last entry should have `maxScale` `null`, as the layer used for all remaining scales. If omitted, no background is printed, unless layer is of type "wms" and `printExternalLayers` is `true` in the Print plugin configuration. |
-| `  "visibility": <boolean>`                   | Optional, initial visibility of the layer when theme is loaded.                  |
+| `  "visibility": <boolean>`,                  | Optional, initial visibility of the layer when theme is loaded.                  |
+| `  "overview": <boolean>`,                    | Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).                  |
 | `}],`                                         |                                                                                  |
 | `"searchProviders": ["<ProviderId>"],`        | Optional, list of search providers IDs. An ID corresponds to the key of the exported `SearchProviders` object in `js/SearchProviders.js`. |
 | `"minSearchScaleDenom": <number>,`                 | Optional, minimum scale to enforce when zooming to search results. Takes precedence over value in `config.json`. |
@@ -327,7 +331,8 @@ The format of the theme definitions is as follows:
 | `"mapTips":  <boolean>\|null,`                | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
 | `"extraLegendParameters": "<&KEY=VALUE>",`    | Optional, additional query parameters to append to WMS GetLegendGraphic.         |
 | `"printLabelBlacklist":  ["<LabelId>", ...]`  | Optional, list of composer label ids to not expose in the print dialog. |
-| `"editConfig": "<editConfig.json>"`           | Optional, object or path to a filename containing the editing configuration for the theme, see [EditingInterface.js](#editing-interface). |
+| `"editConfig": "<editConfig.json>"`           | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
+| `"snapping": {...},`                          | Optional, snapping configuration, see [Snapping](#snapping). |                   |
 | `"config": {`                                 | Optional, per-theme configuration entries which override the global entries in `config.json`.|
 | `  "allowRemovingThemeLayers": <boolean>`     | See [`config.json`](#config-json-overrideable) for which settings can be specified here. |
 | `  ...`                                       |                                                                                  |
@@ -370,9 +375,9 @@ For external WMTS layers, the following additional parameters apply (you can use
 
 You can also set the "Data Url" for a layer in QGIS (Layer Properties &rarr; QGIS Server &rarr; Data Url) to a string of the form
 
-    wms:<service_url>#<layername>?<options>
+    wms:<service_url>?<options>#<layername>
 
-(for instance, `wms:http://wms.geo.admin.ch#ch.are.bauzonen?tiled=false`), and an external layer pointing to the specified WMS service will automatically be created for the corresponding QGIS layer.
+(for instance, `wms:http://wms.geo.admin.ch?tiled=false#ch.are.bauzonen`), and an external layer pointing to the specified WMS service will automatically be created for the corresponding QGIS layer.
 Note that this is currently only implemented for WMS layers.
 
 
@@ -394,16 +399,17 @@ Background layers are handled completely client-side and do not appear in the la
 
 The format of the background layer definitions is as follows:
 
-| Entry                        | Description                                                                       |
-|------------------------------|-----------------------------------------------------------------------------------|
-| `"name": "<Name>",`          | The name of the background layer, used in the theme definitions.                  |
-| `"title": "<Title>",       ` | The title of the background layer, as displayed in the background switcher.       |
-| `"thumbnail": "<Filename>",` | Optional, image file in `assets/img/mapthumbs`. Defaults to `default.jpg`.        |
-| `"type": "<Type>",`          | The background layer type, i.e. `wms` or `wmts`.                                  |
-| `"group":  "<GroupId>",`     | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
-| `"minScale": <min_scale>,`   | Optional, minimum scale denominator from which to render the layer.               |
-| `"maxScale": <max_scale>,`   | Optional, maximum scale denominator from which to render the layer.               |
-| `<Layer params>`             | Parameters according to the specified layer type. Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for some examples. |
+| Entry                                 | Description                                                                       |
+|---------------------------------------|-----------------------------------------------------------------------------------|
+| `"name": "<Name>",`                   | The name of the background layer, used in the theme definitions.                  |
+| `"title": "<Title>",`                 | The title of the background layer, as displayed in the background switcher.       |
+| `"titleMsgId": "<Menu title msgID>",` | Alternative to `title`, a message ID, translated through the translation files.  |
+| `"thumbnail": "<Filename>",`          | Optional, image file in `assets/img/mapthumbs`. Defaults to `default.jpg`.        |
+| `"type": "<Type>",`                   | The background layer type, i.e. `wms` or `wmts`.                                  |
+| `"group":  "<GroupId>",`              | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
+| `"minScale": <min_scale>,`            | Optional, minimum scale denominator from which to render the layer.               |
+| `"maxScale": <max_scale>,`            | Optional, maximum scale denominator from which to render the layer.               |
+| `<Layer params>`                      | Parameters according to the specified layer type. Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for some examples. |
 
 *Note*: You can use the helper python script located at `qwc2/scripts/wmts_config_generator.py` to easily generate WMTS background layer configurations.
 
@@ -472,41 +478,100 @@ An advanced feature is the possibility to define parametrized search providers. 
 
 Such entries are passed to the method `searchProviderFactory` in `js/SearchProviders.js`, which you can tweak to dynamically create a search provider definition based on the parameters specified in the entry. Refer to the [sample  `js/SearchProviders.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js) for an example.
 
-### <a name="editing-interface"></a>Implementing the editing interface in `js/EditingInterface.js`
+### <a name="editing"></a>Editing support
 
-The QWC2 Editing plugin allows to add, remove and edit features from the map. For this to work, the following steps need to be performed:
+QWC2 offers comprehensive editing support through a variety of plugins:
 
-- The Editing plugin needs to be enabled in `config.json` and `appConfig.js`.
-- The `editServiceUrl` needs to be specified in `config.json`.
-- The server-side service needs to be set up. The [default editing interface](https://github.com/qgis/qwc2/tree/master/utils/EditingInterface.js) is the conterpart for the [QWC data service](https://github.com/qwc-services/qwc-data-service). You can also use a custom editing service, in which case you need to implement a custom EditingInterface and pass it to the Editing plugin in `appConfig.js`.
-- For every theme for which editing is allowed, a matching `editConfig.json` needs to be implemented and specified in the corresponding entry in `themesConfig.json`.
+- The `Editing` plugin allows creating, editing and removing features of an editable vector layer. It supports editing both geometry and attributes, displaying customizeable attribute forms.
+- The `AttributeTable` plugin also allows creating, editing and removing features of an editable vector layer. It displays all features of the editable layer in a tabularized view, and allows editing attributes, but not geometries.
+- The `FeatureForm` works similarly to the feature-info, but also allows editing the attributes and geometry of a picked feature. It can be used as `identifyTool` instead of the standard `Identify` plugin.
 
-The format of the `editConfig.json` is as follows:
+To configure editing in QWC2, you need to follow the following steps:
 
-| Entry                               | Description                                                   |
-|-------------------------------------|---------------------------------------------------------------|
-| `{`                                 |                                                               |
-| `  <LayerId>: {`                    | A WMS layer ID. Should be a theme WMS layer name, to ensure the WMS is correctly refreshed. |
-| `    "layerName": "<LayerName>",`   | The layer name to show in the selection combo box. |
-| `    "geomType": "<GeomType>",`     | The geometry type, either `Point`, `LineString` or `Polygon`. |
-| `    "displayField":  "<FieldId">",`| The ID of the field to use in the feature selection menu.     |
-| `    "fields": [{`                  | A list of field definitions, for each exposed attribute.      |
-| `      "id": "<FieldID>",`          | The field ID.                                                 |
-| `      "name": "<FieldName>",`      | The field name, as displayed in the editing form.             |
-| `      "type": "<FieldType>",`      | A field type. Either `bool`, `list` or a regular [HTML input element type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). |
-| `      "constraints": {`            | Constraints for the input field.                              |
-| `        "values": [<Entries>],`    | Only if `type` is `list`: an array of arbitrary strings.      |
-| `        ...`                       | For regular HTML input types, the ReactJS API name of any applicable [HTML input constraint](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input), i.e. `maxLength` or `readOnly`. |
-| `      }`                           |                                                               |
-| `    }],`                           |                                                               |
-| `    "form": "<PathToUiFile>",`     | As alternative to `fields`, a QtDesigner UI file. See below.  |
-| `  }`                               |                                                               |
-| `}`                                 |                                                               |
+- Set up an editing backend. You can use the readily available [QWC data service](https://github.com/qwc-services/qwc-data-service), or a custom backend.
+- Enable the desired editing plugins in `appConfig.js`. If you use a custom editing backend, you'll most likely need to implement a custom editing interface and specify it in `appConfig.json`, see the comment above `EditingPlugin` in [`js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js).
+- If you are using qwc-services, the [QWC config generator](https://github.com/qwc-services/qwc-config-generator) and [QWC map viewer](https://github.com/qwc-services/qwc-map-viewer) will automatically generate a suitable `editConfig` for each editable layer and embed it in the `themes.json`, otherwise you need to write a custom `editConfig` in `themesConfig.json` as described below.
+
+As a backend, you can use the readily available [QWC data service](https://github.com/qwc-services/qwc-data-service). Please consult its README detailed information including how to set up the edit forms.
+
+If you use a custom backend, you will need to implement a corresponding editing interface in `js/EditingInterface.js`.
+
+If you don't use the [QWC config generator](https://github.com/qwc-services/qwc-config-generator) and [QWC map viewer](https://github.com/qwc-services/qwc-map-viewer), you will also need to write the `editConfig` block in `themesConfig.json` as follows:
+
+| Entry                                | Description                                                   |
+|--------------------------------------|---------------------------------------------------------------|
+| `{`                                  |                                                               |
+| `  <LayerId>: {`                     | A WMS layer ID. Should be a theme WMS layer name, to ensure the WMS is correctly refreshed. |
+| `    "layerName": "<LayerName>",`    | The layer name to show in the selection combo box. |
+| `    "editDataset": "<DatasetName>",`| The name of the edit dataset passed to the editing interface. |
+| `    "geomType": "<GeomType>",`      | The geometry type, either `Point`, `LineString` or `Polygon`. |
+| `    "displayField":  "<FieldId>",`  | The ID of the field to use in the feature selection menu.     |
+| `    "permissions": {`               | A list of different write permissions to specify rights and buttons. |
+| `      "creatable": <boolean>,`      | If `true`, `Draw` button will appear in Editing interface and `Add` button in Attribute Table. |
+| `      "updatable": <boolean>,`      | If `true`, `Pick` button will appear in Editing interface.    |
+| `      "deletable": <boolean>,`      | If `true`, `Delete` button will appear in Editing interface and Attribute Table. |
+| `      },`                           |                                                               |
+| `    "fields": [{`                   | A list of field definitions, for each exposed attribute.      |
+| `      "id": "<FieldID>",`           | The field ID.                                                 |
+| `      "name": "<FieldName>",`       | The field name, as displayed in the editing form.             |
+| `      "type": "<FieldType>",`       | A field type. Either `bool`, `list` or a regular [HTML input element type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). |
+| `      "constraints": {`             | Constraints for the input field.                              |
+| `        "values": [<Entries>],`     | Only if `type` is `list`: an array of arbitrary strings.      |
+| `        ...`                        | For regular HTML input types, the ReactJS API name of any applicable [HTML input constraint](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input), i.e. `maxLength` or `readOnly`. |
+| `      }`                            |                                                               |
+| `    }],`                            |                                                               |
+| `    "form": "<PathToUiFile>",`      | As alternative to `fields`, a QtDesigner UI file. See below.  |
+| `  }`                                |                                                               |
+| `}`                                  |                                                               |
 
 * If you specify `fields`, a simple form is autogenerated based on the field definitions.
 * If you specify `form`, you can specify the URL to a Qt Designer UI form (use `:/<path>` to specify a path below the `assets` folder). Most basic input elements provided by QtDesigner are supported, see [this sample form](https://github.com/qgis/qwc2-demo-app/blob/master/assets/forms/form.ui). The widget names must be set equal to the attribute names.
 
-See the [sample `editConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/test2056_edit.json) for a full example. See also the [QWC data service README](https://github.com/qwc-services/qwc-data-service/blob/master/README.md).
+See the [sample `editConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/test2056_edit.json) for a full example.
+
+### <a name="snapping"></a>Snapping support
+
+QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). To enable it, make sure the `SnappingSupport` plugin is enabled in `appConfig.js` (see the sample [sample `js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js)). Then, for each theme for which you want snapping to be available, you can add a `snapping` block to your theme item in `themesConfig.json` as follows:
+
+    ...
+    "snapping": {
+      "snaplayers": [
+        {
+          "name": "<layername>",
+          "min": <min_scale>
+          "max": <max_scale>
+        }
+      ],
+      "featureCount": <feature_count>
+    }
+    ...
+
+where:
+
+- `layername` is the name of the theme sublayer from which to retreive the snapping geometries
+- `min` is the minimum scale denominator (inclusive) from which this layer should be used for snapping
+- `max` is the maximum scale denominator (exclusive) up to which this layer should be used for snapping
+- `feature_count` is the maximum number of snapping geometries to retreive for the current map extent (default: 500).
+
+Snapping works by querying the geometries of all snapping layers inside the scale range via WMS GetFeatureInfo and refreshing the geometries every time the map extent changes. Therefore, it is recommended to ensure the geometry complexity of the snap layers is appropriate for the specified scale ranges to avoid overloading the server with the GetFeatureInfo requests. Also, the QGIS project will need to be configured to add geometries to the feature info responses.
+
+For the `Redlining`, `Measure` and `Editing` plugins, the availability of snapping can be independently configured:
+
+    {
+      "name":"<Redlining|Measure|Editing>",
+      "cfg": {
+        "snapping": <true|false>,
+        "snappingActive": <true|false>,
+        ...
+      }
+    }
+
+where:
+
+- `snapping` determines whether snapping is available for the specified plugin
+- `snappingActive` determines whether snapping is active by default for the specified plugin
+
+When snapping is available, a small toolbar appears on the bottom border of the map with the possibility to toggle snapping.
 
 ### <a name="translations"></a>Managing translations
 

@@ -1,7 +1,7 @@
 +++
 title = "Quick Start"
 date = 2021-09-17T15:10:55+02:00
-weight = 2
+weight = 1
 chapter = false
 +++
 

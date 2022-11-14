@@ -1,8 +1,15 @@
 +++
-title = "QWC Print service"
 menuTitle = "qwc-print-service"
 weight = 7
+chapter = false
 +++
+
+QWC Print service
+=================
+
+API documentation:
+
+    http://localhost:5019/api/
 
 
 Configuration
@@ -32,6 +39,12 @@ Example:
         "params": [
           "NAME"
         ]
+      }
+    ],
+    "label_values": [
+      {
+        "field": "USERNAME",
+        "value": "$username$"
       }
     ]
   },

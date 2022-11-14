@@ -1,10 +1,13 @@
 +++
-title = "QWC Config Generator"
 menuTitle = "qwc-config-generator"
-weight = 15
+weight = 14
+chapter = false
 +++
 
-Generate JSON files for service configs and permissions from WMS GetCapabilities, QGS projects and QWC ConfigDB.
+QWC ConfigGenerator
+====================
+
+Generates JSON files for service configs and permissions from WMS GetCapabilities, QGS projects and QWC ConfigDB.
 
 
 Setup
@@ -29,7 +32,8 @@ Example `tenantConfig.json`:
     "qgis_projects_scan_base_dir": "/data/scan",
     "qgis_projects_gen_base_dir": "/data/gen",
     "permissions_default_allow": true,
-    "validate_schema": true
+    "validate_schema": true,
+    "autogen_keyvaltable_datasets": false
   },
   "themesConfig": {
       "defaultScales": [100000000, 50000000, 25000000, 10000000, 4000000, 2000000, 1000000, 400000, 200000, 80000, 40000, 20000, 10000, 8000, 6000, 4000, 2000, 1000, 500, 250, 100],
@@ -173,30 +177,24 @@ Example `tenantConfig.json`:
 
 For a full example see [tenantConfig-example.json](tenantConfig-example.json) ([JSON schema](schemas/qwc-config-generator.json)).
 
-*NOTE:* the QWC2 themes config is defined under `themesConfig` in the ConfigGenerator config and not in a separate file.
+*NOTE:* QWC2 themes are defined under `themesConfig` in the ConfigGenerator configuration and not in a separate file.
 
 QGIS projects can be automatically detected when `qgis_projects_scan_base_dir` is defined.
-For adding these projects, the following settings need to be defined in `themesConfig`.
+In order to have projects automatically added, the following settings need to be defined in `themesConfig`.
 
 - `defaultBackgroundLayers`
 - `defaultSearchProviders`
 - `defaultMapCrs`
 
-Additionally the config generator can also autodetect thumbnails when adding projects that meet the following criteria:
+The ConfigGenerator can also autodetect thumbnails when adding projects. The projects have to meet the following criteria:
 
-- `qwc2_base_dir` is defined in the ConfigGenerator config
-- the thumbnail of the project is located in the QWC2 thumbnail directory (Example: `/qwc/assets/img/mapthumbs`)
-- the thumbnail image has the same filename as the QGIS project
+- `qwc2_base_dir` is defined in the ConfigGenerator configuration
+- the thumbnail of the project has to be located in the QWC2 thumbnail directory (Example: `/qwc/assets/img/mapthumbs`)
+- the thumbnail image needs to have the same filename as the QGIS project
 
-The config generator also has the ability to split a layer, that has been [classified](https://docs.qgis.org/3.16/en/docs/training_manual/vector_classification/classification.html) with QGIS, into multiple layers and move them into a new group (The group name will be the original layer name). The following steps need to be done, to activate this functionality:
+*NOTE:* the Search service configuration takes its resources directly from the ConfigGenerator configuration. Its Permissions are collected from the ConfigDB (`solr_facet` resources), unless they are defined in the ConfigGenerator configuration.
 
-1. Set ConfigGenerator config: `"split_categorized_layers": true`
-
-2. Define the environment variable `QGIS_APPLICATION_PREFIX_PATH` (default: `/usr`). The prefix path is the location where QGIS is installed on your system. This is needed by the split function, because it uses the `qgis.core` library.
-
-*NOTE:* The Search service config takes its resources directly from the ConfigGenerator config. Its Permissions are collected from the ConfigDB (`solr_facet` resources), unless they are defined in the ConfigGenerator config.
-
-*NOTE:* the FeatureInfo service config may take additional WMS service resources and permissions directly from the ConfigGenerator config, e.g. for external info layers. Its Permissions are collected from the ConfigDB (`feature_info_service`, `feature_info_layer` resources), unless they are defined in the ConfigGenerator config. Example:
+*NOTE:* the FeatureInfo service configuration may take additional WMS service resources and permissions directly from the ConfigGenerator configuration, e.g. for external info layers. Its Permissions are collected from the ConfigDB (`feature_info_service`, `feature_info_layer` resources), unless they are defined in the ConfigGenerator configuration. Example:
 
 ```json
     {
@@ -258,9 +256,27 @@ The config generator also has the ability to split a layer, that has been [class
 ```
 
 
+### Split categorized layers
+
+The ConfigGenerator has also the ability to split a layer, that has been [classified](https://docs.qgis.org/3.16/en/docs/training_manual/vector_classification/classification.html) with QGIS, into multiple layers and move them into a new group (the group name will be the original layer name). The following steps need to be done, to activate this functionality:
+
+1. Place the projects whose layers you want to split below `<input_config_dir>/<tenant>/qgis_projects`.
+
+2. Ensure `qgis_projects_gen_base_dir` is set in the ConfigGenerator configuration, see the [schema definition](https://github.com/qwc-services/qwc-config-generator/blob/master/schemas/qwc-config-generator.json) for more details.
+
+3. In the ConfigGenerator configuration set: `"split_categorized_layers": true`
+
+4. If necessary, define the environment variable `QGIS_APPLICATION_PREFIX_PATH` (default: `/usr`). The prefix path is the location where QGIS is installed on your system (the split function needs this, because it uses the `qgis.core` library)
+
+5. For all layers that you want to split, create the [variable](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/vector_properties.html#variables-properties) 'convert_categorized_layer' and set it to 'true'.
+
+6. The ConfigGenerator will process the projects and write the modified projects to qgis_projects_gen_base_dir`. Hence, if for instance qgis_projects_base_dir=/data` and `qgis_projects_gen_base_dir=/data/gen`, the resource name for map `mymap` will be `gen/mymap`.
+
+*NOTE:* If you are using the qwc-config-generator Docker images, make sure you are using `qwc-config-generator:v<version>` and not `qwc-config-generator:v<version>-noqgis`.
+
 ### Schema validation
 
-By default, the config-generator will validate the service configurations in `tenantConfig.json` against the schema definition of the service. This requires network access to `raw.githubusercontent.com`. You can disable the schema validation by setting `"validate_schema": false` in config-generator `config` block in `tenantConfig.json`.
+By default, the ConfigGenerator will validate the service configurations in `tenantConfig.json` against the schema definition of the service. The JSON Schemas are loaded from local files in `JSON_SCHEMAS_PATH`, or else downloaded from https://github.com/qwc-services/ if no schema files are present. You can disable the schema validation by setting `"validate_schema": false` in the ConfigGenerator's `config` block in `tenantConfig.json`.
 
 ### Permissions
 
@@ -301,10 +317,10 @@ Generate permissions file:
 
 ### Service
 
-Set the `INPUT_CONFIG_PATH` environment variable to the base dir for reading generator config files (default: `config-in/`).
-Set the `OUTPUT_CONFIG_PATH` environment variable to the base dir for writing service configs and permissions (default: `/tmp/`).
+Set the `INPUT_CONFIG_PATH` environment variable to the base directory where for the configuration files are that should be read by the ConfigGenerator (default: `config-in/`).
+Set the `OUTPUT_CONFIG_PATH` environment variable to the base directory where the ConfigGenerator should output service configurations and permissions (default: `/tmp/`).
 
-*NOTE:* Requires write permissions for config-generator docker user (`www-data`) in `OUTPUT_CONFIG_PATH` for writing service configs and permissions.
+*NOTE:* the ConfigGenerator's docker user (`www-data`) needs to have write permissions to the directory defined in `OUTPUT_CONFIG_PATH`!
 
 Base URL:
 
@@ -313,6 +329,15 @@ Base URL:
 Generate both service configs and permissions for `default` tenant:
 
     curl -X POST "http://localhost:5010/generate_configs?tenant=default"
+
+### Update JSON schemas
+
+You can change the directory from where the ConfigGenerator reads its schemas via the `JSON_SCHEMAS_PATH` environment variable (default `/tmp/`).
+You can change the versions of the schemas that the ConfigGenerator uses for verification inside [schema-versions.json](schemas/schema-versions.json) (default: current `master`).
+
+Download JSON schemas:
+
+    python download_json_schemas.py
 
 
 Development

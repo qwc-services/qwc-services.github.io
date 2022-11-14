@@ -1,8 +1,11 @@
 +++
-title = "QWC Admin GUI"
 menuTitle = "qwc-admin-gui"
-weight = 13
+weight = 12
+chapter = false
 +++
+
+QWC Admin GUI
+=============
 
 GUI for administration of QWC Services.
 
@@ -119,6 +122,43 @@ Set `proxy_timeout` to the timeout in seconds for proxy requests (default: `60`s
 Translation strings are stored in a JSON file for each locale in `translations/<locale>.json` (e.g. `en.json`). Add any new languages as new JSON files.
 
 Set the `DEFAULT_LOCALE` environment variable to choose the locale for the user notification mails (default: `en`).
+
+### Solr search index update
+
+If using a Solr search service, the Solr search index of a tenant may be updated via a button on the main page. This can be activated by adding the following configuration options to the Admin GUI service config:
+```json
+{
+  "config": {
+    "solr_service_url": "http://qwc-solr:8983/solr/gdi/",
+    "solr_tenant_dih": "dih_geodata",
+    "solr_tenant_dih_config_file": "/solr/config-in/dih_geodata_config.xml",
+    "solr_config_path": "/solr/config-out",
+    "solr_update_check_wait": 5,
+    "solr_update_check_max_retries": 10
+  }
+}
+```
+
+* `solr_service_url`: Solr Service base URL for collection
+* `solr_tenant_dih`: Solr DataImportHandler for the tenant
+* `solr_tenant_dih_config_file` (optional): Path to source DataImportHandler config file for the tenant
+* `solr_config_path` (optional): Path to Solr configs (**Note:** requires write permissions for DataImportHandler config files)
+* `solr_update_check_wait` (optional): Wait time in seconds for checks during Solr index update (default: `5`s)
+* `solr_update_check_max_retries` (optional): Max number of retries for checks during Solr index update (default: `10`)
+
+If both `solr_tenant_dih_config_file` and `solr_config_path` are set, the tenant config file is first copied to the Solr configs dir before updating the Solr search index.
+
+Example volumes for `qwc-docker` environment and above service config:
+```yaml
+services:
+  qwc-admin-gui:
+    # ...
+    volumes:
+      # ...
+      # Solr configs
+      - ./volumes/solr/configsets/gdi/conf:/solr/config-in:ro
+      - ./volumes/solr/data/gdi/conf:/solr/config-out
+```
 
 ### Plugins
 

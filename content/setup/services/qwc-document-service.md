@@ -1,9 +1,11 @@
 +++
-title = "Document service"
 menuTitle = "qwc-document-service"
 weight = 10
+chapter = false
 +++
 
+Document service
+================
 
 The document service delivers reports from the Jasper reporting service with permission control.
 

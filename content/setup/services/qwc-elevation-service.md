@@ -1,9 +1,11 @@
 +++
-title = "QWC Elevation Service"
 menuTitle = "qwc-elevation-service"
 weight = 11
+chapter = false
 +++
 
+QWC Elevation Service
+=====================
 
 Returns elevations.
 
