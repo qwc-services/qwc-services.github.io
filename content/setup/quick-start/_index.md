@@ -20,6 +20,7 @@ Install Docker and setup containers (see [qwc-docker README](https://github.com/
 
     cd qwc-docker/
     cp docker-compose-example.yml docker-compose.yml
+    cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 
 Create a secret key:
 
@@ -27,9 +28,11 @@ Create a secret key:
 
 Set permissions for writable volumes:
 
-    sudo chown -R www-data:www-data volumes/qgs-resources
-    sudo chown -R www-data:www-data volumes/config
-    sudo chown -R www-data:www-data volumes/qwc2/assets
+    # The containers use UID 33 for www-data
+    sudo chown -R 33:33 volumes/attachments
+    sudo chown -R 33:33 volumes/config
+    sudo chown -R 33:33 volumes/qgs-resources
+    sudo chown -R 33:33 volumes/qwc2/assets
 
     sudo chown 8983:8983 volumes/solr/data
 
