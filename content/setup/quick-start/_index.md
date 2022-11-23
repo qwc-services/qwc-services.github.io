@@ -16,7 +16,7 @@ Clone [Docker containers for QWC services](https://github.com/qwc-services/qwc-d
 
     git clone https://github.com/qwc-services/qwc-docker.git
 
-Install Docker and setup containers (see [qwc-docker README](https://github.com/qwc-services/qwc-docker#setup)):
+Install Docker and setup containers (see [qwc-docker README](https://github.com/qwc-services/qwc-docker#quick-start)):
 
     cd qwc-docker/
     cp docker-compose-example.yml docker-compose.yml
