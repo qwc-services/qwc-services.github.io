@@ -13,8 +13,12 @@ fetch:
 		curl -s -L https://github.com/qwc-services/$$repo/raw/master/README.md | sed '/^\[/d' >>content/setup/authentication/$$repo.md; \
 		no=$$((no+1)); \
 	done
-	echo "+++\nmenuTitle = \"Viewer\"\nweight = 4\nchapter = false\n+++\n" >content/setup/viewer/_index.md; \
-	curl -s -L https://github.com/qgis/qwc2-demo-app/raw/master/doc/QWC2_Documentation.md >>content/setup/viewer/_index.md;
+	no=1; \
+	for file in requirements quick_start qwc_configuration url_parameters startup_position server_side_configuration keeping_qwc_up_to_date developing; do \
+		echo "+++\nmenuTitle = \"$$file\"\nweight = $$no\nchapter = false\n+++" >content/setup/viewer/$$file.md; \
+		curl -s -L https://github.com/qgis/qwc2-demo-app/raw/master/doc/src/$$file.md | sed '/^\[/d' >>content/setup/viewer/$$file.md; \
+		no=$$((no+1)); \
+	done
 
 schemas:
 	# Convert JSON schemas to Markdown
