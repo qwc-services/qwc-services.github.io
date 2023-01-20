@@ -1,10 +1,10 @@
 +++
-menuTitle = "QGIS Web Client 2"
+menuTitle = "Viewer"
 weight = 1
 chapter = false
 +++
 
-# QGIS Web Client 2
+# QGIS Web Client 2 Documentation
 
 QGIS Web Client 2 (QWC2) is a modular next generation responsive web client for QGIS Server, built with ReactJS and OpenLayers.
 
