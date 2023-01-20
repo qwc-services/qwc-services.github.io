@@ -1,5 +1,5 @@
 +++
-menuTitle = "startup_position"
+menuTitle = "Startup position"
 weight = 6
 chapter = false
 +++

@@ -1,5 +1,5 @@
 +++
-menuTitle = "developing"
+menuTitle = "Developing"
 weight = 9
 chapter = false
 +++

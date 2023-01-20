@@ -1,5 +1,5 @@
 +++
-menuTitle = "qwc_configuration"
+menuTitle = "QWC2 configuration"
 weight = 4
 chapter = false
 +++

@@ -1,5 +1,5 @@
 +++
-menuTitle = "keeping_qwc_up_to_date"
+menuTitle = "Keeping QWC2 up to date"
 weight = 8
 chapter = false
 +++

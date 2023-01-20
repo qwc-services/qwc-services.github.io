@@ -1,5 +1,5 @@
 +++
-menuTitle = "server_side_configuration"
+menuTitle = "Server-side configuration"
 weight = 7
 chapter = false
 +++

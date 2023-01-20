@@ -1,5 +1,5 @@
 +++
-menuTitle = "quick_start"
+menuTitle = "Quick start"
 weight = 3
 chapter = false
 +++

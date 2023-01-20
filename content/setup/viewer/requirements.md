@@ -1,5 +1,5 @@
 +++
-menuTitle = "requirements"
+menuTitle = "Requirements"
 weight = 2
 chapter = false
 +++

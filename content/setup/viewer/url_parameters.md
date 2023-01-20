@@ -1,5 +1,5 @@
 +++
-menuTitle = "url_parameters"
+menuTitle = "URL parameters"
 weight = 5
 chapter = false
 +++
