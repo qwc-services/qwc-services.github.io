@@ -27,7 +27,7 @@ Then, start a local development application:
 
     $ yarn start
 
-The development application will run by default on `http://localhost:8081`. Note: if you are behind a proxy server, you'll need to [specify the proxy settings](qwc_configuration.md#generating-themesjson).
+The development application will run by default on `http://localhost:8081`. Note: if you are behind a proxy server, you'll need to [specify the proxy settings]({{< ref "qwc_configuration#generating-themesjson" >}}).
 
 At this point, you can customize and configure the application according to your needs, as described in detail in the following chapters.
 
