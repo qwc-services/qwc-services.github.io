@@ -53,9 +53,9 @@ Some external services can be used to enhance the application. The reference imp
 |----------------------|-------------|
 |`permalinkServiceUrl` | Generates and resolves compact permalinks for the Share plugin. If empty, the full URL will be used. |
 |`elevationServiceUrl` | Returns elevation values, used to generate a height profile when measuring lines and display elevation information in the map right-click information bubble. If empty, the respective information will not be displayed in the client. |
-|`editServiceUrl`      | Service for editing features of layers served by QGIS Server. See [Editing](#editing-support). |
+|`editServiceUrl`      | Service for editing features of layers served by QGIS Server. See [Editing](#editing). |
 |`mapInfoService`      | Returns additional information to be displayed in the map right-click information bubble. If empty, no additional information will be displayed. |
-|`featureReportService`| Returns a custom document associated to a feature. See [`themesConfig.json`](#configuring-the-themes-in-themesconfigjson). |
+|`featureReportService`| Returns a custom document associated to a feature. See [`themesConfig.json`](#themesConfig-json). |
 
 *Global settings*:
 
@@ -80,9 +80,9 @@ All settings are optional, with fallback to the default values as documented.
 |`externalLayerFeatureInfoFormats`    | A dictionary of feature info formats for external layers, in the format `{"<url>": "<format>", ...}`. If the GetFeatureInfo URL of a layer contains the specified `<url>`, the corresponding format is used. |
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If false, remote layers are re-queried from the respective services, if true, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
 
-*Global settings, overridable per theme*:<a name="config-json-overridable"></a>
+##### *Global settings, overridable per theme*: {#config-json-overridable}
 
-The following options can be specified globally, and also overriden per theme, see [`themesConfig.json`](#configuring-the-themes-in-themesconfigjson).
+The following options can be specified globally, and also overriden per theme, see [`themesConfig.json`](#themesConfig-json).
 All settings are optional, with fallback to the default values as documented.
 
 | Setting                              | Description |
@@ -177,7 +177,7 @@ The first step is to prepare a QGIS project. Besides the common tasks of adding 
 | Print layouts        | Layout manager                            | The print layouts offered in the Print plugin.   |
 | Print layout labels  | Layout manager                            | Print layout labels with an ID will be exposed in the Print plugin. Note: a label ID starting with `__` will not be exposed. |
 
-#### Configuring the themes in `themesConfig.json`
+#### Configuring the themes in `themesConfig.json` {#themesConfig-json}
 
 The second step is to configure the themes which are available to QWC2 in the `themesConfig.json` file, which contains a list of themes, optionally organized in groups, as well as a list of background layers:
 
@@ -283,7 +283,7 @@ The format of the theme definitions is as follows:
 | `"extraLegendParameters": "<&KEY=VALUE>",`    | Optional, additional query parameters to append to WMS GetLegendGraphic.         |
 | `"printLabelBlacklist":  ["<LabelId>", ...]`  | Optional, list of composer label ids to not expose in the print dialog. |
 | `"editConfig": "<editConfig.json>"`           | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
-| `"snapping": {...},`                          | Optional, snapping configuration, see [Snapping](#snapping-support). |                   |
+| `"snapping": {...},`                          | Optional, snapping configuration, see [Snapping](#snapping). |                   |
 | `"config": {`                                 | Optional, per-theme configuration entries which override the global entries in `config.json`.|
 | `  "allowRemovingThemeLayers": <boolean>`     | See [`config.json`](#config-json-overridable) for which settings can be specified here. |
 | `  ...`                                       |                                                                                  |
@@ -391,7 +391,7 @@ Instead of specifiying a full background layer definition in a group, you can al
       ]
     }
 
-#### <a name="themes-json"></a>Generating `themes.json`
+#### Generating `themes.json` {#themes-json}
 
 The final step is to generate `themes.json`, the file which is ultimately read by QWC2. This file combines the input from `themesConfig.json` with the information from the WMS service capabilities and is automatically generated when starting the local development application via `yarn start`. Alternatively, it can be manually generated via
 
@@ -419,7 +419,7 @@ Note: if you are behind a proxy server and your `themesConfig.json` refers to re
       ...
     }
 
-## Search providers
+## Search providers {#search-providers}
 
 ### Adding search providers
 
@@ -535,7 +535,7 @@ For each theme item in `themesConfig.json`, you can define a list of search prov
 
 For more information on the full-text search provider, see [qwc-fulltext-search-service](https://github.com/qwc-services/qwc-fulltext-search-service).
 
-## Editing support
+## Editing support {#editing}
 
 QWC2 offers comprehensive editing support through a variety of plugins:
 
@@ -586,7 +586,7 @@ If you don't use the [QWC config generator](https://github.com/qwc-services/qwc-
 
 See the [sample `editConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/test2056_edit.json) for a full example.
 
-## Snapping support
+## Snapping support {#snapping}
 
 QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). To enable it, make sure the `SnappingSupport` plugin is enabled in `appConfig.js` (see the sample [sample `js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js)). Then, for each theme for which you want snapping to be available, you can add a `snapping` block to your theme item in `themesConfig.json` as follows:
 
@@ -630,7 +630,7 @@ where:
 
 When snapping is available, a small toolbar appears on the bottom border of the map with the possibility to toggle snapping.
 
-## Managing translations
+## Managing translations {#translations}
 
 The translations are managed on two levels:
 
@@ -659,7 +659,7 @@ The typical workflow for managing application translations is:
 If translations of the QWC2 components for a desired language are missing, please create resp. update the translations respective files in `qwc2/translations` and contribute them by submitting a pull request to the [upstream qwc2 repository](https://github.com/qgis/qwc2).
 
 
-## Help dialog
+## Help dialog {#help-dialog}
 
 The QWC2 help dialog can be personalized in two ways:
 
@@ -677,7 +677,7 @@ The QWC2 help dialog can be personalized in two ways:
 
 - By implementing the `renderHelp` function in `js/Help.jsx`. If no `bodyContentsFragmentUrl` configuration is provided in `config.json`, this function will be called to render the help contents.
 
-## Customizing the QWC2 appearance
+## Customizing the QWC2 appearance {#appearance-customization}
 
 The following options are available for customizing the appearance of the QWC2 application while preserving compatibility with the core QWC2 components:
 
@@ -692,7 +692,7 @@ The following options are available for customizing the appearance of the QWC2 a
 *Note*: The common application icons are located in `qwc2/icons`. They can be overridden by creating an icon with the same filename in the application specific `icons` folder.
 *Note*: The icons in the `icons` folder are compiled into an icon font. Currently, the icons need to be black content on transparent background, and all drawings (including texts) must be converted to paths for the icons to render correctly.
 
-## Color schemes
+## Color schemes {#color-schemes}
 The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see [DefaultColorScheme.css](https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css)). To define a custom color scheme, copy the default color scheme, add an appropriate class name to the `:root` selector, and modify the colors as desided. There are two examples (`highcontrast` and `dark`) in [DefaultColorScheme.css](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/css/colorschemes.css).
 
 You can then modify the color scheme which is applied by default by setting `defaultColorScheme` in `config.json` to an appropriate class name (i.e. `highcontrast` or `dark`).
