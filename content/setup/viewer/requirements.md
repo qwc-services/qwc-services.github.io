@@ -1,6 +1,6 @@
 +++
 menuTitle = "Requirements"
-weight = 2
+weight = 1
 chapter = false
 +++
 # Requirements

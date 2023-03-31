@@ -14,7 +14,7 @@ fetch:
 		no=$$((no+1)); \
 	done
 	no=1; \
-	for file in requirements quick_start qwc_configuration url_parameters startup_position server_side_configuration keeping_qwc_up_to_date developing; do \
+	for file in requirements quick_start qwc_configuration plugins url_parameters startup_position server_side_configuration keeping_qwc_up_to_date developing; do \
 		echo "+++\nmenuTitle = \"$$file\"\nweight = $$no\nchapter = false\n+++" >content/setup/viewer/$$file.md; \
 		curl -s -L https://github.com/qgis/qwc2-demo-app/raw/master/doc/src/$$file.md | sed '/^\[/d' >>content/setup/viewer/$$file.md; \
 		no=$$((no+1)); \

@@ -1,6 +1,6 @@
 +++
 menuTitle = "QWC2 configuration"
-weight = 4
+weight = 3
 chapter = false
 +++
 # QWC2 configuration

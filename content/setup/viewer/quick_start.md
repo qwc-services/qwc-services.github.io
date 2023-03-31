@@ -1,6 +1,6 @@
 +++
 menuTitle = "Quick start"
-weight = 3
+weight = 2
 chapter = false
 +++
 # Quick start
