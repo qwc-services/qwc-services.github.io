@@ -13,6 +13,9 @@ fetch:
 		curl -s -L https://github.com/qwc-services/$$repo/raw/master/README.md | sed '/^\[/d' >>content/setup/authentication/$$repo.md; \
 		no=$$((no+1)); \
 	done
+	no=3; \
+	echo "+++\nmenuTitle = \"qwc-oidc-auth\"\nweight = $$no\nchapter = false\n+++" >content/setup/authentication/qwc-oidc-auth.md; \
+	curl -s -L https://github.com/qwc-services/qwc-oidc-auth/raw/main/README.md | sed '/^\[/d' >>content/setup/authentication/qwc-oidc-auth.md; \
 	no=1; \
 	for file in requirements quick_start qwc_configuration plugins url_parameters startup_position server_side_configuration keeping_qwc_up_to_date developing; do \
 		echo "+++\nmenuTitle = \"$$file\"\nweight = $$no\nchapter = false\n+++" >content/setup/viewer/$$file.md; \
