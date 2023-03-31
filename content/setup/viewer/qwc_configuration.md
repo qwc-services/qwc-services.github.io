@@ -101,6 +101,7 @@ All settings are optional, with fallback to the default values as documented.
 |`importLayerUrlPresets`               | A list of predefined URLs from which the user can choose when importing layers from the layer tree. Entries must be strings or objects of the format `{"label": "<Label>", "value": "<URL>"}`. |
 |`identifyTool`                        | The name of the identify plugin to use. It is possible to have multiple identify tools, and i.e. on a per-theme basis select which one is active. Default value: `Identify`. |
 |`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default value: `false`. |
+|`globallyDisableMaximizeableDialogs`      | Whether to globally disable the maximizeable feature of popup dialogs. Default value: `false`. |
 
 *Notes*:
 
@@ -108,7 +109,28 @@ All settings are optional, with fallback to the default values as documented.
 - If `preserveExtentOnThemeSwitch = true`, the current extent is preserved if it is within the new theme extent and if the current theme map projection is equal to the new theme projection. If `preserveExtentOnThemeSwitch = "force"`, the current extent is preserved regardless of whether it is within the new theme extent, but the current and new theme map projections must still match.
 
 *Plugin configuration*:<a name="config-json-plugin-conf"></a>
-The plugin configuration is entered separately for desktop and for mobile mode. Refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json) for a list of available configuration options. Each plugin configuration block is of the format
+
+The plugin configuration is entered as follows:
+
+    "plugins": {
+      "common": [
+        {<PluginConfig>},
+        {<PluginConfig>},
+        ...
+      ],
+      "mobile": [
+        {<PluginConfig>},
+        {<PluginConfig>},
+        ...
+      ],
+      "desktop": [
+        {<PluginConfig>},
+        {<PluginConfig>},
+        ...
+      ]
+    }
+
+The final `mobile` and `desktop` configurations will be computed by merging the `common` configuration with the respective specific configuration. Each `<PluginConfig>` block is of the format
 
     {
       "name": "<PluginName">,
@@ -123,6 +145,8 @@ where
 * `name`: The plugin name
 * `cfg`: Optional: arbitrary configuration properties, directly passed to the relative plugin class as React props.
 * `mapClickAction`: Optional: for plugins which are associated to a viewer task (and typically linked in the `menuItems` or `toolbarItems` of the `TopBar`, see below), determines whether a click in the map will result in the identify tool being invoked, the task being unset, or whether no particular action should be performed (default). Note: `"mapClickAction"` should be `null` or omitted for plugins which handle mouse events on the map themselves. Can optionally also be specified directly in the `menuItems` or `toolbarItems` entries, see below.
+
+The [Plugin reference](plugins.md) lists all available stock plugins and configuration options. Also refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json) for a concrete example.
 
 You can omit a plugin entry to disable it in desktop and/or mobile mode. To completely remove a plugin from the compiled application, remove the corresponding entry in `js/appConfig.js`.
 
@@ -148,7 +172,7 @@ where
 
 * `Key`: An arbitrary key name (not used by existing plugins), used to lookup the label for the entry from the translations.
 * `icon`: As above.
-* `url`: The URL to open. Can contain as placeholders the keys listed in <a href="#url-parameters">URL parameters</a>, encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported.
+* `url`: The URL to open. Can contain as placeholders the keys listed in [URL parameters](url_parameters.md), encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported.
 * `target`: The target where to open the URL, if empty, `_blank` is assumed. Can be `iframe` to open the link in a iframe window inside QWC2.
 
 
@@ -210,6 +234,7 @@ The second step is to configure the themes which are available to QWC2 in the `t
       "defaultScales": [<Scale denominators>],
       "defaultPrintScales" [<Scale denominators>],
       "defaultPrintResolutions": [<DPIs>],
+      "defaultSearchProviders": [<Search providers>],
       "defaultPrintGrid": [<Print grid, see below>]
     }
 
@@ -285,7 +310,7 @@ The format of the theme definitions is as follows:
 | `"editConfig": "<editConfig.json>"`           | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
 | `"snapping": {...},`                          | Optional, snapping configuration, see [Snapping](#snapping). |                   |
 | `"config": {`                                 | Optional, per-theme configuration entries which override the global entries in `config.json`.|
-| `  "allowRemovingThemeLayers": <boolean>`     | See [`config.json`](#config-json-overridable) for which settings can be specified here. |
+| `  "allowRemovingThemeLayers": <boolean>`     | See [`config.json`](#config-json-overrideable) for which settings can be specified here. |
 | `  ...`                                       |                                                                                  |
 | `}`                                           |
 
@@ -328,8 +353,9 @@ You can also set the "Data Url" for a layer in QGIS (Layer Properties &rarr; QGI
 
     wms:<service_url>?<options>#<layername>
 
-(for instance, `wms:http://wms.geo.admin.ch?tiled=false#ch.are.bauzonen`), and an external layer pointing to the specified WMS service will automatically be created for the corresponding QGIS layer.
-Note that this is currently only implemented for WMS layers.
+(for instance, `wms:http://wms.geo.admin.ch?tiled=false&infoFormat=application/geojson#ch.are.bauzonen`), and an external layer pointing to the specified WMS service will automatically be created for the corresponding QGIS layer.
+Note: `infoFormat` is a special parameter through which the GetFeatureInfo query format is controled. If omitted, the default format is `text/plain`.
+This is currently only implemented for WMS layers.
 
 
 **Theme info links:**
@@ -471,12 +497,12 @@ Notes:
 
 * The format of `searchParams` is
 
-      {
-        displaycrs: "EPSG:XXXX", // Currently selected mouse coordinate display CRS
-        mapcrs: "EPSG:XXXX", // The current map CRS
-        lang: "<code>", // The current application language, i.e. en-US or en
-        cfgParams: <params> // Additional parameters passed in the theme search provider configuration, see below
-      }
+        {
+          displaycrs: "EPSG:XXXX", // Currently selected mouse coordinate display CRS
+          mapcrs: "EPSG:XXXX", // The current map CRS
+          lang: "<code>", // The current application language, i.e. en-US or en
+          cfgParams: <params> // Additional parameters passed in the theme search provider configuration, see below
+        }
 
 * `axios` is passed for convenience so that providers can use the compiled-in `axios` library for network requests.
 
@@ -595,7 +621,7 @@ QWC2 ships a plugin for snapping support while drawing (redlining / measuring / 
       "snaplayers": [
         {
           "name": "<layername>",
-          "min": <min_scale>
+          "min": <min_scale>,
           "max": <max_scale>
         }
       ],
@@ -693,10 +719,10 @@ The following options are available for customizing the appearance of the QWC2 a
 *Note*: The icons in the `icons` folder are compiled into an icon font. Currently, the icons need to be black content on transparent background, and all drawings (including texts) must be converted to paths for the icons to render correctly.
 
 ## Color schemes {#color-schemes}
-The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see [DefaultColorScheme.css](https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css)). To define a custom color scheme, copy the default color scheme, add an appropriate class name to the `:root` selector, and modify the colors as desided. There are two examples (`highcontrast` and `dark`) in [DefaultColorScheme.css](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/css/colorschemes.css).
+The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see [DefaultColorScheme.css](https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css)). To define a custom color scheme, copy the default color scheme, add an appropriate class name to the `:root` selector, and modify the colors as desided. There are two examples (`highcontrast` and `dark`) in [colorschemes.css](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/css/colorschemes.css).
 
 You can then modify the color scheme which is applied by default by setting `defaultColorScheme` in `config.json` to an appropriate class name (i.e. `highcontrast` or `dark`).
 
 To change the color scheme at runtime in QWC2, make sure the Settings plugin is enabled, and in the Settings plugin configuration block in `config.json` list the color schemes below `colorSchemes`. Refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json).
 
-*Note*: When changing the color scheme via Settings dialog in QWC2, the picked color scheme is stored in the browser local storage, and this setting will override the `defaultColorScheme` setting from . Specifying the `style` URL-parameter (see [URL parameters](#url-parameters)) will take precedence over all other settings.
+*Note*: When changing the color scheme via Settings dialog in QWC2, the picked color scheme is stored in the browser local storage, and this setting will override the `defaultColorScheme` setting from `config.json. Specifying the `style` URL-parameter (see [URL parameters](url_parameters.md)) will take precedence over all other settings.

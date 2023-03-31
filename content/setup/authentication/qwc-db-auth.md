@@ -105,6 +105,36 @@ The TOTP issuer name for your application can be set using the environment varia
 An user's TOTP secret can be reset by clearing it in the Admin GUI user form.
 
 
+### Customization
+
+You can add a custom logo and a custom background image by setting the following `config` options:
+
+```json
+"config": {
+  "background_image_url": "<url>",
+  "logo_image_url": "<url>"
+}
+```
+
+The specified URLs can be absolute or relative. For relative URLs, you can write i.e.
+
+```json
+"config": {
+  "background_image_url": "/auth/static/background.jpg",
+  "logo_image_url": "/auth/static/logo.jpg"
+}
+```
+
+where `/auth` is the service mountpoint and place your custom images inside the `static` subfolder of the auth-service, or, if using docker and docker-compose, mount them accordingly:
+
+    qwc-auth-service:
+      [...]
+      volumes:
+        - ./volumes/assets/Background.jpg:/srv/qwc_service/static/background.jpg
+        - ./volumes/assets/logo.png:/srv/qwc_service/static/logo.jpg
+
+If you want to override some styles, you can set the `customstylesheet` `config` option to the name of a file below the `static` subfolder of the auth-service, and it will get included into the base template.
+
 Usage
 -----
 
