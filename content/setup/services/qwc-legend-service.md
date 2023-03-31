@@ -33,7 +33,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### Legend Service config
 
-* [JSON schema](schemas/qwc-legend-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-legend-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/legendConfig.json`
 
 Example:

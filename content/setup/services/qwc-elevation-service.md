@@ -18,7 +18,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### Elevation Service config
 
-* [JSON schema](schemas/qwc-elevation-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-elevation-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/elevationConfig.json`
 
 Example:

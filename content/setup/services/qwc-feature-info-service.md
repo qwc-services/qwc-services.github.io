@@ -57,7 +57,7 @@ Environment variables:
 
 ### FeatureInfo Service config
 
-* [JSON schema](schemas/qwc-feature-info-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-feature-info-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/featureInfoConfig.json`
 
 Example:

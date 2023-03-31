@@ -176,7 +176,7 @@ Example `tenantConfig.json`:
 }
 ```
 
-For a full example see [tenantConfig-example.json](tenantConfig-example.json) ([JSON schema](schemas/qwc-config-generator.json)).
+For a full example see [tenantConfig-example.json](tenantConfig-example.json) ([JSON schema]({{< ref "setup/schemas/qwc-config-generator" >}})).
 
 *NOTE:* QWC2 themes are defined under `themesConfig` in the ConfigGenerator configuration and not in a separate file.
 

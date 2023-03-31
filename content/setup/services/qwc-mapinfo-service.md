@@ -18,7 +18,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### MapInfo Service config
 
-* [JSON schema](schemas/qwc-mapinfo-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-mapinfo-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/mapinfoConfig.json`
 
 Examples:

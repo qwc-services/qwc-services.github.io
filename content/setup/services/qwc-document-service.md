@@ -24,7 +24,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### JSON config
 
-* [JSON schema](schemas/qwc-document-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-document-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/documentConfig.json`
 
 Example:

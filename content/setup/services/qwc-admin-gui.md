@@ -24,7 +24,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### Admin Gui Service config
 
-* [JSON schema](schemas/qwc-admin-gui.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-admin-gui" >}})
 * File location: `$CONFIG_PATH/<tenant>/adminGuiConfig.json`
 
 Example:

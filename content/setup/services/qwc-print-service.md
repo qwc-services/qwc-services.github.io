@@ -20,7 +20,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### JSON config
 
-* [JSON schema](schemas/qwc-print-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-print-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/printConfig.json`
 
 Example:

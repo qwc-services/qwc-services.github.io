@@ -44,7 +44,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### Data Service config
 
-* [JSON schema](schemas/qwc-data-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-data-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/dataConfig.json`
 
 Example:

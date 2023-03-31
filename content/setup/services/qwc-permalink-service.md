@@ -19,7 +19,7 @@ e.g. `$CONFIG_PATH/default/*.json`. The default tenant name is `default`.
 
 ### JSON config
 
-* [JSON schema](schemas/qwc-permalink-service.json)
+* [JSON schema]({{< ref "setup/schemas/qwc-permalink-service" >}})
 * File location: `$CONFIG_PATH/<tenant>/permalinkConfig.json`
 
 Example:
