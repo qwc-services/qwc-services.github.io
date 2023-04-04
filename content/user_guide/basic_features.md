@@ -140,7 +140,7 @@ Drawing options are :
 
 For each object, you can set border color, fill color, size. Fill the *label* entry to set text on your object.
 
-Once you have drawn objects, you can edit them by picking one and change options. Pick an object and click on *trash* button to delete it. 
+Once you have drawn objects, you can edit them by picking one and change options. Pick an object and click on *trash* button to delete it. Shift-click nodes to delete them.
 
 ![qwc-app-menu-maptools-redlining-example](/images/qwc-menu-maptools-redlining-example.png)
 
