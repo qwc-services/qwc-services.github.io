@@ -91,3 +91,22 @@ The [QWC Config Generator](https://github.com/qwc-services/qwc-config-generator)
 
 <!--Alternatively, a simplified permissions format is also supported, see [unified permissions](doc/unified_permissions.md).-->
 
+## Group registration
+
+Using the optional [Registration GUI](https://github.com/qwc-services/qwc-registration-gui) allows users to request membership or unsubscribe from registrable groups. These requests can then be accepted or rejected in the [Admin GUI](https://github.com/qwc-services/qwc-admin-gui).
+
+Workflow:
+* Admin GUI
+  * admin user creates new groups with assigned roles and permissions on resources
+  * admin user configures registrable groups
+* Registration GUI
+  * user select desired groups from registrable groups and submits application form
+  * admin users are notified of new registration requests
+* Admin GUI
+  * admin user selects entry from list of pending registration requests
+  * admin user accepts or rejects registration requests for a user
+  * user is added to or removed from accepted groups
+  * user is notified of registration request updates
+* Map Viewer
+  * user permissions are updated for new groups
+
