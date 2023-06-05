@@ -11,7 +11,7 @@ echo "# References" > src/references/index.md
 echo "" >> src/references/index.md
 
 echo "* Downloading plugin reference..."
-wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2-demo-app/master/doc/src/plugins.md
+wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2/master/doc/plugins.md
 echo "* [QWC2 plugins](qwc2_plugins.md)" >> src/references/index.md
 
 mkdir -p tmp
