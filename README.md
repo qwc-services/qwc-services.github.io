@@ -1,18 +1,15 @@
-QWC Site
-========
+QWC2 Documentation
+==================
 
-Homepage and documentation of QWC2 and QWC Services.
+Work in progress.
 
+Build
+=====
 
-Development
------------
+Full build, fetching the service configuration schemas and plugin reference:
 
-Requires [Hugo](https://gohugo.io/).
+    ./build.sh --update
 
-Get site code:
+Build using previously downloaded service configuration schemas and plugin reference:
 
-    git clone --recursive https://github.com/qwc-services/qwc-services.github.io.git
-
-Run Hugo:
-
-    hugo serve
+    ./build.sh

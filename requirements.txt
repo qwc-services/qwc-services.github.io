@@ -1,0 +1,4 @@
+mkdocs == 1.4.2
+mkdocs-exclude == 1.0.2
+json-schema-for-humans
+mkdocs-versioning

@@ -1,0 +1,18 @@
+# References
+
+* [QWC2 plugins](qwc2_plugins.md)
+* [qwc-config-generator](qwc-config-generator.md)
+* [qwc-admin-gui](qwc-admin-gui.md)
+* [qwc-data-service](qwc-data-service.md)
+* [qwc-db-auth](qwc-db-auth.md)
+* [qwc-elevation-service](qwc-elevation-service.md)
+* [qwc-ext-service](qwc-ext-service.md)
+* [qwc-feature-info-service](qwc-feature-info-service.md)
+* [qwc-legend-service](qwc-legend-service.md)
+* [qwc-mapinfo-service](qwc-mapinfo-service.md)
+* [qwc-map-viewer](qwc-map-viewer.md)
+* [qwc-ogc-service](qwc-ogc-service.md)
+* [qwc-permalink-service](qwc-permalink-service.md)
+* [qwc-services-permissions](qwc-services-permissions.md)
+* [qwc-print-service](qwc-print-service.md)
+* [qwc-search-service](qwc-search-service.md)

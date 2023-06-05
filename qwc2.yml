@@ -1,0 +1,31 @@
+site_name: QWC2 - latest
+docs_dir: src
+nav:
+    - Index: index.md
+    - QWC2:
+        - Quick start: QuickStart.md
+        - General configuration:
+            - Themes: configuration/ThemesConfiguration.md
+            - Viewer: configuration/ViewerConfiguration.md
+            - Resources and permissions: configuration/ResourcesPermissions.md
+            - Services: configuration/ServiceConfiguration.md
+        - Selected topics:
+            - Search: topics/Search.md
+            - Feature info: topics/FeatureInfo.md
+            - Map info: topics/Mapinfo.md
+            - Editing: topics/Editing.md
+            - Snapping: topics/Snapping.md
+            - Temporal layers: topics/TimeManager.md
+            - Legend graphics: topics/LegendGraphics.md
+            - Interfacing with applications: topics/Interfacing.md
+        - References: references/index.md
+        - Version history:
+            - QWC2 upgrade notes: release_notes/QWC2UpgradeNotes.md
+            - qwc-docker upgrade notes: release_notes/QwcDockerUpgradeNotes.md
+        - FAQ: FAQ.md
+
+theme:
+    name: readthedocs
+    include_homepage_in_sidebar: true
+extra_css:
+    - css/custom.css
