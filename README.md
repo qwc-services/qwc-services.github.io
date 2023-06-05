@@ -1,10 +1,10 @@
 QWC2 Documentation
 ==================
 
-Work in progress.
+Published at [qwc-services.github.io](https://qwc-services.github.io).
 
-Build
-=====
+Local build
+===========
 
 Full build, fetching the service configuration schemas and plugin reference:
 
