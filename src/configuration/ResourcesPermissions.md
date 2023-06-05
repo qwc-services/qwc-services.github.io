@@ -96,6 +96,7 @@ The [QWC Config Generator](https://github.com/qwc-services/qwc-config-generator)
 Using the optional [Registration GUI](https://github.com/qwc-services/qwc-registration-gui) allows users to request membership or unsubscribe from registrable groups. These requests can then be accepted or rejected in the [Admin GUI](https://github.com/qwc-services/qwc-admin-gui).
 
 Workflow:
+
 * Admin GUI
   * admin user creates new groups with assigned roles and permissions on resources
   * admin user configures registrable groups
