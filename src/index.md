@@ -1,14 +1,41 @@
-QGIS Web Client 2 Demo Application
-==================================
+# QWC2 / QWC Services
 
-QGIS Web Client 2 (QWC2) is a modular next generation responsive web client for QGIS Server, built with ReactJS and OpenLayers.
+QGIS Web Client 2 (QWC2) and QWC Services on the backend provide a complete Web GIS infrastructure.
 
-Some examples of QWC2 production deployments:
 
-- [QWC2 demo server](http://qwc2.sourcepole.ch)
-- [GeoViewer Kanton Glarus](https://map.geo.gl.ch/)
-- [Web GIS Client Kanton Solothurn](https://geo.so.ch/map/)
+## QWC2 viewer
 
-# License
+* Modern responsive viewer
+* Optimized for QGIS server
+* Customizable and extensible
 
-QWC2 is released under the terms of the [BSD license](https://github.com/qgis/qwc2-demo-app/blob/master/LICENSE).
+![QWC2](./images/viewer.jpg?style=centerme)
+
+## Powerful features
+
+* Fulltext search
+* Info templates
+* Customizable edit forms
+* PDF printing and reporting
+
+
+## Enterprise ready
+
+* Docker/Kubernetes or WSGI deployments
+* Multi-tenant setup
+* Custom service integration
+* Multiple authentication backends
+
+![Search](./images/search.png?style=centerme)
+
+## Explore
+
+* [Overview](/overview/)
+* [Quickstart](/quick-start/)
+* Public viewers: [Demo](http://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [qgisweb.oslandia.net](https://qgisweb.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
+
+## Support
+
+* Community support: [Github](https://github.com/qgis/qwc2-demo-app/issues)
+* Commercial Support: [Sourcepole](https://www.sourcepole.com/) and other companies.
+* [Improve this web site](https://github.com/qwc-services/qwc-services.github.io/)
