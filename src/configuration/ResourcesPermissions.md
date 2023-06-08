@@ -36,7 +36,7 @@ Available `map`, `layer`, `attribute` and `print_template` resources are determi
 
 `data` and their `attribute` resources define a data layer for the [Data service](https://github.com/qwc-services/qwc-data-service).
 
-For more detailed CRUD permissions `data_create`, `data_read`, `data_update` and `data_delete` can be used instead of `data`
+For more detailed [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) permissions `data_create`, `data_read`, `data_update` and `data_delete` can be used instead of `data`
 (`data` and `write=False` is equivalent to `data_read`; `data` and `write=True` is equivalent to all CRUD resources combined).
 
 The `viewer` resource defines a custom viewer configuration for the map viewer (see [Custom viewer configurations](https://github.com/qwc-services/qwc-map-viewer#custom-viewer-configurations)).
