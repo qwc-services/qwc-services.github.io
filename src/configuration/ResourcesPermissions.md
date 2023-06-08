@@ -53,14 +53,14 @@ These can be queried, e.g. in a custom service, by using `PermissionClient::reso
 Permissions are based on roles. Roles can be assigned to groups or users, and users can be members of groups.
 A special role is "public". The "public" role applies always, no matter whether a user is signed in or is not signed in.
 
-Each role can be assigned a permission for a resource.
+Roles can be assigned permission for resources.
 
-The `write` flag is only used for `data` resources and sets whether a data layer is read-only.
+The `write` flag is only used for `data` resources and determines whether a data layer is read-only.
 
 Based on the user's identity (user name and/or group name), all corresponding roles and their permissions and restrictions are collected.
 The service configurations are then modified according to these permissions and restrictions.
 
-Using the `permissions_default_allow` configuration setting in `tenantConfig.json`, some resources can be set to be permitted or restricted by default if no permissions are set (default: `false`). Among affected resources are `Map`, `Layer`, `Print template`, `Viewer task`, `FeatureInfo service`, `FeatureInfo layer`. E.g.:
+By using the `permissions_default_allow` configuration setting in `tenantConfig.json`, some resources can be set to be permitted or restricted by default if no permissions are set (default: `false`). Among affected resources are `Map`, `Layer`, `Print template`, `Viewer task`, `FeatureInfo service`, `FeatureInfo layer`. E.g.:
 
 * `permissions_default_allow=true`: all maps and layers are permitted by default
 * `permissions_default_allow=false`: maps and layers are only available if their resources and permissions are explicitly configured
