@@ -28,7 +28,7 @@ The following resource types are available:
   * `FeatureInfo layer`: Feature info layer
     * `Attribute`: attribute of a feature info layer
 
-The resource name corresponds to the technical name of its resource (e.g. WMS layer name). Most noteably, the name of a `map` resource corresponds to the relative path to the project below `qgs-resources` without `.qgs` extension (so i.e. the resource name for `qgs-resources/subfolder/project.qgs` will be `subfolder/project`).
+The resource name corresponds to the technical name of its resource (e.g. WMS layer name). Most notably, the name of a `map` resource corresponds to the relative path to the project below `qgs-resources` without `.qgs` extension (so i.e. the resource name for `qgs-resources/subfolder/project.qgs` will be `subfolder/project`).
 
 *Note:* If your QGIS project is configured to return the field aliases rather than the field names in `GetFeatureInfo`, the resource name for layer `attribute` resources corresponds to the alias of the field.
 
