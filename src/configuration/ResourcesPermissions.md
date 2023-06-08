@@ -6,7 +6,7 @@ The configuration backend allows to assign users and groups to roles. The roles 
 
 ## Users, groups and roles
 
-All resource permissions are assigned to a role. On their part, you can assign a user and a group of users to a role.
+Roles can be given permissions on resources. That means that if you want to give users or groups permissions on resources, then you have to first create a role, configure the permissions that the roles has on some resources, and then assign the role the users or groups.
 
 ## Resources
 
@@ -51,7 +51,7 @@ These can be queried, e.g. in a custom service, by using `PermissionClient::reso
 ## Permissions
 
 Permissions are based on roles. Roles can be assigned to groups or users, and users can be members of groups.
-A special role is `public`, which is always included, whether a user is signed in or not.
+A special role is "public". The "public" role applies always, no matter whether a user is signed in or is not signed in.
 
 Each role can be assigned a permission for a resource.
 
