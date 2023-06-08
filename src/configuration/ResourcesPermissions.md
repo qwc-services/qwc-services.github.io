@@ -1,6 +1,6 @@
 # Managing Users, Resources and Permissions
 
-`qwc-docker` provides the [QWC configuration backend](https://github.com/qwc-services/qwc-admin-gui), running by default on <http://localhost:8088/qwc_admin>.
+`qwc-docker` has a [QWC configuration backend](https://github.com/qwc-services/qwc-admin-gui). That backend can be reached by default at <http://localhost:8088/qwc_admin>.
 
 It allows assigning users and groups to roles, and assigning resource permissions to these roles. This configuration is stored in the [configuration database](https://github.com/qwc-services/qwc-config-db), which `qwc-docker` provides by default inside the `qwc-postgis` container.
 
