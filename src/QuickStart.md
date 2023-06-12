@@ -9,6 +9,7 @@ QGIS Web Client 2 (QWC2) is a modular next generation responsive web client for 
 The core concept of QWC2 is to display QGIS Projects which are published by QGIS Server via WMS.
 
 There are two ways to run QWC2:
+
 - As part of the *qwc-services* ecosystem, includes additional services to which includes additional services to extend the viewer functionality (such as user administration, editing, etc.). This is the recommended approach.
 - As a standalone viewer (static JS/HTML/CSS web application) on top of QGIS Server
 
@@ -46,9 +47,9 @@ When run as part of the qwc-services ecosystem, the following additional main fu
 
 `qwc-services` is a collection of loosely coupled micro-services for extending QWC2. The services communicate with each other via HTTP/Rest, and are mostly written in Python.
 
-The easiest way to run qwc-services is to use the readily available docker images, using the sample setup at [qwc-docker](https://github.com/qwc-services/qwc-docker).
+The easiest way to run `qwc-services` is to use the readily available docker images, using the sample setup at [qwc-docker](https://github.com/qwc-services/qwc-docker).
 
-To be able to run `qwc-docker`, first install docker and docker compose:
+To be able to run `qwc-docker`, first install `docker` and `docker compose`:
 
 - Docker: <https://docs.docker.com/engine/install/>
 - docker-compose: <https://docs.docker.com/compose/install/>
@@ -89,7 +90,7 @@ Next steps:
 
 ## Running QWC2 as a standalone viewer
 
-If you don't need the advanced functionalities provided by qwc-services or want to integrate QWC2 in another environment, you can run QWC2 as a standalone viewer.
+If you don't need the advanced functionalities provided by `qwc-services` or want to integrate QWC2 in another environment, you can run QWC2 as a standalone viewer.
 
 To work with QWC2, you will need a minimal development environment consisting of [git](https://git-scm.com/), [node](https://nodejs.org/) and [yarn](https://yarnpkg.com). You will also need a running QGIS Server instance which serves your projects.
 
