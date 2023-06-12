@@ -75,7 +75,9 @@ The layout of the `qwc-docker` tree is as follows:
 
 ## Service configurations
 
-The master configuration file for the QWC services is located at `qwc-docker/volumes/config-in</tenant>/tenantConfig.json`. It is structured as follows:
+The master configuration file for the QWC services is located at `qwc-docker/volumes/config-in/<tenant>/tenantConfig.json`, where `<tenant>` is the tenant name, `default` by default. See [Multi Tenancy](../topics/MultiTenancy.md) for more details on tenants.
+
+The file is structured as follows:
 ```json
 {
   "$schema": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",

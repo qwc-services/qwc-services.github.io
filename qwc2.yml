@@ -18,6 +18,7 @@ nav:
             - Temporal layers: topics/TimeManager.md
             - Legend graphics: topics/LegendGraphics.md
             - Interfacing with applications: topics/Interfacing.md
+            - Multi-tenancy: topics/MultiTenancy.md
         - References: references/index.md
         - Version history:
             - QWC2 upgrade notes: release_notes/QWC2UpgradeNotes.md
