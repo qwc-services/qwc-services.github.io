@@ -201,6 +201,6 @@ Two versioning schemes are available:
 - `vYYYY-MM-DD`: These refer to the latest available version of the respective images (i.e. `v2023.05.12`).
 - `vYYYY.X-lts`: These refer to the long term support version of the respective images (i.e. `v2023.1-lts`).
 
-You can always check the available tags on dockerhub, for example at (https://hub.docker.com/r/sourcepole/qwc-config-generator)[https://hub.docker.com/r/sourcepole/qwc-config-generator].
+You can always check the available tags on dockerhub, for example at [https://hub.docker.com/r/sourcepole/qwc-config-generator](https://hub.docker.com/r/sourcepole/qwc-config-generator).
 
 The [`qwc-docker` Upgrade Notes](../release_notes/QwcDockerUpgradeNotes.md) documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.
