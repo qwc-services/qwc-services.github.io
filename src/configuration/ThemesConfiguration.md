@@ -171,9 +171,10 @@ The format of the theme definitions is as follows:
 | `},`                                            |                                                                                  |
 | `"collapseLayerGroupsBelowLevel": <level>,`     | Optional, layer tree level below which to initially collapse groups. By default the tree is completely expanded. |
 | `"skipEmptyFeatureAttributes": <boolean>,`      | Optional, whether to skip empty attributes in the identify results. Default is `false`. |
-| `"mapTips": <boolean>\|null,`                  | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
-| `"extraLegendParameters": "<&KEY=VALUE>",`      | Optional, additional query parameters to append to WMS GetLegendGraphic.         |
-| `"printLabelBlacklist": ["<LabelId>", ...]`    | Optional, list of composer label ids to not expose in the print dialog. |
+| `"mapTips": <boolean>\|null,`                   | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
+| `"extraLegendParameters": "<&KEY=VALUE>",`      | Optional, additional query parameters to append to WMS GetLegendGraphic request. |
+| `"extraDxfParameters": "<&KEY=VALUE>",`         | Optional, additional query parameters to append to DXF export request.           |
+| `"printLabelBlacklist": ["<LabelId>", ...]`     | Optional, list of composer label ids to not expose in the print dialog.          |
 | `"editConfig": "<editConfig.json>"`             | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
 | `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](#snapping). |                   |
 | `"config": {`                                   | Optional, per-theme configuration entries which override the global entries in `config.json`, see [Viewer Configuration](ViewerConfiguration.md).|
@@ -181,9 +182,9 @@ The format of the theme definitions is as follows:
 | `⁣  ...`                                         |                                                                                  |
 | `}`                                             |
 | `"wmsBasicAuth": "{`                            | Optional, allows to authenticate to QGIS Server during themes.json generation. NOTE: these credentials will solely be used by `yarn run themesConfig` and won't be stored in `themes.json`.|
-| `⁣  "username": <username>`                      | Optional: http basic authentication username.                                     |
-| `⁣  "password": <password>`                      | Optional: http basic authentication password.                                     |
-| `},`                                            |                                                                                   |
+| `⁣  "username": <username>`                      | Optional: http basic authentication username.                                    |
+| `⁣  "password": <password>`                      | Optional: http basic authentication password.                                    |
+| `},`                                            |                                                                                  |
 
 A bare minimum theme entry might look as follows:
 ```json
