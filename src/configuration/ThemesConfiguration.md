@@ -172,8 +172,9 @@ The format of the theme definitions is as follows:
 | `"collapseLayerGroupsBelowLevel": <level>,`     | Optional, layer tree level below which to initially collapse groups. By default the tree is completely expanded. |
 | `"skipEmptyFeatureAttributes": <boolean>,`      | Optional, whether to skip empty attributes in the identify results. Default is `false`. |
 | `"mapTips": <boolean>\|null,`                   | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
-| `"extraLegendParameters": "<&KEY=VALUE>",`      | Optional, additional query parameters to append to WMS GetLegendGraphic request. |
+| `"extraLegendParameters": "<&KEY=VALUE>",`      | Optional, additional query parameters to append to GetLegendGraphic request.     |
 | `"extraDxfParameters": "<&KEY=VALUE>",`         | Optional, additional query parameters to append to DXF export request.           |
+| `"extraPrintParameters": "<&KEY=VALUE>",`       | Optional, additional query parameters to append to GetPrint request (requires QGIS Server >= 3.32.0). |
 | `"printLabelBlacklist": ["<LabelId>", ...]`     | Optional, list of composer label ids to not expose in the print dialog.          |
 | `"editConfig": "<editConfig.json>"`             | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
 | `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](#snapping). |                   |
