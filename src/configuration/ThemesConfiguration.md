@@ -71,6 +71,8 @@ The theme configuration file is located as follows:
 - Standalone viewer: `qwc2-app/themesConfig.json`
 - `qwc-docker`: `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`
 
+*Note*: when using `qwc-docker`, the themes configuration may also be embedded as `themesConfig` directly in `qwc-docker/volumes/config-in/<tentant>/tenantConfig.json`.
+
 The `themesConfig.json` file contains a list of themes, optionally organized in groups, as well as a list of background layers:
 ```json
 {
