@@ -62,6 +62,12 @@ The next step is to configure the theme for QWC2. There are two approaches:
 
 When using `qwc-docker`, save your QGIS projects below `qwc-docker/volumes/qgs-resources/scan`. Adjust the default settings (`defaultMapCrs`, `defaultBackgroundLayers`, etc.) as desired in `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`. Then [generate the theme configuration](#generating-theme-configuration).
 
+You can configure a automatically configured theme as default theme by setting `defaultTheme` in `themesConfig.json` to the path to the QGIS project file below `qwc-docker/volumes/qgs-resources`, without the `.qgs` extension. For example to set `qwc-docker/volumes/qgs-resources/scan/project.qgs` as default theme, you'd write
+
+    ...
+    "defaultTheme": "scan/project"
+    ...
+
 *Note:* The auto-scan directory can be is controlled by `qgis_projects_scan_base_dir` in `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`.
 
 ### Manual theme configuration <a name="manual-theme-configuration"></a>
