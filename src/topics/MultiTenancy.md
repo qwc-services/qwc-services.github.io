@@ -82,6 +82,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
     "config_db_url": "postgresql:///?service=qwc_configdb",
     "qgis_projects_base_dir": "/data",
     "qwc2_base_dir": "/qwc2",
+    "ows_prefix": "/tenant_name/ows",
     ...
   },
   "themesConfig": "./themesConfig.json",
