@@ -145,3 +145,13 @@ See [Designing the edit forms](Editing.md#edit-forms) for more information on de
 To use it as default identify-tool, set `identifyTool: "FeatureForm"` in `config.json`.
 
 A layer is only identifyable with the `FeatureForm` plugin if corresponding `Data` resources and permissions are configured for the layer data source in the `qwc-admin-gui`. If a write permission is configured, the feature will be editable.
+
+## Permissions
+
+When using the `Identify` plugin and the `qwc-feature-info-service`, you can manage the permissions in the `qwc-admin-gui` as follows:
+
+* To restrict the display of single layer attributes to specific roles, create a `Layer` and `Attribute` resource (latter as child of the created `Layer` resource) and create permissions assigning the desired roles to the `Attribute` resources.
+  * *Note*: The name of the `Attribute` resource needs to be equal to the attribute alias name if one is defined in the QGIS project!
+* To restrict whether a layer is identifiable to specific roles, create a `FeatureInfo service` and `FeatureInfo layer` resource (latter as child of the created `FeatureInfo service` resource), and create permissions assigning the desired roles to the `FeatureInfo layer` resources.
+
+When using the `FeatureForm` plugin and the `qwc-data-service`, the `Data` resource permissions are used, see [Editing](Editing.md#quick-start).

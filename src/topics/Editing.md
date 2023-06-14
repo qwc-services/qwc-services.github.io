@@ -7,7 +7,7 @@ QWC2 offers comprehensive editing support through a variety of plugins:
 - The [`FeatureForm`](../references/qwc2_plugins.md#featureform) works similarly to the feature-info, but will display the feature form according to the QGIS form configuration, and also allows editing the attributes and geometry of a picked feature. It can configured as `identifyTool` instead of the standard `Identify` plugin in `config.json`.
 
 
-## Quick start
+## Quick start <a name="quick-start"></a>
 
 The easiest way to use the editing functionality is by using the pre-configured `qwc-docker` with the [`qwc-data-service`](https://github.com/qwc-services/qwc-data-service) and [`qwc-config-generator`](https://github.com/qwc-services/qwc-config-generator).
 

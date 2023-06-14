@@ -26,7 +26,6 @@ The following resource types are available:
 * `Viewer task`: permittable viewer tasks
 * `FeatureInfo service`: Feature info service
   * `FeatureInfo layer`: Feature info layer
-    * `Attribute`: attribute of a feature info layer
 
 The resource name corresponds to the technical name of its resource (e.g. WMS layer name). Most notably, the name of a `map` resource corresponds to the relative path to the project below `qgs-resources` without `.qgs` extension (so i.e. the resource name for `qgs-resources/subfolder/project.qgs` will be `subfolder/project`).
 
