@@ -67,6 +67,8 @@ You can configure a automatically configured theme as default theme by setting `
     "defaultTheme": "scan/project"
     ...
 
+To use a custom thumbnail an automatically configured theme, place a an image called `<project_basename>.png` in `qwc-docker/volumes/qwc2/assets/img/mapthumbs`. For example. if the project is called `project_name.qgs`, the name thumbnail image would be named `project_name.png`.
+
 *Note:* The auto-scan directory can be is controlled by `qgis_projects_scan_base_dir` in `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`.
 
 ### Manual theme configuration <a name="manual-theme-configuration"></a>
