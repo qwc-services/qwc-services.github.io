@@ -14,7 +14,6 @@ The first step is to prepare a QGIS project for publishing. Besides the common t
 
 | What                 | Where                                     | Description                                      |
 |----------------------|-------------------------------------------|--------------------------------------------------|
-| Service capabilities | Project Properties &rarr; QGIS Server &rarr; Service capabilities | **Must** be checked for QGIS Server to publish the project. |
 | Service Metadata     | Project Properties &rarr; QGIS Server &rarr; Service capabilities | Shown in the theme info dialog, invokable from the Layer Tree panel titlebar. |
 | Title, keywords      | Project Properties &rarr; QGIS Server &rarr; Service capabilities | Theme title, displayed in the Theme Switcher, and keywords, useful for filtering. |
 | Map extent           | Project Properties &rarr; QGIS Server &rarr; WMS &rarr; Advertised extent | The extent used as initial map extent when loading the theme, unless overridden in `themesConfig.json`. |
