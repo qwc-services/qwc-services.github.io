@@ -369,3 +369,17 @@ When you are using `qwc-docker`, you can configure QWC to read the QGIS projects
 - Save the project to the configured database in QGIS using Project &rarr; Save To &rarr; PostgreSQL.
 - Add a `qgisprojects` service definition for the used database to `qwc-docker/pg_service.conf`.
 - Write a theme configuration entry in `themesConfig.json` using with `"url": "/ows/pg/<schema>/<projectname>"`, where `schema` and `projectname` as as specified when saving the project in QGIS.
+
+## Split categorized layers
+
+When using `qwc-docker`, the `qwc-config-generator` has the ability to split a layer that has been [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) with QGIS into multiple layers and move them into a new group (the group name will be the original layer name). To activate this functionality, follow these steps:
+
+1. Place the projects whose layers you want to split below `qwc-docker/volumes/config-in/<tenant>/qgis_projects`.
+
+2. In the topolevel `config` in `qwc-docker/volumes/config-in/<tenant>/tenantConfig.json`, ensure `qgis_projects_gen_base_dir` is set and valid, and set `"split_categorized_layers": true`.
+
+3. For all layers that you want to split, create the [variable](https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/vector_properties.html#variables-properties) `convert_categorized_layer` and set it to `true`.
+
+4. Generate the [themes configuration](#generating-theme-configuration). The `qwc-config-generator` will process the projects and write the modified projects to `qgis_projects_gen_base_dir`.
+
+*Note:* Make sure you are using `qwc-config-generator:v<version>` and not `qwc-config-generator:v<version>-noqgis`.
