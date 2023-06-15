@@ -74,10 +74,10 @@ In alternative to configuring a grid directly in the print layout, one can also 
 
 will print a `500x500` (map units) grid for scales up to `1:1000`, a `1000x1000` grid gor scales up to `1:2000`, etc.
 
-## Configuring layouts with legend <a name="print-legend"></a>
+## Layouts with legend <a name="print-legend"></a>
 
 The QWC2 print dialog will expose a toggle switch to enable the legend in the print output for layout `<layout_name>` if the QGIS project contains a second layout named `<layout_name>_legend`. The layout with the `_legend` suffix is expected to contain a legend item.
 
-## Configuring atlas printing <a name="print-atlas"></a>
+## Atlas printing <a name="print-atlas"></a>
 
 To enable atlas printing in QWC2, check the `Generate an atlas` checkbox in the desired layout in `QGIS layout designer &rarr; Atlas &rarr; Atlas settings`, selecting the coverage layer as desired. QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas feature.
