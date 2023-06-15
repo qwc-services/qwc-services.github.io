@@ -210,7 +210,7 @@ A bare minimum theme entry might look as follows:
 ```
 *Note:*
 
-* The theme identifier `id` will appear in the viewer URL as the `t` query parameter.
+* The theme identifier `id` can be freely defined and will appear in the viewer URL as the `t` query parameter.
 * When using `qwc-docker`, the `url` can be specified as `/ows/<relative_path_to_qgs>` where `relative_path_to_qgs` is the path to the QGIS project file below `qwc-docker/volumes/qgs-resources`, without the `.qgs` extension. In the above sample, the project file would be located at `qwc-docker/volumes/qgs-resources/my_theme.qgs`.
 
 ### External layers <a name="external-layers"></a>
