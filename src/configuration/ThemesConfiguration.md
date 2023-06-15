@@ -61,13 +61,13 @@ The next step is to configure the theme for QWC2. There are two approaches:
 
 When using `qwc-docker`, save your QGIS projects below `qwc-docker/volumes/qgs-resources/scan`. Adjust the default settings (`defaultMapCrs`, `defaultBackgroundLayers`, etc.) as desired in `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`. Then [generate the theme configuration](#generating-theme-configuration).
 
-You can configure a automatically configured theme as default theme by setting `defaultTheme` in `themesConfig.json` to the path to the QGIS project file below `qwc-docker/volumes/qgs-resources`, without the `.qgs` extension. For example to set `qwc-docker/volumes/qgs-resources/scan/project.qgs` as default theme, you'd write
+You can configure an automatically configured theme as default theme by setting `defaultTheme` in `themesConfig.json` to the path to the QGIS project file below `qwc-docker/volumes/qgs-resources`, without the `.qgs` extension. For example to set `qwc-docker/volumes/qgs-resources/scan/project.qgs` as default theme, you'd write
 
     ...
     "defaultTheme": "scan/project"
     ...
 
-To use a custom thumbnail an automatically configured theme, place a an image called `<project_basename>.png` in `qwc-docker/volumes/qwc2/assets/img/mapthumbs`. For example. if the project is called `project_name.qgs`, the name thumbnail image would be named `project_name.png`.
+To use a custom thumbnail for an automatically configured theme, place a an image called `<project_basename>.png` in `qwc-docker/volumes/qwc2/assets/img/mapthumbs`. For example. if the project is called `project_name.qgs`, the name thumbnail image would be named `project_name.png`.
 
 *Note:* The auto-scan directory can be is controlled by `qgis_projects_scan_base_dir` in `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`.
 
