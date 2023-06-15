@@ -126,3 +126,49 @@ A minimal configuration for tenant `tenant_name` may look as follows:
 * The `qwc2_config_file`, `qwc2_index_file`, `qwc2_base_dir` and `qwc2_path` paths will determine whether the viewer build/configuration is shared or separate for each tenant.
 * The various service URLs in the `mapViewer` configuration and in other service configurations need to match what is expected in the `api-gateway` configuration.
 
+## `tenantConfig` template
+
+In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate `tenantConfig.json` files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a `tenantConfig` template, using the `$tenant$` placeholder where appropriate, and point to this file in the respective `tenantConfig.json` files. The contents of the template will then be merged with the contents of `tenantConfig.json`, and occurence of $tenant$ in the template will be replaced with the current tenant name.
+
+For example, a minimal `tenantConfig.json` in `qwc-docker/volumes/config-in/tenant_name/` could look as follows:
+
+```json
+{
+  "$schema": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",
+  "service": "config-generator",
+  "template": "../tenantConfig.template.json",
+  "config": {
+    "tenant": "tenant_name"
+  },
+  "themesConfig": "./themesConfig.json"
+}
+```
+
+And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follows:
+
+```json
+{
+  "config": {
+    "ows_prefix": "$tenant$/ows",
+    ...
+  },
+  "services": [
+    {
+      "name": "mapViewer",
+      "generator_config": {
+        "qwc2_config": {
+          "qwc2_config_file": "/srv/qwc_service/config-in/$tenant$/config.json",
+          "qwc2_index_file": "/srv/qwc_service/config-in/$tenant$/index.html"
+        }
+      },
+      "config": {
+        "auth_service_url": "$tenant$/auth/",
+        "ogc_service_url": "/$tenant$/ows/",
+        "info_service_url": "/$tenant$/api/v1/featureinfo/",
+        ...
+      }
+    },
+    ...
+  ]
+}
+```
