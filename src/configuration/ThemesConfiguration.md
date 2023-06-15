@@ -137,8 +137,8 @@ The format of the theme definitions is as follows:
 | `"printScales": [<Scale denominators>],`        | List of denominators of allowed print scales. If omitted, defaults to `defaultPrintScales`. |
 | `"printResolutions": [<DPIs>],`                 | List of available print resolutions. If omitted, defaults to `defaultPrintResolutions`. |
 | `"printGrid": [`                                | List of grid scale-dependent grid intervals to use when printing. If omitted, defaults to `defaultPrintGrid`. |
-| `⁣  {"s": <Scale1>, x: <Width1>, y: <Height1>},` | Keep this list sorted in descending order by scale denominator.           |
-| `⁣  {"s": <Scale2>, x: <Width2>, y: <Height2>}`  | In this example, `{x: <Width2>, y: <Height2>}` will be used for `<Scale1> > Scale >= <Scale2>`. |
+| `⁣  {"s": <Scale1>, "x": <Width1>, "y": <Height1>},` | Keep this list sorted in descending order by scale denominator.           |
+| `⁣  {"s": <Scale2>, "x": <Width2>, "y": <Height2>}`  | In this example, `{x: <Width2>, y: <Height2>}` will be used for `<Scale1> > Scale >= <Scale2>`. |
 | `],`                                            |                                                                                  |
 | `"printLabelForSearchResult": "<ID>",`          | Optional, an ID of a print layout label to which the current search result text (if any) will be written to when printing. |
 | `"printLabelForAttribution": "<ID>",`           | Optional, an ID of a print layout label to which the current attribution text (if any) will be written to when printing. |
