@@ -152,7 +152,7 @@ In general, the procedure for enabling a plugin is:
     {"key": "<Plugin name>", "icon": "<icon name>", ...}
   ]
 ```
-## Customizing the viewer assets <a name="viewer-asset"></a>
+## Customizing the viewer assets <a name="viewer-assets"></a>
 
 The viewer assets are located as follows:
 
