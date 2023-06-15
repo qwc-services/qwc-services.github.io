@@ -12,6 +12,7 @@ nav:
         - Selected topics:
             - Search: topics/Search.md
             - Feature info: topics/FeatureInfo.md
+            - Printing: topics/Printing.md
             - Map info: topics/Mapinfo.md
             - Editing: topics/Editing.md
             - Snapping: topics/Snapping.md
