@@ -128,7 +128,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
 
 ## `tenantConfig` template
 
-In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate `tenantConfig.json` files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a `tenantConfig` template, using the `$tenant$` placeholder where appropriate, and point to this file in the respective `tenantConfig.json` files. The contents of the template will then be merged with the contents of `tenantConfig.json`, and occurence of $tenant$ in the template will be replaced with the current tenant name.
+In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate `tenantConfig.json` files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a `tenantConfig` template, using the `$tenant$` placeholder where appropriate, and point to this file in the respective `tenantConfig.json` files. The contents of the template will then be merged with the contents of `tenantConfig.json`, and occurence of `$tenant$` in the template will be replaced with the current tenant name.
 
 For example, a minimal `tenantConfig.json` in `qwc-docker/volumes/config-in/tenant_name/` could look as follows:
 
