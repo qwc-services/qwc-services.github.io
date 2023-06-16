@@ -124,6 +124,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
 
 * The database URL (`postgresql:///?service=qwc_configdb`) will determine whether a shared or sperate configuration database is used for each tenant.
 * The `qwc2_config_file`, `qwc2_index_file`, `qwc2_base_dir` and `qwc2_path` paths will determine whether the viewer build/configuration is shared or separate for each tenant.
+* To use a separate assets folder for each tenant, you can set an appropriate `assetsPath` in the `qwc2_config_file` of each tenant.
 * The various service URLs in the `mapViewer` configuration and in other service configurations need to match what is expected in the `api-gateway` configuration.
 
 ## `tenantConfig` template
