@@ -172,10 +172,32 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
   "$schema": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",
   "service": "config-generator",
   "config": {
-    "ows_prefix": "$tenant$/ows",
+    "default_qgis_server_url": "http://qwc-qgis-server/ows/",
+    "config_db_url": "postgresql:///?service=qwc_configdb",
+    "qgis_projects_base_dir": "/data/$tenant$",
+    "qgis_projects_scan_base_dir": "/data/$tenant$/scan",
+    "qwc2_base_dir": "/qwc2",
+    "ows_prefix": "/$tenant$/ows",
     ...
   },
+  "themesConfig": "./themesConfig.json",
   "services": [
+    {
+      "name": "adminGui",
+      "config": {
+        "db_url": "postgresql:///?service=qwc_configdb",
+        "qgs_resources_path": "/qgs-resources/$tenant$/",
+        "ows_prefix": "/$tenant$/ows",
+        ...
+      }
+    },
+    {
+      "name": "dbAuth",
+      "config": {
+        "db_url": "postgresql:///?service=qwc_configdb",
+        "config_generator_service_url": "http://qwc-config-service:9090"
+      }
+    },
     {
       "name": "mapViewer",
       "generator_config": {
@@ -185,13 +207,13 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
         }
       },
       "config": {
-        "auth_service_url": "$tenant$/auth/",
+        "qwc2_path": "/qwc2/",
+        "auth_service_url": "/$tenant$/auth/",
         "ogc_service_url": "/$tenant$/ows/",
         "info_service_url": "/$tenant$/api/v1/featureinfo/",
         ...
       }
-    },
-    ...
+    }
   ]
 }
 ```
