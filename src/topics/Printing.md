@@ -72,7 +72,7 @@ In alternative to configuring a grid directly in the print layout, one can also 
 }
 ```
 
-will print a `500x500` (map units) grid for scales up to `1:1000`, a `1000x1000` grid gor scales up to `1:2000`, etc.
+will print a `500x500` (map units) grid for scales up to `1:1000`, a `1000x1000` grid for scales up to `1:2000`, etc.
 
 ## Layouts with legend <a name="print-legend"></a>
 
