@@ -27,32 +27,50 @@ x-qwc-service-variables: &qwc-service-variables
 2. Add rewrite rules to the `api-gateway` configuration file `qwc-docker/api-gateway/nginx.conf`, extracting the tenant name and setting the tenant header. For example
 
 ```
-    location ~ ^/(?<t>tenant1|tenant2|tenant3)/ {
+server {
+    listen       80;
+    server_name  localhost;
+
+    proxy_redirect off;
+    server_tokens off;
+
+    location ~ ^/(?<t>tenant1|tenant2)/ {
+        # Extract tenant
         proxy_set_header Tenant $t;
-        rewrite ^/[^/]+(.+) $1 break;
-        proxy_pass http://qwc-map-viewer:9090;
+        # Set headers for original request host
+        proxy_set_header   Host              $http_host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+
+        location ~ ^/[^/]+/auth {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-auth-service:9090;
+        }
+
+        location ~ ^/[^/]+/ows {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-ogc-service:9090;
+        }
+
+        location ~ ^/[^/]+/api/v1/featureinfo {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-feature-info-service:9090;
+        }
+
+        # etc...
+
+        location ~ ^/[^/]+/qwc_admin {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-admin-gui:9090;
+        }
+
+        # Place this one last to give precedence to the other rules
+        location ~ ^/[^/]+ {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-map-viewer:9090;
+        }
     }
-    location ~ ^/(?<t>tenant1|tenant2|tenant3)/auth {
-        proxy_set_header Tenant $t;
-        rewrite ^/[^/]+(.+) $1 break;
-        proxy_pass http://qwc-auth-service:9090;
-    }
-    location ~ ^/(?<t>tenant1|tenant2|tenant3)/admin {
-        proxy_set_header Tenant $t;
-        rewrite ^/[^/]+(.+) $1 break;
-        proxy_pass http://qwc-admin-gui:9090;
-    }
-    location ~ ^/(?<t>tenant1|tenant2|tenant3)/ows {
-        proxy_set_header Tenant $t;
-        rewrite ^/[^/]+(.+) $1 break;
-        proxy_pass http://qwc-ogc-service:9090;
-    }
-    location ~ ^/(?<t>tenant1|tenant2|tenant3)/api/v1/featureinfo {
-        proxy_set_header Tenant $t;
-        rewrite ^/[^/]+(.+) $1 break;
-        proxy_pass http://qwc-feature-info-service:9090;
-    }
-    # etc...
 ```
 
 ## Writing the `tenantConfig.json`
@@ -80,7 +98,8 @@ A minimal configuration for tenant `tenant_name` may look as follows:
     "tenant": "tenant_name",
     "default_qgis_server_url": "http://qwc-qgis-server/ows/",
     "config_db_url": "postgresql:///?service=qwc_configdb",
-    "qgis_projects_base_dir": "/data",
+    "qgis_projects_base_dir": "/data/tenant_name",
+    "qgis_projects_scan_base_dir": "/data/tenant_name/scan",
     "qwc2_base_dir": "/qwc2",
     "ows_prefix": "/tenant_name/ows",
     ...
@@ -90,7 +109,10 @@ A minimal configuration for tenant `tenant_name` may look as follows:
     {
       "name": "adminGui",
       "config": {
-        "db_url": "postgresql:///?service=qwc_configdb"
+        "db_url": "postgresql:///?service=qwc_configdb",
+        "qgs_resources_path": "/qgs-resources/tenant_name/",
+        "ows_prefix": "/tenant_name/ows",
+        ...
       }
     },
     {
@@ -135,8 +157,6 @@ For example, a minimal `tenantConfig.json` in `qwc-docker/volumes/config-in/tena
 
 ```json
 {
-  "$schema": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",
-  "service": "config-generator",
   "template": "../tenantConfig.template.json",
   "config": {
     "tenant": "tenant_name"
@@ -149,6 +169,8 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
 
 ```json
 {
+  "$schema": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",
+  "service": "config-generator",
   "config": {
     "ows_prefix": "$tenant$/ows",
     ...
