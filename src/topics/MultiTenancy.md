@@ -34,7 +34,7 @@ server {
     proxy_redirect off;
     server_tokens off;
 
-    location ~ ^/(?<t>tenant1|tenant2)/ {
+    location ~ ^/(?<t>tenant1|tenant2) {
         # Extract tenant
         proxy_set_header Tenant $t;
         # Set headers for original request host
@@ -65,8 +65,13 @@ server {
             proxy_pass http://qwc-admin-gui:9090;
         }
 
-        # Place this one last to give precedence to the other rules
-        location ~ ^/[^/]+ {
+        # Place these last to give precedence to the other rules:
+
+        # Redirect request without trailing slash
+        location ~ ^(/[^/]+)$ {
+            return 301 $scheme://$http_host$1/;
+        }
+        location ~ ^/[^/]+/ {
             rewrite ^/[^/]+(.+) $1 break;
             proxy_pass http://qwc-map-viewer:9090;
         }
