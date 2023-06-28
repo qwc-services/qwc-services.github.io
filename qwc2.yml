@@ -1,8 +1,8 @@
 site_name: QWC2 - latest
 docs_dir: src
 nav:
-    - Index: index.md
     - QWC2:
+        - Home: index.md
         - Quick start: QuickStart.md
         - General configuration:
             - Themes: configuration/ThemesConfiguration.md
