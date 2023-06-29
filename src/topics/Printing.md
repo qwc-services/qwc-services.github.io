@@ -80,4 +80,10 @@ The QWC2 print dialog will expose a toggle switch to enable the legend in the pr
 
 ## Atlas printing <a name="print-atlas"></a>
 
-To enable atlas printing in QWC2, check the `Generate an atlas` checkbox in the desired layout in `QGIS layout designer &rarr; Atlas &rarr; Atlas settings`, selecting the coverage layer as desired. QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas feature.
+To enable atlas printing in QWC2, configure the QGIS project as follows:
+
+- Check the `Generate an atlas` checkbox in the desired layout in `QGIS layout designer &rarr; Atlas &rarr; Atlas settings`, selecting the coverage layer as desired.
+- In the layout map item properties, check `Controlled by Atlas`.
+- In the `Project properties &rarr; QGIS Server`, set `Maximum features for Atlas print requests` to the desired value.
+
+QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.
