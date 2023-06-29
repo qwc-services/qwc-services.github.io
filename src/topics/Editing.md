@@ -14,7 +14,7 @@ The easiest way to use the editing functionality is by using the pre-configured 
 To make a layer editable, follow these steps:
 
 * The datasource of the layer needs to be a PostGIS database. In particular, make sure that a primary key is configured for your dataset!
-* Configure the QGIS PostgreSQL connection using a service name, add the corresponding service definition to your host `pg_service.conf` and to `qwc-docker/pg_service-write.conf`. Make sure your database host is reachable within within the docker containers!
+* Configure the QGIS PostgreSQL connection using a service name, add the corresponding service definition to your host `pg_service.conf` and to `qwc-docker/pg_service-write.conf`. Make sure your database host is reachable within the docker containers!
 * Especially when your primary key field type is `serial`, you'll want to mark the corresponding field widget type as `Hidden` in the QGIS Attributes Form settings.
 * Create a `Data` resource as child of the corresponding `Map` resource in the administration backend, and create a new permission for the `Map` and `Data` resources for the roles which should be allowed to edit the layer.
 * *Note:* if you leave the "Write" checkbox in the `Data` resource permission unchecked, the dataset will be available as read-only, which can be useful if you want to use the `AttributeTable` and/or `FeatureForm` to just display the dataset without allowing any edits.
