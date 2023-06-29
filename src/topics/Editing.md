@@ -40,6 +40,7 @@ You can configure a *text-like* field of your dataset as an upload field as foll
 Attachments are stored on disk below the `attachments_base_dir` defined in the data service configuration, and the path to the attachments stored in the dataset.
 
 *Note:*
+
 - If you set the fomrat constraint to `*.jpeg` and your browser has access to a camera, QWC2 will allow you to directly upload images captured from the camera.
 - You can set the allowed attachment extensions and maximum file sizes globally by setting `allowed_attachment_extensions` and `max_attachment_file_size` in the data service configuration. You may also need to set/increase `client_max_body_size` in `qwc-docker/api-gateway/nginx.conf`.
 - You can also set the allowed attachment extensions and maximum file sizes per dataset by setting `max_attachment_file_size_per_dataset` and `allowed_extensions_per_dataset` in the data service configuration. If you set the per dataset values, the global settings will be disregarded (i.e. if a attachment satisfies the per dataset constraint it will be considered valid, even if it violates the global constraint).
