@@ -32,6 +32,8 @@ All settings are optional, with fallback to the default values as documented.
 |`urlPositionCrs`                     | The CRS used to encode the current map extent coordinates in the URL. Default value: the map projection. |
 |`omitUrlParameterUpdates`            | Whether to omit updating the URL parameters. Default value: `false`.      |
 |`defaultFeatureStyle`                | The default style to use for selection geometries and other unstyled features. Default value: see `qwc2/utils/FeatureStyles.js`. |
+|`defaultMarkerStyle`                 | The default style to use as marker icon. Default value: see `qwc2/utils/FeatureStyles.js`. |
+|`defaultInteractionStyle`            | The default style to use on geometries to measure, snap or edit. Default value: see `qwc2/utils/FeatureStyles.js`. |
 |`projections`                        | A list of map projections to register, in the format `{"code": "<code>", "proj": "<proj4def>", "label": "<label>"}`. By default, `EPSG:3857` and `EPSG:4326` are registered. |
 |`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map. Default value: `false`.      |
 |`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default value: `false`.             |
