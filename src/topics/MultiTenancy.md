@@ -179,10 +179,10 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
   "config": {
     "default_qgis_server_url": "http://qwc-qgis-server/ows/",
     "config_db_url": "postgresql:///?service=qwc_configdb",
-    "qgis_projects_base_dir": "/data/$tenant$",
+    "qgis_projects_base_dir": "/data",
     "qgis_projects_scan_base_dir": "/data/$tenant$/scan",
     "qwc2_base_dir": "/qwc2",
-    "ows_prefix": "/$tenant$/ows",
+    "ows_prefix": "/ows",
     ...
   },
   "themesConfig": "./themesConfig.json",
@@ -191,8 +191,8 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
       "name": "adminGui",
       "config": {
         "db_url": "postgresql:///?service=qwc_configdb",
-        "qgs_resources_path": "/qgs-resources/$tenant$/",
-        "ows_prefix": "/$tenant$/ows",
+        "qgs_resources_path": "/qgs-resources/",
+        "ows_prefix": "/ows",
         ...
       }
     },
