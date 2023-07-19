@@ -76,6 +76,7 @@ server {
             proxy_pass http://qwc-map-viewer:9090;
         }
     }
+}
 ```
 
 ## Writing the `tenantConfig.json`
