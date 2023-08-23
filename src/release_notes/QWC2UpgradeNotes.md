@@ -4,6 +4,21 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/7409372) (23.08.2023)
+---------------------------------------------------------------------------------------------------
+
+**MapInfoToolTip plugin instantation change**
+
+* The instantation of the `MapInfoToolTip` in `appConfig.js` needs to be changed to
+
+        MapInfoTooltipPlugin: MapInfoTooltipPlugin()
+
+  Note the extra braces at the end. As a new feature, you can pass a list of [plugins](/references/qwc2_plugins/#mapinfotooltip) to the `MapInfoTooltipPlugin`.
+
+**Configuration changes**
+
+* The window size configuration of various plugins has been uniformized to the `geometry` config prop (rather than occasionally `windowSize` before). Affected plugins are: `FeatureForm`, `Identify`, `LayerCatalog`, `LayerTree`, `MapLegend`. Please check the respective [plugin reference](/references/qwc2_plugins/) for more details on the new format.
+
 Update to qwc2 submodule revision [96aaa51](https://github.com/qgis/qwc2/tree/96aaa51) (09.02.2023)
 ---------------------------------------------------------------------------------------------------
 
