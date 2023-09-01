@@ -252,8 +252,8 @@ For external WMS layers, the following additional parameters apply:
 | Entry                                                  | Description                                                                       |
 |--------------------------------------------------------|-----------------------------------------------------------------------------------|
 | `"params": {`                                          | Parameters for the GetMap request.                                                |
-| `⁣  "LAYERS": "<wms_layername>,..."`,                   | WMS layer names.                                                                  |
-| `⁣  "OPACITIES": "<0-255>,..."`                         | Optional, if WMS server supports opacities.                                       |
+| `⁣  "LAYERS": "<wms_layername>,..."`,             | Comma-separated list of WMS layer names.                                          |
+| `⁣  "OPACITIES": "<0-255>,..."`                   | Optional, if WMS server supports opacities.                                       |
 | `},`                                                   |                                                                                   |
 | `"featureInfoUrl": "<wms_featureinfo_baseurl>",`       | Optional, base URL for WMS GetFeatureInfo, if different from `url`.               |
 | `"legendUrl": "<wms_legendgraphic_baseurl>"   ,`       | Optional, base URL for WMS GetLegendGraphic, if different from `url`.             |
