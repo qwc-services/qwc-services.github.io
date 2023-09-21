@@ -43,7 +43,7 @@ The first option is to mark a QGIS project layer as *print layer* by adding a `p
 
 A QGIS layer marked as `printLayer` will be filtered out from the QWC2 layer tree, and hence will not be displayed in QWC2. This approach allows i.e. using a WMTS background layer in the web client for higher performance, and using a WMS background layer when printing for higher quality/resolution.
 
-The second option is to use WMS background layers, which are automatically printed a external layers.
+The second option is to use WMS background layers, which are automatically printed as external layers.
 
 ## User labels <a name="user-labels"></a>
 
