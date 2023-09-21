@@ -34,6 +34,9 @@ sudo chown 8983:8983 volumes/solr/data
 ```bash
 docker-compose up
 ```
+
+*Note*: If using the newer `docker compose` project, you need to write `docker compose up` instead of `docker-compose up` (and similarly for other `docker-compose` calls).
+
 The map viewer will run on <http://localhost:8088/>.
 
 The admin GUI will run on <http://localhost:8088/qwc_admin> (default admin credentials: username `admin`, password `admin`, requires password change on first login).
