@@ -103,6 +103,10 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
       { <ThemeInfoLinkDefinition> },
       ...
     ],
+    "pluginData": {
+      "<PluginName>": [{ <PluginDataReource>}, ...],
+      ...
+    },
     "backgroundLayers": [
       { <BackgroundLayerDefinition> },
       ...
@@ -119,6 +123,9 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
   "defaultTheme": "<Default theme id>"
 }
 ```
+
+Refer to [External layers](#external-layers), [Theme info links](#theme-info-links), [Plugin data](#plugin-data) and [Background layers](#background-layers) for the format of the respective definitions.
+
 Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for a complete example.
 
 The format of the theme definitions is as follows:
@@ -148,17 +155,17 @@ The format of the theme definitions is as follows:
 | `"extent": [<xmin>, <ymin>, <xmax>, <ymax>],`   | Optional, override theme extent. In `mapCrs`.                                    |
 | `"tiled": <boolean>,`                           | Optional, use tiled WMS, defaults to `false`.                                    |
 | `"format": "<mimetype>",`                       | Optional, the format to use for WMS GetMap. Defaults to `image/png`.             |
-| `"externalLayers": [{`                          | Optional, external layers to use as replacements for internal layers, see below. |
-| `⁣  "name": "<external_layer_name>",`            | Name of the external layer, matching a `ExternalLayerDefinition`, see below.     |
+| `"externalLayers": [{`                          | Optional, external layers to use as replacements for internal layers. |
+| `⁣  "name": "<external_layer_name>",`            | Name of the external layer, matching a `ExternalLayerDefinition`, see [below](#external-layers). |
 | `⁣  "internalLayer": "<QGis_layer_name>"`        | Name of an internal layer, as contained in the QGIS project, to replace with the external layer. |
 | `}],`                                           |                                                                                  |
 | `"themeInfoLinks": {`                           | Optional, custom links to additional resources, shown as a menu in the theme selector in the theme switcher.\
 | `⁣  "title": "<Menu title>",`                    | An arbitrary string shown as title of the menu.                                  |
 | `⁣  "titleMsgId": "<Menu title msgID>",`         | Alternative to `title`, a message ID, translated through the translation files.  |
-| `⁣  "entries": [<link_name>, ...]`               | List of theme info link names, see below.                                        |
+| `⁣  "entries": ["<link_name>", ...]`             | List of theme info link names, see [below](#theme-info-links).                   |
 | `},`                                            |                                                                                  |
 | `"backgroundLayers": [{,`                       | Optional, list of available background layers, defaults to `defaultBackgroundLayers`. |
-| `⁣  "name": "<Background layer name>",`          | Name of matching `BackgroundLayerDefinition`, see below.                         |
+| `⁣  "name": "<Background layer name>",`          | Name of matching `BackgroundLayerDefinition`, see [below](#background-layers).   |
 | `⁣  "printLayer": "<QGIS layer name>"\|[<list>],`| Optional, name of layer to use as matching background layer when printing. Alternatively, a list `[{"maxScale": <scale>, "name": "<QGis layer name>"}, ..., {"maxScale": null, "name": "<QGis layer name>"}]` can be provided, ordered in ascending order by `maxScale`. The last entry should have `maxScale` `null`, as the layer used for all remaining scales. If omitted, no background is printed, unless layer is of type `wms` and `printExternalLayers` is `true` in the Print plugin configuration. |
 | `⁣  "visibility": <boolean>`,                    | Optional, initial visibility of the layer when theme is loaded.                  |
 | `⁣  "overview": <boolean>`,                      | Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).                  |
@@ -192,6 +199,10 @@ The format of the theme definitions is as follows:
 | `⁣  "allowRemovingThemeLayers": <boolean>`       | See [`config.json`](ViewerConfiguration.md#theme-overridable-settings) for which settings can be specified here. |
 | `⁣  ...`                                         |                                                                                  |
 | `}`                                             |
+| `"pluginData": {`                               | Optional, data to pass to custom plugins.                                        |
+| `⁣  "<PluginName>": ["<plugin_data_resource_name>"],`| A list of plugin resource names for the specified plugin. See [below](#plugin-data). |
+| `⁣  ...`                                         |                                                                                  |
+| `},`                                            |                                                                                  |
 | `"wmsBasicAuth": "{`                            | Optional, allows to authenticate to QGIS Server during themes.json generation. NOTE: these credentials will solely be used by `yarn run themesConfig` and won't be stored in `themes.json`.|
 | `⁣  "username": <username>`                      | Optional: http basic authentication username.                                    |
 | `⁣  "password": <password>`                      | Optional: http basic authentication password.                                    |
@@ -237,7 +248,7 @@ wms:http://wms.geo.admin.ch?extwms.stepWidth=4096&extwms.stepHeight=4096#ch.swis
 ```
 **Manually configuring external layers**
 
-Rather than settin the "Data Url", you can provide a manual configuration in `externalLayers` in `themesConfig.json` as follows:
+Rather than setting the "Data Url", you can provide a manual `ExternalLayerDefinition` as follows:
 
 | Entry                                                  | Description                                                                       |
 |--------------------------------------------------------|-----------------------------------------------------------------------------------|
@@ -271,11 +282,11 @@ For external WMTS layers, the following additional parameters apply (you can use
 | `"resolutions": [<resolution>, ...],`                  | The list of WMTS resolutions.                                                     |
 | `"tileSize": [<tile_width>, <tile_height>]`            | The tile width and height.                                                        |
 
-### Theme info links
+### Theme info links <a name="theme-info-links"></a>
 
 You can specify links to display in an info-menu next to the respective theme title in the theme switcher entries.
 
-The format for the theme info links is as follows:
+The format of a `ThemeInfoLinkDefinition` is as follows:
 
 | Entry                       | Description                                                                       |
 |-----------------------------|-----------------------------------------------------------------------------------|
@@ -284,8 +295,21 @@ The format for the theme info links is as follows:
 | `"url": "<link>",`          | A link URL.                                                                       |
 | `"target": "<link_target>"` | The link target, i.e. `_blank`.                                                   |
 
+*Note*: When using `qwc-services`, theme info links must be explicitly permitted by creating appropriate `Theme info link` resources and permissions in the `qwc-admin-gui`.
 
-### Background layers
+### Plugin data <a name="plugin-data"></a>
+
+Plugin data is useful to provide a per-theme configuration for custom plugins. The format for a `PluginDataReource` is as follows:
+
+
+| Entry                       | Description                                                                       |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| `"name": "<resource_name>",`| The name of the resource.                                                         |
+| `"...": ...,`               | Arbitrary additional fields.                                                      |
+
+*Note*: When using `qwc-services`, theme plugin data entries must be explicitly permitted by creating appropriate `Plugin data` resources (as child of a respective `Plugin` resource) and permissions in the `qwc-admin-gui`.
+
+### Background layers <a name="background-layers"></a>
 
 Background layers are handled completely client-side and do not appear in the layer tree.
 
