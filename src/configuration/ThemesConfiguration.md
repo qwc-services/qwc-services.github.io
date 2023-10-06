@@ -372,8 +372,7 @@ Some minimal examples of supported background layers:
 ```json
   {
     "name":"mapnik",
-    "type":"osm",
-    "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    "type":"osm"
   }
 ```
 
