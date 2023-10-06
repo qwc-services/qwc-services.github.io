@@ -320,16 +320,81 @@ The format of the background layer definitions is as follows:
 | `"name": "<Name>",`              | The name of the background layer, used in the theme definitions.                  |
 | `"title": "<Title>",`            | The title of the background layer, as displayed in the background switcher.       |
 | `"titleMsgId": "<Title msgID>",` | Alternative to `title`, a message ID, translated through the translation files.   |
-| `"thumbnail": "<Filename>",`     | Optional, image file in `assets/img/mapthumbs` (see [Viewer assets](ViewerConfiguration.md#viewer-asset)). Defaults to `default.jpg`.        |
+| `"thumbnail": "<Filename>",`     | Optional, image file in `assets/img/mapthumbs` (see [Viewer assets](ViewerConfiguration.md#viewer-asset)). Defaults to `img/mapthumbs/default.jpg`.        |
 | `"type": "<Type>",`              | The background layer type, i.e. `wms` or `wmts`.                                  |
 | `"attribution": "<Attribution>",`| Optional, attribution which will be shown in the bottom right corner of the map.  |
 | `"attributionUrl": "<URL>",`     | Optional, link associated to the attribution                                      |
-| `"group": "<GroupId>",`         | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
+| `"group": "<GroupId>",`          | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
 | `"minScale": <min_scale>,`       | Optional, minimum scale denominator from which to render the layer.               |
 | `"maxScale": <max_scale>,`       | Optional, maximum scale denominator from which to render the layer.               |
-| `<Layer params>`                 | Parameters according to the specified layer type. Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for some examples. |
+| `"layerConfig": {...},`          | Optional, extra OpenLayers layer configuration, according to the [API](https://openlayers.org/en/latest/apidoc) of the specific layer type. |
+| `"sourceConfig": {...},`         | Optional, extra OpenLayers source configuration, according to the [API](https://openlayers.org/en/latest/apidoc) of the specific source type. |
+| `<Layer params>`                 | Parameters according to the specified layer type.                                 |
 
+Some minimal examples of supported background layers:
+
+* *WMS*:
+```json
+{
+  "name": "swissboundaries",
+  "type":"wms",
+  "url":"https://wms.geo.admin.ch",
+  "params": {
+    "LAYERS": "ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill",
+    "VERSION": "1.3.0",
+    ...
+  }
+}
+```
+
+* *WMTS*:
+```json
+{
+  "name":"bluemarble",
+  "type":"wmts",
+  "url":"http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief/default/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg",
+  "bbox":{
+    "bounds":[-180.0,-85.051129,180.0,85.051129],
+    "crs":"EPSG:4326"
+  },
+  "originX":-20037508.34278925,
+  "originY":20037508.34278925,
+  "projection:":"EPSG:3857",
+  "resolutions":[156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781],
+  "tileMatrixPrefix":"",
+  "tileMatrixSet":"GoogleMapsCompatible_Level8",
+  "tileSize":[256,256]
+}
+```
 *Note*: You can use the helper python script located at `qwc2/scripts/wmts_config_generator.py` to easily generate WMTS background layer configurations.
+
+* *OpenStreetMap*:
+```json
+  {
+    "name":"mapnik",
+    "type":"osm",
+    "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+  }
+```
+
+* *Bing*:
+```json
+  {
+    "name": "bing",
+    "type": "bing",
+    "apiKey": "<get from https://www.bingmapsportal.com/>",
+    "imagerySet": "<Aerial|AerialWithLabelsOnDemand|RoadOnDemand|CanvasDark|OrdnanceSurvey>"
+  }
+```
+
+* *XYZ*:
+```json
+  {
+    "name": "OpenCycleMap",
+    "type": "xyz",
+    "url":"https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png"
+  }
+```
 
 Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier, which will then be resolved at runtime. For example:
 ```json
