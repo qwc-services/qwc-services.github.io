@@ -164,7 +164,7 @@ Here is an example XML file:
 </dataConfig>
 ```
 
-The next table shows how the values, that are surrounded by {}, need to be defined.
+The next table shows how the values, that are surrounded by `{}`, need to be defined.
 
 | **Name**                 | **Definition**                                                                    | **Example**      |
 |--------------------------|-----------------------------------------------------------------------------------|------------------|
@@ -215,16 +215,28 @@ Then add a new facet to the facets list. An example entry could be:
 
 ```json
 {
-    "name": "SEARCH_NAME",
-    "filter_word": "OPTIONAL_SEARCH_FILTER",
-    "table_name": "SCHEMA.SEARCH_TABLE_NAME",
-    "geometry_column": "GEOMETRY_FIELD",
-    "search_id_col": "PRIMARY_KEY"
+    "name": "search",
+    "config": {
+        "solr_service_url": "http://qwc-solr:8983/solr/gdi/select",
+        "search_result_limit": 50,
+        "db_url": "postgresql:///?service=qwc_geodb"
+    },
+    "resources": {
+        "facets": [
+            {
+                "name": "SEARCH_NAME",
+                "filter_word": "OPTIONAL_SEARCH_FILTER",
+                "table_name": "SCHEMA.SEARCH_TABLE_NAME",
+                "geometry_column": "GEOMETRY_FIELD",
+                "search_id_col": "PRIMARY_KEY"
+            }
+        ]
+    }
 }
 ```
 
 The `filter_word` field can be specified to activate / deactivate searches,
-if you have configure multiple searches for one map.
+if you have configure multiple searches for one theme.
 Normally `filter_word` is left empty (`""`) which results in the search always
 being active.
 But if specified (e.g. `"house_no"` then the fulltext search will only use
@@ -249,7 +261,7 @@ and give the users the necessary rights in the Admin GUI.
 ]
 ```
 
-When activating a search to a map, you can either:
+When activating a search to a theme, you can either:
 
 * Add the search name to the `default` list, where it is always active
 * Add the search name to the `layers` object, where it is only active if the QGIS layer called `QGIS_LAYER` is present on the map
