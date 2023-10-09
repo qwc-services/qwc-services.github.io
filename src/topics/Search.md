@@ -168,7 +168,7 @@ The next table shows how the values, that are surrounded by {}, need to be defin
 
 | **Name**                 | **Definition**                                                                    | **Example**      |
 |--------------------------|-----------------------------------------------------------------------------------|------------------|
-| `DB_HOST`                | Database hostname                                                                 | `qwc`postgis}    |
+| `DB_HOST`                | Database hostname                                                                 | `qwc-postgis`    |
 | `DB_NAME`                | Database name                                                                     | `qwc_demo`       |
 | `DB_PORT`                | Database port number                                                              | `5432`           |
 | `DB_USER`                | Database username                                                                 | `qwc_service`    |
@@ -248,6 +248,11 @@ and give the users the necessary rights in the Admin GUI.
     }
 ]
 ```
+
+When activating a search to a map, you can either:
+
+* Add the search name to the `default` list, where it is always active
+* Add the search name to the `layers` object, where it is only active if the QGIS layer called `QGIS_LAYER` is present on the map
 
 2. Create a new resource in the Admin GUI
 
