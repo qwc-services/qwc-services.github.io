@@ -43,6 +43,7 @@ All settings are optional, with fallback to the default values as documented.
 |`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. |
 |`startupTask`                        | Task to automatically aktivate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
+|`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see `qwc2/utils/MiscUtils.js`. |
 
 ### Global settings, overridable per theme<a name="theme-overridable-settings"></a>
 
