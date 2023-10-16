@@ -170,7 +170,7 @@ The format of the theme definitions is as follows:
 | `⁣  "visibility": <boolean>`,                    | Optional, initial visibility of the layer when theme is loaded.                  |
 | `⁣  "overview": <boolean>`,                      | Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).                  |
 | `}],`                                           |                                                                                  |
-| `"searchProviders": ["<Provider>"],`            | Optional, list of search providers, see [Search providers](#search-providers). Defaults to `defaultSearchProviders`. |
+| `"searchProviders": ["<Provider>"],`            | Optional, list of search providers, see [Search](../topics/Search.md). Defaults to `defaultSearchProviders`. |
 | `"minSearchScaleDenom": <number>,`              | Optional, minimum scale to enforce when zooming to search results. Takes precedence over value in `config.json`. |
 | `"featureReport": {`                            | Optional, available feature report templates.                                    |
 | `⁣  "<LayerId>": "<TemplateID>"  `               | WMS sublayer ID and associated template ID to pass to the `featureReportService`.|
