@@ -42,9 +42,12 @@ The format of `ProviderDefinition` is
     /* Retreive geometry... */
     // resultItem is a search result entry as returned by onSearch, which provides the context for retreiving the geometry
     const geometry = "<wktString>";
+    // or
+    const geometry = {<GeoJSON geometry>};
+
     const crs = "EPSG:XXXX";
     const hidemarker = <boolean>; // Whether to suppress displaying a search marker on top of the search geometry
-    callback({geometry: wktString, crs: crs, hidemarker: hidemarker});
+    callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
   }
 }
 ```
@@ -102,7 +105,7 @@ For each theme item in `themesConfig.json`, you can define a list of search prov
 searchProviders: [
   "<providerkey1>",             // Simple form
   {                             // Provider with custom params
-    key: "<providerkey2>",
+    provider: "<providerkey2>",
     params: {
       ...                       // Arbitrary params passed to the provider `onSearch` function as `searchParams.cfgParams`
     }
