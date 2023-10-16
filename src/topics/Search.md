@@ -117,7 +117,50 @@ searchProviders: [
 ],
 ...
 ```
-Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes two providers by default: `coordinates` and `nominatim` (OpenStreetMap location search).
+Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes three providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), and `qgis` (see <a href="#qgis-search">below</a>).
+
+## Configuring tĥe QGIS feature search <a name="qgis-search"></a>
+
+The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2-demo-app`.
+
+In it's simples form, you can configure the theme search provider entry as follows:
+
+```json
+  {
+    "provider": "qgis",
+    "params": {
+      "expression": {
+        "<layername1>": "<expression>",
+        "<layername2>": "<expression>",
+      },
+      "title": "<search name>"
+    }
+  }
+```
+
+where `expression` is a WMS GetFeatureInfo `FILTER` expression, for example `"\"name\" ILIKE '%$TEXT$%'"`. `$TEXT$` will be replaced by the search text entered by the user, `name` corresponds to a field name of the specified layer.
+
+A more complex form, useable through the [`FeatureSearch`](../references/qwc2_plugins.md#featuresearch) plugin, allows defining a field configuration for multiple input fields. A full example is as follows:
+
+```json
+  {
+    "provider": "qgis",
+    "params": {
+      "title": "Person search",
+      "expression": {
+        "persons": "\"name\" ILIKE '%$NAME$%' AND \"age\" >= $AGE$"
+      },
+      "fields": {
+        "NAME": {"label": "Name", "type": "text"},
+        "AGE": {"label": "Min. age", "type": "number", "options": {"min": 0}}
+      }
+    }
+  }
+```
+
+Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type.
+
+*Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
