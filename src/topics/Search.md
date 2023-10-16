@@ -105,8 +105,8 @@ For each theme item in `themesConfig.json`, you can define a list of search prov
 searchProviders: [
   "<providerkey1>",             // Simple form
   {                             // Provider with custom params
-    provider: "<providerkey2>",
-    params: {
+    "provider": "<providerkey2>",
+    "params": {
       ...                       // Arbitrary params passed to the provider `onSearch` function as `searchParams.cfgParams`
     }
   },
