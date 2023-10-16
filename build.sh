@@ -6,9 +6,13 @@ python3 -mvenv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-if [ "$1" == "--update" ]; then
+if [ "$1" == "--update" ] || [ ! -f qwc2.yml ]; then
 echo "# References" > src/references/index.md
 echo "" >> src/references/index.md
+
+echo "* Getting latest version..."
+version=$(curl https://raw.githubusercontent.com/qgis/qwc2-demo-app/master/package.json | grep -Eo '^\s*"version": "[^"]+",$' | awk -F'"' '{print $4}')
+sed "s|@version@|$version|" qwc2.yml.in > qwc2.yml
 
 echo "* Downloading plugin reference..."
 wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2/master/doc/plugins.md
