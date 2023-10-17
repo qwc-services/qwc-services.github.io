@@ -148,17 +148,18 @@ A more complex form, useable through the [`FeatureSearch`](../references/qwc2_pl
     "params": {
       "title": "Person search",
       "expression": {
-        "persons": "\"name\" ILIKE '%$NAME$%' AND \"age\" >= $AGE$"
+        "persons": "\"name\" ILIKE '%$NAME$%' AND \"age\" >= $AGE$ AND \"gender\" = '$GENDER$'"
       },
       "fields": {
         "NAME": {"label": "Name", "type": "text"},
-        "AGE": {"label": "Min. age", "type": "number", "options": {"min": 0}}
+        "AGE": {"label": "Min. age", "type": "number", "options": {"min": 0}},
+        "GENDER": {"label": "Gender", "type": "select", "options": [{"value": "f", "label": "Female"}, {"value": "m", "label": "Male"}]}
       }
     }
   }
 ```
 
-Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type.
+Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type. In addition, the `select` field type is supported to display a ComboBox, with the entries provided as `options` as in the example above. It is also possible to pass a flat list as `options`, i.e. `["Female", "Male"]` if the value is equal to the label.
 
 *Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
 
