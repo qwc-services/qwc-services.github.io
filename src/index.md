@@ -53,7 +53,8 @@ qwc-services also provides the following enterprise relevant functionalities:
 
 ## Explore
 
-* [Quickstart](QuickStart.md)
+* [Developer Quickstart](QuickStart.md)
+* [User guide](UserGuide.md)
 * Some public viewers: [Demo](https://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [qgisweb.oslandia.net](https://qgisweb.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
 
 ## Support
