@@ -30,18 +30,22 @@ Some additional tasks include:
 
 Background layers are handled purely client-side in QWC2. There are two options for printing the background layer:
 
-The first option is to mark a QGIS project layer as *print layer* by adding a `printLayer` to the background layer entry when writing the [themes configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration), i.e.:
+The first option is to add a `printLayer` to the background layer entry when writing the [themes configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration), i.e.:
 
 ```json
 {
   ...
   "backgroundLayers": [
-      {"name": "<background layer name>", "printLayer": "<qgis layer name>"}
+      {"name": "<background layer name>", "printLayer": "<qgis layer name or resource string>"}
   ]
 }
 ```
 
-A QGIS layer marked as `printLayer` will be filtered out from the QWC2 layer tree, and hence will not be displayed in QWC2. This approach allows i.e. using a WMTS background layer in the web client for higher performance, and using a WMS background layer when printing for higher quality/resolution.
+You can set `printLayer` to a QGIS layer name, or to a resource string (i.e. `wms:<baseurl>#<layername>`). A QGIS layer marked as `printLayer` will be filtered out from the QWC2 layer tree, and hence will not be displayed in QWC2.
+
+You can also set `printLayer` to a list `[{"maxScale": <scale>, "name": "<layer name>"}, ..., {"maxScale": null, "name": "<QGis layer name>"}]`, ordered in ascending order by `maxScale`. The last entry should have `maxScale` `null`, as the layer used for all remaining scales.
+
+This approach allows i.e. using a WMTS background layer in the web client for higher performance, and using a WMS background layer when printing for higher quality/resolution.
 
 The second option is to use WMS background layers, which are automatically printed as external layers.
 
