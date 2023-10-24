@@ -44,6 +44,8 @@ docker-compose up
 
 *Note*: If using the newer `docker compose` project, you need to write `docker compose up` instead of `docker-compose up` (and similarly for other `docker-compose` calls).
 
+*Note*: The sample `docker-compose-example.yml` uses `latest-lts` as image versions. It is recommended to replace these with a fix version tag when deploying the application to prevent docker from automatically pulling new versions when the application is launched, which may be undesired. See [Keeping QWC services up to date](configuration/../configuration/ServiceConfiguration.md#upgrading).
+
 The map viewer will run on <http://localhost:8088/>.
 
 The admin GUI will run on <http://localhost:8088/qwc_admin> (default admin credentials: username `admin`, password `admin`, requires password change on first login).

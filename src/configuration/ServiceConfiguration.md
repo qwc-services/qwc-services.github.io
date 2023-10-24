@@ -165,7 +165,7 @@ Example:
 
 ## Configuration database
 
-The [Configuration database](https://github.com/qwc-services/qwc-config-db) (ConfigDB) contains the database schema `qwc_config` for configurations and permissions of QWC services.
+The [Configuration database](https://github.com/qwc-services/qwc-base-db) (CofigDB) contains the database schema `qwc_config` for configurations and permissions of QWC services.
 
 This database uses the PostgreSQL connection service `qwc_configdb` by default, which can be setup for the corresponding database in the PostgreSQL connection service file `qwc-docker/pg_service.conf`.
 
@@ -173,34 +173,23 @@ To use an external configuration database, either change the connection definiti
 
 ### Database migrations
 
-An existing ConfigDB can be updated to the latest schema by running the database migrations from the `qwc-config-db` directory:
-```bash
-git clone https://github.com/qwc-services/qwc-config-db.git
-cd qwc-config-db/
-# Install alembic, either globally or activate python virtualenv and run `pip install -r requirements.txt`)
-alembic upgrade head
-```
-*Note:* The `qwc_configdb` service definition must exist in the host, for instance:
-```bash
-cat $HOME/.pg_service.conf
-[qwc_configdb]
-host=localhost
-port=5439
-dbname=qwc_demo
-user=qwc_admin
-password=qwc_admin
-sslmode=disable
-```
+Migrations to the ConfigDB are applied automatically by the `qwc-base-db-migrate` image which is included in the sample `docker-compose-example.yml`.
 
-## Keeping QWC services up to date
+To upgrade the ConfigDB to a newer version, it is sufficient to change the version of the image to the desired version, and migrations will be applied automatically next time the application is restarted.
+
+See the [`qwc-base-db` README](https://github.com/qwc-services/qwc-base-db/) for more info.
+
+## Keeping QWC services up to date<a name="upgrading"></a>
 
 When using `qwc-docker`, updating the services is a simple as updating the image tags in `qwc-docker/docker-compose.yml`.
 
 Two versioning schemes are available:
 
-- `vYYYY-MM-DD`: These refer to the latest available version of the respective images (i.e. `v2023.05.12`).
+- `vYYYY-MM-DD`: These refer to the latest available "development" version of the respective images (i.e. `v2023.05.12`).
 - `vYYYY.X-lts`: These refer to the long term support version of the respective images (i.e. `v2023.1-lts`).
 
 You can always check the available tags on dockerhub, for example at [https://hub.docker.com/r/sourcepole/qwc-config-generator](https://hub.docker.com/r/sourcepole/qwc-config-generator).
+
+In particular, to special tags exist, `latest` and `latest-lts` which always refer to the latest available "development" and long term support versions respectively. Note however that using these tags will result in docker automatically pulling new versions when the application is launched, which may be undesired.
 
 The [`qwc-docker` Upgrade Notes](../release_notes/QwcDockerUpgradeNotes.md) documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.
