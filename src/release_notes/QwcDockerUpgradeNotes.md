@@ -1,3 +1,51 @@
+# Upgrading to qwc-base-db v2023.10.24
+
+As of `v2023.10.24` the QWC base DB image has been reworked as follows:
+
+* Migrations were moved to the `qwc-base-db` repository, the `qwc-config-db` repository is now obsolete.
+* A new `qwc-base-db-migrate` image helps migrating dockerized or external config DBs.
+* Demo data will be initialized by an optional setup script in `qwc-docker`, the `qwc-demo-db` repository is now obsolete.
+
+To use the new images, replace
+
+```yml
+  qwc-postgis:
+    image: docker.io/sourcepole/qwc-demo-db:v2022.09.03
+  ...
+```
+
+with
+
+```yml
+  qwc-postgis:
+    image: sourcepole/qwc-base-db:<version>
+    environment:
+      POSTGRES_PASSWORD: '' # TODO: Set your postgres password here!
+    volumes:
+     - ./volumes/db:/var/lib/postgresql/docker
+     # If you don't want/need the demo data, you can remove this line
+     - ./volumes/demo-data/setup-demo-data.sh:/docker-entrypoint-initdb.d/2_setup-demo-data.sh
+    ports:
+     - "127.0.0.1:5439:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+
+  qwc-config-db-migrate:
+    image: sourcepole/qwc-base-db-migrate:<version>
+    depends_on:
+      qwc-postgis:
+        condition: service_healthy
+```
+
+in your `docker-compose.yml`.
+
+Note:
+
+- It is now mandatory to set your own `POSTGRES_PASSWORD`.
+- You can keep your previous `volumes/db` postgres data folder, but it is recommended to make a backup.
+- See the [`qwc-base-db` README](https://github.com/qwc-services/qwc-base-db) for more information.
+
 # Upgrading to qwc service images v2022.01.26
 
 The `qwc-uwsgi-base` images have been changed to allow for configurable UID/GID of the `uwsgi` process. The default is `UID=33` and `GID=33`, you can override it by setting the `SERVICE_UID` and `SERVICE_GID` environment variables in `docker-compose.yml`.
