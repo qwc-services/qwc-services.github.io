@@ -39,8 +39,7 @@ Following is an overview of existing `qwc-services`:
 
 **Configuration database**:
 
-* [DB schema and migrations](https://github.com/qwc-services/qwc-config-db)
-* [Demo database](https://github.com/qwc-services/qwc-demo-db)
+* [DB schema and migrations](https://github.com/qwc-services/qwc-base-db)
 
 **Configuration generator**:
 
@@ -61,7 +60,7 @@ The layout of the `qwc-docker` tree is as follows:
 |`│  │  ├─ index.html`          | Viewer entry point.                                                 |
 |`│  │  ├─ themesConfig.json`   | Themes configuration.                                               |
 |`│  │  └─ tenantConfig.json`   | Master configuration file for qwc services.                         |
-|`│  ├─ db/`                    | Storage of configuration database (see `qwc-config-db`).            |
+|`│  ├─ db/`                    | Storage of configuration database (see [Config DB](#configdb)).     |
 |`│  ├─ info-templates/`        | Custom feature-info templates (see `qwc-feature-info-service`).     |
 |`│  ├─ jasper-reports/`        | Jasper reports (see `qwc-document-service`).                        |
 |`│  ├─ legends/`               | Custom legend images (see `qwc-legend-service`).                    |
@@ -163,7 +162,7 @@ Example:
   }
 ```
 
-## Configuration database
+## Configuration database<a name="configdb"></a>
 
 The [Configuration database](https://github.com/qwc-services/qwc-base-db) (CofigDB) contains the database schema `qwc_config` for configurations and permissions of QWC services.
 
