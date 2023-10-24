@@ -20,6 +20,13 @@ cd qwc-docker
 cp docker-compose-example.yml docker-compose.yml
 cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 ```
+- Set the password for the `postgres` superuser in `docker-compose.yml`:
+```yml
+  qwc-postgis:
+    image: sourcepole/qwc-base-db:<version>
+    environment:
+      POSTGRES_PASSWORD: '<SET YOUR PASSWORD HERE>'
+```
 - Create a secret key:
 ```bash
 python3 -c 'import secrets; print("JWT_SECRET_KEY=\"%s\"" % secrets.token_hex(48))' >.env
