@@ -10,7 +10,7 @@ To use the new images, replace
 
 ```yml
   qwc-postgis:
-    image: docker.io/sourcepole/qwc-demo-db:v2022.09.03
+    image: docker.io/sourcepole/qwc-demo-db:<version>
   ...
 ```
 
@@ -33,6 +33,8 @@ with
 
   qwc-config-db-migrate:
     image: sourcepole/qwc-base-db-migrate:<version>
+    volumes:
+      ./pg_service.conf:/tmp/pg_service.conf:ro
     depends_on:
       qwc-postgis:
         condition: service_healthy
@@ -45,6 +47,7 @@ Note:
 - It is now mandatory to set your own `POSTGRES_PASSWORD`.
 - You can keep your previous `volumes/db` postgres data folder, but it is recommended to make a backup.
 - See the [`qwc-base-db` README](https://github.com/qwc-services/qwc-base-db) for more information.
+- Since `v2023.10.24` the name of the database was changed to the more generic `qwc_services` instead of `qwc_demo`.
 
 # Upgrading to qwc service images v2022.01.26
 
