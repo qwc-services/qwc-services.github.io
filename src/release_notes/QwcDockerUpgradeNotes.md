@@ -1,6 +1,6 @@
-# Upgrading to qwc-base-db v2023.10.24
+# 2023.10.24 qwc-base-db rework
 
-As of `v2023.10.24` the QWC base DB image has been reworked as follows:
+As of 2023.10.24 the QWC base DB image has been reworked as follows:
 
 * Migrations were moved to the `qwc-base-db` repository, the `qwc-config-db` repository is now obsolete.
 * A new `qwc-base-db-migrate` image helps migrating dockerized or external config DBs.
@@ -18,7 +18,7 @@ with
 
 ```yml
   qwc-postgis:
-    image: sourcepole/qwc-base-db:<version>
+    image: sourcepole/qwc-base-db:<pg_version>
     environment:
       POSTGRES_PASSWORD: '' # TODO: Set your postgres password here!
     volumes:
@@ -46,8 +46,10 @@ Note:
 
 - It is now mandatory to set your own `POSTGRES_PASSWORD`.
 - You can keep your previous `volumes/db` postgres data folder, but it is recommended to make a backup.
+* The `sourcepole/qwc-base-db` images are versioned according to the Postgres major version (i.e. 13, 14, 15, ...).
+* The `sourcepole/qwc-base-db-migrate` images are versioned by date (`vYYYY.MM.DD`)
 - See the [`qwc-base-db` README](https://github.com/qwc-services/qwc-base-db) for more information.
-- Since `v2023.10.24` the name of the database was changed to the more generic `qwc_services` instead of `qwc_demo`.
+- As of `2023.10.24` the name of the database was changed to the more generic `qwc_services` instead of `qwc_demo`.
 
 # Upgrading to qwc service images v2022.01.26
 
