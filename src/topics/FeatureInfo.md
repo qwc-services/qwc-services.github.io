@@ -136,6 +136,24 @@ When using the `Identify` plugin and the `qwc-feature-info-service`, you can que
 ```
 *Note:* `x`, `y` and `geom` are passed as parameters to the SQL query. If a `GetFeatureInfo` request is being processed with a `filter_geom` parameter, `geom` will correspond to that parameter. Otherwise `geom` will be `POINT(x y)`.
 
+## Localization
+
+The `qwc-feature-info-service` supports switching the runtime locale by setting the `LOCALE` environment variable, i.e.:
+```yml
+  qwc-feature-info-service:
+    image: docker.io/sourcepole/qwc-feature-info-service:latest-lts
+    environment:
+      <<: *qwc-service-variables
+      SERVICE_MOUNTPOINT: '/api/v1/featureinfo'
+      LOCALE: 'de_DE'
+```
+
+In addition, the [`locale`](https://docs.python.org/3/library/locale.html) object is available in templates. This is particularly helpful for rendering locale-formatted numbers, i.e.
+
+```html
+<div>Area: {{ locale.format_string("%.2f", area, True) }}</div>
+```
+
 ## Feature form<a name="feature-form"></a>
 
 The `FeatureForm` plugin displays picked features in a feature form as configured in `QGIS &rarr; Layer properties &rarr; Attributes form`. It queries the features via `qwc-data-service`, and hence only works for layers with `postgresql` data source.
