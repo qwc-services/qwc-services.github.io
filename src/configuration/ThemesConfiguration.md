@@ -154,6 +154,7 @@ The format of the theme definitions is as follows:
 | `},`                                            |                                                                                  |
 | `"extent": [<xmin>, <ymin>, <xmax>, <ymax>],`   | Optional, override theme extent. In `mapCrs`.                                    |
 | `"tiled": <boolean>,`                           | Optional, use tiled WMS, defaults to `false`.                                    |
+| `"tileSize": [<tile_width>, <tile_height>]`     | Optional, the WMS tile width and height.                                         |
 | `"format": "<mimetype>",`                       | Optional, the format to use for WMS GetMap. Defaults to `image/png`.             |
 | `"externalLayers": [{`                          | Optional, external layers to use as replacements for internal layers. |
 | `⁣  "name": "<external_layer_name>",`            | Name of the external layer, matching a `ExternalLayerDefinition`, see [below](#external-layers). |
