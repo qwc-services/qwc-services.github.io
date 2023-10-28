@@ -150,7 +150,10 @@ The format of the theme definitions is as follows:
 | `"printLabelForSearchResult": "<ID>",`          | Optional, an ID of a print layout label to which the current search result text (if any) will be written to when printing. |
 | `"printLabelForAttribution": "<ID>",`           | Optional, an ID of a print layout label to which the current attribution text (if any) will be written to when printing. |
 | `"printLabelConfig": {`                         | Optional, configuration of the text input fields for print layout labels.        |
-| `⁣  "<LabelId>": {"rows": <n>, "maxLength": <n>},` | Height of the input field in rows and maximum number of allowed characters.    |
+| `⁣  "<LabelId>": {`                              |                                                                                  |
+| `⁣  ⁣  "defaultValue": "<value">,`                | Optional, default value.                                                         |
+| `⁣  ⁣  <textarea config>,`                        | Optional, additional [`textarea` properties](https://react.dev/reference/react-dom/components/textarea), i.e. `maxLength`, `rows`, `placeholder`, ...    |
+| `⁣  ⁣  "options": ["<value1>","<value2>",...]`    | Optional, to display a ComboBox with the specified options instead of a free-input textfield. |
 | `},`                                            |                                                                                  |
 | `"extent": [<xmin>, <ymin>, <xmax>, <ymax>],`   | Optional, override theme extent. In `mapCrs`.                                    |
 | `"tiled": <boolean>,`                           | Optional, use tiled WMS, defaults to `false`.                                    |
