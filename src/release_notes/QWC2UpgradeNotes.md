@@ -4,6 +4,18 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [38b242a](https://github.com/qgis/qwc2/tree/38b242a) (01.11.2023)
+---------------------------------------------------------------------------------------------------
+
+**Import svg as inline assets**
+
+`qwc2/utils/FeatureStyles.js` now imports some SVG files as inline assets. For this to work, you need to list `.svg` in the `assets/inline` loader rules in `webpack.config.js`:
+
+    {
+        test: /(.woff|.woff2|.png|.jpg|.gif|.svg)/,
+        type: 'asset/inline'
+    }
+
 Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/7409372) (23.08.2023)
 ---------------------------------------------------------------------------------------------------
 
