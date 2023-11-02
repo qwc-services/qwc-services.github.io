@@ -54,19 +54,19 @@ Most dependencies have been updated to the latest version. The following adjustm
   and then instead of `uuid.v1()` use `uuidv1()` etc.
 
 * Adjust `webpack.config.js` from
-
+```
       {
         test: /\.mjs$/,
         type: 'javascript/auto'
       }
-
-  to
-
+```
+to
+```
       {
         test: /(.mjs|.js)$/,
         type: 'javascript/auto'
       }
-
+```
 
 Update to qwc2 submodule revision [fe063b6](https://github.com/qgis/qwc2/tree/fe063b6) (13.01.2023)
 ---------------------------------------------------------------------------------------------------
