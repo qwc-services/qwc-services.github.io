@@ -129,11 +129,11 @@ In it's simples form, you can configure the theme search provider entry as follo
   {
     "provider": "qgis",
     "params": {
+      "title": "<search name>",
       "expression": {
         "<layername1>": "<expression>",
         "<layername2>": "<expression>"
-      },
-      "title": "<search name>"
+      }
     }
   }
 ```
@@ -162,6 +162,12 @@ A more complex form, useable through the [`FeatureSearch`](../references/qwc2_pl
 Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type. In addition, the `select` field type is supported to display a ComboBox, with the entries provided as `options` as in the example above. It is also possible to pass a flat list as `options`, i.e. `["Female", "Male"]` if the value is equal to the label.
 
 *Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
+
+In addition to the configuration described above, you can specify these additional parameters in `params`:
+
+* `featureCount`: A number, passed as `feature_count` to the GetFeatureInfo request to control the maximum number of returned features. If not specified, defaults to `100`.
+* `resultTitle`: A format string for the result title. Allowed placeholders are: `{layername}` for the layer name and `{<fieldname>}` for the value of `fieldname`. If not the layer name followed by the feature displayfield will be shown.
+* `description`: An arbitrary descriptive text which will be displayed above the search fields in the `FeatureSearch` plugin.
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
