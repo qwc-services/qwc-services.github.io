@@ -16,6 +16,15 @@ Update to qwc2 submodule revision [38b242a](https://github.com/qgis/qwc2/tree/38
         type: 'asset/inline'
     }
 
+**Babel plugin changes**
+
+The `class-properties` and `object-rest-spread` proposals have been merged to the ECMAScript standard, and the respective babel plugins in `.babelrc.json` need to be changed to
+
+    "plugins": [
+        "@babel/plugin-transform-class-properties",
+        "@babel/plugin-transform-object-rest-spread"
+    ]
+
 Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/7409372) (23.08.2023)
 ---------------------------------------------------------------------------------------------------
 
