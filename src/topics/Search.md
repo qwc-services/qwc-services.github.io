@@ -131,7 +131,7 @@ In it's simples form, you can configure the theme search provider entry as follo
     "params": {
       "expression": {
         "<layername1>": "<expression>",
-        "<layername2>": "<expression>",
+        "<layername2>": "<expression>"
       },
       "title": "<search name>"
     }
