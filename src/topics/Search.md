@@ -168,6 +168,8 @@ In addition to the configuration described above, you can specify these addition
 * `featureCount`: A number, passed as `feature_count` to the GetFeatureInfo request to control the maximum number of returned features. If not specified, defaults to `100`.
 * `resultTitle`: A format string for the result title. Allowed placeholders are: `{layername}` for the layer name and `{<fieldname>}` for the value of `fieldname`. If not the layer name followed by the feature displayfield will be shown.
 * `description`: An arbitrary descriptive text which will be displayed above the search fields in the `FeatureSearch` plugin.
+* `default`: Whether the search is selected by default when opening the `FeatureSearch` plugin.
+* `group`: A group name, used to group the searches in the `FeatureSearch` selection combobox.
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
