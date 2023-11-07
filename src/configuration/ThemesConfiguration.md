@@ -275,7 +275,7 @@ For external WMS layers, the following additional parameters apply:
 | `"queryLayers": ["<wms_featureinfo_layername>", ...],` | Optional, list of GetFeatureInfo query layers, if different from `params.LAYERS`. |
 | `"infoFormats": ["<featureinfo_format>", ...]`         | List of GetFeatureInfo query formats which the WMS service supports.              |
 
-For external WMTS layers, the following additional parameters apply (you can use the `qwc2/scripts/wmts_config_generator.py` script to obtain these values):
+For external WMTS layers, the following additional parameters apply (you can use the [`qwc2/scripts/wmts_config_generator.py`](https://github.com/qgis/qwc2/blob/master/scripts/wmts_config_generator.py) script to obtain these values):
 
 | Entry                                                  | Description                                                                       |
 |--------------------------------------------------------|-----------------------------------------------------------------------------------|
