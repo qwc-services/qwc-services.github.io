@@ -399,6 +399,21 @@ Some minimal examples of supported background layers:
   }
 ```
 
+* *VectorTiles*: (note: if the tile projection is not `EPSG:3857`, you need to specifiy `projection` and `tileGridConfig`)
+```json
+  {
+    "name": "mvt_example",
+    "type": "mvt",
+    "url": "http://foobar.baz/tileset/{z}/{x}/{y}.pbf",
+    "style": "http://foobar.baz/style.json",
+    "projection": "EPSG:XXXX",
+    "tileGridConfig": {
+      "origin": [<x>, <y>],
+      "resolutions": [<resolutions>]
+    }
+  }
+```
+
 Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier, which will then be resolved at runtime. For example:
 ```json
 {
