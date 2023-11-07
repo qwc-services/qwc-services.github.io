@@ -64,7 +64,7 @@ All settings are optional, with fallback to the default values as documented.
 |`allowAddingOtherThemes`              | Whether to allow adding another theme to a currently loaded theme. Default value: `false`. |
 |`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree. Default value: `false`. |
 |`importLayerUrlPresets`               | A list of predefined URLs from which the user can choose when importing layers from the layer tree. Entries must be strings or objects of the format `{"label": "<Label>", "value": "<URL>"}`. |
-|`identifyTool`                        | The name of the identify plugin to use. It is possible to have multiple identify tools, and i.e. on a per-theme basis select which one is active. Default value: `Identify`. |
+|`identifyTool`                        | The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default value: `Identify`. |
 |`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default value: `false`. |
 |`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default value: `false`. |
 
