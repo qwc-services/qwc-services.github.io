@@ -48,7 +48,8 @@ The format of `ProviderDefinition` is
     const crs = "EPSG:XXXX";
     const hidemarker = <boolean>; // Whether to suppress displaying a search marker on top of the search geometry
     callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
-  }
+  },
+  handlesGeomFilter: <boolean>; // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
 }
 ```
 *Notes:*
@@ -60,6 +61,8 @@ The format of `ProviderDefinition` is
   mapcrs: "EPSG:XXXX", // The current map CRS
   lang: "<code>", // The current application language, i.e. en-US or en
   cfgParams: <params> // Additional parameters passed in the theme search provider configuration, see below
+  filterBBox: <[xmin, ymîn, xmax, ymax]|null> // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
+  filterPoly: <[[x0, y0], [x1, y1], ....]> // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
 }
 ```
 * `axios` is passed for convenience so that providers can use the compiled-in `axios` library for network requests.
@@ -81,6 +84,7 @@ results = [
         y: y,                             // Y coordinate of result
         crs: crs,                         // CRS of result coordinates and bbox
         bbox: [xmin, ymin, xmax, ymax]    // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
+        geometry: <GeoJSON geometry>      // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
       },
       {                                    // Theme layer search result (advanced):
         type: SearchResultType.THEMELAYER, // Specifies that this is a theme layer search result
@@ -95,6 +99,13 @@ results = [
   }
 ]
 ```
+* If the provider does not fully handle the filter geometry internally (`handlesGeomFilter != true`), client-side filtering will be performed as follows:
+
+   - Polygon intersection test if the result has a `geometry` field with a `Polygon` geometry
+   - Point-in-polygon test using the results `x` and `y` point coordinates
+
+* Geometry filters are only supported using the `SearchBox` search component with `allowSearchFilters: true` passed in the `TopBar` `searchOptions`.
+
 Consult [js/SearchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js) and [static/assets/searchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js) for full examples.
 
 ## Configuring theme search providers
