@@ -119,6 +119,7 @@ You can also set a predefined list of filter areas by setting `searchFilterRegio
     "items": [
       {
         "name": "<Name>",
+        "crs": "<EPSG:XXXX>",
         "coordinates": [[x0, y0], [x1, y1], ...]
       },
       ...
