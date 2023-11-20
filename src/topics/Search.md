@@ -101,8 +101,9 @@ results = [
 ```
 * If the provider does not fully handle the filter geometry internally (`handlesGeomFilter != true`), client-side filtering will be performed as follows:
 
-   - Polygon intersection test if the result has a `geometry` field with a `Polygon` geometry
-   - Point-in-polygon test using the results `x` and `y` point coordinates
+   1. Polygon intersection test if the result has a `geometry` field with a `Polygon` geometry
+   2. Polygon intersection test if the result has a `bbox` field
+   3. Point-in-polygon test using the results `x` and `y` point coordinates
 
 * Geometry filters are only supported using the `SearchBox` search component with `allowSearchFilters: true` passed in the `TopBar` `searchOptions`.
 
