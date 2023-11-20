@@ -230,7 +230,7 @@ Here is an example XML file:
 </dataConfig>
 ```
 
-The next table shows how the values, that are surrounded by `{}`, need to be defined.
+The next table shows how the values need to be defined:
 
 | **Name**                 | **Definition**                                                                    | **Example**      |
 |--------------------------|-----------------------------------------------------------------------------------|------------------|
@@ -248,10 +248,10 @@ The next table shows how the values, that are surrounded by `{}`, need to be def
 | `SCHEMA`                 | Search table schema                                                               | `qwc_geodb`      |
 | `SEARCH_TABLE_NAME`      | Search table name                                                                 | `fluesse`        |
 
-*IMPORTANT*:
+*Note*:
 In the case of several searches sharing the same database connection,
 all searche queries can be written to the same XML file. Each search
-corresponds to exactly one <entity> tag in the XML file.
+corresponds to exactly one `<entity>` tag in the XML file.
 
 After the configuration file has been created, the search must be registered in `solr`.
 In the `volumes/solr/configsets/gdi/conf/solrconfig.xml` file you have to look for
@@ -265,7 +265,7 @@ In the `volumes/solr/configsets/gdi/conf/solrconfig.xml` file you have to look f
 </requestHandler>
 ```
 
-At last, the `solr` index has to be generated:
+Finally, the `solr` index has to be generated:
 
 ```
 rm -rf volumes/solr/data/*
@@ -305,23 +305,22 @@ The `filter_word` field can be specified to activate / deactivate searches,
 if you have configure multiple searches for one theme.
 Normally `filter_word` is left empty (`""`) which results in the search always
 being active.
-But if specified (e.g. `"house_no"` then the fulltext search will only use
-the configured search, if the user prefixes his search choise with "house_no:".
+But if specified (e.g. `"house_no"`) then the fulltext search will only use
+the configured search, if the user prefixes his search text with `"house_no:"`.
 
-### Activate search for a map
+### Activate search for a theme
 
-In the last step, you only have to activate the search for a specific topic
-and give the users the necessary rights in the Admin GUI.
+As a final step, you have to configure the search for the desired themes and give the users the necessary rights in the Admin GUI.
 
-1. Add the following to a theme item in the `themesConfig`:
+1. Add the following to a theme item in `themesConfig.json`:
 
 ```json
 "searchProviders": [
     {
         "provider": "solr",
-        "default": [],
+        "default": [<SEARCH_NAME>],
         "layers": {
-            "QGIS_LAYER": "SEARCH_NAME"
+            "<layer_name>": "<SEARCH_NAME>"
         }
     }
 ]
@@ -329,8 +328,8 @@ and give the users the necessary rights in the Admin GUI.
 
 When activating a search to a theme, you can either:
 
-* Add the search name to the `default` list, where it is always active
-* Add the search name to the `layers` object, where it is only active if the QGIS layer called `QGIS_LAYER` is present on the map
+* Add the search name to the `default` list, resulting in the search always being active.
+* Add the search name to the `layers` object, resulting in the search being active only if the theme layer `<layer_name>` is present in the theme.
 
 2. Create a new resource in the Admin GUI
 
