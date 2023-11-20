@@ -186,8 +186,7 @@ In addition to the configuration described above, you can specify these addition
 
 ### Solr configuration
 
-Before the fulltext search service can be configured,
-a new solr configuration file must be created.
+Before the fulltext search service can be configured, a new solr configuration file must be created.
 This file must be created in `volumes/solr/configsets/gdi/conf/`.
 The name of the file can be chosen freely.
 Here is an example XML file:
@@ -223,7 +222,8 @@ Here is an example XML file:
                 subclass AS facet,
                 'default' AS tenant,
                 (array_to_json(array_append(ARRAY[id_name::text], id_type::text)))::text AS idfield_meta,
-                (st_asgeojson(st_envelope(geom), 0, 1)::json -> 'bbox')::text AS bbox
+                (st_asgeojson(st_envelope(geom), 0, 1)::json -> 'bbox')::text AS bbox,
+                st_srid(geom) as srid
             FROM index_base">
         </entity>
     </document>
