@@ -99,15 +99,34 @@ results = [
   }
 ]
 ```
-* If the provider does not fully handle the filter geometry internally (`handlesGeomFilter != true`), client-side filtering will be performed as follows:
-
-   1. Polygon intersection test if the result has a `geometry` field with a `Polygon` geometry
-   2. Polygon intersection test if the result has a `bbox` field
-   3. Point-in-polygon test using the results `x` and `y` point coordinates
-
-* Geometry filters are only supported using the `SearchBox` search component with `allowSearchFilters: true` passed in the `TopBar` `searchOptions`.
-
 Consult [js/SearchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js) and [static/assets/searchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js) for full examples.
+
+## Filtering <a name="filtering"></a>
+
+When using the `SearchBox` search component with `allowSearchFilters: true` passed in the `TopBar` `searchOptions`, you a filter menu will be displayed allowing to restrict the search area.
+
+If the provider does not fully handle the filter geometry internally (`handlesGeomFilter != true`), client-side filtering will be performed as follows:
+
+1. Polygon intersection test if the result has a `geometry` field with a `Polygon` geometry
+2. Polygon intersection test if the result has a `bbox` field
+3. Point-in-polygon test using the results `x` and `y` point coordinates
+
+You can also set a predefined list of filter areas by setting `searchFilterRegions` in `config.json` (or per-theme in `themesConfig.json`) as follows:
+```json
+"searchFilterRegions": [
+  {
+    "name": "<Group name>",
+    "items": [
+      {
+        "name": "<Name>",
+        "coordinates": [[x0, y0], [x1, y1], ...]
+      },
+      ...
+    ]
+  },
+  ...
+]
+ ```
 
 ## Configuring theme search providers
 

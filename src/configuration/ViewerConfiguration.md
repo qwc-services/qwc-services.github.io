@@ -67,6 +67,7 @@ All settings are optional, with fallback to the default values as documented.
 |`identifyTool`                        | The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default value: `Identify`. |
 |`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default value: `false`. |
 |`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default value: `false`. |
+|`searchFilterRegions`                 | List of predefined search filter regions, see [Search filtering](../topics/Search.md#filtering). |
 
 Note:
 
