@@ -34,7 +34,7 @@ with
   qwc-config-db-migrate:
     image: sourcepole/qwc-base-db-migrate:<version>
     volumes:
-      ./pg_service.conf:/tmp/pg_service.conf:ro
+     - ./pg_service.conf:/tmp/pg_service.conf:ro
     depends_on:
       qwc-postgis:
         condition: service_healthy
