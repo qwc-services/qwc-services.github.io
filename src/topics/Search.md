@@ -151,7 +151,7 @@ searchProviders: [
 ```
 Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes three providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), and `qgis` (see <a href="#qgis-search">below</a>).
 
-## Configuring tĥe QGIS feature search <a name="qgis-search"></a>
+## Configuring the QGIS feature search <a name="qgis-search"></a>
 
 The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2-demo-app`.
 
