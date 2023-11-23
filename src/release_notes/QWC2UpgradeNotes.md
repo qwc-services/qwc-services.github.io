@@ -57,8 +57,8 @@ Most dependencies have been updated to the latest version. The following adjustm
 * Use `createRoot` in `app.jsx`, see the [demo `app.jsx`](https://github.com/qgis/qwc2-demo-app/blob/1ec0a2ba614ddfb2bc30ab0d3db083fbcc5da524/js/app.jsx).
 * Update `uuid` imports in external components, examples:
 
-      import {v1 as uuidv1} from 'uuid';
-      import {v4 as uuidv4} from 'uuid';
+        import {v1 as uuidv1} from 'uuid';
+        import {v4 as uuidv4} from 'uuid';
 
   and then instead of `uuid.v1()` use `uuidv1()` etc.
 
