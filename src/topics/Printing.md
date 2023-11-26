@@ -91,3 +91,45 @@ To enable atlas printing in QWC2, configure the QGIS project as follows:
 - In the Project properties &rarr; QGIS Server, set `Maximum features for Atlas print requests` to the desired value.
 
 QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.
+
+## Layout templates <a name="layout-templates"></a>
+
+The [QGIS Server print templates plugin](https://github.com/qwc-services/qwc-qgis-server-plugins) allows providing a common set of print layouts to projects to avoid having to manage potentially identical print layouts multiple times in the individual projects.
+
+To configure it in `qwc-docker`, proceed as follows:
+
+* Download the [QGIS Server print templates plugin](https://github.com/qwc-services/qwc-qgis-server-plugins), i.e. to `volumes/qgis-server-plugins/print_templates`, choose a print layout folder (i.e. `volumes/print-layouts`) and configure the `qwc-qgis-server` container as follows:
+
+```yml
+  qwc-qgis-server:
+    image: docker.io/sourcepole/qwc-qgis-server:<TAG>
+    environment:
+      FCGID_EXTRA_ENV: 'PRINT_LAYOUT_DIR'
+      PRINT_LAYOUT_DIR: '/layouts'
+    volumes:
+      - ./volumes/qgis-server-plugins/print_templates:/usr/share/qgis/python/plugins/print_templates:ro
+      - ./volumes/print-layouts:/layouts:ro
+    ...
+```
+
+* Mount the print layout folder also into the config generator container:
+
+```yml
+qwc-config-service:
+    image: docker.io/sourcepole/qwc-config-generator:<TAG>
+    volumes:
+      - ./volumes/print-layouts:/layouts:ro
+      ...
+```
+
+* Extend the config generator configuration in `tenantConfig.json` by specifying the location of the print layouts dir:
+
+```json
+{
+  "config": {
+    "qgis_print_layouts_dir": "/layouts"
+    ...
+  }
+  ...
+}
+```
