@@ -32,3 +32,6 @@ theme:
     include_homepage_in_sidebar: true
 extra_css:
     - css/custom.css
+markdown_extensions:
+  - toc:
+      permalink: true
