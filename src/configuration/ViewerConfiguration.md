@@ -343,7 +343,7 @@ When adding or modifying translations at QWC2 components level, please contribut
 
 ### Selectively overriding translation strings
 
-Occasionally, it is desireable to selectively override specific translation strinsg. While one can modify the full translation file as described above, especially when using the `qwc-map-viewer-demo` docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).
+Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the `qwc-map-viewer-demo` docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).
 
 To do this:
 
