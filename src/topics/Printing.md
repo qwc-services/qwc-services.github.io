@@ -16,7 +16,9 @@ Similarly, you can limit the available print resolutions by setting `printResolu
 
 External WMS layers are automatically printed if the [Print plugin config option](../references/qwc2_plugins/#print) `printExternalLayers` is `true` (default). Note that printing external `WMTS` layers is currently not supported by the QGIS Server.
 
-You can enable the option to generate a GeoPDF by setting the the Print plugin config option `allowGeoPdfExport` to `true`. *Note:* This is only supported on QGIS Server 3.32 and newer.
+You can enable the option to generate a GeoPDF by setting the Print plugin config option `allowGeoPdfExport` to `true`. *Note:* This is only supported on QGIS Server 3.32 and newer.
+
+You can select output format for printing layout. Default values are `application/pdf`, `image/jpeg`, `image/png` and `image/svg`. You can restrict formats to one or more of them by setting the Print plugin config option `formats` to an array of these formats. See [QGIS Server documentation](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getprint-format) for WMS GetPrint supported formats.
 
 Some additional tasks include:
 
