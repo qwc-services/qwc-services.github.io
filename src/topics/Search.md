@@ -155,6 +155,8 @@ Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) 
 
 The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2-demo-app`.
 
+*Note*: Make sure the QGIS Project is configured to return geometries with the feature info responses (`Project` &rarr; `Properties` &rarr; `QGIS Server` &rarr; `Add geometry to feature response`).
+
 In it's simples form, you can configure the theme search provider entry as follows:
 
 ```json
