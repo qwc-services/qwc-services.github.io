@@ -316,7 +316,7 @@ This section gives an overview of the common tasks related to the QWC2 translati
 
 By default, QWC2 will attempt to load the translation matching your browser language. Alternatively, you can explicitly specify the language by adding the `lang=<lang>` query parameter to the application URL, i.e. `lang=de-CH`.
 
-The `Settings` plugin furthermore allows graphically switching the language within QWC2.
+The [`Settings`](../references/qwc2_plugins.md#settings) furthermore allows graphically switching the language within QWC2, with the list of available languages configured via the `languages` plugin configuration property.
 
 ### Adding and modify translations
 
