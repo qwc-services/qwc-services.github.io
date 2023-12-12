@@ -239,13 +239,15 @@ The simplest way to define an external layer is to set the "Data Url" for a laye
 ```text
 wms:<service_url>?<options>#<layername>
 wmts:<capabilities_url>?<options>#<layername>
+mvt:<tile_ur>|<style_url>
 ```
 For instance:
 ```text
 wms:http://wms.geo.admin.ch?tiled=false&infoFormat=application/geojson#ch.are.bauzonen
 wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml#ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill
+mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.bev.gv.at/styles/kataster/style_vermv.json
 ```
-*Note:* Support for WMTS in Data Url is currently only implemented when using `qwc-docker`.
+*Note:* Support for WMTS/MVT in Data Url is currently only implemented when using `qwc-docker`.
 
 *Note:* You can pass parameters which control the behaviour of the WMS client in QGIS Server by prefexing the parameters with `extwms.` when the layer is requested by QGIS Server, i.e. when printing. Example to override the step width/heigth of the QGIS WMS Client:
 ```text
