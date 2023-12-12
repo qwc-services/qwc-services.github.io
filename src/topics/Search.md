@@ -83,7 +83,7 @@ results = [
         x: x,                             // X coordinate of result
         y: y,                             // Y coordinate of result
         crs: crs,                         // CRS of result coordinates and bbox
-        bbox: [xmin, ymin, xmax, ymax]    // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
+        bbox: [xmin, ymin, xmax, ymax],   // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
         geometry: <GeoJSON geometry>      // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
       },
       {                                    // Theme layer search result (advanced):
