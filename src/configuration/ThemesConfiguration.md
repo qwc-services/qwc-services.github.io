@@ -239,7 +239,7 @@ The simplest way to define an external layer is to set the "Data Url" for a laye
 ```text
 wms:<service_url>?<options>#<layername>
 wmts:<capabilities_url>?<options>#<layername>
-mvt:<tile_ur>|<style_url>
+mvt:<tile_url>|<style_url>
 ```
 For instance:
 ```text
