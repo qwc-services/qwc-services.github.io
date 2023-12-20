@@ -45,6 +45,7 @@ All settings are optional, with fallback to the default values as documented.
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
 |`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see `qwc2/utils/MiscUtils.js`. |
 |`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. |
+
 ### Global settings, overridable per theme<a name="theme-overridable-settings"></a>
 
 The following options can be specified globally, and also overriden per theme, see [`themesConfig.json`](ThemesConfiguration.md).
@@ -68,11 +69,33 @@ All settings are optional, with fallback to the default values as documented.
 |`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default value: `false`. |
 |`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default value: `false`. |
 |`searchFilterRegions`                 | List of predefined search filter regions, see [Search filtering](../topics/Search.md#filtering). |
+|`startupTask`                         | Task to automatically start when switching to the theme, in the format `{key: "<Task>", "mode": "<Mode>"}`. Takes precedence over the global `startupTask`. Note that the task whenever switching to the theme, not only on application start. |
 
 Note:
 
 - The layer tree supports re-ordering layers via drag-and-drop if `allowReorderingLayers = true` *and either* `preventSplittingGroupsWhenReordering = true` *or* `flattenLayerTreeGroups = true`.
 - If `preserveExtentOnThemeSwitch = true`, the current extent is preserved if it is within the new theme extent and if the current theme map projection is equal to the new theme projection. If `preserveExtentOnThemeSwitch = "force"`, the current extent is preserved regardless of whether it is within the new theme extent, but the current and new theme map projections must still match.
+
+### Separate `mobile` / `desktop` global settings
+
+You can specify the global settings separately for `mobile` and `desktop` by setting these in a corresponding toplevel section, i.e.:
+
+```js
+{
+  "<prop>": "<value>", // This property applies for both mobile and desktop
+   ...
+  "mobile": {
+    "<prop>: "<value>", // This property applies only for mobile
+    ...
+  },
+  "desktop": {
+    "<prop>: "<value>", // This property applies only for desktop
+    ...
+  }
+}
+```
+
+You can also specify separate `mobile` and `desktop` sections in the `config` block of a theme item.
 
 ### URLs of external services
 
