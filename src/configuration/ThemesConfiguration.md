@@ -402,13 +402,14 @@ Some minimal examples of supported background layers:
   }
 ```
 
-* *VectorTiles*: (note: if the tile projection is not `EPSG:3857`, you need to specifiy `projection` and `tileGridConfig`)
+* *VectorTiles*: (note: if the tile projection is not `EPSG:3857`, you need to specifiy `projection` and `tileGridConfig`. If labels are cropped you could also set `declutter` to `true`)
 ```json
   {
     "name": "mvt_example",
     "type": "mvt",
     "url": "http://foobar.baz/tileset/{z}/{x}/{y}.pbf",
     "style": "http://foobar.baz/style.json",
+    "declutter": false,
     "projection": "EPSG:XXXX",
     "tileGridConfig": {
       "origin": [<x>, <y>],
