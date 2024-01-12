@@ -55,10 +55,10 @@ qwc-services also provides the following enterprise relevant functionalities:
 
 * [Developer Quickstart](QuickStart.md)
 * [User guide](UserGuide.md)
-* Some public viewers: [Demo](https://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [qgisweb.oslandia.net](https://qgisweb.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
+* Some public viewers: [Demo](https://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [Oslandia](https://qgis.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
 
 ## Support
 
 * Community support: [Github](https://github.com/qgis/qwc2-demo-app/issues)
-* Commercial Support: [Sourcepole](https://www.sourcepole.com/) and other companies.
+* Commercial Support: [Sourcepole](https://www.sourcepole.com/), [Oslandia](https://oslandia.com/) and other companies.
 * [Improve this web site](https://github.com/qwc-services/qwc-services.github.io/)
