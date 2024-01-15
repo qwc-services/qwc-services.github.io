@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Snapping - QWC2 - 2024.01.15-master</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Snapping";
+        var mkdocs_page_input_path = "topics/Snapping.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.01.15-master
+        </a>
+        <div class="version">
+          {'provider': 'mike', 'default': 'master'}
+        </div><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Snapping</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2024.01.15-master</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC2 &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Snapping</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="snapping">Snapping<a class="headerlink" href="#snapping" title="Permanent link">&para;</a></h1>
+<p>QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). To enable it, make sure the <code>SnappingSupport</code> plugin is enabled in <code>appConfig.js</code> (see the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>). Then, for each theme for which you want snapping to be available, you can add a <code>snapping</code> block to your theme item in <code>themesConfig.json</code> as follows:</p>
+<pre><code class="language-json">...
+&quot;snapping&quot;: {
+  &quot;snaplayers&quot;: [
+    {
+      &quot;name&quot;: &quot;&lt;layername&gt;&quot;,
+      &quot;min&quot;: &lt;min_scale&gt;,
+      &quot;max&quot;: &lt;max_scale&gt;
+    }
+  ],
+  &quot;featureCount&quot;: &lt;feature_count&gt;,
+  &quot;wfsMaxScale&quot;: &lt;wfs_max_scale&gt;
+}
+...
+</code></pre>
+<p>where:</p>
+<ul>
+<li><code>layername</code> is the name of the theme sublayer from which to retreive the snapping geometries.</li>
+<li><code>min</code> is the minimum scale denominator (inclusive) from which this layer should be used for snapping.</li>
+<li><code>max</code> is the maximum scale denominator (exclusive) up to which this layer should be used for snapping.</li>
+<li><code>feature_count</code> is the maximum number of snapping geometries to retreive for the current map extent (default: 500).</li>
+<li><code>wfs_max_scale</code> is the maximum scale denominator (exclusive) up to which loaded WFS layers should be used for snapping.</li>
+</ul>
+<p><em>Note</em>: Snapping works by querying the geometries of all snapping layers inside the scale range via WMS GetFeatureInfo and refreshing the geometries every time the map extent changes. Therefore, it is recommended to ensure the geometry complexity of the snap layers is appropriate for the specified scale ranges to avoid overloading the server with the GetFeatureInfo requests. Also, the QGIS project will need to be configured so that snap layers are queryable and that feature info responses contain geometries.</p>
+<p>For the <code>Redlining</code>, <code>Measure</code> and <code>Editing</code> plugins, the availability of snapping can be independently configured:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;:&quot;&lt;Redlining|Measure|Editing&gt;&quot;,
+  &quot;cfg&quot;: {
+    &quot;snapping&quot;: &lt;true|false&gt;,
+    &quot;snappingActive&quot;: &lt;true|false&gt;,
+    ...
+  }
+}
+</code></pre>
+<p>where:</p>
+<ul>
+<li><code>snapping</code> determines whether snapping is available for the specified plugin</li>
+<li><code>snappingActive</code> determines whether snapping is active by default for the specified plugin</li>
+</ul>
+<p>When snapping is available, a small toolbar appears on the bottom border of the map with the possibility to toggle snapping.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Editing/" class="btn btn-neutral float-left" title="Editing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../TimeManager/" class="btn btn-neutral float-right" title="Temporal layers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Editing/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../TimeManager/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
