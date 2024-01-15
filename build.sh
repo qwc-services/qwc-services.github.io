@@ -44,7 +44,7 @@ echo "* Clean previous HTML build..."
 rm -rf site
 
 echo "* Building HTML..."
-mike deploy -F qwc2.yml $branch
+mike deploy -F qwc2.yml --push $branch
 
 # cleanup venv
 echo "* Clean venv..."

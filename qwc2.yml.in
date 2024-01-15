@@ -35,7 +35,3 @@ extra_css:
 markdown_extensions:
   - toc:
       permalink: true
-extra:
-  version:
-    provider: mike
-    default: master
