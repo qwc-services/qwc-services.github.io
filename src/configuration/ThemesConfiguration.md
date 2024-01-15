@@ -244,7 +244,7 @@ mvt:<tile_url>|<style_url>
 For instance:
 ```text
 wms:http://wms.geo.admin.ch?tiled=false&infoFormat=application/geojson#ch.are.bauzonen
-wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml#ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill
+wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml?crs=EPSG:2056#ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill
 mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.bev.gv.at/styles/kataster/style_vermv.json
 ```
 *Note:* Support for WMTS/MVT in Data Url is currently only implemented when using `qwc-docker`.
