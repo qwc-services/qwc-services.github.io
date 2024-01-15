@@ -1,6 +1,6 @@
 # Map info
 
-The map-info popup is displayed when right-clicking any position on the map.
+The map-info popup is provided by the [MapInfoTooltip](../references/qwc2_plugins.md#mapinfotooltip) plugin. It displays a popup when right-clicking any position on the map.
 
 By default, it displayes the picked coordinates.
 
