@@ -8,6 +8,7 @@
 * [qwc-elevation-service](qwc-elevation-service.md)
 * [qwc-ext-service](qwc-ext-service.md)
 * [qwc-feature-info-service](qwc-feature-info-service.md)
+* [qwc-ldap-auth](qwc-ldap-auth.md)
 * [qwc-legend-service](qwc-legend-service.md)
 * [qwc-mapinfo-service](qwc-mapinfo-service.md)
 * [qwc-map-viewer](qwc-map-viewer.md)
