@@ -1,6 +1,6 @@
 #!/bin/bash
 
-branch=master
+branch=$(git branch --show-current)
 
 echo "* Setting up venv..."
 rm -rf .venv
@@ -44,7 +44,7 @@ echo "* Clean previous HTML build..."
 rm -rf site
 
 echo "* Building HTML..."
-mkdocs build -f qwc2.yml
+mike deploy -F qwc2.yml $master
 
 # cleanup venv
 echo "* Clean venv..."
