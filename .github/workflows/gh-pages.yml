@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 2024-lts
   pull_request:
 
 jobs:
