@@ -482,6 +482,13 @@ When you are using `qwc-docker`, you can configure QWC to read the QGIS projects
 - Add a `qgisprojects` service definition for the used database to `qwc-docker/pg_service.conf`.
 - Write a theme configuration entry in `themesConfig.json` using with `"url": "/ows/pg/<schema>/<projectname>"`, where `schema` and `projectname` as as specified when saving the project in QGIS.
 
+## Using the QGZ project file format <a name="qgz-file-format"></a>
+
+You can configure `qwc-docker` to look for `qgz` project files instead of `qgs` project files as follows:
+
+- Set `qgis_project_extension` to `.qgz` in the toplevel `config` section of `tenantConfig.json`.
+- If using `qwc-docker`, set `QGIS_PROJECT_SUFFIX=qgz` in the `qwc-qgis-server` environment in `docker-compose.yml`.
+
 ## Split categorized layers
 
 When using `qwc-docker`, the `qwc-config-generator` has the ability to split a layer that has been [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) with QGIS into multiple layers and move them into a new group (the group name will be the original layer name). To activate this functionality, follow these steps:
