@@ -20,7 +20,7 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 * [Add support for tenantConfig templates](https://qwc-services.github.io/2024-lts/topics/MultiTenancy/#tenantconfig-template)
 * [Add config option for redirect to login if requesting a restricted theme](https://qwc-services.github.io/2024-lts/configuration/ResourcesPermissions/#restricted-themes)
 * [Add support for configuring projects stored in database](https://qwc-services.github.io/2024-lts/configuration/ThemesConfiguration/#projects-in-database)
-* [Add support for qgz projects]()
+* [Add support for qgz projects](https://qwc-services.github.io/2024-lts/configuration/ThemesConfiguration/#using-the-qgz-project-file-format)
 
 ### Editing
 
