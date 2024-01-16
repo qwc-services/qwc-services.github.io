@@ -88,15 +88,17 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Version history</a>
     <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../ChangeLog/">ChangeLog</a>
+                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-38b242a-01112023">Update to qwc2 submodule revision 38b242a (01.11.2023)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision 38b242a (01.11.2023) [2023-lts &rarr; 2024-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-7409372-23082023">Update to qwc2 submodule revision 7409372 (23.08.2023)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts">Update to qwc2 submodule revision 7409372 (23.08.2023) [2023-lts &rarr; 2024-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-96aaa51-09022023">Update to qwc2 submodule revision 96aaa51 (09.02.2023)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts">Update to qwc2 submodule revision 96aaa51 (09.02.2023) [2023-lts &rarr; 2024-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-7a474e3-23012023">Update to qwc2 submodule revision 7a474e3 (23.01.2023)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts">Update to qwc2 submodule revision 2c179d0 (23.01.2023) [2023-lts &rarr; 2024-lts]</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-fe063b6-13012023">Update to qwc2 submodule revision fe063b6 (13.01.2023)</a>
     </li>
@@ -153,7 +155,7 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
-<h2 id="update-to-qwc2-submodule-revision-38b242a-01112023">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/38b242a">38b242a</a> (01.11.2023)<a class="headerlink" href="#update-to-qwc2-submodule-revision-38b242a-01112023" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/38b242a">38b242a</a> (01.11.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Import svg as inline assets</strong></p>
 <p><code>qwc2/utils/FeatureStyles.js</code> now imports some SVG files as inline assets. For this to work, you need to list <code>.svg</code> in the <code>assets/inline</code> loader rules in <code>webpack.config.js</code>:</p>
 <pre><code>{
@@ -168,7 +170,7 @@
     "@babel/plugin-transform-object-rest-spread"
 ]
 </code></pre>
-<h2 id="update-to-qwc2-submodule-revision-7409372-23082023">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/7409372">7409372</a> (23.08.2023)<a class="headerlink" href="#update-to-qwc2-submodule-revision-7409372-23082023" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/7409372">7409372</a> (23.08.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
 <p><strong>MapInfoToolTip plugin instantation change</strong></p>
 <ul>
 <li>The instantation of the <code>MapInfoToolTip</code> in <code>appConfig.js</code> needs to be changed to<pre><code>MapInfoTooltipPlugin: MapInfoTooltipPlugin()
@@ -180,12 +182,12 @@
 <ul>
 <li>The window size configuration of various plugins has been uniformized to the <code>geometry</code> config prop (rather than occasionally <code>windowSize</code> before). Affected plugins are: <code>FeatureForm</code>, <code>Identify</code>, <code>LayerCatalog</code>, <code>LayerTree</code>, <code>MapLegend</code>. Please check the respective <a href="/references/qwc2_plugins/">plugin reference</a> for more details on the new format.</li>
 </ul>
-<h2 id="update-to-qwc2-submodule-revision-96aaa51-09022023">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/96aaa51">96aaa51</a> (09.02.2023)<a class="headerlink" href="#update-to-qwc2-submodule-revision-96aaa51-09022023" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/96aaa51">96aaa51</a> (09.02.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Config setting change</strong></p>
 <ul>
 <li>Geodesic measurement mode is now configured at toplevel in <code>config.json</code> via <code>geodesicMeasurements: true|false</code> rather than below <code>Map -&gt; cfg -&gt; toolsOptions -&gt; MeasurementSupport</code>.</li>
 </ul>
-<h2 id="update-to-qwc2-submodule-revision-7a474e3-23012023">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/7a474e3">7a474e3</a> (23.01.2023)<a class="headerlink" href="#update-to-qwc2-submodule-revision-7a474e3-23012023" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/2c179d0">2c179d0</a> (23.01.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Dependency update</strong></p>
 <p>Most dependencies have been updated to the latest version. The following adjustments need to be performed by hand:</p>
 <ul>
@@ -340,7 +342,7 @@ If you want to use a custom editing interface, you can still do so, passing it t
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../references/" class="btn btn-neutral float-left" title="References"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ChangeLog/" class="btn btn-neutral float-left" title="ChangeLog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../QwcDockerUpgradeNotes/" class="btn btn-neutral float-right" title="qwc-docker upgrade notes">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -364,7 +366,7 @@ If you want to use a custom editing interface, you can still do so, passing it t
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../references/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../ChangeLog/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../QwcDockerUpgradeNotes/" style="color: #fcfcfc">Next &raquo;</a></span>
