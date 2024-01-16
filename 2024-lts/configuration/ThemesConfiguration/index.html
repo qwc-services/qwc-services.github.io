@@ -78,6 +78,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#storing-projects-in-database">Storing projects in database </a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-qgz-project-file-format">Using the QGZ project file format </a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#split-categorized-layers">Split categorized layers</a>
     </li>
     </ul>
@@ -1060,6 +1062,12 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <li>Save the project to the configured database in QGIS using Project &rarr; Save To &rarr; PostgreSQL.</li>
 <li>Add a <code>qgisprojects</code> service definition for the used database to <code>qwc-docker/pg_service.conf</code>.</li>
 <li>Write a theme configuration entry in <code>themesConfig.json</code> using with <code>"url": "/ows/pg/&lt;schema&gt;/&lt;projectname&gt;"</code>, where <code>schema</code> and <code>projectname</code> as as specified when saving the project in QGIS.</li>
+</ul>
+<h2 id="using-the-qgz-project-file-format">Using the QGZ project file format <a name="qgz-file-format"></a><a class="headerlink" href="#using-the-qgz-project-file-format" title="Permanent link">&para;</a></h2>
+<p>You can configure <code>qwc-docker</code> to look for <code>qgz</code> project files instead of <code>qgs</code> project files as follows:</p>
+<ul>
+<li>Set <code>qgis_project_extension</code> to <code>.qgz</code> in the toplevel <code>config</code> section of <code>tenantConfig.json</code>.</li>
+<li>If using <code>qwc-docker</code>, set <code>QGIS_PROJECT_SUFFIX=qgz</code> in the <code>qwc-qgis-server</code> environment in <code>docker-compose.yml</code>.</li>
 </ul>
 <h2 id="split-categorized-layers">Split categorized layers<a class="headerlink" href="#split-categorized-layers" title="Permanent link">&para;</a></h2>
 <p>When using <code>qwc-docker</code>, the <code>qwc-config-generator</code> has the ability to split a layer that has been <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">classified</a> with QGIS into multiple layers and move them into a new group (the group name will be the original layer name). To activate this functionality, follow these steps:</p>
