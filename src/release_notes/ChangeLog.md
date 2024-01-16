@@ -6,7 +6,7 @@ This file lists the most important changes in QWC2 and qwc-services between LTS 
 
 ### Upgrade notes
 
-When upgrading to a 2023-lts setup, please note the entries marked with *\[2023-lts &rarr; 2024-lts\]* in the upgrade notes:
+When upgrading from a 2023-lts setup, please note the entries marked with *\[2023-lts &rarr; 2024-lts\]* in the upgrade notes:
 
 * [QWC2 upgrade notes](./QWC2UpgradeNotes.md)
 * [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
