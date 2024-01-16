@@ -22,6 +22,7 @@ nav:
             - Multi-tenancy: topics/MultiTenancy.md
         - References: references/index.md
         - Version history:
+            - ChangeLog: release_notes/ChangeLog.md
             - QWC2 upgrade notes: release_notes/QWC2UpgradeNotes.md
             - qwc-docker upgrade notes: release_notes/QwcDockerUpgradeNotes.md
         - User guide: UserGuide.md

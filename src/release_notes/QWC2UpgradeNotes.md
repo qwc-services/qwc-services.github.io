@@ -4,7 +4,7 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
-Update to qwc2 submodule revision [38b242a](https://github.com/qgis/qwc2/tree/38b242a) (01.11.2023)
+Update to qwc2 submodule revision [38b242a](https://github.com/qgis/qwc2/tree/38b242a) (01.11.2023) \[2023-lts &rarr; 2024-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Import svg as inline assets**
@@ -25,7 +25,7 @@ The `class-properties` and `object-rest-spread` proposals have been merged to th
         "@babel/plugin-transform-object-rest-spread"
     ]
 
-Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/7409372) (23.08.2023)
+Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/7409372) (23.08.2023) \[2023-lts &rarr; 2024-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **MapInfoToolTip plugin instantation change**
@@ -40,14 +40,14 @@ Update to qwc2 submodule revision [7409372](https://github.com/qgis/qwc2/tree/74
 
 * The window size configuration of various plugins has been uniformized to the `geometry` config prop (rather than occasionally `windowSize` before). Affected plugins are: `FeatureForm`, `Identify`, `LayerCatalog`, `LayerTree`, `MapLegend`. Please check the respective [plugin reference](/references/qwc2_plugins/) for more details on the new format.
 
-Update to qwc2 submodule revision [96aaa51](https://github.com/qgis/qwc2/tree/96aaa51) (09.02.2023)
+Update to qwc2 submodule revision [96aaa51](https://github.com/qgis/qwc2/tree/96aaa51) (09.02.2023) \[2023-lts &rarr; 2024-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Config setting change**
 
 * Geodesic measurement mode is now configured at toplevel in `config.json` via `geodesicMeasurements: true|false` rather than below `Map -> cfg -> toolsOptions -> MeasurementSupport`.
 
-Update to qwc2 submodule revision [7a474e3](https://github.com/qgis/qwc2/tree/7a474e3) (23.01.2023)
+Update to qwc2 submodule revision [2c179d0](https://github.com/qgis/qwc2/tree/2c179d0) (23.01.2023) \[2023-lts &rarr; 2024-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Dependency update**

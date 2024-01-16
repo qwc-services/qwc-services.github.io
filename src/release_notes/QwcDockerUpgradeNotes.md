@@ -1,4 +1,4 @@
-# 2023.10.24 qwc-base-db rework
+# 2023.10.24 qwc-base-db rework \[2023-lts &rarr; 2024-lts\]
 
 As of 2023.10.24 the QWC base DB image has been reworked as follows:
 
