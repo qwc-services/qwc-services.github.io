@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Legend graphics - QWC2 - 2024.01.15-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Legend graphics";
+        var mkdocs_page_input_path = "topics/LegendGraphics.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.01.15-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Legend graphics</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#customizing-the-getlegendgraphics-request">Customizing the GetLegendGraphics request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#providing-custom-legend-images">Providing custom legend images</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2024.01.15-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC2 &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Legend graphics</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="legend-graphics">Legend graphics<a class="headerlink" href="#legend-graphics" title="Permanent link">&para;</a></h1>
+<p>By default, QWC2 will obtain the legend graphics of a layer from QGIS Server.</p>
+<h2 id="customizing-the-getlegendgraphics-request">Customizing the <code>GetLegendGraphics</code> request<a class="headerlink" href="#customizing-the-getlegendgraphics-request" title="Permanent link">&para;</a></h2>
+<p>You can customize the <code>GetLegendGraphics</code> request by specifying additional query parameters in via <code>extraLegendParameters</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration block</a>. The list of supported query parameters is documented in the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getlegendgraphics">QGIS Server documentation</a>.</p>
+<h2 id="providing-custom-legend-images">Providing custom legend images<a class="headerlink" href="#providing-custom-legend-images" title="Permanent link">&para;</a></h2>
+<p>You can provide custom legend images by <a href="../../configuration/ServiceConfiguration/#enabling-services">enabling</a> the <code>qwc-legend-service</code>.</p>
+<p>Configure <code>legend_images_path</code> in the <code>legend</code> service configuration in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;legend&quot;,
+  &quot;config&quot;: {
+    &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
+    &quot;legend_images_path&quot;: &quot;/legends/&quot;
+  }
+}
+</code></pre>
+<p><em>Note:</em> The legend folder needs to be mounted into the <code>qwc-legend-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-legend-service:
+    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/legends:/legends
+</code></pre>
+<p>Then, legend images will be searched for in this order (the first one found is used):</p>
+<ul>
+<li>A <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;&lt;suffix&gt;.png</code> file, where</li>
+<li><code>service_name</code> is the name of the WMS service</li>
+<li><code>layername</code> is the WMS layer name</li>
+<li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC2 to the legend service depending on the requested image type.</li>
+<li>A <code>&lt;legend_images_path&gt;/default&lt;suffix&gt;.png</code> file for a default legend image.</li>
+<li>A <code>&lt;legend_images_path&gt;/&lt;legend_image&gt;</code> file with <code>legend_image</code> as specified for the desired layer in the <code>legend</code> service configuration, for example:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;legend&quot;,
+  &quot;config&quot;: ...,
+  &quot;resources&quot;: {
+    &quot;wms_services&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;service name&gt;&quot;,
+        &quot;root_layer&quot;: {
+          &quot;name&quot;: &quot;&lt;root_layer_name&gt;&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;&lt;layer_name&gt;&quot;,
+              &quot;legend_image&quot;: &quot;edit_points.png&quot;
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../TimeManager/" class="btn btn-neutral float-left" title="Temporal layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Interfacing/" class="btn btn-neutral float-right" title="Interfacing with applications">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../TimeManager/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Interfacing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
