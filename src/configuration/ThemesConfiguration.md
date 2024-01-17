@@ -147,6 +147,7 @@ The format of the theme definitions is as follows:
 | `⁣  {"s": <Scale1>, "x": <Width1>, "y": <Height1>},` | Keep this list sorted in descending order by scale denominator.           |
 | `⁣  {"s": <Scale2>, "x": <Width2>, "y": <Height2>}`  | In this example, `{x: <Width2>, y: <Height2>}` will be used for `<Scale1> > Scale >= <Scale2>`. |
 | `],`                                            |                                                                                  |
+| `"defaultPrintLayout": "<ID>",`                 | Optional, name print layout to select by default.                                |
 | `"printLabelForSearchResult": "<ID>",`          | Optional, an ID of a print layout label to which the current search result text (if any) will be written to when printing. |
 | `"printLabelForAttribution": "<ID>",`           | Optional, an ID of a print layout label to which the current attribution text (if any) will be written to when printing. |
 | `"printLabelConfig": {`                         | Optional, configuration of the text input fields for print layout labels.        |
