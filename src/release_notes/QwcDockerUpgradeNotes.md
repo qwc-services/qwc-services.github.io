@@ -36,8 +36,7 @@ with
     volumes:
      - ./pg_service.conf:/tmp/pg_service.conf:ro
     depends_on:
-      qwc-postgis:
-        condition: service_healthy
+     - qwc-postgis
 ```
 
 in your `docker-compose.yml`.
