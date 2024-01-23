@@ -69,6 +69,7 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 ### Search
 
 * [New QGIS feature search provider](https://qwc-services.github.io/2024-lts/topics/Search/#configuring-the-qgis-feature-search)
+* Theme layer search (see [`searchThemeLayers`](https://qwc-services.github.io/2024-lts/configuration/ViewerConfiguration/#global-settings-overridable-per-theme))
 * [Provider/geometry filtering to search box](https://qwc-services.github.io/2024-lts/topics/Search/#filtering)
 * Allow configuring search highlight style (see [`searchOptions.highlightStyle`](https://qwc-services.github.io/2024-lts/references/qwc2_plugins/#topbar))
 
