@@ -22,7 +22,11 @@ echo "* [QWC2 plugins](qwc2_plugins.md)" >> src/references/index.md
 
 mkdir -p tmp
 echo "* Downloading schema versions..."
-wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/schema-versions.json
+if [ "$branch" == "2024-lts" ]; then
+    wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/schema-versions.json
+else
+    wget -q -O tmp/schema-versions.json https://raw.githubusercontent.com/qwc-services/qwc-config-generator/${branch}/src/schema-versions.json
+fi
 
 for schemaUrl in \
     https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/qwc-config-generator.json \
