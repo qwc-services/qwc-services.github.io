@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.01.22-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.01.29-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.01.22-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.01.29-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -108,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.01.22-master</a>
+          <a href="../..">QWC2 - 2024.01.29-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -137,7 +137,6 @@
 <li><a href="#editing">Editing</a></li>
 <li><a href="#featureform">FeatureForm</a></li>
 <li><a href="#featuresearch">FeatureSearch</a></li>
-<li><a href="#heightprofileprintdialog">HeightProfilePrintDialog</a></li>
 <li><a href="#heightprofile">HeightProfile</a></li>
 <li><a href="#help">Help</a></li>
 <li><a href="#homebutton">HomeButton</a></li>
@@ -155,6 +154,7 @@
 <li><a href="#maptip">MapTip</a></li>
 <li><a href="#measure">Measure</a></li>
 <li><a href="#newspopup">NewsPopup</a></li>
+<li><a href="#portal">Portal</a></li>
 <li><a href="#print">Print</a></li>
 <li><a href="#processnotifications">ProcessNotifications</a></li>
 <li><a href="#rasterexport">RasterExport</a></li>
@@ -1400,6 +1400,50 @@ revision is published (specified via newsRev prop).</p>
 <td>newsRev</td>
 <td><code>string</code></td>
 <td>Revision of the document.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="portal">Portal<a name="portal"></a><a class="headerlink" href="#portal" title="Permanent link">&para;</a></h2>
+<p>Displays a landing lage, consisting of a full-screen theme switcher and a configurable menu.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bottomBarLinks</td>
+<td><code>[{</code><br /><code>href: string,</code><br /><code>label: string,</code><br /><code>labelmsgid: string,</code><br /><code>target: string,</code><br /><code>}]</code></td>
+<td>Links to show in the portal bottom bar</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logo</td>
+<td><code>string</code></td>
+<td>Name of a logo image below assets/img.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>menuItems</td>
+<td><code>array</code></td>
+<td>Portal menu items, in the same format as the TopBar menu items.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>showMenuOnStartup</td>
+<td><code>bool</code></td>
+<td>Whether the menu should be visible on startup.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>topBarText</td>
+<td><code>string</code></td>
+<td>Portal title text to show in the top bar.</td>
 <td><code>undefined</code></td>
 </tr>
 </tbody>
