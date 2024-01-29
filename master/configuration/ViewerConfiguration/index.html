@@ -505,6 +505,14 @@ All settings are optional, with fallback to the default values as documented.</p
 <td>Optional, allows specifying a whitelist of theme names or titles for which the entry should be visible.</td>
 </tr>
 <tr>
+<td><code>⁣  "themeFlagBlacklist": ["&lt;flag1&gt;", ...],</code></td>
+<td>Optional, allows specifying a blacklist of <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a> for which the entry should not be visible.</td>
+</tr>
+<tr>
+<td><code>⁣  "themeFlagWhitelist": ["&lt;flag1&gt;", ...],</code></td>
+<td>Optional, allows specifying a whitelist of <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a> for which the entry should be visible.</td>
+</tr>
+<tr>
 <td><code>⁣  "mode": "&lt;mode&gt;",</code></td>
 <td>Optional, depending on the plugin, a mode can be configured to launch the plugin directly in a specific mode. For instance, the <code>Measure</code> plugin supports specifying the measurement mode (<code>Point</code>, <code>LineString</code>, <code>Polygon</code>).</td>
 </tr>
@@ -523,6 +531,7 @@ All settings are optional, with fallback to the default values as documented.</p
 </tbody>
 </table>
 <p><em>Note:</em> The built-in icons are those located in <a href="https://github.com/qgis/qwc2/tree/master/icons"><code>qwc2-app/qwc2/icons</code></a> and in <code>qwc2-app/icons</code>. The built-in icon names are the respective file names, without <code>.svg</code> extension.</p>
+<p>Also the map buttons (<a href="../../references/qwc2_plugins/#locatebutton">LocationButton</a>, <a href="../../references/qwc2_plugins/#homebutton">HomeButton</a>, <a href="../../references/qwc2_plugins/#taskbutton">TaskButton</a>, <a href="../../references/qwc2_plugins/#zoombutton">ZoomButton</a>) support <code>themeFlagBlacklist</code> and <code>themeFlagWhitelist</code> for controlling the visibility based on the <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a>.</p>
 <p><strong>Opening external websites</strong><a name="opening-external-websites"></a></p>
 <p>As a special case, entries for opening external URLs can be defined as follows:</p>
 <table>
