@@ -141,12 +141,16 @@ A particularly interesting aspect is the configuration of the entries in the app
 |`⁣  "icon": "<icon>",`                       | The icon of the entry, either a built-in icon name (see below), or `:/<path_to_asset>` containing the path relative to `assetsPath` of an asset image. |
 |`⁣  "themeBlacklist": ["<themename>", ...],` | Optional, allows specifying a blacklist of theme names or titles for which the entry should not be visible. |
 |`⁣  "themeWhitelist": ["<themename>", ...],` | Optional, allows specifying a whitelist of theme names or titles for which the entry should be visible. |
+|`⁣  "themeFlagBlacklist": ["<flag1>", ...],` | Optional, allows specifying a blacklist of [theme flags](ThemesConfiguration.md#manual-theme-configuration) for which the entry should not be visible. |
+|`⁣  "themeFlagWhitelist": ["<flag1>", ...],` | Optional, allows specifying a whitelist of [theme flags](ThemesConfiguration.md#manual-theme-configuration) for which the entry should be visible. |
 |`⁣  "mode": "<mode>",`                       | Optional, depending on the plugin, a mode can be configured to launch the plugin directly in a specific mode. For instance, the `Measure` plugin supports specifying the measurement mode (`Point`, `LineString`, `Polygon`). |
 |`⁣  "requireAuth": "<true|false>",`          | Optional, the entry is only visible when user is logged-in.                       |
 |`⁣  "shortcut": "<shortcut>"`                | Optional, keyboard shortcut which triggers the entry, i.e. `"alt+shift+a"`.       |
 |`}`                                         |                                                                                   |
 
 *Note:* The built-in icons are those located in [`qwc2-app/qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons) and in `qwc2-app/icons`. The built-in icon names are the respective file names, without `.svg` extension.
+
+Also the map buttons ([LocationButton](../references/qwc2_plugins.md#locatebutton), [HomeButton](../references/qwc2_plugins.md#homebutton), [TaskButton](../references/qwc2_plugins.md#taskbutton), [ZoomButton](../references/qwc2_plugins.md#zoombutton)) support `themeFlagBlacklist` and `themeFlagWhitelist` for controlling the visibility based on the [theme flags](ThemesConfiguration.md#manual-theme-configuration).
 
 **Opening external websites**<a name="opening-external-websites"></a>
 

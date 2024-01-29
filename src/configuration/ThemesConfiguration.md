@@ -200,7 +200,8 @@ The format of the theme definitions is as follows:
 | `"extraPrintLayers": ["<layername>", ...],`     | Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC2 LayerTree. |
 | `"printLabelBlacklist": ["<LabelId>", ...]`     | Optional, list of composer label ids to not expose in the print dialog.          |
 | `"editConfig": "<editConfig.json>"`             | Optional, object or path to a filename containing the editing configuration for the theme, see [Editing](#editing). |
-| `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](../topics/Snapping.md). |                   |
+| `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](../topics/Snapping.md).         |
+| `"flags": ["<flag1>", "<flag2>", ...],`         | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"config": {`                                   | Optional, per-theme configuration entries which override the global entries in `config.json`, see [Viewer Configuration](ViewerConfiguration.md).|
 | `⁣  "allowRemovingThemeLayers": <boolean>`       | See [`config.json`](ViewerConfiguration.md#theme-overridable-settings) for which settings can be specified here. |
 | `⁣  ...`                                         |                                                                                  |
