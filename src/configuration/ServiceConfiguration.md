@@ -189,6 +189,6 @@ Two versioning schemes are available:
 
 You can always check the available tags on dockerhub, for example at [https://hub.docker.com/r/sourcepole/qwc-config-generator](https://hub.docker.com/r/sourcepole/qwc-config-generator).
 
-In particular, to special tags exist, `latest` and `latest-lts` which always refer to the latest available "development" and long term support versions respectively. Note however that using these tags will result in docker automatically pulling new versions when the application is launched, which may be undesired.
+In particular, to special tags exist, `latest`, `latest-lts` and `latest-YYYY-lts` (i.e. `latest-2024-lts`) which always refer to the latest available "development" and long term support versions respectively. Note however that using these tags will result in docker automatically pulling new versions when the application is launched, which may be undesired.
 
 The [`qwc-docker` Upgrade Notes](../release_notes/QwcDockerUpgradeNotes.md) documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.
