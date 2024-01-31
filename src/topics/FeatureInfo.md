@@ -141,7 +141,7 @@ When using the `Identify` plugin and the `qwc-feature-info-service`, you can que
 The `qwc-feature-info-service` supports switching the runtime locale by setting the `LOCALE` environment variable, i.e.:
 ```yml
   qwc-feature-info-service:
-    image: docker.io/sourcepole/qwc-feature-info-service:latest-lts
+    image: docker.io/sourcepole/qwc-feature-info-service:vXXXX.XX.XX
     environment:
       <<: *qwc-service-variables
       SERVICE_MOUNTPOINT: '/api/v1/featureinfo'
