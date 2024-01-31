@@ -178,7 +178,7 @@ cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 <pre><code class="language-bash">docker-compose up
 </code></pre>
 <p><em>Note</em>: If using the newer <code>docker compose</code> project, you need to write <code>docker compose up</code> instead of <code>docker-compose up</code> (and similarly for other <code>docker-compose</code> calls).</p>
-<p><em>Note</em>: The sample <code>docker-compose-example.yml</code> uses <code>latest-lts</code> as image versions. It is recommended to replace these with a fix version tag when deploying the application to prevent docker from automatically pulling new versions when the application is launched, which may be undesired. See <a href="../configuration/ServiceConfiguration/#upgrading">Keeping QWC services up to date</a>.</p>
+<p><em>Note</em>: The sample <code>docker-compose-example.yml</code> uses <code>latest-YYYY-lts</code> as image versions. It is recommended to replace these with a fix version tag when deploying the application to prevent docker from automatically pulling new versions when the application is launched, which may be undesired. See <a href="../configuration/ServiceConfiguration/#upgrading">Keeping QWC services up to date</a>.</p>
 <p>The map viewer will run on <a href="http://localhost:8088/">http://localhost:8088/</a>.</p>
 <p>The admin GUI will run on <a href="http://localhost:8088/qwc_admin">http://localhost:8088/qwc_admin</a> (default admin credentials: username <code>admin</code>, password <code>admin</code>, requires password change on first login).</p>
 <p>Next steps:</p>
