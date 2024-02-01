@@ -4,6 +4,13 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [d04e5fd](https://github.com/qgis/qwc2/tree/d04e5fd) (01.02.2024)
+---------------------------------------------------------------------------------------------------
+
+**Setting name change**
+
+The previously incorrectly named `HeightProfile` setting `heighProfilePrecision` has been renamed to `heightProfilePrecision`.
+
 Update to qwc2 submodule revision [38b242a](https://github.com/qgis/qwc2/tree/38b242a) (01.11.2023) \[2023-lts &rarr; 2024-lts\]
 ---------------------------------------------------------------------------------------------------
 
