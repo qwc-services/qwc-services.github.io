@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resources and permissions - QWC2 - 2024.01.31-master</title>
+    <title>Resources and permissions - QWC2 - 2024.02.01-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.01.31-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.01-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.01.31-master</a>
+          <a href="../..">QWC2 - 2024.02.01-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -175,7 +175,12 @@
 (<code>data</code> and <code>write=False</code> is equivalent to <code>data_read</code>; <code>data</code> and <code>write=True</code> is equivalent to all CRUD resources combined).</p>
 <p>The <code>viewer</code> resource defines a custom viewer configuration for the map viewer (see <a href="https://github.com/qwc-services/qwc-map-viewer#custom-viewer-configurations">Custom viewer configurations</a>).</p>
 <p>The <code>viewer_task</code> resource defines viewer functionalities (e.g. printing or raster export) that can be restricted or permitted.
-Their <code>name</code> (e.g. <code>RasterExport</code>) corresponds to the <code>key</code> in <code>menuItems</code> and <code>toolbarItems</code> in the QWC2 <code>config.json</code>. Restricted viewer task items are then removed from the menu and toolbar in the map viewer. Viewer tasks not explicitly added as resources are kept unchanged from the <code>config.json</code>.</p>
+Their <code>name</code> (e.g. <code>RasterExport</code>) will be matched against:
+- The <code>key</code> in <code>menuItems</code> and <code>toolbarItems</code> in the QWC2 <code>config.json</code>.
+- The <code>name</code> of a plugin entry in <code>config.json</code>.
+- The <code>task</code> configuration property of a <code>TaskButton</code> plugin entry in <code>config.json</code></p>
+<p><em>Note</em>: You can restrict tasks entires which specify a mode (i.e. <code>{"key": "Measure", "mode": "LineString"}</code>) by concatenating the task key and the mode as the <code>viewer_task</code> resource name, i.e. <code>MeasureLineString</code>.</p>
+<p>Restricted viewer task items are then removed from the menu and toolbar in the map viewer. Viewer tasks not explicitly added as resources are kept unchanged from the <code>config.json</code>.</p>
 <p><em>Note</em>: The resource types, i.e. for custom QWC2 plugins, can be extended by inserting new types into the <code>qwc_config.resource_types</code> table.
 These can be queried, e.g. in a custom service, by using <code>PermissionClient::resource_permissions()</code> or
 <code>PermissionClient::resource_restrictions()</code> from <a href="https://github.com/qwc-services/qwc-services-core">QWC Services Core</a>.</p>
