@@ -493,14 +493,24 @@ You can configure `qwc-docker` to look for `qgz` project files instead of `qgs` 
 
 ## Split categorized layers
 
-When using `qwc-docker`, the `qwc-config-generator` has the ability to split a layer that has been [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) with QGIS into multiple layers and move them into a new group (the group name will be the original layer name). To activate this functionality, follow these steps:
+By default, symbol categories of a [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) layer won't be exposed via WMS and hence in QWC2.
 
-1. Place the projects whose layers you want to split below `qwc-docker/volumes/config-in/<tenant>/qgis_projects`.
+To expose symbol categories as separate layers via WMS, you can use the [split_categorized](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized) QGIS Server plugin.
 
-2. In the topolevel `config` in `qwc-docker/volumes/config-in/<tenant>/tenantConfig.json`, ensure `qgis_projects_gen_base_dir` is set and valid, and set `"split_categorized_layers": true`.
+To configure the plugin in `qwc-docker`, proceed as follows:
 
-3. For all layers that you want to split, create the [variable](https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/vector_properties.html#variables-properties) `convert_categorized_layer` and set it to `true`.
+* Download the [split_categorized](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized), i.e. to `volumes/qgis-server-plugins/split_categorized` and configure the `qwc-qgis-server` container as follows:
 
-4. Generate the [themes configuration](#generating-theme-configuration). The `qwc-config-generator` will process the projects and write the modified projects to `qgis_projects_gen_base_dir`.
+```yml
+  qwc-qgis-server:
+    image: docker.io/sourcepole/qwc-qgis-server:<TAG>
+    volumes:
+      - ./volumes/qgis-server-plugins/split_categorized:/usr/share/qgis/python/plugins/split_categorized:ro
+    ...
+```
 
-*Note:* Make sure you are using `qwc-config-generator:v<version>` and not `qwc-config-generator:v<version>-noqgis`.
+* For all layers that you want to split, create the [variable](https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/vector_properties.html#variables-properties) `convert_categorized_layer` and set it to `true`.
+
+* Generate the [themes configuration](#generating-theme-configuration).
+
+*Note:* `ELSE` symbol rules are currently unsupported, respectively will display the entire layer contents.
