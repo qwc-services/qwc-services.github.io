@@ -128,7 +128,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="20231024-qwc-base-db-rework-2023-lts-2024-lts">2023.10.24 qwc-base-db rework [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#20231024-qwc-base-db-rework-2023-lts-2024-lts" title="Permanent link">&para;</a></h1>
+                <h1 id="split-categorized-layers-functionality-rewritten-as-qgis-server-plugin">Split categorized layers functionality rewritten as QGIS Server plugin<a class="headerlink" href="#split-categorized-layers-functionality-rewritten-as-qgis-server-plugin" title="Permanent link">&para;</a></h1>
+<p>As of 2024.02.02 the split categorized layers functionality previously part of <code>qwc-config-generator</code> has rewritten as a <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">QGIS Server plugin</a>.</p>
+<p>This greatly simplifies the handling of such projects. The <code>-noqgis</code> image tag suffix in <code>qwc-config-generator:vXXXX-noqgis</code> has been dropped resp. shipped as the regular <code>qwc-config-generator:vXXXX</code> docker images.</p>
+<p>See the <a href="https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers">categorized layers documentation</a> for instructions how to configure the new <code>split_categorized</code> plugin.</p>
+<h1 id="20231024-qwc-base-db-rework-2023-lts-2024-lts">2023.10.24 qwc-base-db rework [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#20231024-qwc-base-db-rework-2023-lts-2024-lts" title="Permanent link">&para;</a></h1>
 <p>As of 2023.10.24 the QWC base DB image has been reworked as follows:</p>
 <ul>
 <li>Migrations were moved to the <code>qwc-base-db</code> repository, the <code>qwc-config-db</code> repository is now obsolete.</li>
