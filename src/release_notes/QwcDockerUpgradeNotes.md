@@ -1,3 +1,11 @@
+# Split categorized layers functionality rewritten as QGIS Server plugin
+
+As of 2024.02.02 the split categorized layers functionality previously part of `qwc-config-generator` has rewritten as a [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized).
+
+This greatly simplifies the handling of such projects. The `-noqgis` image tag suffix in `qwc-config-generator:vXXXX-noqgis` has been dropped resp. shipped as the regular `qwc-config-generator:vXXXX` docker images.
+
+See the [categorized layers documentation](https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers) for instructions how to configure the new `split_categorized` plugin.
+
 # 2023.10.24 qwc-base-db rework \[2023-lts &rarr; 2024-lts\]
 
 As of 2023.10.24 the QWC base DB image has been reworked as follows:
