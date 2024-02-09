@@ -11,6 +11,7 @@ pip install -r requirements.txt
 if [ "$1" == "--update" ] || [ ! -f qwc2.yml ]; then
 echo "# References" > src/references/index.md
 echo "" >> src/references/index.md
+echo "index.md" > src/references/.gitignore
 
 echo "* Getting latest version..."
 version=$(curl https://raw.githubusercontent.com/qgis/qwc2-demo-app/${branch}/package.json | grep -Eo '^\s*"version": "[^"]+",$' | awk -F'"' '{print $4}')
@@ -18,7 +19,10 @@ sed "s|@version@|$version|" qwc2.yml.in > qwc2.yml
 
 echo "* Downloading plugin reference..."
 wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2/${branch}/doc/plugins.md
-echo "* [QWC2 plugins](qwc2_plugins.md)" >> src/references/index.md
+echo "qwc2_plugins.md" >> src/references/.gitignore
+echo "* QWC2 Client" >> src/references/index.md
+echo "" >> src/references/index.md
+echo "    - [Plugin reference](qwc2_plugins.md)" >> src/references/index.md
 
 mkdir -p tmp
 echo "* Downloading schema versions..."
@@ -34,12 +38,22 @@ for schemaUrl in \
 do
     service=$(basename ${schemaUrl%.json})
     echo "* Generating service schema reference for $service..."
-    echo $schemaUrl
+    echo "  $schemaUrl"
     wget -q -O tmp/$service.json $schemaUrl
     generate-schema-doc tmp/$service.json src/references/$service.md
+    echo "$service.md" >> src/references/.gitignore
 
-    echo "* [$service]($service.md)" >> src/references/index.md
+    readmeUrl=${schemaUrl/schemas\/*.json/README.md}
+    echo "* Downloading $service README.md"
+    echo "  $readmeUrl"
+    wget -q -O src/references/${service}_readme.md $readmeUrl
+    echo "${service}_readme.md" >> src/references/.gitignore
 
+    echo "" >> src/references/index.md
+    echo "* $service" >> src/references/index.md
+    echo "" >> src/references/index.md
+    echo "    - [README](${service}_readme.md)" >> src/references/index.md
+    echo "    - [Configuration schema reference]($service.md)" >> src/references/index.md
 done
 rm -rf tmp
 fi
