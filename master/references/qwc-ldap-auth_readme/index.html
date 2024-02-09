@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc ldap auth readme - QWC2 - 2024.02.07-master</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc ldap auth readme";
+        var mkdocs_page_input_path = "references/qwc-ldap-auth_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.07-master
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2024.02.07-master</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc ldap auth readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-ldap-auth/actions"><img alt="" src="https://github.com/qwc-services/qwc-ldap-auth/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-ldap-auth"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-ldap-auth?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="authentication-with-ldapactive-directory">Authentication with LDAP/Active Directory<a class="headerlink" href="#authentication-with-ldapactive-directory" title="Permanent link">&para;</a></h1>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>See also <a href="https://flask-ldap3-login.readthedocs.io/en/latest/configuration.html">flask-ldap3-login</a></p>
+<table>
+<thead>
+<tr>
+<th>ENV</th>
+<th>default value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_SECRET_KEY</code></td>
+<td><code>********</code></td>
+<td>secret key for JWT token (same for all services)</td>
+</tr>
+<tr>
+<td><code>LDAP_HOST</code></td>
+<td><code>localhost</code></td>
+<td>Hostname of your LDAP Server</td>
+</tr>
+<tr>
+<td><code>LDAP_PORT</code></td>
+<td><code>389</code></td>
+<td>The port number of your LDAP server.</td>
+</tr>
+<tr>
+<td><code>LDAP_USE_SSL</code></td>
+<td><code>False</code></td>
+<td>Set to True if your server uses SSL</td>
+</tr>
+<tr>
+<td><code>LDAP_BASE_DN</code></td>
+<td><code>dc=example,dc=org</code></td>
+<td>Base DN of your directory</td>
+</tr>
+<tr>
+<td><code>LDAP_USER_DN</code></td>
+<td><code>ou=users</code></td>
+<td>Users DN to be prepended to the Base DN</td>
+</tr>
+<tr>
+<td><code>LDAP_GROUP_DN</code></td>
+<td><code>ou=groups</code></td>
+<td>Groups DN to be prepended to the Base DN</td>
+</tr>
+<tr>
+<td><code>LDAP_SEARCH_FOR_GROUPS</code></td>
+<td><code>False</code></td>
+<td>Search for groups</td>
+</tr>
+<tr>
+<td><code>LDAP_GROUP_SEARCH_SCOPE</code></td>
+<td><code>LEVEL</code></td>
+<td>Specifies what scope to search in when searching for a specific group</td>
+</tr>
+<tr>
+<td><code>LDAP_GROUP_OBJECT_FILTER</code></td>
+<td><code>(objectclass=group)</code></td>
+<td>Specifies what object filter to apply when searching for groups</td>
+</tr>
+<tr>
+<td><code>LDAP_GROUP_MEMBERS_ATTR</code></td>
+<td><code>uniqueMember</code></td>
+<td>Specifies the LDAP attribute where group members are declared</td>
+</tr>
+<tr>
+<td><code>LDAP_GROUP_NAME_ATTRIBUTE</code></td>
+<td><code>cn</code></td>
+<td>Group name attribute in LDAP group response</td>
+</tr>
+<tr>
+<td><code>LDAP_GET_GROUP_ATTRIBUTES</code></td>
+<td><code>*</code> (ALL_ATTRIBUTES)</td>
+<td>Specifies which LDAP attributes to get when searching LDAP for a group/groups</td>
+</tr>
+<tr>
+<td><code>LDAP_USER_SEARCH_SCOPE</code></td>
+<td><code>LEVEL</code></td>
+<td>Specifies what scope to search in when searching for a specific user</td>
+</tr>
+<tr>
+<td><code>LDAP_USER_RDN_ATTR</code></td>
+<td><code>cn</code></td>
+<td>The RDN attribute for your user schema on LDAP</td>
+</tr>
+<tr>
+<td><code>LDAP_USER_LOGIN_ATTR</code></td>
+<td><code>cn</code></td>
+<td>The Attribute you want users to authenticate to LDAP with</td>
+</tr>
+<tr>
+<td><code>LDAP_BIND_USER_DN</code></td>
+<td><code>None</code></td>
+<td>The Username to bind to LDAP with</td>
+</tr>
+<tr>
+<td><code>LDAP_BIND_USER_PASSWORD</code></td>
+<td><code>None</code></td>
+<td>The Password to bind to LDAP with</td>
+</tr>
+<tr>
+<td><code>GROUP_MAPPINGS</code></td>
+<td><code>None</code></td>
+<td>Expressions for group name mapping</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Run standalone application:</p>
+<pre><code>python src/server.py
+</code></pre>
+<p>Endpoints:</p>
+<pre><code>http://localhost:5017/login
+
+http://localhost:5017/logout
+
+http://localhost:5017/verify_login
+</code></pre>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Create a virtual environment:</p>
+<pre><code>python3 -m venv .venv
+</code></pre>
+<p>Activate virtual environment:</p>
+<pre><code>source .venv/bin/activate
+</code></pre>
+<p>Install requirements:</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<p>Configure environment:</p>
+<pre><code>echo FLASK_ENV=development &gt;.flaskenv
+</code></pre>
+<p>Start local service:</p>
+<pre><code>python src/server.py
+</code></pre>
+<p>Testing with https://github.com/rroemhild/docker-test-openldap</p>
+<pre><code>docker run -d -p 10389:10389 -p 10636:10636 rroemhild/test-openldap:2.1
+</code></pre>
+<p>Start service:</p>
+<pre><code>LDAP_PORT=10389 LDAP_BIND_USER_DN="cn=admin,dc=planetexpress,dc=com" LDAP_BIND_USER_PASSWORD=GoodNewsEveryone LDAP_BASE_DN="dc=planetexpress,dc=com" LDAP_USER_DN="ou=people" LDAP_GROUP_DN="ou=people" LDAP_SEARCH_FOR_GROUPS=True LDAP_GROUP_MEMBERS_ATTR="member" python src/server.py
+</code></pre>
+<ul>
+<li>User: Philip J. Fry</li>
+<li>Password: fry</li>
+</ul>
+<p>Service login test:</p>
+<pre><code>curl http://localhost:5017/verify_login -d 'username=Philip J. Fry' -d 'password=fry'
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
