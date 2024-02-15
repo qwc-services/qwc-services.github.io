@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.02.07-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.02.15-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.07-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.15-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -108,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.02.07-master</a>
+          <a href="../..">QWC2 - 2024.02.15-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -149,6 +149,7 @@
 <li><a href="#mapcompareplugin">MapComparePlugin</a></li>
 <li><a href="#mapcopyright">MapCopyright</a></li>
 <li><a href="#mapexport">MapExport</a></li>
+<li><a href="#mapfilter">MapFilter</a></li>
 <li><a href="#mapinfotooltip">MapInfoTooltip</a></li>
 <li><a href="#maplegend">MapLegend</a></li>
 <li><a href="#maptip">MapTip</a></li>
@@ -636,7 +637,7 @@ with containing a container element with <code>id=heightprofilecontainer</code>.
 <tr>
 <td>heightProfilePrecision</td>
 <td><code>number</code></td>
-<td>The precision of displayed and exported values (0: no decimals, 0.1: 1 decimal position, etc).</td>
+<td>The precision of displayed and exported values (0: no decimals, 1: 1 decimal position, etc).</td>
 <td><code>0</code></td>
 </tr>
 <tr>
@@ -805,6 +806,12 @@ for customized queries and templates for the result presentation.</p>
 <td>replaceImageUrls</td>
 <td><code>bool</code></td>
 <td>Whether to replace an attribute value containing an URL to an image with an inline image.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>highlightAllResults</td>
+<td><code>bool</code></td>
+<td>Whether to highlight all results if no result is hovered</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
@@ -1234,6 +1241,54 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>string</code></td>
 <td>The side of the application on which to display the sidebar.</td>
 <td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapfilter">MapFilter<a name="mapfilter"></a><a class="headerlink" href="#mapfilter" title="Permanent link">&para;</a></h2>
+<p>Allows exporting a selected portion of the map to a variety of formats.</p>
+<p>You can set predefined filter expressions for a theme item as follows:</p>
+<pre><code class="language-json">predefinedFilters: {
+    id: &quot;&lt;filter_id&gt;&quot;,
+    title: &quot;&lt;filter_title&gt;&quot;,
+    titlemsgid: &quot;&lt;filter_title_msgid&gt;&quot;,
+    filter: {
+        &quot;&lt;layer&gt;&quot;: &lt;data_service_expression&gt;
+    },
+    fields: {
+        id: &quot;&lt;value_id&gt;&quot;,
+        title: &quot;&lt;value_title&quot;&gt;,
+        titlemsgid: &quot;&lt;value_title_msgid&quot;&gt;&quot;,
+        defaultValue: &lt;default_value&gt;,
+        inputConfig: {&lt;input_field_opts&gt;}
+    }
+}
+</code></pre>
+<p>You can set the startup filter configuration by specifying a <code>f</code> URL-parameter with a JSON-serialized string as follows:</p>
+<pre><code>f={&quot;&lt;filter_id&gt;&quot;: {&quot;&lt;field_id&gt;&quot;: &lt;value&gt;, ...}, ...}
+</code></pre>
+<p>Whenever an startup filter value is specified, the filter is automatically enabled.</p>
+<p><em>Note</em>: When specifying <code>f</code>, you should also specify <code>t</code> as the startup filter configuraiton needs to match the filters of the desired theme.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot). Set to -1 to hide the button.</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>
