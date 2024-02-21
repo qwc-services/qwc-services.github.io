@@ -4,6 +4,15 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [c7610eb](https://github.com/qgis/qwc2/tree/c7610eb) (22.02.2024)
+---------------------------------------------------------------------------------------------------
+
+**Removal of `SelectionSupport`**
+
+The `SelectionSupport` map plugin has been removed, the respective imports and references need to be removed from `js/appConfig.js`.
+
+For custom plugins relying on `SelectionSupport`, use the new `MapSelection` component instead. Look at the `SearchBox` and `Identify` plugins for some examples.
+
 Update to qwc2 submodule revision [d04e5fd](https://github.com/qgis/qwc2/tree/d04e5fd) (01.02.2024)
 ---------------------------------------------------------------------------------------------------
 
