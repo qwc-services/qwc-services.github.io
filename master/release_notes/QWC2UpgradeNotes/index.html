@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>QWC2 upgrade notes - QWC2 - 2024.02.15-master</title>
+    <title>QWC2 upgrade notes - QWC2 - 2024.02.22-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.15-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.22-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -92,6 +92,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-c7610eb-22022024">Update to qwc2 submodule revision c7610eb (22.02.2024)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024">Update to qwc2 submodule revision d04e5fd (01.02.2024)</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision 38b242a (01.11.2023) [2023-lts &rarr; 2024-lts]</a>
@@ -136,7 +138,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.02.15-master</a>
+          <a href="../..">QWC2 - 2024.02.22-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -157,6 +159,10 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
+<h2 id="update-to-qwc2-submodule-revision-c7610eb-22022024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/c7610eb">c7610eb</a> (22.02.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-c7610eb-22022024" title="Permanent link">&para;</a></h2>
+<p><strong>Removal of <code>SelectionSupport</code></strong></p>
+<p>The <code>SelectionSupport</code> map plugin has been removed, the respective imports and references need to be removed from <code>js/appConfig.js</code>.</p>
+<p>For custom plugins relying on <code>SelectionSupport</code>, use the new <code>MapSelection</code> component instead. Look at the <code>SearchBox</code> and <code>Identify</code> plugins for some examples.</p>
 <h2 id="update-to-qwc2-submodule-revision-d04e5fd-01022024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/d04e5fd">d04e5fd</a> (01.02.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024" title="Permanent link">&para;</a></h2>
 <p><strong>Setting name change</strong></p>
 <p>The previously incorrectly named <code>HeightProfile</code> setting <code>heighProfilePrecision</code> has been renamed to <code>heightProfilePrecision</code>.</p>

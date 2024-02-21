@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.02.15-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.02.22-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.15-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.02.22-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -108,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.02.15-master</a>
+          <a href="../..">QWC2 - 2024.02.22-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -791,10 +791,10 @@ for customized queries and templates for the result presentation.</p>
 <td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
 </tr>
 <tr>
-<td>initialRadius</td>
-<td><code>number</code></td>
-<td>The initial radius of the identify dialog in radius mode.</td>
-<td><code>50</code></td>
+<td>highlightAllResults</td>
+<td><code>bool</code></td>
+<td>Whether to highlight all results if no result is hovered</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>initialRadiusUnits</td>
@@ -806,12 +806,6 @@ for customized queries and templates for the result presentation.</p>
 <td>replaceImageUrls</td>
 <td><code>bool</code></td>
 <td>Whether to replace an attribute value containing an URL to an image with an inline image.</td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td>highlightAllResults</td>
-<td><code>bool</code></td>
-<td>Whether to highlight all results if no result is hovered</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
@@ -1266,6 +1260,7 @@ with containing a container element with id=legendcontainer.</p>
 <p>You can set the startup filter configuration by specifying a <code>f</code> URL-parameter with a JSON-serialized string as follows:</p>
 <pre><code>f={&quot;&lt;filter_id&gt;&quot;: {&quot;&lt;field_id&gt;&quot;: &lt;value&gt;, ...}, ...}
 </code></pre>
+<p>To control the temporal filter, the filter ID is <code>__timefilter</code>, and the field IDs are <code>tmin</code> and <code>tmax</code>, with values an ISO date or datetime string (<code>YYYY-MM-DD</code> or <code>YYYY-MM-DDTHH:MM:SS</code>).</p>
 <p>Whenever an startup filter value is specified, the filter is automatically enabled.</p>
 <p><em>Note</em>: When specifying <code>f</code>, you should also specify <code>t</code> as the startup filter configuraiton needs to match the filters of the desired theme.</p>
 <table>
@@ -1278,6 +1273,12 @@ with containing a container element with id=legendcontainer.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>allowFilterByTime</td>
+<td><code>bool</code></td>
+<td>Whether to display the temporal filter if temporal dimensions are found (default: true).</td>
+<td><code>true</code></td>
+</tr>
 <tr>
 <td>position</td>
 <td><code>number</code></td>
