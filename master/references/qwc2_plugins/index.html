@@ -1264,47 +1264,67 @@ with containing a container element with id=legendcontainer.</p>
 }
 </code></pre>
 <p>The data service filter expressions are of the form <code>["&lt;name&gt;", "&lt;op&gt;", &lt;value&gt;]</code>, you can also specify complex expressions concatenated with <code>and|or</code> as follows:</p>
-<p>```
-[["<name>", "<op>", <value>],"and|or",["<name>","<op>",<value>],...]</p>
-<pre><code>
-You can set the startup filter configuration by specifying a `f` URL-parameter with a JSON-serialized string as follows:
-
+<pre><code class="language-json">[[&quot;&lt;name&gt;&quot;, &quot;&lt;op&gt;&quot;, &lt;value&gt;],&quot;and|or&quot;,[&quot;&lt;name&gt;&quot;,&quot;&lt;op&gt;&quot;,&lt;value&gt;],...]
 </code></pre>
-<p>f={"<filter_id>": {"<field_id>": <value>, ...}, ...}</p>
-<pre><code>
-To control the temporal filter, the filter ID is `__timefilter`, and the field IDs are `tmin` and `tmax`, with values an ISO date or datetime string (`YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SS`).
-
-To control the spatial filter, the syntax is `&quot;__geomfilter&quot;: &lt;GeoJSON polygon coodinates array&gt;`.
-
-To specify custom filters, the syntax is `&quot;__custom&quot;: [{&quot;title&quot;: &quot;&lt;title&gt;&quot;, &quot;layer&quot;: &quot;&lt;layername&gt;&quot;, &quot;expr&quot;: &lt;JSON filter expr&gt;}, ...]`.
-
-Whenever an startup filter value is specified, the filter is automatically enabled.
-
-*Note*: When specifying `f`, you should also specify `t` as the startup filter configuraiton needs to match the filters of the desired theme.
-
-| Property | Type | Description | Default value |
-|----------|------|-------------|---------------|
-| allowCustomFilters | `bool` | Whether to allow custom filters. | `undefined` |
-| allowFilterByGeom | `bool` | Whether to allow filter by geometry. Requires the filter_geom plugin from qwc-qgis-server-plugins, and the filter will only be applied to postgis layers. | `undefined` |
-| allowFilterByTime | `bool` | Whether to display the temporal filter if temporal dimensions are found. | `true` |
-| position | `number` | The position slot index of the map button, from the bottom (0: bottom slot). Set to -1 to hide the button. | `5` |
-| side | `string` | The side of the application on which to display the sidebar. | `undefined` |
-
-MapInfoTooltip&lt;a name=&quot;mapinfotooltip&quot;&gt;&lt;/a&gt;
-----------------------------------------------------------------
-Provides map context information when right-clicking on the map.
-
-Displays the coordinates at the picked position by default.
-
-If `elevationServiceUrl` in `config.json` to points to a `qwc-elevation-service`,
-the height at the picked position is also displayed.
-
-If `mapInfoService` in `config.json` points to a `qwc-mapinfo-service`, additional
-custom information according to the `qwc-mapinfo-service` configuration is returned.
-
-You can pass additional plugin components to the `MapInfoTooltip` in `appConfig.js`:
-```json
-MapInfoTooltipPlugin: MapInfoTooltipPlugin([FirstPlugin, SecondPlugin])
+<p>You can set the startup filter configuration by specifying a <code>f</code> URL-parameter with a JSON-serialized string as follows:</p>
+<pre><code>f={&quot;&lt;filter_id&gt;&quot;: {&quot;&lt;field_id&gt;&quot;: &lt;value&gt;, ...}, ...}
+</code></pre>
+<p>To control the temporal filter, the filter ID is <code>__timefilter</code>, and the field IDs are <code>tmin</code> and <code>tmax</code>, with values an ISO date or datetime string (<code>YYYY-MM-DD</code> or <code>YYYY-MM-DDTHH:MM:SS</code>).</p>
+<p>To control the spatial filter, the syntax is <code>"__geomfilter": &lt;GeoJSON polygon coodinates array&gt;</code>.</p>
+<p>To specify custom filters, the syntax is <code>"__custom": [{"title": "&lt;title&gt;", "layer": "&lt;layername&gt;", "expr": &lt;JSON filter expr&gt;}, ...]</code>.</p>
+<p>Whenever an startup filter value is specified, the filter is automatically enabled.</p>
+<p><em>Note</em>: When specifying <code>f</code>, you should also specify <code>t</code> as the startup filter configuraiton needs to match the filters of the desired theme.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowCustomFilters</td>
+<td><code>bool</code></td>
+<td>Whether to allow custom filters.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowFilterByGeom</td>
+<td><code>bool</code></td>
+<td>Whether to allow filter by geometry. Requires the filter_geom plugin from qwc-qgis-server-plugins, and the filter will only be applied to postgis layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowFilterByTime</td>
+<td><code>bool</code></td>
+<td>Whether to display the temporal filter if temporal dimensions are found.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot). Set to -1 to hide the button.</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapinfotooltip">MapInfoTooltip<a name="mapinfotooltip"></a><a class="headerlink" href="#mapinfotooltip" title="Permanent link">&para;</a></h2>
+<p>Provides map context information when right-clicking on the map.</p>
+<p>Displays the coordinates at the picked position by default.</p>
+<p>If <code>elevationServiceUrl</code> in <code>config.json</code> to points to a <code>qwc-elevation-service</code>,
+the height at the picked position is also displayed.</p>
+<p>If <code>mapInfoService</code> in <code>config.json</code> points to a <code>qwc-mapinfo-service</code>, additional
+custom information according to the <code>qwc-mapinfo-service</code> configuration is returned.</p>
+<p>You can pass additional plugin components to the <code>MapInfoTooltip</code> in <code>appConfig.js</code>:</p>
+<pre><code class="language-json">MapInfoTooltipPlugin: MapInfoTooltipPlugin([FirstPlugin, SecondPlugin])
 </code></pre>
 <p>where a Plugin is a React component of the form</p>
 <pre><code class="language-jsx">class MapInfoTooltipPlugin extends React.Component {
