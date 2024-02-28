@@ -24,7 +24,7 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### Editing
 
-* Display clickable in editable text fields
+* Display clickable links in editable text fields
 * Allow generating nested 1:N relation forms (see [`generate_nested_nrel_forms`](https://qwc-services.github.io/2024-lts/topics/Editing/#1n-relations))
 * Joined fields as configured in QGIS the project are now handled by the `qwc-data-service`
 
