@@ -214,6 +214,8 @@ The format of the theme definitions is as follows:
 | `⁣  "username": <username>`                      | Optional: http basic authentication username.                                    |
 | `⁣  "password": <password>`                      | Optional: http basic authentication password.                                    |
 | `},`                                            |                                                                                  |
+| `"layerTreeHiddenSublayers": ["<layername>", ...]`, | Optional: list of sublayer names to omit in layertree (but still displayed in map). |
+
 
 A bare minimum theme entry might look as follows:
 ```json
