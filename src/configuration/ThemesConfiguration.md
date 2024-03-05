@@ -215,6 +215,7 @@ The format of the theme definitions is as follows:
 | `⁣  "password": <password>`                      | Optional: http basic authentication password.                                    |
 | `},`                                            |                                                                                  |
 | `"layerTreeHiddenSublayers": ["<layername>", ...]`, | Optional: list of sublayer names to omit in layertree (but still displayed in map). |
+| `"predefinedFilters": [{<filter_config>}, ...]`, | Optional: predefined filter configuration, see [MapFilter](../references/qwc2_plugins.md#mapfilter). |
 
 
 A bare minimum theme entry might look as follows:
