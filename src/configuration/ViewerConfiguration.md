@@ -81,7 +81,7 @@ Note:
 
 You can specify the global settings separately for `mobile` and `desktop` by setting these in a corresponding toplevel section, i.e.:
 
-```js
+```json
 {
   "<prop>": "<value>", // This property applies for both mobile and desktop
    ...
@@ -132,6 +132,27 @@ The final `mobile` and `desktop` configurations will be computed by merging the 
 |`⁣  "mapClickAction": <"identify"|"unset"|null>,` | Optional: in case the plugin activates a viewer task, determines whether a click in the map will result in the identify tool being invoked, the task being unset, or whether no particular action should be performed (default). |
 |`}`                                              |                                                                                     |
 
+Any plugin configuration option can be overridden per theme in the theme item `config` section as follows:
+
+```json
+{
+  "plugins": {
+    "<plugin_name>": {
+      "<cfg_prop>": <value>,
+      ...
+    },
+    ...
+  },
+  "mobile": {
+    "plugins: {...}, // Plugin config props applied only for mobile
+    ...
+  },
+  "desktop": {
+    "plugins: {...}, // Plugin config props applied only for desktop
+    ...
+  }
+}
+```
 A particularly interesting aspect is the configuration of the entries in the application menu and toolbar, i.e. the entries in `menuItems` and `toolbarItems` in the `TopBar` plugin configuration. The format of these entries is as follows:
 
 | Setting                                    | Description                                                                       |

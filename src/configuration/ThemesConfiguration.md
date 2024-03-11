@@ -203,8 +203,10 @@ The format of the theme definitions is as follows:
 | `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](../topics/Snapping.md).         |
 | `"flags": ["<flag1>", "<flag2>", ...],`         | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"config": {`                                   | Optional, per-theme configuration entries which override the global entries in `config.json`, see [Viewer Configuration](ViewerConfiguration.md).|
-| `⁣  "allowRemovingThemeLayers": <boolean>`       | See [`config.json`](ViewerConfiguration.md#theme-overridable-settings) for which settings can be specified here. |
-| `⁣  ...`                                         |                                                                                  |
+| `⁣  "<...>": ...,`                               | Global config settings overridden in theme, see [`config.json`](ViewerConfiguration.md#theme-overridable-settings). |
+| `⁣  "plugins": {...},`                           | Plugin configuration overridden in theme, See [`config.json`](ViewerConfiguration.md#plugin-configuration). |
+| `⁣  "desktop": {...},`                           | Desktop specific global and plugin configuration overridden in theme. |
+| `⁣  "mobile": {...}`                             | Mobile specific global and plugin configuration overridden in theme. |
 | `}`                                             |
 | `"pluginData": {`                               | Optional, data to pass to custom plugins.                                        |
 | `⁣  "<PluginName>": ["<plugin_data_resource_name>"],`| A list of plugin resource names for the specified plugin. See [below](#plugin-data). |
