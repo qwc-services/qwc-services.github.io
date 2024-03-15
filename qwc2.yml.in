@@ -18,6 +18,7 @@ nav:
             - Snapping: topics/Snapping.md
             - Temporal layers: topics/TimeManager.md
             - Legend graphics: topics/LegendGraphics.md
+            - Map filtering: topics/MapFilter.md
             - Interfacing with applications: topics/Interfacing.md
             - Multi-tenancy: topics/MultiTenancy.md
         - References: references/index.md
