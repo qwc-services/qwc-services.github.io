@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.03.11-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.03.15-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.11-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.15-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -78,6 +78,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
@@ -108,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.03.11-master</a>
+          <a href="../..">QWC2 - 2024.03.15-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -600,6 +602,7 @@ GetFeatureInfo like the <code>Identify</code> plugin.</p>
 </table>
 <h2 id="featuresearch">FeatureSearch<a name="featuresearch"></a><a class="headerlink" href="#featuresearch" title="Permanent link">&para;</a></h2>
 <p>Displays a dialog with a search form for configured QGIS feature searches with one or more input fields.</p>
+<p>See <a href="Configuring the QGIS feature search">../../topics/Search/#configuring-the-qgis-feature-search</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1252,34 +1255,7 @@ with containing a container element with id=legendcontainer.</p>
 </table>
 <h2 id="mapfilter">MapFilter<a name="mapfilter"></a><a class="headerlink" href="#mapfilter" title="Permanent link">&para;</a></h2>
 <p>Allows filtering the map content via QGIS Server WMS FILTER.</p>
-<p>You can set predefined filter expressions for a theme item as follows:</p>
-<pre><code class="language-json">predefinedFilters: {
-    id: &quot;&lt;filter_id&gt;&quot;,
-    title: &quot;&lt;filter_title&gt;&quot;,
-    titlemsgid: &quot;&lt;filter_title_msgid&gt;&quot;,
-    filter: {
-        &quot;&lt;layer&gt;&quot;: &lt;data_service_filter_expression&gt;
-    },
-    fields: {
-        id: &quot;&lt;value_id&gt;&quot;,
-        title: &quot;&lt;value_title&quot;&gt;,
-        titlemsgid: &quot;&lt;value_title_msgid&gt;&quot;,
-        defaultValue: &lt;default_value&gt;,
-        inputConfig: {&lt;input_field_opts&gt;}
-    }
-}
-</code></pre>
-<p>The data service filter expressions are of the form <code>["&lt;name&gt;", "&lt;op&gt;", &lt;value&gt;]</code>, you can also specify complex expressions concatenated with <code>and|or</code> as follows:</p>
-<pre><code class="language-json">[[&quot;&lt;name&gt;&quot;, &quot;&lt;op&gt;&quot;, &lt;value&gt;],&quot;and|or&quot;,[&quot;&lt;name&gt;&quot;,&quot;&lt;op&gt;&quot;,&lt;value&gt;],...]
-</code></pre>
-<p>You can set the startup filter configuration by specifying a <code>f</code> URL-parameter with a JSON-serialized string as follows:</p>
-<pre><code>f={&quot;&lt;filter_id&gt;&quot;: {&quot;&lt;field_id&gt;&quot;: &lt;value&gt;, ...}, ...}
-</code></pre>
-<p>To control the temporal filter, the filter ID is <code>__timefilter</code>, and the field IDs are <code>tstart</code> and <code>tend</code>, with values an ISO date or datetime string (<code>YYYY-MM-DD</code> or <code>YYYY-MM-DDTHH:MM:SS</code>).</p>
-<p>To control the spatial filter, the syntax is <code>"__geomfilter": &lt;GeoJSON polygon coodinates array&gt;</code>.</p>
-<p>To specify custom filters, the syntax is <code>"__custom": [{"title": "&lt;title&gt;", "layer": "&lt;layername&gt;", "expr": &lt;JSON filter expr&gt;}, ...]</code>.</p>
-<p>Whenever an startup filter value is specified, the filter is automatically enabled.</p>
-<p><em>Note</em>: When specifying <code>f</code>, you should also specify <code>t</code> as the startup filter configuraiton needs to match the filters of the desired theme.</p>
+<p>See <a href="Map filtering">../../topics/MapFilter</a>.</p>
 <table>
 <thead>
 <tr>

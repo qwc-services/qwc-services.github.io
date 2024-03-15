@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Interfacing with applications - QWC2 - 2024.03.11-master</title>
+    <title>Interfacing with applications - QWC2 - 2024.03.15-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.11-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.15-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -78,6 +78,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Interfacing with applications</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#url-parameters">URL parameters </a>
@@ -120,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.03.11-master</a>
+          <a href="../..">QWC2 - 2024.03.15-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -153,6 +155,7 @@
 <li><code>hc</code>: If <code>c</code> is specified and <code>hc</code> is <code>true</code> or <code>1</code>, a marker is set at <code>c</code> when starting the application. Note: requires the <code>StartupMarkerPlugin</code> plugin to be active.</li>
 <li><code>st</code>: The search text</li>
 <li><code>hp</code>, <code>hf</code>, <code>ht</code>: Startup highlight parameters used in conjunction with the <code>qwc-fulltext-search-service</code>, see below.</li>
+<li><code>f</code>: A filter configuration, see <a href="Map filtering">./MapFilter</a>.</li>
 <li><code>localConfig</code>: Override the name of the loaded config file, i.e. to load <code>myconfig.json</code> instead of the default <code>config.json</code>, pass <code>localConfig=myconfig</code>.</li>
 </ul>
 <p>The <code>l</code> parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form</p>
@@ -184,7 +187,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../LegendGraphics/" class="btn btn-neutral float-left" title="Legend graphics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MapFilter/" class="btn btn-neutral float-left" title="Map filtering"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../MultiTenancy/" class="btn btn-neutral float-right" title="Multi-tenancy">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -208,7 +211,7 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../LegendGraphics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../MapFilter/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../MultiTenancy/" style="color: #fcfcfc">Next &raquo;</a></span>
