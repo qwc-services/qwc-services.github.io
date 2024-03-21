@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.03.15-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.03.21-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.15-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.03.21-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -110,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.03.15-master</a>
+          <a href="../..">QWC2 - 2024.03.21-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -139,6 +139,7 @@
 <li><a href="#editing">Editing</a></li>
 <li><a href="#featureform">FeatureForm</a></li>
 <li><a href="#featuresearch">FeatureSearch</a></li>
+<li><a href="#geometrydigitizer">GeometryDigitizer</a></li>
 <li><a href="#heightprofile">HeightProfile</a></li>
 <li><a href="#help">Help</a></li>
 <li><a href="#homebutton">HomeButton</a></li>
@@ -618,6 +619,32 @@ GetFeatureInfo like the <code>Identify</code> plugin.</p>
 <td><code>string</code></td>
 <td>The side of the application on which to display the sidebar.</td>
 <td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="geometrydigitizer">GeometryDigitizer<a name="geometrydigitizer"></a><a class="headerlink" href="#geometrydigitizer" title="Permanent link">&para;</a></h2>
+<p>Allows digitizing geometries to send to configured applications.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>styleActive</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style of active geometries (i.e. supported by the selected application)</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>styleInactive</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style of inactive (i.e. not supported by the selected application)</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>
