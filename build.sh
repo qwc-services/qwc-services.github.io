@@ -28,8 +28,10 @@ echo "qwc2_plugins.md" >> src/references/.gitignore
 echo "* QWC2 Client" >> src/references/index.md
 echo "" >> src/references/index.md
 echo "    - [Plugin reference](qwc2_plugins.md)" >> src/references/index.md
+echo "" >> src/references/index.md
 echo "* qwc-base-db" >> src/references/index.md
-    echo "    - [README](qwc-base-db_readme.md)" >> src/references/index.md
+echo "" >> src/references/index.md
+echo "    - [README](qwc-base-db_readme.md)" >> src/references/index.md
 mkdir -p tmp
 echo "* Downloading schema versions..."
 if [ "$branch" == "2024-lts" ]; then
