@@ -1,6 +1,10 @@
 #!/bin/bash
 
 branch=$(git branch --show-current)
+branch_main="main"
+if [ "$branch" == "2024-lts" ]; then
+    branch_main=$branch
+fi
 
 echo "* Setting up venv..."
 rm -rf .venv
@@ -19,11 +23,13 @@ sed "s|@version@|$version|" qwc2.yml.in > qwc2.yml
 
 echo "* Downloading plugin reference..."
 wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2/${branch}/doc/plugins.md
+wget -q -O src/references/qwc-base-db_readme.md https://raw.githubusercontent.com/qwc-services/qwc-base-db/${branch_main}/README.md
 echo "qwc2_plugins.md" >> src/references/.gitignore
 echo "* QWC2 Client" >> src/references/index.md
 echo "" >> src/references/index.md
 echo "    - [Plugin reference](qwc2_plugins.md)" >> src/references/index.md
-
+echo "* qwc-base-db" >> src/references/index.md
+    echo "    - [README](qwc-base-db_readme.md)" >> src/references/index.md
 mkdir -p tmp
 echo "* Downloading schema versions..."
 if [ "$branch" == "2024-lts" ]; then
@@ -33,7 +39,6 @@ else
 fi
 
 for schemaUrl in \
-    https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/qwc-config-generator.json \
     $(cat tmp/schema-versions.json | grep schema_url | awk -F'"' '{print $4}');
 do
     service=$(basename ${schemaUrl%.json})
