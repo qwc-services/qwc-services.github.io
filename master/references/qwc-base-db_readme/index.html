@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc mapinfo service readme - QWC2 - 2024.03.27-master</title>
+    <title>Qwc base db readme - QWC2 - 2024.03.27-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Qwc mapinfo service readme";
-        var mkdocs_page_input_path = "references/qwc-mapinfo-service_readme.md";
+        var mkdocs_page_name = "Qwc base db readme";
+        var mkdocs_page_input_path = "references/qwc-base-db_readme.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -117,7 +117,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Qwc mapinfo service readme</li>
+      <li>Qwc base db readme</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -126,131 +126,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://github.com/qwc-services/qwc-mapinfo-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-mapinfo-service/workflows/build/badge.svg" /></a>
-<a href="https://hub.docker.com/r/sourcepole/qwc-mapinfo-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-mapinfo-service?label=Docker%20image&amp;sort=semver" /></a></p>
-<h1 id="qwc-mapinfo-service">QWC MapInfo Service<a class="headerlink" href="#qwc-mapinfo-service" title="Permanent link">&para;</a></h1>
-<p>Additional information at a geographic position displayed with right mouse click on map.</p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
-e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
-<h3 id="mapinfo-service-config">MapInfo Service config<a class="headerlink" href="#mapinfo-service-config" title="Permanent link">&para;</a></h3>
+                <p><a href="https://github.com/qwc-services/qwc-base-db/actions"><img alt="CI" src="https://github.com/qwc-services/qwc-base-db/actions/workflows/qwc-base-db.yml/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-base-db"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-base-db-migrate?label=qwc-base-db-migrate%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-base-db">QWC Base DB<a class="headerlink" href="#qwc-base-db" title="Permanent link">&para;</a></h1>
+<p>This repository creates two Docker images:</p>
 <ul>
-<li><a href="schemas/qwc-mapinfo-service.json">JSON schema</a></li>
-<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/mapinfoConfig.json</code></li>
+<li><code>qwc-base-db</code>: Image with a postgis server and the minimal schemas and roles for the QWC Config DB</li>
+<li><code>qwc-base-db-migrate</code>: Image containing <code>alembic</code> and the migrations to update the QWC Config DB to the latest schema</li>
 </ul>
-<p>Examples:</p>
-<pre><code class="language-json">{
-  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
-  &quot;service&quot;: &quot;mapinfo&quot;,
-  &quot;config&quot;: {
-    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
-    &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
-    &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
-    &quot;info_display_col&quot;: &quot;name&quot;,
-    &quot;info_title&quot;: &quot;Country&quot;
-  }
-}
+<p>These images are designed to be configured in a <code>docker-compose.yml</code> as follows (minimal configuration):</p>
+<pre><code class="language-yml">  qwc-postgis:
+    image: sourcepole/qwc-base-db:&lt;pg_version&gt;
+    healthcheck:
+      test: [&quot;CMD-SHELL&quot;, &quot;pg_isready -U postgres&quot;]
+      interval: 10s
+    environment:
+      POSTGRES_PASSWORD: '' # TODO: Set your postgres password here!
+    volumes:
+      - ./volumes/db:/var/lib/postgresql/docker
+
+  qwc-config-db-migrate:
+    image: sourcepole/qwc-base-db-migrate:&lt;version&gt;
+    volumes:
+      - ./pg_service.conf:/tmp/pg_service.conf:ro
 </code></pre>
-<pre><code class="language-json">{
-  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
-  &quot;service&quot;: &quot;mapinfo&quot;,
-  &quot;config&quot;: {
-    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
-    &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
-    &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
-    &quot;info_display_col&quot;: &quot;name&quot;,
-    &quot;info_title&quot;: &quot;Country&quot;,
-    &quot;info_where&quot;: &quot;pop_est &gt; 600000&quot;
-  }
-}
+<p>Note:</p>
+<ul>
+<li><strong>You need to set a non-empty <code>POSTGRES_PASSWORD</code> ENV variable</strong>.</li>
+<li>You can set passwords for roles in <code>qwc_services</code> database with ENV variables: <code>QGIS_SERVER_PASSWORD</code>, <code>QWC_ADMIN_PASSWORD</code>, <code>QWC_SERVICE_PASSWORD</code>, <code>QWC_SERVICE_WRITE_PASSWORD</code>. These variables have default values (<code>qgis_server</code>, <code>qwc_admin</code>, <code>qwc_service</code>, <code>qwc_service_write</code>).</li>
+<li>For persistent storage, mount folder volume to <code>/var/lib/postgresql/docker</code>.</li>
+<li>The <code>sourcepole/qwc-base-db</code> images are versioned according to the Postgres major version (i.e. 13, 14, 15, ...).</li>
+<li>The <code>sourcepole/qwc-base-db-migrate</code> images are versioned by date (<code>vYYYY.MM.DD</code>)</li>
+</ul>
+<p>When the <code>qwc-postgis</code> image is run, then it checks whether <code>/var/lib/postgresql/docker</code> is empty.
+If that's the case then it will proceed with setting up the
+<code>qwc_configdb</code> DB.</p>
+<p>The <code>qwc-config-db-migrate</code> image will run <code>qwc-postgis</code> is up, and will apply all available migrations to the Config DB.</p>
+<h1 id="keeping-the-config-db-up-to-date">Keeping the Config DB up-to-date<a class="headerlink" href="#keeping-the-config-db-up-to-date" title="Permanent link">&para;</a></h1>
+<p>To keep the Config DB up to date, it is sufficient to update the <code>qwc-base-db-migrate</code> image version to the latest available version.</p>
+<p>Configure the <code>qwc-config-db-migrate</code> image mounting the <code>pg_service.conf</code> containing the connection information to your database:</p>
+<pre><code class="language-yml">  qwc-config-db-migrate:
+    image: sourcepole/qwc-base-db-migrate:&lt;version&gt;
+    volumes:
+      - ./pg_service.conf:/tmp/pg_service.conf:ro
 </code></pre>
-<pre><code class="language-json">{
-  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
-  &quot;service&quot;: &quot;mapinfo&quot;,
-  &quot;config&quot;: {
-    &quot;queries&quot;: [
-      {
-        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
-        &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
-        &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
-        &quot;info_display_col&quot;: &quot;name&quot;,
-        &quot;info_title&quot;: &quot;Country&quot;
-      },
-      {
-        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
-        &quot;info_sql&quot;: &quot;SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
-        &quot;info_title&quot;: &quot;Type&quot;
-      }
-    ]
-  }
-}
+<p>Migrations will be applied automatically, if necessary, whenever the Docker application is started.</p>
+<p>To upgrade to a migration different than <code>head</code>, set the <code>ALEMBIC_VERSION</code> ENV variable.</p>
+<h1 id="managing-an-external-config-db">Managing an external Config DB<a class="headerlink" href="#managing-an-external-config-db" title="Permanent link">&para;</a></h1>
+<p>You can use an external DB instead of the <code>qwc-base-db</code> dockerized DB.</p>
+<p>To set up the external DB, set passwords for roles with ENV variables (<code>QGIS_SERVER_PASSWORD</code>, <code>QWC_ADMIN_PASSWORD</code>, <code>QWC_SERVICE_PASSWORD</code>, <code>QWC_SERVICE_WRITE_PASSWORD</code>) and run the SQL commands in <code>setup-roles-and-db.sh</code> on your external DB.</p>
+<p>To apply the migrations, both as part as the initial setup and subsequently to keep the Config DB up-to-date:</p>
+<ul>
+<li>Modify the <code>qwc_configdb</code> connection in <code>pg_service.conf</code> with the connection information to your external DB</li>
+<li>Configure the <code>qwc-config-db-migrate</code> image mounting the modified <code>pg_service.conf</code>:</li>
+</ul>
+<pre><code class="language-yml">  qwc-config-db-migrate:
+    image: sourcepole/qwc-base-db-migrate:&lt;version&gt;
+    volumes:
+      - ./pg_service.conf:/tmp/pg_service.conf:ro
 </code></pre>
-<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>INFO_TABLE</code></td>
-<td>Table to use</td>
-</tr>
-<tr>
-<td><code>INFO_GEOM_COL</code></td>
-<td>Geometry column in table</td>
-</tr>
-<tr>
-<td><code>INFO_DISPLAY_COL</code></td>
-<td>Display text column in table</td>
-</tr>
-<tr>
-<td><code>INFO_TITLE</code></td>
-<td>Display title</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Run as</p>
-<pre><code>python src/server.py
-</code></pre>
-<p>API documentation:</p>
-<pre><code>http://localhost:5016/api/
-</code></pre>
-<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>To run this docker image you will need a PostGIS database. For testing purposes you can use the demo DB.</p>
-<p>The following steps explain how to download the demo DB docker image and how to run the <code>qwc-mapinfo-service</code> service with <code>docker-compose</code>.</p>
-<p><strong>Step 1: Clone qwc-docker</strong></p>
-<pre><code>git clone https://github.com/qwc-services/qwc-docker
-cd qwc-docker
-</code></pre>
-<p><strong>Step 2: Create docker-compose.yml file</strong></p>
-<pre><code>cp docker-compose-example.yml docker-compose.yml
-</code></pre>
-<p><strong>Step 3: Start docker containers</strong></p>
-<pre><code>docker-compose up qwc-mapinfo-service
-</code></pre>
-<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>python3 -m venv .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
-<p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
-</code></pre>
-<p>Start local service:</p>
-<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ python src/server.py
-</code></pre>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>Run all tests:</p>
-<pre><code>python test.py
-</code></pre>
+<h1 id="db-schema-overview">DB Schema overview<a class="headerlink" href="#db-schema-overview" title="Permanent link">&para;</a></h1>
+<p><img alt="er-diagram" src="er-diagram.png" /></p>
               
             </div>
           </div><footer>
