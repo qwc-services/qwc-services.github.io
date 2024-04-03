@@ -23,6 +23,8 @@ You can set predefined filter expressions for a theme item as follows:
 ]
 ```
 
+In the data service filter expression, you can use `$<value_id>$` as the value placeholder.
+
 You can specify any common HTML input element properties in `input_field_opts`, i.e.:
 
 ```json
@@ -36,6 +38,23 @@ As a special case, you can define a dropdown list as follows:
 ```
 
 It is also possible to pass a flat list as options, i.e. `["<value1>", "<value2>"]` if the value is equal to the label.
+
+Example:
+```json
+"predefinedFilters": [{
+        "id": "continent_filter",
+        "title": "Continent",
+        "filter": {
+                "countries": ["continent", "=", "$continent$"]
+        },
+        "fields": [{
+                "id": "continent",
+                "title": "Name",
+                "defaultValue": "",
+                "inputConfig": {"type": "select", "options": ["Africa", "Asia", "Europe", "Oceania"]}
+        }]
+}]
+```
 
 The data service filter expressions are of the form `["<name>", "<op>", <value>]`, you can also specify complex expressions concatenated with `and|or` as follows:
 
