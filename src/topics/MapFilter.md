@@ -3,21 +3,24 @@ The [`MapFilter`](../references/qwc2_plugins.md#mapfilter) plugin allows filteri
 You can set predefined filter expressions for a theme item as follows:
 
 ```json
-"predefinedFilters": {
-    "id": "<filter_id>",
-    "title": "<filter_title>",
-    "titlemsgid": "<filter_title_msgid>",
-    "filter": {
-        "<layer>": <data_service_filter_expression>
+"predefinedFilters": [
+    {
+        "id": "<filter_id>",
+        "title": "<filter_title>",
+        "titlemsgid": "<filter_title_msgid>",
+        "filter": {
+            "<layer>": <data_service_filter_expression>
+        },
+        "fields": {
+            "id": "<value_id>",
+            "title": "<value_title">,
+            "titlemsgid": "<value_title_msgid>",
+            "defaultValue": <default_value>,
+            "inputConfig": {<input_field_opts>}
+        }
     },
-    "fields": {
-        "id": "<value_id>",
-        "title": "<value_title">,
-        "titlemsgid": "<value_title_msgid>",
-        "defaultValue": <default_value>,
-        "inputConfig": {<input_field_opts>}
-    }
-}
+    ...
+]
 ```
 
 You can specify any common HTML input element properties in `input_field_opts`, i.e.:
