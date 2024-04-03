@@ -149,6 +149,7 @@
     ...
 ]
 </code></pre>
+<p>In the data service filter expression, you can use <code>$&lt;value_id&gt;$</code> as the value placeholder.</p>
 <p>You can specify any common HTML input element properties in <code>input_field_opts</code>, i.e.:</p>
 <pre><code class="language-json">&quot;inputConfig&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;min&quot;: 0}
 </code></pre>
@@ -156,6 +157,21 @@
 <pre><code class="language-json">&quot;inputConfig&quot;: {&quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;&lt;value1&gt;&quot;, &quot;label|labelmsgid&quot;: &quot;&lt;label(msgid)1&gt;&quot;}, ...]}
 </code></pre>
 <p>It is also possible to pass a flat list as options, i.e. <code>["&lt;value1&gt;", "&lt;value2&gt;"]</code> if the value is equal to the label.</p>
+<p>Example:</p>
+<pre><code class="language-json">&quot;predefinedFilters&quot;: [{
+        &quot;id&quot;: &quot;continent_filter&quot;,
+        &quot;title&quot;: &quot;Continent&quot;,
+        &quot;filter&quot;: {
+                &quot;countries&quot;: [&quot;continent&quot;, &quot;=&quot;, &quot;$continent$&quot;]
+        },
+        &quot;fields&quot;: [{
+                &quot;id&quot;: &quot;continent&quot;,
+                &quot;title&quot;: &quot;Name&quot;,
+                &quot;defaultValue&quot;: &quot;&quot;,
+                &quot;inputConfig&quot;: {&quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europe&quot;, &quot;Oceania&quot;]}
+        }]
+}]
+</code></pre>
 <p>The data service filter expressions are of the form <code>["&lt;name&gt;", "&lt;op&gt;", &lt;value&gt;]</code>, you can also specify complex expressions concatenated with <code>and|or</code> as follows:</p>
 <pre><code class="language-json">[[&quot;&lt;name&gt;&quot;, &quot;&lt;op&gt;&quot;, &lt;value&gt;],&quot;and|or&quot;,[&quot;&lt;name&gt;&quot;,&quot;&lt;op&gt;&quot;,&lt;value&gt;],...]
 </code></pre>
