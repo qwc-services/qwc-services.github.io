@@ -129,6 +129,8 @@
             <div class="section" itemprop="articleBody">
               
                 <p>The <a href="../../references/qwc2_plugins/#mapfilter"><code>MapFilter</code></a> plugin allows filtering the map content via QGIS Server WMS FILTER.</p>
+<p>It can be configured to support predefined filters, geometry filters, temporal filters and custom filters, see <a href="../../references/qwc2_plugins/#mapfilter"><code>MapFilter</code></a>.</p>
+<p><em>Note</em>: Geometry filters requires the <code>filter_geom</code> plugin from <a href="https://github.com/qwc-services/qwc-qgis-server-plugins">qwc-qgis-server-plugins</a>, and the filter will currently only be applied to postgis layers.</p>
 <p>You can set predefined filter expressions for a theme item as follows:</p>
 <pre><code class="language-json">&quot;predefinedFilters&quot;: [
     {
