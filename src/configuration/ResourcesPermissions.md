@@ -13,19 +13,19 @@ Roles can be given permissions on resources. That means that if you want to give
 The following resource types are available:
 
 * `Map`: WMS corresponding to a QGIS Project
-  * `Layer`: layer of a map
-    * `Attribute`: attribute of a map layer
-  * `Print template`: print composer template of a QGIS Project
+  * `Layer`: Layer of a map
+    * `Attribute`: Attribute of a map layer (i.e. for WFS)
+  * `Print template`: Print composer template of a QGIS Project
   * `Data`: Data layer for editing
-    * `Attribute`: attribute of a data layer
+    * `Attribute`: Attribute of a data layer
   * `Data (create)`: Data layer for creating features
   * `Data (read)`: Data layer for reading features
   * `Data (update)`: Data layer for updating features
   * `Data (delete)`: Data layer for deleting features
-* `Viewer`: custom map viewer configuration
-* `Viewer task`: permittable viewer tasks
+* `Viewer task`: Permittable viewer tasks
 * `FeatureInfo service`: Feature info service
   * `FeatureInfo layer`: Feature info layer
+    * `Attribute`: Attribute of a info layer
 
 The resource name corresponds to the technical name of its resource (e.g. WMS layer name). Most notably, the name of a `map` resource corresponds to the relative path to the project below `qgs-resources` without `.qgs` extension (so i.e. the resource name for `qgs-resources/subfolder/project.qgs` will be `subfolder/project`).
 
@@ -33,12 +33,10 @@ The resource name corresponds to the technical name of its resource (e.g. WMS la
 
 Available `map`, `layer`, `attribute` and `print_template` resources are determined from WMS `GetProjectSettings` and the QGIS projects.
 
-`data` and their `attribute` resources define a data layer for the [Data service](https://github.com/qwc-services/qwc-data-service).
+The `data` and their `attribute` resources define a data layer for the [Data service](https://github.com/qwc-services/qwc-data-service).
 
 For more detailed [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) permissions `data_create`, `data_read`, `data_update` and `data_delete` can be used instead of `data`
 (`data` and `write=False` is equivalent to `data_read`; `data` and `write=True` is equivalent to all CRUD resources combined).
-
-The `viewer` resource defines a custom viewer configuration for the map viewer (see [Custom viewer configurations](https://github.com/qwc-services/qwc-map-viewer#custom-viewer-configurations)).
 
 The `viewer_task` resource defines viewer functionalities (e.g. printing or raster export) that can be restricted or permitted.
 Their `name` (e.g. `RasterExport`) will be matched against:
@@ -47,6 +45,8 @@ Their `name` (e.g. `RasterExport`) will be matched against:
 - The `task` configuration property of a `TaskButton` plugin entry in `config.json`
 
 *Note*: You can restrict tasks entires which specify a mode (i.e. `{"key": "Measure", "mode": "LineString"}`) by concatenating the task key and the mode as the `viewer_task` resource name, i.e. `MeasureLineString`.
+
+The `FeatureInfo service`, `FeatureInfo layer` and subordinate `Attribute` resources allow controlling whether an entire WMS service, its layers or its attributes are queryable via GetFeatureInfo.
 
 Restricted viewer task items are then removed from the menu and toolbar in the map viewer. Viewer tasks not explicitly added as resources are kept unchanged from the `config.json`.
 
