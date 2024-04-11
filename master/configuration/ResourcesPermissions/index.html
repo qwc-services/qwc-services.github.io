@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resources and permissions - QWC2 - 2024.04.08-master</title>
+    <title>Resources and permissions - QWC2 - 2024.04.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.08-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.04.08-master</a>
+          <a href="../..">QWC2 - 2024.04.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -151,37 +151,39 @@
 <p>The following resource types are available:</p>
 <ul>
 <li><code>Map</code>: WMS corresponding to a QGIS Project</li>
-<li><code>Layer</code>: layer of a map<ul>
-<li><code>Attribute</code>: attribute of a map layer</li>
+<li><code>Layer</code>: Layer of a map<ul>
+<li><code>Attribute</code>: Attribute of a map layer (i.e. for WFS)</li>
 </ul>
 </li>
-<li><code>Print template</code>: print composer template of a QGIS Project</li>
+<li><code>Print template</code>: Print composer template of a QGIS Project</li>
 <li><code>Data</code>: Data layer for editing<ul>
-<li><code>Attribute</code>: attribute of a data layer</li>
+<li><code>Attribute</code>: Attribute of a data layer</li>
 </ul>
 </li>
 <li><code>Data (create)</code>: Data layer for creating features</li>
 <li><code>Data (read)</code>: Data layer for reading features</li>
 <li><code>Data (update)</code>: Data layer for updating features</li>
 <li><code>Data (delete)</code>: Data layer for deleting features</li>
-<li><code>Viewer</code>: custom map viewer configuration</li>
-<li><code>Viewer task</code>: permittable viewer tasks</li>
+<li><code>Viewer task</code>: Permittable viewer tasks</li>
 <li><code>FeatureInfo service</code>: Feature info service</li>
-<li><code>FeatureInfo layer</code>: Feature info layer</li>
+<li><code>FeatureInfo layer</code>: Feature info layer<ul>
+<li><code>Attribute</code>: Attribute of a info layer</li>
+</ul>
+</li>
 </ul>
 <p>The resource name corresponds to the technical name of its resource (e.g. WMS layer name). Most notably, the name of a <code>map</code> resource corresponds to the relative path to the project below <code>qgs-resources</code> without <code>.qgs</code> extension (so i.e. the resource name for <code>qgs-resources/subfolder/project.qgs</code> will be <code>subfolder/project</code>).</p>
 <p><em>Note:</em> If your QGIS project is configured to return the field aliases rather than the field names in <code>GetFeatureInfo</code>, the resource name for layer <code>attribute</code> resources corresponds to the alias of the field.</p>
 <p>Available <code>map</code>, <code>layer</code>, <code>attribute</code> and <code>print_template</code> resources are determined from WMS <code>GetProjectSettings</code> and the QGIS projects.</p>
-<p><code>data</code> and their <code>attribute</code> resources define a data layer for the <a href="https://github.com/qwc-services/qwc-data-service">Data service</a>.</p>
+<p>The <code>data</code> and their <code>attribute</code> resources define a data layer for the <a href="https://github.com/qwc-services/qwc-data-service">Data service</a>.</p>
 <p>For more detailed <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> permissions <code>data_create</code>, <code>data_read</code>, <code>data_update</code> and <code>data_delete</code> can be used instead of <code>data</code>
 (<code>data</code> and <code>write=False</code> is equivalent to <code>data_read</code>; <code>data</code> and <code>write=True</code> is equivalent to all CRUD resources combined).</p>
-<p>The <code>viewer</code> resource defines a custom viewer configuration for the map viewer (see <a href="https://github.com/qwc-services/qwc-map-viewer#custom-viewer-configurations">Custom viewer configurations</a>).</p>
 <p>The <code>viewer_task</code> resource defines viewer functionalities (e.g. printing or raster export) that can be restricted or permitted.
 Their <code>name</code> (e.g. <code>RasterExport</code>) will be matched against:
 - The <code>key</code> in <code>menuItems</code> and <code>toolbarItems</code> in the QWC2 <code>config.json</code>.
 - The <code>name</code> of a plugin entry in <code>config.json</code>.
 - The <code>task</code> configuration property of a <code>TaskButton</code> plugin entry in <code>config.json</code></p>
 <p><em>Note</em>: You can restrict tasks entires which specify a mode (i.e. <code>{"key": "Measure", "mode": "LineString"}</code>) by concatenating the task key and the mode as the <code>viewer_task</code> resource name, i.e. <code>MeasureLineString</code>.</p>
+<p>The <code>FeatureInfo service</code>, <code>FeatureInfo layer</code> and subordinate <code>Attribute</code> resources allow controlling whether an entire WMS service, its layers or its attributes are queryable via GetFeatureInfo.</p>
 <p>Restricted viewer task items are then removed from the menu and toolbar in the map viewer. Viewer tasks not explicitly added as resources are kept unchanged from the <code>config.json</code>.</p>
 <p><em>Note</em>: The resource types, i.e. for custom QWC2 plugins, can be extended by inserting new types into the <code>qwc_config.resource_types</code> table.
 These can be queried, e.g. in a custom service, by using <code>PermissionClient::resource_permissions()</code> or
