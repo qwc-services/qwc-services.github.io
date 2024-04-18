@@ -77,6 +77,17 @@ In a manually created Qt-Designer Ui form, create a widget of type `QWidget`, `Q
 - The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend.
 
 
+### Expressions
+
+The QWC2 editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.
+
+*Notes*:
+
+- Currently only a limited number of verbs are implemented, see the [expression grammar](https://github.com/qgis/qwc2/blob/master/utils/expr_grammar/grammar.ne). Pull requests for additional verbs are welcome!
+- Make sure Data permissions exist for any datasets which are referenced in the expressions.
+- The QWC2 expression parser requires a space between brackets and keywords, i.e. `attribute('foo')is null` is invalid, whereas `attribute('foo') is null` is valid.
+- If the parser fails to parse an expression, an error message will be logged in the browser console.
+
 ### Special form widgets
 
 In manually created Qt-Designer Ui forms, there are a number of special widgets you can use:
