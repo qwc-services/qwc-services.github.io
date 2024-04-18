@@ -16,7 +16,7 @@ The following parameters can appear in the URL of the QWC2 application:
 - `hc`: If `c` is specified and `hc` is `true` or `1`, a marker is set at `c` when starting the application. Note: requires the `StartupMarkerPlugin` plugin to be active.
 - `st`: The search text
 - `hp`, `hf`, `ht`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
-- `f`: A filter configuration, see [./MapFilter](Map filtering).
+- `f`: A filter configuration, see [Map filtering](./MapFilter.md).
 - `localConfig`: Override the name of the loaded config file, i.e. to load `myconfig.json` instead of the default `config.json`, pass `localConfig=myconfig`.
 
 The `l` parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form
