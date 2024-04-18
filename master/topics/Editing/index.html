@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Editing - QWC2 - 2024.04.10-master</title>
+    <title>Editing - QWC2 - 2024.04.16-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.10-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.16-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -81,6 +81,8 @@
     <li class="toctree-l4"><a class="reference internal" href="#key-value-relations-value-mappings">Key-value relations (value mappings)</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#1n-relations">1:N relations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#expressions">Expressions</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#special-form-widgets">Special form widgets</a>
     </li>
@@ -130,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.04.10-master</a>
+          <a href="../..">QWC2 - 2024.04.16-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -204,6 +206,15 @@
 <ul>
 <li>In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;__&lt;sortcol&gt;</code>. If a sort-column is specified, QWC2 will display sort arrows for each entry in the relation widget.</li>
 <li>The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend.</li>
+</ul>
+<h3 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h3>
+<p>The QWC2 editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.</p>
+<p><em>Notes</em>:</p>
+<ul>
+<li>Currently only a limited number of verbs are implemented, see the <a href="https://github.com/qgis/qwc2/blob/master/utils/expr_grammar/grammar.ne">expression grammar</a>. Pull requests for additional verbs are welcome!</li>
+<li>Make sure Data permissions exist for any datasets which are referenced in the expressions.</li>
+<li>The QWC2 expression parser requires a space between brackets and keywords, i.e. <code>attribute('foo')is null</code> is invalid, whereas <code>attribute('foo') is null</code> is valid.</li>
+<li>If the parser fails to parse an expression, an error message will be logged in the browser console.</li>
 </ul>
 <h3 id="special-form-widgets">Special form widgets<a class="headerlink" href="#special-form-widgets" title="Permanent link">&para;</a></h3>
 <p>In manually created Qt-Designer Ui forms, there are a number of special widgets you can use:</p>
