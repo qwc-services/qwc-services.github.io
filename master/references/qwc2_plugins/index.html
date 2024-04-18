@@ -174,20 +174,28 @@
 <li><a href="#timemanager">TimeManager</a></li>
 <li><a href="#topbar">TopBar</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
-<li><a href="#editingsupport">EditingSupport</a></li>
-<li><a href="#locatesupport">LocateSupport</a></li>
-<li><a href="#measurementsupport">MeasurementSupport</a></li>
-<li><a href="#overviewmap">OverviewMap</a></li>
-<li><a href="#redliningsupport">RedliningSupport</a></li>
-<li><a href="#scalebarsupport">ScaleBarSupport</a></li>
-<li><a href="#snappingsupport">SnappingSupport</a></li>
 </ul>
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <p>Exposes an API for interacting with QWC2 via <code>window.qwc2</code>.</p>
+<p>You can interact with the API as soon as the <code>QWC2ApiReady</code> event is dispatched.</p>
+<p>For example:</p>
+<pre><code>window.addEventListener(&quot;QWC2ApiReady&quot;, () =&gt; {
+     const {React} = window.qwc2.libs;
+
+     class MyPlugin extends React.Component {
+         render() {
+             return React.createElement(&quot;div&quot;, {}, &quot;Hello World&quot;);
+         }
+     }
+
+     window.qwc2.addPlugin(&quot;MyPlugin&quot;, MyPlugin);
+});
+</code></pre>
 <p>All following action functions are available:</p>
 <ul>
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/display.js">display</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/editing.js">editing</a></li>
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/layers.js">layers</a></li>
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/locate.js">locate</a></li>
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/map.js">map</a></li>
@@ -196,52 +204,73 @@
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/windows.js">windows</a></li>
 </ul>
 <p>I.e. <code>setCurrentTask</code> is available via <code>window.qwc2.setCurrentTask</code>.</p>
-<p>Additionally, the following functions are available:</p>
-<hr />
-<p><code>window.qwc2.addExternalLayer(resource, beforeLayerName = null)</code></p>
-<p>Convenience method for adding an external layer.</p>
+<p>Some of the core libraries (React, axios, ol, ...) are accessible via <code>window.qwc2.libs</code>.</p>
+<p>In addition, the following methods are available on <code>window.qwc2</code>:</p>
+<p><strong>addPlugin(name,plugin,translations)</strong></p>
+<p>Add custom plugin</p>
 <ul>
-<li><code>resource</code>: An external resource of the form <code>wms:&lt;service_url&gt;#&lt;layername&gt;</code> or <code>wmts:&lt;capabilities_url&gt;#&lt;layername&gt;</code>.</li>
-<li><code>beforeLayerName</code>: Insert the new layer before the layer with the specified name. If <code>null</code> or the layer does not exist, the layer is inserted on top.</li>
+<li><code>name</code>: An identifier</li>
+<li><code>plugin</code>: The plugin component class</li>
+<li><code>translations</code>: The plugin translation messages: <code>{"&lt;lang&gt;": {&lt;messages&gt;}, ...}</code></li>
 </ul>
-<hr />
-<p><code>window.qwc2.drawScratch(geomType, message, drawMultiple, callback, style = null)</code></p>
+<p><strong>removePlugin(name)</strong></p>
+<p>Remove custom plugin</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addIdentifyAttributeCalculator(name,calcFunc)</strong></p>
+<p>Add custom attribute calculator
+(i.e. computed attributes which are added to GetFeatureInfo responses).</p>
+<ul>
+<li><code>name</code>: An identifier</li>
+<li><code>calcFunc</code>: The calculator function with signature <code>function(layer, feature)</code></li>
+</ul>
+<p>The <code>calcFunc</code> should return either a two-enty <code>[name, value]</code> pair or a one-value <code>[value]</code> array.</p>
+<p><strong>removeIdentifyAttributeCalculator(name)</strong></p>
+<p>Remove custom identify attribute calculator</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addIdentifyExporter(name,exporterConfig)</strong></p>
+<p>Add custom identify exporter</p>
+<ul>
+<li><code>name</code>: An identifier</li>
+<li><code>exporterFunc</code>: The exporter configuration</li>
+</ul>
+<p>The exporter configuration is an object of the shape</p>
+<pre><code>{
+   id: &quot;&lt;id&gt;&quot;,
+   title: &quot;&lt;title&gt;&quot;,
+   allowClipboard: &lt;true|false&gt;,
+   export: (features, callback) =&gt; {
+     callback({
+       data: &lt;blob&gt;, type: &quot;&lt;mimeType&gt;&quot;, filename: &quot;&lt;filename&gt;&quot;
+     });
+   }
+ }
+</code></pre>
+<p><strong>removeIdentifyExporter(name)</strong></p>
+<p>Remove identify exporter</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>drawScratch(geomType,message,drawMultiple,callback,style)</strong></p>
 <p>Deprecated, use <code>window.qwc2.drawGeometry</code> instead.</p>
-<hr />
-<p><code>window.qwc2.drawGeometry(geomType, message, callback, options)</code></p>
+<p><strong>drawGeometry(geomType,message,callback,options)</strong></p>
 <p>Draw geometries, and return these as GeoJSON to the calling application.</p>
 <ul>
 <li><code>geomType</code>: <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>Circle</code> or <code>Box</code>.</li>
 <li><code>message</code>: A descriptive string to display in the tool taskbar.</li>
 <li><code>callback</code>: A <code>function(result, crs)</code>, the <code>result</code> being an array of GeoJSON features, and <code>crs</code> the projection of the feature coordinates.</li>
-<li><code>options</code>: Optional configuration:
-        <code>drawMultiple</code>: Whether to allow drawing multiple geometries (default: <code>false</code>).
-        <code>style</code>: A custom style object to use for the drawn features, in the same format as <code>DEFAULT_FEATURE_STYLE</code> in <code>qwc2/utils/FeatureStyles.js</code>.
-        <code>initialFeatures</code>: Array of initial geometries.
-        <code>snapping</code>: Whether snapping is available while drawing (default: <code>false</code>).
-        <code>snappingActive</code>: Whether snapping is initially active (default: <code>false</code>)</li>
+<li><code>options</code>: Optional configuration:</li>
+<li><code>drawMultiple</code>: Whether to allow drawing multiple geometries (default: <code>false</code>).</li>
+<li><code>style</code>: A custom style object to use for the drawn features, in the same format as <code>DEFAULT_FEATURE_STYLE</code> in <code>qwc2/utils/FeatureStyles.js</code>.</li>
+<li><code>initialFeatures</code>: Array of initial geometries.</li>
+<li><code>snapping</code>: Whether snapping is available while drawing (default: <code>false</code>).</li>
+<li><code>snappingActive</code>: Whether snapping is initially active (default: <code>false</code>)</li>
 </ul>
-<hr />
-<p><code>window.qwc2.getState()</code></p>
+<p><strong>getState()</strong></p>
 <p>Return the current application state.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="attributetable">AttributeTable<a name="attributetable"></a><a class="headerlink" href="#attributetable" title="Permanent link">&para;</a></h2>
 <p>Displaying the attribute table of layers in a dialog.</p>
 <p>To make a layer available in the attribute table, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
@@ -429,24 +458,6 @@
 </table>
 <h2 id="cookiepopup">CookiePopup<a name="cookiepopup"></a><a class="headerlink" href="#cookiepopup" title="Permanent link">&para;</a></h2>
 <p>A simple popup to notify that cookies are used.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="cyclomedia">Cyclomedia<a name="cyclomedia"></a><a class="headerlink" href="#cyclomedia" title="Permanent link">&para;</a></h2>
 <p>Cyclomedia integration for QWC2.</p>
 <table>
@@ -1131,24 +1142,6 @@ with containing a container element with id=legendcontainer.</p>
 </table>
 <h2 id="loginuser">LoginUser<a name="loginuser"></a><a class="headerlink" href="#loginuser" title="Permanent link">&para;</a></h2>
 <p>Displays the currently logged in user.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="mapplugin">MapPlugin<a name="mapplugin"></a><a class="headerlink" href="#mapplugin" title="Permanent link">&para;</a></h2>
 <p>The main map component.</p>
 <table>
@@ -1196,24 +1189,6 @@ with containing a container element with id=legendcontainer.</p>
 <h2 id="mapcompareplugin">MapComparePlugin<a name="mapcompareplugin"></a><a class="headerlink" href="#mapcompareplugin" title="Permanent link">&para;</a></h2>
 <p>Allows comparing the top layer with the rest of the map.</p>
 <p>Activated through a checkbox in the LayerTree.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="mapcopyright">MapCopyright<a name="mapcopyright"></a><a class="headerlink" href="#mapcopyright" title="Permanent link">&para;</a></h2>
 <p>Displays layer attributions in the bottom right corner of the map.</p>
 <table>
@@ -1694,24 +1669,6 @@ revision is published (specified via newsRev prop).</p>
 <h2 id="processnotifications">ProcessNotifications<a name="processnotifications"></a><a class="headerlink" href="#processnotifications" title="Permanent link">&para;</a></h2>
 <p>Adds support for displaying notifications of background processes.</p>
 <p>Only useful for third-party plugins which use this functionality.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="rasterexport">RasterExport<a name="rasterexport"></a><a class="headerlink" href="#rasterexport" title="Permanent link">&para;</a></h2>
 <p>Allows exporting a selected portion of the map to an image ("screenshot").</p>
 <p>Deprecated. Use the MapExport plugin instead.</p>
@@ -1850,24 +1807,6 @@ revision is published (specified via newsRev prop).</p>
 <p>Task which which can be invoked by other tools to draw a geometry and pass it to a callback.</p>
 <p>Only useful for third-party code, i.e. over the JavaScript API.</p>
 <p>Invoke as <code>setCurrentTask("ScratchDrawing", null, null, {callback: &lt;function(features, crs)&gt;});</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="settings">Settings<a name="settings"></a><a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
 <p>Settings panel.</p>
 <p>Allows configuring language and color scheme.</p>
@@ -2299,146 +2238,6 @@ revision is published (specified via newsRev prop).</p>
 <td><code>[string]</code></td>
 <td>Only show the button in themes matching one of these flags.</td>
 <td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="editingsupport">EditingSupport<a name="editingsupport"></a><a class="headerlink" href="#editingsupport" title="Permanent link">&para;</a></h2>
-<p>Editing support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="locatesupport">LocateSupport<a name="locatesupport"></a><a class="headerlink" href="#locatesupport" title="Permanent link">&para;</a></h2>
-<p>GPS locate support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
-<p>Measurement support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>{</code><br /><code>geodesic: bool,</code><br /><code>}</code></td>
-<td>Options</td>
-<td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
-<p>Overview map support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>object</code></td>
-<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Aditionally, you can specify <code>layer: {type: "&lt;wms|wmts&gt;", ...}</code> to specify a custom overview layer.</td>
-<td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="redliningsupport">RedliningSupport<a name="redliningsupport"></a><a class="headerlink" href="#redliningsupport" title="Permanent link">&para;</a></h2>
-<p>Redlining support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="scalebarsupport">ScaleBarSupport<a name="scalebarsupport"></a><a class="headerlink" href="#scalebarsupport" title="Permanent link">&para;</a></h2>
-<p>Scalebar support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>object</code></td>
-<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_ScaleLine-ScaleLine.html">OpenLayers API doc</a></td>
-<td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="snappingsupport">SnappingSupport<a name="snappingsupport"></a><a class="headerlink" href="#snappingsupport" title="Permanent link">&para;</a></h2>
-<p>Snapping support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
