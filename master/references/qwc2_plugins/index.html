@@ -1322,6 +1322,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>highlightStyle</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style used for highlighting filter geometries.</td>
+<td><code>{</code><br /><code>strokeColor: [0, 0, 0],</code><br /><code>fillColor: [255, 255, 0, 0.25]</code><br /><code>}</code></td>
+</tr>
+<tr>
 <td>position</td>
 <td><code>number</code></td>
 <td>The position slot index of the map button, from the bottom (0: bottom slot). Set to -1 to hide the button.</td>
@@ -2287,7 +2293,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>options</td>
 <td><code>object</code></td>
-<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer: {type: "&lt;wms|wmts&gt;", ...}</code> to specify a custom overview layer.<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer</code>: Custom overview layer, in the same form as background layer definitions (<code>{type: "&lt;wms|wmts&gt;", "url": ...}</code>).<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
 <td><code>undefined</code></td>
 </tr>
 </tbody>
