@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.04.16-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.04.22-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.16-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.04.22-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -110,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.04.16-master</a>
+          <a href="../..">QWC2 - 2024.04.22-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -174,6 +174,13 @@
 <li><a href="#timemanager">TimeManager</a></li>
 <li><a href="#topbar">TopBar</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
+<li><a href="#editingsupport">EditingSupport</a></li>
+<li><a href="#locatesupport">LocateSupport</a></li>
+<li><a href="#measurementsupport">MeasurementSupport</a></li>
+<li><a href="#overviewmap">OverviewMap</a></li>
+<li><a href="#redliningsupport">RedliningSupport</a></li>
+<li><a href="#scalebarsupport">ScaleBarSupport</a></li>
+<li><a href="#snappingsupport">SnappingSupport</a></li>
 </ul>
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
@@ -2241,6 +2248,74 @@ revision is published (specified via newsRev prop).</p>
 </tr>
 </tbody>
 </table>
+<h2 id="editingsupport">EditingSupport<a name="editingsupport"></a><a class="headerlink" href="#editingsupport" title="Permanent link">&para;</a></h2>
+<p>Editing support for the map component.</p>
+<h2 id="locatesupport">LocateSupport<a name="locatesupport"></a><a class="headerlink" href="#locatesupport" title="Permanent link">&para;</a></h2>
+<p>GPS locate support for the map component.</p>
+<h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
+<p>Measurement support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><code>{</code><br /><code>geodesic: bool,</code><br /><code>}</code></td>
+<td>Options</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
+<p>Overview map support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Aditionally, you can specify <code>layer: {type: "&lt;wms|wmts&gt;", ...}</code> to specify a custom overview layer.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="redliningsupport">RedliningSupport<a name="redliningsupport"></a><a class="headerlink" href="#redliningsupport" title="Permanent link">&para;</a></h2>
+<p>Redlining support for the map component.</p>
+<h2 id="scalebarsupport">ScaleBarSupport<a name="scalebarsupport"></a><a class="headerlink" href="#scalebarsupport" title="Permanent link">&para;</a></h2>
+<p>Scalebar support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_ScaleLine-ScaleLine.html">OpenLayers API doc</a></td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="snappingsupport">SnappingSupport<a name="snappingsupport"></a><a class="headerlink" href="#snappingsupport" title="Permanent link">&para;</a></h2>
+<p>Snapping support for the map component.</p>
               
             </div>
           </div><footer>
