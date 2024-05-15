@@ -4,6 +4,14 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [3e1763a](https://github.com/qgis/qwc2/tree/3e1763a) (15.05.2024)
+---------------------------------------------------------------------------------------------------
+
+**Changes to default `EditingInterface` and `qwc-data-service`**
+
+The `qwc-data-service` and the default `EditingInterface` client editing interface have been adapted to support ReCAPTCHA verification.
+Consequently, if editing is used, the `qwc` submodule will need to be updated in parallel with the `qwc-data-service`.
+
 Update to qwc2 submodule revision [c7610eb](https://github.com/qgis/qwc2/tree/c7610eb) (22.02.2024)
 ---------------------------------------------------------------------------------------------------
 

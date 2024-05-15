@@ -97,6 +97,15 @@ In manually created Qt-Designer Ui forms, there are a number of special widgets 
 * *External fields*: Some times it is useful to display information from an external source in the edit form. This can be accomplished by creating a `QWidget` with name `ext__<fieldname>` and using a form preprocessor hook (see `registerFormPreprocessor` in [`QtDesignerForm.jsx`](https://github.com/qgis/qwc2/blob/master/components/QtDesignerForm.jsx) to populate the field by assigning a React fragment to `formData.externalFields.<fieldname>`.
 * *Buttons*: To add a button with a custom action, add a `QPushButton` with name `btn__<buttonname>`, and use a form preprocessor hook to set the custom function to `formData.buttons.buttonname.onClick`.
 
+## ReCAPTCHA validation<a name="recaptcha"></a>
+
+You can enable ReCAPTCHA validation for public editable datasets as follows:
+
+- Set the ReCAPTCHA site secret key in `recaptcha_site_secret_key` in the data service config.
+- Set the ReCAPTCHA site public key in `editServiceCaptchaSiteKey` in the toplevel section of the [`config.json`](../configuration/ViewerConfiguration.md#load-time-config).
+- Configure the desired datasets to be editable by `public`.
+
+If `editServiceCaptchaSiteKey` is set, a ReCAPTCHA validation widget will be displayed in the edit form as well as the attribute table when creating/updating/deleting features. Currently, the ReCAPTCHA validation will only be enabled for `public` users, and will automatically be bypassed for authenticated users.
 
 ## Logging mutations
 

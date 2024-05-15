@@ -45,6 +45,7 @@ All settings are optional, with fallback to the default values as documented.
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
 |`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see `qwc2/utils/MiscUtils.js`. |
 |`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. |
+|`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../Topics/Editing.md#recaptcha).
 
 ### Global settings, overridable per theme<a name="theme-overridable-settings"></a>
 
