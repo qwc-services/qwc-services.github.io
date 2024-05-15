@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc elevation service readme - QWC2 - 2024.05.15-master</title>
+    <title>Qwc document service readme - QWC2 - 2024.05.15-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Qwc elevation service readme";
-        var mkdocs_page_input_path = "references/qwc-elevation-service_readme.md";
+        var mkdocs_page_name = "Qwc document service readme";
+        var mkdocs_page_input_path = "references/qwc-document-service_readme.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -117,7 +117,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Qwc elevation service readme</li>
+      <li>Qwc document service readme</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -126,84 +126,113 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://github.com/qwc-services/qwc-elevation-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-elevation-service/workflows/build/badge.svg" /></a>
-<a href="https://hub.docker.com/r/sourcepole/qwc-elevation-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-elevation-service?label=Docker%20image&amp;sort=semver" /></a></p>
-<h1 id="qwc-elevation-service">QWC Elevation Service<a class="headerlink" href="#qwc-elevation-service" title="Permanent link">&para;</a></h1>
-<p>Returns elevations.</p>
+                <p><a href="https://github.com/qwc-services/qwc-document-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-document-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-document-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-document-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="document-service">Document service<a class="headerlink" href="#document-service" title="Permanent link">&para;</a></h1>
+<p>The document service delivers reports from the Jasper reporting service with permission control.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/qwc-services/jasper-reporting-service/">Jasper reporting service</a></li>
+</ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
 e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
-<h3 id="elevation-service-config">Elevation Service config<a class="headerlink" href="#elevation-service-config" title="Permanent link">&para;</a></h3>
+<h3 id="json-config">JSON config<a class="headerlink" href="#json-config" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="schemas/qwc-elevation-service.json">JSON schema</a></li>
-<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/elevationConfig.json</code></li>
+<li><a href="schemas/qwc-document-service.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/documentConfig.json</code></li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-json">{
-  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-elevation-service/master/schemas/qwc-elevation-service.json&quot;,
-  &quot;service&quot;: &quot;elevation&quot;,
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-document-service/master/schemas/qwc-document-service.json&quot;,
+  &quot;service&quot;: &quot;document&quot;,
   &quot;config&quot;: {
-    &quot;elevation_dataset&quot;: &quot;/vsicurl/https://data.sourcepole.com/srtm_1km_3857.tif&quot;
+    &quot;jasper_service_url&quot;: &quot;http://localhost:8002/reports&quot;,
+    &quot;jasper_timeout&quot;: 60
+  },
+  &quot;resources&quot;: {
+    &quot;document_templates&quot;: [
+      {
+        &quot;template&quot;: &quot;demo&quot;,
+        &quot;report_filename&quot;: &quot;PieChartReport&quot;
+      }
+    ]
   }
 }
 </code></pre>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>Environment variables:</p>
 <table>
 <thead>
 <tr>
 <th>Variable</th>
 <th>Description</th>
+<th>Default value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ELEVATION_DATASET</td>
-<td>path/to/dtm.tif</td>
+<td><code>JASPER_SERVICE_URL</code></td>
+<td>Jasper Reports service URL</td>
+<td>http://localhost:8002/reports</td>
+</tr>
+<tr>
+<td><code>JASPER_TIMEOUT</code></td>
+<td>Timeout (s)</td>
+<td>60</td>
 </tr>
 </tbody>
 </table>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Run as</p>
-<pre><code>python src/server.py
+<p>API documentation:</p>
+<pre><code>http://localhost:5018/api/
 </code></pre>
-<p>Requires GDAL Python bindings. <code>python-gdal</code> or <code>python3-gdal</code> packages on Debian/Ubuntu (Note: virtualenv creation requires --system-site-packages option).</p>
-<p>API:
-* Runs by default on <code>http://localhost:5002</code>
-* <code>GET: /getelevation?pos=&lt;pos&gt;&amp;crs=&lt;crs&gt;</code>
-  - <em>pos</em>: the query position, as <code>x,y</code>
-  - <em>crs</em>: the crs of the query position
-  - <em>output</em>: a json document with the elevation in meters: <code>{elevation: h}</code>
-* <code>POST: /getheightprofile</code>
-  - <em>payload</em>: a json document as follows:</p>
-<pre><code>    {
-        coordinates: [[x1,y1],[x2,y2],...],
-        distances: [&lt;dist_p1_p2&gt;, &lt;dist_p2_p3&gt;, ...],
-        projection: &lt;EPSG:XXXX, projection of coordinates&gt;,
-        samples: &lt;number of height samples to return&gt;
-    }
+<p>Request format:</p>
+<pre><code>http://localhost:5018/&lt;template&gt;?&lt;key&gt;=&lt;value&gt;&amp;...
 </code></pre>
-<ul>
-<li><em>output</em>: a json document with heights in meters: <code>{elevations: [h1, h2, ...]}</code></li>
-</ul>
+<p>Example:</p>
+<pre><code>http://localhost:5018/BelasteteStandorte.pdf
+</code></pre>
+<p>Arbitrary parameters can be appended to the request:</p>
+<pre><code>http://localhost:5018/BelasteteStandorte.pdf?feature=123
+</code></pre>
+<p>The format of the report is extracted from the template name, i.e.</p>
+<pre><code>http://localhost:5018/BelasteteStandorte.xls?feature=123
+</code></pre>
+<p>If no extension is present in the template name, PDF is used as format.</p>
+<p>See also jasper-reporting-service README.</p>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>The docker image can be run with the following command:</p>
-<pre><code>docker run -p 5002:9090 sourcepole/qwc-elevation-service
+<p>To run this docker image you will need a running jasper reporting service.</p>
+<p>The following steps explain how to download a jasper reporting service docker image and how to run the <code>qwc-document-service</code> with <code>docker-compose</code>.</p>
+<p><strong>Step 1: Clone qwc-docker</strong></p>
+<pre><code>git clone https://github.com/qwc-services/qwc-docker
+cd qwc-docker
 </code></pre>
-<table>
-<thead>
-<tr>
-<th>docker parameters</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p 5002:9090</code></td>
-<td>Bind port 5002 on the host machine</td>
-</tr>
-</tbody>
-</table>
+<p><strong>Step 2: Create docker-compose.yml file</strong></p>
+<pre><code>cp docker-compose-example.yml docker-compose.yml
+</code></pre>
+<p><strong>Step 3: Start docker containers</strong></p>
+<pre><code>docker-compose up qwc-document-service
+</code></pre>
+<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Create a virtual environment:</p>
+<pre><code>python3 -m venv .venv
+</code></pre>
+<p>Activate virtual environment:</p>
+<pre><code>source .venv/bin/activate
+</code></pre>
+<p>Install requirements:</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<p>Start local service:</p>
+<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ python src/server.py
+</code></pre>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>Run all tests:</p>
+<pre><code>python test.py
+</code></pre>
               
             </div>
           </div><footer>
