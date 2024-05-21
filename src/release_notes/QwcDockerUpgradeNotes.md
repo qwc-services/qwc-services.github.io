@@ -6,6 +6,10 @@ This greatly simplifies the handling of such projects. The `-noqgis` image tag s
 
 See the [categorized layers documentation](https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers) for instructions how to configure the new `split_categorized` plugin.
 
+# Updating to qwc-data-service v2024.05.21
+
+The `qwc-data-service` version 2024.05.21 introduces two now logging fields `create_user_field` and `create_timestamp_field`. Record creation will now be logged to these fields, if set, and record updates will be logged to `edit_user_field` and `edit_timestamp_field`. Previously, both record creation and updates were logged to `edit_user_field` and `edit_timestamp_field`. As of v2024.05.21, you need to set `create_user_field` and `create_timestamp_field` (also to the same values as `edit_user_field` and `edit_timestamp_field`) if you want to log creation.
+
 # 2023.10.24 qwc-base-db rework \[2023-lts &rarr; 2024-lts\]
 
 As of 2023.10.24 the QWC base DB image has been reworked as follows:
