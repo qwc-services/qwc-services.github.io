@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>qwc-docker upgrade notes - QWC2 - 2024.05.15-master</title>
+    <title>qwc-docker upgrade notes - QWC2 - 2024.05.16-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.05.15-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.05.16-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -112,7 +112,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.05.15-master</a>
+          <a href="../..">QWC2 - 2024.05.16-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -134,6 +134,8 @@
 <p>As of 2024.02.02 the split categorized layers functionality previously part of <code>qwc-config-generator</code> has been rewritten as a <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">QGIS Server plugin</a>.</p>
 <p>This greatly simplifies the handling of such projects. The <code>-noqgis</code> image tag suffix in <code>qwc-config-generator:vXXXX-noqgis</code> has been dropped resp. shipped as the regular <code>qwc-config-generator:vXXXX</code> docker images.</p>
 <p>See the <a href="https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers">categorized layers documentation</a> for instructions how to configure the new <code>split_categorized</code> plugin.</p>
+<h1 id="updating-to-qwc-data-service-v20240521">Updating to qwc-data-service v2024.05.21<a class="headerlink" href="#updating-to-qwc-data-service-v20240521" title="Permanent link">&para;</a></h1>
+<p>The <code>qwc-data-service</code> version 2024.05.21 introduces two now logging fields <code>create_user_field</code> and <code>create_timestamp_field</code>. Record creation will now be logged to these fields, if set, and record updates will be logged to <code>edit_user_field</code> and <code>edit_timestamp_field</code>. Previously, both record creation and updates were logged to <code>edit_user_field</code> and <code>edit_timestamp_field</code>. As of v2024.05.21, you need to set <code>create_user_field</code> and <code>create_timestamp_field</code> (also to the same values as <code>edit_user_field</code> and <code>edit_timestamp_field</code>) if you want to log creation.</p>
 <h1 id="20231024-qwc-base-db-rework-2023-lts-2024-lts">2023.10.24 qwc-base-db rework [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#20231024-qwc-base-db-rework-2023-lts-2024-lts" title="Permanent link">&para;</a></h1>
 <p>As of 2023.10.24 the QWC base DB image has been reworked as follows:</p>
 <ul>
