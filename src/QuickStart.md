@@ -61,6 +61,7 @@ git clone https://github.com/qwc-services/qwc-docker.git
 cd qwc-docker
 cp docker-compose-example.yml docker-compose.yml
 cp api-gateway/nginx-example.conf api-gateway/nginx.conf
+chmod o-rwx pg_service*.conf
 ```
 - Create a secret key:
 ```bash
