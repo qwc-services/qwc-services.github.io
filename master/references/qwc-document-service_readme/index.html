@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC2 - 2024.05.16-master</title>
+    <title>Qwc document service readme - QWC2 - 2024.06.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.05.16-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.06.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -110,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.05.16-master</a>
+          <a href="../..">QWC2 - 2024.06.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -184,6 +184,46 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </tr>
 </tbody>
 </table>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;document_templates&quot;: [
+          &quot;demo&quot;,
+          &quot;another demo&quot;
+        ]
+      }
+    },
+    {
+      &quot;role&quot;: &quot;demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;document_templates&quot;: []
+      }
+    }
+  ]
+}
+</code></pre>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>API documentation:</p>
 <pre><code>http://localhost:5018/api/
