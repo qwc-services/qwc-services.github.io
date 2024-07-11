@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc base db readme - QWC2 - 2024.06.10-master</title>
+    <title>Qwc base db readme - QWC2 - 2024.07.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.06.10-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.07.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -110,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.06.10-master</a>
+          <a href="../..">QWC2 - 2024.07.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -172,6 +172,7 @@ If that's the case then it will proceed with setting up the
 </code></pre>
 <p>Migrations will be applied automatically, if necessary, whenever the Docker application is started.</p>
 <p>To upgrade to a migration different than <code>head</code>, set the <code>ALEMBIC_VERSION</code> ENV variable.</p>
+<p>By default, the DB specified by the <code>qwc_configdb</code> connection will be upgraded. You can specify a different connection by setting the <code>PGSERVICE</code> ENV variable.</p>
 <h1 id="managing-an-external-config-db">Managing an external Config DB<a class="headerlink" href="#managing-an-external-config-db" title="Permanent link">&para;</a></h1>
 <p>You can use an external DB instead of the <code>qwc-base-db</code> dockerized DB.</p>
 <p>To set up the external DB, set passwords for roles with ENV variables (<code>QGIS_SERVER_PASSWORD</code>, <code>QWC_ADMIN_PASSWORD</code>, <code>QWC_SERVICE_PASSWORD</code>, <code>QWC_SERVICE_WRITE_PASSWORD</code>) and run the SQL commands in <code>setup-roles-and-db.sh</code> on your external DB.</p>
