@@ -47,6 +47,7 @@ All settings are optional, with fallback to the default values as documented.
 |`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. |
 |`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../Topics/Editing.md#recaptcha).
 |`editTextNullValue`                  | A text value which represents `NULL` when editing.
+|`editingAddLinkAnchors`              | Whether to automatically insert link anchors in text values when editing.
 
 ### Global settings, overridable per theme<a name="theme-overridable-settings"></a>
 
