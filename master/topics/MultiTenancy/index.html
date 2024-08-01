@@ -90,6 +90,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#tenantconfig-template">tenantConfig template</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas</a>
+    </li>
     </ul>
                 </li>
     </ul>
@@ -343,6 +345,18 @@
   ]
 }
 </code></pre>
+<h2 id="multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas<a class="headerlink" href="#multi-tenancy-with-separate-configdb-schemas" title="Permanent link">&para;</a></h2>
+<p>If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:</p>
+<ul>
+<li>Manually create the desired schemas, and set the owner to <code>qwc_admin</code>.</li>
+<li>Configure a <code>qwc-config-db-migrate</code> container in <code>docker-compose.yml</code> with the <code>QWC_CONFIG_SCHEMA</code> environment variable set to the name of the created schema, and run the container to set up the config tables.</li>
+<li>Set <code>qwc_config_schema</code> to the name of the created schema in toplevel and relevant service configuration blocks in the <code>tenantConfig.json</code> (<code>mapViewer</code>, <code>adminGui</code>, <code>dbAuth</code>).</li>
+<li>
+<p>Run the config-generator manually from a command line via</p>
+<p>curl -X POST "http://localhost:5010/generate_configs?tenant=<tenantname>"</p>
+</li>
+</ul>
+<p>to generate the service configurations to ensure that a correct configuration is available for the Admin GUI and DB Auth (ensure that port 5010 of the <code>qwc-config-service</code> container is exposed to the docker host in <code>docker-compose.yml</code>).</p>
               
             </div>
           </div><footer>
