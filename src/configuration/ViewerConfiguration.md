@@ -39,6 +39,7 @@ All settings are optional, with fallback to the default values as documented.
 |`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default value: `false`.             |
 |`wmsHidpi`                           | Whether to honour the device pixel ratio for WMS GetMap requests. Default value: `true`. |
 |`wmsMaxGetUrlLength`                 | URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: 2048. |
+|`wmsWktPrecision`                    | Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: 4. |
 |`qgisServerVersion`                  | The QGIS Server major version in use, defaults to `3`.|
 |`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. |
 |`startupTask`                        | Task to automatically aktivate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
