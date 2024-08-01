@@ -223,3 +223,15 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
   ]
 }
 ```
+
+## Multi-Tenancy with separate ConfigDB schemas
+If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:
+
+- Manually create the desired schemas, and set the owner to `qwc_admin`.
+- Configure a `qwc-config-db-migrate` container in `docker-compose.yml` with the `QWC_CONFIG_SCHEMA` environment variable set to the name of the created schema, and run the container to set up the config tables.
+- Set `qwc_config_schema` to the name of the created schema in toplevel and relevant service configuration blocks in the `tenantConfig.json` (`mapViewer`, `adminGui`, `dbAuth`).
+- Run the config-generator manually from a command line via
+
+      curl -X POST "http://localhost:5010/generate_configs?tenant=<tenantname>"
+
+  to generate the service configurations to ensure that a correct configuration is available for the Admin GUI and DB Auth (ensure that port 5010 of the `qwc-config-service` container is exposed to the docker host in `docker-compose.yml`).
