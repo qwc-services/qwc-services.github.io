@@ -42,7 +42,7 @@ All settings are optional, with fallback to the default values as documented.
 |`wmsWktPrecision`                    | Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: 4. |
 |`qgisServerVersion`                  | The QGIS Server major version in use, defaults to `3`.|
 |`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. |
-|`startupTask`                        | Task to automatically aktivate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
+|`startupTask`                        | Task to automatically activate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
 |`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see `qwc2/utils/MiscUtils.js`. |
 |`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. |
