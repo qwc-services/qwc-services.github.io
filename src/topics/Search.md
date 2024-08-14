@@ -207,12 +207,94 @@ In addition to the configuration described above, you can specify these addition
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
-### Solr configuration
+The [`qwc-fulltet-search-service`](https://github.com/qwc-services/qwc-fulltet-search-service) provides facetted fullsearch text search, with one of the following backends:
 
-Before the fulltext search service can be configured, a new solr configuration file must be created.
-This file must be created in `volumes/solr/configsets/gdi/conf/`.
-The name of the file can be chosen freely.
-Here is an example XML file:
+* Postgres Trigram
+* Apache Solr
+
+A facet references a searchable dataset. The configuration of the fulltext search service and available search facets can be found in `tenantConfig.json`:
+
+```json
+{
+    "name": "search",
+    "config": {
+        "search_backend": "<solr|trgm>",
+        "word_split_re": "[\\s,.:;\"]+",
+        "search_result_limit": 50,
+        "db_url": "postgresql:///?service=qwc_geodb",
+        // trgm specific configuration, see below
+        "trgm_feature_query": "<see below>",
+        "trgm_layer_query": "<see below>",
+        "trgm_similarity_threshold": "0.3"
+        // solr specific configuration, see below
+        "solr_service_url": "http://localhost:8983/solr/gdi/select",
+        "search_result_sort": "score desc, sort asc",
+    },
+    "resources": {
+        "facets": [
+            {
+                "name": "<facet name>",
+                "filter_word": "<filter word>",
+                "table_name": "<schema.tablename>",
+                "geometry_column": "<geometry column name>"
+            },
+            ...
+        ]
+    }
+}
+```
+
+- The `search_backend` specifies the search backend to use, either `solr` or `trgm`. Default: `solr`.
+- The `db_url` specifies the DB which contains the search index (searched either by `solr` or by the specified `trgm` queries).
+- The `word_split_re` specifies the regular expression which is used to split the search string into single words. Default: `[\\s,.:;\"]+`.
+- `search_result_limit` specifies the maximum number of feature results returned by a search. Default: `50`.
+
+The facets describe a searchable dataset and are referenced by the search index:
+
+- `name` specifies the facet identifier.
+- `filter_word` is a short (human readable) name which appears as result category in the search results (i.e. `Address`).
+- `table_name` specifies the table containing the features referenced by the search index (in the format `schema.table_name`).
+- `geometry_column` specifies the name of the geometry column in this table.
+
+
+### Fulltext search with Trigram backend
+
+To configure a fulltext search with the trigram backend, set `search_backend` to `trgm` and specify a `trgm_feature_query` and optionally a `trgm_layer_query`. The feature and layer query SQL can contain following placeholders:
+
+- `:term`: The full search text
+- `:terms`: A list of search text words (i.e. the full search text split by whitespace).
+- `:thres`: The trigram similarity treshold value (note that the service will also separately execute `SET pg_trgm.similarity_threshold = <value>`)
+
+The `trgm_feature_query` must return the following fields:
+
+* `display`: The label to display in the search results.
+* `facet_id`: The facet name (as configured in `resources` => `facets`).
+* `id_field_name`: The name of the identifier field in the table referenced by the facet.
+* `feature_id`: The feature identifier through which to locate the feature in table referenced by the facet.
+* `bbox`: The feature bounding box, as a`[xmin,ymin,xmax,ymax]` string.
+* `srid`: The SRID of the bbox coordinates (i.e. `3857`).
+
+Example:
+
+    SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
+    FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :term || '%' ORDER BY sml DESC;",
+
+The `trgm_layer_query` must return the following fields:
+
+* `display`: The label to display in the search results.
+* `dataproduct_id`: The id of the dataproduct.
+* `has_info`: Whether an abstract is available for the dataproduct.
+* `sublayers`: A JSON stringified array of the shape `[{"ident": "<dataproduct_id>", "display": "<display>", "dset_info": true}, ...]`, or `NULL` if no sublayers exist.
+
+*Note*: The layer query relies on an additional service, configured as `dataproductServiceUrl` in the viewer `config.json`, which resolves the `dataproduct_id` to a QWC theme sublayer object, like the [`sogis-dataproduct-service`](https://github.com/qwc-services/sogis-dataproduct-service).
+
+*Note*: Set `FLASK_DEBUG=1` as environment variable for the search service to see additional logging information.
+
+### Fulltext search with Solr backend
+
+To use the solr backend, you need to run a solr search service and point `solr_service_url` to the corresponding URL. You can find the solr documentation at [https://lucene.apache.org/solr/guide/8_0/](https://lucene.apache.org/solr/guide/8_0/).
+
+Next, create search XML configuration files in `volumes/solr/configsets/gdi/conf/`. The name of the file can be chosen freely. Example:
 
 ```xml
 <dataConfig>
@@ -223,11 +305,11 @@ Here is an example XML file:
         password="{DB_PASSWORD}"
     />
     <document>
-        <entity name="{SEARCH_NAME}" query="
+        <entity name="{FACET_NAME}" query="
             WITH index_base AS (
                 /* ==== Base query for search index ==== */
                 SELECT
-                    '{SEARCH_NAME}'::text AS subclass,
+                    '{FACET_NAME}'::text AS subclass,
                     {PRIMARY_KEY} AS id_in_class,
                     '{PRIMARY_KEY}' AS id_name,
                     '{SEARCH_FIELD_DATA_TYPE}:n' AS id_type,
@@ -262,7 +344,7 @@ The next table shows how the values need to be defined:
 | `DB_PORT`                | Database port number                                                              | `5432`           |
 | `DB_USER`                | Database username                                                                 | `qwc_service`    |
 | `DB_PASSWORD`            | Password for the specified database user                                          | `qwc_service`    |
-| `SEARCH_NAME`            | Name of the search                                                                | `fluesse_search` |
+| `FACET_NAME`             | Name of the search facet                                                          | `fluesse_search` |
 | `PRIMARY_KEY`            | Primary key name of the table that is used in the search query                    | `ogc_fid`        |
 | `SEARCH_FIELD_DATA_TYPE` | Search field data type                                                            | `str`            |
 | `DISPLAYTEXT`            | Displaytext that will be shown by the QWC2 when a match was found                 | `name_long`      |
@@ -281,7 +363,7 @@ In the `volumes/solr/configsets/gdi/conf/solrconfig.xml` file you have to look f
 `<!-- SearchHandler` and add the following configuration
 
 ```xml
-<requestHandler name="/SEARCH_NAME" class="solr.DataImportHandler">
+<requestHandler name="/FACET_NAME" class="solr.DataImportHandler">
     <lst name="defaults">
         <str name="config">NAME_OF_THE_CONFIGURATION_FILE.xml</str>
     </lst>
@@ -293,47 +375,13 @@ Finally, the `solr` index has to be generated:
 ```
 rm -rf volumes/solr/data/*
 docker compose restart qwc-solr
-curl 'http://localhost:8983/solr/gdi/SEARCH_NAME?command=full-import'
+curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
 ```
 
-### Configure fulltext service
 
-The configuration of the fulltext search service can be found in `tenantConfig.json`.
-Search the `services` list for the JSON object that has `search` as its name.
-Then add a new facet to the facets list. An example entry could be:
+### Configuring the search for a theme
 
-```json
-{
-    "name": "search",
-    "config": {
-        "solr_service_url": "http://qwc-solr:8983/solr/gdi/select",
-        "search_result_limit": 50,
-        "db_url": "postgresql:///?service=qwc_geodb"
-    },
-    "resources": {
-        "facets": [
-            {
-                "name": "SEARCH_NAME",
-                "filter_word": "OPTIONAL_SEARCH_FILTER",
-                "table_name": "SCHEMA.SEARCH_TABLE_NAME",
-                "geometry_column": "GEOMETRY_FIELD",
-                "search_id_col": "PRIMARY_KEY"
-            }
-        ]
-    }
-}
-```
-
-The `filter_word` field can be specified to activate / deactivate searches,
-if you have configure multiple searches for one theme.
-Normally `filter_word` is left empty (`""`) which results in the search always
-being active.
-But if specified (e.g. `"house_no"`) then the fulltext search will only use
-the configured search, if the user prefixes his search text with `"house_no:"`.
-
-### Activate search for a theme
-
-As a final step, you have to configure the search for the desired themes and give the users the necessary rights in the Admin GUI.
+Finally, configure the search facets for the desired themes and give the users the necessary rights in the Admin GUI.
 
 1. Add the following to a theme item in `themesConfig.json`:
 
@@ -341,9 +389,9 @@ As a final step, you have to configure the search for the desired themes and giv
 "searchProviders": [
     {
         "provider": "solr",
-        "default": [<SEARCH_NAME>],
+        "default": [<FACET_NAME>],
         "layers": {
-            "<layer_name>": "<SEARCH_NAME>"
+            "<layer_name>": "<FACET_NAME>"
         }
     }
 ]
@@ -354,14 +402,10 @@ When activating a search to a theme, you can either:
 * Add the search name to the `default` list, resulting in the search always being active.
 * Add the search name to the `layers` object, resulting in the search being active only if the theme layer `<layer_name>` is present in the theme.
 
-2. Create a new resource in the Admin GUI
+2. Create `Search facet` resources in the Admin GUI for the desired facet names.
 
-![Create resource](../images/create_solr_search_facet_resource.png?style=centerme)
+  * To manage layer search permissions, you can create a `Search facet` with name `dataproduct`.
+  * You can create a wildcard `Search facet` resource by setting the name to `*`. This is useful to assign permissions for all available facets with one single resource.
 
 3. Add permissions on the newly created resource
-
-![Add permission](../images/add_solr_search_facet_permission.png?style=centerme)
-
 4. Re-generate the services configurations with the `Generate service configuration` button
-
-![Generate service configurations](../images/generate_service_configurations.png?style=centerme)
