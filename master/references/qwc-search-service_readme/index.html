@@ -129,10 +129,10 @@
                 <p><a href="https://github.com/qwc-services/qwc-fulltext-search-service/actions"><img alt="Actions" src="https://github.com/qwc-services/qwc-fulltext-search-service/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-fulltext-search-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-fulltext-search-service?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-fulltext-search-service">QWC Fulltext Search Service<a class="headerlink" href="#qwc-fulltext-search-service" title="Permanent link">&para;</a></h1>
-<p>Faceted fulltext search and geometry retrieval for search results.</p>
-<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<p>Faceted fulltext search and geometry retrieval for search results, with two backend options:</p>
 <ul>
-<li>Solr search service</li>
+<li>Apache Solr</li>
+<li>Postgresql with Trigram extension</li>
 </ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config and permission files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
@@ -147,10 +147,11 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-fulltext-search-service/master/schemas/qwc-search-service.json&quot;,
   &quot;service&quot;: &quot;search&quot;,
   &quot;config&quot;: {
+    &quot;search_backend&quot;: &quot;solr&quot;,
     &quot;solr_service_url&quot;: &quot;http://localhost:8983/solr/gdi/select&quot;,
+    &quot;search_result_sort&quot;: &quot;score desc, sort asc&quot;,
     &quot;word_split_re&quot;: &quot;[\\s,.:;\&quot;]+&quot;,
     &quot;search_result_limit&quot;: 50,
-    &quot;search_result_sort&quot;: &quot;score desc, sort asc&quot;,
     &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;
   },
   &quot;resources&quot;: {
@@ -166,7 +167,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
       {
         &quot;name&quot;: &quot;ne_10m_admin_0_countries&quot;,
         &quot;filter_word&quot;: &quot;Country&quot;,
-        &quot;table_name&quot;: &quot;qwc_geodb.search_v&quot;,
+        &quot;table_name&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
         &quot;geometry_column&quot;: &quot;geom&quot;,
         &quot;facet_column&quot;: &quot;subclass&quot;
       }
@@ -218,6 +219,34 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   ]
 }
 </code></pre>
+<h3 id="solr-backend">Solr backend<a class="headerlink" href="#solr-backend" title="Permanent link">&para;</a></h3>
+<p>You can choose the solr backend by setting</p>
+<pre><code>"search_backend": "solr"
+</code></pre>
+<p>in the search service config.</p>
+<p>Solr Administration User Interface: http://localhost:8983/solr/</p>
+<p>Core overview: http://localhost:8983/solr/#/gdi/core-overview</p>
+<p>Solr Ref guide: https://lucene.apache.org/solr/guide/8_0/
+Indexing: https://lucene.apache.org/solr/guide/8_0/uploading-structured-data-store-data-with-the-data-import-handler.html#dataimporthandler-commands</p>
+<p><code>solr-precreate</code> creates core in <code>/var/solr/data/gdi</code>.
+After a configuration change remove the content of <code>/var/solr/data</code>
+e.g. with <code>sudo rm -rf volumes/solr/data/*</code></p>
+<pre><code>curl 'http://localhost:8983/solr/gdi/dih_geodata?command=full-import'
+curl 'http://localhost:8983/solr/gdi/dih_geodata?command=status'
+curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:austr*'
+
+curl 'http://localhost:8983/solr/gdi/dih_metadata?command=full-import&amp;clean=false'
+curl 'http://localhost:8983/solr/gdi/dih_metadata?command=status'
+curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
+</code></pre>
+<p>If you encounter permission problems with the solr service then try the following command:</p>
+<pre><code>chown 8983:8983 volumes/solr/data
+</code></pre>
+<h3 id="trgm-backend">Trgm backend<a class="headerlink" href="#trgm-backend" title="Permanent link">&para;</a></h3>
+<p>You can choose the solr backend by setting</p>
+<pre><code>"search_backend": "trgm"
+</code></pre>
+<p>and setting the <code>trgm_feature_query</code>, <code>trgm_layer_query</code>, <code>trgm_similarity_threshold</code> variables. See also the <a href="https://qwc-services.github.io/master/topics/Search/#configuring-the-fulltext-search-service">Search chapter in the qwc-services documentation</a>.</p>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <table>
@@ -229,6 +258,11 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>SEARCH_BACKEND</td>
+<td>Search backend</td>
+<td><code>solr</code></td>
+</tr>
 <tr>
 <td>SOLR_SERVICE_URL</td>
 <td>SOLR service URL</td>
@@ -246,7 +280,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </tr>
 <tr>
 <td>SEARCH_RESULT_SORT</td>
-<td>Sorting of search results</td>
+<td>Sorting of search results (solr backend)</td>
 <td><code>score desc, sort asc</code></td>
 </tr>
 <tr>
@@ -254,27 +288,23 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <td>DB connection for search geometries view</td>
 <td></td>
 </tr>
+<tr>
+<td>TRGM_FEATURE_QUERY</td>
+<td>Feature query SQL (trigram backend)</td>
+<td></td>
+</tr>
+<tr>
+<td>TRGM_LAYER_QUERY</td>
+<td>Layer query SQL (trigram backend)</td>
+<td></td>
+</tr>
+<tr>
+<td>TRGM_SIMILARITY_THRESHOLD</td>
+<td>Trigram similarity treshold (trigram backend)</td>
+<td><code>0.3</code></td>
+</tr>
 </tbody>
 </table>
-<h2 id="solr-setup">Solr Setup<a class="headerlink" href="#solr-setup" title="Permanent link">&para;</a></h2>
-<p>Solr Administration User Interface: http://localhost:8983/solr/</p>
-<p>Core overview: http://localhost:8983/solr/#/gdi/core-overview</p>
-<p>Solr Ref guide: https://lucene.apache.org/solr/guide/8_0/
-Indexing: https://lucene.apache.org/solr/guide/8_0/uploading-structured-data-store-data-with-the-data-import-handler.html#dataimporthandler-commands</p>
-<p><code>solr-precreate</code> creates core in <code>/var/solr/data/gdi</code>.
-After a configuration change remove the content of <code>/var/solr/data</code>
-e.g. with <code>sudo rm -rf volumes/solr/data/*</code></p>
-<pre><code>curl 'http://localhost:8983/solr/gdi/dih_geodata?command=full-import'
-curl 'http://localhost:8983/solr/gdi/dih_geodata?command=status'
-curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:austr*'
-
-curl 'http://localhost:8983/solr/gdi/dih_metadata?command=full-import&amp;clean=false'
-curl 'http://localhost:8983/solr/gdi/dih_metadata?command=status'
-curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
-</code></pre>
-<p>If you encounter permission problems with the solr service then try the following commnad:</p>
-<pre><code>chown 8983:8983 volumes/solr/data
-</code></pre>
 <h2 id="usagedevelopment">Usage/Development<a class="headerlink" href="#usagedevelopment" title="Permanent link">&para;</a></h2>
 <p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
 <pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
@@ -301,20 +331,6 @@ curl 'http://localhost:5011/fts/?filter=foreground,ne_10m_admin_0_countries&amp;
 
 curl -g 'http://localhost:5011/geom/ne_10m_admin_0_countries/?filter=[["ogc_fid","=",90]]'
 </code></pre>
-<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>To run this service you will need a running Solr search service.</p>
-<p>The following steps explain how to download the Solr search service docker image and how to run it with <code>docker-compose</code>.</p>
-<p><strong>Step 1: Clone qwc-docker</strong></p>
-<pre><code>git clone https://github.com/qwc-services/qwc-docker
-cd qwc-docker
-</code></pre>
-<p><strong>Step 2: Create docker-compose.yml file</strong></p>
-<pre><code>cp docker-compose-example.yml docker-compose.yml
-</code></pre>
-<p><strong>Step 3: Start docker containers</strong></p>
-<pre><code>docker-compose up qwc-solr
-</code></pre>
-<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Run all tests:</p>
 <pre><code>python test.py

@@ -72,11 +72,11 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-fulltext-search-service">Configuring the fulltext search service </a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#solr-configuration">Solr configuration</a>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-trigram-backend">Fulltext search with Trigram backend</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#configure-fulltext-service">Configure fulltext service</a>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-solr-backend">Fulltext search with Solr backend</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#activate-search-for-a-theme">Activate search for a theme</a>
+    <li class="toctree-l4"><a class="reference internal" href="#configuring-the-search-for-a-theme">Configuring the search for a theme</a>
     </li>
         </ul>
     </li>
@@ -336,11 +336,85 @@ searchProviders: [
 <li><code>group</code>: A group name, used to group the searches in the <code>FeatureSearch</code> selection combobox.</li>
 </ul>
 <h2 id="configuring-the-fulltext-search-service">Configuring the fulltext search service <a name="fulltext-search"></a><a class="headerlink" href="#configuring-the-fulltext-search-service" title="Permanent link">&para;</a></h2>
-<h3 id="solr-configuration">Solr configuration<a class="headerlink" href="#solr-configuration" title="Permanent link">&para;</a></h3>
-<p>Before the fulltext search service can be configured, a new solr configuration file must be created.
-This file must be created in <code>volumes/solr/configsets/gdi/conf/</code>.
-The name of the file can be chosen freely.
-Here is an example XML file:</p>
+<p>The <a href="https://github.com/qwc-services/qwc-fulltet-search-service"><code>qwc-fulltet-search-service</code></a> provides facetted fullsearch text search, with one of the following backends:</p>
+<ul>
+<li>Postgres Trigram</li>
+<li>Apache Solr</li>
+</ul>
+<p>A facet references a searchable dataset. The configuration of the fulltext search service and available search facets can be found in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;search&quot;,
+    &quot;config&quot;: {
+        &quot;search_backend&quot;: &quot;&lt;solr|trgm&gt;&quot;,
+        &quot;word_split_re&quot;: &quot;[\\s,.:;\&quot;]+&quot;,
+        &quot;search_result_limit&quot;: 50,
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        // trgm specific configuration, see below
+        &quot;trgm_feature_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_layer_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_similarity_threshold&quot;: &quot;0.3&quot;
+        // solr specific configuration, see below
+        &quot;solr_service_url&quot;: &quot;http://localhost:8983/solr/gdi/select&quot;,
+        &quot;search_result_sort&quot;: &quot;score desc, sort asc&quot;,
+    },
+    &quot;resources&quot;: {
+        &quot;facets&quot;: [
+            {
+                &quot;name&quot;: &quot;&lt;facet name&gt;&quot;,
+                &quot;filter_word&quot;: &quot;&lt;filter word&gt;&quot;,
+                &quot;table_name&quot;: &quot;&lt;schema.tablename&gt;&quot;,
+                &quot;geometry_column&quot;: &quot;&lt;geometry column name&gt;&quot;
+            },
+            ...
+        ]
+    }
+}
+</code></pre>
+<ul>
+<li>The <code>search_backend</code> specifies the search backend to use, either <code>solr</code> or <code>trgm</code>. Default: <code>solr</code>.</li>
+<li>The <code>db_url</code> specifies the DB which contains the search index (searched either by <code>solr</code> or by the specified <code>trgm</code> queries).</li>
+<li>The <code>word_split_re</code> specifies the regular expression which is used to split the search string into single words. Default: <code>[\\s,.:;\"]+</code>.</li>
+<li><code>search_result_limit</code> specifies the maximum number of feature results returned by a search. Default: <code>50</code>.</li>
+</ul>
+<p>The facets describe a searchable dataset and are referenced by the search index:</p>
+<ul>
+<li><code>name</code> specifies the facet identifier.</li>
+<li><code>filter_word</code> is a short (human readable) name which appears as result category in the search results (i.e. <code>Address</code>).</li>
+<li><code>table_name</code> specifies the table containing the features referenced by the search index (in the format <code>schema.table_name</code>).</li>
+<li><code>geometry_column</code> specifies the name of the geometry column in this table.</li>
+</ul>
+<h3 id="fulltext-search-with-trigram-backend">Fulltext search with Trigram backend<a class="headerlink" href="#fulltext-search-with-trigram-backend" title="Permanent link">&para;</a></h3>
+<p>To configure a fulltext search with the trigram backend, set <code>search_backend</code> to <code>trgm</code> and specify a <code>trgm_feature_query</code> and optionally a <code>trgm_layer_query</code>. The feature and layer query SQL can contain following placeholders:</p>
+<ul>
+<li><code>:term</code>: The full search text</li>
+<li><code>:terms</code>: A list of search text words (i.e. the full search text split by whitespace).</li>
+<li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>)</li>
+</ul>
+<p>The <code>trgm_feature_query</code> must return the following fields:</p>
+<ul>
+<li><code>display</code>: The label to display in the search results.</li>
+<li><code>facet_id</code>: The facet name (as configured in <code>resources</code> =&gt; <code>facets</code>).</li>
+<li><code>id_field_name</code>: The name of the identifier field in the table referenced by the facet.</li>
+<li><code>feature_id</code>: The feature identifier through which to locate the feature in table referenced by the facet.</li>
+<li><code>bbox</code>: The feature bounding box, as a<code>[xmin,ymin,xmax,ymax]</code> string.</li>
+<li><code>srid</code>: The SRID of the bbox coordinates (i.e. <code>3857</code>).</li>
+</ul>
+<p>Example:</p>
+<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
+FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :term || '%' ORDER BY sml DESC;",
+</code></pre>
+<p>The <code>trgm_layer_query</code> must return the following fields:</p>
+<ul>
+<li><code>display</code>: The label to display in the search results.</li>
+<li><code>dataproduct_id</code>: The id of the dataproduct.</li>
+<li><code>has_info</code>: Whether an abstract is available for the dataproduct.</li>
+<li><code>sublayers</code>: A JSON stringified array of the shape <code>[{"ident": "&lt;dataproduct_id&gt;", "display": "&lt;display&gt;", "dset_info": true}, ...]</code>, or <code>NULL</code> if no sublayers exist.</li>
+</ul>
+<p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
+<p><em>Note</em>: Set <code>FLASK_DEBUG=1</code> as environment variable for the search service to see additional logging information.</p>
+<h3 id="fulltext-search-with-solr-backend">Fulltext search with Solr backend<a class="headerlink" href="#fulltext-search-with-solr-backend" title="Permanent link">&para;</a></h3>
+<p>To use the solr backend, you need to run a solr search service and point <code>solr_service_url</code> to the corresponding URL. You can find the solr documentation at <a href="https://lucene.apache.org/solr/guide/8_0/">https://lucene.apache.org/solr/guide/8_0/</a>.</p>
+<p>Next, create search XML configuration files in <code>volumes/solr/configsets/gdi/conf/</code>. The name of the file can be chosen freely. Example:</p>
 <pre><code class="language-xml">&lt;dataConfig&gt;
     &lt;dataSource
         driver=&quot;org.postgresql.Driver&quot;
@@ -349,11 +423,11 @@ Here is an example XML file:</p>
         password=&quot;{DB_PASSWORD}&quot;
     /&gt;
     &lt;document&gt;
-        &lt;entity name=&quot;{SEARCH_NAME}&quot; query=&quot;
+        &lt;entity name=&quot;{FACET_NAME}&quot; query=&quot;
             WITH index_base AS (
                 /* ==== Base query for search index ==== */
                 SELECT
-                    '{SEARCH_NAME}'::text AS subclass,
+                    '{FACET_NAME}'::text AS subclass,
                     {PRIMARY_KEY} AS id_in_class,
                     '{PRIMARY_KEY}' AS id_name,
                     '{SEARCH_FIELD_DATA_TYPE}:n' AS id_type,
@@ -414,8 +488,8 @@ Here is an example XML file:</p>
 <td><code>qwc_service</code></td>
 </tr>
 <tr>
-<td><code>SEARCH_NAME</code></td>
-<td>Name of the search</td>
+<td><code>FACET_NAME</code></td>
+<td>Name of the search facet</td>
 <td><code>fluesse_search</code></td>
 </tr>
 <tr>
@@ -462,7 +536,7 @@ corresponds to exactly one <code>&lt;entity&gt;</code> tag in the XML file.</p>
 <p>After the configuration file has been created, the search must be registered in <code>solr</code>.
 In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you have to look for
 <code>&lt;!-- SearchHandler</code> and add the following configuration</p>
-<pre><code class="language-xml">&lt;requestHandler name=&quot;/SEARCH_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
+<pre><code class="language-xml">&lt;requestHandler name=&quot;/FACET_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
     &lt;lst name=&quot;defaults&quot;&gt;
         &lt;str name=&quot;config&quot;&gt;NAME_OF_THE_CONFIGURATION_FILE.xml&lt;/str&gt;
     &lt;/lst&gt;
@@ -471,49 +545,19 @@ In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you hav
 <p>Finally, the <code>solr</code> index has to be generated:</p>
 <pre><code>rm -rf volumes/solr/data/*
 docker compose restart qwc-solr
-curl 'http://localhost:8983/solr/gdi/SEARCH_NAME?command=full-import'
+curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
 </code></pre>
-<h3 id="configure-fulltext-service">Configure fulltext service<a class="headerlink" href="#configure-fulltext-service" title="Permanent link">&para;</a></h3>
-<p>The configuration of the fulltext search service can be found in <code>tenantConfig.json</code>.
-Search the <code>services</code> list for the JSON object that has <code>search</code> as its name.
-Then add a new facet to the facets list. An example entry could be:</p>
-<pre><code class="language-json">{
-    &quot;name&quot;: &quot;search&quot;,
-    &quot;config&quot;: {
-        &quot;solr_service_url&quot;: &quot;http://qwc-solr:8983/solr/gdi/select&quot;,
-        &quot;search_result_limit&quot;: 50,
-        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;
-    },
-    &quot;resources&quot;: {
-        &quot;facets&quot;: [
-            {
-                &quot;name&quot;: &quot;SEARCH_NAME&quot;,
-                &quot;filter_word&quot;: &quot;OPTIONAL_SEARCH_FILTER&quot;,
-                &quot;table_name&quot;: &quot;SCHEMA.SEARCH_TABLE_NAME&quot;,
-                &quot;geometry_column&quot;: &quot;GEOMETRY_FIELD&quot;,
-                &quot;search_id_col&quot;: &quot;PRIMARY_KEY&quot;
-            }
-        ]
-    }
-}
-</code></pre>
-<p>The <code>filter_word</code> field can be specified to activate / deactivate searches,
-if you have configure multiple searches for one theme.
-Normally <code>filter_word</code> is left empty (<code>""</code>) which results in the search always
-being active.
-But if specified (e.g. <code>"house_no"</code>) then the fulltext search will only use
-the configured search, if the user prefixes his search text with <code>"house_no:"</code>.</p>
-<h3 id="activate-search-for-a-theme">Activate search for a theme<a class="headerlink" href="#activate-search-for-a-theme" title="Permanent link">&para;</a></h3>
-<p>As a final step, you have to configure the search for the desired themes and give the users the necessary rights in the Admin GUI.</p>
+<h3 id="configuring-the-search-for-a-theme">Configuring the search for a theme<a class="headerlink" href="#configuring-the-search-for-a-theme" title="Permanent link">&para;</a></h3>
+<p>Finally, configure the search facets for the desired themes and give the users the necessary rights in the Admin GUI.</p>
 <ol>
 <li>Add the following to a theme item in <code>themesConfig.json</code>:</li>
 </ol>
 <pre><code class="language-json">&quot;searchProviders&quot;: [
     {
         &quot;provider&quot;: &quot;solr&quot;,
-        &quot;default&quot;: [&lt;SEARCH_NAME&gt;],
+        &quot;default&quot;: [&lt;FACET_NAME&gt;],
         &quot;layers&quot;: {
-            &quot;&lt;layer_name&gt;&quot;: &quot;&lt;SEARCH_NAME&gt;&quot;
+            &quot;&lt;layer_name&gt;&quot;: &quot;&lt;FACET_NAME&gt;&quot;
         }
     }
 ]
@@ -525,18 +569,19 @@ the configured search, if the user prefixes his search text with <code>"house_no
 <p>Add the search name to the <code>layers</code> object, resulting in the search being active only if the theme layer <code>&lt;layer_name&gt;</code> is present in the theme.</p>
 </li>
 <li>
-<p>Create a new resource in the Admin GUI</p>
+<p>Create <code>Search facet</code> resources in the Admin GUI for the desired facet names.</p>
 </li>
-</ul>
-<p><img alt="Create resource" src="../../images/create_solr_search_facet_resource.png?style=centerme" /></p>
-<ol>
-<li>Add permissions on the newly created resource</li>
-</ol>
-<p><img alt="Add permission" src="../../images/add_solr_search_facet_permission.png?style=centerme" /></p>
-<ol>
+<li>
+<p>To manage layer search permissions, you can create a <code>Search facet</code> with name <code>dataproduct</code>.</p>
+</li>
+<li>
+<p>You can create a wildcard <code>Search facet</code> resource by setting the name to <code>*</code>. This is useful to assign permissions for all available facets with one single resource.</p>
+</li>
+<li>
+<p>Add permissions on the newly created resource</p>
+</li>
 <li>Re-generate the services configurations with the <code>Generate service configuration</code> button</li>
-</ol>
-<p><img alt="Generate service configurations" src="../../images/generate_service_configurations.png?style=centerme" /></p>
+</ul>
               
             </div>
           </div><footer>
