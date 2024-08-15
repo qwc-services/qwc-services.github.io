@@ -381,14 +381,12 @@ curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
 
 ### Configuring the search for a theme
 
-Finally, configure the search facets for the desired themes and give the users the necessary rights in the Admin GUI.
-
-1. Add the following to a theme item in `themesConfig.json`:
+To use a fulltext search in a theme, configure a `fulltext` search provider in `themesConfig.json` as follows:
 
 ```json
 "searchProviders": [
     {
-        "provider": "solr",
+        "provider": "fulltext",
         "default": [<FACET_NAME>],
         "layers": {
             "<layer_name>": "<FACET_NAME>"
@@ -396,16 +394,14 @@ Finally, configure the search facets for the desired themes and give the users t
     }
 ]
 ```
+Where:
 
-When activating a search to a theme, you can either:
+* `default` lists the search facets enabled by default.
+* `layers` providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
 
-* Add the search name to the `default` list, resulting in the search always being active.
-* Add the search name to the `layers` object, resulting in the search being active only if the theme layer `<layer_name>` is present in the theme.
-
-2. Create `Search facet` resources in the Admin GUI for the desired facet names.
+Next, create `Search facet` resources in the Admin GUI for the desired facet names.
 
   * To manage layer search permissions, you can create a `Search facet` with name `dataproduct`.
   * You can create a wildcard `Search facet` resource by setting the name to `*`. This is useful to assign permissions for all available facets with one single resource.
 
-3. Add permissions on the newly created resource
-4. Re-generate the services configurations with the `Generate service configuration` button
+Finally, create permissions for the newly created resources and regenerate the service configuration.
