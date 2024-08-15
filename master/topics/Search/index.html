@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2024.08.01-master</title>
+    <title>Search - QWC2 - 2024.08.15-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.08.01-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.08.15-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -128,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.08.01-master</a>
+          <a href="../..">QWC2 - 2024.08.15-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -548,13 +548,10 @@ docker compose restart qwc-solr
 curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
 </code></pre>
 <h3 id="configuring-the-search-for-a-theme">Configuring the search for a theme<a class="headerlink" href="#configuring-the-search-for-a-theme" title="Permanent link">&para;</a></h3>
-<p>Finally, configure the search facets for the desired themes and give the users the necessary rights in the Admin GUI.</p>
-<ol>
-<li>Add the following to a theme item in <code>themesConfig.json</code>:</li>
-</ol>
+<p>To use a fulltext search in a theme, configure a <code>fulltext</code> search provider in <code>themesConfig.json</code> as follows:</p>
 <pre><code class="language-json">&quot;searchProviders&quot;: [
     {
-        &quot;provider&quot;: &quot;solr&quot;,
+        &quot;provider&quot;: &quot;fulltext&quot;,
         &quot;default&quot;: [&lt;FACET_NAME&gt;],
         &quot;layers&quot;: {
             &quot;&lt;layer_name&gt;&quot;: &quot;&lt;FACET_NAME&gt;&quot;
@@ -562,26 +559,17 @@ curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
     }
 ]
 </code></pre>
-<p>When activating a search to a theme, you can either:</p>
+<p>Where:</p>
 <ul>
-<li>Add the search name to the <code>default</code> list, resulting in the search always being active.</li>
-<li>
-<p>Add the search name to the <code>layers</code> object, resulting in the search being active only if the theme layer <code>&lt;layer_name&gt;</code> is present in the theme.</p>
-</li>
-<li>
-<p>Create <code>Search facet</code> resources in the Admin GUI for the desired facet names.</p>
-</li>
-<li>
-<p>To manage layer search permissions, you can create a <code>Search facet</code> with name <code>dataproduct</code>.</p>
-</li>
-<li>
-<p>You can create a wildcard <code>Search facet</code> resource by setting the name to <code>*</code>. This is useful to assign permissions for all available facets with one single resource.</p>
-</li>
-<li>
-<p>Add permissions on the newly created resource</p>
-</li>
-<li>Re-generate the services configurations with the <code>Generate service configuration</code> button</li>
+<li><code>default</code> lists the search facets enabled by default.</li>
+<li><code>layers</code> providides a mapping of facets which are enabled whenever the theme layer <code>&lt;layer_name&gt;</code> is visible on the map.</li>
 </ul>
+<p>Next, create <code>Search facet</code> resources in the Admin GUI for the desired facet names.</p>
+<ul>
+<li>To manage layer search permissions, you can create a <code>Search facet</code> with name <code>dataproduct</code>.</li>
+<li>You can create a wildcard <code>Search facet</code> resource by setting the name to <code>*</code>. This is useful to assign permissions for all available facets with one single resource.</li>
+</ul>
+<p>Finally, create permissions for the newly created resources and regenerate the service configuration.</p>
               
             </div>
           </div><footer>
