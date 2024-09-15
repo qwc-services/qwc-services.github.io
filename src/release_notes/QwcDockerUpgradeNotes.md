@@ -1,3 +1,7 @@
+# New qwc-document-service, jasper-reporting-service obsolete
+
+As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC2.
+
 # Split categorized layers functionality rewritten as QGIS Server plugin
 
 As of 2024.02.02 the split categorized layers functionality previously part of `qwc-config-generator` has been rewritten as a [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized).
