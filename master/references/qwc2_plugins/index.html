@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.08.20-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.09.14-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.08.20-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.09.14-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -68,6 +68,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
@@ -79,6 +81,8 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -110,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.08.20-master</a>
+          <a href="../..">QWC2 - 2024.09.14-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -164,6 +168,7 @@
 <li><a href="#processnotifications">ProcessNotifications</a></li>
 <li><a href="#rasterexport">RasterExport</a></li>
 <li><a href="#redlining">Redlining</a></li>
+<li><a href="#reports">Reports</a></li>
 <li><a href="#routing">Routing</a></li>
 <li><a href="#scratchdrawing">ScratchDrawing</a></li>
 <li><a href="#settings">Settings</a></li>
@@ -1286,7 +1291,7 @@ with containing a container element with id=legendcontainer.</p>
 <td>pageSizes</td>
 <td><code>[{</code><br /><code>name: string,</code><br /><code>width: number,</code><br /><code>height: number,</code><br /><code>}]</code></td>
 <td>List of image sizes to offer, in addition to the free-hand selection. The width and height are in millimeters.</td>
-<td><code>[</code><br /><code>{name: '15 x 15 cm', width: 150, height: 150},</code><br /><code>{name: '30 x 30 cm', width: 300, height: 300}</code><br /><code>]</code></td>
+<td><code>[]</code></td>
 </tr>
 <tr>
 <td>side</td>
@@ -1780,6 +1785,30 @@ revision is published (specified via newsRev prop).</p>
 <td><code>{bool, string}</code></td>
 <td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
 <td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reports">Reports<a name="reports"></a><a class="headerlink" href="#reports" title="Permanent link">&para;</a></h2>
+<p>Allow generating reports for selected features.</p>
+<p>This plugin displays all available reports for the current theme,
+allows selecting one or more or all features of the layer, and finally generating
+an aggregated report for all selected features.</p>
+<p>Requires <code>documentServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-document-service</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>

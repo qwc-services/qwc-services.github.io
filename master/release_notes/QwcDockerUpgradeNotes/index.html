@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>qwc-docker upgrade notes - QWC2 - 2024.08.20-master</title>
+    <title>qwc-docker upgrade notes - QWC2 - 2024.09.14-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.08.20-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.09.14-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -68,6 +68,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
@@ -79,6 +81,8 @@
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -112,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.08.20-master</a>
+          <a href="../..">QWC2 - 2024.09.14-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -130,7 +134,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="split-categorized-layers-functionality-rewritten-as-qgis-server-plugin">Split categorized layers functionality rewritten as QGIS Server plugin<a class="headerlink" href="#split-categorized-layers-functionality-rewritten-as-qgis-server-plugin" title="Permanent link">&para;</a></h1>
+                <h1 id="new-qwc-document-service-jasper-reporting-service-obsolete">New qwc-document-service, jasper-reporting-service obsolete<a class="headerlink" href="#new-qwc-document-service-jasper-reporting-service-obsolete" title="Permanent link">&para;</a></h1>
+<p>As of 2024.09.15, the <code>jasper-reporting-service</code> is obsolete, its functionality has been integrated into the <code>qwc-document-service</code>. Check out the new <a href="../../topics/Reports/">Reports</a> chapter to learn more about integrating the reporting functionality into QWC2.</p>
+<h1 id="split-categorized-layers-functionality-rewritten-as-qgis-server-plugin">Split categorized layers functionality rewritten as QGIS Server plugin<a class="headerlink" href="#split-categorized-layers-functionality-rewritten-as-qgis-server-plugin" title="Permanent link">&para;</a></h1>
 <p>As of 2024.02.02 the split categorized layers functionality previously part of <code>qwc-config-generator</code> has been rewritten as a <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">QGIS Server plugin</a>.</p>
 <p>This greatly simplifies the handling of such projects. The <code>-noqgis</code> image tag suffix in <code>qwc-config-generator:vXXXX-noqgis</code> has been dropped resp. shipped as the regular <code>qwc-config-generator:vXXXX</code> docker images.</p>
 <p>See the <a href="https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers">categorized layers documentation</a> for instructions how to configure the new <code>split_categorized</code> plugin.</p>
