@@ -143,7 +143,7 @@
                 <h1 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h1>
 <p>QWC2, complemented with the <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on <a href="https://community.jaspersoft.com/download-jaspersoft/community-edition/">Jasper</a> report templates.</p>
 <h2 id="setting-up-the-document-service">Setting up the document-service<a class="headerlink" href="#setting-up-the-document-service" title="Permanent link">&para;</a></h2>
-<p>As a first step, set up a <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, placing your report templates below the <code>report_dir</code>. Read the <code>qwc-document-service</code> <a href="../../references/qwc-document-service/"><code>README</code></a> for more information on setting up the service and to understand how to prepare and configure your report templates.</p>
+<p>As a first step, set up a <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, placing your report templates below the <code>report_dir</code>. Read the <code>qwc-document-service</code> <a href="../../references/qwc-document-service_readme/"><code>README</code></a> for more information on setting up the service and to understand how to prepare and configure your report templates.</p>
 <p>When using <code>qwc-docker</code>, you can configure the container as follows:</p>
 <pre><code class="language-yml">  qwc-document-service:
     image: docker.io/sourcepole/qwc-document-service:&lt;tag&gt;
@@ -188,13 +188,13 @@
 <p>If you need a more complex query, you'll need to explicitly specify the <code>table_name</code>, <code>pk_column</code> and <code>FEATURE_PARAM_NAME</code> in the document template resource configuration, see below.</p>
 </li>
 <li>
-<p>If you want to include external resources (images, etc), set the resource path relative to the <code>$P{REPORT_DIR}</code> path as described in the <a href="../../references/qwc-document-service/"><code>README</code></a>.</p>
+<p>If you want to include external resources (images, etc), set the resource path relative to the <code>$P{REPORT_DIR}</code> path as described in the <a href="../../references/qwc-document-service_readme/"><code>README</code></a>.</p>
 </li>
 <li>
 <p>Save your report to the document service report dir, i.e. as <code>volumes/reports/MyReport.jrxml</code>.</p>
 </li>
 <li>
-<p>If you included any custom fonts in your report, place these in <code>ttf</code> format in <code>volumes/reports/fonts</code> respecting the naming convention described in the <a href="../../references/qwc-document-service/"><code>README</code></a>.</p>
+<p>If you included any custom fonts in your report, place these in <code>ttf</code> format in <code>volumes/reports/fonts</code> respecting the naming convention described in the <a href="../../references/qwc-document-service_readme/"><code>README</code></a>.</p>
 </li>
 <li>
 <p>Associate the report with a layer via <code>themesConfig.json</code> by adding the following to the desired theme configuration entry:</p>
