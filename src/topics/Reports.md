@@ -3,7 +3,7 @@
 QWC2, complemented with the [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on [Jasper](https://community.jaspersoft.com/download-jaspersoft/community-edition/) report templates.
 
 ## Setting up the document-service
-As a first step, set up a [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), placing your report templates below the `report_dir`. Read the `qwc-document-service` [`README`](../references/qwc-document-service.md) for more information on setting up the service and to understand how to prepare and configure your report templates.
+As a first step, set up a [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), placing your report templates below the `report_dir`. Read the `qwc-document-service` [`README`](../references/qwc-document-service_readme.md) for more information on setting up the service and to understand how to prepare and configure your report templates.
 
 When using `qwc-docker`, you can configure the container as follows:
 
@@ -59,11 +59,11 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 
     If you need a more complex query, you'll need to explicitly specify the `table_name`, `pk_column` and `FEATURE_PARAM_NAME` in the document template resource configuration, see below.
 
-  - If you want to include external resources (images, etc), set the resource path relative to the `$P{REPORT_DIR}` path as described in the [`README`](../references/qwc-document-service.md).
+  - If you want to include external resources (images, etc), set the resource path relative to the `$P{REPORT_DIR}` path as described in the [`README`](../references/qwc-document-service_readme.md).
 
 - Save your report to the document service report dir, i.e. as `volumes/reports/MyReport.jrxml`.
 
-  - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service.md).
+  - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service_readme.md).
 
 - Associate the report with a layer via `themesConfig.json` by adding the following to the desired theme configuration entry:
 
