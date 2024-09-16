@@ -240,7 +240,8 @@
 </li>
 <li>
 <p>Test your report, either through the QWC2 interface, or via a direct call to the document service, i.e.:</p>
-<p>http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid></p>
+<pre><code>http://localhost:8088/api/v1/document/MyReport.pdf?feature=&lt;fid&gt;
+</code></pre>
 </li>
 </ul>
 <p><em>Note</em>: check the logs of the <code>qwc-document-service</code> (in particular with <code>FLASK_DEBUG: 1</code>) to get detailed information about the report generation.</p>
