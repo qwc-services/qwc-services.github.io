@@ -51,19 +51,20 @@ In addition, the [`Reports` plugin](../references/qwc2_plugins.md#reports) provi
 Here is an example to configure a report for a layer, whose datasource is a PostgreSQL table, assuming a `qwc-docker` setup.
 
 - Create a Jasper report template using [Jasper Studio](https://community.jaspersoft.com/download-jaspersoft/community-edition/) with the desired layout.
-  - To include data from the PostgreSQL datasource in your report, add a Postgres Data Adapter, using the name of the PG service definition in your `pg_service.conf` as the name of the data adapter.
-  - Create a report parameter, though which the document-service will pass the primary key of report feature.
-  - Define the data query in the `Dataset and Query Dialog`,  in the form
 
-        SELECT <fields> FROM <table_name> WHERE <pk_column> = $P{<FEATURE_PARAM_NAME>}
+    - To include data from the PostgreSQL datasource in your report, add a Postgres Data Adapter, using the name of the PG service definition in your `pg_service.conf` as the name of the data adapter.
+    - Create a report parameter, though which the document-service will pass the primary key of report feature.
+    - Define the data query in the `Dataset and Query Dialog`,  in the form
 
-    If you need a more complex query, you'll need to explicitly specify the `table_name`, `pk_column` and `FEATURE_PARAM_NAME` in the document template resource configuration, see below.
+            SELECT <fields> FROM <table_name> WHERE <pk_column> = $P{<FEATURE_PARAM_NAME>}
 
-  - If you want to include external resources (images, etc), set the resource path relative to the `$P{REPORT_DIR}` path as described in the [`README`](../references/qwc-document-service_readme.md).
+        If you need a more complex query, you'll need to explicitly specify the `table_name`, `pk_column` and `FEATURE_PARAM_NAME` in the document template resource configuration, see below.
+
+    - If you want to include external resources (images, etc), set the resource path relative to the `$P{REPORT_DIR}` path as described in the [`README`](../references/qwc-document-service_readme.md).
 
 - Save your report to the document service report dir, i.e. as `volumes/reports/MyReport.jrxml`.
 
-  - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service_readme.md).
+    - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service_readme.md).
 
 - Associate the report with a layer via `themesConfig.json` by adding the following to the desired theme configuration entry:
 
@@ -100,6 +101,6 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 
 - Test your report, either through the QWC2 interface, or via a direct call to the document service, i.e.:
 
-      http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid>
+        http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid>
 
-  *Note*: check the logs of the `qwc-document-service` (in particular with `FLASK_DEBUG: 1`) to get detailed information about the report generation.
+    *Note*: check the logs of the `qwc-document-service` (in particular with `FLASK_DEBUG: 1`) to get detailed information about the report generation.
