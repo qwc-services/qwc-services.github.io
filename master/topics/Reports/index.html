@@ -183,13 +183,15 @@
 <ul>
 <li>To include data from the PostgreSQL datasource in your report, add a Postgres Data Adapter, using the name of the PG service definition in your <code>pg_service.conf</code> as the name of the data adapter.</li>
 <li>Create a report parameter, though which the document-service will pass the primary key of report feature.</li>
-<li>Define the data query in the <code>Dataset and Query Dialog</code>,  in the form<pre><code>SELECT &lt;fields&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
+<li>
+<p>Define the data query in the <code>Dataset and Query Dialog</code>,  in the form</p>
+<pre><code>SELECT &lt;fields&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
 </code></pre>
-</li>
-</ul>
 <p>If you need a more complex query, you'll need to explicitly specify the <code>table_name</code>, <code>pk_column</code> and <code>FEATURE_PARAM_NAME</code> in the document template resource configuration, see below.</p>
-<ul>
-<li>If you want to include external resources (images, etc), set the resource path relative to the <code>$P{REPORT_DIR}</code> path as described in the <a href="../../references/qwc-document-service_readme/"><code>README</code></a>.</li>
+</li>
+<li>
+<p>If you want to include external resources (images, etc), set the resource path relative to the <code>$P{REPORT_DIR}</code> path as described in the <a href="../../references/qwc-document-service_readme/"><code>README</code></a>.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -241,9 +243,9 @@
 <p>Test your report, either through the QWC2 interface, or via a direct call to the document service, i.e.:</p>
 <pre><code>http://localhost:8088/api/v1/document/MyReport.pdf?feature=&lt;fid&gt;
 </code></pre>
+<p><em>Note</em>: check the logs of the <code>qwc-document-service</code> (in particular with <code>FLASK_DEBUG: 1</code>) to get detailed information about the report generation.</p>
 </li>
 </ul>
-<p><em>Note</em>: check the logs of the <code>qwc-document-service</code> (in particular with <code>FLASK_DEBUG: 1</code>) to get detailed information about the report generation.</p>
               
             </div>
           </div><footer>
