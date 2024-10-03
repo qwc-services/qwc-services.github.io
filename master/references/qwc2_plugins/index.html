@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.09.14-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.09.30-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.09.14-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.09.30-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.09.14-master</a>
+          <a href="../..">QWC2 - 2024.09.30-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -1075,6 +1075,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
 <td>Default layer info window geometry with size, position and docking status.</td>
 <td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: null,</code><br /><code>initialY: null,</code><br /><code>initiallyDocked: false</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>onlyGroups</td>
+<td><code>bool</code></td>
+<td>Whether to only display layer groups but not individual layers in layertree.</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>scaleDependentLegend</td>
@@ -2295,24 +2301,6 @@ an aggregated report for all selected features.</p>
 <p>GPS locate support for the map component.</p>
 <h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
 <p>Measurement support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>{</code><br /><code>geodesic: bool,</code><br /><code>}</code></td>
-<td>Options</td>
-<td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
 <h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
 <p>Overview map support for the map component.</p>
 <table>
