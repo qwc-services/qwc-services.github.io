@@ -172,7 +172,7 @@
     proxy_redirect off;
     server_tokens off;
 
-    location ~ ^/(?&lt;t&gt;tenant1|tenant2) {
+    location ~ ^/(?&lt;t&gt;tenant1|tenant2)/ {
         # Extract tenant
         proxy_set_header Tenant $t;
         # Set headers for original request host
