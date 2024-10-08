@@ -34,7 +34,7 @@ server {
     proxy_redirect off;
     server_tokens off;
 
-    location ~ ^/(?<t>tenant1|tenant2) {
+    location ~ ^/(?<t>tenant1|tenant2)/ {
         # Extract tenant
         proxy_set_header Tenant $t;
         # Set headers for original request host
