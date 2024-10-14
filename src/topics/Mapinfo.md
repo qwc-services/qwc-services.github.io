@@ -22,8 +22,8 @@ If the `qwc-mapinfo-service` is enabled, queries can be configured in the servic
       },
       {
         "db_url": "postgresql:///?service=qwc_geodb",
-        "info_sql": "SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1",
-        "info_title": "Type"
+        "info_sql": "SELECT type, abbrev FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1",
+        "info_title": ["Type", "Abbreviation"]
       }
     ]
   }
