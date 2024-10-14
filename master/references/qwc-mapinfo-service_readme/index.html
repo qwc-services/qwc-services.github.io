@@ -184,6 +184,11 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         &quot;info_sql&quot;: &quot;SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
         &quot;info_title&quot;: &quot;Type&quot;
+      },
+      {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        &quot;info_sql&quot;: &quot;SELECT abbrev, postal, subregion FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
+        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;]
       }
     ]
   }
