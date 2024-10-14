@@ -224,6 +224,8 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
 }
 ```
 
+*Note*: A `themesConfig` entry in the `tenantConfig` template is resolved relative to the `tenantConfig.template.json`, and can be used to define common themes, background layers, etc. in the template.
+
 ## Multi-Tenancy with separate ConfigDB schemas
 If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:
 
