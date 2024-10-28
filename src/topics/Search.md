@@ -236,7 +236,8 @@ A facet references a searchable dataset. The configuration of the fulltext searc
                 "name": "<facet name>",
                 "filter_word": "<filter word>",
                 "table_name": "<schema.tablename>",
-                "geometry_column": "<geometry column name>"
+                "geometry_column": "<geometry column name>",
+                "search_id_col": "<id column name>"
             },
             ...
         ]
@@ -255,6 +256,7 @@ The facets describe a searchable dataset and are referenced by the search index:
 - `filter_word` is a short (human readable) name which appears as result category in the search results (i.e. `Address`).
 - `table_name` specifies the table containing the features referenced by the search index (in the format `schema.table_name`).
 - `geometry_column` specifies the name of the geometry column in this table.
+- `search_id_col` specifies the name of the id column in this table. If unset, field from search filter expression is used.
 
 
 ### Fulltext search with Trigram backend
@@ -312,7 +314,7 @@ Next, create search XML configuration files in `volumes/solr/configsets/gdi/conf
                     '{FACET_NAME}'::text AS subclass,
                     {PRIMARY_KEY} AS id_in_class,
                     '{PRIMARY_KEY}' AS id_name,
-                    '{SEARCH_FIELD_DATA_TYPE}:n' AS id_type,
+                    'str:{SEARCH_FIELD_IS_STRING}' AS search_field_str,
                     {DISPLAYTEXT} AS displaytext,
                     {SEARCH_FIELD_1} AS search_part_1,
                     {GEOMETRY_FIELD} AS geom
@@ -326,9 +328,10 @@ Next, create search XML configuration files in `volumes/solr/configsets/gdi/conf
                 search_part_1 AS sort,
                 subclass AS facet,
                 'default' AS tenant,
-                (array_to_json(array_append(ARRAY[id_name::text], id_type::text)))::text AS idfield_meta,
+                (array_to_json(array_append(ARRAY[id_name::text], search_field_str::text)))::text AS idfield_meta,
                 (st_asgeojson(st_envelope(geom), 0, 1)::json -> 'bbox')::text AS bbox,
-                st_srid(geom) as srid
+                id_name,
+                geom
             FROM index_base">
         </entity>
     </document>
@@ -337,21 +340,38 @@ Next, create search XML configuration files in `volumes/solr/configsets/gdi/conf
 
 The next table shows how the values need to be defined:
 
-| **Name**                 | **Definition**                                                                    | **Example**      |
-|--------------------------|-----------------------------------------------------------------------------------|------------------|
-| `DB_HOST`                | Database hostname                                                                 | `qwc-postgis`    |
-| `DB_NAME`                | Database name                                                                     | `qwc_demo`       |
-| `DB_PORT`                | Database port number                                                              | `5432`           |
-| `DB_USER`                | Database username                                                                 | `qwc_service`    |
-| `DB_PASSWORD`            | Password for the specified database user                                          | `qwc_service`    |
-| `FACET_NAME`             | Name of the search facet                                                          | `fluesse_search` |
-| `PRIMARY_KEY`            | Primary key name of the table that is used in the search query                    | `ogc_fid`        |
-| `SEARCH_FIELD_DATA_TYPE` | Search field data type                                                            | `str`            |
-| `DISPLAYTEXT`            | Displaytext that will be shown by the QWC2 when a match was found                 | `name_long`      |
-| `SEARCH_FIELD_1`         | Table field that will be used by the search                                       | `name_long`      |
-| `GEOMETRY_FIELD`         | Name of the geometry column of the search table                                   | `wkb_geometry`   |
-| `SCHEMA`                 | Search table schema                                                               | `qwc_geodb`      |
-| `SEARCH_TABLE_NAME`      | Search table name                                                                 | `fluesse`        |
+| **Name**                 | **Definition**                                                                                 | **Example**      |
+|--------------------------|------------------------------------------------------------------------------------------------|------------------|
+| `DB_HOST`                | Database hostname                                                                              | `qwc-postgis`    |
+| `DB_NAME`                | Database name                                                                                  | `qwc_demo`       |
+| `DB_PORT`                | Database port number                                                                           | `5432`           |
+| `DB_USER`                | Database username                                                                              | `qwc_service`    |
+| `DB_PASSWORD`            | Password for the specified database user                                                       | `qwc_service`    |
+| `FACET_NAME`             | Name of the search facet                                                                       | `fluesse_search` |
+| `PRIMARY_KEY`            | Primary key name of the table that is used in the search query                                 | `ogc_fid`        |
+| `SEARCH_FIELD_IS_STRING` | Definition, if search field is string (`y`) or not (`n`). If not, it's interpreted as integer. | `n`              |
+| `DISPLAYTEXT`            | Displaytext that will be shown by the QWC2 when a match was found                              | `name_long`      |
+| `SEARCH_FIELD_1`         | Table field that will be used by the search                                                    | `name_long`      |
+| `GEOMETRY_FIELD`         | Name of the geometry column of the search table                                                | `wkb_geometry`   |
+| `SCHEMA`                 | Search table schema                                                                            | `qwc_geodb`      |
+| `SEARCH_TABLE_NAME`      | Search table name                                                                              | `fluesse`        |
+
+**Hint**: For a less complex configuration file, of course it is also possible to define the query within a `VIEW` definition within the database. In this case just provide the query within the facet configuration like:
+```xml
+<entity name="{FACET_NAME}" query="
+    SELECT id,
+    display,
+    search_1_stem,
+    sort,
+    facet,
+    tenant,
+    idfield_meta,
+    bbox
+    id_name,
+    geom
+    FROM index_base">
+</entity>
+```
 
 *Note*:
 In the case of several searches sharing the same database connection,
