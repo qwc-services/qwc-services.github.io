@@ -367,7 +367,8 @@ searchProviders: [
                 &quot;name&quot;: &quot;&lt;facet name&gt;&quot;,
                 &quot;filter_word&quot;: &quot;&lt;filter word&gt;&quot;,
                 &quot;table_name&quot;: &quot;&lt;schema.tablename&gt;&quot;,
-                &quot;geometry_column&quot;: &quot;&lt;geometry column name&gt;&quot;
+                &quot;geometry_column&quot;: &quot;&lt;geometry column name&gt;&quot;,
+                &quot;search_id_col&quot;: &quot;&lt;id column name&gt;&quot;
             },
             ...
         ]
@@ -386,6 +387,7 @@ searchProviders: [
 <li><code>filter_word</code> is a short (human readable) name which appears as result category in the search results (i.e. <code>Address</code>).</li>
 <li><code>table_name</code> specifies the table containing the features referenced by the search index (in the format <code>schema.table_name</code>).</li>
 <li><code>geometry_column</code> specifies the name of the geometry column in this table.</li>
+<li><code>search_id_col</code> specifies the name of the id column in this table. If unset, field from search filter expression is used.</li>
 </ul>
 <h3 id="fulltext-search-with-trigram-backend">Fulltext search with Trigram backend<a class="headerlink" href="#fulltext-search-with-trigram-backend" title="Permanent link">&para;</a></h3>
 <p>To configure a fulltext search with the trigram backend, set <code>search_backend</code> to <code>trgm</code> and specify a <code>trgm_feature_query</code> and optionally a <code>trgm_layer_query</code>. The feature and layer query SQL can contain following placeholders:</p>
@@ -434,7 +436,7 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
                     '{FACET_NAME}'::text AS subclass,
                     {PRIMARY_KEY} AS id_in_class,
                     '{PRIMARY_KEY}' AS id_name,
-                    '{SEARCH_FIELD_DATA_TYPE}:n' AS id_type,
+                    'str:{SEARCH_FIELD_IS_STRING}' AS search_field_str,
                     {DISPLAYTEXT} AS displaytext,
                     {SEARCH_FIELD_1} AS search_part_1,
                     {GEOMETRY_FIELD} AS geom
@@ -448,9 +450,10 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
                 search_part_1 AS sort,
                 subclass AS facet,
                 'default' AS tenant,
-                (array_to_json(array_append(ARRAY[id_name::text], id_type::text)))::text AS idfield_meta,
+                (array_to_json(array_append(ARRAY[id_name::text], search_field_str::text)))::text AS idfield_meta,
                 (st_asgeojson(st_envelope(geom), 0, 1)::json -&gt; 'bbox')::text AS bbox,
-                st_srid(geom) as srid
+                id_name,
+                geom
             FROM index_base&quot;&gt;
         &lt;/entity&gt;
     &lt;/document&gt;
@@ -502,9 +505,9 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <td><code>ogc_fid</code></td>
 </tr>
 <tr>
-<td><code>SEARCH_FIELD_DATA_TYPE</code></td>
-<td>Search field data type</td>
-<td><code>str</code></td>
+<td><code>SEARCH_FIELD_IS_STRING</code></td>
+<td>Definition, if search field is string (<code>y</code>) or not (<code>n</code>). If not, it's interpreted as integer.</td>
+<td><code>n</code></td>
 </tr>
 <tr>
 <td><code>DISPLAYTEXT</code></td>
@@ -533,6 +536,21 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 </tr>
 </tbody>
 </table>
+<p><strong>Hint</strong>: For a less complex configuration file, of course it is also possible to define the query within a <code>VIEW</code> definition within the database. In this case just provide the query within the facet configuration like:</p>
+<pre><code class="language-xml">&lt;entity name=&quot;{FACET_NAME}&quot; query=&quot;
+    SELECT id,
+    display,
+    search_1_stem,
+    sort,
+    facet,
+    tenant,
+    idfield_meta,
+    bbox
+    id_name,
+    geom
+    FROM index_base&quot;&gt;
+&lt;/entity&gt;
+</code></pre>
 <p><em>Note</em>:
 In the case of several searches sharing the same database connection,
 all searche queries can be written to the same XML file. Each search
