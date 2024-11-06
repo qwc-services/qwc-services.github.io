@@ -2,7 +2,7 @@
 
 The [MapExport](../references/qwc2_plugins.md#mapexport) plugin allows exporting a selected portion of the map to a variety of formats, as supported by the QGIS Server, among which:
 
-* Image formats (`image/png`, `image/jpeg`, `image/geotiff`, ...)
+* Image formats (`image/png`, `image/jpeg`, `image/tiff`, ...)
 * DXF (`application/dxf`)
 * GeoPDF (`application/pdf`)
 
@@ -36,7 +36,7 @@ For each format, if multiple configurations are defined, a combobox will be disp
 ## Export to image formats
 For image formats, it may be desired to override the background layer for the exported map. To this end, specify a `baseLayer` in the format configuration to the name of a background `printLayer`.
 
-For GeoTIFF image export to become available, set up the `wms_geotiff_output` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins):
+For GeoTIFF image export to become available (image format `image/tiff`), set up the `wms_geotiff_output` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins):
 
 ```yml
   qwc-qgis-server:
