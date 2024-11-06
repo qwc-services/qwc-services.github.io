@@ -139,7 +139,7 @@
                 <h1 id="map-export">Map export<a class="headerlink" href="#map-export" title="Permanent link">&para;</a></h1>
 <p>The <a href="../../references/qwc2_plugins/#mapexport">MapExport</a> plugin allows exporting a selected portion of the map to a variety of formats, as supported by the QGIS Server, among which:</p>
 <ul>
-<li>Image formats (<code>image/png</code>, <code>image/jpeg</code>, <code>image/geotiff</code>, ...)</li>
+<li>Image formats (<code>image/png</code>, <code>image/jpeg</code>, <code>image/tiff</code>, ...)</li>
 <li>DXF (<code>application/dxf</code>)</li>
 <li>GeoPDF (<code>application/pdf</code>)</li>
 </ul>
@@ -168,7 +168,7 @@
 <p>For each format, if multiple configurations are defined, a combobox will be displayed to choose an export configuration.</p>
 <h2 id="export-to-image-formats">Export to image formats<a class="headerlink" href="#export-to-image-formats" title="Permanent link">&para;</a></h2>
 <p>For image formats, it may be desired to override the background layer for the exported map. To this end, specify a <code>baseLayer</code> in the format configuration to the name of a background <code>printLayer</code>.</p>
-<p>For GeoTIFF image export to become available, set up the <code>wms_geotiff_output</code> <a href="https://github.com/qwc-services/qwc-qgis-server-plugins">QGIS Server plugin</a>:</p>
+<p>For GeoTIFF image export to become available (image format <code>image/tiff</code>), set up the <code>wms_geotiff_output</code> <a href="https://github.com/qwc-services/qwc-qgis-server-plugins">QGIS Server plugin</a>:</p>
 <pre><code class="language-yml">  qwc-qgis-server:
     image: docker.io/sourcepole/qwc-qgis-server:&lt;TAG&gt;
     volumes:
