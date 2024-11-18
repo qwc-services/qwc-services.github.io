@@ -1,3 +1,7 @@
+# qwc-services v2024.11.18 mass update update
+
+As a result of `PyJWT` 2.10.0 enforcing that the JWT `sub` claim values must be strings, `qwc-services-core` 1.3.34 was updated to store the qwc identity in a separate `qwc_identity` claim, and all QWC images were updated to use this version. Consequently, if you use any QWC Service image version v2024.11.18 or newer, you will also need to update any other QWC Service image to this or a newer version to ensure that correct that the JWTs are issued and read correctly by all services.
+
 # New qwc-document-service, jasper-reporting-service obsolete
 
 As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC2.
