@@ -15,7 +15,7 @@ The following parameters can appear in the URL of the QWC2 application:
 - `crs`: The CRS of extent/center coordinates
 - `hc`: If `c` is specified and `hc` is `true` or `1`, a marker is set at `c` when starting the application. Note: requires the `StartupMarkerPlugin` plugin to be active.
 - `st`: The search text
-- `hp`, `hf`, `ht`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
+- `hp`, `hf`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
 - `f`: A filter configuration, see [Map filtering](./MapFilter.md).
 - `localConfig`: Override the name of the loaded config file, i.e. to load `myconfig.json` instead of the default `config.json`, pass `localConfig=myconfig`.
 
@@ -44,8 +44,8 @@ The `urlPositionCrs` parameter in `config.json` determines the projection to use
 If a search text passed via `st` results in a unique result, the viewer automatically zooms to this result on startup. If the search result does not provide a bounding box, the `minScale` defined in the `searchOptions` of the `TopBar` configuration in `config.json` is used.
 
 When using the `qwc-fulltext-search-service`, you can hightlight a feature on startup as follows:
-- Either specify `hp=<search product>&hf=<search filter>`
-- Or specify `ht=<search text>&hp=<search product>`
+- Either specify `hp=<facet_name>&hf=<filter_expr>`
+- Or specify `st=<filter_expr>&hp=<facet_name>`
 
 See [Fulltext search](Search.md#fulltext-search) for more details.
 

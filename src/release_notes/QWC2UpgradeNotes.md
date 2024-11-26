@@ -4,6 +4,68 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [e39dbde](https://github.com/qgis/qwc2/tree/e39dbde) (26.11.2024)
+---------------------------------------------------------------------------------------------------
+
+**Search providers rework**
+The search providers from `qwc2-demo-app/js/searchProviders.js` have been moved to the core in `qwc2/utils/SearchProviders.js`.
+
+To define custom search providers, expose them in `window.QWC2SearchProviders`, see [Search](../topics/Search.md).
+
+The `SearchBox` and `Routing` plugins don't take a SearchProviders object anymore, they are internally collected from the core providers and from `window.QWC2SearchProviders`.
+Consequently, modify your `js/appConfig.js` as follows:
+
+```
+-            RoutingPlugin: RoutingPlugin(SearchProviders),
++            RoutingPlugin: RoutingPlugin,
+             ...
+             TopBarPlugin: TopBarPlugin({
+-                Search: SearchBox(SearchProviders),
++                Search: SearchBox,
+```
+
+The format of the results returned by a Search Provider needs to be slightly updated to specify the result item type in the result group instead of the result item, see [Search](../topics/Search.md):
+
+```js
+results = [
+  {
+    id: "<categoryid>",
+    ...
+    type: SearchResultType.{PLACE|THEMELAYER}, // NEW
+    items: [
+      {
+        id: "<item_id>",
+        type: SearchResultType.{PLACE|THEMELAYER}, // OLD, remove this
+        ...
+      }
+    ]
+  }
+```
+
+The configuration format of the fulltext search provider has also changed, to align it with the configuration format of other providers.
+
+Old:
+
+```json
+    {
+      "provider":"solr", // or "provider":"fulltext"
+      "default": ["<facet>", "<facet>", ...],
+      "layers": {"<layername>": "<facet>", ...}
+    }
+```
+
+New:
+
+```json
+    {
+      "provider":"fulltext",
+      "params": {
+        "default": ["<facet>", "<facet>", ...],
+        "layers": {"<layername>": "<facet>", ...}
+      }
+    }
+```
+
 Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9cb8bab) (13.11.2024)
 ---------------------------------------------------------------------------------------------------
 

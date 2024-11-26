@@ -6,16 +6,6 @@ QWC2 can be configured to use arbitrary custom search providers. In addition, th
 
 Search providers can be defined as follows:
 
-- Built-in, defined in `js/SearchProviders.js`. This file is structured as follows:
-```js
-export const SearchProviders = {
-    <providerkey1>: <ProviderDefinition1>,
-    <providerkey2>: <ProviderDefinition2>,
-    ...
-};
-```
-  Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.
-
 - As resource, defined in `static/assets/searchProviders.js`. This file is structured as follows:
 ```js
 window.QWC2SearchProviders = {
@@ -28,11 +18,28 @@ window.QWC2SearchProviders = {
 ```html
 <script type="text/javascript" src="assets/searchProviders.js" ></script>
 ```
+
+- Built-in, defined in `js/SearchProviders.js`. This file is structured as follows:
+```js
+window.QWC2SearchProviders = {
+    <providerkey1>: <ProviderDefinition1>,
+    <providerkey2>: <ProviderDefinition2>,
+    ...
+};
+```
+  This file needs to be imported into the application, i.e. via
+```js
+  import './SearchProviders.js';
+```
+  in `js/appConfig.js`.
+
+  Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.
+
 The format of `ProviderDefinition` is
 ```js
 {
-  label: "<human readable provider name>", // OR
-  labelmsgid: "<translation message ID for human readable provider name>",
+  label: "<label>", // Provider label (displayed in provider selection menu)
+  labelmsgid: "<msgid>", // Translateable label message ID, instead of `label`
   onSearch: function(searchText, searchParams, callback, axios) => {
     const results = []; // See below
     /* Populate results... */
@@ -48,8 +55,16 @@ The format of `ProviderDefinition` is
     const crs = "EPSG:XXXX";
     const hidemarker = <boolean>; // Whether to suppress displaying a search marker on top of the search geometry
     callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
+    // or
+    callback({feature: geojson_feature, crs: crs, hidemarker: hidemarker});
   },
-  handlesGeomFilter: <boolean>; // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
+  handlesGeomFilter: <boolean>, // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
+  getLayerDefinition: function(resultItem, callback, axios) => {
+    // layer definition, in the same format as a "sublayers" entry in themes.json
+    const layer = {<layer_definition>};
+    callback(layer);
+  }
+  }
 }
 ```
 *Notes:*
@@ -60,9 +75,11 @@ The format of `ProviderDefinition` is
   displaycrs: "EPSG:XXXX", // Currently selected mouse coordinate display CRS
   mapcrs: "EPSG:XXXX", // The current map CRS
   lang: "<code>", // The current application language, i.e. en-US or en
-  cfgParams: <params> // Additional parameters passed in the theme search provider configuration, see below
-  filterBBox: <[xmin, ymîn, xmax, ymax]|null> // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
-  filterPoly: <[[x0, y0], [x1, y1], ....]> // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
+  cfgParams: <params>, // Additional parameters passed in the theme search provider configuration, see below
+  limit: <number>, // Result count limit
+  activeLayers: ["<layername>", ...], // List of active layers in the map
+  filterBBox: [xmin, ymin, xmax, ymax]|null, // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
+  filterPoly: [[x0, y0], [x1, y1], ....], // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
 }
 ```
 * `axios` is passed for convenience so that providers can use the compiled-in `axios` library for network requests.
@@ -71,35 +88,42 @@ The format of `ProviderDefinition` is
 ```js
 results = [
   {
-    id: "<categoryid>",                   // Unique category ID
-    title: "<display_title>",             // Text to display as group title in the search results
-    priority: priority_nr,                // Optional: search result group priority. Groups with higher priority are displayed first in the list.
+    id: "<categoryid>",                        // Unique category ID
+    title: "<display_title>",                  // Text to display as group title in the search results
+    titlemsgid: "<display_title_msgid>",       // Translation message id for group title, instead of "title"
+    resultCount: <result_count>,               // Optional: true result count (i.e. not limited to the "limit" specified in searchParams).
+    priority: priority_nr,                     // Optional: search result group priority. Groups with higher priority are displayed first in the list.
+    type: SearchResultType.{PLACE|THEMELAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
     items: [
-      {                                   // Location search result:
-        type: SearchResultType.PLACE,     // Specifies that this is a location search result
-        id: "<itemId">,                   // Unique item ID
-        text: "<display text>",           // Text to display as search result
-        label: "<map marker text>",       // Optional, text to show next to the position marker on the map instead of `text`
-        x: x,                             // X coordinate of result
-        y: y,                             // Y coordinate of result
-        crs: crs,                         // CRS of result coordinates and bbox
-        bbox: [xmin, ymin, xmax, ymax],   // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
-        geometry: <GeoJSON geometry>      // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
+      // PLACE result
+      {
+        id: "<item_id>",                       // Unique item ID
+        text: "<display_text>",                // Text to display as search result
+        label: "<map_marker_text>",            // Optional, text to show next to the position marker on the map instead of `text`
+        x: x,                                  // X coordinate of result
+        y: y,                                  // Y coordinate of result
+        crs: crs,                              // CRS of result coordinates and bbox. If not specified, the current map crs is assumed.
+        bbox: [xmin, ymin, xmax, ymax],        // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
+        geometry: <GeoJSON geometry>,          // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
+        thumbnail: "<thumbnail_url>",          // Optional: thumbnail to display next to the search result text in the result list,
+        externalLink: "<url>"                  // Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.
+        target: "<target>"                     // Optional: external link target, i.e. _blank or iframe
       },
-      {                                    // Theme layer search result (advanced):
-        type: SearchResultType.THEMELAYER, // Specifies that this is a theme layer search result
-        id: "<itemId">,                    // Unique item ID
-        text: "<display text>",            // Text to display as search result
-        layer: {<Layer definition>}        // Layer definition, in the same format as a "sublayers" entry in themes.json.
+      // THEMELAYER result
+      {
+        id: "<item_id>",                        // Unique item ID
+        text: "<display_text>",                 // Text to display as search result
+        layer: {<layer_definition>}             // Optional: layer definition, in the same format as a "sublayers" entry in themes.json. Layer definitions may also be fetched separately via getLayerDefinition.
+        info: <bool>,                           // Optional: Whether to display a info icon in the result list. The info is read from layer.abstract. If layer is not specified, the layer is fecthed via getLayerDefinition.
+        thumbnail: "<thumbnail_url>",           // Optional: thumbnail to display next to the search result text in the result list,
+        sublayers: [{<sublayer>}, ...]          // Optional: list of sublayers, in the format {id: "<item_id>", text: "<display_text>", has_info: <bool>, etc..}
       }
     ]
-  },
-  {
-    ...
   }
 ]
 ```
-Consult [js/SearchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js) and [static/assets/searchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js) for full examples.
+
+Consult [static/assets/searchProviders.js](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js) for a full examples.
 
 ## Filtering <a name="filtering"></a>
 
@@ -138,18 +162,17 @@ searchProviders: [
   "<providerkey1>",             // Simple form
   {                             // Provider with custom params
     "provider": "<providerkey2>",
+    "key": "<key>",             // Optional: key to disambiguate multiple provider configurations of the same provider type (i.e. multiple `qgis` provider configurations)
+    "label": "<label>",         // Optional: provider label (displayed in provider selection menu). If not specified, the label/labelmsgid from the provider definition is used.
+    "labelmsgid": "<msgid>",    // Optional: translateable label message ID, instead of `label`
     "params": {
-      ...                       // Arbitrary params passed to the provider `onSearch` function as `searchParams.cfgParams`
+      ...                       // Additional params passed to the provider `onSearch` function as `searchParams.cfgParams`
     }
-  },
-  {                             // Fulltext search configuration using qwc-fulltext-search-service
-    "provider":"solr",          // Identifier for solr search provider
-    "default":[<default terms>] // Default search terms, concatenated with additional search terms from visible theme layers
   }
-],
+]
 ...
 ```
-Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes three providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), and `qgis` (see <a href="#qgis-search">below</a>).
+Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
 
 ## Configuring the QGIS feature search <a name="qgis-search"></a>
 
@@ -407,9 +430,11 @@ To use a fulltext search in a theme, configure a `fulltext` search provider in `
 "searchProviders": [
     {
         "provider": "fulltext",
-        "default": [<FACET_NAME>],
-        "layers": {
-            "<layer_name>": "<FACET_NAME>"
+        "params": {
+          "default": [<FACET_NAME>],
+          "layers": {
+              "<layer_name>": "<FACET_NAME>"
+          }
         }
     }
 ]
