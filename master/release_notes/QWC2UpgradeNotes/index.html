@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>QWC2 upgrade notes - QWC2 - 2024.11.13-master</title>
+    <title>QWC2 upgrade notes - QWC2 - 2024.11.27-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.11.13-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.11.27-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -152,7 +152,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.11.13-master</a>
+          <a href="../..">QWC2 - 2024.11.27-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -174,8 +174,8 @@
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
 <h2 id="update-to-qwc2-submodule-revision-e39dbde-26112024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e39dbde">e39dbde</a> (26.11.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-e39dbde-26112024" title="Permanent link">&para;</a></h2>
-<p><strong>Search providers rework</strong>
-The search providers from <code>qwc2-demo-app/js/searchProviders.js</code> have been moved to the core in <code>qwc2/utils/SearchProviders.js</code>.</p>
+<p><strong>Search providers rework</strong></p>
+<p>The search providers from <code>qwc2-demo-app/js/searchProviders.js</code> have been moved to the core in <code>qwc2/utils/SearchProviders.js</code>.</p>
 <p>To define custom search providers, expose them in <code>window.QWC2SearchProviders</code>, see <a href="../../topics/Search/">Search</a>.</p>
 <p>The <code>SearchBox</code> and <code>Routing</code> plugins don't take a SearchProviders object anymore, they are internally collected from the core providers and from <code>window.QWC2SearchProviders</code>.
 Consequently, modify your <code>js/appConfig.js</code> as follows:</p>
