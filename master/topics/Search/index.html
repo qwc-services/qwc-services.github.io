@@ -155,16 +155,6 @@
 <h2 id="adding-search-providers">Adding search providers<a class="headerlink" href="#adding-search-providers" title="Permanent link">&para;</a></h2>
 <p>Search providers can be defined as follows:</p>
 <ul>
-<li>Built-in, defined in <code>js/SearchProviders.js</code>. This file is structured as follows:</li>
-</ul>
-<pre><code class="language-js">export const SearchProviders = {
-    &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
-    &lt;providerkey2&gt;: &lt;ProviderDefinition2&gt;,
-    ...
-};
-</code></pre>
-<p>Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.</p>
-<ul>
 <li>As resource, defined in <code>static/assets/searchProviders.js</code>. This file is structured as follows:</li>
 </ul>
 <pre><code class="language-js">window.QWC2SearchProviders = {
@@ -176,10 +166,24 @@
 <p>This script file needs to be loaded explicitly by <code>index.html</code> via</p>
 <pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;assets/searchProviders.js&quot; &gt;&lt;/script&gt;
 </code></pre>
+<ul>
+<li>Built-in, defined in <code>js/SearchProviders.js</code>. This file is structured as follows:</li>
+</ul>
+<pre><code class="language-js">window.QWC2SearchProviders = {
+    &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
+    &lt;providerkey2&gt;: &lt;ProviderDefinition2&gt;,
+    ...
+};
+</code></pre>
+<p>This file needs to be imported into the application, i.e. via</p>
+<pre><code class="language-js">  import './SearchProviders.js';
+</code></pre>
+<p>in <code>js/appConfig.js</code>.</p>
+<p>Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.</p>
 <p>The format of <code>ProviderDefinition</code> is</p>
 <pre><code class="language-js">{
-  label: &quot;&lt;human readable provider name&gt;&quot;, // OR
-  labelmsgid: &quot;&lt;translation message ID for human readable provider name&gt;&quot;,
+  label: &quot;&lt;label&gt;&quot;, // Provider label (displayed in provider selection menu)
+  labelmsgid: &quot;&lt;msgid&gt;&quot;, // Translateable label message ID, instead of `label`
   onSearch: function(searchText, searchParams, callback, axios) =&gt; {
     const results = []; // See below
     /* Populate results... */
@@ -195,8 +199,16 @@
     const crs = &quot;EPSG:XXXX&quot;;
     const hidemarker = &lt;boolean&gt;; // Whether to suppress displaying a search marker on top of the search geometry
     callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
+    // or
+    callback({feature: geojson_feature, crs: crs, hidemarker: hidemarker});
   },
-  handlesGeomFilter: &lt;boolean&gt;; // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
+  handlesGeomFilter: &lt;boolean&gt;, // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
+  getLayerDefinition: function(resultItem, callback, axios) =&gt; {
+    // layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json
+    const layer = {&lt;layer_definition&gt;};
+    callback(layer);
+  }
+  }
 }
 </code></pre>
 <p><em>Notes:</em></p>
@@ -207,9 +219,11 @@
   displaycrs: &quot;EPSG:XXXX&quot;, // Currently selected mouse coordinate display CRS
   mapcrs: &quot;EPSG:XXXX&quot;, // The current map CRS
   lang: &quot;&lt;code&gt;&quot;, // The current application language, i.e. en-US or en
-  cfgParams: &lt;params&gt; // Additional parameters passed in the theme search provider configuration, see below
-  filterBBox: &lt;[xmin, ymîn, xmax, ymax]|null&gt; // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
-  filterPoly: &lt;[[x0, y0], [x1, y1], ....]&gt; // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
+  cfgParams: &lt;params&gt;, // Additional parameters passed in the theme search provider configuration, see below
+  limit: &lt;number&gt;, // Result count limit
+  activeLayers: [&quot;&lt;layername&gt;&quot;, ...], // List of active layers in the map
+  filterBBox: [xmin, ymin, xmax, ymax]|null, // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
+  filterPoly: [[x0, y0], [x1, y1], ....], // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
 }
 </code></pre>
 <ul>
@@ -222,35 +236,41 @@
 </ul>
 <pre><code class="language-js">results = [
   {
-    id: &quot;&lt;categoryid&gt;&quot;,                   // Unique category ID
-    title: &quot;&lt;display_title&gt;&quot;,             // Text to display as group title in the search results
-    priority: priority_nr,                // Optional: search result group priority. Groups with higher priority are displayed first in the list.
+    id: &quot;&lt;categoryid&gt;&quot;,                        // Unique category ID
+    title: &quot;&lt;display_title&gt;&quot;,                  // Text to display as group title in the search results
+    titlemsgid: &quot;&lt;display_title_msgid&gt;&quot;,       // Translation message id for group title, instead of &quot;title&quot;
+    resultCount: &lt;result_count&gt;,               // Optional: true result count (i.e. not limited to the &quot;limit&quot; specified in searchParams).
+    priority: priority_nr,                     // Optional: search result group priority. Groups with higher priority are displayed first in the list.
+    type: SearchResultType.{PLACE|THEMELAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
     items: [
-      {                                   // Location search result:
-        type: SearchResultType.PLACE,     // Specifies that this is a location search result
-        id: &quot;&lt;itemId&quot;&gt;,                   // Unique item ID
-        text: &quot;&lt;display text&gt;&quot;,           // Text to display as search result
-        label: &quot;&lt;map marker text&gt;&quot;,       // Optional, text to show next to the position marker on the map instead of `text`
-        x: x,                             // X coordinate of result
-        y: y,                             // Y coordinate of result
-        crs: crs,                         // CRS of result coordinates and bbox
-        bbox: [xmin, ymin, xmax, ymax],   // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
-        geometry: &lt;GeoJSON geometry&gt;      // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
+      // PLACE result
+      {
+        id: &quot;&lt;item_id&gt;&quot;,                       // Unique item ID
+        text: &quot;&lt;display_text&gt;&quot;,                // Text to display as search result
+        label: &quot;&lt;map_marker_text&gt;&quot;,            // Optional, text to show next to the position marker on the map instead of `text`
+        x: x,                                  // X coordinate of result
+        y: y,                                  // Y coordinate of result
+        crs: crs,                              // CRS of result coordinates and bbox. If not specified, the current map crs is assumed.
+        bbox: [xmin, ymin, xmax, ymax],        // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
+        geometry: &lt;GeoJSON geometry&gt;,          // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
+        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,          // Optional: thumbnail to display next to the search result text in the result list,
+        externalLink: &quot;&lt;url&gt;&quot;                  // Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.
+        target: &quot;&lt;target&gt;&quot;                     // Optional: external link target, i.e. _blank or iframe
       },
-      {                                    // Theme layer search result (advanced):
-        type: SearchResultType.THEMELAYER, // Specifies that this is a theme layer search result
-        id: &quot;&lt;itemId&quot;&gt;,                    // Unique item ID
-        text: &quot;&lt;display text&gt;&quot;,            // Text to display as search result
-        layer: {&lt;Layer definition&gt;}        // Layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json.
+      // THEMELAYER result
+      {
+        id: &quot;&lt;item_id&gt;&quot;,                        // Unique item ID
+        text: &quot;&lt;display_text&gt;&quot;,                 // Text to display as search result
+        layer: {&lt;layer_definition&gt;}             // Optional: layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json. Layer definitions may also be fetched separately via getLayerDefinition.
+        info: &lt;bool&gt;,                           // Optional: Whether to display a info icon in the result list. The info is read from layer.abstract. If layer is not specified, the layer is fecthed via getLayerDefinition.
+        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,           // Optional: thumbnail to display next to the search result text in the result list,
+        sublayers: [{&lt;sublayer&gt;}, ...]          // Optional: list of sublayers, in the format {id: &quot;&lt;item_id&gt;&quot;, text: &quot;&lt;display_text&gt;&quot;, has_info: &lt;bool&gt;, etc..}
       }
     ]
-  },
-  {
-    ...
   }
 ]
 </code></pre>
-<p>Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js">js/SearchProviders.js</a> and <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for full examples.</p>
+<p>Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for a full examples.</p>
 <h2 id="filtering">Filtering <a name="filtering"></a><a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h2>
 <p>When using the <code>SearchBox</code> search component with <code>allowSearchFilters: true</code> passed in the <code>TopBar</code> <code>searchOptions</code>, you a filter menu will be displayed allowing to restrict the search area.</p>
 <p>If the provider does not fully handle the filter geometry internally (<code>handlesGeomFilter != true</code>), client-side filtering will be performed as follows:</p>
@@ -285,18 +305,17 @@ searchProviders: [
   &quot;&lt;providerkey1&gt;&quot;,             // Simple form
   {                             // Provider with custom params
     &quot;provider&quot;: &quot;&lt;providerkey2&gt;&quot;,
+    &quot;key&quot;: &quot;&lt;key&gt;&quot;,             // Optional: key to disambiguate multiple provider configurations of the same provider type (i.e. multiple `qgis` provider configurations)
+    &quot;label&quot;: &quot;&lt;label&gt;&quot;,         // Optional: provider label (displayed in provider selection menu). If not specified, the label/labelmsgid from the provider definition is used.
+    &quot;labelmsgid&quot;: &quot;&lt;msgid&gt;&quot;,    // Optional: translateable label message ID, instead of `label`
     &quot;params&quot;: {
-      ...                       // Arbitrary params passed to the provider `onSearch` function as `searchParams.cfgParams`
+      ...                       // Additional params passed to the provider `onSearch` function as `searchParams.cfgParams`
     }
-  },
-  {                             // Fulltext search configuration using qwc-fulltext-search-service
-    &quot;provider&quot;:&quot;solr&quot;,          // Identifier for solr search provider
-    &quot;default&quot;:[&lt;default terms&gt;] // Default search terms, concatenated with additional search terms from visible theme layers
   }
-],
+]
 ...
 </code></pre>
-<p>Note: The <code>qwc2-demo-app</code> (also used by the <code>qwc-map-viewer-demo</code> docker image) includes three providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), and <code>qgis</code> (see <a href="#qgis-search">below</a>).</p>
+<p>Note: The <code>qwc2-demo-app</code> (also used by the <code>qwc-map-viewer-demo</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
 <h2 id="configuring-the-qgis-feature-search">Configuring the QGIS feature search <a name="qgis-search"></a><a class="headerlink" href="#configuring-the-qgis-feature-search" title="Permanent link">&para;</a></h2>
 <p>The QGIS feature search relies on WMS GetFeatureInfo with the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter"><code>FILTER</code></a> parameter to search features of layers which are part of the theme WMS. It is enabled via the <code>qgis</code> search provider, which is part of the <code>qwc2-demo-app</code>.</p>
 <p><em>Note</em>: Make sure the QGIS Project is configured to return geometries with the feature info responses (<code>Project</code> &rarr; <code>Properties</code> &rarr; <code>QGIS Server</code> &rarr; <code>Add geometry to feature response</code>).</p>
@@ -574,9 +593,11 @@ curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
 <pre><code class="language-json">&quot;searchProviders&quot;: [
     {
         &quot;provider&quot;: &quot;fulltext&quot;,
-        &quot;default&quot;: [&lt;FACET_NAME&gt;],
-        &quot;layers&quot;: {
-            &quot;&lt;layer_name&gt;&quot;: &quot;&lt;FACET_NAME&gt;&quot;
+        &quot;params&quot;: {
+          &quot;default&quot;: [&lt;FACET_NAME&gt;],
+          &quot;layers&quot;: {
+              &quot;&lt;layer_name&gt;&quot;: &quot;&lt;FACET_NAME&gt;&quot;
+          }
         }
     }
 ]

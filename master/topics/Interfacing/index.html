@@ -158,7 +158,7 @@
 <li><code>crs</code>: The CRS of extent/center coordinates</li>
 <li><code>hc</code>: If <code>c</code> is specified and <code>hc</code> is <code>true</code> or <code>1</code>, a marker is set at <code>c</code> when starting the application. Note: requires the <code>StartupMarkerPlugin</code> plugin to be active.</li>
 <li><code>st</code>: The search text</li>
-<li><code>hp</code>, <code>hf</code>, <code>ht</code>: Startup highlight parameters used in conjunction with the <code>qwc-fulltext-search-service</code>, see below.</li>
+<li><code>hp</code>, <code>hf</code>: Startup highlight parameters used in conjunction with the <code>qwc-fulltext-search-service</code>, see below.</li>
 <li><code>f</code>: A filter configuration, see <a href="../MapFilter/">Map filtering</a>.</li>
 <li><code>localConfig</code>: Override the name of the loaded config file, i.e. to load <code>myconfig.json</code> instead of the default <code>config.json</code>, pass <code>localConfig=myconfig</code>.</li>
 </ul>
@@ -179,8 +179,8 @@
 <h3 id="highlight-feature-on-startup">Highlight feature on startup<a class="headerlink" href="#highlight-feature-on-startup" title="Permanent link">&para;</a></h3>
 <p>If a search text passed via <code>st</code> results in a unique result, the viewer automatically zooms to this result on startup. If the search result does not provide a bounding box, the <code>minScale</code> defined in the <code>searchOptions</code> of the <code>TopBar</code> configuration in <code>config.json</code> is used.</p>
 <p>When using the <code>qwc-fulltext-search-service</code>, you can hightlight a feature on startup as follows:
-- Either specify <code>hp=&lt;search product&gt;&amp;hf=&lt;search filter&gt;</code>
-- Or specify <code>ht=&lt;search text&gt;&amp;hp=&lt;search product&gt;</code></p>
+- Either specify <code>hp=&lt;facet_name&gt;&amp;hf=&lt;filter_expr&gt;</code>
+- Or specify <code>st=&lt;filter_expr&gt;&amp;hp=&lt;facet_name&gt;</code></p>
 <p>See <a href="../Search/#fulltext-search">Fulltext search</a> for more details.</p>
 <h2 id="launching-external-websites">Launching external websites<a class="headerlink" href="#launching-external-websites" title="Permanent link">&para;</a></h2>
 <p>QWC2 menu entries can be configured to launch external websites as described in <a href="../../configuration/ViewerConfiguration/#opening-external-websites">opening external websites</a>.</p>

@@ -140,7 +140,6 @@
 <li><a href="#bottombar">BottomBar</a></li>
 <li><a href="#cookiepopup">CookiePopup</a></li>
 <li><a href="#cyclomedia">Cyclomedia</a></li>
-<li><a href="#dxfexport">DxfExport</a></li>
 <li><a href="#editing">Editing</a></li>
 <li><a href="#featureform">FeatureForm</a></li>
 <li><a href="#featuresearch">FeatureSearch</a></li>
@@ -166,7 +165,6 @@
 <li><a href="#portal">Portal</a></li>
 <li><a href="#print">Print</a></li>
 <li><a href="#processnotifications">ProcessNotifications</a></li>
-<li><a href="#rasterexport">RasterExport</a></li>
 <li><a href="#redlining">Redlining</a></li>
 <li><a href="#reports">Reports</a></li>
 <li><a href="#routing">Routing</a></li>
@@ -541,40 +539,6 @@
 <td><code>string</code></td>
 <td>The projection to use for Cyclomedia.</td>
 <td><code>'EPSG:3857'</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="dxfexport">DxfExport<a name="dxfexport"></a><a class="headerlink" href="#dxfexport" title="Permanent link">&para;</a></h2>
-<p>Allows exporting a selected extent of the map as DXF.</p>
-<p>Uses the DXF format support of QGIS Server.</p>
-<p>Deprecated. Use the MapExport plugin instead.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>formatOptions</td>
-<td><code>string</code></td>
-<td>Optional format options to pass to QGIS Server via FORMAT_OPTIONS.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>layerOptions</td>
-<td><code>[{</code><br /><code>label: string,</code><br /><code>layers: string,</code><br /><code>}]</code></td>
-<td>Optional choice of layer sets to pass to QGIS Server via LAYERS.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>serviceUrl</td>
-<td><code>string</code></td>
-<td>Optional URL invoked on export instead of the default QGIS Server URL.</td>
-<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>
@@ -1288,6 +1252,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>fileNameTemplate</td>
+<td><code>string</code></td>
+<td>Template for the name of the generated files when downloading.</td>
+<td><code>'{theme}_{timestamp}'</code></td>
+</tr>
+<tr>
 <td>formatConfiguration</td>
 <td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>}],</code><br /><code>}</code></td>
 <td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.</td>
@@ -1647,10 +1617,22 @@ revision is published (specified via newsRev prop).</p>
 <td><code>0.5</code></td>
 </tr>
 <tr>
+<td>displayPrintSeries</td>
+<td><code>bool</code></td>
+<td>Show an option to print a series of extents.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
 <td>displayRotation</td>
 <td><code>bool</code></td>
 <td>Whether to display the map rotation control.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>fileNameTemplate</td>
+<td><code>string</code></td>
+<td>Template for the name of the generated files when downloading.</td>
+<td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
 <td>formats</td>
@@ -1699,69 +1681,6 @@ revision is published (specified via newsRev prop).</p>
 <h2 id="processnotifications">ProcessNotifications<a name="processnotifications"></a><a class="headerlink" href="#processnotifications" title="Permanent link">&para;</a></h2>
 <p>Adds support for displaying notifications of background processes.</p>
 <p>Only useful for third-party plugins which use this functionality.</p>
-<h2 id="rasterexport">RasterExport<a name="rasterexport"></a><a class="headerlink" href="#rasterexport" title="Permanent link">&para;</a></h2>
-<p>Allows exporting a selected portion of the map to an image ("screenshot").</p>
-<p>Deprecated. Use the MapExport plugin instead.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>allowedFormats</td>
-<td><code>[string]</code></td>
-<td>Whitelist of allowed export format mimetypes. If empty, supported formats are listed.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>allowedScales</td>
-<td><code>[number]</code></td>
-<td>List of scales at which to export the map.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>defaultFormat</td>
-<td><code>string</code></td>
-<td>Default export format mimetype. If empty, first available format is used.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>defaultScaleFactor</td>
-<td><code>number</code></td>
-<td>The factor to apply to the map scale to determine the initial export map scale.</td>
-<td><code>0.5</code></td>
-</tr>
-<tr>
-<td>dpis</td>
-<td><code>[number]</code></td>
-<td>List of dpis at which to export the map. If empty, the default server dpi is used.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>exportExternalLayers</td>
-<td><code>bool</code></td>
-<td>Whether to include external layers in the image. Requires QGIS Server 3.x!</td>
-<td><code>true</code></td>
-</tr>
-<tr>
-<td>pageSizes</td>
-<td><code>[{</code><br /><code>name: string,</code><br /><code>width: number,</code><br /><code>height: number,</code><br /><code>}]</code></td>
-<td>List of image sizes to offer, in addition to the free-hand selection. The width and height are in millimeters.</td>
-<td><code>[</code><br /><code>{name: '15 x 15 cm', width: 150, height: 150},</code><br /><code>{name: '30 x 30 cm', width: 300, height: 300}</code><br /><code>]</code></td>
-</tr>
-<tr>
-<td>side</td>
-<td><code>string</code></td>
-<td>The side of the application on which to display the sidebar.</td>
-<td><code>'right'</code></td>
-</tr>
-</tbody>
-</table>
 <h2 id="redlining">Redlining<a name="redlining"></a><a class="headerlink" href="#redlining" title="Permanent link">&para;</a></h2>
 <p>Allows drawing figures and text labels on the map.</p>
 <table>
