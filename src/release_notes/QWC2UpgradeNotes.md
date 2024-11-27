@@ -8,6 +8,7 @@ Update to qwc2 submodule revision [e39dbde](https://github.com/qgis/qwc2/tree/e3
 ---------------------------------------------------------------------------------------------------
 
 **Search providers rework**
+
 The search providers from `qwc2-demo-app/js/searchProviders.js` have been moved to the core in `qwc2/utils/SearchProviders.js`.
 
 To define custom search providers, expose them in `window.QWC2SearchProviders`, see [Search](../topics/Search.md).
