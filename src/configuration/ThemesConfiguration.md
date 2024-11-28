@@ -199,7 +199,7 @@ The format of the theme definitions is as follows:
 | `"extraPrintParameters": "<&KEY=VALUE>",`       | Optional, additional query parameters to append to GetPrint request (requires QGIS Server >= 3.32.0). |
 | `"extraPrintLayers": ["<layername>", ...],`     | Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC2 LayerTree. |
 | `"printLabelBlacklist": ["<LabelId>", ...]`     | Optional, list of composer label ids to not expose in the print dialog.          |
-| `"editConfig": {<editConfig>}     `             | Optional, object containing the editing configuration for the theme, see [Editing](#editing). |
+| `"editConfig": {<editConfig>}     `             | Optional, object containing the editing configuration for the theme, see [Editing](../topics/Editing.md#edit-config). |
 | `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](../topics/Snapping.md).         |
 | `"flags": ["<flag1>", "<flag2>", ...],`         | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"config": {`                                   | Optional, per-theme configuration entries which override the global entries in `config.json`, see [Viewer Configuration](ViewerConfiguration.md).|
