@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.11.27-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.11.28-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.11.27-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.11.28-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.11.27-master</a>
+          <a href="../..">QWC2 - 2024.11.28-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -499,6 +499,12 @@
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>credentialUserInfoFields</td>
+<td><code>{</code><br /><code>username: string,</code><br /><code>password: string,</code><br /><code>}</code></td>
+<td>Fields from user_infos which contain username and password which will be pre-inserted into the login form.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>cyclomediaVersion</td>
 <td><code>string</code></td>
 <td>The cyclomedia version.</td>
@@ -856,8 +862,8 @@ for customized queries and templates for the result presentation.</p>
 <tr>
 <td>initialRadiusUnits</td>
 <td><code>string</code></td>
-<td>The initial radius units of the identify dialog in radius mode. One of 'meters', 'feet', 'kilometers', 'miles'.</td>
-<td><code>'meters'</code></td>
+<td>The initial radius units of the identify dialog in radius mode. One of 'm', 'ft', 'km', 'mi'.</td>
+<td><code>'m'</code></td>
 </tr>
 <tr>
 <td>params</td>
@@ -1625,7 +1631,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>displayRotation</td>
 <td><code>bool</code></td>
-<td>Whether to display the map rotation control.</td>
+<td>Whether to display the printing rotation control.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -1637,8 +1643,8 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>formats</td>
 <td><code>[string]</code></td>
-<td>Export layout format mimetypes. If empty, supported formats are listed. If format is not supported by QGIS Server, print will fail</td>
-<td><code>undefined</code></td>
+<td>Export layout format mimetypes. If format is not supported by QGIS Server, print will fail.</td>
+<td><code>['application/pdf', 'image/jpeg', 'image/png', 'image/svg']</code></td>
 </tr>
 <tr>
 <td>gridInitiallyEnabled</td>
@@ -2242,7 +2248,7 @@ an aggregated report for all selected features.</p>
 <td>options</td>
 <td><code>object</code></td>
 <td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer</code>: Custom overview layer, in the same form as background layer definitions (<code>{type: "&lt;wms|wmts&gt;", "url": ...}</code>).<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
-<td><code>undefined</code></td>
+<td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
