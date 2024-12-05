@@ -263,7 +263,7 @@ The application logo in its various shapes and sizes are located below `assets/i
 
 ### Providing custom map thumbnails
 
-By default, when generating the themes configuration (see [ThemesConfiguration.md#generating-theme-configuration]), a default map thumbnail is generating via WMS `GetMap`, and placed below `assets/img/genmapthumbs`. You can provide your own thumbnail images instead by placing the corresponding images below `assets/img/mapthumbs` and referencing these as `thumbnail` in you theme configuration block in [`themesConig.json`](ThemesConfiguration.md#writing-themes-configuration).
+By default, when generating the themes configuration (see [theme configuration](ThemesConfiguration.md#generating-theme-configuration)), a default map thumbnail is generating via WMS `GetMap`, and placed below `assets/img/genmapthumbs`. You can provide your own thumbnail images instead by placing the corresponding images below `assets/img/mapthumbs` and referencing these as `thumbnail` in you theme configuration block in [`themesConig.json`](ThemesConfiguration.md#writing-themes-configuration).
 
 ### Personalizing the help dialog <a name="help-dialog"></a>
 
