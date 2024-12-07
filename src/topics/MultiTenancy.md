@@ -104,10 +104,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
     "tenant": "tenant_name",
     "default_qgis_server_url": "http://qwc-qgis-server/ows/",
     "config_db_url": "postgresql:///?service=qwc_configdb",
-    "qgis_projects_base_dir": "/data/tenant_name",
-    "qgis_projects_scan_base_dir": "/data/tenant_name/scan",
-    "qwc2_base_dir": "/qwc2",
-    "ows_prefix": "/tenant_name/ows",
+    "qgis_projects_scan_base_dir": "/data/tenant_name/scan"
     ...
   },
   "themesConfig": "./themesConfig.json",
@@ -181,9 +178,7 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
     "default_qgis_server_url": "http://qwc-qgis-server/ows/",
     "config_db_url": "postgresql:///?service=qwc_configdb",
     "qgis_projects_base_dir": "/data",
-    "qgis_projects_scan_base_dir": "/data/$tenant$/scan",
-    "qwc2_base_dir": "/qwc2",
-    "ows_prefix": "/ows",
+    "qgis_projects_scan_base_dir": "/data/$tenant$/scan"
     ...
   },
   "themesConfig": "./themesConfig.json",
