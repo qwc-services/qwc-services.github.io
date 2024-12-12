@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ogc service - QWC2 - 2024.12.03-master</title>
+    <title>Qwc ogc service - QWC2 - 2024.12.12-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.03-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.12-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.03-master</a>
+          <a href="../..">QWC2 - 2024.12.12-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -279,7 +279,7 @@
             />
         </svg>
     <a href="#config_default_qgis_server_url" onclick="anchorLink('config_default_qgis_server_url')">default_qgis_server_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default base URL for WMS/WFS requests</p>
+<span class="description"><p>Default base URL for WMS/WFS requests. Default: <code>http://localhost:8001/ows/</code></p>
 </span>
 
 
@@ -320,7 +320,7 @@
             />
         </svg>
     <a href="#config_public_ogc_url_pattern" onclick="anchorLink('config_public_ogc_url_pattern')">public_ogc_url_pattern</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Regex pattern of the external OGC URL pattern, used to detect EXTERNAL_WMS URLs in print requests which point to the OGC server itself. Can use $origin$, $tenant$ and $mountpoint$ as variables. Default: $origin$/.*/?$mountpoint$</p>
+<span class="description"><p>Regex pattern of the external OGC URL pattern, used to detect <code>EXTERNAL_WMS</code> URLs in print requests which point to the OGC server itself. Can use <code>$origin$</code>, <code>$tenant$</code> and <code>$mountpoint$</code> as variables. Default: <code>$origin$/.*/?$mountpoint$</code></p>
 </span>
 
 
@@ -361,7 +361,7 @@
             />
         </svg>
     <a href="#config_basic_auth_login_url" onclick="anchorLink('config_basic_auth_login_url')">basic_auth_login_url</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
-<span class="description"><p>Login verification URL for requests with basic auth. Example: http://qwc-auth-service:9090/verify_login</p>
+<span class="description"><p>Login verification URL for requests with basic auth. Example: <code>http://qwc-auth-service:9090/verify_login</code>. Default: <code>null</code></p>
 </span>
 
 
@@ -437,7 +437,7 @@
             />
         </svg>
     <a href="#config_qgis_server_identity_parameter" onclick="anchorLink('config_qgis_server_identity_parameter')">qgis_server_identity_parameter</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Name of the active user parameter for the QGIS Server. Will be set to the name of the logged in user in qwc2</p>
+<span class="description"><p>Name of the active user parameter for the QGIS Server. Will be set to the name of the logged in user in qwc2.</p>
 </span>
 
 
@@ -478,7 +478,7 @@
             />
         </svg>
     <a href="#config_auth_required" onclick="anchorLink('config_auth_required')">auth_required</a></div><span class="badge badge-dark value-type">Type: boolean</span><br/>
-<span class="description"><p>Whether to enforce authentication before processing requests. Default: false</p>
+<span class="description"><p>Whether to enforce authentication before processing requests. Default: <code>false</code></p>
 </span>
 
 
@@ -519,7 +519,7 @@
             />
         </svg>
     <a href="#config_public_paths" onclick="anchorLink('config_public_paths')">public_paths</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
-<span class="description"><p>Optional: List of paths that will be accessible without a JWT identity, if auth_required is set.</p>
+<span class="description"><p>Optional: List of paths that will be accessible without a JWT identity, if <code>auth_required</code> is set. Default: <code>[]</code></p>
 </span>
 
 
@@ -904,7 +904,7 @@
             />
         </svg>
     <a href="#resources_wms_services_items_wms_url" onclick="anchorLink('resources_wms_services_items_wms_url')">wms_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Custom WMS URL if different from default<em>qgis</em>server_url</p>
+<span class="description"><p>Custom WMS URL if different from <code>default_qgis_server_url</code></p>
 </span>
 
 
@@ -2974,7 +2974,7 @@
             />
         </svg>
     <a href="#resources_wfs_services_items_wfs_url" onclick="anchorLink('resources_wfs_services_items_wfs_url')">wfs_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Custom WFS URL if different from default<em>qgis</em>server_url</p>
+<span class="description"><p>Custom WFS URL if different from <code>default_qgis_server_url</code></p>
 </span>
 
 
@@ -3361,7 +3361,7 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-09 at 13:43:47 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-12 at 15:46:32 +0000</p>
     </footer></body>
 <p></html></p>
               

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc legend service - QWC2 - 2024.12.03-master</title>
+    <title>Qwc legend service - QWC2 - 2024.12.12-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.03-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.12-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.03-master</a>
+          <a href="../..">QWC2 - 2024.12.12-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -279,7 +279,7 @@
             />
         </svg>
     <a href="#config_default_qgis_server_url" onclick="anchorLink('config_default_qgis_server_url')">default_qgis_server_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default base URL for forwarding WMS GetLegendGraphics requests</p>
+<span class="description"><p>Default base URL for forwarding WMS GetLegendGraphics requests. Default: <code>http://localhost:8001/ows/</code></p>
 </span>
 
 
@@ -320,7 +320,7 @@
             />
         </svg>
     <a href="#config_legend_default_font_size" onclick="anchorLink('config_legend_default_font_size')">legend_default_font_size</a></div><span class="badge badge-dark value-type">Type: number</span><br/>
-<span class="description"><p>Default font size for GetLegendGraphic request</p>
+<span class="description"><p>Default font size for GetLegendGraphic request. Default: <code>null</code></p>
 </span>
 
 
@@ -361,7 +361,7 @@
             />
         </svg>
     <a href="#config_legend_images_path" onclick="anchorLink('config_legend_images_path')">legend_images_path</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Path to legend images (required if using 'legend_image')</p>
+<span class="description"><p>Path to legend images (required if using <code>legend_image</code>). Default: <code>/legends/</code></p>
 </span>
 
 
@@ -369,6 +369,82 @@
 
 
 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_basic_auth_login_url">
+    <div class="card">
+        <div class="card-header" id="headingconfig_basic_auth_login_url">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_basic_auth_login_url"
+                        aria-expanded="" aria-controls="config_basic_auth_login_url" onclick="setAnchor('#config_basic_auth_login_url')"><span class="property-name">basic_auth_login_url</span></button>
+            </h2>
+        </div>
+
+        <div id="config_basic_auth_login_url"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_basic_auth_login_url"
+             data-parent="#accordionconfig_basic_auth_login_url">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_basic_auth_login_url" onclick="anchorLink('config_basic_auth_login_url')">basic_auth_login_url</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
+<span class="description"><p>Login verification URL for requests with basic auth. Example: <code>http://qwc-auth-service:9090/verify_login</code>. Default: <code>null</code></p>
+</span>
+
+
+
+
+
+         <span class="badge badge-info no-additional">No Additional Items</span><h4>Each item of this array must be:</h4>
+    <div class="card">
+        <div class="card-body items-definition" id="config_basic_auth_login_url_items">
+
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_basic_auth_login_url" onclick="anchorLink('config_basic_auth_login_url')">basic_auth_login_url</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_basic_auth_login_url_items" onclick="anchorLink('config_basic_auth_login_url_items')">basic_auth_login_url items</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+
+
+
+
+
+
+
+        </div>
+    </div>
             </div>
         </div>
     </div>
@@ -1722,7 +1798,7 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-09 at 13:43:45 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-12 at 15:46:28 +0000</p>
     </footer></body>
 <p></html></p>
               

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc feature info service - QWC2 - 2024.12.03-master</title>
+    <title>Qwc feature info service - QWC2 - 2024.12.12-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.03-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.12-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.03-master</a>
+          <a href="../..">QWC2 - 2024.12.12-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -279,7 +279,7 @@
             />
         </svg>
     <a href="#config_default_info_template" onclick="anchorLink('config_default_info_template')">default_info_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default HTML info template</p>
+<span class="description"><p>Default HTML info template. Default: <code>null</code></p>
 </span>
 
 
@@ -320,7 +320,7 @@
             />
         </svg>
     <a href="#config_basic_auth_login_url" onclick="anchorLink('config_basic_auth_login_url')">basic_auth_login_url</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
-<span class="description"><p>Login verification URL for requests with basic auth. Example: http://qwc-auth-service:9090/verify_login</p>
+<span class="description"><p>Login verification URL for requests with basic auth. Example: <code>http://qwc-auth-service:9090/verify_login</code>. Default: <code>null</code></p>
 </span>
 
 
@@ -396,7 +396,7 @@
             />
         </svg>
     <a href="#config_default_info_template_path" onclick="anchorLink('config_default_info_template_path')">default_info_template_path</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default HTML info template path</p>
+<span class="description"><p>Default HTML info template path. Default: <code>null</code></p>
 </span>
 
 
@@ -437,7 +437,7 @@
             />
         </svg>
     <a href="#config_default_info_template_base64" onclick="anchorLink('config_default_info_template_base64')">default_info_template_base64</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default HTML info template in Base64 encoding</p>
+<span class="description"><p>Default HTML info template in Base64 encoding. Default: <code>null</code></p>
 </span>
 
 
@@ -478,7 +478,7 @@
             />
         </svg>
     <a href="#config_default_qgis_server_url" onclick="anchorLink('config_default_qgis_server_url')">default_qgis_server_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Default URL for WMS GetFeatureInfo queries</p>
+<span class="description"><p>Default URL for WMS GetFeatureInfo queries. Default: <code>http://localhost:8001/ows/</code></p>
 </span>
 
 
@@ -519,7 +519,7 @@
             />
         </svg>
     <a href="#config_data_service_url" onclick="anchorLink('config_data_service_url')">data_service_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Data service URL</p>
+<span class="description"><p>Data service URL (external) for constructing attachment urls. Default: <code>/api/v1/data/</code></p>
 </span>
 
 
@@ -560,7 +560,7 @@
             />
         </svg>
     <a href="#config_transform_image_urls" onclick="anchorLink('config_transform_image_urls')">transform_image_urls</a></div><span class="badge badge-dark value-type">Type: boolean</span><br/>
-<span class="description"><p>Transform image URLs to inline images</p>
+<span class="description"><p>Whether to transform image URLs to inline images. Default: <code>true</code></p>
 </span>
 
 
@@ -601,7 +601,7 @@
             />
         </svg>
     <a href="#config_skip_empty_attributes" onclick="anchorLink('config_skip_empty_attributes')">skip_empty_attributes</a></div><span class="badge badge-dark value-type">Type: boolean</span><br/>
-<span class="description"><p>Whether to skip empty feature attributes in WMS GetFeatureInfo responses (default: false)</p>
+<span class="description"><p>Whether to skip empty feature attributes in WMS GetFeatureInfo responses. Default: <code>false</code></p>
 </span>
 
 
@@ -642,7 +642,7 @@
             />
         </svg>
     <a href="#config_use_permission_attribute_order" onclick="anchorLink('config_use_permission_attribute_order')">use_permission_attribute_order</a></div><span class="badge badge-dark value-type">Type: boolean</span><br/>
-<span class="description"><p>Whether to order the attributes according to order of the permitted attribute names in WMS GetFeatureInfo responses, rather than the order returned by WMS GetFeatureInfo (default: false)</p>
+<span class="description"><p>Whether to order the attributes according to order of the permitted attribute names in WMS GetFeatureInfo responses, rather than the order returned by WMS GetFeatureInfo. Default: <code>false</code></p>
 </span>
 
 
@@ -2386,7 +2386,7 @@
             />
         </svg>
     <a href="#resources_wms_services_items_root_layer_oneOf_i0_info_template_oneOf_i0_wms_url" onclick="anchorLink('resources_wms_services_items_root_layer_oneOf_i0_info_template_oneOf_i0_wms_url')">wms_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Custom WMS URL if different from default<em>qgis</em>server_url</p>
+<span class="description"><p>Custom WMS URL if different from <code>default_qgis_server_url</code></p>
 </span>
 
 
@@ -5118,7 +5118,7 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-09 at 13:43:44 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2024-12-12 at 15:46:27 +0000</p>
     </footer></body>
 <p></html></p>
               

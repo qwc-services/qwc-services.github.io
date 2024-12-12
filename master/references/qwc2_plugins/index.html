@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.12.03-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.12.12-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.03-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.12-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.03-master</a>
+          <a href="../..">QWC2 - 2024.12.12-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -1059,6 +1059,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>showAttributeTableLink</td>
+<td><code>bool</code></td>
+<td>Whether to display an icon linking to the layer attribute table in the layer options menu.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>showLegendIcons</td>
 <td><code>bool</code></td>
 <td>Whether to display legend icons.</td>
@@ -1364,18 +1370,6 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 </thead>
 <tbody>
 <tr>
-<td>cooPrecision</td>
-<td><code>number</code></td>
-<td>The number of decimal places to display for metric/imperial coordinates.</td>
-<td><code>0</code></td>
-</tr>
-<tr>
-<td>degreeCooPrecision</td>
-<td><code>number</code></td>
-<td>The number of decimal places to display for degree coordinates.</td>
-<td><code>4</code></td>
-</tr>
-<tr>
 <td>elevationPrecision</td>
 <td><code>number</code></td>
 <td>The number of decimal places to display for elevation values.</td>
@@ -1480,6 +1474,18 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 <td><code>5</code></td>
 </tr>
 <tr>
+<td>maxHeight</td>
+<td><code>string</code></td>
+<td>The maximum height of the maptip popop bubble, as a CSS string.</td>
+<td><code>"15em"</code></td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td><code>string</code></td>
+<td>The maximum height of the maptip popop bubble, as a CSS string.</td>
+<td><code>"20em"</code></td>
+</tr>
+<tr>
 <td>showFeatureSelection</td>
 <td><code>bool</code></td>
 <td>Whether to show the maptip feature selection on the map or not</td>
@@ -1543,6 +1549,18 @@ revision is published (specified via newsRev prop).</p>
 <td>newsRev</td>
 <td><code>string</code></td>
 <td>Revision of the document.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showInSidebar</td>
+<td><code>bool</code></td>
+<td>Whether to show the news in a sidebar instead of a popup.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
 <td><code>undefined</code></td>
 </tr>
 </tbody>
@@ -1704,6 +1722,36 @@ revision is published (specified via newsRev prop).</p>
 <td><code>bool</code></td>
 <td>Whether to allow labeling geometric figures.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>defaultAreaUnit</td>
+<td><code>string</code></td>
+<td>Default area unit. Options: metric, imperial, sqm, ha, sqkm, sqft, acre, sqmi</td>
+<td><code>'metric'</code></td>
+</tr>
+<tr>
+<td>defaultBorderColor</td>
+<td><code>array</code></td>
+<td>Default border color. In format [r, g, b, a].</td>
+<td><code>[255, 0, 0, 1]</code></td>
+</tr>
+<tr>
+<td>defaultFillColor</td>
+<td><code>array</code></td>
+<td>Default fill color. In format [r, g, b, a].</td>
+<td><code>[255, 255, 255, 1]</code></td>
+</tr>
+<tr>
+<td>defaultLengthUnit</td>
+<td><code>string</code></td>
+<td>Default length unit. Options: metric, imperial, m, km, ft, mi</td>
+<td><code>'metric'</code></td>
+</tr>
+<tr>
+<td>hiddenTools</td>
+<td><code>array</code></td>
+<td>Tools to hide. Available tools: Circle, Ellipse, Square, Box, HandDrawing, Transform, NumericInput, Buffer, Export.</td>
+<td><code>[]</code></td>
 </tr>
 <tr>
 <td>snapping</td>
