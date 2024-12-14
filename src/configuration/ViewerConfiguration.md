@@ -25,31 +25,33 @@ All settings are optional, with fallback to the default values as documented.
 
 | Setting                             | Description |
 |-------------------------------------|-------------|
-|`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map. Default value: `false`.      |
-|`assetsPath`                         | Relative path to the `assets` folder. Default value: `assets`.               |
-|`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. |
-|`defaultFeatureStyle`                | The default style to use for selection geometries and other unstyled features. Default value: see `qwc2/utils/FeatureStyles.js`. |
-|`defaultInteractionStyle`            | The default style to use on geometries to measure, snap or edit. Default value: see `qwc2/utils/FeatureStyles.js`. |
-|`defaultMarkerStyle`                 | The default style to use as marker icon. Default value: see `qwc2/utils/FeatureStyles.js`. |
-|`editingAddLinkAnchors`              | Whether to automatically insert link anchors in text values when editing. |
+|`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map. Default: `false`. |
+|`assetsPath`                         | Relative path to the `assets` folder. Default: `"assets"`. |
+|`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. Default: `"default"`. |
+|`defaultFeatureStyle`                | The default style to use for selection geometries and other unstyled features. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
+|`defaultInteractionStyle`            | The default style to use on geometries to measure, snap or edit. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
+|`defaultMarkerStyle`                 | The default style to use as marker icon. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
+|`editingAddLinkAnchors`              | Whether to automatically insert link anchors in text values when editing. Default: `true`, |
 |`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../Topics/Editing.md#recaptcha). |
-|`editTextNullValue`                  | A text value which represents `NULL` when editing. |
-|`geodesicMeasurements`               | Whether to perform measurements on the geoid. |
-|`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [translations](#translations). Default value: `false`. |
-|`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default value: `false`.             |
-|`omitUrlParameterUpdates`            | Whether to omit updating the URL parameters. Default value: `false`.      |
-|`projections`                        | A list of map projections to register, in the format `{"code": "<code>", "proj": "<proj4def>", "label": "<label>"}`. By default, `EPSG:3857` and `EPSG:4326` are registered. |
-|`qgisServerVersion`                  | The QGIS Server major version in use, defaults to `3`.|
+|`editTextNullValue`                  | A text value which represents `NULL` when editing. Default: `""`. |
+|`geodesicMeasurements`               | Whether to perform measurements on the geoid. Default: `false`. |
+|`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [translations](#translations). Default: `false`. |
+|`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default: `false`. |
+|`measurementPrecision`               | Number of decimal digits to display in measurements. Default: `2`. |
+|`omitUrlParameterUpdates`            | Whether to omit updating the URL parameters. Default: `false`. |
+|`projections`                        | A list of map projections to register, in the format `{"code": "<code>", "proj": "<proj4def>", "label": "<label>", "precision": <decimals>}`. By default, `EPSG:3857` and `EPSG:4326` are registered. |
+|`qgisServerVersion`                  | The QGIS Server major version in use. Default: `3`. |
 |`startupTask`                        | Task to automatically activate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
-|`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).
-|`translationsPath`                   | Relative path to the `translations` folder. Default value: `translations`.   |
-|`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. |
-|`urlPositionCrs`                     | The CRS used to encode the current map extent coordinates in the URL. Default value: the map projection. |
-|`urlPositionFormat`                  | How to encode the current map extent in the URL, either `centerAndZoom` or `extent`. See [URL parameters](../topics/Interfacing.md#url-parameters) for details. Default value: `extent`. |
-|`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see `qwc2/utils/MiscUtils.js`. |
-|`wmsHidpi`                           | Whether to honour the device pixel ratio for WMS GetMap requests. Default value: `true`. |
-|`wmsMaxGetUrlLength`                 | URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: 2048. |
-|`wmsWktPrecision`                    | Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: 4. |
+|`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities). Default: `false`. |
+|`tilePreloadLevels`                  | For tiled layers, load low-resolution tiles up to preload levels. 0 means no preloading. Default: `0`. |
+|`translationsPath`                   | Relative path to the `translations` folder. Default: `"translations"`.   |
+|`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. Default: `false`. |
+|`urlPositionCrs`                     | The CRS used to encode the current map extent coordinates in the URL. Default: the current map projection. |
+|`urlPositionFormat`                  | How to encode the current map extent in the URL, either `"centerAndZoom"` or `"extent"`. See [URL parameters](../topics/Interfacing.md#url-parameters) for details. Default: `"extent"`. |
+|`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see [`qwc2/utils/MiscUtils.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/MiscUtils.js). |
+|`wmsHidpi`                           | Whether to honour the device pixel ratio for WMS GetMap requests. Default: `true`. |
+|`wmsMaxGetUrlLength`                 | URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: `2048`. |
+|`wmsWktPrecision`                    | Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: `4`. |
 
 ### Global settings, overridable per theme<a name="theme-overridable-settings"></a>
 
@@ -58,24 +60,24 @@ All settings are optional, with fallback to the default values as documented.
 
 | Setting                              | Description |
 |--------------------------------------|-------------|
-|`allowAddingOtherThemes`              | Whether to allow adding another theme to a currently loaded theme. Default value: `false`. |
-|`allowLayerTreeSeparators`            | Allows users to add separator items in a flat layer tree. Default value: `false`.   |
-|`allowRemovingThemeLayers`            | Whether to allow removing any theme layers from the layer tree. Default value: `false`. |
-|`allowReorderingLayers`               | Whether to allow re-ordering layers in the layer tree. Default value: `false`.      |
-|`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree. Default value: `false`. |
-|`flattenLayerTreeGroups`              | Whether to display a flat layer tree, omitting the groups. Default value: `false`.  |
-|`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default value: `false`. |
-|`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default value: `false`. |
-|`identifyTool`                        | The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default value: `Identify`. |
+|`allowAddingOtherThemes`              | Whether to allow adding another theme to a currently loaded theme. Default: `false`. |
+|`allowLayerTreeSeparators`            | Allows users to add separator items in a flat layer tree. Default: `false`.   |
+|`allowRemovingThemeLayers`            | Whether to allow removing any theme layers from the layer tree. Default: `false`. |
+|`allowReorderingLayers`               | Whether to allow re-ordering layers in the layer tree. Default: `false`.      |
+|`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree. Default: `false`. |
+|`flattenLayerTreeGroups`              | Whether to display a flat layer tree, omitting the groups. Default: `false`.  |
+|`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default: `false`. |
+|`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default: `false`. |
+|`identifyTool`                        | The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default: `"Identify"`. |
 |`importLayerUrlPresets`               | A list of predefined URLs from which the user can choose when importing layers from the layer tree. Entries must be strings or objects of the format `{"label": "<Label>", "value": "<URL>"}`. |
-|`preserveBackgroundOnThemeSwitch`     | Whether to preserve the current background layer when switching theme, if possible. Default value: `false`. |
-|`preserveExtentOnThemeSwitch`         | Whether to preserve the current map extent when switching theme, if possible (see below). Default value: `false`. |
-|`preserveNonThemeLayersOnThemeSwitch` | Whether to preserve non-theme layers when switching theme. Default value: `false`.  |
-|`preventSplittingGroupsWhenReordering`| Whether to prevent splitting sibling groups or the group itself when reordering items. Default value: `false`. |
+|`preserveBackgroundOnThemeSwitch`     | Whether to preserve the current background layer when switching theme, if possible. Default: `false`. |
+|`preserveExtentOnThemeSwitch`         | Whether to preserve the current map extent when switching theme, if possible (see below). Default: `false`. |
+|`preserveNonThemeLayersOnThemeSwitch` | Whether to preserve non-theme layers when switching theme. Default: `false`.  |
+|`preventSplittingGroupsWhenReordering`| Whether to prevent splitting sibling groups or the group itself when reordering items. Default: `false`. |
 |`searchFilterRegions`                 | List of predefined search filter regions, see [Search filtering](../topics/Search.md#filtering). |
-|`searchThemeLayers`                   | Whether to allow searching for theme layers from the global search field. Default value: `false`. |
-|`searchThemes`                        | Whether to allow searching for themes from the global search field. Default value: `false`. |
-|`startupTask`                         | Task to automatically start when switching to the theme, in the format `{key: "<Task>", "mode": "<Mode>"}`. Takes precedence over the global `startupTask`. Note that the task whenever switching to the theme, not only on application start. |
+|`searchThemeLayers`                   | Whether to allow searching for theme layers from the global search field. Default: `false`. |
+|`searchThemes`                        | Whether to allow searching for themes from the global search field. Default: `false`. |
+|`startupTask`                         | Task to automatically start when switching to the theme, in the format `{key: "<Task>", "mode": "<Mode>"}`. Takes precedence over the global `startupTask`. Note that the task is activated whenever switching to the theme, not only on application start. |
 
 Note:
 

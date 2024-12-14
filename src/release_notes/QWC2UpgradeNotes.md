@@ -4,6 +4,22 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/) (11.12.2024)
+---------------------------------------------------------------------------------------------------
+
+**CRS precision**
+
+You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in `config.json` &to; `precision`, i.e.:
+
+    {
+        "code": "EPSG:2056",
+        "proj": "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs",
+        "label": "CH1903+ / LV95",
+        "precision": 2
+    }
+
+Consequently, the `cooPrecision` and `degreeCooPrecision` config props of the `MapInfoToolTip` plugin have been removed.
+
 Update to qwc2 submodule revision [e39dbde](https://github.com/qgis/qwc2/tree/e39dbde) (26.11.2024)
 ---------------------------------------------------------------------------------------------------
 
