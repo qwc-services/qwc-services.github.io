@@ -98,6 +98,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-11122024">Update to qwc2 submodule revision  (11.12.2024)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024">Update to qwc2 submodule revision e39dbde (26.11.2024)</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024">Update to qwc2 submodule revision 9cb8bab (13.11.2024)</a>
@@ -173,6 +175,17 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
+<h2 id="update-to-qwc2-submodule-revision-11122024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/"></a> (11.12.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-11122024" title="Permanent link">&para;</a></h2>
+<p><strong>CRS precision</strong></p>
+<p>You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in <code>config.json</code> &to; <code>precision</code>, i.e.:</p>
+<pre><code>{
+    "code": "EPSG:2056",
+    "proj": "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs",
+    "label": "CH1903+ / LV95",
+    "precision": 2
+}
+</code></pre>
+<p>Consequently, the <code>cooPrecision</code> and <code>degreeCooPrecision</code> config props of the <code>MapInfoToolTip</code> plugin have been removed.</p>
 <h2 id="update-to-qwc2-submodule-revision-e39dbde-26112024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e39dbde">e39dbde</a> (26.11.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-e39dbde-26112024" title="Permanent link">&para;</a></h2>
 <p><strong>Search providers rework</strong></p>
 <p>The search providers from <code>qwc2-demo-app/js/searchProviders.js</code> have been moved to the core in <code>qwc2/utils/SearchProviders.js</code>.</p>

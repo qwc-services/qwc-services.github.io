@@ -216,31 +216,31 @@
 <tbody>
 <tr>
 <td><code>allowFractionalZoom</code></td>
-<td>Whether to allow arbitrary scales for viewing the map. Default value: <code>false</code>.</td>
+<td>Whether to allow arbitrary scales for viewing the map. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>assetsPath</code></td>
-<td>Relative path to the <code>assets</code> folder. Default value: <code>assets</code>.</td>
+<td>Relative path to the <code>assets</code> folder. Default: <code>"assets"</code>.</td>
 </tr>
 <tr>
 <td><code>defaultColorScheme</code></td>
-<td>The color scheme to use. See <a href="#color-schemes">Color schemes</a> for details.</td>
+<td>The color scheme to use. See <a href="#color-schemes">Color schemes</a> for details. Default: <code>"default"</code>.</td>
 </tr>
 <tr>
 <td><code>defaultFeatureStyle</code></td>
-<td>The default style to use for selection geometries and other unstyled features. Default value: see <code>qwc2/utils/FeatureStyles.js</code>.</td>
+<td>The default style to use for selection geometries and other unstyled features. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
 </tr>
 <tr>
 <td><code>defaultInteractionStyle</code></td>
-<td>The default style to use on geometries to measure, snap or edit. Default value: see <code>qwc2/utils/FeatureStyles.js</code>.</td>
+<td>The default style to use on geometries to measure, snap or edit. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
 </tr>
 <tr>
 <td><code>defaultMarkerStyle</code></td>
-<td>The default style to use as marker icon. Default value: see <code>qwc2/utils/FeatureStyles.js</code>.</td>
+<td>The default style to use as marker icon. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
 </tr>
 <tr>
 <td><code>editingAddLinkAnchors</code></td>
-<td>Whether to automatically insert link anchors in text values when editing.</td>
+<td>Whether to automatically insert link anchors in text values when editing. Default: <code>true</code>,</td>
 </tr>
 <tr>
 <td><code>editServiceCaptchaSiteKey</code></td>
@@ -248,31 +248,35 @@
 </tr>
 <tr>
 <td><code>editTextNullValue</code></td>
-<td>A text value which represents <code>NULL</code> when editing.</td>
+<td>A text value which represents <code>NULL</code> when editing. Default: <code>""</code>.</td>
 </tr>
 <tr>
 <td><code>geodesicMeasurements</code></td>
-<td>Whether to perform measurements on the geoid.</td>
+<td>Whether to perform measurements on the geoid. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>loadTranslationOverrides</code></td>
-<td>Whether to attempt to load tanslation overrides, see <a href="#translations">translations</a>. Default value: <code>false</code>.</td>
+<td>Whether to attempt to load tanslation overrides, see <a href="#translations">translations</a>. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>localeAwareNumbers</code></td>
-<td>Whether to use locale aware numbers throughout. Default value: <code>false</code>.</td>
+<td>Whether to use locale aware numbers throughout. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>measurementPrecision</code></td>
+<td>Number of decimal digits to display in measurements. Default: <code>2</code>.</td>
 </tr>
 <tr>
 <td><code>omitUrlParameterUpdates</code></td>
-<td>Whether to omit updating the URL parameters. Default value: <code>false</code>.</td>
+<td>Whether to omit updating the URL parameters. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>projections</code></td>
-<td>A list of map projections to register, in the format <code>{"code": "&lt;code&gt;", "proj": "&lt;proj4def&gt;", "label": "&lt;label&gt;"}</code>. By default, <code>EPSG:3857</code> and <code>EPSG:4326</code> are registered.</td>
+<td>A list of map projections to register, in the format <code>{"code": "&lt;code&gt;", "proj": "&lt;proj4def&gt;", "label": "&lt;label&gt;", "precision": &lt;decimals&gt;}</code>. By default, <code>EPSG:3857</code> and <code>EPSG:4326</code> are registered.</td>
 </tr>
 <tr>
 <td><code>qgisServerVersion</code></td>
-<td>The QGIS Server major version in use, defaults to <code>3</code>.</td>
+<td>The QGIS Server major version in use. Default: <code>3</code>.</td>
 </tr>
 <tr>
 <td><code>startupTask</code></td>
@@ -280,39 +284,43 @@
 </tr>
 <tr>
 <td><code>storeAllLayersInPermalink</code></td>
-<td>Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If <code>false</code>, remote layers are re-queried from the respective services, if <code>true</code>, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities).</td>
+<td>Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If <code>false</code>, remote layers are re-queried from the respective services, if <code>true</code>, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities). Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>tilePreloadLevels</code></td>
+<td>For tiled layers, load low-resolution tiles up to preload levels. 0 means no preloading. Default: <code>0</code>.</td>
 </tr>
 <tr>
 <td><code>translationsPath</code></td>
-<td>Relative path to the <code>translations</code> folder. Default value: <code>translations</code>.</td>
+<td>Relative path to the <code>translations</code> folder. Default: <code>"translations"</code>.</td>
 </tr>
 <tr>
 <td><code>trustWmsCapabilityURLs</code></td>
-<td>Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not <code>true</code>, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL.</td>
+<td>Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not <code>true</code>, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>urlPositionCrs</code></td>
-<td>The CRS used to encode the current map extent coordinates in the URL. Default value: the map projection.</td>
+<td>The CRS used to encode the current map extent coordinates in the URL. Default: the current map projection.</td>
 </tr>
 <tr>
 <td><code>urlPositionFormat</code></td>
-<td>How to encode the current map extent in the URL, either <code>centerAndZoom</code> or <code>extent</code>. See <a href="../../topics/Interfacing/#url-parameters">URL parameters</a> for details. Default value: <code>extent</code>.</td>
+<td>How to encode the current map extent in the URL, either <code>"centerAndZoom"</code> or <code>"extent"</code>. See <a href="../../topics/Interfacing/#url-parameters">URL parameters</a> for details. Default: <code>"extent"</code>.</td>
 </tr>
 <tr>
 <td><code>urlRegEx</code></td>
-<td>A <a href="https://www.freeformatter.com/json-escape.html">JSON-escaped</a> regular expression used to match URLs in feature attribute values. Default: see <code>qwc2/utils/MiscUtils.js</code>.</td>
+<td>A <a href="https://www.freeformatter.com/json-escape.html">JSON-escaped</a> regular expression used to match URLs in feature attribute values. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/MiscUtils.js"><code>qwc2/utils/MiscUtils.js</code></a>.</td>
 </tr>
 <tr>
 <td><code>wmsHidpi</code></td>
-<td>Whether to honour the device pixel ratio for WMS GetMap requests. Default value: <code>true</code>.</td>
+<td>Whether to honour the device pixel ratio for WMS GetMap requests. Default: <code>true</code>.</td>
 </tr>
 <tr>
 <td><code>wmsMaxGetUrlLength</code></td>
-<td>URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: 2048.</td>
+<td>URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: <code>2048</code>.</td>
 </tr>
 <tr>
 <td><code>wmsWktPrecision</code></td>
-<td>Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: 4.</td>
+<td>Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: <code>4</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -329,39 +337,39 @@ All settings are optional, with fallback to the default values as documented.</p
 <tbody>
 <tr>
 <td><code>allowAddingOtherThemes</code></td>
-<td>Whether to allow adding another theme to a currently loaded theme. Default value: <code>false</code>.</td>
+<td>Whether to allow adding another theme to a currently loaded theme. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>allowLayerTreeSeparators</code></td>
-<td>Allows users to add separator items in a flat layer tree. Default value: <code>false</code>.</td>
+<td>Allows users to add separator items in a flat layer tree. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>allowRemovingThemeLayers</code></td>
-<td>Whether to allow removing any theme layers from the layer tree. Default value: <code>false</code>.</td>
+<td>Whether to allow removing any theme layers from the layer tree. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>allowReorderingLayers</code></td>
-<td>Whether to allow re-ordering layers in the layer tree. Default value: <code>false</code>.</td>
+<td>Whether to allow re-ordering layers in the layer tree. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>disableImportingLocalLayers</code></td>
-<td>Whether to hide the option to import local layers from the layer tree. Default value: <code>false</code>.</td>
+<td>Whether to hide the option to import local layers from the layer tree. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>flattenLayerTreeGroups</code></td>
-<td>Whether to display a flat layer tree, omitting the groups. Default value: <code>false</code>.</td>
+<td>Whether to display a flat layer tree, omitting the groups. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>globallyDisableDockableDialogs</code></td>
-<td>Whether to globally disable the dockable feature of popup dialogs. Default value: <code>false</code>.</td>
+<td>Whether to globally disable the dockable feature of popup dialogs. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>globallyDisableMaximizeableDialogs</code></td>
-<td>Whether to globally disable the maximizeable feature of popup dialogs. Default value: <code>false</code>.</td>
+<td>Whether to globally disable the maximizeable feature of popup dialogs. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>identifyTool</code></td>
-<td>The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default value: <code>Identify</code>.</td>
+<td>The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default: <code>"Identify"</code>.</td>
 </tr>
 <tr>
 <td><code>importLayerUrlPresets</code></td>
@@ -369,19 +377,19 @@ All settings are optional, with fallback to the default values as documented.</p
 </tr>
 <tr>
 <td><code>preserveBackgroundOnThemeSwitch</code></td>
-<td>Whether to preserve the current background layer when switching theme, if possible. Default value: <code>false</code>.</td>
+<td>Whether to preserve the current background layer when switching theme, if possible. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>preserveExtentOnThemeSwitch</code></td>
-<td>Whether to preserve the current map extent when switching theme, if possible (see below). Default value: <code>false</code>.</td>
+<td>Whether to preserve the current map extent when switching theme, if possible (see below). Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>preserveNonThemeLayersOnThemeSwitch</code></td>
-<td>Whether to preserve non-theme layers when switching theme. Default value: <code>false</code>.</td>
+<td>Whether to preserve non-theme layers when switching theme. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>preventSplittingGroupsWhenReordering</code></td>
-<td>Whether to prevent splitting sibling groups or the group itself when reordering items. Default value: <code>false</code>.</td>
+<td>Whether to prevent splitting sibling groups or the group itself when reordering items. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>searchFilterRegions</code></td>
@@ -389,15 +397,15 @@ All settings are optional, with fallback to the default values as documented.</p
 </tr>
 <tr>
 <td><code>searchThemeLayers</code></td>
-<td>Whether to allow searching for theme layers from the global search field. Default value: <code>false</code>.</td>
+<td>Whether to allow searching for theme layers from the global search field. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>searchThemes</code></td>
-<td>Whether to allow searching for themes from the global search field. Default value: <code>false</code>.</td>
+<td>Whether to allow searching for themes from the global search field. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>startupTask</code></td>
-<td>Task to automatically start when switching to the theme, in the format <code>{key: "&lt;Task&gt;", "mode": "&lt;Mode&gt;"}</code>. Takes precedence over the global <code>startupTask</code>. Note that the task whenever switching to the theme, not only on application start.</td>
+<td>Task to automatically start when switching to the theme, in the format <code>{key: "&lt;Task&gt;", "mode": "&lt;Mode&gt;"}</code>. Takes precedence over the global <code>startupTask</code>. Note that the task is activated whenever switching to the theme, not only on application start.</td>
 </tr>
 </tbody>
 </table>
