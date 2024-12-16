@@ -247,7 +247,9 @@ A facet references a searchable dataset. The configuration of the fulltext searc
         "db_url": "postgresql:///?service=qwc_geodb",
         // trgm specific configuration, see below
         "trgm_feature_query": "<see below>",
+        "trgm_feature_query_template": "<see below>",
         "trgm_layer_query": "<see below>",
+        "trgm_layer_query_template": "<see below>",
         "trgm_similarity_threshold": "0.3"
         // solr specific configuration, see below
         "solr_service_url": "http://localhost:8983/solr/gdi/select",
@@ -312,6 +314,18 @@ The `trgm_layer_query` must return the following fields:
 * `sublayers`: A JSON stringified array of the shape `[{"ident": "<dataproduct_id>", "display": "<display>", "dset_info": true}, ...]`, or `NULL` if no sublayers exist.
 
 *Note*: The layer query relies on an additional service, configured as `dataproductServiceUrl` in the viewer `config.json`, which resolves the `dataproduct_id` to a QWC theme sublayer object, like the [`sogis-dataproduct-service`](https://github.com/qwc-services/sogis-dataproduct-service).
+
+In alternative to specifying `trgm_feature_query` and/or `trgm_layer_query`, you can set `trgm_feature_query_template` and/or `trgm_layer_query_template` to a [Jinja template string](https://jinja.palletsprojects.com/en/stable/templates/) which generates the final SQL query. The following variables are available in the template string:
+
+* `searchtext`: the full search text, as a string
+* `words`: the single words of the search text, as an array
+* `facets`: the permitted search facets, as an array
+
+Example for `trgm_feature_query_template` to generate an "unrolled" query for each word in the searchtext:
+
+    SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
+    WHERE {% for word in words %} searchterms ILIKE '%' || '{{ word }}' || '%' {% if not loop.last %} AND {% endif %} {% endfor %}
+    ORDER BY {% for word in words %} similarity(searchterms, '{{ word }}') {% if not loop.last %} + {% endif %} {% endfor %} DESC
 
 *Note*: Set `FLASK_DEBUG=1` as environment variable for the search service to see additional logging information.
 
