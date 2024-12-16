@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2024.12.12-master</title>
+    <title>Search - QWC2 - 2024.12.14-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.12-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.14-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -132,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.12-master</a>
+          <a href="../..">QWC2 - 2024.12.14-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -374,7 +374,9 @@ searchProviders: [
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         // trgm specific configuration, see below
         &quot;trgm_feature_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_feature_query_template&quot;: &quot;&lt;see below&gt;&quot;,
         &quot;trgm_layer_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_layer_query_template&quot;: &quot;&lt;see below&gt;&quot;,
         &quot;trgm_similarity_threshold&quot;: &quot;0.3&quot;
         // solr specific configuration, see below
         &quot;solr_service_url&quot;: &quot;http://localhost:8983/solr/gdi/select&quot;,
@@ -436,6 +438,17 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <li><code>sublayers</code>: A JSON stringified array of the shape <code>[{"ident": "&lt;dataproduct_id&gt;", "display": "&lt;display&gt;", "dset_info": true}, ...]</code>, or <code>NULL</code> if no sublayers exist.</li>
 </ul>
 <p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
+<p>In alternative to specifying <code>trgm_feature_query</code> and/or <code>trgm_layer_query</code>, you can set <code>trgm_feature_query_template</code> and/or <code>trgm_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
+<ul>
+<li><code>searchtext</code>: the full search text, as a string</li>
+<li><code>words</code>: the single words of the search text, as an array</li>
+<li><code>facets</code>: the permitted search facets, as an array</li>
+</ul>
+<p>Example for <code>trgm_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
+<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
+WHERE {% for word in words %} searchterms ILIKE '%' || '{{ word }}' || '%' {% if not loop.last %} AND {% endif %} {% endfor %}
+ORDER BY {% for word in words %} similarity(searchterms, '{{ word }}') {% if not loop.last %} + {% endif %} {% endfor %} DESC
+</code></pre>
 <p><em>Note</em>: Set <code>FLASK_DEBUG=1</code> as environment variable for the search service to see additional logging information.</p>
 <h3 id="fulltext-search-with-solr-backend">Fulltext search with Solr backend<a class="headerlink" href="#fulltext-search-with-solr-backend" title="Permanent link">&para;</a></h3>
 <p>To use the solr backend, you need to run a solr search service and point <code>solr_service_url</code> to the corresponding URL. You can find the solr documentation at <a href="https://lucene.apache.org/solr/guide/8_0/">https://lucene.apache.org/solr/guide/8_0/</a>.</p>
