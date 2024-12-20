@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC2 - 2024.12.14-master</title>
+    <title>Qwc document service readme - QWC2 - 2024.12.20-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.14-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.20-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.14-master</a>
+          <a href="../..">QWC2 - 2024.12.20-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -171,6 +171,7 @@
 <p>If your report includes external resources (i.e. images), place these below the <code>report_dir</code> and, add a <code>REPORT_DIR</code> parameter of type <code>java.lang.String</code> in the <code>.jrxml</code> and use <code>$P{REPORT_DIR}</code> in the resource location expression, for example:</p>
 <pre><code>$P{REPORT_DIR} + "mysubfolder/myimage.png"
 </code></pre>
+<p>If you may have a very large amount of input data, the report generation might result in a very large output file. This can lead to an Out-of-memory exception. To handle this, a "Virtualizer" could be used, which will cut the report into different files and save them on the hard drive during the generation process. The result generally makes the generation of the report a bit slower but it will solve the memory exception. To use a "JRSwapFileVirtualizer" for report generation, the <code>virtualizer</code> configuration has to be set (see example below).</p>
 <p>If your report requires extra fonts, place the <code>*.ttfs</code> below the <code>src/fonts</code> directory (when running locally) resp. mount them inside the <code>/srv/qwc_service/fonts/</code> when running as docker container. Font names must respect the following naming convention:</p>
 <ul>
 <li>Regular: <code>&lt;FontName&gt;.ttf</code> or <code>&lt;FontName&gt;-Regular.ttf</code></li>
@@ -193,7 +194,12 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;service&quot;: &quot;document&quot;,
   &quot;config&quot;: {
     &quot;report_dir&quot;: &quot;/path/to/report/dir&quot;,
-    &quot;max_memory&quot;: &quot;1024M&quot;
+    &quot;max_memory&quot;: &quot;1024M&quot;,
+    &quot;virtualizer&quot;: {
+      &quot;swapfile_blocksize&quot;: 4096,
+      &quot;swapfile_mingrowcount&quot; : 100,
+      &quot;virtualizer_maxsize&quot;: 1
+    }
   },
   &quot;resources&quot;: {
     &quot;document_templates&quot;: [

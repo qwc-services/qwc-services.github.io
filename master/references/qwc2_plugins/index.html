@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2024.12.14-master</title>
+    <title>Qwc2 plugins - QWC2 - 2024.12.20-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.14-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2024.12.20-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2024.12.14-master</a>
+          <a href="../..">QWC2 - 2024.12.20-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -651,6 +651,34 @@ GetFeatureInfo like the <code>Identify</code> plugin.</p>
 </table>
 <h2 id="geometrydigitizer">GeometryDigitizer<a name="geometrydigitizer"></a><a class="headerlink" href="#geometrydigitizer" title="Permanent link">&para;</a></h2>
 <p>Allows digitizing geometries to send to configured applications.</p>
+<p>Configure the available target applications in <code>themesConfig.json</code>:</p>
+<pre><code>{
+  &quot;themes&quot;: {
+    &quot;items&quot;: [{
+      ...
+      &quot;pluginData&quot;: {
+        &quot;geometryLinks&quot;: [&quot;&lt;geomLinkName&gt;&quot;, &quot;&lt;geomLinkName&gt;&quot;, ...]
+      }
+    }],
+  },
+  &quot;pluginData&quot;: {
+    &quot;geometryLinks&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;geomLinkName&gt;&quot;,                // Link name referenced in theme item
+        &quot;title&quot;: &quot;&lt;geomLinkTitle&gt;&quot;,              // Link title, displayed in the selection combo
+        &quot;geomType&quot;: [&quot;&lt;geomType&gt;&quot;, &quot;&lt;geomType&gt;&quot;] // Supported geometry types (Point, LineString, Polygon)
+        &quot;url&quot;: &quot;&lt;targetApplicationUrl&gt;&quot;,         // Application target URL, receiving the POST submit
+        &quot;params&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;, ...}      // Optional: additional form parameters to post to URL
+        &quot;target&quot;: &quot;&lt;target&gt;&quot; | {                 // Optional: form POST target which to display the result
+          &quot;iframedialog&quot;: true,                  // Use an iframe dialog
+          &quot;w&quot;: &lt;dialogWidth&gt;,                    // Dialog width
+          &quot;h&quot;: &lt;dialogHeight&gt;                    // Dialog height
+        }
+      }
+    ]
+  }
+}
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -665,13 +693,13 @@ GetFeatureInfo like the <code>Identify</code> plugin.</p>
 <td>styleActive</td>
 <td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
 <td>The style of active geometries (i.e. supported by the selected application)</td>
-<td><code>undefined</code></td>
+<td><code>{</code><br /><code>strokeColor: [0, 160, 0, 1],</code><br /><code>fillColor: [0, 160, 0, 0.33]</code><br /><code>}</code></td>
 </tr>
 <tr>
 <td>styleInactive</td>
 <td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
 <td>The style of inactive (i.e. not supported by the selected application)</td>
-<td><code>undefined</code></td>
+<td><code>{</code><br /><code>strokeColor: [127, 127, 127, 1],</code><br /><code>fillColor: [127, 127, 127, 0.33]</code><br /><code>}</code></td>
 </tr>
 </tbody>
 </table>
