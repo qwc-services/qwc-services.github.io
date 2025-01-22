@@ -230,7 +230,7 @@ In addition to the configuration described above, you can specify these addition
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
-The [`qwc-fulltet-search-service`](https://github.com/qwc-services/qwc-fulltet-search-service) provides facetted fullsearch text search, with one of the following backends:
+The [`qwc-fulltext-search-service`](https://github.com/qwc-services/qwc-fulltext-search-service) provides facetted fullsearch text search, with one of the following backends:
 
 * Postgres Trigram
 * Apache Solr
@@ -458,9 +458,11 @@ Where:
 * `default` lists the search facets enabled by default.
 * `layers` providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
 
-Next, create `Search facet` resources in the Admin GUI for the desired facet names.
+Next, create the resources in the Admin GUI to control the search permissions:
 
-  * To manage layer search permissions, you can create a `Search facet` with name `dataproduct`.
-  * You can create a wildcard `Search facet` resource by setting the name to `*`. This is useful to assign permissions for all available facets with one single resource.
+  * For feature results, create `Search facet` resources in the Admin GUI with the facet names you want to permit.
+  * For layer results, create `Dataproduct` resources in the Admin GUI with the dataproduct ids you want to permit.
+
+*Note*: For both `Search facet` and `Dataproduct` resources you can create wildcard resources by setting the name to `*`. This is useful to assign permissions for all available facets/dataproducts with one single resource.
 
 Finally, create permissions for the newly created resources and regenerate the service configuration.
