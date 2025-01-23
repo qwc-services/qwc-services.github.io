@@ -9,7 +9,7 @@ Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/) (11.12.
 
 **CRS precision**
 
-You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in `config.json` &to; `precision`, i.e.:
+You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in `config.json` &rarr; `precision`, i.e.:
 
     {
         "code": "EPSG:2056",
