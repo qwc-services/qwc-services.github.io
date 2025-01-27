@@ -31,9 +31,9 @@ Configure `legend_images_path` in the `legend` service configuration in `tenantC
 Then, legend images will be searched for in this order (the first one found is used):
 
  * A `<legend_images_path>/<service_name>/<layername><suffix>.png` file, where
-   * `service_name` is the name of the WMS service
-   * `layername` is the WMS layer name
-   * `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC2 to the legend service depending on the requested image type.
+    * `service_name` is the name of the WMS service
+    * `layername` is the WMS layer name
+    * `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC2 to the legend service depending on the requested image type.
  * A `<legend_images_path>/default<suffix>.png` file for a default legend image.
  * A `<legend_images_path>/<legend_image>` file with `legend_image` as specified for the desired layer in the `legend` service configuration, for example:
 ```json
