@@ -162,10 +162,12 @@
 </code></pre>
 <p>Then, legend images will be searched for in this order (the first one found is used):</p>
 <ul>
-<li>A <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;&lt;suffix&gt;.png</code> file, where</li>
+<li>A <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;&lt;suffix&gt;.png</code> file, where<ul>
 <li><code>service_name</code> is the name of the WMS service</li>
 <li><code>layername</code> is the WMS layer name</li>
 <li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC2 to the legend service depending on the requested image type.</li>
+</ul>
+</li>
 <li>A <code>&lt;legend_images_path&gt;/default&lt;suffix&gt;.png</code> file for a default legend image.</li>
 <li>A <code>&lt;legend_images_path&gt;/&lt;legend_image&gt;</code> file with <code>legend_image</code> as specified for the desired layer in the <code>legend</code> service configuration, for example:</li>
 </ul>

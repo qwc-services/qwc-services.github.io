@@ -168,16 +168,18 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </tbody>
 </table>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Run as</p>
-<pre><code>python src/server.py
+<p>Install GDAL Python bindings. <code>python-gdal</code> or <code>python3-gdal</code> packages on Debian/Ubuntu.</p>
+<p>Run with uv:</p>
+<pre><code>uv venv --system-site-packages
+ELEVATION_DATASET=/vsicurl/https://data.sourcepole.com/srtm_1km_3857.tif uv run src/server.py
 </code></pre>
-<p>Requires GDAL Python bindings. <code>python-gdal</code> or <code>python3-gdal</code> packages on Debian/Ubuntu (Note: virtualenv creation requires --system-site-packages option).</p>
 <p>API:
 * Runs by default on <code>http://localhost:5002</code>
 * <code>GET: /getelevation?pos=&lt;pos&gt;&amp;crs=&lt;crs&gt;</code>
   - <em>pos</em>: the query position, as <code>x,y</code>
   - <em>crs</em>: the crs of the query position
   - <em>output</em>: a json document with the elevation in meters: <code>{elevation: h}</code>
+  - Example: http://localhost:5002/getelevation?pos=45.976,7.658&amp;crs=EPSG:4326
 * <code>POST: /getheightprofile</code>
   - <em>payload</em>: a json document as follows:</p>
 <pre><code>    {

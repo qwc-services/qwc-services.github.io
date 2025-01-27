@@ -243,7 +243,7 @@
 </table>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Run standalone application:</p>
-<pre><code>python src/server.py
+<pre><code>uv run src/server.py
 </code></pre>
 <p>Endpoints:</p>
 <pre><code>http://localhost:5017/login
@@ -253,26 +253,17 @@ http://localhost:5017/logout
 http://localhost:5017/verify_login
 </code></pre>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>python3 -m venv .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
-<p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
-</code></pre>
-<p>Configure environment:</p>
+<p>Install dependencies and run service:</p>
 <pre><code>echo FLASK_ENV=development &gt;.flaskenv
 </code></pre>
 <p>Start local service:</p>
-<pre><code>python src/server.py
+<pre><code>uv run src/server.py
 </code></pre>
 <p>Testing with https://github.com/rroemhild/docker-test-openldap</p>
 <pre><code>docker run -d -p 10389:10389 -p 10636:10636 rroemhild/test-openldap:2.1
 </code></pre>
 <p>Start service:</p>
-<pre><code>LDAP_PORT=10389 LDAP_BIND_USER_DN="cn=admin,dc=planetexpress,dc=com" LDAP_BIND_USER_PASSWORD=GoodNewsEveryone LDAP_BASE_DN="dc=planetexpress,dc=com" LDAP_USER_DN="ou=people" LDAP_GROUP_DN="ou=people" LDAP_SEARCH_FOR_GROUPS=True LDAP_GROUP_MEMBERS_ATTR="member" python src/server.py
+<pre><code>LDAP_PORT=10389 LDAP_BIND_USER_DN="cn=admin,dc=planetexpress,dc=com" LDAP_BIND_USER_PASSWORD=GoodNewsEveryone LDAP_BASE_DN="dc=planetexpress,dc=com" LDAP_USER_DN="ou=people" LDAP_GROUP_DN="ou=people" LDAP_SEARCH_FOR_GROUPS=True LDAP_GROUP_MEMBERS_ATTR="member" uv run src/server.py
 </code></pre>
 <ul>
 <li>User: Philip J. Fry</li>

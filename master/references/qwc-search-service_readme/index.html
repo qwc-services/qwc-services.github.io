@@ -324,8 +324,8 @@ curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
 <p>Configure environment:</p>
 <pre><code>echo FLASK_ENV=development &gt;.flaskenv
 </code></pre>
-<p>Start service:</p>
-<pre><code>python src/server.py
+<p>Install dependencies and start service:</p>
+<pre><code>uv run src/server.py
 </code></pre>
 <p>Search base URL:</p>
 <pre><code>http://localhost:5011/

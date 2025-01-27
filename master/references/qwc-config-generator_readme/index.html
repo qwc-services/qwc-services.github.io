@@ -163,16 +163,16 @@
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="script">Script<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
 <p>Show command options:</p>
-<pre><code>python src/config_generator_cli.py --help
+<pre><code>uv run src/config_generator_cli.py --help
 </code></pre>
 <p>Generate both service configs and permissions:</p>
-<pre><code>python src/config_generator_cli.py ./tenantConfig.json all
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json all
 </code></pre>
 <p>Generate service config files:</p>
-<pre><code>python src/config_generator_cli.py ./tenantConfig.json service_configs
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json service_configs
 </code></pre>
 <p>Generate permissions file:</p>
-<pre><code>python src/config_generator_cli.py ./tenantConfig.json permissions
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json permissions
 </code></pre>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <p>Set the <code>INPUT_CONFIG_PATH</code> environment variable to the base directory where for the configuration files are that should be read by the ConfigGenerator (default: <code>config-in/</code>).
@@ -187,23 +187,14 @@ Set the <code>OUTPUT_CONFIG_PATH</code> environment variable to the base directo
 <p>You can change the directory from where the ConfigGenerator reads its schemas via the <code>JSON_SCHEMAS_PATH</code> environment variable (default <code>/tmp/</code>).
 You can change the versions of the schemas that the ConfigGenerator uses for verification inside <a href="src/schema-versions.json">schema-versions.json</a>.</p>
 <p>Download JSON schemas:</p>
-<pre><code>python src/download_json_schemas.py master
+<pre><code>uv run src/download_json_schemas.py master
 </code></pre>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>virtualenv --python=/usr/bin/python3 --system-site-package .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
-<p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
-</code></pre>
 <p>Run Demo-DB and QGIS Server:</p>
 <pre><code>cd ../qwc-docker &amp;&amp; docker-compose up -d qwc-postgis qwc-qgis-server
 </code></pre>
 <p>Generate service configs and permissions for Docker:</p>
-<pre><code>python src/config_generator_cli.py ./tenantConfig-example.json all
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig-example.json all
 </code></pre>
               
             </div>

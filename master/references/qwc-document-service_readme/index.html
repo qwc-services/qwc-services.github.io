@@ -288,22 +288,16 @@ cd qwc-docker
 </code></pre>
 <p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>python3 -m venv .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
 <p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
+<pre><code>uv sync
 wget -P src/libs -i libs.txt
 </code></pre>
 <p>Start local service:</p>
-<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ python src/server.py
+<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
 </code></pre>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Run all tests:</p>
-<pre><code>FLASK_DEBUG=1 PYTHONPATH=$PWD/src FONT_DIR=$PWD/tests/fonts CONFIG_PATH=$PWD/tests/config/ python test.py
+<pre><code>FLASK_DEBUG=1 PYTHONPATH=$PWD/src FONT_DIR=$PWD/tests/fonts CONFIG_PATH=$PWD/tests/config/ uv run test.py
 </code></pre>
               
             </div>

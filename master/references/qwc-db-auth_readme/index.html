@@ -241,14 +241,8 @@ The TOTP issuer name for your application can be set using the environment varia
 http://localhost:5017/logout
 </code></pre>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>python3 -m venv .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
-<p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
+<p>Install dependencies:</p>
+<pre><code>uv sync
 </code></pre>
 <p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
 <pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
@@ -259,7 +253,7 @@ export MAIL_SUPPRESS_SEND=True
 export MAIL_DEFAULT_SENDER=from@example.com
 </code></pre>
 <p>Start local service:</p>
-<pre><code> python src/server.py
+<pre><code> uv run src/server.py
 </code></pre>
               
             </div>

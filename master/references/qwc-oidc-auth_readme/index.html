@@ -222,24 +222,11 @@
 <p>The Redirect URI is the public base URL with the endpoint /callback (Example: https://qwc2.sourcepole.ch/oauth/callback).</p>
 <p>This redirect URI can be manually configured with <code>redirect_uri</code>.</p>
 <h2 id="usagedevelopment">Usage/Development<a class="headerlink" href="#usagedevelopment" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<pre><code>python3 -m venv .venv
-</code></pre>
-<p>Activate virtual environment:</p>
-<pre><code>source .venv/bin/activate
-</code></pre>
-<p>Install requirements:</p>
-<pre><code>pip install -r requirements.txt
-</code></pre>
 <p>Configure environment:</p>
 <pre><code>echo FLASK_ENV=development &gt;.flaskenv
 </code></pre>
-<p>Start local service:</p>
-<pre><code> python src/server.py
-</code></pre>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
-<p>Run standalone application:</p>
-<pre><code>python src/server.py
+<p>Install dependencies and run service:</p>
+<pre><code>uv run src/server.py
 </code></pre>
 <p>Login:
     http://127.0.0.1:5017/login</p>
