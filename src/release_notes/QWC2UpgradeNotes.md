@@ -83,6 +83,26 @@ New:
     }
 ```
 
+Also, the legacy `key` field in non-fulltext search provider configurations has been replaced with `provider`:
+
+Old:
+
+```json
+    {
+      "key":"<providerkey>",
+      "params": {...}
+    }
+```
+
+New:
+
+```json
+    {
+      "provider":"<providerkey>",
+      "params": {...}
+    }
+```
+
 Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9cb8bab) (13.11.2024)
 ---------------------------------------------------------------------------------------------------
 
