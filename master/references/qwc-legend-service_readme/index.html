@@ -274,6 +274,13 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   ]
 }
 </code></pre>
+<h3 id="basic-auth">Basic Auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
+<p>The legend service be configured to accept password authentication using Basic authentication.</p>
+<p>Example:</p>
+<pre><code class="language-json">  &quot;config&quot;: {
+    &quot;basic_auth_login_url&quot;: [&quot;http://qwc-auth-service:9090/verify_login&quot;]
+  },
+</code></pre>
 <h2 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h2>
 <p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
 <p>Set the <code>QWC2_PATH</code> environment variable to the path containing your QWC2 production build.</p>

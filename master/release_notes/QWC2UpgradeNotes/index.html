@@ -231,6 +231,19 @@ Consequently, modify your <code>js/appConfig.js</code> as follows:</p>
       }
     }
 </code></pre>
+<p>Also, the legacy <code>key</code> field in non-fulltext search provider configurations has been replaced with <code>provider</code>:</p>
+<p>Old:</p>
+<pre><code class="language-json">    {
+      &quot;key&quot;:&quot;&lt;providerkey&gt;&quot;,
+      &quot;params&quot;: {...}
+    }
+</code></pre>
+<p>New:</p>
+<pre><code class="language-json">    {
+      &quot;provider&quot;:&quot;&lt;providerkey&gt;&quot;,
+      &quot;params&quot;: {...}
+    }
+</code></pre>
 <h2 id="update-to-qwc2-submodule-revision-9cb8bab-13112024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/9cb8bab">9cb8bab</a> (13.11.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024" title="Permanent link">&para;</a></h2>
 <p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
 <p>The <code>InputContainer</code> component has been moved to <code>qwc2/components/widgets/</code>.

@@ -345,10 +345,9 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </code></pre>
 <p><strong>Note</strong>: <code>layers</code> in <code>wms_services</code> is a flat list of all permitted layers, group layers and internal print layers.</p>
 <h3 id="basic-auth">Basic Auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
-<p>OGC services can require password authentication using Basic authentication.</p>
+<p>The OGC service be configured to accept password authentication using Basic authentication.</p>
 <p>Example:</p>
 <pre><code class="language-json">  &quot;config&quot;: {
-    &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
     &quot;basic_auth_login_url&quot;: [&quot;http://qwc-auth-service:9090/verify_login&quot;]
   },
 </code></pre>
