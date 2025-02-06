@@ -290,7 +290,8 @@ To configure a fulltext search with the trigram backend, set `search_backend` to
 
 - `:term`: The full search text
 - `:terms`: A list of search text words (i.e. the full search text split by whitespace).
-- `:thres`: The trigram similarity treshold value (note that the service will also separately execute `SET pg_trgm.similarity_threshold = <value>`)
+- `:thres`: The trigram similarity treshold value (note that the service will also separately execute `SET pg_trgm.similarity_threshold = <value>`).
+- `:facets`: The permitted search facets, as a list (only relevant for feature query).
 
 The `trgm_feature_query` must return the following fields:
 
@@ -319,7 +320,7 @@ In alternative to specifying `trgm_feature_query` and/or `trgm_layer_query`, you
 
 * `searchtext`: the full search text, as a string
 * `words`: the single words of the search text, as an array
-* `facets`: the permitted search facets, as an array
+* `facets`: the permitted search facets, as an array (only relevant for feature query).
 
 Example for `trgm_feature_query_template` to generate an "unrolled" query for each word in the searchtext:
 
