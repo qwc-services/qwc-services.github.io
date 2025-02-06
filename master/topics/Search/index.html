@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2025.01.23-master</title>
+    <title>Search - QWC2 - 2025.02.04-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.01.23-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.04-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -132,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.01.23-master</a>
+          <a href="../..">QWC2 - 2025.02.04-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -415,7 +415,8 @@ searchProviders: [
 <ul>
 <li><code>:term</code>: The full search text</li>
 <li><code>:terms</code>: A list of search text words (i.e. the full search text split by whitespace).</li>
-<li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>)</li>
+<li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>).</li>
+<li><code>:facets</code>: The permitted search facets, as a list (only relevant for feature query).</li>
 </ul>
 <p>The <code>trgm_feature_query</code> must return the following fields:</p>
 <ul>
@@ -442,7 +443,7 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <ul>
 <li><code>searchtext</code>: the full search text, as a string</li>
 <li><code>words</code>: the single words of the search text, as an array</li>
-<li><code>facets</code>: the permitted search facets, as an array</li>
+<li><code>facets</code>: the permitted search facets, as an array (only relevant for feature query).</li>
 </ul>
 <p>Example for <code>trgm_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
 <pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index

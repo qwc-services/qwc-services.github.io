@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Editing - QWC2 - 2025.01.23-master</title>
+    <title>Editing - QWC2 - 2025.02.04-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.01.23-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.04-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -140,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.01.23-master</a>
+          <a href="../..">QWC2 - 2025.02.04-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -192,7 +192,7 @@
 <p><em>Note:</em></p>
 <ul>
 <li>If you set the format constraint to <code>*.jpeg</code> and your browser has access to a camera, QWC2 will allow you to directly upload images captured from the camera.</li>
-<li>You can set the allowed attachment extensions and maximum file sizes globally by setting <code>allowed_attachment_extensions</code> and <code>max_attachment_file_size</code> in the data service configuration. You may also need to set/increase <code>client_max_body_size</code> in <code>qwc-docker/api-gateway/nginx.conf</code>.</li>
+<li>You can set the allowed attachment extensions and maximum file sizes globally by setting <code>allowed_attachment_extensions</code> and <code>max_attachment_file_size</code> in the data service configuration. You may also need to set/increase <code>client_max_body_size</code> in <code>qwc-docker/api-gateway/nginx.conf</code>, which defaults to <code>1M</code>.</li>
 <li>You can also set the allowed attachment extensions and maximum file sizes per dataset by setting <code>max_attachment_file_size_per_dataset</code> and <code>allowed_extensions_per_dataset</code> in the data service configuration. If you set the per dataset values, the global settings will be disregarded (i.e. if an attachment satisfies the per dataset constraint it will be considered valid, even if it violates the global constraint).</li>
 <li>To ensure the uploaded files are properly rendered as download links in GetFeatureInfo responses, use the <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-feature-info-service</code></a>.</li>
 </ul>
