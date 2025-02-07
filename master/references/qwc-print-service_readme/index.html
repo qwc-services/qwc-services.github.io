@@ -133,6 +133,7 @@
                 <p><a href="https://github.com/qwc-services/qwc-print-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-print-service/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-print-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-print-service?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-print-service">QWC Print service<a class="headerlink" href="#qwc-print-service" title="Permanent link">&para;</a></h1>
+<p>Forwards a print request to the OGC service, allowing injecting additional GetPrint WMS parameters (i.e. layout user labels).</p>
 <p>API documentation:</p>
 <pre><code>http://localhost:5019/api/
 </code></pre>
@@ -150,7 +151,6 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;service&quot;: &quot;print&quot;,
   &quot;config&quot;: {
     &quot;ogc_service_url&quot;: &quot;http://localhost:5013/ows/&quot;,
-    &quot;qgis_server_version&quot;: &quot;3.4.1&quot;,
     &quot;print_pdf_filename&quot;: &quot;qwc.pdf&quot;,
     &quot;label_queries&quot;: [
       {
@@ -167,34 +167,37 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
         &quot;value&quot;: &quot;$username$&quot;
       }
     ]
-  },
-  &quot;resources&quot;: {
-    &quot;print_templates&quot;: [
-      {
-        &quot;template&quot;: &quot;A4 hoch&quot;
-      }
-    ]
   }
 }
 </code></pre>
-<p><code>label_queries</code> is a configuration for additional query parameters to inject into the
-WMS <code>GetPrint</code> request.</p>
-<p>The contents is expected to be</p>
-<pre><code>{
-  "label_queries": [{
+<p><code>label_queries</code> allows configuring additional parameters to inject into the WMS <code>GetPrint</code> request, which will be computed from a DB query
+The format is as follows:</p>
+<pre><code>"label_queries": [
+  {
     "db_url": "&lt;db_url&gt;",
     "query": "&lt;query&gt;",
     "params": ["&lt;ParamName1&gt;", ...]
   },{
     ...
-  }],
-}
+  }
+]
 </code></pre>
 <p>where:</p>
 <ul>
 <li><code>query</code> is an arbitrary query, returning exactly one row. The <code>$username$</code> placeholder can be used to inject the current username.</li>
 <li><code>params</code> is an array of parameter names to inject. The same number of parameters as number of returned values by the query must be specified.</li>
 </ul>
+<p>Similarly, <code>label_values</code> allows configuring additional static parameters to inject into the WMS <code>GetPrint</code> request.
+The format is as follows:</p>
+<pre><code>"label_values": [
+  {
+    "field": "&lt;ParamName1&gt;",
+    "value": "&lt;value&gt;"
+  },{
+    ...
+  }
+]
+</code></pre>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <table>

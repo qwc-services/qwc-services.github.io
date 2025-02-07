@@ -279,48 +279,7 @@
             />
         </svg>
     <a href="#config_ogc_service_url" onclick="anchorLink('config_ogc_service_url')">ogc_service_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>OGC Service URL (internal)</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_qgis_server_version">
-    <div class="card">
-        <div class="card-header" id="headingconfig_qgis_server_version">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_qgis_server_version"
-                        aria-expanded="" aria-controls="config_qgis_server_version" onclick="setAnchor('#config_qgis_server_version')"><span class="property-name">qgis_server_version</span> <span class="badge badge-warning required-property">Required</span></button>
-            </h2>
-        </div>
-
-        <div id="config_qgis_server_version"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_qgis_server_version"
-             data-parent="#accordionconfig_qgis_server_version">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_qgis_server_version" onclick="anchorLink('config_qgis_server_version')">qgis_server_version</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>QGIS Server version (e.g. 3). Default: 3</p>
+<span class="description"><p>Internal OGC service url. Default: <code>http://qwc-ogc-service:9090/</code></p>
 </span>
 
 
@@ -361,48 +320,7 @@
             />
         </svg>
     <a href="#config_qgs_postfix" onclick="anchorLink('config_qgs_postfix')">qgs_postfix</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>optional postfix to QGS name for printing</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_print_pdf_filename">
-    <div class="card">
-        <div class="card-header" id="headingconfig_print_pdf_filename">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_print_pdf_filename"
-                        aria-expanded="" aria-controls="config_print_pdf_filename" onclick="setAnchor('#config_print_pdf_filename')"><span class="property-name">print_pdf_filename</span></button>
-            </h2>
-        </div>
-
-        <div id="config_print_pdf_filename"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_print_pdf_filename"
-             data-parent="#accordionconfig_print_pdf_filename">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_print_pdf_filename" onclick="anchorLink('config_print_pdf_filename')">print_pdf_filename</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>optional filename for returned PDF (default: &lt;WMS map name>.pdf)</p>
+<span class="description"><p>Optional QGIS project name postfix, to use a different project when printing. Default: ``</p>
 </span>
 
 
@@ -526,7 +444,8 @@
             />
         </svg>
     <a href="#config_label_values_items_field" onclick="anchorLink('config_label_values_items_field')">field</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-
+<span class="description"><p>Name of field to inject into print params.</p>
+</span>
 
 
 
@@ -580,7 +499,8 @@
             />
         </svg>
     <a href="#config_label_values_items_value" onclick="anchorLink('config_label_values_items_value')">value</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-
+<span class="description"><p>Value of field to inject into print params. May contain <code>$username$</code>, which will be replaced with the current user name.</p>
+</span>
 
 
 
@@ -709,7 +629,8 @@
             />
         </svg>
     <a href="#config_label_queries_items_db_url" onclick="anchorLink('config_label_queries_items_db_url')">db_url</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-
+<span class="description"><p>DB url</p>
+</span>
 
 
 
@@ -763,7 +684,8 @@
             />
         </svg>
     <a href="#config_label_queries_items_query" onclick="anchorLink('config_label_queries_items_query')">query</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-
+<span class="description"><p>SQL Query. May contain <code>$username$</code>, which will be replaced with the current user name.</p>
+</span>
 
 
 
@@ -817,7 +739,8 @@
             />
         </svg>
     <a href="#config_label_queries_items_params" onclick="anchorLink('config_label_queries_items_params')">params</a></div><span class="badge badge-dark value-type">Type: array of string</span><br/>
-
+<span class="description"><p>Names of params to inject into the print params, in order of the values returned by the query.</p>
+</span>
 
 
 
@@ -887,171 +810,9 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionresources">
-    <div class="card">
-        <div class="card-header" id="headingresources">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#resources"
-                        aria-expanded="" aria-controls="resources" onclick="setAnchor('#resources')"><span class="property-name">resources</span> <span class="badge badge-warning required-property">Required</span></button>
-            </h2>
-        </div>
-
-        <div id="resources"
-             class="collapse property-definition-div" aria-labelledby="headingresources"
-             data-parent="#accordionresources">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources" onclick="anchorLink('resources')">resources</a></div><h4>Resources</h4><span class="badge badge-dark value-type">Type: object</span><br/>
-
-
-
-
-
-
-
-<div class="accordion" id="accordionresources_print_templates">
-    <div class="card">
-        <div class="card-header" id="headingresources_print_templates">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#resources_print_templates"
-                        aria-expanded="" aria-controls="resources_print_templates" onclick="setAnchor('#resources_print_templates')"><span class="property-name">print_templates</span> <span class="badge badge-warning required-property">Required</span></button>
-            </h2>
-        </div>
-
-        <div id="resources_print_templates"
-             class="collapse property-definition-div" aria-labelledby="headingresources_print_templates"
-             data-parent="#accordionresources_print_templates">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources" onclick="anchorLink('resources')">resources</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates" onclick="anchorLink('resources_print_templates')">print_templates</a></div><span class="badge badge-dark value-type">Type: array of object</span><br/>
-
-
-
-
-
-
-         <span class="badge badge-info no-additional">No Additional Items</span><h4>Each item of this array must be:</h4>
-    <div class="card">
-        <div class="card-body items-definition" id="resources_print_templates_items">
-
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources" onclick="anchorLink('resources')">resources</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates" onclick="anchorLink('resources_print_templates')">print_templates</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates_items" onclick="anchorLink('resources_print_templates_items')">print_templates items</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
-
-
-
-
-
-
-
-<div class="accordion" id="accordionresources_print_templates_items_template">
-    <div class="card">
-        <div class="card-header" id="headingresources_print_templates_items_template">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#resources_print_templates_items_template"
-                        aria-expanded="" aria-controls="resources_print_templates_items_template" onclick="setAnchor('#resources_print_templates_items_template')"><span class="property-name">template</span> <span class="badge badge-warning required-property">Required</span></button>
-            </h2>
-        </div>
-
-        <div id="resources_print_templates_items_template"
-             class="collapse property-definition-div" aria-labelledby="headingresources_print_templates_items_template"
-             data-parent="#accordionresources_print_templates_items_template">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources" onclick="anchorLink('resources')">resources</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates" onclick="anchorLink('resources_print_templates')">print_templates</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates_items" onclick="anchorLink('resources_print_templates_items')">print_templates items</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#resources_print_templates_items_template" onclick="anchorLink('resources_print_templates_items_template')">template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-    </div>
-            </div>
-        </div>
-    </div>
-</div>
-            </div>
-        </div>
-    </div>
-</div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-02-06 at 22:11:23 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-02-07 at 17:19:07 +0000</p>
     </footer></body>
 <p></html></p>
               

@@ -241,10 +241,12 @@
   &quot;template_path&quot;: &quot;/info_templates/template.html&quot;
 }
 </code></pre>
-<p><em>Note:</em>
-- <code>x</code> and <code>y</code> are the info query coordinates. <code>feature.&lt;attr&gt;</code> renders the <code>attr</code> attribute value of the feature.
-- The templates must be HTML fragments <em>without</em> <code>html</code> or <code>body</code> tags.
-- The templates folder needs to be mounted into the <code>qwc-feature-info-service</code> container, i.e.:</p>
+<p><em>Note:</em></p>
+<ul>
+<li><code>x</code> and <code>y</code> are the info query coordinates. <code>feature.&lt;attr&gt;</code> renders the <code>attr</code> attribute value of the feature.</li>
+<li>The templates must be HTML fragments <em>without</em> <code>html</code> or <code>body</code> tags.</li>
+<li>The templates folder needs to be mounted into the <code>qwc-feature-info-service</code> container, i.e.:</li>
+</ul>
 <pre><code class="language-yml">  qwc-feature-info-service:
     image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
     volumes:
