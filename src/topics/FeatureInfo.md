@@ -112,6 +112,7 @@ Example `info_template` with template path:
 ```
 
 *Note:*
+
 - `x` and `y` are the info query coordinates. `feature.<attr>` renders the `attr` attribute value of the feature.
 - The templates must be HTML fragments *without* `html` or `body` tags.
 - The templates folder needs to be mounted into the `qwc-feature-info-service` container, i.e.:
