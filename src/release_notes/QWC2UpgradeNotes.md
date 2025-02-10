@@ -4,6 +4,26 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/574fe2a8c18a8a) (06.02.2025)
+---------------------------------------------------------------------------------------------------
+
+**Authentication plugin changes**
+
+- The `LoginUser` plugin has been merged into the `Authentication` plugin, display of the login user can be enabled via the `showLoginUser` config prop:
+```
+    {
+      "name": "Authentication",
+      "cfg": {
+        "showLoginUser": true
+      }
+    }
+```
+- The task ids of the `Authentication` plugins have been changed from previously `Login` / `Logout` to `Authentication` with modes `Login`/`Logout`. Consequently, the menu- and toolbar item entries need to be changed as follows
+```
+-      {"key": "Login", "icon": "login"}
++      {"key": "Authentication", "mode": "Login", "icon": "login"}
+```
+
 Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/52fe6abad4c6ab) (11.12.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
