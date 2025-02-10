@@ -187,9 +187,10 @@ As a special case, entries for opening external URLs can be defined as follows:
 | Setting                | Description                                                                       |
 |------------------------|-----------------------------------------------------------------------------------|
 |`{`                     |                                                                                   |
-|`⁣  "key": "<key>",`     | An arbitrary key (not used by existing plugins), used to lookup the label for the entry from the translations. |
+|`⁣  "key": "<key>",`     | An arbitrary key (not used by existing plugins), used to lookup the label for the entry from the translations (as `appmenu.items.<key>`). |
+|`⁣  "title": "<key>",`   | Optional: Title to use insead of `appmenu.items.<key>`.                           |
 |`⁣  "icon": "<icon>",`   | As above.                                                                         |
-|`⁣  "url": "<url>",`     | The URL to open. Can contain as placeholders the keys listed in [URL Parameters](../topics/Interfacing.md#url-parameters), encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported. |
+|`⁣  "url": "<url>",`     | The URL to open. Can contain as placeholders the keys listed in [URL Parameters](../topics/Interfacing.md#url-parameters), encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported.               |
 |`⁣  "target": "<target>"`| The target where to open the URL, if empty, `_blank` is assumed. Can be `iframe` to open the link in a iframe window inside QWC2. |
 |`}`                     |                                                                                   |
 
