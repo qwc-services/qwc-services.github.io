@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.02.04-master</title>
+    <title>Qwc2 plugins - QWC2 - 2025.02.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.04-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.02.04-master</a>
+          <a href="../..">QWC2 - 2025.02.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -175,6 +175,7 @@
 <li><a href="#themeswitcher">ThemeSwitcher</a></li>
 <li><a href="#timemanager">TimeManager</a></li>
 <li><a href="#topbar">TopBar</a></li>
+<li><a href="#view3d">View3D</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
 <li><a href="#editingsupport">EditingSupport</a></li>
 <li><a href="#locatesupport">LocateSupport</a></li>
@@ -2254,7 +2255,7 @@ an aggregated report for all selected features.</p>
 </tr>
 <tr>
 <td>searchOptions</td>
-<td><code>{</code><br /><code>allowSearchFilters: bool,</code><br /><code>hideResultLabels: bool,</code><br /><code>highlightStyle: {</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>},</code><br /><code>minScaleDenom: number,</code><br /><code>resultLimit: number,</code><br /><code>sectionsDefaultCollapsed: bool,</code><br /><code>showLayerAfterChangeTheme: bool,</code><br /><code>showLayerResultsBeforePlaces: bool,</code><br /><code>showProviderSelection: bool,</code><br /><code>showProvidersInPlaceholder: bool,</code><br /><code>showResultInSearchText: bool,</code><br /><code>providerSelectionAllowAll: bool,</code><br /><code>zoomToLayers: bool,</code><br /><code>}</code></td>
+<td><code>{</code><br /><code>allowSearchFilters: bool,</code><br /><code>hideResultLabels: bool,</code><br /><code>highlightStyle: {</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>},</code><br /><code>minScaleDenom: number,</code><br /><code>resultLimit: number,</code><br /><code>sectionsDefaultCollapsed: bool,</code><br /><code>showLayerAfterChangeTheme: bool,</code><br /><code>showLayerResultsBeforePlaces: bool,</code><br /><code>showResultInSearchText: bool,</code><br /><code>zoomToLayers: bool,</code><br /><code>}</code></td>
 <td>Options passed down to the search component.</td>
 <td><code>{</code><br /><code>showResultInSearchText: true</code><br /><code>}</code></td>
 </tr>
@@ -2269,6 +2270,38 @@ an aggregated report for all selected features.</p>
 <td><code>string</code></td>
 <td>The keyboard shortcut prefix for triggering toolbar tasks. I.e. alt+shift. The task are then triggered by <prefix>+{1,2,3,...} for the 1st, 2nd, 3rd... toolbar icon.</td>
 <td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
+<p>Displays a 3D map view.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buttonPosition</td>
+<td><code>number</code></td>
+<td>The position slot index of the 3d switch map button, from the bottom (0: bottom slot).</td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
+<td>Default window geometry.</td>
+<td><code>{</code><br /><code>initialWidth: 600,</code><br /><code>initialHeight: 800,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>options</td>
+<td><code>{</code><br /><code>searchMinScaleDenom: number,</code><br /><code>}</code></td>
+<td>Various configuration options</td>
+<td><code>{</code><br /><code>searchMinScaleDenom: 1000</code><br /><code>}</code></td>
 </tr>
 </tbody>
 </table>

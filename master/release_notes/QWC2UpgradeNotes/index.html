@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>QWC2 upgrade notes - QWC2 - 2025.02.04-master</title>
+    <title>QWC2 upgrade notes - QWC2 - 2025.02.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.04-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -98,19 +98,21 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-11122024">Update to qwc2 submodule revision  (11.12.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision  (11.12.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024">Update to qwc2 submodule revision e39dbde (26.11.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision e39dbde (26.11.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024">Update to qwc2 submodule revision 9cb8bab (13.11.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts">Update to qwc2 submodule revision bafb882 (20.11.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024">Update to qwc2 submodule revision bb6f31c (24.10.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts">Update to qwc2 submodule revision 9cb8bab (13.11.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-3e1763a-15052024">Update to qwc2 submodule revision 3e1763a (15.05.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts">Update to qwc2 submodule revision bb6f31c (24.10.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-c7610eb-22022024">Update to qwc2 submodule revision c7610eb (22.02.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts">Update to qwc2 submodule revision 3e1763a (15.05.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024">Update to qwc2 submodule revision d04e5fd (01.02.2024)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts">Update to qwc2 submodule revision c7610eb (22.02.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts">Update to qwc2 submodule revision d04e5fd (01.02.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision 38b242a (01.11.2023) [2023-lts &rarr; 2024-lts]</a>
     </li>
@@ -154,7 +156,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.02.04-master</a>
+          <a href="../..">QWC2 - 2025.02.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -175,7 +177,7 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
-<h2 id="update-to-qwc2-submodule-revision-11122024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/"></a> (11.12.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-11122024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/52fe6abad4c6ab"></a> (11.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>CRS precision</strong></p>
 <p>You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in <code>config.json</code> &rarr; <code>precision</code>, i.e.:</p>
 <pre><code>{
@@ -186,7 +188,7 @@
 }
 </code></pre>
 <p>Consequently, the <code>cooPrecision</code> and <code>degreeCooPrecision</code> config props of the <code>MapInfoToolTip</code> plugin have been removed.</p>
-<h2 id="update-to-qwc2-submodule-revision-e39dbde-26112024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e39dbde">e39dbde</a> (26.11.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-e39dbde-26112024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e39dbde">e39dbde</a> (26.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Search providers rework</strong></p>
 <p>The search providers from <code>qwc2-demo-app/js/searchProviders.js</code> have been moved to the core in <code>qwc2/utils/SearchProviders.js</code>.</p>
 <p>To define custom search providers, expose them in <code>window.QWC2SearchProviders</code>, see <a href="../../topics/Search/">Search</a>.</p>
@@ -244,7 +246,10 @@ Consequently, modify your <code>js/appConfig.js</code> as follows:</p>
       &quot;params&quot;: {...}
     }
 </code></pre>
-<h2 id="update-to-qwc2-submodule-revision-9cb8bab-13112024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/9cb8bab">9cb8bab</a> (13.11.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/bafb882">bafb882</a> (20.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Removal of RasterExport and DxfExport plugins</strong></p>
+<p>The previously deprecated <code>RasterExport</code> and <code>DxfExport</code> plugins have been removed. Use <a href="../../references/qwc2_plugins.md#mapexport"><code>MapExport</code></a> instead.</p>
+<h2 id="update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/9cb8bab">9cb8bab</a> (13.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
 <p>The <code>InputContainer</code> component has been moved to <code>qwc2/components/widgets/</code>.
 The <code>Icon</code> component has been moved to <code>qwc2/components/widgets/</code>.
@@ -256,18 +261,18 @@ The <code>ButtonBar</code> <code>label</code> and <code>tooltip</code> props now
 The <code>ResizeableWindow</code> <code>title</code> prop now expects a translated string, not a msgid.
 The <code>extraControls</code> entries of the <code>ResizeableWindow</code> are expected to contain a translated <code>title</code> instead of a <code>msgid</code>.
 The <code>SideBar</code> <code>title</code> prop now expects a translated string, not a msgid.</p>
-<h2 id="update-to-qwc2-submodule-revision-bb6f31c-24102024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/bb6f31c">bb6f31c</a> (24.10.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/bb6f31c">bb6f31c</a> (24.10.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Setting name change</strong></p>
 <p>The toplevel <code>config.json</code> setting <code>featureReportService</code> has been renamed to <code>documentServiceUrl</code>.</p>
-<h2 id="update-to-qwc2-submodule-revision-3e1763a-15052024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/3e1763a">3e1763a</a> (15.05.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-3e1763a-15052024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/3e1763a">3e1763a</a> (15.05.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Changes to default <code>EditingInterface</code> and <code>qwc-data-service</code></strong></p>
 <p>The <code>qwc-data-service</code> and the default <code>EditingInterface</code> client editing interface have been adapted to support ReCAPTCHA verification.
 Consequently, if editing is used, the <code>qwc</code> submodule will need to be updated in parallel with the <code>qwc-data-service</code>.</p>
-<h2 id="update-to-qwc2-submodule-revision-c7610eb-22022024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/c7610eb">c7610eb</a> (22.02.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-c7610eb-22022024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/c7610eb">c7610eb</a> (22.02.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Removal of <code>SelectionSupport</code></strong></p>
 <p>The <code>SelectionSupport</code> map plugin has been removed, the respective imports and references need to be removed from <code>js/appConfig.js</code>.</p>
 <p>For custom plugins relying on <code>SelectionSupport</code>, use the new <code>MapSelection</code> component instead. Look at the <code>SearchBox</code> and <code>Identify</code> plugins for some examples.</p>
-<h2 id="update-to-qwc2-submodule-revision-d04e5fd-01022024">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/d04e5fd">d04e5fd</a> (01.02.2024)<a class="headerlink" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024" title="Permanent link">&para;</a></h2>
+<h2 id="update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/d04e5fd">d04e5fd</a> (01.02.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>Setting name change</strong></p>
 <p>The previously incorrectly named <code>HeightProfile</code> setting <code>heighProfilePrecision</code> has been renamed to <code>heightProfilePrecision</code>.</p>
 <h2 id="update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/38b242a">38b242a</a> (01.11.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>

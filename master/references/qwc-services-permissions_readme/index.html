@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc services permissions readme - QWC2 - 2025.02.04-master</title>
+    <title>Qwc services permissions readme - QWC2 - 2025.02.10-master</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.04-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-master
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.02.04-master</a>
+          <a href="../..">QWC2 - 2025.02.10-master</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -135,6 +135,58 @@
 <p>The QWC Services are a collection of microservices providing configurations for and authorized access to different QWC Map Viewer components.</p>
 <p>See <a href="https://github.com/qwc-services/qwc-docker/">QWC Docker</a> for using QWC Services with Docker.</p>
 <p>This repository contains the shared modules for QWC services.</p>
+<h1 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_SECRET_KEY</code></td>
+<td><code>&lt;random&gt;</code></td>
+<td>Secret key used to encode and decode JWTs.</td>
+</tr>
+<tr>
+<td><code>JWT_COOKIE_CSRF_PROTECT</code></td>
+<td><code>True</code></td>
+<td>Controls whether CSRF is enabled in JWT cookies.</td>
+</tr>
+<tr>
+<td><code>JWT_ACCESS_COOKIE_NAME</code></td>
+<td><code>access_token_cookie</code></td>
+<td>Name of the JWT access cookie.</td>
+</tr>
+<tr>
+<td><code>QWC_SERVICE_PREFIX</code></td>
+<td>``</td>
+<td>URL path prefix for all QWC services for single-tenant setups.</td>
+</tr>
+<tr>
+<td><code>OVERRIDE_ACCESS_COOKIE_PATH</code></td>
+<td><code>&lt;service_prefix&gt;</code></td>
+<td>Path for which the access cookie is valid.</td>
+</tr>
+<tr>
+<td><code>TENANT_HEADER</code></td>
+<td><code>&lt;empty&gt;</code></td>
+<td>The name of the HTTP header which contains the tenant name for multi-tenant setups.</td>
+</tr>
+<tr>
+<td><code>TENANT_PATH_PREFIX</code></td>
+<td><code>@service_prefix@/@tenant@</code></td>
+<td>URL path prefix for all QWC services for multi-tenant setups.</td>
+</tr>
+<tr>
+<td><code>TENANT_ACCESS_COOKIE_PATH</code></td>
+<td><code>&lt;tenant_path_prefix&gt;</code></td>
+<td>Path for which the access cookie is valid for multi-tenant setups.</td>
+</tr>
+</tbody>
+</table>
 <h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h1>
 <p>This repository contains a <a href="https://just.systems/man/en/">justfile</a> with various helper tasks for releasing etc.
 Add a symlink to it in the parent directory of the qwc-services repositories:</p>
