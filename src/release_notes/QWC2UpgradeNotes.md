@@ -4,7 +4,7 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
-Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/) (11.12.2024)
+Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/52fe6abad4c6ab) (11.12.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **CRS precision**
@@ -20,7 +20,7 @@ You can now globally specify the desired ordinate display precision (number of d
 
 Consequently, the `cooPrecision` and `degreeCooPrecision` config props of the `MapInfoToolTip` plugin have been removed.
 
-Update to qwc2 submodule revision [e39dbde](https://github.com/qgis/qwc2/tree/e39dbde) (26.11.2024)
+Update to qwc2 submodule revision [e39dbde](https://github.com/qgis/qwc2/tree/e39dbde) (26.11.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Search providers rework**
@@ -103,7 +103,14 @@ New:
     }
 ```
 
-Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9cb8bab) (13.11.2024)
+Update to qwc2 submodule revision [bafb882](https://github.com/qgis/qwc2/tree/bafb882) (20.11.2024) \[2024-lts &rarr; 2025-lts\]
+---------------------------------------------------------------------------------------------------
+
+**Removal of RasterExport and DxfExport plugins**
+
+The previously deprecated `RasterExport` and `DxfExport` plugins have been removed. Use [`MapExport`](../../references/qwc2_plugins.md#mapexport) instead.
+
+Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9cb8bab) (13.11.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 *Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
@@ -119,14 +126,14 @@ The `ResizeableWindow` `title` prop now expects a translated string, not a msgid
 The `extraControls` entries of the `ResizeableWindow` are expected to contain a translated `title` instead of a `msgid`.
 The `SideBar` `title` prop now expects a translated string, not a msgid.
 
-Update to qwc2 submodule revision [bb6f31c](https://github.com/qgis/qwc2/tree/bb6f31c) (24.10.2024)
+Update to qwc2 submodule revision [bb6f31c](https://github.com/qgis/qwc2/tree/bb6f31c) (24.10.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Setting name change**
 
 The toplevel `config.json` setting `featureReportService` has been renamed to `documentServiceUrl`.
 
-Update to qwc2 submodule revision [3e1763a](https://github.com/qgis/qwc2/tree/3e1763a) (15.05.2024)
+Update to qwc2 submodule revision [3e1763a](https://github.com/qgis/qwc2/tree/3e1763a) (15.05.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Changes to default `EditingInterface` and `qwc-data-service`**
@@ -134,7 +141,7 @@ Update to qwc2 submodule revision [3e1763a](https://github.com/qgis/qwc2/tree/3e
 The `qwc-data-service` and the default `EditingInterface` client editing interface have been adapted to support ReCAPTCHA verification.
 Consequently, if editing is used, the `qwc` submodule will need to be updated in parallel with the `qwc-data-service`.
 
-Update to qwc2 submodule revision [c7610eb](https://github.com/qgis/qwc2/tree/c7610eb) (22.02.2024)
+Update to qwc2 submodule revision [c7610eb](https://github.com/qgis/qwc2/tree/c7610eb) (22.02.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Removal of `SelectionSupport`**
@@ -143,7 +150,7 @@ The `SelectionSupport` map plugin has been removed, the respective imports and r
 
 For custom plugins relying on `SelectionSupport`, use the new `MapSelection` component instead. Look at the `SearchBox` and `Identify` plugins for some examples.
 
-Update to qwc2 submodule revision [d04e5fd](https://github.com/qgis/qwc2/tree/d04e5fd) (01.02.2024)
+Update to qwc2 submodule revision [d04e5fd](https://github.com/qgis/qwc2/tree/d04e5fd) (01.02.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Setting name change**
