@@ -18,6 +18,7 @@ The following parameters can appear in the URL of the QWC2 application:
 - `hp`, `hf`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
 - `f`: A filter configuration, see [Map filtering](./MapFilter.md).
 - `localConfig`: Override the name of the loaded config file, i.e. to load `myconfig.json` instead of the default `config.json`, pass `localConfig=myconfig`.
+- `v`: Which view to load: `3d` for the fullscreen 3D view, `3d2d` for the split-screen 3D/2D view.
 
 The `l` parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form
 ```text
