@@ -2,7 +2,7 @@
 
 branch=$(git branch --show-current)
 branch_main="main"
-if [ "$branch" == "2024-lts" ]; then
+if [[ "$branch" == *-lts ]]; then
     branch_main=$branch
 fi
 
@@ -34,7 +34,7 @@ echo "" >> src/references/index.md
 echo "    - [README](qwc-base-db_readme.md)" >> src/references/index.md
 mkdir -p tmp
 echo "* Downloading schema versions..."
-if [ "$branch" == "2024-lts" ]; then
+if [ "$branch" == *-lts ]; then
     wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/schema-versions.json
 else
     wget -q -O tmp/schema-versions.json https://raw.githubusercontent.com/qwc-services/qwc-config-generator/${branch}/src/schema-versions.json
