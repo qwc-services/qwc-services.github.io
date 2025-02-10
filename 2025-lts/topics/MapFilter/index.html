@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Map filtering - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Map filtering";
+        var mkdocs_page_input_path = "topics/MapFilter.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC2 &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Map filtering</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>The <a href="../../references/qwc2_plugins/#mapfilter"><code>MapFilter</code></a> plugin allows filtering the map content via QGIS Server WMS FILTER.</p>
+<p>It can be configured to support predefined filters, geometry filters, temporal filters and custom filters, see <a href="../../references/qwc2_plugins/#mapfilter"><code>MapFilter</code></a>.</p>
+<p><em>Note</em>: Geometry filters requires the <code>filter_geom</code> plugin from <a href="https://github.com/qwc-services/qwc-qgis-server-plugins">qwc-qgis-server-plugins</a>, and the filter will currently only be applied to postgis layers.</p>
+<p>You can set predefined filter expressions for a theme item as follows:</p>
+<pre><code class="language-json">&quot;predefinedFilters&quot;: [
+    {
+        &quot;id&quot;: &quot;&lt;filter_id&gt;&quot;,
+        &quot;title&quot;: &quot;&lt;filter_title&gt;&quot;,
+        &quot;titlemsgid&quot;: &quot;&lt;filter_title_msgid&gt;&quot;,
+        &quot;filter&quot;: {
+            &quot;&lt;layer&gt;&quot;: &lt;data_service_filter_expression&gt;
+        },
+        &quot;fields&quot;: {
+            &quot;id&quot;: &quot;&lt;value_id&gt;&quot;,
+            &quot;title&quot;: &quot;&lt;value_title&quot;&gt;,
+            &quot;titlemsgid&quot;: &quot;&lt;value_title_msgid&gt;&quot;,
+            &quot;defaultValue&quot;: &lt;default_value&gt;,
+            &quot;inputConfig&quot;: {&lt;input_field_opts&gt;}
+        }
+    },
+    ...
+]
+</code></pre>
+<p>In the data service filter expression, you can use <code>$&lt;value_id&gt;$</code> as the value placeholder.</p>
+<p>You can specify any common HTML input element properties in <code>input_field_opts</code>, i.e.:</p>
+<pre><code class="language-json">&quot;inputConfig&quot;: {&quot;type&quot;: &quot;number&quot;, &quot;min&quot;: 0}
+</code></pre>
+<p>As a special case, you can define a dropdown list as follows:</p>
+<pre><code class="language-json">&quot;inputConfig&quot;: {&quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;&lt;value1&gt;&quot;, &quot;label|labelmsgid&quot;: &quot;&lt;label(msgid)1&gt;&quot;}, ...]}
+</code></pre>
+<p>It is also possible to pass a flat list as options, i.e. <code>["&lt;value1&gt;", "&lt;value2&gt;"]</code> if the value is equal to the label.</p>
+<p>Example:</p>
+<pre><code class="language-json">&quot;predefinedFilters&quot;: [{
+        &quot;id&quot;: &quot;continent_filter&quot;,
+        &quot;title&quot;: &quot;Continent&quot;,
+        &quot;filter&quot;: {
+                &quot;countries&quot;: [&quot;continent&quot;, &quot;=&quot;, &quot;$continent$&quot;]
+        },
+        &quot;fields&quot;: [{
+                &quot;id&quot;: &quot;continent&quot;,
+                &quot;title&quot;: &quot;Name&quot;,
+                &quot;defaultValue&quot;: &quot;&quot;,
+                &quot;inputConfig&quot;: {&quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europe&quot;, &quot;Oceania&quot;]}
+        }]
+}]
+</code></pre>
+<p>The data service filter expressions are of the form <code>["&lt;name&gt;", "&lt;op&gt;", &lt;value&gt;]</code>, you can also specify complex expressions concatenated with <code>and|or</code> as follows:</p>
+<pre><code class="language-json">[[&quot;&lt;name&gt;&quot;, &quot;&lt;op&gt;&quot;, &lt;value&gt;],&quot;and|or&quot;,[&quot;&lt;name&gt;&quot;,&quot;&lt;op&gt;&quot;,&lt;value&gt;],...]
+</code></pre>
+<p>You can set the startup filter configuration by specifying a <code>f</code> URL-parameter with a JSON-serialized string as follows:</p>
+<pre><code>f={&quot;&lt;filter_id&gt;&quot;: {&quot;&lt;field_id&gt;&quot;: &lt;value&gt;, ...}, ...}
+</code></pre>
+<p>To control the temporal filter, the filter ID is <code>__timefilter</code>, and the field IDs are <code>tstart</code> and <code>tend</code>, with values an ISO date or datetime string (<code>YYYY-MM-DD</code> or <code>YYYY-MM-DDTHH:MM:SS</code>).</p>
+<p>To control the spatial filter, the syntax is <code>"__geomfilter": &lt;GeoJSON polygon coodinates array&gt;</code>.</p>
+<p>To specify custom filters, the syntax is <code>"__custom": [{"title": "&lt;title&gt;", "layer": "&lt;layername&gt;", "expr": &lt;JSON filter expr&gt;}, ...]</code>.</p>
+<p>Whenever an startup filter value is specified, the filter is automatically enabled.</p>
+<p><em>Note</em>: When specifying <code>f</code>, you should also specify <code>t</code> as the startup filter configuraiton needs to match the filters of the desired theme.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../LegendGraphics/" class="btn btn-neutral float-left" title="Legend graphics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Reports/" class="btn btn-neutral float-right" title="Reports">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../LegendGraphics/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Reports/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

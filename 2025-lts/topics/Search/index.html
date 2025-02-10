@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Search - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Search";
+        var mkdocs_page_input_path = "topics/Search.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Search</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#adding-search-providers">Adding search providers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-qgis-feature-search">Configuring the QGIS feature search </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-fulltext-search-service">Configuring the fulltext search service </a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-trigram-backend">Fulltext search with Trigram backend</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-solr-backend">Fulltext search with Solr backend</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#configuring-the-search-for-a-theme">Configuring the search for a theme</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC2 &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Search</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h1>
+<p>QWC2 can be configured to use arbitrary custom search providers. In addition, the <code>qwc-fulltext-search-service</code> provided by the qwc-services ecosystem can be used.</p>
+<h2 id="adding-search-providers">Adding search providers<a class="headerlink" href="#adding-search-providers" title="Permanent link">&para;</a></h2>
+<p>Search providers can be defined as follows:</p>
+<ul>
+<li>As resource, defined in <code>static/assets/searchProviders.js</code>. This file is structured as follows:</li>
+</ul>
+<pre><code class="language-js">window.QWC2SearchProviders = {
+    &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
+    &lt;providerkey2&gt;: &lt;ProviderDefinition2&gt;,
+    ...
+};
+</code></pre>
+<p>This script file needs to be loaded explicitly by <code>index.html</code> via</p>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;assets/searchProviders.js&quot; &gt;&lt;/script&gt;
+</code></pre>
+<ul>
+<li>Built-in, defined in <code>js/SearchProviders.js</code>. This file is structured as follows:</li>
+</ul>
+<pre><code class="language-js">window.QWC2SearchProviders = {
+    &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
+    &lt;providerkey2&gt;: &lt;ProviderDefinition2&gt;,
+    ...
+};
+</code></pre>
+<p>This file needs to be imported into the application, i.e. via</p>
+<pre><code class="language-js">  import './SearchProviders.js';
+</code></pre>
+<p>in <code>js/appConfig.js</code>.</p>
+<p>Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.</p>
+<p>The format of <code>ProviderDefinition</code> is</p>
+<pre><code class="language-js">{
+  label: &quot;&lt;label&gt;&quot;, // Provider label (displayed in provider selection menu)
+  labelmsgid: &quot;&lt;msgid&gt;&quot;, // Translateable label message ID, instead of `label`
+  onSearch: function(searchText, searchParams, callback, axios) =&gt; {
+    const results = []; // See below
+    /* Populate results... */
+    callback({results: results});
+  },
+  getResultGeometry: function(resultItem, callback, axios) =&gt; {
+    /* Retreive geometry... */
+    // resultItem is a search result entry as returned by onSearch, which provides the context for retreiving the geometry
+    const geometry = &quot;&lt;wktString&gt;&quot;;
+    // or
+    const geometry = {&lt;GeoJSON geometry&gt;};
+
+    const crs = &quot;EPSG:XXXX&quot;;
+    const hidemarker = &lt;boolean&gt;; // Whether to suppress displaying a search marker on top of the search geometry
+    callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
+    // or
+    callback({feature: geojson_feature, crs: crs, hidemarker: hidemarker});
+  },
+  handlesGeomFilter: &lt;boolean&gt;, // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
+  getLayerDefinition: function(resultItem, callback, axios) =&gt; {
+    // layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json
+    const layer = {&lt;layer_definition&gt;};
+    callback(layer);
+  }
+  }
+}
+</code></pre>
+<p><em>Notes:</em></p>
+<ul>
+<li>The format of <code>searchParams</code> is</li>
+</ul>
+<pre><code class="language-js">{
+  displaycrs: &quot;EPSG:XXXX&quot;, // Currently selected mouse coordinate display CRS
+  mapcrs: &quot;EPSG:XXXX&quot;, // The current map CRS
+  lang: &quot;&lt;code&gt;&quot;, // The current application language, i.e. en-US or en
+  cfgParams: &lt;params&gt;, // Additional parameters passed in the theme search provider configuration, see below
+  limit: &lt;number&gt;, // Result count limit
+  activeLayers: [&quot;&lt;layername&gt;&quot;, ...], // List of active layers in the map
+  filterBBox: [xmin, ymin, xmax, ymax]|null, // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
+  filterPoly: [[x0, y0], [x1, y1], ....], // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
+}
+</code></pre>
+<ul>
+<li>
+<p><code>axios</code> is passed for convenience so that providers can use the compiled-in <code>axios</code> library for network requests.</p>
+</li>
+<li>
+<p>The format of the <code>results</code> list returned by <code>onSearch</code> is as follows:</p>
+</li>
+</ul>
+<pre><code class="language-js">results = [
+  {
+    id: &quot;&lt;categoryid&gt;&quot;,                        // Unique category ID
+    title: &quot;&lt;display_title&gt;&quot;,                  // Text to display as group title in the search results
+    titlemsgid: &quot;&lt;display_title_msgid&gt;&quot;,       // Translation message id for group title, instead of &quot;title&quot;
+    resultCount: &lt;result_count&gt;,               // Optional: true result count (i.e. not limited to the &quot;limit&quot; specified in searchParams).
+    priority: priority_nr,                     // Optional: search result group priority. Groups with higher priority are displayed first in the list.
+    type: SearchResultType.{PLACE|THEMELAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
+    items: [
+      // PLACE result
+      {
+        id: &quot;&lt;item_id&gt;&quot;,                       // Unique item ID
+        text: &quot;&lt;display_text&gt;&quot;,                // Text to display as search result
+        label: &quot;&lt;map_marker_text&gt;&quot;,            // Optional, text to show next to the position marker on the map instead of `text`
+        x: x,                                  // X coordinate of result
+        y: y,                                  // Y coordinate of result
+        crs: crs,                              // CRS of result coordinates and bbox. If not specified, the current map crs is assumed.
+        bbox: [xmin, ymin, xmax, ymax],        // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
+        geometry: &lt;GeoJSON geometry&gt;,          // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
+        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,          // Optional: thumbnail to display next to the search result text in the result list,
+        externalLink: &quot;&lt;url&gt;&quot;                  // Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.
+        target: &quot;&lt;target&gt;&quot;                     // Optional: external link target, i.e. _blank or iframe
+      },
+      // THEMELAYER result
+      {
+        id: &quot;&lt;item_id&gt;&quot;,                        // Unique item ID
+        text: &quot;&lt;display_text&gt;&quot;,                 // Text to display as search result
+        layer: {&lt;layer_definition&gt;}             // Optional: layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json. Layer definitions may also be fetched separately via getLayerDefinition.
+        info: &lt;bool&gt;,                           // Optional: Whether to display a info icon in the result list. The info is read from layer.abstract. If layer is not specified, the layer is fecthed via getLayerDefinition.
+        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,           // Optional: thumbnail to display next to the search result text in the result list,
+        sublayers: [{&lt;sublayer&gt;}, ...]          // Optional: list of sublayers, in the format {id: &quot;&lt;item_id&gt;&quot;, text: &quot;&lt;display_text&gt;&quot;, has_info: &lt;bool&gt;, etc..}
+      }
+    ]
+  }
+]
+</code></pre>
+<p>Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for a full examples.</p>
+<h2 id="filtering">Filtering <a name="filtering"></a><a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h2>
+<p>When using the <code>SearchBox</code> search component with <code>allowSearchFilters: true</code> passed in the <code>TopBar</code> <code>searchOptions</code>, you a filter menu will be displayed allowing to restrict the search area.</p>
+<p>If the provider does not fully handle the filter geometry internally (<code>handlesGeomFilter != true</code>), client-side filtering will be performed as follows:</p>
+<ol>
+<li>Polygon intersection test if the result has a <code>geometry</code> field with a <code>Polygon</code> geometry</li>
+<li>Polygon intersection test if the result has a <code>bbox</code> field</li>
+<li>Point-in-polygon test using the results <code>x</code> and <code>y</code> point coordinates</li>
+</ol>
+<p>You can also set a predefined list of filter areas by setting <code>searchFilterRegions</code> in <code>config.json</code> (or per-theme in <code>themesConfig.json</code>) as follows:</p>
+<pre><code class="language-json">&quot;searchFilterRegions&quot;: [
+  {
+    &quot;name&quot;: &quot;&lt;Group name&gt;&quot;,
+    &quot;items&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;Name&gt;&quot;,
+        &quot;crs&quot;: &quot;&lt;EPSG:XXXX&gt;&quot;,
+        &quot;coordinates&quot;: [[x0, y0], [x1, y1], ...]
+      },
+      ...
+    ]
+  },
+  ...
+]
+ ```
+
+## Configuring theme search providers
+
+For each theme item in `themesConfig.json`, you can define a list of search providers to enable for the theme as follows:
+```json
+...
+searchProviders: [
+  &quot;&lt;providerkey1&gt;&quot;,             // Simple form
+  {                             // Provider with custom params
+    &quot;provider&quot;: &quot;&lt;providerkey2&gt;&quot;,
+    &quot;key&quot;: &quot;&lt;key&gt;&quot;,             // Optional: key to disambiguate multiple provider configurations of the same provider type (i.e. multiple `qgis` provider configurations)
+    &quot;label&quot;: &quot;&lt;label&gt;&quot;,         // Optional: provider label (displayed in provider selection menu). If not specified, the label/labelmsgid from the provider definition is used.
+    &quot;labelmsgid&quot;: &quot;&lt;msgid&gt;&quot;,    // Optional: translateable label message ID, instead of `label`
+    &quot;params&quot;: {
+      ...                       // Additional params passed to the provider `onSearch` function as `searchParams.cfgParams`
+    }
+  }
+]
+...
+</code></pre>
+<p>Note: The <code>qwc2-demo-app</code> (also used by the <code>qwc-map-viewer-demo</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
+<h2 id="configuring-the-qgis-feature-search">Configuring the QGIS feature search <a name="qgis-search"></a><a class="headerlink" href="#configuring-the-qgis-feature-search" title="Permanent link">&para;</a></h2>
+<p>The QGIS feature search relies on WMS GetFeatureInfo with the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter"><code>FILTER</code></a> parameter to search features of layers which are part of the theme WMS. It is enabled via the <code>qgis</code> search provider, which is part of the <code>qwc2-demo-app</code>.</p>
+<p><em>Note</em>: Make sure the QGIS Project is configured to return geometries with the feature info responses (<code>Project</code> &rarr; <code>Properties</code> &rarr; <code>QGIS Server</code> &rarr; <code>Add geometry to feature response</code>).</p>
+<p>In it's simples form, you can configure the theme search provider entry as follows:</p>
+<pre><code class="language-json">  {
+    &quot;provider&quot;: &quot;qgis&quot;,
+    &quot;params&quot;: {
+      &quot;title&quot;: &quot;&lt;search name&gt;&quot;,
+      &quot;expression&quot;: {
+        &quot;&lt;layername1&gt;&quot;: &quot;&lt;expression&gt;&quot;,
+        &quot;&lt;layername2&gt;&quot;: &quot;&lt;expression&gt;&quot;
+      }
+    }
+  }
+</code></pre>
+<p>where <code>expression</code> is a WMS GetFeatureInfo <code>FILTER</code> expression, for example <code>"\"name\" ILIKE '%$TEXT$%'"</code>. <code>$TEXT$</code> will be replaced by the search text entered by the user, <code>name</code> corresponds to a field name of the specified layer.</p>
+<p>A more complex form, useable through the <a href="../../references/qwc2_plugins/#featuresearch"><code>FeatureSearch</code></a> plugin, allows defining a field configuration for multiple input fields. A full example is as follows:</p>
+<pre><code class="language-json">  {
+    &quot;provider&quot;: &quot;qgis&quot;,
+    &quot;params&quot;: {
+      &quot;title&quot;: &quot;Person search&quot;,
+      &quot;expression&quot;: {
+        &quot;persons&quot;: &quot;\&quot;name\&quot; ILIKE '%$NAME$%' AND \&quot;age\&quot; &gt;= $AGE$ AND \&quot;gender\&quot; = '$GENDER$'&quot;
+      },
+      &quot;fields&quot;: {
+        &quot;NAME&quot;: {&quot;label&quot;: &quot;Name&quot;, &quot;type&quot;: &quot;text&quot;},
+        &quot;AGE&quot;: {&quot;label&quot;: &quot;Min. age&quot;, &quot;type&quot;: &quot;number&quot;, &quot;options&quot;: {&quot;min&quot;: 0}},
+        &quot;GENDER&quot;: {&quot;label&quot;: &quot;Gender&quot;, &quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;f&quot;, &quot;label&quot;: &quot;Female&quot;}, {&quot;value&quot;: &quot;m&quot;, &quot;label&quot;: &quot;Male&quot;}]}
+      }
+    }
+  }
+</code></pre>
+<p>Here, each field will provide a value which is substituted in the expression. Any <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">HTML Input</a> type is supported (i.e. <code>text</code>, <code>number</code>, <code>range</code>, ...), with options depending on the input type. In addition, the <code>select</code> field type is supported to display a ComboBox, with the entries provided as <code>options</code> as in the example above. It is also possible to pass a flat list as <code>options</code>, i.e. <code>["Female", "Male"]</code> if the value is equal to the label.</p>
+<p><em>Note</em>: <code>qgis</code> provider searches are exposed to the search field only if no <code>fields</code> are specified (i.e. single input search). The <code>FeatureSearch</code> plugin on the other hand will list all <code>qgis</code> provider searches.</p>
+<p>In addition to the configuration described above, you can specify these additional parameters in <code>params</code>:</p>
+<ul>
+<li><code>featureCount</code>: A number, passed as <code>feature_count</code> to the GetFeatureInfo request to control the maximum number of returned features. If not specified, defaults to <code>100</code>.</li>
+<li><code>resultTitle</code>: A format string for the result title. Allowed placeholders are: <code>{layername}</code> for the layer name and <code>{&lt;fieldname&gt;}</code> for the value of <code>fieldname</code>. If not the layer name followed by the feature displayfield will be shown.</li>
+<li><code>description</code>: An arbitrary descriptive text which will be displayed above the search fields in the <code>FeatureSearch</code> plugin.</li>
+<li><code>default</code>: Whether the search is selected by default when opening the <code>FeatureSearch</code> plugin.</li>
+<li><code>group</code>: A group name, used to group the searches in the <code>FeatureSearch</code> selection combobox.</li>
+</ul>
+<h2 id="configuring-the-fulltext-search-service">Configuring the fulltext search service <a name="fulltext-search"></a><a class="headerlink" href="#configuring-the-fulltext-search-service" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/qwc-services/qwc-fulltext-search-service"><code>qwc-fulltext-search-service</code></a> provides facetted fullsearch text search, with one of the following backends:</p>
+<ul>
+<li>Postgres Trigram</li>
+<li>Apache Solr</li>
+</ul>
+<p>A facet references a searchable dataset. The configuration of the fulltext search service and available search facets can be found in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;search&quot;,
+    &quot;config&quot;: {
+        &quot;search_backend&quot;: &quot;&lt;solr|trgm&gt;&quot;,
+        &quot;word_split_re&quot;: &quot;[\\s,.:;\&quot;]+&quot;,
+        &quot;search_result_limit&quot;: 50,
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        // trgm specific configuration, see below
+        &quot;trgm_feature_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_feature_query_template&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_layer_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_layer_query_template&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;trgm_similarity_threshold&quot;: &quot;0.3&quot;
+        // solr specific configuration, see below
+        &quot;solr_service_url&quot;: &quot;http://localhost:8983/solr/gdi/select&quot;,
+        &quot;search_result_sort&quot;: &quot;score desc, sort asc&quot;,
+    },
+    &quot;resources&quot;: {
+        &quot;facets&quot;: [
+            {
+                &quot;name&quot;: &quot;&lt;facet name&gt;&quot;,
+                &quot;filter_word&quot;: &quot;&lt;filter word&gt;&quot;,
+                &quot;table_name&quot;: &quot;&lt;schema.tablename&gt;&quot;,
+                &quot;geometry_column&quot;: &quot;&lt;geometry column name&gt;&quot;,
+                &quot;search_id_col&quot;: &quot;&lt;id column name&gt;&quot;
+            },
+            ...
+        ]
+    }
+}
+</code></pre>
+<ul>
+<li>The <code>search_backend</code> specifies the search backend to use, either <code>solr</code> or <code>trgm</code>. Default: <code>solr</code>.</li>
+<li>The <code>db_url</code> specifies the DB which contains the search index (searched either by <code>solr</code> or by the specified <code>trgm</code> queries).</li>
+<li>The <code>word_split_re</code> specifies the regular expression which is used to split the search string into single words. Default: <code>[\\s,.:;\"]+</code>.</li>
+<li><code>search_result_limit</code> specifies the maximum number of feature results returned by a search. Default: <code>50</code>.</li>
+</ul>
+<p>The facets describe a searchable dataset and are referenced by the search index:</p>
+<ul>
+<li><code>name</code> specifies the facet identifier.</li>
+<li><code>filter_word</code> is a short (human readable) name which appears as result category in the search results (i.e. <code>Address</code>).</li>
+<li><code>table_name</code> specifies the table containing the features referenced by the search index (in the format <code>schema.table_name</code>).</li>
+<li><code>geometry_column</code> specifies the name of the geometry column in this table.</li>
+<li><code>search_id_col</code> specifies the name of the id column in this table. If unset, field from search filter expression is used.</li>
+</ul>
+<h3 id="fulltext-search-with-trigram-backend">Fulltext search with Trigram backend<a class="headerlink" href="#fulltext-search-with-trigram-backend" title="Permanent link">&para;</a></h3>
+<p>To configure a fulltext search with the trigram backend, set <code>search_backend</code> to <code>trgm</code> and specify a <code>trgm_feature_query</code> and optionally a <code>trgm_layer_query</code>. The feature and layer query SQL can contain following placeholders:</p>
+<ul>
+<li><code>:term</code>: The full search text</li>
+<li><code>:terms</code>: A list of search text words (i.e. the full search text split by whitespace).</li>
+<li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>).</li>
+<li><code>:facets</code>: The permitted search facets, as a list (only relevant for feature query).</li>
+</ul>
+<p>The <code>trgm_feature_query</code> must return the following fields:</p>
+<ul>
+<li><code>display</code>: The label to display in the search results.</li>
+<li><code>facet_id</code>: The facet name (as configured in <code>resources</code> =&gt; <code>facets</code>).</li>
+<li><code>id_field_name</code>: The name of the identifier field in the table referenced by the facet.</li>
+<li><code>feature_id</code>: The feature identifier through which to locate the feature in table referenced by the facet.</li>
+<li><code>bbox</code>: The feature bounding box, as a<code>[xmin,ymin,xmax,ymax]</code> string.</li>
+<li><code>srid</code>: The SRID of the bbox coordinates (i.e. <code>3857</code>).</li>
+</ul>
+<p>Example:</p>
+<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
+FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :term || '%' ORDER BY sml DESC;",
+</code></pre>
+<p>The <code>trgm_layer_query</code> must return the following fields:</p>
+<ul>
+<li><code>display</code>: The label to display in the search results.</li>
+<li><code>dataproduct_id</code>: The id of the dataproduct.</li>
+<li><code>has_info</code>: Whether an abstract is available for the dataproduct.</li>
+<li><code>sublayers</code>: A JSON stringified array of the shape <code>[{"ident": "&lt;dataproduct_id&gt;", "display": "&lt;display&gt;", "dset_info": true}, ...]</code>, or <code>NULL</code> if no sublayers exist.</li>
+</ul>
+<p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
+<p>In alternative to specifying <code>trgm_feature_query</code> and/or <code>trgm_layer_query</code>, you can set <code>trgm_feature_query_template</code> and/or <code>trgm_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
+<ul>
+<li><code>searchtext</code>: the full search text, as a string</li>
+<li><code>words</code>: the single words of the search text, as an array</li>
+<li><code>facets</code>: the permitted search facets, as an array (only relevant for feature query).</li>
+</ul>
+<p>Example for <code>trgm_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
+<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
+WHERE {% for word in words %} searchterms ILIKE '%' || '{{ word }}' || '%' {% if not loop.last %} AND {% endif %} {% endfor %}
+ORDER BY {% for word in words %} similarity(searchterms, '{{ word }}') {% if not loop.last %} + {% endif %} {% endfor %} DESC
+</code></pre>
+<p><em>Note</em>: Set <code>FLASK_DEBUG=1</code> as environment variable for the search service to see additional logging information.</p>
+<h3 id="fulltext-search-with-solr-backend">Fulltext search with Solr backend<a class="headerlink" href="#fulltext-search-with-solr-backend" title="Permanent link">&para;</a></h3>
+<p>To use the solr backend, you need to run a solr search service and point <code>solr_service_url</code> to the corresponding URL. You can find the solr documentation at <a href="https://lucene.apache.org/solr/guide/8_0/">https://lucene.apache.org/solr/guide/8_0/</a>.</p>
+<p>Next, create search XML configuration files in <code>volumes/solr/configsets/gdi/conf/</code>. The name of the file can be chosen freely. Example:</p>
+<pre><code class="language-xml">&lt;dataConfig&gt;
+    &lt;dataSource
+        driver=&quot;org.postgresql.Driver&quot;
+        url=&quot;jdbc:postgresql://{DB_HOST}:{DB_PORT}/{DB_NAME}&quot;
+        user=&quot;{DB_USER}&quot;
+        password=&quot;{DB_PASSWORD}&quot;
+    /&gt;
+    &lt;document&gt;
+        &lt;entity name=&quot;{FACET_NAME}&quot; query=&quot;
+            WITH index_base AS (
+                /* ==== Base query for search index ==== */
+                SELECT
+                    '{FACET_NAME}'::text AS subclass,
+                    {PRIMARY_KEY} AS id_in_class,
+                    '{PRIMARY_KEY}' AS id_name,
+                    'str:{SEARCH_FIELD_IS_STRING}' AS search_field_str,
+                    {DISPLAYTEXT} AS displaytext,
+                    {SEARCH_FIELD_1} AS search_part_1,
+                    {GEOMETRY_FIELD} AS geom
+                FROM {SCHEMA}.{SEARCH_TABLE_NAME}
+                /* ===================================== */
+            )
+            SELECT
+                (array_to_json(array_append(ARRAY[subclass::text], id_in_class::text)))::text AS id,
+                displaytext AS display,
+                search_part_1 AS search_1_stem,
+                search_part_1 AS sort,
+                subclass AS facet,
+                'default' AS tenant,
+                (array_to_json(array_append(ARRAY[id_name::text], search_field_str::text)))::text AS idfield_meta,
+                (st_asgeojson(st_envelope(geom), 0, 1)::json -&gt; 'bbox')::text AS bbox,
+                id_name,
+                geom
+            FROM index_base&quot;&gt;
+        &lt;/entity&gt;
+    &lt;/document&gt;
+&lt;/dataConfig&gt;
+</code></pre>
+<p>The next table shows how the values need to be defined:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Definition</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DB_HOST</code></td>
+<td>Database hostname</td>
+<td><code>qwc-postgis</code></td>
+</tr>
+<tr>
+<td><code>DB_NAME</code></td>
+<td>Database name</td>
+<td><code>qwc_demo</code></td>
+</tr>
+<tr>
+<td><code>DB_PORT</code></td>
+<td>Database port number</td>
+<td><code>5432</code></td>
+</tr>
+<tr>
+<td><code>DB_USER</code></td>
+<td>Database username</td>
+<td><code>qwc_service</code></td>
+</tr>
+<tr>
+<td><code>DB_PASSWORD</code></td>
+<td>Password for the specified database user</td>
+<td><code>qwc_service</code></td>
+</tr>
+<tr>
+<td><code>FACET_NAME</code></td>
+<td>Name of the search facet</td>
+<td><code>fluesse_search</code></td>
+</tr>
+<tr>
+<td><code>PRIMARY_KEY</code></td>
+<td>Primary key name of the table that is used in the search query</td>
+<td><code>ogc_fid</code></td>
+</tr>
+<tr>
+<td><code>SEARCH_FIELD_IS_STRING</code></td>
+<td>Definition, if search field is string (<code>y</code>) or not (<code>n</code>). If not, it's interpreted as integer.</td>
+<td><code>n</code></td>
+</tr>
+<tr>
+<td><code>DISPLAYTEXT</code></td>
+<td>Displaytext that will be shown by the QWC2 when a match was found</td>
+<td><code>name_long</code></td>
+</tr>
+<tr>
+<td><code>SEARCH_FIELD_1</code></td>
+<td>Table field that will be used by the search</td>
+<td><code>name_long</code></td>
+</tr>
+<tr>
+<td><code>GEOMETRY_FIELD</code></td>
+<td>Name of the geometry column of the search table</td>
+<td><code>wkb_geometry</code></td>
+</tr>
+<tr>
+<td><code>SCHEMA</code></td>
+<td>Search table schema</td>
+<td><code>qwc_geodb</code></td>
+</tr>
+<tr>
+<td><code>SEARCH_TABLE_NAME</code></td>
+<td>Search table name</td>
+<td><code>fluesse</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hint</strong>: For a less complex configuration file, of course it is also possible to define the query within a <code>VIEW</code> definition within the database. In this case just provide the query within the facet configuration like:</p>
+<pre><code class="language-xml">&lt;entity name=&quot;{FACET_NAME}&quot; query=&quot;
+    SELECT id,
+    display,
+    search_1_stem,
+    sort,
+    facet,
+    tenant,
+    idfield_meta,
+    bbox
+    id_name,
+    geom
+    FROM index_base&quot;&gt;
+&lt;/entity&gt;
+</code></pre>
+<p><em>Note</em>:
+In the case of several searches sharing the same database connection,
+all searche queries can be written to the same XML file. Each search
+corresponds to exactly one <code>&lt;entity&gt;</code> tag in the XML file.</p>
+<p>After the configuration file has been created, the search must be registered in <code>solr</code>.
+In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you have to look for
+<code>&lt;!-- SearchHandler</code> and add the following configuration</p>
+<pre><code class="language-xml">&lt;requestHandler name=&quot;/FACET_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
+    &lt;lst name=&quot;defaults&quot;&gt;
+        &lt;str name=&quot;config&quot;&gt;NAME_OF_THE_CONFIGURATION_FILE.xml&lt;/str&gt;
+    &lt;/lst&gt;
+&lt;/requestHandler&gt;
+</code></pre>
+<p>Finally, the <code>solr</code> index has to be generated:</p>
+<pre><code>rm -rf volumes/solr/data/*
+docker compose restart qwc-solr
+curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
+</code></pre>
+<h3 id="configuring-the-search-for-a-theme">Configuring the search for a theme<a class="headerlink" href="#configuring-the-search-for-a-theme" title="Permanent link">&para;</a></h3>
+<p>To use a fulltext search in a theme, configure a <code>fulltext</code> search provider in <code>themesConfig.json</code> as follows:</p>
+<pre><code class="language-json">&quot;searchProviders&quot;: [
+    {
+        &quot;provider&quot;: &quot;fulltext&quot;,
+        &quot;params&quot;: {
+          &quot;default&quot;: [&lt;FACET_NAME&gt;],
+          &quot;layers&quot;: {
+              &quot;&lt;layer_name&gt;&quot;: &quot;&lt;FACET_NAME&gt;&quot;
+          }
+        }
+    }
+]
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>default</code> lists the search facets enabled by default.</li>
+<li><code>layers</code> providides a mapping of facets which are enabled whenever the theme layer <code>&lt;layer_name&gt;</code> is visible on the map.</li>
+</ul>
+<p>Next, create the resources in the Admin GUI to control the search permissions:</p>
+<ul>
+<li>For feature results, create <code>Search facet</code> resources in the Admin GUI with the facet names you want to permit.</li>
+<li>For layer results, create <code>Dataproduct</code> resources in the Admin GUI with the dataproduct ids you want to permit.</li>
+</ul>
+<p><em>Note</em>: For both <code>Search facet</code> and <code>Dataproduct</code> resources you can create wildcard resources by setting the name to <code>*</code>. This is useful to assign permissions for all available facets/dataproducts with one single resource.</p>
+<p>Finally, create permissions for the newly created resources and regenerate the service configuration.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../configuration/ServiceConfiguration/" class="btn btn-neutral float-left" title="Services"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../FeatureInfo/" class="btn btn-neutral float-right" title="Feature info">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../configuration/ServiceConfiguration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../FeatureInfo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

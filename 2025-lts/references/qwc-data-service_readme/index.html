@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc data service readme - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc data service readme";
+        var mkdocs_page_input_path = "references/qwc-data-service_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc data service readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-data-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-data-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-data-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-data-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-data-service">QWC Data Service<a class="headerlink" href="#qwc-data-service" title="Permanent link">&para;</a></h1>
+<p>Edit spatial and unlocated features of datasets via GeoJSON.</p>
+<p><strong>This service is integrated into <code>qwc-docker</code>, consult <a href="https://qwc-services.github.io/">qwc-services.github.io</a> for the general <code>qwc-services</code> documentation.</strong></p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>Uses PostgreSQL connection service or connection to a PostGIS database.
+This connection's user requires read and write access to the configured tables.</p>
+<h3 id="qwc_demo-example">qwc_demo example<a class="headerlink" href="#qwc_demo-example" title="Permanent link">&para;</a></h3>
+<p>Uses PostgreSQL connection service <code>qwc_geodb</code> (GeoDB).
+The user <code>qwc_service_write</code> requires read and write access to the configured tables
+of the data layers from the QGIS project <code>qwc_demo.qgs</code>.</p>
+<p>Setup PostgreSQL connection service file <code>~/.pg_service.conf</code>:</p>
+<pre><code>[qwc_geodb]
+host=localhost
+port=5439
+dbname=qwc_demo
+user=qwc_service_write
+password=qwc_service_write
+sslmode=disable
+</code></pre>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config and permission files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="data-service-config">Data Service config<a class="headerlink" href="#data-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="schemas/qwc-data-service.json">JSON schema</a></li>
+<li><a href="https://github.com/qwc-services/qwc-docker/blob/master/volumes/config/default/dataConfig.json">Example <code>dataConfig.json</code></a></li>
+</ul>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;data_datasets&quot;: [
+          {
+            &quot;name&quot;: &quot;qwc_demo.edit_points&quot;,
+            &quot;attributes&quot;: [
+              &quot;id&quot;,
+              &quot;name&quot;,
+              &quot;description&quot;,
+              &quot;num&quot;,
+              &quot;value&quot;,
+              &quot;type&quot;,
+              &quot;amount&quot;,
+              &quot;validated&quot;,
+              &quot;datetime&quot;
+            ],
+            &quot;writable&quot;: true,
+            &quot;creatable&quot;: true,
+            &quot;readable&quot;: true,
+            &quot;updatable&quot;: true,
+            &quot;deletable&quot;: true
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
+<p>Base URL:</p>
+<pre><code>http://localhost:5012/
+</code></pre>
+<p>Service API:</p>
+<pre><code>http://localhost:5012/api/
+</code></pre>
+<p>Sample requests:</p>
+<pre><code>curl 'http://localhost:5012/qwc_demo.edit_points/'
+</code></pre>
+<h2 id="general-information-for-all-operations">General Information for all operations<a class="headerlink" href="#general-information-for-all-operations" title="Permanent link">&para;</a></h2>
+<h3 id="datatypes-encoding">Datatypes-Encoding<a class="headerlink" href="#datatypes-encoding" title="Permanent link">&para;</a></h3>
+<p>JSON only defines recommendations or has no information concerning
+the encoding of some quite common used database data types.
+Following a description on how these are encoded in the data
+service API.</p>
+<ul>
+<li>Date: ISO date strings <code>YYYY-MM-DD</code></li>
+<li>Datetime: ISO date/time strings <code>YYYY-MM-DDThh:mm:ss</code></li>
+<li>UUID: Hex-encoded string format. Example: <code>'6fa459ea-ee8a-3ca4-894e-db77e160355e'</code></li>
+</ul>
+<h3 id="feature-id">Feature-ID<a class="headerlink" href="#feature-id" title="Permanent link">&para;</a></h3>
+<p>For operations like updating or deleting features, records are identified by
+a feature <code>id</code>. This <code>id</code> refers to the primary key of the database
+table and is usually kept constant over time.</p>
+<h2 id="filter-expressions">Filter expressions<a class="headerlink" href="#filter-expressions" title="Permanent link">&para;</a></h2>
+<p>Query operations support passing filter expressions to narrow down the results.
+This expression is a serialized JSON array of the format:</p>
+<pre><code>[["&lt;name&gt;", "&lt;op&gt;", &lt;value&gt;],"and|or",["&lt;name&gt;","&lt;op&gt;",&lt;value&gt;],...]
+</code></pre>
+<ul>
+<li><code>name</code> is the attribute column name. If <code>name</code> begins with <code>?</code>, the filter is only applied if the column name exists.</li>
+<li>
+<p><code>op</code> can be one of</p>
+<p>"=", "!=", "&lt;&gt;", "&lt;", "&gt;", "&lt;=", "&gt;=", "LIKE", "ILIKE", "IS", "IS NOT"</p>
+</li>
+</ul>
+<p>The operators are applied on the original database types.</p>
+<p>If value is <code>null</code>, the operator should be <code>IS</code> or <code>IS NOT</code>.</p>
+<ul>
+<li><code>value</code> can be of type <code>string</code>, <code>int</code>, <code>float</code> or <code>null</code>.</li>
+</ul>
+<p>For string operations, the SQL wildcard character <code>%</code> can be used.</p>
+<h3 id="filter-examples">Filter examples<a class="headerlink" href="#filter-examples" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Find all features in the dataset with a number field smaller 10 and a matching name field:
+  <code>[["name","LIKE","example%"],"and",["number","&lt;",10]]</code></li>
+<li>Find all features in the dataset with a last change before 1st of January 2020 or having <code>NULL</code> as lastchange value:
+  <code>[["lastchange","&lt;","2020-01-01T12:00:00"],"or",["lastchange","IS",null]]</code></li>
+</ul>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>To run this docker image you will need a PostGIS database. For testing purposes you can use the demo DB.</p>
+<p>The following steps explain how to download the demo DB docker image and how to run the <code>qwc-data-service</code> with <code>docker-compose</code>.</p>
+<p><strong>Step 1: Clone qwc-docker</strong></p>
+<pre><code>git clone https://github.com/qwc-services/qwc-docker
+cd qwc-docker
+</code></pre>
+<p><strong>Step 2: Create docker-compose.yml file</strong></p>
+<pre><code>cp docker-compose-example.yml docker-compose.yml
+</code></pre>
+<p><strong>Step 3: Start docker containers</strong></p>
+<pre><code>docker-compose up qwc-data-service
+</code></pre>
+<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run service:</p>
+<pre><code>uv run src/server.py
+</code></pre>
+<p>With config path:</p>
+<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
+</code></pre>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>Run all tests:</p>
+<pre><code>python test.py
+</code></pre>
+<p>Run single test module:</p>
+<pre><code>python -m unittest tests.feature_validation_tests
+</code></pre>
+<p>Run single test case:</p>
+<pre><code>python -m unittest tests.feature_validation_tests.FeatureValidationTestCase
+</code></pre>
+<p>Run single test method:</p>
+<pre><code>python -m unittest tests.feature_validation_tests.FeatureValidationTestCase.test_field_constraints
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

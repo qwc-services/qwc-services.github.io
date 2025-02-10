@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc config generator readme - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc config generator readme";
+        var mkdocs_page_input_path = "references/qwc-config-generator_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc config generator readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-config-generator/actions"><img alt="" src="https://github.com/qwc-services/qwc-config-generator/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-config-generator"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-config-generator?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-configgenerator">QWC ConfigGenerator<a class="headerlink" href="#qwc-configgenerator" title="Permanent link">&para;</a></h1>
+<p>Generates JSON files for service configs and permissions from WMS GetCapabilities, QGS projects and QWC ConfigDB.</p>
+<p><strong>This service is integrated into <code>qwc-docker</code>, consult <a href="https://qwc-services.github.io/">qwc-services.github.io</a> for the general <code>qwc-services</code> documentation.</strong></p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>Create a ConfigGenerator config file <code>tenantConfig.json</code> below <code>INPUT_CONFIG_PATH</code> (see below) for each tenant.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="schemas/qwc-config-generator.json">JSON schema</a></li>
+<li><a href="https://github.com/qwc-services/qwc-docker/blob/master/volumes/config-in/default/tenantConfig.json">Example <code>tenantConfig.json</code></a></li>
+</ul>
+<p><em>NOTE:</em> the Search service configuration takes its resources directly from the ConfigGenerator configuration. Its Permissions are collected from the ConfigDB (<code>solr_facet</code> resources), unless they are defined in the ConfigGenerator configuration.</p>
+<h3 id="schema-validation">Schema validation<a class="headerlink" href="#schema-validation" title="Permanent link">&para;</a></h3>
+<p>By default, the ConfigGenerator will validate the service configurations in <code>tenantConfig.json</code> against the schema definition of the service. The JSON Schemas are loaded from local files in <code>JSON_SCHEMAS_PATH</code>, or else downloaded from https://github.com/qwc-services/ if no schema files are present. You can disable the schema validation by setting <code>"validate_schema": false</code> in the ConfigGenerator's <code>config</code> block in <code>tenantConfig.json</code>.</p>
+<h3 id="custom-resource-types">Custom resource types<a class="headerlink" href="#custom-resource-types" title="Permanent link">&para;</a></h3>
+<p>If you want to define custom resource types for a custom service, you can add a record for the resource type to the configdb</p>
+<pre><code>INSERT INTO qwc_config.resource_types(name, description, list_order) values ('&lt;resource_name&gt;', '&lt;resource_description&gt;', &lt;list_order&gt;);
+</code></pre>
+<p>and then add it to the <code>custom_resource_types</code> setting.</p>
+<h3 id="additional-services">Additional services<a class="headerlink" href="#additional-services" title="Permanent link">&para;</a></h3>
+<p>For any additional service (without specific resources), ConfigGenerator generates the configuration in <code>OUTPUT_CONFIG_PATH</code> directory.</p>
+<p>Add the following configuration and adapt it to your service in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;&lt;service_name&gt;&quot;,
+    &quot;schema_url&quot;: &quot;&lt;service_schema_url&gt;&quot;,
+    &quot;config&quot;: {...}
+}
+</code></pre>
+<p><em>Note</em>: <code>service_name</code> is expected to be camel case (i.e. <code>adminGui</code>), and the service name in the generated config will lowercase and hyphenated (i.e. <code>admin-gui</code>).</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="script">Script<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
+<p>Show command options:</p>
+<pre><code>uv run src/config_generator_cli.py --help
+</code></pre>
+<p>Generate both service configs and permissions:</p>
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json all
+</code></pre>
+<p>Generate service config files:</p>
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json service_configs
+</code></pre>
+<p>Generate permissions file:</p>
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig.json permissions
+</code></pre>
+<h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
+<p>Set the <code>INPUT_CONFIG_PATH</code> environment variable to the base directory where for the configuration files are that should be read by the ConfigGenerator (default: <code>config-in/</code>).
+Set the <code>OUTPUT_CONFIG_PATH</code> environment variable to the base directory where the ConfigGenerator should output service configurations and permissions (default: <code>/tmp/</code>).</p>
+<p>Base URL:</p>
+<pre><code>http://localhost:5010/
+</code></pre>
+<p>Generate both service configs and permissions for <code>default</code> tenant:</p>
+<pre><code>curl -X POST "http://localhost:5010/generate_configs?tenant=default"
+</code></pre>
+<h3 id="update-json-schemas">Update JSON schemas<a class="headerlink" href="#update-json-schemas" title="Permanent link">&para;</a></h3>
+<p>You can change the directory from where the ConfigGenerator reads its schemas via the <code>JSON_SCHEMAS_PATH</code> environment variable (default <code>/tmp/</code>).
+You can change the versions of the schemas that the ConfigGenerator uses for verification inside <a href="src/schema-versions.json">schema-versions.json</a>.</p>
+<p>Download JSON schemas:</p>
+<pre><code>uv run src/download_json_schemas.py master
+</code></pre>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Run Demo-DB and QGIS Server:</p>
+<pre><code>cd ../qwc-docker &amp;&amp; docker-compose up -d qwc-postgis qwc-qgis-server
+</code></pre>
+<p>Generate service configs and permissions for Docker:</p>
+<pre><code>uv run src/config_generator_cli.py ./tenantConfig-example.json all
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc admin gui readme - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc admin gui readme";
+        var mkdocs_page_input_path = "references/qwc-admin-gui_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc admin gui readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-admin-gui/actions"><img alt="" src="https://github.com/qwc-services/qwc-admin-gui/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-admin-gui"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-admin-gui?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-admin-gui">QWC Admin GUI<a class="headerlink" href="#qwc-admin-gui" title="Permanent link">&para;</a></h1>
+<p>GUI for administration of QWC Services.</p>
+<ul>
+<li>manage users, groups and roles</li>
+<li>define QWC resources and assign <a href="https://github.com/qwc-services/qwc-services-core#resources-and-permissions">permissions</a></li>
+<li>define registrable groups and manage <a href="https://github.com/qwc-services/qwc-services-core#group_registration">group registration requests</a></li>
+</ul>
+<p><strong>Note:</strong> requires a QWC ConfigDB</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="admin-gui-service-config">Admin Gui Service config<a class="headerlink" href="#admin-gui-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="schemas/qwc-admin-gui.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/adminGuiConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-admin-gui/master/schemas/qwc-admin-gui.json&quot;,
+  &quot;service&quot;: &quot;admin-gui&quot;,
+  &quot;config&quot;: {
+    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+    &quot;config_generator_service_url&quot;: &quot;http://qwc-config-service:9090&quot;,
+    &quot;totp_enabled&quot;: false,
+    &quot;user_info_fields&quot;: [],
+    &quot;proxy_url_whitelist&quot;: [],
+    &quot;proxy_timeout&quot;: 60
+  }
+}
+</code></pre>
+<p>To connect with the demo database, the following <code>~/.pg_service.conf</code> entry is expected:</p>
+<pre><code>[qwc_configdb]
+host=localhost
+port=5439
+dbname=qwc_demo
+user=qwc_admin
+password=qwc_admin
+sslmode=disable
+</code></pre>
+<p>Set the <code>GROUP_REGISTRATION_ENABLED</code> environment variable to <code>False</code> to disable registrable groups and group registration requests, if not using the <a href="https://github.com/qwc-services/qwc-registration-gui">Registration GUI</a> (default: <code>True</code>).</p>
+<p>To automatically logout from the admin gui after a period of inactivity, set the <code>IDLE_TIMEOUT</code> environment variable to the desired period, in seconds (default: <code>0</code>, i.e. disabled).</p>
+<p>Set <code>totp_enabled</code> to <code>true</code> to show the TOTP fields in the user form, if two factor authentication is enabled in the <a href="https://github.com/qwc-services/qwc-db-auth">DB-Auth service</a> (default: <code>false</code>).</p>
+<h3 id="additional-user-fields">Additional user fields<a class="headerlink" href="#additional-user-fields" title="Permanent link">&para;</a></h3>
+<p>Additional user fields are saved in the table <code>qwc_config.user_infos</code> with a a one-to-one relation to <code>qwc_config.users</code> via the <code>user_id</code> foreign key.
+To add custom user fields, add new columns to your <code>qwc_config.user_infos</code> table and set your <code>user_info_fields</code> to a JSON with the following structure:</p>
+<pre><code class="language-json">[
+  {
+    &quot;title&quot;: &quot;&lt;field title&gt;&quot;,
+    &quot;name&quot;: &quot;&lt;column name&gt;&quot;,
+    &quot;type&quot;: &quot;&lt;field type (text|textarea|integer|list, default: text)&gt;&quot;,
+    &quot;values&quot;: &quot;&lt;field values in dropdown list ([(value1, label1), (value2, label2), ...]|[value1, value2, ...])&gt;&quot;,
+    &quot;required&quot; &quot;&lt;whether field is required (true|false, default: false)&gt;&quot;
+  }
+]
+</code></pre>
+<p>These fields are then added to the user form.</p>
+<p>Example:</p>
+<pre><code class="language-sql">-- add custom columns
+ALTER TABLE qwc_config.user_infos ADD COLUMN surname character varying NOT NULL;
+ALTER TABLE qwc_config.user_infos ADD COLUMN first_name character varying NOT NULL;
+</code></pre>
+<pre><code class="language-bash"># set user info fields config
+&quot;user_info_fields&quot;: [{&quot;title&quot;: &quot;Surname&quot;, &quot;name&quot;: &quot;surname&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}, {&quot;title&quot;: &quot;First name&quot;, &quot;name&quot;: &quot;first_name&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}]
+</code></pre>
+<h3 id="mailer">Mailer<a class="headerlink" href="#mailer" title="Permanent link">&para;</a></h3>
+<p><a href="https://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is used for sending mails like user notifications. These are the available options:
+* <code>MAIL_SERVER</code>: default ‘localhost’
+* <code>MAIL_PORT</code>: default 25
+* <code>MAIL_USE_TLS</code>: default False
+* <code>MAIL_USE_SSL</code>: default False
+* <code>MAIL_DEBUG</code>: default app.debug
+* <code>MAIL_USERNAME</code>: default None
+* <code>MAIL_PASSWORD</code>: default None
+* <code>MAIL_DEFAULT_SENDER</code>: default None
+* <code>MAIL_MAX_EMAILS</code>: default None
+* <code>MAIL_SUPPRESS_SEND</code>: default app.testing
+* <code>MAIL_ASCII_ATTACHMENTS</code>: default False</p>
+<p>In addition the standard Flask <code>TESTING</code> configuration option is used by Flask-Mail in unit tests.</p>
+<h3 id="proxy-to-internal-services">Proxy to internal services<a class="headerlink" href="#proxy-to-internal-services" title="Permanent link">&para;</a></h3>
+<p>The route <code>/proxy?url=http://example.com/path?a=1</code> serves as a proxy for calling whitelisted internal services. This can be used e.g. to call other internal services from custom pages in the Admin GUI, without having to expose those services externally.</p>
+<p>Set <code>proxy_url_whitelist</code> to a list of RegExes for whitelisted URLs (default: <code>[]</code>), e.g.</p>
+<pre><code class="language-json">    [&quot;&lt;RegEx pattern for full URL from proxy request&gt;&quot;, &quot;^http://example.com/path\\?.*$&quot;]
+</code></pre>
+<p>Set <code>proxy_timeout</code> to the timeout in seconds for proxy requests (default: <code>60</code>s).</p>
+<h3 id="translations">Translations<a class="headerlink" href="#translations" title="Permanent link">&para;</a></h3>
+<p>Translation strings are stored in a JSON file for each locale in <code>translations/&lt;locale&gt;.json</code> (e.g. <code>en.json</code>). Add any new languages as new JSON files.</p>
+<p>Set the <code>DEFAULT_LOCALE</code> environment variable to choose the locale for the user notification mails (default: <code>en</code>).</p>
+<h3 id="solr-search-index-update">Solr search index update<a class="headerlink" href="#solr-search-index-update" title="Permanent link">&para;</a></h3>
+<p>If using a Solr search service, the Solr search index of a tenant may be updated via a button on the main page. This can be activated by adding the following configuration options to the Admin GUI service config:</p>
+<pre><code class="language-json">{
+  &quot;config&quot;: {
+    &quot;solr_service_url&quot;: &quot;http://qwc-solr:8983/solr/gdi/&quot;,
+    &quot;solr_tenant_dih&quot;: &quot;dih_geodata&quot;,
+    &quot;solr_tenant_dih_config_file&quot;: &quot;/solr/config-in/dih_geodata_config.xml&quot;,
+    &quot;solr_config_path&quot;: &quot;/solr/config-out&quot;,
+    &quot;solr_update_check_wait&quot;: 5,
+    &quot;solr_update_check_max_retries&quot;: 10
+  }
+}
+</code></pre>
+<ul>
+<li><code>solr_service_url</code>: Solr Service base URL for collection</li>
+<li><code>solr_tenant_dih</code>: Solr DataImportHandler for the tenant</li>
+<li><code>solr_tenant_dih_config_file</code> (optional): Path to source DataImportHandler config file for the tenant</li>
+<li><code>solr_config_path</code> (optional): Path to Solr configs (<strong>Note:</strong> requires write permissions for DataImportHandler config files)</li>
+<li><code>solr_update_check_wait</code> (optional): Wait time in seconds for checks during Solr index update (default: <code>5</code>s)</li>
+<li><code>solr_update_check_max_retries</code> (optional): Max number of retries for checks during Solr index update (default: <code>10</code>)</li>
+</ul>
+<p>If both <code>solr_tenant_dih_config_file</code> and <code>solr_config_path</code> are set, the tenant config file is first copied to the Solr configs dir before updating the Solr search index.</p>
+<p>Example volumes for <code>qwc-docker</code> environment and above service config:</p>
+<pre><code class="language-yaml">services:
+  qwc-admin-gui:
+    # ...
+    volumes:
+      # ...
+      # Solr configs
+      - ./volumes/solr/configsets/gdi/conf:/solr/config-in:ro
+      - ./volumes/solr/data/gdi/conf:/solr/config-out
+</code></pre>
+<h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h3>
+<p>The admin gui is extendable through plugins, which reside in the <code>plugins</code> folder. To enable them, list them in <code>plugins</code> in the admin gui configuration. See the JSON schema for details, and for configuration parameters which may be required by plugins shipped by default with <code>qwc-admin-gui</code>.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Base URL:</p>
+<pre><code>http://localhost:5031/
+</code></pre>
+<h3 id="default-login">Default login<a class="headerlink" href="#default-login" title="Permanent link">&para;</a></h3>
+<p>username: admin
+password: admin</p>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>To run this docker image you will need a configuration database. For testing purposes you can use the demo DB.</p>
+<p>The following steps explain how to download the demo DB docker image and how to run the <code>qwc-admin-gui</code> service with <code>docker-compose</code>.</p>
+<p><strong>Step 1: Clone qwc-docker</strong></p>
+<pre><code>git clone https://github.com/qwc-services/qwc-docker
+cd qwc-docker
+</code></pre>
+<p><strong>Step 2: Create docker-compose.yml file</strong></p>
+<pre><code>cp docker-compose-example.yml docker-compose.yml
+</code></pre>
+<p><strong>Step 3: Set flask debug mode to true</strong></p>
+<p>For the QWC Admin GUI to work without login you will have to add the following <code>env</code> variable:</p>
+<pre><code>FLASK_DEBUG=1
+</code></pre>
+<p><strong>Step 4: Start docker containers</strong></p>
+<pre><code>docker-compose up qwc-admin-gui
+</code></pre>
+<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Install requirements:</p>
+<pre><code>uv sync
+</code></pre>
+<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
+<pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
+</code></pre>
+<p>Configure environment:</p>
+<pre><code>echo FLASK_ENV=development &gt;.flaskenv
+</code></pre>
+<p>Update translation files:</p>
+<pre><code> uv run ./updateTranslations.py
+</code></pre>
+<p>Start local service:</p>
+<pre><code> uv run src/server.py
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc db auth readme - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc db auth readme";
+        var mkdocs_page_input_path = "references/qwc-db-auth_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc db auth readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-db-auth/actions"><img alt="" src="https://github.com/qwc-services/qwc-db-auth/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-db-auth"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-db-auth?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="authentication-with-user-db">Authentication with User DB<a class="headerlink" href="#authentication-with-user-db" title="Permanent link">&para;</a></h1>
+<p>Authentication service with local user database.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="db-auth-service-config">DB Auth Service config<a class="headerlink" href="#db-auth-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="schemas/qwc-db-auth.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/dbAuthConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-db-auth/master/schemas/qwc-db-auth.json&quot;,
+  &quot;service&quot;: &quot;db-auth&quot;,
+  &quot;config&quot;: {
+    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;
+  }
+}
+</code></pre>
+<p>Set the <code>MAX_LOGIN_ATTEMPTS</code> environment variable to set the maximum number of
+failed login attempts before sign in is blocked (default: <code>20</code>).</p>
+<p>A minimum password length of <code>8</code> with no other constraints is set by default. Optional password complexity constraints can be set using the following <code>config</code> options:</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;password_min_length&quot;: 8,
+  &quot;password_max_length&quot;: 128,
+  &quot;password_constraints&quot;: [
+      &quot;[A-Z]&quot;,
+      &quot;[a-z]&quot;,
+      &quot;\\d&quot;,
+      &quot;[ !\&quot;#$%&amp;'()*+,\\-./\\\\:;&lt;=&gt;?@\\[\\]^_`{|}~]&quot;
+  ],
+  &quot;password_min_constraints&quot;: 3,
+  &quot;password_constraints_message&quot;: &quot;Password must contain at least three of these character types: uppercase letters, lowercase letters, numbers, special characters&quot;
+}
+</code></pre>
+<p><code>password_min_length</code> and <code>password_max_length</code> can be set independently. <code>password_constraints</code> is a list of regular expression of which at least <code>password_min_constraints</code> have to match for the password to be valid, otherwise the <code>password_constraints_message</code> is shown. Note that the regular expression have to be JSON escaped and allow only patterns supported by Python's <code>re</code> module.</p>
+<p>If the <code>qwc_config.password_histories</code> table is present, additional optional password constraints may be set:</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;password_expiry&quot;: 365,
+  &quot;password_expiry_notice&quot;: 10,
+  &quot;password_update_interval&quot;: 600,
+  &quot;password_allow_reuse&quot;: false
+}
+</code></pre>
+<ul>
+<li><code>password_expiry</code> (default: <code>-1</code>): Number of days until a password expires, or <code>-1</code> to disable. Forces a password change once expired.</li>
+<li><code>password_expiry_notice</code> (default: <code>-1</code>): Show an expiry notice within this number of days before a password expires, or <code>-1</code> to disable</li>
+<li><code>password_update_interval</code> (default: <code>-1</code>): Min number of seconds before a password may be changed again, or <code>-1</code> to disable</li>
+<li><code>password_allow_reuse</code> (default: <code>true</code>): Set whether a user may reuse previous passwords or not</li>
+</ul>
+<p>Besides the form based DB login, an (insecure) plain POST login is supported. This method can be
+activated by setting <code>POST_PARAM_LOGIN=True</code>. User and password are passed as POST parameters
+<code>username</code> and <code>password</code>.
+Usage example: <code>curl -d 'username=demo&amp;password=demo' http://localhost:5017/login</code>.</p>
+<p>Additional user info fields from <code>qwc_config.user_infos</code> may be added to the JWT identity by setting <code>user_info_fields</code>:</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;user_info_fields&quot;: [&quot;surname&quot;, &quot;first_name&quot;]
+}
+</code></pre>
+<p><a href="https://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is used for sending mails like password resets. These are the available options:
+* <code>MAIL_SERVER</code>: default ‘localhost’
+* <code>MAIL_PORT</code>: default 25
+* <code>MAIL_USE_TLS</code>: default False
+* <code>MAIL_USE_SSL</code>: default False
+* <code>MAIL_DEBUG</code>: default app.debug
+* <code>MAIL_USERNAME</code>: default None
+* <code>MAIL_PASSWORD</code>: default None
+* <code>MAIL_DEFAULT_SENDER</code>: default None
+* <code>MAIL_MAX_EMAILS</code>: default None
+* <code>MAIL_SUPPRESS_SEND</code>: default app.testing
+* <code>MAIL_ASCII_ATTACHMENTS</code>: default False</p>
+<p>In addition the standard Flask <code>TESTING</code> configuration option is used by Flask-Mail in unit tests.</p>
+<h3 id="two-factor-authentication">Two factor authentication<a class="headerlink" href="#two-factor-authentication" title="Permanent link">&para;</a></h3>
+<p>Two factor authentication using TOTP can be enabled by setting the environment variable <code>TOTP_ENABLED=True</code>.
+This will require an additional verification token after sign in, based on the user's TOTP secret.</p>
+<p>A personal QR code for setting up the two factor authentication is shown to the user on first sign in (or if the TOTP secret is empty).
+The TOTP issuer name for your application can be set using the environment variable <code>TOTP_ISSUER_NAME="QWC Services"</code>.</p>
+<p>An user's TOTP secret can be reset by clearing it in the Admin GUI user form.</p>
+<h3 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h3>
+<p>You can add a custom logo and a custom background image by setting the following <code>config</code> options:</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;background_image_url&quot;: &quot;&lt;url&gt;&quot;,
+  &quot;logo_image_url&quot;: &quot;&lt;url&gt;&quot;
+}
+</code></pre>
+<p>The specified URLs can be absolute or relative. For relative URLs, you can write i.e.</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;background_image_url&quot;: &quot;/auth/static/background.jpg&quot;,
+  &quot;logo_image_url&quot;: &quot;/auth/static/logo.jpg&quot;
+}
+</code></pre>
+<p>where <code>/auth</code> is the service mountpoint and place your custom images inside the <code>static</code> subfolder of the auth-service, or, if using docker and docker-compose, mount them accordingly:</p>
+<pre><code>qwc-auth-service:
+  [...]
+  volumes:
+    - ./volumes/assets/Background.jpg:/srv/qwc_service/static/background.jpg
+    - ./volumes/assets/logo.png:/srv/qwc_service/static/logo.jpg
+</code></pre>
+<p>If you want to override some styles, you can set the <code>customstylesheet</code> <code>config</code> option to the name of a file below the <code>static</code> subfolder of the auth-service, and it will get included into the base template.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Run standalone application:</p>
+<pre><code>python src/server.py
+</code></pre>
+<p>Endpoints:</p>
+<pre><code>http://localhost:5017/login
+
+http://localhost:5017/logout
+</code></pre>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Install dependencies:</p>
+<pre><code>uv sync
+</code></pre>
+<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
+<pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
+</code></pre>
+<p>Configure development environment:</p>
+<pre><code>echo FLASK_ENV=development &gt;.flaskenv
+export MAIL_SUPPRESS_SEND=True
+export MAIL_DEFAULT_SENDER=from@example.com
+</code></pre>
+<p>Start local service:</p>
+<pre><code> uv run src/server.py
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Editing - QWC2 - 2025.02.10-lts</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Editing";
+        var mkdocs_page_input_path = "topics/Editing.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.02.10-lts
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Editing</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick start </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#designing-the-edit-forms">Designing the edit forms</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#file-uploads">File uploads</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#key-value-relations-value-mappings">Key-value relations (value mappings)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#1n-relations">1:N relations</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#expressions">Expressions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#special-form-widgets">Special form widgets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recaptcha-validation">ReCAPTCHA validation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logging-mutations">Logging mutations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-theme-editconfig-block">The theme editConfig block</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-a-custom-editing-backend">Using a custom editing backend</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC2 - 2025.02.10-lts</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC2 &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Editing</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="editing">Editing<a class="headerlink" href="#editing" title="Permanent link">&para;</a></h1>
+<p>QWC2 offers comprehensive editing support through a variety of plugins:</p>
+<ul>
+<li>The <a href="../../references/qwc2_plugins/#editing"><code>Editing</code></a> plugin allows creating, editing and removing features of an editable vector layer. It supports editing both geometry and attributes, displaying customizeable attribute forms.</li>
+<li>The <a href="../../references/qwc2_plugins/#attributetable"><code>AttributeTable</code></a> plugin also allows creating, editing and removing features of an editable vector layer. It displays all features of the editable layer in a tabularized view, and allows editing attributes, but not geometries. Noteably, it will allow editing geometryless datasets.</li>
+<li>The <a href="../../references/qwc2_plugins/#featureform"><code>FeatureForm</code></a> works similarly to the feature-info, but will display the feature form according to the QGIS form configuration, and also allows editing the attributes and geometry of a picked feature. It can configured as <code>identifyTool</code> instead of the standard <code>Identify</code> plugin in <code>config.json</code>.</li>
+</ul>
+<h2 id="quick-start">Quick start <a name="quick-start"></a><a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>The easiest way to use the editing functionality is by using the pre-configured <code>qwc-docker</code> with the <a href="https://github.com/qwc-services/qwc-data-service"><code>qwc-data-service</code></a> and <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-config-generator</code></a>.</p>
+<p>To make a layer editable, follow these steps:</p>
+<ul>
+<li>The datasource of the layer needs to be a PostGIS database. In particular, make sure that a primary key is configured for your dataset!</li>
+<li>Configure the QGIS PostgreSQL connection using a service name, add the corresponding service definition to your host <code>pg_service.conf</code> and to <code>qwc-docker/pg_service-write.conf</code>. Make sure your database host is reachable within the docker containers!</li>
+<li>Especially when your primary key field type is <code>serial</code>, you'll want to mark the corresponding field widget type as <code>Hidden</code> in the QGIS Attributes Form settings.</li>
+<li>Create a <code>Data</code> resource as child of the corresponding <code>Map</code> resource in the administration backend, and create a new permission for the <code>Map</code> and <code>Data</code> resources for the roles which should be allowed to edit the layer.</li>
+<li><em>Note:</em> if you leave the "Write" checkbox in the <code>Data</code> resource permission unchecked, the dataset will be available as read-only, which can be useful if you want to use the <code>AttributeTable</code> and/or <code>FeatureForm</code> to just display the dataset without allowing any edits.</li>
+<li>Run the config generator from the administration backend to update service configuration.</li>
+</ul>
+<h2 id="designing-the-edit-forms">Designing the edit forms<a name="edit-forms"></a><a class="headerlink" href="#designing-the-edit-forms" title="Permanent link">&para;</a></h2>
+<p>Much of the power of the QWC2 editing functionality resides in its fully customizeable forms, providing support for different input widget types, file uploads and 1:N relations.</p>
+<p>The <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-config-generator</code></a> will automatically generate forms based on the configuration specified in the QGIS Layer Properties &rarr; Attributes Form. If <code>Autogenerate</code> or <code>Drag and Drop Designer</code> is chosen, a corresponding Qt UI form is automatically generated for QWC2 in <code>assets/forms/autogen</code>. If <code>Provide ui-file</code> is chosen, the specified UI form will copied to <code>assets/forms/autogen</code>.</p>
+<p>Localized translation forms are supported. To this end, place a Qt Translation file called <code>&lt;form_basename&gt;_&lt;lang&gt;.ts</code> next to the designer form <code>&lt;form_basename&gt;.ui</code>, where <code>lang</code> is a language or language/country code, i.e. <code>en</code> or <code>en-US</code>. There is a <a href="https://github.com/qgis/qwc2/tree/master/scripts/translateui.sh"><code>translateui.sh</code></a> script to help generate the translation files. Example:</p>
+<pre><code class="language-bash">./translateui.sh .../qwc2/assets/forms/form.ui de it fr
+</code></pre>
+<h3 id="file-uploads">File uploads<a class="headerlink" href="#file-uploads" title="Permanent link">&para;</a></h3>
+<p>You can configure a <em>text-like</em> field of your dataset as an upload field as follows:</p>
+<ul>
+<li>For <code>Autogenerated</code> and <code>Drag and Drop Designer</code> forms configuration, set the widget type to Attachment. You can set the file type filter in the widget configuration under <code>Display button to open file dialog -&gt; Filter</code>, in the format <code>*.ext1, *.ext2</code>.</li>
+<li>For manually created Qt Designed Ui forms, use a <code>QLineEdit</code> widget named <code>&lt;fieldname&gt;__upload</code>, and optionally as the text value of the <code>QLineEdit</code> set a comma separated list of suggested file extensions.</li>
+</ul>
+<p>Attachments are stored on disk below the <code>attachments_base_dir</code> defined in the data service configuration, and the path to the attachments stored in the dataset.</p>
+<p><em>Note:</em></p>
+<ul>
+<li>If you set the format constraint to <code>*.jpeg</code> and your browser has access to a camera, QWC2 will allow you to directly upload images captured from the camera.</li>
+<li>You can set the allowed attachment extensions and maximum file sizes globally by setting <code>allowed_attachment_extensions</code> and <code>max_attachment_file_size</code> in the data service configuration. You may also need to set/increase <code>client_max_body_size</code> in <code>qwc-docker/api-gateway/nginx.conf</code>, which defaults to <code>1M</code>.</li>
+<li>You can also set the allowed attachment extensions and maximum file sizes per dataset by setting <code>max_attachment_file_size_per_dataset</code> and <code>allowed_extensions_per_dataset</code> in the data service configuration. If you set the per dataset values, the global settings will be disregarded (i.e. if an attachment satisfies the per dataset constraint it will be considered valid, even if it violates the global constraint).</li>
+<li>To ensure the uploaded files are properly rendered as download links in GetFeatureInfo responses, use the <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-feature-info-service</code></a>.</li>
+</ul>
+<h3 id="key-value-relations-value-mappings">Key-value relations (value mappings)<a class="headerlink" href="#key-value-relations-value-mappings" title="Permanent link">&para;</a></h3>
+<p>Value relations allow mapping technical values to a human readable display strings, displayed in a combo box.</p>
+<p>For <code>Autogenerated</code> and <code>Drag and Drop Designer</code>, use widgets of type <code>Value Relation</code>.</p>
+<p>In a manually created Qt-Designer Ui form, you can use key-value relations for combo box entries by naming the <code>QComboBox</code> widget according to the following pattern: <code>kvrel__&lt;fieldname&gt;__&lt;kvtablename&gt;__&lt;kvtable_valuefield&gt;__&lt;kvtable_labelfield&gt;</code>. <code>&lt;kvtablename&gt;</code> refers to a table containing a field called <code>&lt;kvtable_valuefield&gt;</code> for the value of the entry and a field <code>&lt;kvtable_labelfield&gt;</code> for the label of the entry. For key-value relations inside a 1:N relation, use <code>kvrel__&lt;reltablename&gt;__&lt;fieldname&gt;__&lt;kvtablename&gt;__&lt;kvtable_valuefield&gt;__&lt;kvtable_labelfield&gt;</code>.</p>
+<p><em>Note:</em> The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend. Alternatively, you can set <code>autogen_keyvaltable_datasets</code>to <code>true</code> in the config generator configuration, to automatically generate resources and read-only permissions as required.</p>
+<h3 id="1n-relations">1:N relations<a class="headerlink" href="#1n-relations" title="Permanent link">&para;</a></h3>
+<p>1:N relations allow associating multiple child records to the target feature, displayed in a table.</p>
+<p>For <code>Autogenerated</code> and <code>Drag and Drop Designer</code> forms, configure the 1:N relation in QGIS Project &rarr; Properties &rarr; Relations. Note that the child table foreign key must refer to parent primary key.</p>
+<p>By default, a table widget similar to an attribute table will be generated to manage the relation values. You can switch to a list of child entries which, when clicked, are displayed in a nested form by setting <code>generate_nested_nrel_forms</code> to <code>true</code> as follows:</p>
+<ul>
+<li>In the toplevel <code>config</code> section of the <code>tenantConfig.json</code>. This will apply globally to all datasets.</li>
+<li>In the <code>editConfig</code> section of a theme in <code>themesConfig.json</code> (see also <a href="#edit-config"><code>editConfig</code></a> below). This will then apply only to the respective dataset. Example:</li>
+</ul>
+<pre><code>    &quot;editConfig&quot;: {
+            &quot;&lt;LayerId&gt;&quot;: {
+                    &quot;generate_nested_nrel_forms&quot;: true
+            }
+    }
+</code></pre>
+<p>The label of the entry in the child entry list is chosen according to the following rules:</p>
+<ul>
+<li>The display name (Layer properties &rarr; Display &rarr; Display Name) of the referencing layer, if the expression is a single field name.</li>
+<li>The primary key value of the referencing layer.</li>
+</ul>
+<p>In a manually created Qt-Designer Ui form, create a widget of type <code>QWidget</code>, <code>QGroupBox</code> or <code>QFrame</code> named according to the pattern <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;</code>, where <code>&lt;reltablename&gt;</code> is the name of the relation table and <code>&lt;foreignkeyfield&gt;</code> the name of the foreign key field in the relation table. Inside this widget, add the edit widgets for the values of the relation table. Name the widgets <code>&lt;reltablename&gt;__&lt;fieldname&gt;</code>. These edit widgets will be replicated for each relation record.</p>
+<p><em>Notes</em>:</p>
+<ul>
+<li>In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;__&lt;sortcol&gt;</code>. If a sort-column is specified, QWC2 will display sort arrows for each entry in the relation widget.</li>
+<li>The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend.</li>
+</ul>
+<h3 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h3>
+<p>The QWC2 editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.</p>
+<p><em>Notes</em>:</p>
+<ul>
+<li>Currently only a limited number of verbs are implemented, see the <a href="https://github.com/qgis/qwc2/blob/master/utils/expr_grammar/grammar.ne">expression grammar</a>. Pull requests for additional verbs are welcome!</li>
+<li>Make sure Data permissions exist for any datasets which are referenced in the expressions.</li>
+<li>The QWC2 expression parser requires a space between brackets and keywords, i.e. <code>attribute('foo')is null</code> is invalid, whereas <code>attribute('foo') is null</code> is valid.</li>
+<li>If the parser fails to parse an expression, an error message will be logged in the browser console.</li>
+</ul>
+<h3 id="special-form-widgets">Special form widgets<a class="headerlink" href="#special-form-widgets" title="Permanent link">&para;</a></h3>
+<p>In manually created Qt-Designer Ui forms, there are a number of special widgets you can use:</p>
+<ul>
+<li><em>Images</em>: To display attribute values which contain an image URL as an inline image, use a <code>QLabel</code> named <code>img__&lt;fieldname&gt;</code>.</li>
+<li><em>Linked features</em>: To display a button to choose a linked feature and edit its attributes in a nested edit form, create a <code>QPushButton</code> named <code>featurelink__&lt;linkdataset&gt;__&lt;fieldname&gt;</code> (simple join) or <code>featurelink__&lt;linkdataset&gt;__&lt;reltable&gt;__&lt;fieldname&gt;</code> in a 1:N relation. In a 1:N relation, <code>linkdataset</code> can be equal to <code>reltable</code> to edit the relation record itself in the nested form. <code>fieldname</code> will contain the <code>id</code> of the linked feature.</li>
+<li><em>External fields</em>: Some times it is useful to display information from an external source in the edit form. This can be accomplished by creating a <code>QWidget</code> with name <code>ext__&lt;fieldname&gt;</code> and using a form preprocessor hook (see <code>registerFormPreprocessor</code> in <a href="https://github.com/qgis/qwc2/blob/master/components/QtDesignerForm.jsx"><code>QtDesignerForm.jsx</code></a> to populate the field by assigning a React fragment to <code>formData.externalFields.&lt;fieldname&gt;</code>.</li>
+<li><em>Buttons</em>: To add a button with a custom action, add a <code>QPushButton</code> with name <code>btn__&lt;buttonname&gt;</code>, and use a form preprocessor hook to set the custom function to <code>formData.buttons.buttonname.onClick</code>.</li>
+</ul>
+<h2 id="recaptcha-validation">ReCAPTCHA validation<a name="recaptcha"></a><a class="headerlink" href="#recaptcha-validation" title="Permanent link">&para;</a></h2>
+<p>You can enable ReCAPTCHA validation for public editable datasets as follows:</p>
+<ul>
+<li>Set the ReCAPTCHA site secret key in <code>recaptcha_site_secret_key</code> in the data service config.</li>
+<li>Set the ReCAPTCHA site public key in <code>editServiceCaptchaSiteKey</code> in the toplevel section of the <a href="../../configuration/ViewerConfiguration/#load-time-config"><code>config.json</code></a>.</li>
+<li>Configure the desired datasets to be editable by <code>public</code>.</li>
+</ul>
+<p>If <code>editServiceCaptchaSiteKey</code> is set, a ReCAPTCHA validation widget will be displayed in the edit form as well as the attribute table when creating/updating/deleting features. Currently, the ReCAPTCHA validation will only be enabled for <code>public</code> users, and will automatically be bypassed for authenticated users.</p>
+<h2 id="logging-mutations">Logging mutations<a class="headerlink" href="#logging-mutations" title="Permanent link">&para;</a></h2>
+<p>The <code>qwc-data-service</code> offers some basic functionality for logging mutations:</p>
+<ul>
+<li>If you set <code>create_user_field</code> in the data service config, the username of the user who created a record will be logged to the <code>&lt;create_user_field&gt;</code> field of the record.</li>
+<li>If you set <code>create_timestamp_field</code> in the data service config, the timestamp of the creation of a record will be logged to the <code>&lt;create_timestamp_field&gt;</code> field of the record.</li>
+<li>If you set <code>edit_user_field</code> in the data service config, the username of the last user who performed a mutation to a record will be logged to the <code>&lt;edit_user_field&gt;</code> field of the record.</li>
+<li>If you set <code>edit_timestamp_field</code> in the data service config, the timestamp of the last mutation to a record will be logged to the <code>&lt;edit_timestamp_field&gt;</code> field of the record.</li>
+<li>If you set <code>upload_user_field_suffix</code> in the data service config, the username of the last user who performed a mutation to <code>&lt;fieldname&gt;</code> will be logged to <code>&lt;fieldname&gt;__&lt;upload_user_field_suffix&gt;</code>.</li>
+</ul>
+<p><em>Note</em>: for these fields to be written, ensure the qgis project is also up-to-date, i.e. that contain the up-to-date table schemas. You can set the respective field types to hidden in the QGIS layer properties to avoid them showing up in the autogenerated edit forms.</p>
+<h2 id="the-theme-editconfig-block">The theme <code>editConfig</code> block<a name="edit-config"></a><a class="headerlink" href="#the-theme-editconfig-block" title="Permanent link">&para;</a></h2>
+<p>The <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-config-generator</code></a>. will automatically generate the <code>editConfig</code> for a theme in <code>themesConfig.json</code>. You can however also specify it manually, in which case the manually defined entries will be merged with the automatically generated entries. The structure of the <code>editConfig</code> block is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  &lt;LayerId&gt;: {</code></td>
+<td>A WMS layer ID. Should be a theme WMS layer name, to ensure the WMS is correctly refreshed.</td>
+</tr>
+<tr>
+<td><code>⁣    "layerName": "&lt;LayerName&gt;",</code></td>
+<td>The layer name to show in the selection combo box.</td>
+</tr>
+<tr>
+<td><code>⁣    "editDataset": "&lt;DatasetName&gt;",</code></td>
+<td>The name of the edit dataset passed to the editing interface.</td>
+</tr>
+<tr>
+<td><code>⁣    "geomType": "&lt;GeomType&gt;",</code></td>
+<td>The geometry type, either <code>Point</code>, <code>LineString</code> or <code>Polygon</code>.</td>
+</tr>
+<tr>
+<td><code>⁣    "displayField": "&lt;FieldId&gt;",</code></td>
+<td>The ID of the field to use in the feature selection menu.</td>
+</tr>
+<tr>
+<td><code>⁣    "permissions": {</code></td>
+<td>A list of different write permissions to specify rights and buttons.</td>
+</tr>
+<tr>
+<td><code>⁣      "creatable": &lt;boolean&gt;,</code></td>
+<td>If <code>true</code>, <code>Draw</code> button will appear in Editing interface and <code>Add</code> button in Attribute Table.</td>
+</tr>
+<tr>
+<td><code>⁣      "updatable": &lt;boolean&gt;,</code></td>
+<td>If <code>true</code>, <code>Pick</code> button will appear in Editing interface.</td>
+</tr>
+<tr>
+<td><code>⁣      "deletable": &lt;boolean&gt;,</code></td>
+<td>If <code>true</code>, <code>Delete</code> button will appear in Editing interface and Attribute Table.</td>
+</tr>
+<tr>
+<td><code>⁣    },</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣    "fields": [{</code></td>
+<td>A list of field definitions, for each exposed attribute.</td>
+</tr>
+<tr>
+<td><code>⁣      "id": "&lt;FieldID&gt;",</code></td>
+<td>The field ID.</td>
+</tr>
+<tr>
+<td><code>⁣      "name": "&lt;FieldName&gt;",</code></td>
+<td>The field name, as displayed in the editing form.</td>
+</tr>
+<tr>
+<td><code>⁣      "type": "&lt;FieldType&gt;",</code></td>
+<td>A field type. Either <code>bool</code>, <code>list</code> or a regular <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">HTML input element type</a>.</td>
+</tr>
+<tr>
+<td><code>⁣      "constraints": {</code></td>
+<td>Constraints for the input field.</td>
+</tr>
+<tr>
+<td><code>⁣        "values": [&lt;Entries&gt;],</code></td>
+<td>Only if <code>type</code> is <code>list</code>: an array of arbitrary strings.</td>
+</tr>
+<tr>
+<td><code>⁣        ...</code></td>
+<td>For regular HTML input types, the ReactJS API name of any applicable <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">HTML input constraint</a>, i.e. <code>maxLength</code> or <code>readOnly</code>.</td>
+</tr>
+<tr>
+<td><code>⁣      }</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣    }],</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣    "form": "&lt;PathToUiFile&gt;",</code></td>
+<td>URL to a Qt Designed UI form (use <code>:/&lt;path&gt;</code> to specify a path below the <code>assets</code> folder).</td>
+</tr>
+<tr>
+<td><code>⁣    "generate_nested_nrel_forms": &lt;boolean&gt;</code></td>
+<td>Optional: Tell the config-generator whether 1:N relations of this dataset should be displayed in nested forms.</td>
+</tr>
+<tr>
+<td><code>⁣  }</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="using-a-custom-editing-backend">Using a custom editing backend<a class="headerlink" href="#using-a-custom-editing-backend" title="Permanent link">&para;</a></h2>
+<p>You can also use a custom editing backend instead of the <code>qwc-data-service</code> by following these steps:</p>
+<ul>
+<li>Implement the custom editing interface, taking <a href="https://github.com/qgis/qwc2/blob/master/utils/EditingInterface.js">default <code>EditingInterface.js</code></a> as a template.</li>
+<li>Enable the desired editing plugins in <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js"><code>js/appConfig.js</code></a>, passing your custom editing interface to <code>Editing</code>, <code>AttributeTable</code> and <code>FeatureForm</code>.</li>
+<li>Set up an editing backend.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Mapinfo/" class="btn btn-neutral float-left" title="Map info"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Snapping/" class="btn btn-neutral float-right" title="Snapping">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Mapinfo/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Snapping/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
