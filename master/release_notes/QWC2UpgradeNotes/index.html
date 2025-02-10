@@ -98,6 +98,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-06022025">Update to qwc2 submodule revision  (06.02.2025)</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision  (11.12.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision e39dbde (26.11.2024) [2024-lts &rarr; 2025-lts]</a>
@@ -177,6 +179,24 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
+<h2 id="update-to-qwc2-submodule-revision-06022025">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/574fe2a8c18a8a"></a> (06.02.2025)<a class="headerlink" href="#update-to-qwc2-submodule-revision-06022025" title="Permanent link">&para;</a></h2>
+<p><strong>Authentication plugin changes</strong></p>
+<ul>
+<li>The <code>LoginUser</code> plugin has been merged into the <code>Authentication</code> plugin, display of the login user can be enabled via the <code>showLoginUser</code> config prop:</li>
+</ul>
+<pre><code>    {
+      &quot;name&quot;: &quot;Authentication&quot;,
+      &quot;cfg&quot;: {
+        &quot;showLoginUser&quot;: true
+      }
+    }
+</code></pre>
+<ul>
+<li>The task ids of the <code>Authentication</code> plugins have been changed from previously <code>Login</code> / <code>Logout</code> to <code>Authentication</code> with modes <code>Login</code>/<code>Logout</code>. Consequently, the menu- and toolbar item entries need to be changed as follows</li>
+</ul>
+<pre><code>-      {&quot;key&quot;: &quot;Login&quot;, &quot;icon&quot;: &quot;login&quot;}
++      {&quot;key&quot;: &quot;Authentication&quot;, &quot;mode&quot;: &quot;Login&quot;, &quot;icon&quot;: &quot;login&quot;}
+</code></pre>
 <h2 id="update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/52fe6abad4c6ab"></a> (11.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-11122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>CRS precision</strong></p>
 <p>You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in <code>config.json</code> &rarr; <code>precision</code>, i.e.:</p>
