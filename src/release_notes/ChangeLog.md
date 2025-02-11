@@ -14,12 +14,12 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Viewer Configuration
 * [Config: Allow overriding plugin config per theme](../../configuration/ThemesConfiguration.md#manual-theme-configuration)
-* [Allow adding custom plugins via QWC2 API](../../references/qwc2_plugins.md#api)
-* [Allow registering identify exporters and attribute calculators via QWC2 API](../../references/qwc2_plugins.md#api)
+* [Allow adding custom plugins via QWC2 API](../../references/qwc2_plugins#api)
+* [Allow registering identify exporters and attribute calculators via QWC2 API](../../references/qwc2_plugins#api)
 
 ### General
 * Allow detaching QWC2 dialogs (i.e. Attribute Table) to separate browser windows
-* [Allow specifying OverviewMap layer independent from current background layer](../../references/qwc2_plugins.md#overviewmap)
+* [Allow specifying OverviewMap layer independent from current background layer](../../references/qwc2_plugins#overviewmap)
 
 ### Editing / AttributeForm / AttributeTable
 * [Honour expressions in QGIS Attributes Form configuration for group box visibility, default value and value-relation filter as defined](../../topics/Editing.md#expressions) (currently [limited grammar](https://github.com/qgis/qwc2/blob/2025-lts/utils/expr_grammar/grammar.ne))
@@ -29,7 +29,7 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Redlining
 * Add support for rotating labels
-* [Allow configuring available tools / default color / unit length](../../references/qwc2_plugins.md#redlining)
+* [Allow configuring available tools / default color / unit length](../../references/qwc2_plugins#redlining)
 * Add CTRL / SHIFT support to transform tool to scale objects from corner / preserving aspect ratio
 
 ### Measure
@@ -40,18 +40,18 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Layer tree
 * Allow importing (zipped) Shapefiles
-* [Add option to only show groups](../../references/qwc2_plugins.md#layertree)
-* [Add option to show a link to the Attribute Table of a layer](../../references/qwc2_plugins.md#layertree)
+* [Add option to only show groups](../../references/qwc2_plugins#layertree)
+* [Add option to show a link to the Attribute Table of a layer](../../references/qwc2_plugins#layertree)
 
 ### Identify
 * Show layer selection and feature count
 
 ### New plugins
-* [Portal](../../references/qwc2_plugins.md#portal)
-* [MapFilter](../../references/qwc2_plugins.md#mapfilter)
-* [GeometryDigitizer](../../references/qwc2_plugins.md#geometrydigitizer)
-* [Reports](../../references/qwc2_plugins.md#reports) (see also [Reports](../../topics/Reports.md))
-* [CookiePopup](../../references/qwc2_plugins.md#cookiepopup)
+* [Portal](../../references/qwc2_plugins#portal)
+* [MapFilter](../../references/qwc2_plugins#mapfilter)
+* [GeometryDigitizer](../../references/qwc2_plugins#geometrydigitizer)
+* [Reports](../../references/qwc2_plugins#reports) (see also [Reports](../../topics/Reports.md))
+* [CookiePopup](../../references/qwc2_plugins#cookiepopup)
 
 ### QWC services
 * [Make `qwc_config` schema name configurable](../../topics/MultiTenancy.md#multi-tenancy-with-separate-configdb-schemas)
@@ -157,7 +157,7 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### HeightProfile
 
-* [Allow printing height profile](../../references/qwc2_plugins.md#heightprofile)
+* [Allow printing height profile](../../references/qwc2_plugins#heightprofile)
 
 ### LayerTree
 
@@ -194,11 +194,11 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 * [New QGIS feature search provider](../../topics/Search.md#configuring-the-qgis-feature-search)
 * Theme layer search (see [`searchThemeLayers`](../../configuration/ViewerConfiguration.md#global-settings-overridable-per-theme))
 * [Provider/geometry filtering to search box](../../topics/Search.md#filtering)
-* Allow configuring search highlight style (see [`searchOptions.highlightStyle`](../../references/qwc2_plugins.md#topbar))
+* Allow configuring search highlight style (see [`searchOptions.highlightStyle`](../../references/qwc2_plugins#topbar))
 
 ### Settings
 
-* [Allow setting default startup theme/bookmark for logged in user](../../references/qwc2_plugins.md#settings)
+* [Allow setting default startup theme/bookmark for logged in user](../../references/qwc2_plugins#settings)
 
 ### Share
 
@@ -207,12 +207,12 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### New plugins
 
-* [Cyclomedia](../../references/qwc2_plugins.md#cyclomedia)
-* [QGIS FeatureSearch](../../references/qwc2_plugins.md#featuresearch)
-* [MapExport](../../references/qwc2_plugins.md#mapexport) (replacement for `RasterExport` and `DxfExport`)
-* [MapLegend](../../references/qwc2_plugins.md#maplegend)
-* [NewsPopup](../../references/qwc2_plugins.md#newspopup)
-* [Routing](../../references/qwc2_plugins.md#routing)
+* [Cyclomedia](../../references/qwc2_plugins#cyclomedia)
+* [QGIS FeatureSearch](../../references/qwc2_plugins#featuresearch)
+* [MapExport](../../references/qwc2_plugins#mapexport) (replacement for `RasterExport` and `DxfExport`)
+* [MapLegend](../../references/qwc2_plugins#maplegend)
+* [NewsPopup](../../references/qwc2_plugins#newspopup)
+* [Routing](../../references/qwc2_plugins#routing)
 
 
 ### Full changelogs
