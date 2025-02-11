@@ -98,6 +98,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts">Update to qwc2 submodule revision 5705361 (30.12.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision 52fe6ab (11.12.2024) [2024-lts &rarr; 2025-lts]</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision e39dbde (26.11.2024) [2024-lts &rarr; 2025-lts]</a>
@@ -177,6 +179,9 @@
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
 <p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
+<h2 id="update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/5705361">5705361</a> (30.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
+<p>The <code>browser</code> actions/reducer have been removed. To determine whether the application is running on a mobile device, use <code>ConfigUtils.isMobile()</code>.</p>
 <h2 id="update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/52fe6ab">52fe6ab</a> (11.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
 <p><strong>CRS precision</strong></p>
 <p>You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in <code>config.json</code> &rarr; <code>precision</code>, i.e.:</p>
