@@ -135,16 +135,16 @@ Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9c
 
 *Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
 
-The `InputContainer` component has been moved to `qwc2/components/widgets/`.
-The `Icon` component has been moved to `qwc2/components/widgets/`.
-The `ModalDialog` component has been moved to `qwc2/components/widgets/`.
-The `PopupMenu` component has been moved to `qwc2/components/widgets/`.
-The `ReCaptchaWidget` component has been moved to `qwc2/components/widgets/`.
-The `Spinner` component has been moved to `qwc2/components/widgets/`.
-The `ButtonBar` `label` and `tooltip` props now expect a translated string is passed, not a msgid.
-The `ResizeableWindow` `title` prop now expects a translated string, not a msgid.
-The `extraControls` entries of the `ResizeableWindow` are expected to contain a translated `title` instead of a `msgid`.
-The `SideBar` `title` prop now expects a translated string, not a msgid.
+- The `InputContainer` component has been moved to `qwc2/components/widgets/`.
+- The `Icon` component has been moved to `qwc2/components/widgets/`.
+- The `ModalDialog` component has been moved to `qwc2/components/widgets/`.
+- The `PopupMenu` component has been moved to `qwc2/components/widgets/`.
+- The `ReCaptchaWidget` component has been moved to `qwc2/components/widgets/`.
+- The `Spinner` component has been moved to `qwc2/components/widgets/`.
+- The `ButtonBar` `label` and `tooltip` props now expect a translated string is passed, not a msgid.
+- The `ResizeableWindow` `title` prop now expects a translated string, not a msgid.
+- The `extraControls` entries of the `ResizeableWindow` are expected to contain a translated `title` instead of a `msgid`.
+- The `SideBar` `title` prop now expects a translated string, not a msgid.
 
 Update to qwc2 submodule revision [bb6f31c](https://github.com/qgis/qwc2/tree/bb6f31c) (24.10.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
