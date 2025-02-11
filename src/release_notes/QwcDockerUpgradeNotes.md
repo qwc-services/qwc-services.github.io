@@ -1,16 +1,16 @@
-# Updating to qwc-permalink-service-v2024.12.14
+# Updating to qwc-permalink-service-v2024.12.14 \[2024-lts &rarr; 2025-lts\]
 
 When updating to `qwc-permalink-service-v2024.12.14`, make sure to also update to `qwc-config-db-migrate-v2024.12.14` to update the schema of the `user_bookmarks` table. The bookmarks are now stored by user id instead of username.
 
-# qwc-services v2024.11.18 mass update update
+# qwc-services v2024.11.18 mass update update \[2024-lts &rarr; 2025-lts\]
 
 As a result of `PyJWT` 2.10.0 enforcing that the JWT `sub` claim values must be strings, `qwc-services-core` 1.3.34 was updated to store the qwc identity in a separate `qwc_identity` claim, and all QWC images were updated to use this version. Consequently, if you use any QWC Service image version v2024.11.18 or newer, you will also need to update any other QWC Service image to this or a newer version to ensure that correct that the JWTs are issued and read correctly by all services.
 
-# New qwc-document-service, jasper-reporting-service obsolete
+# New qwc-document-service, jasper-reporting-service obsolete \[2024-lts &rarr; 2025-lts\]
 
 As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC2.
 
-# Split categorized layers functionality rewritten as QGIS Server plugin
+# Split categorized layers functionality rewritten as QGIS Server plugin \[2024-lts &rarr; 2025-lts\]
 
 As of 2024.02.02 the split categorized layers functionality previously part of `qwc-config-generator` has been rewritten as a [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized).
 
@@ -18,7 +18,7 @@ This greatly simplifies the handling of such projects. The `-noqgis` image tag s
 
 See the [categorized layers documentation](https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers) for instructions how to configure the new `split_categorized` plugin.
 
-# Updating to qwc-data-service v2024.05.21
+# Updating to qwc-data-service v2024.05.21 \[2024-lts &rarr; 2025-lts\]
 
 The `qwc-data-service` version 2024.05.21 introduces two now logging fields `create_user_field` and `create_timestamp_field`. Record creation will now be logged to these fields, if set, and record updates will be logged to `edit_user_field` and `edit_timestamp_field`. Previously, both record creation and updates were logged to `edit_user_field` and `edit_timestamp_field`. As of v2024.05.21, you need to set `create_user_field` and `create_timestamp_field` (also to the same values as `edit_user_field` and `edit_timestamp_field`) if you want to log creation.
 
