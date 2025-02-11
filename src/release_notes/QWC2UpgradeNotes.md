@@ -4,7 +4,7 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
-Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/574fe2a8c18a8a) (06.02.2025)
+Update to qwc2 submodule revision [574fe2a](https://github.com/qgis/qwc2/tree/574fe2a) (06.02.2025)
 ---------------------------------------------------------------------------------------------------
 
 **Authentication plugin changes**
@@ -24,7 +24,7 @@ Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/574fe2a8c
 +      {"key": "Authentication", "mode": "Login", "icon": "login"}
 ```
 
-Update to qwc2 submodule revision [](https://github.com/qgis/qwc2/tree/52fe6abad4c6ab) (11.12.2024) \[2024-lts &rarr; 2025-lts\]
+Update to qwc2 submodule revision [52fe6ab](https://github.com/qgis/qwc2/tree/52fe6ab) (11.12.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **CRS precision**
