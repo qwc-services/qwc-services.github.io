@@ -4,6 +4,13 @@ This document describes incompatibilites and other aspects which QWC2 applicatio
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 
+Update to qwc2 submodule revision [5705361](https://github.com/qgis/qwc2/tree/5705361) (30.12.2024) \[2024-lts &rarr; 2025-lts\]
+---------------------------------------------------------------------------------------------------
+
+*Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
+
+The `browser` actions/reducer have been removed. To determine whether the application is running on a mobile device, use `ConfigUtils.isMobile()`.
+
 Update to qwc2 submodule revision [52fe6ab](https://github.com/qgis/qwc2/tree/52fe6ab) (11.12.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------
 
