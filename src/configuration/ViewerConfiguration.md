@@ -66,6 +66,7 @@ All settings are optional, with fallback to the default values as documented.
 |`allowReorderingLayers`               | Whether to allow re-ordering layers in the layer tree. Default: `false`.      |
 |`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree. Default: `false`. |
 |`flattenLayerTreeGroups`              | Whether to display a flat layer tree, omitting the groups. Default: `false`.  |
+|`globallyDisableDetachableDialogs`    | Whether to globally disable the detachable feature of popup dialogs. Default: `false`. |
 |`globallyDisableDockableDialogs`      | Whether to globally disable the dockable feature of popup dialogs. Default: `false`. |
 |`globallyDisableMaximizeableDialogs`  | Whether to globally disable the maximizeable feature of popup dialogs. Default: `false`. |
 |`identifyTool`                        | The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default: `"Identify"`. |
