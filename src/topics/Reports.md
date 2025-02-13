@@ -65,6 +65,8 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 - Save your report to the document service report dir, i.e. as `volumes/reports/MyReport.jrxml`.
 
     - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service_readme.md).
+    
+    - If your report requires third party java classes, you can mount the corresponding JARs as volumes to `/srv/qwc_service/libs/`.
 
 - Associate the report with a layer via `themesConfig.json` by adding the following to the desired theme configuration entry:
 
@@ -103,4 +105,23 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 
         http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid>
 
-    *Note*: check the logs of the `qwc-document-service` (in particular with `FLASK_DEBUG: 1`) to get detailed information about the report generation.
+## Debugging
+
+- Check the logs of the `qwc-document-service` (in particular with `FLASK_DEBUG: 1`) to get detailed information about the report generation.
+- Enable additional Java logging by mounting a `logging.properties` of the form
+```
+# Keep global logs at WARNING level to reduce noise
+.level=WARNING
+
+# Enable detailed logging only for JasperReports
+net.sf.jasperreports.level=ALL
+handlers=java.util.logging.ConsoleHandler
+
+# Configure ConsoleHandler
+java.util.logging.ConsoleHandler.level=ALL
+java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
+```
+  to `/srv/qwc_service/libs/logging.properties`, i.e.:
+```
+    ./volumes/logging.properties:/srv/qwc_service/libs/logging.properties:ro
+```
