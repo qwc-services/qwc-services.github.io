@@ -189,13 +189,6 @@ You can change the versions of the schemas that the ConfigGenerator uses for ver
 <p>Download JSON schemas:</p>
 <pre><code>uv run src/download_json_schemas.py master
 </code></pre>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Run Demo-DB and QGIS Server:</p>
-<pre><code>cd ../qwc-docker &amp;&amp; docker-compose up -d qwc-postgis qwc-qgis-server
-</code></pre>
-<p>Generate service configs and permissions for Docker:</p>
-<pre><code>uv run src/config_generator_cli.py ./tenantConfig-example.json all
-</code></pre>
               
             </div>
           </div><footer>

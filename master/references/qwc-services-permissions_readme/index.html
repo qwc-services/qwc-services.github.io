@@ -198,6 +198,472 @@ pointing to the local files:</p>
 <pre><code># git+git://github.com/qwc-services/qwc-services-core.git#egg=qwc-services-core
 file:../qwc-services-core/#egg=qwc-services-core
 </code></pre>
+<h1 id="qwc-unified-permissions">QWC unified permissions<a class="headerlink" href="#qwc-unified-permissions" title="Permanent link">&para;</a></h1>
+<p>A unified and simplified permissions format is also supported, if there is only a single WMS/WFS resource and resource permissions are identical in all QWC Services.
+This may be used as an alternative to the full QWC permission file (<a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a>)</p>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-unified-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p><code>all_services</code>: resources permitted for a role
+* top-level dataproducts below WMS root layer or WFS layers
+* additional restricted layers
+* additional layers with write permissions (<code>"writable": true</code>)
+* document templates</p>
+<p><code>wms_name</code>: Name of WMS service and its root layer</p>
+<p><code>wfs_name</code>: WFS service name</p>
+<p><code>dataproducts</code>: nested details for dataproducts referenced from <code>all_services</code> and <code>sublayers</code></p>
+<p><code>common_resources</code>: additional resources with no restrictions
+* internal print layers
+* background layers
+* print templates
+* default Solr facets</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>Example unified permissions for the following resources:</p>
+<p>WMS layer tree:</p>
+<pre><code>* demo_wms (WMS root layer)
+  * single_layer
+  * group_layer
+    * facade_layer (facade layer)
+      * sublayer_a
+      * sublayer_b
+    * edit_layer
+    * restricted_layer
+  * osm_bg (internal print layer for 'osm' background layer)
+</code></pre>
+<p>WFS layers (potential, not all have to actually be present in the WFS project file):</p>
+<pre><code>* single_layer
+* sublayer_a
+* sublayer_b
+* edit_layer
+* restricted_layer
+</code></pre>
+<p>Background layer: <code>osm</code></p>
+<p>Print template: <code>A4 Landscape</code></p>
+<p>Document template: <code>demo_doc</code></p>
+<p>Unified <code>permissions.json</code>:</p>
+<pre><code class="language-jsonc">{
+  &quot;schema&quot;: &quot;https://github.com/qwc-services/qwc-services-core/raw/master/schemas/qwc-services-unified-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;edit_demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;all_services&quot;: {
+          // top-level dataproducts: references to &quot;dataproducts&quot;
+          &quot;single_layer&quot;: {},
+          &quot;group_layer&quot;: {},
+          &quot;facade_layer&quot;: {},
+          // document templates
+          &quot;demo_doc&quot;: {}
+        }
+      }
+    },
+    {
+      &quot;role&quot;: &quot;edit_demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;all_services&quot;: {
+          // additional restricted layers
+          &quot;restricted_layer&quot;: {},
+          // additional layers with write permissions (default: writable=false)
+          &quot;edit_layer&quot;: {
+            &quot;writable&quot;: true
+          }
+        }
+      }
+    }
+  ],
+  // WMS name for wms_services
+  &quot;wms_name&quot;: &quot;demo_wms&quot;,
+  // WFS name for wfs_services
+  &quot;wfs_name&quot;: &quot;demo_wfs&quot;,
+  // details for dataproducts referenced from &quot;all_services&quot; and &quot;sublayers&quot;
+  &quot;dataproducts&quot;: [
+    // single layer
+    {
+      &quot;name&quot;: &quot;single_layer&quot;,
+      &quot;attributes&quot;: [
+        // permitted attributes, excluding &quot;geometry&quot;
+        &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+      ]
+    },
+    // group layer
+    {
+      &quot;name&quot;: &quot;group_layer&quot;,
+      &quot;sublayers&quot;: [
+        // references to other &quot;dataproducts&quot;
+        &quot;facade_layer&quot;,
+        &quot;edit_layer&quot;
+      ]
+    },
+    // facade layer
+    {
+      &quot;name&quot;: &quot;facade_layer&quot;,
+      &quot;sublayers&quot;: [
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;
+      ]
+    },
+    // facade sublayers
+    {
+      &quot;name&quot;: &quot;sublayer_a&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;a&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;sublayer_b&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;b&quot;
+      ]
+    },
+    // sublayers
+    {
+      &quot;name&quot;: &quot;edit_layer&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;description&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;restricted_layer&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+      ]
+    }
+  ],
+  // additional resources with no restrictions
+  &quot;common_resources&quot;: [
+    // internal print layers
+    &quot;osm_bg&quot;,
+    // background layers
+    &quot;osm&quot;,
+    // print templates
+    &quot;A4 Landscape&quot;,
+    // default Solr facets
+    &quot;foreground&quot;,
+    &quot;background&quot;
+  ]
+}
+</code></pre>
+<p>Full internal resource permissions expanded from unified permissions:</p>
+<p><strong>NOTE:</strong> This generates more permissions than there are actual resources in a specific service. Any surplus permissions will be ignored.</p>
+<details>
+  <summary>Expanded internal permissions</summary>
+
+**NOTE:** The internal permissions dict below has a slightly different structure than a full JSON permissions file.
+
+
+<pre><code class="language-jsonc">{
+  &quot;users&quot;: {
+    &quot;demo&quot;: [
+      &quot;edit_demo&quot;
+    ]
+  },
+  &quot;groups&quot;: {
+    &quot;demo&quot;: [
+      &quot;edit_demo&quot;
+    ]
+  },
+  &quot;roles&quot;: {
+    // public permissions
+    &quot;public&quot;: {
+      &quot;wms_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wms&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;demo_wms&quot;
+            },
+            {
+              &quot;name&quot;: &quot;group_layer&quot;
+            },
+            {
+              &quot;name&quot;: &quot;facade_layer&quot;
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_a&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;a&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_b&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;b&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;single_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;demo_doc&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm_bg&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm&quot;
+            },
+            {
+              &quot;name&quot;: &quot;A4 Landscape&quot;
+            },
+            {
+              &quot;name&quot;: &quot;foreground&quot;
+            },
+            {
+              &quot;name&quot;: &quot;background&quot;
+            }
+          ],
+          &quot;print_templates&quot;: [
+            &quot;osm_bg&quot;,
+            &quot;osm&quot;,
+            &quot;A4 Landscape&quot;,
+            &quot;foreground&quot;,
+            &quot;background&quot;
+          ]
+        }
+      ],
+      &quot;wfs_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wfs&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;sublayer_a&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;a&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_b&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;b&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;single_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            }
+          ]
+        }
+      ],
+      &quot;background_layers&quot;: [
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ],
+      &quot;data_datasets&quot;: [
+        {
+          &quot;name&quot;: &quot;sublayer_a&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;a&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;sublayer_b&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;b&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;edit_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;single_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        }
+      ],
+      &quot;dataproducts&quot;: [
+        &quot;demo_wms&quot;,
+        &quot;group_layer&quot;,
+        &quot;facade_layer&quot;,
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;,
+        &quot;edit_layer&quot;,
+        &quot;single_layer&quot;,
+        &quot;demo_doc&quot;
+      ],
+      &quot;document_templates&quot;: [
+        &quot;demo_doc&quot;
+      ],
+      &quot;print_templates&quot;: [],
+      &quot;solr_facets&quot;: [
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;,
+        &quot;edit_layer&quot;,
+        &quot;single_layer&quot;,
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ]
+    },
+    // additional permissions for role edit_demo
+    &quot;edit_demo&quot;: {
+      &quot;wms_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wms&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;demo_wms&quot;
+            },
+            {
+              &quot;name&quot;: &quot;restricted_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;osm_bg&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm&quot;
+            },
+            {
+              &quot;name&quot;: &quot;A4 Landscape&quot;
+            },
+            {
+              &quot;name&quot;: &quot;foreground&quot;
+            },
+            {
+              &quot;name&quot;: &quot;background&quot;
+            }
+          ],
+          &quot;print_templates&quot;: [
+            &quot;osm_bg&quot;,
+            &quot;osm&quot;,
+            &quot;A4 Landscape&quot;,
+            &quot;foreground&quot;,
+            &quot;background&quot;
+          ]
+        }
+      ],
+      &quot;wfs_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wfs&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;restricted_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            }
+          ]
+        }
+      ],
+      &quot;background_layers&quot;: [
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ],
+      &quot;data_datasets&quot;: [
+        {
+          &quot;name&quot;: &quot;restricted_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;,
+            &quot;number&quot;,
+            &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;edit_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;,
+            &quot;description&quot;
+          ],
+          &quot;writable&quot;: true,
+          &quot;readable&quot;: true
+        }
+      ],
+      &quot;dataproducts&quot;: [
+        &quot;demo_wms&quot;,
+        &quot;restricted_layer&quot;,
+        &quot;edit_layer&quot;
+      ],
+      &quot;document_templates&quot;: [],
+      &quot;print_templates&quot;: [],
+      &quot;solr_facets&quot;: [
+        &quot;restricted_layer&quot;,
+        &quot;edit_layer&quot;,
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+
+</details>
               
             </div>
           </div><footer>

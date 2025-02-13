@@ -205,7 +205,24 @@
 <h3 id="custom-export">Custom export<a class="headerlink" href="#custom-export" title="Permanent link">&para;</a></h3>
 <p>By default, the identify dialog in QWC2 allows you to export the results to <code>json</code> (QWC2 feature storage format), <code>geojson</code> (standard GeoJSON without QWC2 specific fields), <code>csv</code> (single CSV with all layers) or <code>csv+zip</code> (ZIP with one CSV per layer). You can define additional export functions by extending <code>customExporters</code> in <code>qwc2-app/js/IdentifyExtensions.js</code>.</p>
 <h3 id="custom-html-templates">Custom HTML templates<a name="html-templates"></a><a class="headerlink" href="#custom-html-templates" title="Permanent link">&para;</a></h3>
-<p>You can specify a custom HTML template for displaying the feature rather than the default table view by using the <code>qwc-feature-info-service</code> and providing the template in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>, either inline or as a path:</p>
+<p>You can specify a custom HTML template for displaying the feature rather than the default table view by <a href="../../configuration/ServiceConfiguration/#enabling-services">enabling</a> the <code>qwc-feature-info-service</code>.</p>
+<p>Mount the info templates folder into the <code>qwc-feature-info-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-feature-info-service:
+    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/info_templates:/info_templates
+</code></pre>
+<p><em>Note:</em> If mounting to another location than <code>/info_templates</code>, set the <code>info_templates_path</code> in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;featureInfo&quot;,
+  &quot;config&quot;: {
+    &quot;info_templates_path&quot;: &quot;/&lt;path&gt;/&quot;
+  }
+}
+</code></pre>
+<p>Then, info templates will be searched by name as <code>&lt;info_templates_path&gt;/&lt;service_name&gt;/&lt;layername&gt;.html</code>.</p>
+<p>Alternatively, you can specify the template in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>, either inline or as a path:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;featureInfo&quot;,
   &quot;config&quot;: ...,
