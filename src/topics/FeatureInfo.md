@@ -70,7 +70,30 @@ By default, the identify dialog in QWC2 allows you to export the results to `jso
 
 ### Custom HTML templates<a name="html-templates"></a>
 
-You can specify a custom HTML template for displaying the feature rather than the default table view by using the `qwc-feature-info-service` and providing the template in the `featureInfo` service configuration in `tenantConfig.json`, either inline or as a path:
+You can specify a custom HTML template for displaying the feature rather than the default table view by [enabling](../configuration/ServiceConfiguration.md#enabling-services) the `qwc-feature-info-service`.
+
+Mount the info templates folder into the `qwc-feature-info-service` container, i.e.:
+```yml
+  qwc-feature-info-service:
+    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/info_templates:/info_templates
+```
+
+*Note:* If mounting to another location than `/info_templates`, set the `info_templates_path` in the `featureInfo` service configuration in `tenantConfig.json`:
+```json
+{
+  "name": "featureInfo",
+  "config": {
+    "info_templates_path": "/<path>/"
+  }
+}
+```
+
+Then, info templates will be searched by name as `<info_templates_path>/<service_name>/<layername>.html`.
+
+Alternatively, you can specify the template in the `featureInfo` service configuration in `tenantConfig.json`, either inline or as a path:
 ```json
 {
   "name": "featureInfo",
