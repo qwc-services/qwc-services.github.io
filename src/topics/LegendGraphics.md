@@ -8,24 +8,23 @@ You can customize the `GetLegendGraphics` request by specifying additional query
 ## Providing custom legend images
 You can provide custom legend images by [enabling](../configuration/ServiceConfiguration.md#enabling-services) the `qwc-legend-service`.
 
-Configure `legend_images_path` in the `legend` service configuration in `tenantConfig.json`:
-```json
-{
-  "name": "legend",
-  "config": {
-    "default_qgis_server_url": "http://qwc-qgis-server/ows/",
-    "legend_images_path": "/legends/"
-  }
-}
-```
-
-*Note:* The legend folder needs to be mounted into the `qwc-legend-service` container, i.e.:
+Mount the legend folder into the `qwc-legend-service` container, i.e.:
 ```yml
   qwc-legend-service:
     image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
     volumes:
       ...
       - ./volumes/legends:/legends
+```
+
+*Note:* If mounting to another location than `/legends`, set the `legend_images_path` in the `legend` service configuration in `tenantConfig.json`:
+```json
+{
+  "name": "legend",
+  "config": {
+    "legend_images_path": "/<path>/"
+  }
+}
 ```
 
 Then, legend images will be searched for in this order (the first one found is used):
