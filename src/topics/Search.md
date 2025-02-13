@@ -421,7 +421,7 @@ In the `volumes/solr/configsets/gdi/conf/solrconfig.xml` file you have to look f
 `<!-- SearchHandler` and add the following configuration
 
 ```xml
-<requestHandler name="/FACET_NAME" class="solr.DataImportHandler">
+<requestHandler name="/CONFIG_NAME" class="solr.DataImportHandler">
     <lst name="defaults">
         <str name="config">NAME_OF_THE_CONFIGURATION_FILE.xml</str>
     </lst>
@@ -433,7 +433,7 @@ Finally, the `solr` index has to be generated:
 ```
 rm -rf volumes/solr/data/*
 docker compose restart qwc-solr
-curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
+curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 ```
 
 
