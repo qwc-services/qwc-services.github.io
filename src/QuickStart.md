@@ -15,7 +15,7 @@ Then, follow these steps:
 
 - Clone the qwc-docker sample setup at [qwc-docker](https://github.com/qwc-services/qwc-docker) and copy the docker-compose and api-gateway configuration templates:
 ```bash
-git clone https://github.com/qwc-services/qwc-docker.git
+git clone --recursive https://github.com/qwc-services/qwc-docker.git
 cd qwc-docker
 cp docker-compose-example.yml docker-compose.yml
 cp api-gateway/nginx-example.conf api-gateway/nginx.conf
