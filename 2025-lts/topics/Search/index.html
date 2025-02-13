@@ -591,7 +591,7 @@ corresponds to exactly one <code>&lt;entity&gt;</code> tag in the XML file.</p>
 <p>After the configuration file has been created, the search must be registered in <code>solr</code>.
 In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you have to look for
 <code>&lt;!-- SearchHandler</code> and add the following configuration</p>
-<pre><code class="language-xml">&lt;requestHandler name=&quot;/FACET_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
+<pre><code class="language-xml">&lt;requestHandler name=&quot;/CONFIG_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
     &lt;lst name=&quot;defaults&quot;&gt;
         &lt;str name=&quot;config&quot;&gt;NAME_OF_THE_CONFIGURATION_FILE.xml&lt;/str&gt;
     &lt;/lst&gt;
@@ -600,7 +600,7 @@ In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you hav
 <p>Finally, the <code>solr</code> index has to be generated:</p>
 <pre><code>rm -rf volumes/solr/data/*
 docker compose restart qwc-solr
-curl 'http://localhost:8983/solr/gdi/FACET_NAME?command=full-import'
+curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 </code></pre>
 <h3 id="configuring-the-search-for-a-theme">Configuring the search for a theme<a class="headerlink" href="#configuring-the-search-for-a-theme" title="Permanent link">&para;</a></h3>
 <p>To use a fulltext search in a theme, configure a <code>fulltext</code> search provider in <code>themesConfig.json</code> as follows:</p>

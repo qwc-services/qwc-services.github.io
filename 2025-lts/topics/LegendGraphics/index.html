@@ -144,21 +144,20 @@
 <p>You can customize the <code>GetLegendGraphics</code> request by specifying additional query parameters in via <code>extraLegendParameters</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration block</a>. The list of supported query parameters is documented in the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getlegendgraphics">QGIS Server documentation</a>.</p>
 <h2 id="providing-custom-legend-images">Providing custom legend images<a class="headerlink" href="#providing-custom-legend-images" title="Permanent link">&para;</a></h2>
 <p>You can provide custom legend images by <a href="../../configuration/ServiceConfiguration/#enabling-services">enabling</a> the <code>qwc-legend-service</code>.</p>
-<p>Configure <code>legend_images_path</code> in the <code>legend</code> service configuration in <code>tenantConfig.json</code>:</p>
-<pre><code class="language-json">{
-  &quot;name&quot;: &quot;legend&quot;,
-  &quot;config&quot;: {
-    &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
-    &quot;legend_images_path&quot;: &quot;/legends/&quot;
-  }
-}
-</code></pre>
-<p><em>Note:</em> The legend folder needs to be mounted into the <code>qwc-legend-service</code> container, i.e.:</p>
+<p>Mount the legend folder into the <code>qwc-legend-service</code> container, i.e.:</p>
 <pre><code class="language-yml">  qwc-legend-service:
     image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
     volumes:
       ...
       - ./volumes/legends:/legends
+</code></pre>
+<p><em>Note:</em> If mounting to another location than <code>/legends</code>, set the <code>legend_images_path</code> in the <code>legend</code> service configuration in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;legend&quot;,
+  &quot;config&quot;: {
+    &quot;legend_images_path&quot;: &quot;/&lt;path&gt;/&quot;
+  }
+}
 </code></pre>
 <p>Then, legend images will be searched for in this order (the first one found is used):</p>
 <ul>
