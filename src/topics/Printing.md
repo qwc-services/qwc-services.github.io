@@ -20,6 +20,8 @@ You can enable the option to generate a GeoPDF by setting the Print plugin confi
 
 You can select output format for printing layout. Default values are `application/pdf`, `image/jpeg`, `image/png` and `image/svg`. You can restrict formats to one or more of them by setting the Print plugin config option `formats` to an array of these formats. See [QGIS Server documentation](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getprint-format) for WMS GetPrint supported formats.
 
+Finally, you can configure which print layout is selected by default by setting `defaultPrintLayout` to the name of the desired print layout in the [theme configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration).
+
 Some additional tasks include:
 
 * [Configuring the print background layers](#background-layers)
