@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Printing - QWC2 - 2025.3-lts</title>
+    <title>Printing - QWC2 - 2025.4-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.3-lts
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.4-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -128,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.3-lts</a>
+          <a href="../..">QWC2 - 2025.4-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -160,6 +160,7 @@
 <p>External WMS layers are automatically printed if the <a href="../references/qwc2_plugins/#print">Print plugin config option</a> <code>printExternalLayers</code> is <code>true</code> (default). Note that printing external <code>WMTS</code> layers is currently not supported by the QGIS Server.</p>
 <p>You can enable the option to generate a GeoPDF by setting the Print plugin config option <code>allowGeoPdfExport</code> to <code>true</code>. <em>Note:</em> This is only supported on QGIS Server 3.32 and newer.</p>
 <p>You can select output format for printing layout. Default values are <code>application/pdf</code>, <code>image/jpeg</code>, <code>image/png</code> and <code>image/svg</code>. You can restrict formats to one or more of them by setting the Print plugin config option <code>formats</code> to an array of these formats. See <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getprint-format">QGIS Server documentation</a> for WMS GetPrint supported formats.</p>
+<p>Finally, you can configure which print layout is selected by default by setting <code>defaultPrintLayout</code> to the name of the desired print layout in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration</a>.</p>
 <p>Some additional tasks include:</p>
 <ul>
 <li><a href="#background-layers">Configuring the print background layers</a></li>
