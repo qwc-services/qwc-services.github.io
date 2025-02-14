@@ -190,6 +190,8 @@ If that's the case then it will proceed with setting up the
     volumes:
       - ./pg_service.conf:/tmp/pg_service.conf:ro
 </code></pre>
+<h1 id="extra-initialization">Extra initialization<a class="headerlink" href="#extra-initialization" title="Permanent link">&para;</a></h1>
+<p>You can mount additional scripts to perform initial DB setup to <code>/tmp/extra-init.d</code>. These scripts will only be executed after the initial DB migration (i.e. if <code>alembic current</code> was empty).</p>
 <h1 id="db-schema-overview">DB Schema overview<a class="headerlink" href="#db-schema-overview" title="Permanent link">&para;</a></h1>
 <p><img alt="er-diagram" src="er-diagram.png" /></p>
               

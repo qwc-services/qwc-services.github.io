@@ -160,6 +160,7 @@
 <p>External WMS layers are automatically printed if the <a href="../references/qwc2_plugins/#print">Print plugin config option</a> <code>printExternalLayers</code> is <code>true</code> (default). Note that printing external <code>WMTS</code> layers is currently not supported by the QGIS Server.</p>
 <p>You can enable the option to generate a GeoPDF by setting the Print plugin config option <code>allowGeoPdfExport</code> to <code>true</code>. <em>Note:</em> This is only supported on QGIS Server 3.32 and newer.</p>
 <p>You can select output format for printing layout. Default values are <code>application/pdf</code>, <code>image/jpeg</code>, <code>image/png</code> and <code>image/svg</code>. You can restrict formats to one or more of them by setting the Print plugin config option <code>formats</code> to an array of these formats. See <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getprint-format">QGIS Server documentation</a> for WMS GetPrint supported formats.</p>
+<p>Finally, you can configure which print layout is selected by default by setting <code>defaultPrintLayout</code> to the name of the desired print layout in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration</a>.</p>
 <p>Some additional tasks include:</p>
 <ul>
 <li><a href="#background-layers">Configuring the print background layers</a></li>
