@@ -13,7 +13,7 @@ There are two ways to run QWC2:
 - As part of the *qwc-services* ecosystem, includes additional services to which includes additional services to extend the viewer functionality (such as user administration, editing, etc.). This is the recommended approach.
 - As a standalone viewer (static JS/HTML/CSS web application) on top of QGIS Server.
 
-QWC2 with qwc-servies on the backend provide a complete Web GIS infrastructure.
+QWC2 with qwc-services on the backend provide a complete Web GIS infrastructure.
 
 ## Overview of functionalities
 
