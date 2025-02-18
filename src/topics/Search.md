@@ -301,6 +301,7 @@ The `trgm_feature_query` must return the following fields:
 * `feature_id`: The feature identifier through which to locate the feature in table referenced by the facet.
 * `bbox`: The feature bounding box, as a`[xmin,ymin,xmax,ymax]` string.
 * `srid`: The SRID of the bbox coordinates (i.e. `3857`).
+* `id_in_quotes`: Whether the id field value should be quoted.
 
 Example:
 
@@ -313,6 +314,7 @@ The `trgm_layer_query` must return the following fields:
 * `dataproduct_id`: The id of the dataproduct.
 * `has_info`: Whether an abstract is available for the dataproduct.
 * `sublayers`: A JSON stringified array of the shape `[{"ident": "<dataproduct_id>", "display": "<display>", "dset_info": true}, ...]`, or `NULL` if no sublayers exist.
+* `isbackground`: Whether the layer is a background layer.
 
 *Note*: The layer query relies on an additional service, configured as `dataproductServiceUrl` in the viewer `config.json`, which resolves the `dataproduct_id` to a QWC theme sublayer object, like the [`sogis-dataproduct-service`](https://github.com/qwc-services/sogis-dataproduct-service).
 
