@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2025.4-lts</title>
+    <title>Search - QWC2 - 2025.6-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.4-lts
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.6-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -132,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.4-lts</a>
+          <a href="../..">QWC2 - 2025.6-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -426,6 +426,7 @@ searchProviders: [
 <li><code>feature_id</code>: The feature identifier through which to locate the feature in table referenced by the facet.</li>
 <li><code>bbox</code>: The feature bounding box, as a<code>[xmin,ymin,xmax,ymax]</code> string.</li>
 <li><code>srid</code>: The SRID of the bbox coordinates (i.e. <code>3857</code>).</li>
+<li><code>id_in_quotes</code>: Whether the id field value should be quoted.</li>
 </ul>
 <p>Example:</p>
 <pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
@@ -437,6 +438,7 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <li><code>dataproduct_id</code>: The id of the dataproduct.</li>
 <li><code>has_info</code>: Whether an abstract is available for the dataproduct.</li>
 <li><code>sublayers</code>: A JSON stringified array of the shape <code>[{"ident": "&lt;dataproduct_id&gt;", "display": "&lt;display&gt;", "dset_info": true}, ...]</code>, or <code>NULL</code> if no sublayers exist.</li>
+<li><code>isbackground</code>: Whether the layer is a background layer.</li>
 </ul>
 <p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
 <p>In alternative to specifying <code>trgm_feature_query</code> and/or <code>trgm_layer_query</code>, you can set <code>trgm_feature_query_template</code> and/or <code>trgm_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
