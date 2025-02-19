@@ -86,7 +86,7 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Feature info service
 * Support authentication via basic auth
-* Add support for `text/plain` and `text/html` info formats
+* Add support for `text/plain`, `text/html` and `application/json` info formats
 * [Add support for specifying custom templates by placing a file in `info_templates_path`](../../topics/FeatureInfo.md#html-templates)
 
 ### Fulltext search service
