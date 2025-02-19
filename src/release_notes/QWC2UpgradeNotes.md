@@ -123,7 +123,6 @@ Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9c
 *Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
 
 - The `InputContainer` component has been moved to `qwc2/components/widgets/`.
-- The `Icon` component has been moved to `qwc2/components/widgets/`.
 - The `ModalDialog` component has been moved to `qwc2/components/widgets/`.
 - The `PopupMenu` component has been moved to `qwc2/components/widgets/`.
 - The `ReCaptchaWidget` component has been moved to `qwc2/components/widgets/`.
