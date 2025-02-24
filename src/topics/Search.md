@@ -366,6 +366,7 @@ Next, create search XML configuration files in `volumes/solr/configsets/gdi/conf
                 displaytext AS display,
                 search_part_1 AS search_1_stem,
                 search_part_1 AS sort,
+                st_srid(geom) AS srid,
                 subclass AS facet,
                 'default' AS tenant,
                 (array_to_json(array_append(ARRAY[id_name::text], search_field_str::text)))::text AS idfield_meta,
