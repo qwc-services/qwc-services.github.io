@@ -416,7 +416,7 @@ searchProviders: [
 <li><code>:term</code>: The full search text</li>
 <li><code>:terms</code>: A list of search text words (i.e. the full search text split by whitespace).</li>
 <li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>).</li>
-<li><code>:facets</code>: The permitted search facets, as a list (only relevant for feature query).</li>
+<li><code>:facets</code>: The permitted search facets, as a list.</li>
 </ul>
 <p>The <code>trgm_feature_query</code> must return the following fields:</p>
 <ul>
@@ -438,14 +438,14 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <li><code>dataproduct_id</code>: The id of the dataproduct.</li>
 <li><code>has_info</code>: Whether an abstract is available for the dataproduct.</li>
 <li><code>sublayers</code>: A JSON stringified array of the shape <code>[{"ident": "&lt;dataproduct_id&gt;", "display": "&lt;display&gt;", "dset_info": true}, ...]</code>, or <code>NULL</code> if no sublayers exist.</li>
-<li><code>isbackground</code>: Whether the layer is a background layer.</li>
+<li><code>stacktype</code>: The layer stacktype, <code>foreground</code> or <code>background</code>.</li>
 </ul>
 <p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
 <p>In alternative to specifying <code>trgm_feature_query</code> and/or <code>trgm_layer_query</code>, you can set <code>trgm_feature_query_template</code> and/or <code>trgm_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
 <ul>
 <li><code>searchtext</code>: the full search text, as a string</li>
 <li><code>words</code>: the single words of the search text, as an array</li>
-<li><code>facets</code>: the permitted search facets, as an array (only relevant for feature query).</li>
+<li><code>facets</code>: the permitted search facets, as an array.</li>
 </ul>
 <p>Example for <code>trgm_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
 <pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
