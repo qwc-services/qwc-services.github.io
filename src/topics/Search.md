@@ -291,7 +291,7 @@ To configure a fulltext search with the trigram backend, set `search_backend` to
 - `:term`: The full search text
 - `:terms`: A list of search text words (i.e. the full search text split by whitespace).
 - `:thres`: The trigram similarity treshold value (note that the service will also separately execute `SET pg_trgm.similarity_threshold = <value>`).
-- `:facets`: The permitted search facets, as a list (only relevant for feature query).
+- `:facets`: The permitted search facets, as a list.
 
 The `trgm_feature_query` must return the following fields:
 
@@ -314,7 +314,7 @@ The `trgm_layer_query` must return the following fields:
 * `dataproduct_id`: The id of the dataproduct.
 * `has_info`: Whether an abstract is available for the dataproduct.
 * `sublayers`: A JSON stringified array of the shape `[{"ident": "<dataproduct_id>", "display": "<display>", "dset_info": true}, ...]`, or `NULL` if no sublayers exist.
-* `isbackground`: Whether the layer is a background layer.
+* `stacktype`: The layer stacktype, `foreground` or `background`.
 
 *Note*: The layer query relies on an additional service, configured as `dataproductServiceUrl` in the viewer `config.json`, which resolves the `dataproduct_id` to a QWC theme sublayer object, like the [`sogis-dataproduct-service`](https://github.com/qwc-services/sogis-dataproduct-service).
 
@@ -322,7 +322,7 @@ In alternative to specifying `trgm_feature_query` and/or `trgm_layer_query`, you
 
 * `searchtext`: the full search text, as a string
 * `words`: the single words of the search text, as an array
-* `facets`: the permitted search facets, as an array (only relevant for feature query).
+* `facets`: the permitted search facets, as an array.
 
 Example for `trgm_feature_query_template` to generate an "unrolled" query for each word in the searchtext:
 
