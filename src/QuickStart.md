@@ -63,13 +63,13 @@ If you don't need the advanced functionalities provided by `qwc-services` or wan
 
 To work with QWC2, you will need a minimal development environment consisting of [git](https://git-scm.com/), [node](https://nodejs.org/) and [yarn](https://yarnpkg.com). You will also need a running QGIS Server instance which serves your projects.
 
-The fastest way to get started is by cloning the demo application:
+The fastest way to get started is by cloning the stock application:
 ```bash
-git clone --recursive https://github.com/qgis/qwc2-demo-app.git
+git clone https://github.com/qgis/qwc2.git
 ```
 Next, install all required dependencies:
 ```bash
-cd qwc2-demo-app
+cd qwc2
 yarn install
 ```
 Then, start a local development application:

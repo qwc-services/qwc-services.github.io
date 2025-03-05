@@ -8,7 +8,7 @@ First of all, it is important to keep in mind that the QWC2 Viewer is designed t
 - [Customizing the assets](#viewer-asset): specify additional search providers, customize the color schemes, etc...
 - [Compiling a custom viewer](#custom-viewer): configure which components which are built into the application, add own plugins, etc...
 
-The `qwc2-demo-app` (and the `qwc-map-viewer-demo` docker image) serve as a good starting point, and for simple viewers the load-time configuration options are often sufficient to avoid the need of building a customized application.
+The `qwc2` stock application (and the `qwc-map-viewer` docker image) serve as a good starting point, and for simple viewers the load-time configuration options are often sufficient to avoid the need of building a customized application.
 
 ## Load-time configuration `config.json`<a name="load-time-config"></a>
 
@@ -17,7 +17,7 @@ The load-time configuration `config.json` configuration file contains global vie
 - `qwc-docker`: `qwc-docker/volumes/config-in/<tentant>/config.json`
 - Standalone viewer: `qwc2-app/static/config.json`
 
-Refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json) for a concrete example.
+Refer to the [sample `config.json`](https://github.com/qgis/qwc2/blob/master/static/config.json) for a concrete example.
 
 ### Global settings
 
@@ -245,11 +245,11 @@ Furthermore, the application entry point `index.html` is located as follows:
 This file noteably specifies the application title, and references many of the assets located below the `assets` folder.
 
 ### Customizing the color scheme
-The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see [DefaultColorScheme.css](https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css)). To define a custom color scheme, copy the default color scheme to `assets/css/colorschemes.css`, add an appropriate class name to the `:root` selector, and modify the colors as desided. Two additional examples (`highcontrast` and `dark`) are provided by default in[`assets/css/colorschemes.css`](https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/css/colorschemes.css).
+The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see [DefaultColorScheme.css](https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css)). To define a custom color scheme, copy the default color scheme to `assets/css/colorschemes.css`, add an appropriate class name to the `:root` selector, and modify the colors as desided. Two additional examples (`highcontrast` and `dark`) are provided by default in[`assets/css/colorschemes.css`](https://github.com/qgis/qwc2/blob/master/static/assets/css/colorschemes.css).
 
 You can then modify the color scheme which is applied by default by setting `defaultColorScheme` in `config.json` to an appropriate class name (i.e. `highcontrast` or `dark`).
 
-To change the color scheme at runtime in QWC2, make sure the `Settings` plugin is enabled, and in the `Settings` plugin configuration block in `config.json` list the color schemes below `colorSchemes`. Refer to the [sample `config.json`](https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json).
+To change the color scheme at runtime in QWC2, make sure the `Settings` plugin is enabled, and in the `Settings` plugin configuration block in `config.json` list the color schemes below `colorSchemes`. Refer to the [sample `config.json`](https://github.com/qgis/qwc2/blob/master/static/config.json).
 
 *Note*: When changing the color scheme via Settings dialog in QWC2, the picked color scheme is stored in the browser local storage, and this setting will override the `defaultColorScheme` setting from `config.json`. Specifying the `style` URL-parameter (see [URL parameters](../topics/Interfacing.md#url-parameters)) will take precedence over all other settings.
 
@@ -288,10 +288,7 @@ The legend print template `assets/templates/legendprint.html` is used when print
 
 ## Building a custom viewer <a name="custom-viewer"></a>
 
-QWC2 is divided into two repositories:
-
-- The QWC2 components, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/). This repository contains the core building blocks common to all QWC2 applications.
-- The QWC2 application, the demo application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
+The QWC2 stock application, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/), can serve as a base for building a custom application. An example of a custom application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
 
 To build a custom viewer, the first step is cloning the demo application:
 ```bash
@@ -300,23 +297,23 @@ git clone --recursive https://github.com/qgis/qwc2-demo-app.git qwc2-app
 The typical layout of a QWC2 app source tree is as follows:
 
 | Path                         | Description
-|------------------------------|---------------------------------------------------------------------|
-|`├─ static/`                  |                                                                     |
-|`│  ├─ assets/`               | See [Viewer assets](#viewer-assets)                                 |
-|`│  ├─ translations/`         | Translation files.                                                  |
-|`│  ├─ config.json`           | Master configuration file.                                          |
-|`│  └─ themes.json`           | Full theme configuration, autogenerated from `themesConfig.json`.   |
-|`├─ js/`                      |                                                                     |
-|`│  ├─ app.jsx`               | Entry point of the ReactJS application.                             |
-|`│  ├─ appConfig.js`          | Configuration of the qwc2 core modules.                             |
+|------------------------------|-----------------------------------------------------------------------|
+|`├─ static/`                  |                                                                       |
+|`│  ├─ assets/`               | See [Viewer assets](#viewer-assets)                                   |
+|`│  ├─ translations/`         | Translation files.                                                    |
+|`│  ├─ config.json`           | Master configuration file.                                            |
+|`   ├─ themesConfig.json`     | Themes configuration, edited manually.                                |
+|`│  └─ themes.json`           | Generated theme configuration, autogenerated from `themesConfig.json`.|
+|`├─ js/`                      |                                                                       |
+|`│  ├─ app.jsx`               | Entry point of the ReactJS application.                               |
+|`│  ├─ appConfig.js`          | Configuration of the qwc2 core modules.                               |
 |`│  ├─ Help.jsx`              | Built-in component of custom Help dialog, see [Help dialog](#help-dialog). |
 |`│  └─ SearchProviders.js`    | Built-in custom search providers, see [Search providers](#search-providers). |
-|`├─ icons/`                   | Application icons.                                                |
-|`├─ qwc2/`                    | Git submodule containing the core qwc2 components.                |
-|`├─ index.html`               | Entry point.                                                      |
-|`├─ package.json`             | NodeJS configuration file.                                        |
-|`├─ themesConfig.json`        | Themes configuration.                                             |
-|`└─ webpack.config.js`        | Webpack configuration.                                            |
+|`├─ icons/`                   | Application icons.                                                    |
+|`├─ qwc2/`                    | Git submodule containing the core qwc2 components.                    |
+|`├─ index.html`               | Entry point.                                                          |
+|`├─ package.json`             | NodeJS configuration file.                                            |
+|`└─ webpack.config.js`        | Webpack configuration.                                                |
 
 ### Application build-time configuration<a name="build-time configuration"></a>
 
@@ -401,7 +398,7 @@ When adding or modifying translations at QWC2 components level, please contribut
 
 ### Selectively overriding translation strings
 
-Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the `qwc-map-viewer-demo` docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).
+Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the `qwc-map-viewer` docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).
 
 To do this:
 
@@ -421,11 +418,11 @@ To do this:
 * Place this file inside the `translations` folder of your production build. When using `qwc-docker`, you can place this file in `qwc-docker/volumes/qwc2/translations/` and mount this file inside the container, i.e. :
 ```yml
 qwc-map-viewer:
-  image: sourcepole/qwc-map-viewer-demo:vYYYY.MM.DD
+  image: sourcepole/qwc-map-viewer:vYYYY.MM.DD
   [...]
   volumes:
     - ./volumes/qwc2/translations/en-US_overrides.json:/qwc2/translations/en-US_overrides.json:ro
 ```
 ### Specifying the default fallback translation
 
-When no translation exists for the requested language (i.e. the current browser language), QWC2 will fall back to the default translation specified as `defaultLocaleData` in `qwc2-app/js/appConfig.js`. For the demo viewer, the default fallback translation is `en-US`.
+When no translation exists for the requested language (i.e. the current browser language), QWC2 will fall back to the default translation specified as `defaultLocaleData` in `qwc2-app/js/appConfig.js`. For the stock application, the default fallback translation is `en-US`.

@@ -75,7 +75,7 @@ To use a custom thumbnail for an automatically configured theme, place a an imag
 
 The theme configuration file is located as follows:
 
-- Standalone viewer: `qwc2-app/themesConfig.json`
+- Standalone viewer: `qwc2-app/static/themesConfig.json`
 - `qwc-docker`: `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`
 
 *Note*: when using `qwc-docker`, the themes configuration may also be embedded as `themesConfig` directly in `qwc-docker/volumes/config-in/<tentant>/tenantConfig.json`.
@@ -126,7 +126,7 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
 
 Refer to [External layers](#external-layers), [Theme info links](#theme-info-links), [Plugin data](#plugin-data) and [Background layers](#background-layers) for the format of the respective definitions.
 
-Refer to the [sample `themesConfig.json`](https://github.com/qgis/qwc2-demo-app/blob/master/themesConfig.json) for a complete example.
+Refer to the [sample `themesConfig.json`](https://github.com/qwc-services/qwc-docker/blob/master/volumes/config-in/default/themesConfig.json) for a complete example.
 
 The format of the theme definitions is as follows:
 <!-- Important: Use U+00A0 non-breaking spaces ( ) in code blocks -->

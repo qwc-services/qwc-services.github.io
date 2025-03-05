@@ -172,11 +172,11 @@ searchProviders: [
 ]
 ...
 ```
-Note: The `qwc2-demo-app` (also used by the `qwc-map-viewer-demo` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
+Note: The `qwc2` stock application (also used by the `qwc-map-viewer` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
 
 ## Configuring the QGIS feature search <a name="qgis-search"></a>
 
-The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2-demo-app`.
+The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2` stock application.
 
 *Note*: Make sure the QGIS Project is configured to return geometries with the feature info responses (`Project` &rarr; `Properties` &rarr; `QGIS Server` &rarr; `Add geometry to feature response`).
 
