@@ -1,3 +1,13 @@
+# Updating to qwc-map-viewer-demo-v2025.03.06
+
+The `qwc-map-viewer-demo` images have been replaced by the `qwc-map-viewer` images (without the `-demo` suffix). Reference this image instead in your `docker-compose.yml`:
+
+```yml
+   qwc-map-viewer:
+-    image: docker.io/sourcepole/qwc-map-viewer-demo:<tag>
++    image: docker.io/sourcepole/qwc-map-viewer:<tag>
+```
+
 # Updating to qwc-permalink-service-v2024.12.14 \[2024-lts &rarr; 2025-lts\]
 
 When updating to `qwc-permalink-service-v2024.12.14`, make sure to also update to `qwc-config-db-migrate-v2024.12.14` to update the schema of the `user_bookmarks` table. The bookmarks are now stored by user id instead of username.

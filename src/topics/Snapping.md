@@ -1,6 +1,6 @@
 # Snapping
 
-QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). To enable it, make sure the `SnappingSupport` plugin is enabled in `appConfig.js` (see the sample [sample `js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js)). Then, for each theme for which you want snapping to be available, you can add a `snapping` block to your theme item in `themesConfig.json` as follows:
+QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). The plugin is enabled in the stock application. To enable it in a custom application, make sure the `SnappingSupport` plugin is enabled in `appConfig.js` (see the sample [sample `js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js)). Then, for each theme for which you want snapping to be available, you can add a `snapping` block to your theme item in `themesConfig.json` as follows:
 ```json
 ...
 "snapping": {
