@@ -135,7 +135,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="snapping">Snapping<a class="headerlink" href="#snapping" title="Permanent link">&para;</a></h1>
-<p>QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). To enable it, make sure the <code>SnappingSupport</code> plugin is enabled in <code>appConfig.js</code> (see the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>). Then, for each theme for which you want snapping to be available, you can add a <code>snapping</code> block to your theme item in <code>themesConfig.json</code> as follows:</p>
+<p>QWC2 ships a plugin for snapping support while drawing (redlining / measuring / editing). The plugin is enabled in the stock application. To enable it in a custom application, make sure the <code>SnappingSupport</code> plugin is enabled in <code>appConfig.js</code> (see the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>). Then, for each theme for which you want snapping to be available, you can add a <code>snapping</code> block to your theme item in <code>themesConfig.json</code> as follows:</p>
 <pre><code class="language-json">...
 &quot;snapping&quot;: {
   &quot;snaplayers&quot;: [

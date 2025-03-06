@@ -196,14 +196,14 @@
 <li><a href="#viewer-asset">Customizing the assets</a>: specify additional search providers, customize the color schemes, etc...</li>
 <li><a href="#custom-viewer">Compiling a custom viewer</a>: configure which components which are built into the application, add own plugins, etc...</li>
 </ul>
-<p>The <code>qwc2-demo-app</code> (and the <code>qwc-map-viewer-demo</code> docker image) serve as a good starting point, and for simple viewers the load-time configuration options are often sufficient to avoid the need of building a customized application.</p>
+<p>The <code>qwc2</code> stock application (and the <code>qwc-map-viewer</code> docker image) serve as a good starting point, and for simple viewers the load-time configuration options are often sufficient to avoid the need of building a customized application.</p>
 <h2 id="load-time-configuration-configjson">Load-time configuration <code>config.json</code><a name="load-time-config"></a><a class="headerlink" href="#load-time-configuration-configjson" title="Permanent link">&para;</a></h2>
 <p>The load-time configuration <code>config.json</code> configuration file contains global viewer settings as well as the viewer plugin configuration for mobile and desktop devices. It is located as follows:</p>
 <ul>
 <li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/config.json</code></li>
 <li>Standalone viewer: <code>qwc2-app/static/config.json</code></li>
 </ul>
-<p>Refer to the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json">sample <code>config.json</code></a> for a concrete example.</p>
+<p>Refer to the <a href="https://github.com/qgis/qwc2/blob/master/static/config.json">sample <code>config.json</code></a> for a concrete example.</p>
 <h3 id="global-settings">Global settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h3>
 <p>All settings are optional, with fallback to the default values as documented.</p>
 <table>
@@ -717,9 +717,9 @@ All settings are optional, with fallback to the default values as documented.</p
 </ul>
 <p>This file noteably specifies the application title, and references many of the assets located below the <code>assets</code> folder.</p>
 <h3 id="customizing-the-color-scheme">Customizing the color scheme<a class="headerlink" href="#customizing-the-color-scheme" title="Permanent link">&para;</a></h3>
-<p>The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see <a href="https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css">DefaultColorScheme.css</a>). To define a custom color scheme, copy the default color scheme to <code>assets/css/colorschemes.css</code>, add an appropriate class name to the <code>:root</code> selector, and modify the colors as desided. Two additional examples (<code>highcontrast</code> and <code>dark</code>) are provided by default in<a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/css/colorschemes.css"><code>assets/css/colorschemes.css</code></a>.</p>
+<p>The QWC2 color scheme is fully customizeable via CSS. A default color-scheme is built-in (see <a href="https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css">DefaultColorScheme.css</a>). To define a custom color scheme, copy the default color scheme to <code>assets/css/colorschemes.css</code>, add an appropriate class name to the <code>:root</code> selector, and modify the colors as desided. Two additional examples (<code>highcontrast</code> and <code>dark</code>) are provided by default in<a href="https://github.com/qgis/qwc2/blob/master/static/assets/css/colorschemes.css"><code>assets/css/colorschemes.css</code></a>.</p>
 <p>You can then modify the color scheme which is applied by default by setting <code>defaultColorScheme</code> in <code>config.json</code> to an appropriate class name (i.e. <code>highcontrast</code> or <code>dark</code>).</p>
-<p>To change the color scheme at runtime in QWC2, make sure the <code>Settings</code> plugin is enabled, and in the <code>Settings</code> plugin configuration block in <code>config.json</code> list the color schemes below <code>colorSchemes</code>. Refer to the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/config.json">sample <code>config.json</code></a>.</p>
+<p>To change the color scheme at runtime in QWC2, make sure the <code>Settings</code> plugin is enabled, and in the <code>Settings</code> plugin configuration block in <code>config.json</code> list the color schemes below <code>colorSchemes</code>. Refer to the <a href="https://github.com/qgis/qwc2/blob/master/static/config.json">sample <code>config.json</code></a>.</p>
 <p><em>Note</em>: When changing the color scheme via Settings dialog in QWC2, the picked color scheme is stored in the browser local storage, and this setting will override the <code>defaultColorScheme</code> setting from <code>config.json</code>. Specifying the <code>style</code> URL-parameter (see <a href="../../topics/Interfacing/#url-parameters">URL parameters</a>) will take precedence over all other settings.</p>
 <p><em>Note:</em> Make sure that <code>assets/css/colorschemes.css</code> is included in <code>index.html</code>.</p>
 <h3 id="overriding-component-styles">Overriding component styles<a class="headerlink" href="#overriding-component-styles" title="Permanent link">&para;</a></h3>
@@ -742,11 +742,7 @@ All settings are optional, with fallback to the default values as documented.</p
 <h3 id="personalizing-the-legend-print-template">Personalizing the legend print template<a class="headerlink" href="#personalizing-the-legend-print-template" title="Permanent link">&para;</a></h3>
 <p>The legend print template <code>assets/templates/legendprint.html</code> is used when printing the map legend from the layer tree. The only requirement for this template is that is must contain a <code>&lt;div id="legendcontainer"&gt;&lt;/div&gt;</code> element.</p>
 <h2 id="building-a-custom-viewer">Building a custom viewer <a name="custom-viewer"></a><a class="headerlink" href="#building-a-custom-viewer" title="Permanent link">&para;</a></h2>
-<p>QWC2 is divided into two repositories:</p>
-<ul>
-<li>The QWC2 components, hosted at <a href="https://github.com/qgis/qwc2/">https://github.com/qgis/qwc2/</a>. This repository contains the core building blocks common to all QWC2 applications.</li>
-<li>The QWC2 application, the demo application is hosted at <a href="https://github.com/qgis/qwc2-demo-app">https://github.com/qgis/qwc2-demo-app</a>.</li>
-</ul>
+<p>The QWC2 stock application, hosted at <a href="https://github.com/qgis/qwc2/">https://github.com/qgis/qwc2/</a>, can serve as a base for building a custom application. An example of a custom application is hosted at <a href="https://github.com/qgis/qwc2-demo-app">https://github.com/qgis/qwc2-demo-app</a>.</p>
 <p>To build a custom viewer, the first step is cloning the demo application:</p>
 <pre><code class="language-bash">git clone --recursive https://github.com/qgis/qwc2-demo-app.git qwc2-app
 </code></pre>
@@ -776,8 +772,12 @@ All settings are optional, with fallback to the default values as documented.</p
 <td>Master configuration file.</td>
 </tr>
 <tr>
+<td><code>├─ themesConfig.json</code></td>
+<td>Themes configuration, edited manually.</td>
+</tr>
+<tr>
 <td><code>│  └─ themes.json</code></td>
-<td>Full theme configuration, autogenerated from <code>themesConfig.json</code>.</td>
+<td>Generated theme configuration, autogenerated from <code>themesConfig.json</code>.</td>
 </tr>
 <tr>
 <td><code>├─ js/</code></td>
@@ -814,10 +814,6 @@ All settings are optional, with fallback to the default values as documented.</p
 <tr>
 <td><code>├─ package.json</code></td>
 <td>NodeJS configuration file.</td>
-</tr>
-<tr>
-<td><code>├─ themesConfig.json</code></td>
-<td>Themes configuration.</td>
 </tr>
 <tr>
 <td><code>└─ webpack.config.js</code></td>
@@ -880,7 +876,7 @@ git pull
 <p>To add a new language, list it in <code>qwc2-app/qwc2/translations/tsconfig.json</code> and run <code>yarn run tsupdate</code>, then complete the messages taking the english translation file as reference.</p>
 <p>When adding or modifying translations at QWC2 components level, please contribute them by submitting a pull request to the <a href="https://github.com/qgis/qwc2">upstream qwc2 repository</a>.</p>
 <h3 id="selectively-overriding-translation-strings">Selectively overriding translation strings<a class="headerlink" href="#selectively-overriding-translation-strings" title="Permanent link">&para;</a></h3>
-<p>Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the <code>qwc-map-viewer-demo</code> docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).</p>
+<p>Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the <code>qwc-map-viewer</code> docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).</p>
 <p>To do this:</p>
 <ul>
 <li>Set <code>loadTranslationOverrides</code> to <code>true</code> in <code>config.json</code>.</li>
@@ -900,13 +896,13 @@ git pull
 <li>Place this file inside the <code>translations</code> folder of your production build. When using <code>qwc-docker</code>, you can place this file in <code>qwc-docker/volumes/qwc2/translations/</code> and mount this file inside the container, i.e. :</li>
 </ul>
 <pre><code class="language-yml">qwc-map-viewer:
-  image: sourcepole/qwc-map-viewer-demo:vYYYY.MM.DD
+  image: sourcepole/qwc-map-viewer:vYYYY.MM.DD
   [...]
   volumes:
     - ./volumes/qwc2/translations/en-US_overrides.json:/qwc2/translations/en-US_overrides.json:ro
 </code></pre>
 <h3 id="specifying-the-default-fallback-translation">Specifying the default fallback translation<a class="headerlink" href="#specifying-the-default-fallback-translation" title="Permanent link">&para;</a></h3>
-<p>When no translation exists for the requested language (i.e. the current browser language), QWC2 will fall back to the default translation specified as <code>defaultLocaleData</code> in <code>qwc2-app/js/appConfig.js</code>. For the demo viewer, the default fallback translation is <code>en-US</code>.</p>
+<p>When no translation exists for the requested language (i.e. the current browser language), QWC2 will fall back to the default translation specified as <code>defaultLocaleData</code> in <code>qwc2-app/js/appConfig.js</code>. For the stock application, the default fallback translation is <code>en-US</code>.</p>
               
             </div>
           </div><footer>

@@ -161,6 +161,7 @@
 <li><a href="#maptip">MapTip</a></li>
 <li><a href="#measure">Measure</a></li>
 <li><a href="#newspopup">NewsPopup</a></li>
+<li><a href="#panoramax">Panoramax</a></li>
 <li><a href="#portal">Portal</a></li>
 <li><a href="#print">Print</a></li>
 <li><a href="#processnotifications">ProcessNotifications</a></li>
@@ -1605,6 +1606,44 @@ revision is published (specified via newsRev prop).</p>
 <td>side</td>
 <td><code>string</code></td>
 <td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="panoramax">Panoramax<a name="panoramax"></a><a class="headerlink" href="#panoramax" title="Permanent link">&para;</a></h2>
+<p>Panoramax Integration for QWC2.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loadSequencesTiles</td>
+<td><code>bool</code></td>
+<td>Whether or not to load the layer containing the image sequences.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>panoramaxInstance</td>
+<td><code>string</code></td>
+<td>URL of the Panoramax instance.</td>
+<td><code>'api.panoramax.xyz'</code></td>
+</tr>
+<tr>
+<td>tileMode</td>
+<td><code>string</code></td>
+<td>Mode for the image sequences layer: either WMS (Require a custom URL) or MVT(EPSG:3857 only).</td>
+<td><code>'mvt'</code></td>
+</tr>
+<tr>
+<td>wmsUrl</td>
+<td><code>string</code></td>
+<td>URL of the WMS image sequences layer.</td>
 <td><code>undefined</code></td>
 </tr>
 </tbody>
