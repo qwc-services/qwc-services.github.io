@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc map viewer readme - QWC2 - 2025.6-lts</title>
+    <title>Qwc map viewer readme - QWC2 - 2025.03.06-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.6-lts
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.6-lts</a>
+          <a href="../..">QWC2 - 2025.03.06-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -131,13 +131,13 @@
             <div class="section" itemprop="articleBody">
               
                 <p><a href="https://github.com/qwc-services/qwc-map-viewer/actions"><img alt="" src="https://github.com/qwc-services/qwc-map-viewer/workflows/build/badge.svg" /></a>
-<a href="https://hub.docker.com/r/sourcepole/qwc-map-viewer-demo"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-map-viewer-demo?label=Docker%20image&amp;sort=semver" /></a></p>
+<a href="https://hub.docker.com/r/sourcepole/qwc-map-viewer"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-map-viewer?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-map-viewer">QWC Map Viewer<a class="headerlink" href="#qwc-map-viewer" title="Permanent link">&para;</a></h1>
-<p>Provide a <a href="https://github.com/qgis/qwc2-demo-app">QWC2 Web Client</a> application using QWC services.</p>
+<p>Provide a <a href="https://github.com/qgis/qwc2">QWC2 Web Client</a> application using QWC services.</p>
 <p><strong>Note:</strong> Requires a QWC OGC service or QGIS server running on <code>ogc_service_url</code>. Additional QWC Services are optional.</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>Copy your QWC2 files from a production build (see <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/quick_start.md">QWC2 Quick start</a>):</p>
-<pre><code>SRCDIR=path/to/qwc2-app/prod/ DSTDIR=$PWD
+<p>Copy your QWC2 files from a production build:</p>
+<pre><code>SRCDIR=path/to/qwc2/prod/ DSTDIR=$PWD
 mkdir $DSTDIR/qwc2 &amp;&amp; mkdir $DSTDIR/qwc2/dist
 cd $SRCDIR &amp;&amp; \
 cp -r assets $DSTDIR/qwc2 &amp;&amp; \
@@ -221,9 +221,9 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 }
 </code></pre>
 <p>These will be added as <code>user_infos</code> in the <code>config.json</code> response if present in the current identity.</p>
-<p><code>qwc2_config</code> contains the QWC2 application configuration, with <code>config</code> corresponding to the contents of your standalone <code>config.json</code> file (see <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/qwc_configuration.md#application-configuration-the-configjson-and-jsappconfigjs-files">Documentation</a>).</p>
+<p><code>qwc2_config</code> contains the QWC2 application configuration, with <code>config</code> corresponding to the contents of your standalone <code>config.json</code> file (see <a href="https://qwc-services.github.io/master/configuration/ViewerConfiguration/#load-time-configuration-configjson">Documentation</a>).</p>
 <p><code>qwc2_themes</code> contains the full themes configuration, corresponding to the contents of your standalone <code>themes.json</code> collected from <code>themesConfig.json</code>.</p>
-<p>Add new themes to your <code>themesConfig.json</code> (see <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/qwc_configuration.md#theme-configuration-qgis-projects-and-the-themesconfigjson-file">Documentation</a>) and put any theme thumbnails into <code>$QWC2_PATH/assets/img/mapthumbs/</code>.
+<p>Add new themes to your <code>themesConfig.json</code> (see <a href="https://qwc-services.github.io/master/configuration/ThemesConfiguration/">Documentation</a>) and put any theme thumbnails into <code>$QWC2_PATH/assets/img/mapthumbs/</code>.
 The <code>themesConfig.json</code> file is used to collect the full themes configuration using GetProjectSettings.</p>
 <p>Optional settings for restricted themes:</p>
 <pre><code class="language-json">&quot;config&quot;: {
@@ -342,20 +342,16 @@ curl 'http://localhost:5030/themes.json'
 </code></pre>
 <h2 id="docker-images">Docker images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
 <p>The following Docker images are available:
-* <code>sourcepole/qwc-map-viewer-base</code>: Map viewer service
-* <code>sourcepole/qwc-map-viewer-demo</code>: Map viewer service with qwc-demo-app viewer</p>
+* <code>sourcepole/qwc-map-viewer</code>: Map viewer service with stock qwc2 application
+* <code>sourcepole/qwc-map-viewer-base</code>: Map viewer service to use with a custom qwc2 application</p>
 <p>Dependencies:</p>
 <pre><code>    git repos                Docker images
 
  ┌───────────────┐
- │     qwc2      │
- └───────┬───────┘
-         │submodule
- ┌───────▼───────┐
- │ qwc-demo-app  ├────────────┐
- │    config.json│ CI Build   │
+ │     qwc2      ├────────────┐
+ │  config.json  │ CI Build   │
  └───────────────┘      ┌─────▼───────────────┐
-                     ┌──► qwc-map-viewer-demo │
+                     ┌──► qwc-map-viewer      │
  ┌───────────────┐   │  └─────────────────────┘
  │ qwc-map-viewer├───┤
  └───────────────┘   │  ┌─────────────────────┐
@@ -379,8 +375,8 @@ cd qwc-docker
 <pre><code>cp docker-compose-example.yml docker-compose.yml
 </code></pre>
 <p><strong>Step 3: Choose between a version of the qwc-map-viewer</strong></p>
-<h4 id="qwc-map-viewer-demo">qwc-map-viewer-demo<a class="headerlink" href="#qwc-map-viewer-demo" title="Permanent link">&para;</a></h4>
-<p>This is the demo version used in the <code>docker-compose-example.yml</code> file. With this version, the docker image comes with a preinstalled version of the latest qwc2-demo-app build and the python application for the viewer. Use this docker image, if you don't have your own build of the QWC2 app.</p>
+<h4 id="qwc-map-viewer_1">qwc-map-viewer<a class="headerlink" href="#qwc-map-viewer_1" title="Permanent link">&para;</a></h4>
+<p>This is the stock version used in the <code>docker-compose-example.yml</code> file. With this version, the docker image comes with a preinstalled version of the latest qwc2 stock application build and the python application for the viewer. Use this docker image, if you don't have your own build of the QWC2 app.</p>
 <h4 id="qwc-map-viewer-base">qwc-map-viewer-base<a class="headerlink" href="#qwc-map-viewer-base" title="Permanent link">&para;</a></h4>
 <p>If you want to use your own QWC2 build then this is the docker image that you want to use. This docker image comes with only the python application installed on. Here is an example, on how you can add you own QWC2 build to the docker image:</p>
 <pre><code>qwc-map-viewer:

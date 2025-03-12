@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Multi-tenancy - QWC2 - 2025.6-lts</title>
+    <title>Multi-tenancy - QWC2 - 2025.03.06-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.6-lts
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.6-lts</a>
+          <a href="../..">QWC2 - 2025.03.06-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -238,6 +238,7 @@
     &quot;tenant&quot;: &quot;tenant_name&quot;,
     &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
     &quot;config_db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+    &quot;qgis_projects_base_dir&quot;: &quot;/data&quot;,
     &quot;qgis_projects_scan_base_dir&quot;: &quot;/data/tenant_name/scan&quot;
     ...
   },
@@ -284,6 +285,11 @@
 <li>The <code>qwc2_config_file</code>, <code>qwc2_index_file</code>, <code>qwc2_base_dir</code> and <code>qwc2_path</code> paths will determine whether the viewer build/configuration is shared or separate for each tenant.</li>
 <li>To use a separate assets folder for each tenant, you can set an appropriate <code>assetsPath</code> in the <code>qwc2_config_file</code> of each tenant.</li>
 <li>The various service URLs in the <code>mapViewer</code> configuration and in other service configurations need to match what is expected in the <code>api-gateway</code> configuration.</li>
+<li>To separate the qgis projects per tenant (avoiding the <code>&lt;tenantname&gt;/</code> prefix on the map names), you can proceed as follows:</li>
+<li>Create subdirectories for each tenant in <code>volumes/qgs-resources</code>, i.e. <code>volumes/qgs-resources/&lt;tenant_name&gt;</code>,</li>
+<li>Set <code>default_qgis_server_url</code> to <code>http://qwc-qgis-server/ows/&lt;tenant_name&gt;</code>,</li>
+<li>Set <code>qgis_projects_base_dir</code> to <code>/data/&lt;tenant_name&gt;</code>,</li>
+<li>Make sure to remove the <code>/ows</code> prefix from the <code>url</code> of any manually configured themes in <code>themesConfig.json</code>.</li>
 </ul>
 <h2 id="tenantconfig-template"><code>tenantConfig</code> template<a class="headerlink" href="#tenantconfig-template" title="Permanent link">&para;</a></h2>
 <p>In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate <code>tenantConfig.json</code> files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a <code>tenantConfig</code> template, using the <code>$tenant$</code> placeholder where appropriate, and point to this file in the respective <code>tenantConfig.json</code> files. The contents of the template will then be merged with the contents of <code>tenantConfig.json</code>, and occurence of <code>$tenant$</code> in the template will be replaced with the current tenant name.</p>

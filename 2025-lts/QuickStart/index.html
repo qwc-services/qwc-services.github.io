@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Quick start - QWC2 - 2025.6-lts</title>
+    <title>Quick start - QWC2 - 2025.03.06-lts</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> QWC2 - 2025.6-lts
+          <a href=".." class="icon icon-home"> QWC2 - 2025.03.06-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">QWC2 - 2025.6-lts</a>
+          <a href="..">QWC2 - 2025.03.06-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -197,11 +197,11 @@ cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 <h2 id="running-qwc2-as-a-standalone-viewer">Running QWC2 as a standalone viewer<a class="headerlink" href="#running-qwc2-as-a-standalone-viewer" title="Permanent link">&para;</a></h2>
 <p>If you don't need the advanced functionalities provided by <code>qwc-services</code> or want to integrate QWC2 in another environment, you can run QWC2 as a standalone viewer.</p>
 <p>To work with QWC2, you will need a minimal development environment consisting of <a href="https://git-scm.com/">git</a>, <a href="https://nodejs.org/">node</a> and <a href="https://yarnpkg.com">yarn</a>. You will also need a running QGIS Server instance which serves your projects.</p>
-<p>The fastest way to get started is by cloning the demo application:</p>
-<pre><code class="language-bash">git clone --recursive https://github.com/qgis/qwc2-demo-app.git
+<p>The fastest way to get started is by cloning the stock application:</p>
+<pre><code class="language-bash">git clone https://github.com/qgis/qwc2.git
 </code></pre>
 <p>Next, install all required dependencies:</p>
-<pre><code class="language-bash">cd qwc2-demo-app
+<pre><code class="language-bash">cd qwc2
 yarn install
 </code></pre>
 <p>Then, start a local development application:</p>
