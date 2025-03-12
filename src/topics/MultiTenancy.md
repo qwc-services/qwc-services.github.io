@@ -153,10 +153,10 @@ A minimal configuration for tenant `tenant_name` may look as follows:
 * To use a separate assets folder for each tenant, you can set an appropriate `assetsPath` in the `qwc2_config_file` of each tenant.
 * The various service URLs in the `mapViewer` configuration and in other service configurations need to match what is expected in the `api-gateway` configuration.
 * To separate the qgis projects per tenant (avoiding the `<tenantname>/` prefix on the map names), you can proceed as follows:
-  - Create subdirectories for each tenant in `volumes/qgs-resources`, i.e. `volumes/qgs-resources/<tenant_name>`,
-  - Set `default_qgis_server_url` to `http://qwc-qgis-server/ows/<tenant_name>`,
-  - Set `qgis_projects_base_dir` to `/data/<tenant_name>`,
-  - Make sure to remove the `/ows` prefix from the `url` of any manually configured themes in `themesConfig.json`.
+   - Create subdirectories for each tenant in `volumes/qgs-resources`, i.e. `volumes/qgs-resources/<tenant_name>`,
+   - Set `default_qgis_server_url` to `http://qwc-qgis-server/ows/<tenant_name>`,
+   - Set `qgis_projects_base_dir` to `/data/<tenant_name>`,
+   - Make sure to remove the `/ows` prefix from the `url` of any manually configured themes in `themesConfig.json`.
 
 ## `tenantConfig` template
 
