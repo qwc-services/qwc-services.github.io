@@ -1,3 +1,7 @@
+# Updating to qwc-permalink-service-v2025.03.19
+
+Due to a DB schema change required by `qwc-permalink-service-v2025.03.19`, make sure you are also using `qwc-base-db-migrate-v2025.03.19` or newer.
+
 # Updating to qwc-map-viewer-demo-v2025.03.06
 
 The `qwc-map-viewer-demo` images have been replaced by the `qwc-map-viewer` images (without the `-demo` suffix). Reference this image instead in your `docker-compose.yml`:
