@@ -17,13 +17,13 @@ To query features over WMS GetFeatureInfo, set `identifyTool: "Identify"`. By de
 
 *Note:* Use of the `qwc-feature-info-service` is also recommended if the `qwc-data-service` is used for editing, to ensure attribute values containing paths to uploaded files are properly converted to clickable hyperlinks.
 
-Set whether a layer is identifyable in `QGIS &rarr; Project Properties &rarr; Data sources`.
+Set whether a layer is identifyable in `QGIS → Project Properties → Data sources`.
 
-To highlight the geometry, make sure `QGIS &rarr; Project Properties &rarr; QGIS Server &rarr; Add geometry to feature response` is checked.
+To highlight the geometry, make sure `QGIS → Project Properties → QGIS Server → Add geometry to feature response` is checked.
 
 ### Suppressing attributes
 
-You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS &rarr; Layer properties &rarr; Fields.
+You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS → Layer properties → Fields.
 
 Alternatively, you can selectively restrict attributes using the `qwc-admin-gui` and assigning `Attribute` resource permissions as desired.
 
@@ -180,7 +180,7 @@ In addition, the [`locale`](https://docs.python.org/3/library/locale.html) objec
 
 ## Feature form<a name="feature-form"></a>
 
-The `FeatureForm` plugin displays picked features in a feature form as configured in `QGIS &rarr; Layer properties &rarr; Attributes form`. It queries the features via `qwc-data-service`, and hence only works for layers with `postgresql` data source.
+The `FeatureForm` plugin displays picked features in a feature form as configured in `QGIS → Layer properties → Attributes form`. It queries the features via `qwc-data-service`, and hence only works for layers with `postgresql` data source.
 
 See [Designing the edit forms](Editing.md#edit-forms) for more information on designing edit forms.
 
