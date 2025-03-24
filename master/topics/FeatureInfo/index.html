@@ -169,10 +169,10 @@
 <h2 id="wms-getfeatureinfo">WMS GetFeatureInfo<a name="wms-getfeatureinfo"></a><a class="headerlink" href="#wms-getfeatureinfo" title="Permanent link">&para;</a></h2>
 <p>To query features over WMS GetFeatureInfo, set <code>identifyTool: "Identify"</code>. By default, results are displayed in a table. To display the results in a custom HTML template, the <code>qwc-feature-info-service</code> <a href="../../configuration/ServiceConfiguration/#enabling-services">can be used</a>.</p>
 <p><em>Note:</em> Use of the <code>qwc-feature-info-service</code> is also recommended if the <code>qwc-data-service</code> is used for editing, to ensure attribute values containing paths to uploaded files are properly converted to clickable hyperlinks.</p>
-<p>Set whether a layer is identifyable in <code>QGIS &amp;rarr; Project Properties &amp;rarr; Data sources</code>.</p>
-<p>To highlight the geometry, make sure <code>QGIS &amp;rarr; Project Properties &amp;rarr; QGIS Server &amp;rarr; Add geometry to feature response</code> is checked.</p>
+<p>Set whether a layer is identifyable in <code>QGIS → Project Properties → Data sources</code>.</p>
+<p>To highlight the geometry, make sure <code>QGIS → Project Properties → QGIS Server → Add geometry to feature response</code> is checked.</p>
 <h3 id="suppressing-attributes">Suppressing attributes<a class="headerlink" href="#suppressing-attributes" title="Permanent link">&para;</a></h3>
-<p>You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS &rarr; Layer properties &rarr; Fields.</p>
+<p>You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS → Layer properties → Fields.</p>
 <p>Alternatively, you can selectively restrict attributes using the <code>qwc-admin-gui</code> and assigning <code>Attribute</code> resource permissions as desired.</p>
 <p>You can also omit empty attributes by setting <code>skipEmptyFeatureAttributes: true</code> in the theme configuration entry in <code>themesConfig.json</code>.</p>
 <p>If you use the <code>qwc-feature-info-service</code>, you can also omit empty attributes directly in the <code>GetFeatureInfo</code> by setting <code>skip_empty_attributes: true</code> in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>.</p>
@@ -293,7 +293,7 @@
 <pre><code class="language-html">&lt;div&gt;Area: {{ locale.format_string(&quot;%.2f&quot;, area, True) }}&lt;/div&gt;
 </code></pre>
 <h2 id="feature-form">Feature form<a name="feature-form"></a><a class="headerlink" href="#feature-form" title="Permanent link">&para;</a></h2>
-<p>The <code>FeatureForm</code> plugin displays picked features in a feature form as configured in <code>QGIS &amp;rarr; Layer properties &amp;rarr; Attributes form</code>. It queries the features via <code>qwc-data-service</code>, and hence only works for layers with <code>postgresql</code> data source.</p>
+<p>The <code>FeatureForm</code> plugin displays picked features in a feature form as configured in <code>QGIS → Layer properties → Attributes form</code>. It queries the features via <code>qwc-data-service</code>, and hence only works for layers with <code>postgresql</code> data source.</p>
 <p>See <a href="../Editing/#edit-forms">Designing the edit forms</a> for more information on designing edit forms.</p>
 <p>To use it as default identify-tool, set <code>identifyTool: "FeatureForm"</code> in <code>config.json</code>.</p>
 <p>A layer is only identifyable with the <code>FeatureForm</code> plugin if corresponding <code>Data</code> resources and permissions are configured for the layer data source in the <code>qwc-admin-gui</code>. If a write permission is configured, the feature will be editable.</p>
