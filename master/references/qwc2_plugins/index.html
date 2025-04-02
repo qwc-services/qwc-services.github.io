@@ -176,6 +176,7 @@
 <li><a href="#themeswitcher">ThemeSwitcher</a></li>
 <li><a href="#timemanager">TimeManager</a></li>
 <li><a href="#topbar">TopBar</a></li>
+<li><a href="#valuetool">ValueTool</a></li>
 <li><a href="#view3d">View3D</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
 <li><a href="#editingsupport">EditingSupport</a></li>
@@ -1608,6 +1609,12 @@ revision is published (specified via newsRev prop).</p>
 <td>The side of the application on which to display the sidebar.</td>
 <td><code>undefined</code></td>
 </tr>
+<tr>
+<td>sidebarWidth</td>
+<td><code>string</code></td>
+<td>The default width of the sidebar, as a CSS width string.</td>
+<td><code>undefined</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="panoramax">Panoramax<a name="panoramax"></a><a class="headerlink" href="#panoramax" title="Permanent link">&para;</a></h2>
@@ -1837,6 +1844,18 @@ revision is published (specified via newsRev prop).</p>
 <td><code>'metric'</code></td>
 </tr>
 <tr>
+<td>defaultTextFillColor</td>
+<td><code>array</code></td>
+<td>Default text fill color. In format [r, g, b, a].</td>
+<td><code>[0, 0, 0, 1]</code></td>
+</tr>
+<tr>
+<td>defaultTextOutlineColor</td>
+<td><code>array</code></td>
+<td>Default text outline color. In format [r, g, b, a].</td>
+<td><code>[255, 255, 255, 1]</code></td>
+</tr>
+<tr>
 <td>hiddenTools</td>
 <td><code>array</code></td>
 <td>Tools to hide. Available tools: Circle, Ellipse, Square, Box, HandDrawing, Transform, NumericInput, Buffer, Export.</td>
@@ -1993,6 +2012,12 @@ an aggregated report for all selected features.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>restrictableGroups</td>
+<td><code>array</code></td>
+<td>List of groups for which a permalink may optionally be restricted.</td>
+<td><code>undefined</code></td>
+</tr>
 <tr>
 <td>showLink</td>
 <td><code>bool</code></td>
@@ -2336,8 +2361,54 @@ an aggregated report for all selected features.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="valuetool">ValueTool<a name="valuetool"></a><a class="headerlink" href="#valuetool" title="Permanent link">&para;</a></h2>
+<p>Displays raster band values of active raster layers at the hovered mouse position,
+queried via GetFeatureInfo.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td><code>bool</code></td>
+<td>The number of decimal places to display for elevation values.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
 <p>Displays a 3D map view.</p>
+<p>To add a 3D View to a theme, add the following configuration block to a theme item in <code>themesConfig.json</code>:</p>
+<pre><code>&quot;map3d&quot;: {
+    &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
+    &quot;basemaps&quot;: [
+         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true},
+         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;},
+         ...
+    ],
+    &quot;tiles3d&quot;: [
+         {&quot;name&quot;: &quot;&lt;name&gt;&quot;, &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;, &quot;title&quot;: &quot;&lt;title&gt;&quot;, &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;}
+    ]
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li>The DTM should be a cloud optimized GeoTIFF.</li>
+<li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>.</li>
+<li>The optional <code>colorAttr</code> is the name of an attribute stored in the tileset batch table which stores the batch color, as a 0xRRGGBB integer.</li>
+</ul>
 <table>
 <thead>
 <tr>
