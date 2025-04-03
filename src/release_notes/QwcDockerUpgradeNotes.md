@@ -22,7 +22,7 @@ As a result of `PyJWT` 2.10.0 enforcing that the JWT `sub` claim values must be 
 
 # New qwc-document-service, jasper-reporting-service obsolete \[2024-lts &rarr; 2025-lts\]
 
-As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC2.
+As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC.
 
 # Split categorized layers functionality rewritten as QGIS Server plugin \[2024-lts &rarr; 2025-lts\]
 

@@ -1,6 +1,6 @@
 # Search
 
-QWC2 can be configured to use arbitrary custom search providers. In addition, the `qwc-fulltext-search-service` provided by the qwc-services ecosystem can be used.
+QWC can be configured to use arbitrary custom search providers. In addition, the `qwc-fulltext-search-service` provided by the qwc-services ecosystem can be used.
 
 ## Adding search providers
 
@@ -33,7 +33,7 @@ window.QWC2SearchProviders = {
 ```
   in `js/appConfig.js`.
 
-  Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.
+  Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC to add/modify search providers.
 
 The format of `ProviderDefinition` is
 ```js
@@ -172,11 +172,11 @@ searchProviders: [
 ]
 ...
 ```
-Note: The `qwc2` stock application (also used by the `qwc-map-viewer` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
+Note: The QWC stock application (also used by the `qwc-map-viewer` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
 
 ## Configuring the QGIS feature search <a name="qgis-search"></a>
 
-The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the `qwc2` stock application.
+The QGIS feature search relies on WMS GetFeatureInfo with the [`FILTER`](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter) parameter to search features of layers which are part of the theme WMS. It is enabled via the `qgis` search provider, which is part of the QWC stock application.
 
 *Note*: Make sure the QGIS Project is configured to return geometries with the feature info responses (`Project` &rarr; `Properties` &rarr; `QGIS Server` &rarr; `Add geometry to feature response`).
 
@@ -391,7 +391,7 @@ The next table shows how the values need to be defined:
 | `FACET_NAME`             | Name of the search facet                                                                       | `fluesse_search` |
 | `PRIMARY_KEY`            | Primary key name of the table that is used in the search query                                 | `ogc_fid`        |
 | `SEARCH_FIELD_IS_STRING` | Definition, if search field is string (`y`) or not (`n`). If not, it's interpreted as integer. | `n`              |
-| `DISPLAYTEXT`            | Displaytext that will be shown by the QWC2 when a match was found                              | `name_long`      |
+| `DISPLAYTEXT`            | Displaytext that will be shown by the QWC when a match was found                              | `name_long`      |
 | `SEARCH_FIELD_1`         | Table field that will be used by the search                                                    | `name_long`      |
 | `GEOMETRY_FIELD`         | Name of the geometry column of the search table                                                | `wkb_geometry`   |
 | `SCHEMA`                 | Search table schema                                                                            | `qwc_geodb`      |

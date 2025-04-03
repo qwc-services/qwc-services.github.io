@@ -1,6 +1,6 @@
 # Editing
 
-QWC2 offers comprehensive editing support through a variety of plugins:
+QWC offers comprehensive editing support through a variety of plugins:
 
 - The [`Editing`](../references/qwc2_plugins.md#editing) plugin allows creating, editing and removing features of an editable vector layer. It supports editing both geometry and attributes, displaying customizeable attribute forms.
 - The [`AttributeTable`](../references/qwc2_plugins.md#attributetable) plugin also allows creating, editing and removing features of an editable vector layer. It displays all features of the editable layer in a tabularized view, and allows editing attributes, but not geometries. Noteably, it will allow editing geometryless datasets.
@@ -22,9 +22,9 @@ To make a layer editable, follow these steps:
 
 ## Designing the edit forms<a name="edit-forms"></a>
 
-Much of the power of the QWC2 editing functionality resides in its fully customizeable forms, providing support for different input widget types, file uploads and 1:N relations.
+Much of the power of the QWC editing functionality resides in its fully customizeable forms, providing support for different input widget types, file uploads and 1:N relations.
 
-The [`qwc-config-generator`](https://github.com/qwc-services/qwc-config-generator) will automatically generate forms based on the configuration specified in the QGIS Layer Properties &rarr; Attributes Form. If `Autogenerate` or `Drag and Drop Designer` is chosen, a corresponding Qt UI form is automatically generated for QWC2 in `assets/forms/autogen`. If `Provide ui-file` is chosen, the specified UI form will copied to `assets/forms/autogen`.
+The [`qwc-config-generator`](https://github.com/qwc-services/qwc-config-generator) will automatically generate forms based on the configuration specified in the QGIS Layer Properties &rarr; Attributes Form. If `Autogenerate` or `Drag and Drop Designer` is chosen, a corresponding Qt UI form is automatically generated for QWC in `assets/forms/autogen`. If `Provide ui-file` is chosen, the specified UI form will copied to `assets/forms/autogen`.
 
 Localized translation forms are supported. To this end, place a Qt Translation file called `<form_basename>_<lang>.ts` next to the designer form `<form_basename>.ui`, where `lang` is a language or language/country code, i.e. `en` or `en-US`. There is a [`translateui.sh`](https://github.com/qgis/qwc2/tree/master/scripts/translateui.sh) script to help generate the translation files. Example:
 ```bash
@@ -41,7 +41,7 @@ Attachments are stored on disk below the `attachments_base_dir` defined in the d
 
 *Note:*
 
-- If you set the format constraint to `*.jpeg` and your browser has access to a camera, QWC2 will allow you to directly upload images captured from the camera.
+- If you set the format constraint to `*.jpeg` and your browser has access to a camera, QWC will allow you to directly upload images captured from the camera.
 - You can set the allowed attachment extensions and maximum file sizes globally by setting `allowed_attachment_extensions` and `max_attachment_file_size` in the data service configuration. You may also need to set/increase `client_max_body_size` in `qwc-docker/api-gateway/nginx.conf`, which defaults to `1M`.
 - You can also set the allowed attachment extensions and maximum file sizes per dataset by setting `max_attachment_file_size_per_dataset` and `allowed_extensions_per_dataset` in the data service configuration. If you set the per dataset values, the global settings will be disregarded (i.e. if an attachment satisfies the per dataset constraint it will be considered valid, even if it violates the global constraint).
 - To ensure the uploaded files are properly rendered as download links in GetFeatureInfo responses, use the [`qwc-feature-info-service`](https://github.com/qwc-services/qwc-config-generator).
@@ -85,19 +85,19 @@ In a manually created Qt-Designer Ui form, create a widget of type `QWidget`, `Q
 
 *Notes*:
 
-- In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form `nrel__<reltablename>__<foreignkeyfield>__<sortcol>`. If a sort-column is specified, QWC2 will display sort arrows for each entry in the relation widget.
+- In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form `nrel__<reltablename>__<foreignkeyfield>__<sortcol>`. If a sort-column is specified, QWC will display sort arrows for each entry in the relation widget.
 - The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend.
 
 
 ### Expressions
 
-The QWC2 editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.
+The QWC editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.
 
 *Notes*:
 
 - Currently only a limited number of verbs are implemented, see the [expression grammar](https://github.com/qgis/qwc2/blob/master/utils/expr_grammar/grammar.ne). Pull requests for additional verbs are welcome!
 - Make sure Data permissions exist for any datasets which are referenced in the expressions.
-- The QWC2 expression parser requires a space between brackets and keywords, i.e. `attribute('foo')is null` is invalid, whereas `attribute('foo') is null` is valid.
+- The QWC expression parser requires a space between brackets and keywords, i.e. `attribute('foo')is null` is invalid, whereas `attribute('foo') is null` is valid.
 - If the parser fails to parse an expression, an error message will be logged in the browser console.
 
 ### Special form widgets

@@ -5,12 +5,12 @@ A theme corresponds to a QGIS project, published as WMS and served by QGIS Serve
 The basic steps for configuring a theme are:
 
 - [Create a QGIS project and deploy it to QGIS Server](#create-qgis-project)
-- [Writing the QWC2 theme configuration](#writing-themes-configuration)
+- [Writing the QWC theme configuration](#writing-themes-configuration)
 - [Generating the themes configuration](#generating-themes-configuration)
 
 ## Creating and publishing a QGIS project<a name="create-qgis-project"></a>
 
-The first step is to prepare a QGIS project for publishing. Besides the common tasks of adding and styling layers, the following table gives an overview of settings which influence how the theme is displayed in QWC2:
+The first step is to prepare a QGIS project for publishing. Besides the common tasks of adding and styling layers, the following table gives an overview of settings which influence how the theme is displayed in QWC:
 
 | What                 | Where                                     | Description                                      |
 |----------------------|-------------------------------------------|--------------------------------------------------|
@@ -27,7 +27,7 @@ The first step is to prepare a QGIS project for publishing. Besides the common t
 | Rendering order      | Layer Order Panel or Layers Panel         | Rendering order of the layers. If layer re-ordering is enabled in `config.json`, the order from the Layer Order Panel is ignored. |
 | Print layouts        | Layout manager                            | The print layouts offered in the Print plugin.   |
 | Print layout labels  | Layout manager                            | Print layout labels with an ID will be exposed in the Print plugin. Note: a label ID starting with `__` will not be exposed. |
-| Attribute form       | Vector Layer Properties &rarr; Attributes Form | The configured attribute form will be displayed when editing in QWC2. |
+| Attribute form       | Vector Layer Properties &rarr; Attributes Form | The configured attribute form will be displayed when editing in QWC. |
 | External layers      | Layer Properties &rarr; QGIS Server &rarr; Data URL | Mark the layer as an external layer to avoid cascaded requests. See [Configuring external layers](#external-layers). |
 
 Then, store the project in the publishing directory of your QGIS Server instance. When using `qwc-docker`, store the project as `*.qgs` below `qwc-docker/volumes/qgs-resources`.
@@ -52,7 +52,7 @@ sslmode=disable
 
 ## Configuring the themes in `themesConfig.json` <a name="writing-themes-configuration"></a>
 
-The next step is to configure the theme for QWC2. There are two approaches:
+The next step is to configure the theme for QWC. There are two approaches:
 
 - [Automatic theme configuration](#automatic-theme-configuration) (only when using `qwc-docker`): Just copy the project file to the designated location and the `qwc-config-generator` will automatically generate a theme configuration using default parameters.
 - [Manual theme configuration](#manual-theme-configuration): Manually configure a theme with the full set of configuration options.
@@ -75,7 +75,7 @@ To use a custom thumbnail for an automatically configured theme, place a an imag
 
 The theme configuration file is located as follows:
 
-- Standalone viewer: `qwc2-app/static/themesConfig.json`
+- Standalone viewer: `qwc-app/static/themesConfig.json`
 - `qwc-docker`: `qwc-docker/volumes/config-in/<tentant>/themesConfig.json`
 
 *Note*: when using `qwc-docker`, the themes configuration may also be embedded as `themesConfig` directly in `qwc-docker/volumes/config-in/<tentant>/tenantConfig.json`.
@@ -198,7 +198,7 @@ The format of the theme definitions is as follows:
 | `"extraLegendParameters": "<&KEY=VALUE>",`      | Optional, [additional query parameters](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#getlegendgraphics) to append to GetLegendGraphic request.     |
 | `"extraDxfParameters": "<&KEY=VALUE>",`         | Optional, [additional query parameters](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html?highlight=dxf#format-options) to append to DXF export request.           |
 | `"extraPrintParameters": "<&KEY=VALUE>",`       | Optional, additional query parameters to append to GetPrint request (requires QGIS Server >= 3.32.0). |
-| `"extraPrintLayers": ["<layername>", ...],`     | Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC2 LayerTree. |
+| `"extraPrintLayers": ["<layername>", ...],`     | Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC LayerTree. |
 | `"printLabelBlacklist": ["<LabelId>", ...]`     | Optional, list of composer label ids to not expose in the print dialog.          |
 | `"editConfig": {<editConfig>}     `             | Optional, object containing the editing configuration for the theme, see [Editing](../topics/Editing.md#edit-config). |
 | `"snapping": {...},`                            | Optional, snapping configuration, see [Snapping](../topics/Snapping.md).         |
@@ -239,7 +239,7 @@ A bare minimum theme entry might look as follows:
 
 ### External layers <a name="external-layers"></a>
 
-External layers can be used to selectively replace layers in a QGIS project with a layer from an external source, for instance in the case of a WMS layer embedded in a QGIS project, to avoid cascading WMS requests. They are handled transparently by QWC2 (they are positioned in the layer tree identically to the internal layer they replace), but the `GetMap` and `GetFeatureInfo` requests are sent directly to the specified WMS Service.
+External layers can be used to selectively replace layers in a QGIS project with a layer from an external source, for instance in the case of a WMS layer embedded in a QGIS project, to avoid cascading WMS requests. They are handled transparently by QWC (they are positioned in the layer tree identically to the internal layer they replace), but the `GetMap` and `GetFeatureInfo` requests are sent directly to the specified WMS Service.
 
 **Configuring external layers via Data Url**
 
@@ -465,11 +465,11 @@ Instead of specifiying a full background layer definition in a group, you can al
 
 ## Generating the themes configuration <a name="generating-theme-configuration"></a>
 
-The file ultimately read by the QWC2 viewer is the `themes.json` configuration, which includes the contents of `themesConfig.json` completed with additional data obtained from the QGIS Project.
+The file ultimately read by the QWC viewer is the `themes.json` configuration, which includes the contents of `themesConfig.json` completed with additional data obtained from the QGIS Project.
 
 * When using `qwc-docker`, you can generate the themes from the `qwc-admin-gui` administration backend, running on <http://localhost:8088/qwc_admin> by default. Log in as `admin` user, then press the green `Generate service configuration` button. This will invoce the`qwc-config-generator`, which will generate `mapViewerConfig.json` located below `qwc-docker/volumes/config/<tentant>`. You can then inspect the generated `themes.json` at <http://localhost:8088/themes.json>.
 
-* When using QWC2 as a standalone viewer, the `themes.json` can be generated by invoking
+* When using QWC as a standalone viewer, the `themes.json` can be generated by invoking
 ```bash
 yarn run themesconfig
 ```
@@ -499,7 +499,7 @@ You can configure `qwc-docker` to look for `qgz` project files instead of `qgs` 
 
 ## Split categorized layers
 
-By default, symbol categories of a [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) layer won't be exposed via WMS and hence in QWC2.
+By default, symbol categories of a [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) layer won't be exposed via WMS and hence in QWC.
 
 To expose symbol categories as separate layers via WMS, you can use the [split_categorized](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized) QGIS Server plugin.
 

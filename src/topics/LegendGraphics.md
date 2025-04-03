@@ -1,6 +1,6 @@
 # Legend graphics
 
-By default, QWC2 will obtain the legend graphics of a layer from QGIS Server.
+By default, QWC will obtain the legend graphics of a layer from QGIS Server.
 
 ## Customizing the `GetLegendGraphics` request
 You can customize the `GetLegendGraphics` request by specifying additional query parameters in via `extraLegendParameters` in the [theme configuration block](../configuration/ThemesConfiguration.md#manual-theme-configuration). The list of supported query parameters is documented in the [QGIS Server documentation](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getlegendgraphics).
@@ -32,7 +32,7 @@ Then, legend images will be searched for in this order (the first one found is u
  * A `<legend_images_path>/<service_name>/<layername><suffix>.png` file, where
     * `service_name` is the name of the WMS service
     * `layername` is the WMS layer name
-    * `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC2 to the legend service depending on the requested image type.
+    * `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC to the legend service depending on the requested image type.
  * A `<legend_images_path>/<legend_image>` file with `legend_image` as specified for the desired layer in the `legend` service configuration, for example:
 ```json
 {

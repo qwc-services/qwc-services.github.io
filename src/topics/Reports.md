@@ -1,6 +1,6 @@
 # Reports
 
-QWC2, complemented with the [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on [Jasper](https://community.jaspersoft.com/download-jaspersoft/community-edition/) report templates.
+QWC, complemented with the [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on [Jasper](https://community.jaspersoft.com/download-jaspersoft/community-edition/) report templates.
 
 ## Setting up the document-service
 As a first step, set up a [`qwc-document-service`](https://github.com/qwc-services/qwc-document-service/), placing your report templates below the `report_dir`. Read the `qwc-document-service` [`README`](../references/qwc-document-service_readme.md) for more information on setting up the service and to understand how to prepare and configure your report templates.
@@ -101,7 +101,7 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 
 - To restrict document templates to specified roles, create `Document template` resources and permissions as desired. These permissions will also apply to any reports included as subreports by a parent report.
 
-- Test your report, either through the QWC2 interface, or via a direct call to the document service, i.e.:
+- Test your report, either through the QWC interface, or via a direct call to the document service, i.e.:
 
         http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid>
 

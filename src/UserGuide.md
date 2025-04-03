@@ -1,6 +1,6 @@
 # User guide
 
-This section contains user documentation of the QWC2 application and QWC services. It describes **some** of the available features.
+This section contains user documentation of the QWC application and QWC services. It describes **some** of the available features.
 
 *Note*: Depending on the specific viewer configuration, some functionalities might be missing or different than described in this section.
 

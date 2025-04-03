@@ -1,6 +1,6 @@
 # ChangeLog
 
-This file lists the most important changes in QWC2 and qwc-services between LTS releases.
+This file lists the most important changes in QWC and qwc-services between LTS releases.
 
 ## 2024-lts &rarr; 2025-lts
 
@@ -8,17 +8,17 @@ This file lists the most important changes in QWC2 and qwc-services between LTS 
 
 When upgrading from a 2025-lts setup, please note the entries marked with *\[2024-lts &rarr; 2025-lts\]* in the upgrade notes:
 
-* [QWC2 upgrade notes](./QWC2UpgradeNotes.md)
+* [QWC upgrade notes](./QWC2UpgradeNotes.md)
 * [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
 
 
 ### Viewer Configuration
 * [Config: Allow overriding plugin config per theme](../../configuration/ThemesConfiguration.md#manual-theme-configuration)
-* [Allow adding custom plugins via QWC2 API](../../references/qwc2_plugins#api)
+* [Allow adding custom plugins via QWC API](../../references/qwc2_plugins#api)
 * [Allow registering identify exporters and attribute calculators via QWC2 API](../../references/qwc2_plugins#api)
 
 ### General
-* Allow detaching QWC2 dialogs (i.e. Attribute Table) to separate browser windows
+* Allow detaching QWC dialogs (i.e. Attribute Table) to separate browser windows
 * [Allow specifying OverviewMap layer independent from current background layer](../../references/qwc2_plugins#overviewmap)
 
 ### Editing / AttributeForm / AttributeTable
@@ -103,7 +103,7 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Full changelogs
 
-* [QWC2](https://github.com/qgis/qwc2/compare/2024-lts...2025-lts)
+* [QWC](https://github.com/qgis/qwc2/compare/2024-lts...2025-lts)
 * [qwc-admin-gui](https://github.com/qwc-services/qwc-admin-gui/compare/2024-lts...2025-lts)
 * [qwc-base-db](https://github.com/qwc-services/qwc-base-db/compare/2024-lts...2025-lts)
 * [qwc-config-generator](https://github.com/qwc-services/qwc-config-generator/compare/2024-lts...2025-lts)
@@ -132,7 +132,7 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 When upgrading from a 2023-lts setup, please note the entries marked with *\[2023-lts &rarr; 2024-lts\]* in the upgrade notes:
 
-* [QWC2 upgrade notes](./QWC2UpgradeNotes.md)
+* [QWC upgrade notes](./QWC2UpgradeNotes.md)
 * [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
 
 ### General
@@ -218,7 +218,7 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### Full changelogs
 
-* [QWC2](https://github.com/qgis/qwc2/compare/2023-lts...2024-lts)
+* [QWC](https://github.com/qgis/qwc2/compare/2023-lts...2024-lts)
 * [qwc-admin-gui](https://github.com/qwc-services/qwc-admin-gui/compare/2023-lts...2024-lts)
 * [qwc-base-db](https://github.com/qwc-services/qwc-base-db/compare/2023-lts...2024-lts)
 * [qwc-config-generator](https://github.com/qwc-services/qwc-config-generator/compare/2023-lts...2024-lts)

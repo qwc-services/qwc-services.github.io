@@ -1,14 +1,14 @@
 # Printing
 
-QWC2 supports printing to PDF via the QGIS Server `GetPrint` request.
+QWC supports printing to PDF via the QGIS Server `GetPrint` request.
 
 The basic steps are:
 
-* Ensure the `Print` plugin is enabled in the QWC2 viewer.
+* Ensure the `Print` plugin is enabled in the QWC viewer.
 * Create print layouts in the QGIS project as desired. The layouts must contain one Map element.
 * [Generate the themes configuration](../configuration/ThemesConfiguration.md#generating-theme-configuration).
 
-The available print layouts will then appear in the QWC2 print plugin.
+The available print layouts will then appear in the QWC print plugin.
 
 You can limit the available print scales by setting `printScales` (or `defaultPrintScales`) in the [theme configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration) to a list of scale denominators. If the list is empty, the print scale can be freely chosen.
 
@@ -32,7 +32,7 @@ Some additional tasks include:
 
 ## Configuring print background layers <a name="background-layers"></a>
 
-Background layers are handled purely client-side in QWC2. There are two options for printing the background layer:
+Background layers are handled purely client-side in QWC. There are two options for printing the background layer:
 
 The first option is to add a `printLayer` to the background layer entry when writing the [themes configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration), i.e.:
 
@@ -45,7 +45,7 @@ The first option is to add a `printLayer` to the background layer entry when wri
 }
 ```
 
-You can set `printLayer` to a QGIS layer name, or to a resource string (i.e. `wms:<baseurl>#<layername>`). A QGIS layer marked as `printLayer` will be filtered out from the QWC2 layer tree, and hence will not be displayed in QWC2.
+You can set `printLayer` to a QGIS layer name, or to a resource string (i.e. `wms:<baseurl>#<layername>`). A QGIS layer marked as `printLayer` will be filtered out from the QWC layer tree, and hence will not be displayed in QWC.
 
 You can also set `printLayer` to a list `[{"maxScale": <scale>, "name": "<layer name>"}, ..., {"maxScale": null, "name": "<QGis layer name>"}]`, ordered in ascending order by `maxScale`. The last entry should have `maxScale` `null`, as the layer used for all remaining scales.
 
@@ -55,9 +55,9 @@ The second option is to use WMS background layers, which are automatically print
 
 ## User labels <a name="user-labels"></a>
 
-User labels appear as free-text input fields in the QWC2 print dialog. To configure user labels, it is sufficient to add item `id`s to layout label items in the print layout. The specified `id` will appear as input field label in the QWC2 print dialog.
+User labels appear as free-text input fields in the QWC print dialog. To configure user labels, it is sufficient to add item `id`s to layout label items in the print layout. The specified `id` will appear as input field label in the QWC print dialog.
 
-*Note*: Label `id`s beginning with `__` (two underscore characters) are ignored as user labels by QWC2.
+*Note*: Label `id`s beginning with `__` (two underscore characters) are ignored as user labels by QWC.
 
 You can can customize the input field (max length, number of rows) by setting the `printLabelConfig` in the [theme configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration).
 
@@ -84,17 +84,17 @@ will print a `500x500` (map units) grid for scales up to `1:1000`, a `1000x1000`
 
 ## Layouts with legend <a name="print-legend"></a>
 
-The QWC2 print dialog will expose a toggle switch to enable the legend in the print output for layout `<layout_name>` if the QGIS project contains a second layout named `<layout_name>_legend`. The layout with the `_legend` suffix is expected to contain a legend item.
+The QWC print dialog will expose a toggle switch to enable the legend in the print output for layout `<layout_name>` if the QGIS project contains a second layout named `<layout_name>_legend`. The layout with the `_legend` suffix is expected to contain a legend item.
 
 ## Atlas printing <a name="print-atlas"></a>
 
-To enable atlas printing in QWC2, configure the QGIS project as follows:
+To enable atlas printing in QWC, configure the QGIS project as follows:
 
 - Check the `Generate an atlas` checkbox in the desired layout in QGIS layout designer &rarr; Atlas &rarr; Atlas settings, selecting the coverage layer as desired.
 - In the layout map item properties, check `Controlled by Atlas`.
 - In the Project properties &rarr; QGIS Server, set `Maximum features for Atlas print requests` to the desired value.
 
-QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.
+QWC will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.
 
 ## Layout templates <a name="layout-templates"></a>
 

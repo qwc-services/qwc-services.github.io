@@ -1,10 +1,10 @@
 # Interfacing with other applications
 
-QWC2 offers a number of options to interface it with other applications.
+QWC offers a number of options to interface it with other applications.
 
 ## URL parameters <a name="url-parameters"></a>
 
-The following parameters can appear in the URL of the QWC2 application:
+The following parameters can appear in the URL of the QWC application:
 
 - `t`: The active theme
 - `l`: The layers in the map, see below.
@@ -34,7 +34,7 @@ where
 - `<style>` denotes the layer style name. If the `{<style>}` portion is omitted, the style named `default` will be used, if one exists, or the first available style otherwise.
 - `!` denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.
 
-*Note*: If group name is specified instead of the layer name, QWC2 will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.
+*Note*: If group name is specified instead of the layer name, QWC will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.
 
 The `urlPositionFormat` parameter in `config.json` determines whether the extent or the center and scale appears in the URL.
 
@@ -52,7 +52,7 @@ See [Fulltext search](Search.md#fulltext-search) for more details.
 
 ## Launching external websites
 
-QWC2 menu entries can be configured to launch external websites as described in [opening external websites](../configuration/ViewerConfiguration.md#opening-external-websites).
+QWC menu entries can be configured to launch external websites as described in [opening external websites](../configuration/ViewerConfiguration.md#opening-external-websites).
 
 ## Javascript API
 

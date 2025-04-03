@@ -1,8 +1,8 @@
 # Quick start
 
-## Running QWC2 as part of qwc-services
+## Running QWC as part of qwc-services
 
-`qwc-services` is a collection of loosely coupled micro-services for extending QWC2. The services communicate with each other via HTTP/Rest, and are mostly written in Python.
+`qwc-services` is a collection of loosely coupled micro-services for extending QWC. The services communicate with each other via HTTP/Rest, and are mostly written in Python.
 
 The easiest way to run `qwc-services` is to use the readily available docker images, using the sample setup at [qwc-docker](https://github.com/qwc-services/qwc-docker).
 
@@ -57,11 +57,11 @@ Next steps:
 - [Configuring the services](configuration/../configuration/ServiceConfiguration.md)
 - [Set resource permissions](configuration/ResourcesPermissions.md)
 
-## Running QWC2 as a standalone viewer
+## Running QWC as a standalone viewer
 
-If you don't need the advanced functionalities provided by `qwc-services` or want to integrate QWC2 in another environment, you can run QWC2 as a standalone viewer.
+If you don't need the advanced functionalities provided by `qwc-services` or want to integrate QWC in another environment, you can run QWC as a standalone viewer.
 
-To work with QWC2, you will need a minimal development environment consisting of [git](https://git-scm.com/), [node](https://nodejs.org/) and [yarn](https://yarnpkg.com). You will also need a running QGIS Server instance which serves your projects.
+To work with QWC, you will need a minimal development environment consisting of [git](https://git-scm.com/), [node](https://nodejs.org/) and [yarn](https://yarnpkg.com). You will also need a running QGIS Server instance which serves your projects.
 
 The fastest way to get started is by cloning the stock application:
 ```bash

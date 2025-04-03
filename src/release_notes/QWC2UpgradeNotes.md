@@ -1,6 +1,6 @@
 # Upgrade notes
 
-This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.
+This document describes incompatibilites and other aspects which QWC applications need to address when updating against the latest qwc2 submodule.
 
 When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
 

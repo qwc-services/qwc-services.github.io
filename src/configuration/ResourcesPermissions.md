@@ -40,7 +40,7 @@ For more detailed [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_
 
 The `viewer_task` resource defines viewer functionalities (e.g. printing or raster export) that can be restricted or permitted.
 Their `name` (e.g. `RasterExport`) will be matched against:
-- The `key` in `menuItems` and `toolbarItems` in the QWC2 `config.json`.
+- The `key` in `menuItems` and `toolbarItems` in the QWC `config.json`.
 - The `name` of a plugin entry in `config.json`.
 - The `task` configuration property of a `TaskButton` plugin entry in `config.json`
 
@@ -50,7 +50,7 @@ The `FeatureInfo service`, `FeatureInfo layer` and subordinate `Attribute` resou
 
 Restricted viewer task items are then removed from the menu and toolbar in the map viewer. Viewer tasks not explicitly added as resources are kept unchanged from the `config.json`.
 
-*Note*: The resource types, i.e. for custom QWC2 plugins, can be extended by inserting new types into the `qwc_config.resource_types` table.
+*Note*: The resource types, i.e. for custom QWC plugins, can be extended by inserting new types into the `qwc_config.resource_types` table.
 These can be queried, e.g. in a custom service, by using `PermissionClient::resource_permissions()` or
 `PermissionClient::resource_restrictions()` from [QWC Services Core](https://github.com/qwc-services/qwc-services-core).
 

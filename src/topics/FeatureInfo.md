@@ -1,6 +1,6 @@
 # Feature info
 
-The feature info behaviour in QWC2 is controlled by configuring `identifyTool` in `config.json` (or per-theme in `themesConfig.json`) to the desired plugin as well as whether a `qwc-feature-info-service` is used.
+The feature info behaviour in QWC is controlled by configuring `identifyTool` in `config.json` (or per-theme in `themesConfig.json`) to the desired plugin as well as whether a `qwc-feature-info-service` is used.
 
 The feature info is by default triggered when clicking on a feature in the map. You can also configure the feature info as an explicit viewer tool by setting `identifyTool: null` and [adding](../configuration/ViewerConfiguration.md#plugin-configuration) a `menuItems` or `toolbarItems` entry.
 
@@ -38,7 +38,7 @@ In general, HTML markup in attribute values is preserved.
 For displaying interactive hyperlinks, the following options are supported:
 
 - URLs in attribute text values with no HTML markup are automatically converted to an interactive hyperlink.
-- Alternatively, you can enclose the URL in a HTML `<a>` tag in the attribute value. To open the linked page in an inline dialog within QWC2, you can set the anchor target to `:iframedialog:<dialogname>:<optkey>=<optval>:<optkey>=<optval>:...` where the supported options are:
+- Alternatively, you can enclose the URL in a HTML `<a>` tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to `:iframedialog:<dialogname>:<optkey>=<optval>:<optkey>=<optval>:...` where the supported options are:
   * `w`: Dialog width in pixels, default: `640`.
   * `h`: Dialog height in pixels, default: `480`.
   * `title`: Dialog window title, by default the translation string `windows.<dialogname>`.
@@ -66,7 +66,7 @@ To transform attributes client-side you can implement the `attributeTransform` i
 
 ### Custom export
 
-By default, the identify dialog in QWC2 allows you to export the results to `json` (QWC2 feature storage format), `geojson` (standard GeoJSON without QWC2 specific fields), `csv` (single CSV with all layers) or `csv+zip` (ZIP with one CSV per layer). You can define additional export functions by extending `customExporters` in `qwc2-app/js/IdentifyExtensions.js`.
+By default, the identify dialog in QWC allows you to export the results to `json` (QWC feature storage format), `geojson` (standard GeoJSON without QWC specific fields), `csv` (single CSV with all layers) or `csv+zip` (ZIP with one CSV per layer). You can define additional export functions by extending `customExporters` in `qwc2-app/js/IdentifyExtensions.js`.
 
 ### Custom HTML templates<a name="html-templates"></a>
 
