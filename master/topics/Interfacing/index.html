@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Interfacing with applications - QWC2 - 2025.03.06-master</title>
+    <title>Interfacing with applications - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -126,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -145,9 +145,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="interfacing-with-other-applications">Interfacing with other applications<a class="headerlink" href="#interfacing-with-other-applications" title="Permanent link">&para;</a></h1>
-<p>QWC2 offers a number of options to interface it with other applications.</p>
+<p>QWC offers a number of options to interface it with other applications.</p>
 <h2 id="url-parameters">URL parameters <a name="url-parameters"></a><a class="headerlink" href="#url-parameters" title="Permanent link">&para;</a></h2>
-<p>The following parameters can appear in the URL of the QWC2 application:</p>
+<p>The following parameters can appear in the URL of the QWC application:</p>
 <ul>
 <li><code>t</code>: The active theme</li>
 <li><code>l</code>: The layers in the map, see below.</li>
@@ -174,7 +174,7 @@
 - <code>&lt;transparency&gt;</code> denotes the layer transparency, betwen 0 and 100. If the <code>[&lt;transparency&gt;]</code> portion is omitted, the layer is fully opaque.
 - <code>&lt;style&gt;</code> denotes the layer style name. If the <code>{&lt;style&gt;}</code> portion is omitted, the style named <code>default</code> will be used, if one exists, or the first available style otherwise.
 - <code>!</code> denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.</p>
-<p><em>Note</em>: If group name is specified instead of the layer name, QWC2 will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.</p>
+<p><em>Note</em>: If group name is specified instead of the layer name, QWC will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.</p>
 <p>The <code>urlPositionFormat</code> parameter in <code>config.json</code> determines whether the extent or the center and scale appears in the URL.</p>
 <p>The <code>urlPositionCrs</code> parameter in <code>config.json</code> determines the projection to use for the extent resp. center coordinates in the URL. By default the map projection of the current theme is used. If <code>urlPositionCrs</code> is equal to the map projection, the <code>crs</code> parameter is omitted in the URL.</p>
 <h3 id="highlight-feature-on-startup">Highlight feature on startup<a class="headerlink" href="#highlight-feature-on-startup" title="Permanent link">&para;</a></h3>
@@ -184,7 +184,7 @@
 - Or specify <code>st=&lt;filter_expr&gt;&amp;hp=&lt;facet_name&gt;</code></p>
 <p>See <a href="../Search/#fulltext-search">Fulltext search</a> for more details.</p>
 <h2 id="launching-external-websites">Launching external websites<a class="headerlink" href="#launching-external-websites" title="Permanent link">&para;</a></h2>
-<p>QWC2 menu entries can be configured to launch external websites as described in <a href="../../configuration/ViewerConfiguration/#opening-external-websites">opening external websites</a>.</p>
+<p>QWC menu entries can be configured to launch external websites as described in <a href="../../configuration/ViewerConfiguration/#opening-external-websites">opening external websites</a>.</p>
 <h2 id="javascript-api">Javascript API<a class="headerlink" href="#javascript-api" title="Permanent link">&para;</a></h2>
 <p>The <code>API</code> plugin exposes many application actions via the <code>window.qwc2</code> object and makes them accessible for external applications. See <a href="../../references/qwc2_plugins/#api">API plugin reference</a> for more details.</p>
 <p>See <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/api_examples.js">api_examples.js</a> for some concrete examples.</p>

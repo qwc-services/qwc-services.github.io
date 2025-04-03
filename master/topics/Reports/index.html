@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Reports - QWC2 - 2025.03.06-master</title>
+    <title>Reports - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -143,7 +143,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h1>
-<p>QWC2, complemented with the <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on <a href="https://community.jaspersoft.com/download-jaspersoft/community-edition/">Jasper</a> report templates.</p>
+<p>QWC, complemented with the <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on <a href="https://community.jaspersoft.com/download-jaspersoft/community-edition/">Jasper</a> report templates.</p>
 <h2 id="setting-up-the-document-service">Setting up the document-service<a class="headerlink" href="#setting-up-the-document-service" title="Permanent link">&para;</a></h2>
 <p>As a first step, set up a <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, placing your report templates below the <code>report_dir</code>. Read the <code>qwc-document-service</code> <a href="../../references/qwc-document-service_readme/"><code>README</code></a> for more information on setting up the service and to understand how to prepare and configure your report templates.</p>
 <p>When using <code>qwc-docker</code>, you can configure the container as follows:</p>
@@ -247,7 +247,7 @@
 <p>To restrict document templates to specified roles, create <code>Document template</code> resources and permissions as desired. These permissions will also apply to any reports included as subreports by a parent report.</p>
 </li>
 <li>
-<p>Test your report, either through the QWC2 interface, or via a direct call to the document service, i.e.:</p>
+<p>Test your report, either through the QWC interface, or via a direct call to the document service, i.e.:</p>
 <pre><code>http://localhost:8088/api/v1/document/MyReport.pdf?feature=&lt;fid&gt;
 </code></pre>
 </li>

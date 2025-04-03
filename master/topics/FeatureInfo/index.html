@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Feature info - QWC2 - 2025.03.06-master</title>
+    <title>Feature info - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -138,7 +138,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -157,7 +157,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="feature-info">Feature info<a class="headerlink" href="#feature-info" title="Permanent link">&para;</a></h1>
-<p>The feature info behaviour in QWC2 is controlled by configuring <code>identifyTool</code> in <code>config.json</code> (or per-theme in <code>themesConfig.json</code>) to the desired plugin as well as whether a <code>qwc-feature-info-service</code> is used.</p>
+<p>The feature info behaviour in QWC is controlled by configuring <code>identifyTool</code> in <code>config.json</code> (or per-theme in <code>themesConfig.json</code>) to the desired plugin as well as whether a <code>qwc-feature-info-service</code> is used.</p>
 <p>The feature info is by default triggered when clicking on a feature in the map. You can also configure the feature info as an explicit viewer tool by setting <code>identifyTool: null</code> and <a href="../../configuration/ViewerConfiguration/#plugin-configuration">adding</a> a <code>menuItems</code> or <code>toolbarItems</code> entry.</p>
 <p>The following approaches are available for feature info:</p>
 <ul>
@@ -181,7 +181,7 @@
 <p>For displaying interactive hyperlinks, the following options are supported:</p>
 <ul>
 <li>URLs in attribute text values with no HTML markup are automatically converted to an interactive hyperlink.</li>
-<li>Alternatively, you can enclose the URL in a HTML <code>&lt;a&gt;</code> tag in the attribute value. To open the linked page in an inline dialog within QWC2, you can set the anchor target to <code>:iframedialog:&lt;dialogname&gt;:&lt;optkey&gt;=&lt;optval&gt;:&lt;optkey&gt;=&lt;optval&gt;:...</code> where the supported options are:</li>
+<li>Alternatively, you can enclose the URL in a HTML <code>&lt;a&gt;</code> tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to <code>:iframedialog:&lt;dialogname&gt;:&lt;optkey&gt;=&lt;optval&gt;:&lt;optkey&gt;=&lt;optval&gt;:...</code> where the supported options are:</li>
 <li><code>w</code>: Dialog width in pixels, default: <code>640</code>.</li>
 <li><code>h</code>: Dialog height in pixels, default: <code>480</code>.</li>
 <li><code>title</code>: Dialog window title, by default the translation string <code>windows.&lt;dialogname&gt;</code>.</li>
@@ -203,7 +203,7 @@
 <p>To compute derived attributes client-side, you can implement the <code>customAttributeCalculator</code> in <code>qwc2-app/js/IdentifyExtensions.js</code> (which is passed to the <code>Identify</code> plugin in <code>appConfig.js</code>).</p>
 <p>To transform attributes client-side you can implement the <code>attributeTransform</code> in <code>qwc2-app/js/IdentifyExtensions.js</code> (which is passed to the <code>Identify</code> plugin in <code>appConfig.js</code>).</p>
 <h3 id="custom-export">Custom export<a class="headerlink" href="#custom-export" title="Permanent link">&para;</a></h3>
-<p>By default, the identify dialog in QWC2 allows you to export the results to <code>json</code> (QWC2 feature storage format), <code>geojson</code> (standard GeoJSON without QWC2 specific fields), <code>csv</code> (single CSV with all layers) or <code>csv+zip</code> (ZIP with one CSV per layer). You can define additional export functions by extending <code>customExporters</code> in <code>qwc2-app/js/IdentifyExtensions.js</code>.</p>
+<p>By default, the identify dialog in QWC allows you to export the results to <code>json</code> (QWC feature storage format), <code>geojson</code> (standard GeoJSON without QWC specific fields), <code>csv</code> (single CSV with all layers) or <code>csv+zip</code> (ZIP with one CSV per layer). You can define additional export functions by extending <code>customExporters</code> in <code>qwc2-app/js/IdentifyExtensions.js</code>.</p>
 <h3 id="custom-html-templates">Custom HTML templates<a name="html-templates"></a><a class="headerlink" href="#custom-html-templates" title="Permanent link">&para;</a></h3>
 <p>You can specify a custom HTML template for displaying the feature rather than the default table view by <a href="../../configuration/ServiceConfiguration/#enabling-services">enabling</a> the <code>qwc-feature-info-service</code>.</p>
 <p>Mount the info templates folder into the <code>qwc-feature-info-service</code> container, i.e.:</p>

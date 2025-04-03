@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Legend graphics - QWC2 - 2025.03.06-master</title>
+    <title>Legend graphics - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -139,7 +139,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="legend-graphics">Legend graphics<a class="headerlink" href="#legend-graphics" title="Permanent link">&para;</a></h1>
-<p>By default, QWC2 will obtain the legend graphics of a layer from QGIS Server.</p>
+<p>By default, QWC will obtain the legend graphics of a layer from QGIS Server.</p>
 <h2 id="customizing-the-getlegendgraphics-request">Customizing the <code>GetLegendGraphics</code> request<a class="headerlink" href="#customizing-the-getlegendgraphics-request" title="Permanent link">&para;</a></h2>
 <p>You can customize the <code>GetLegendGraphics</code> request by specifying additional query parameters in via <code>extraLegendParameters</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration block</a>. The list of supported query parameters is documented in the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getlegendgraphics">QGIS Server documentation</a>.</p>
 <h2 id="providing-custom-legend-images">Providing custom legend images<a class="headerlink" href="#providing-custom-legend-images" title="Permanent link">&para;</a></h2>
@@ -164,7 +164,7 @@
 <li>A <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;&lt;suffix&gt;.png</code> file, where<ul>
 <li><code>service_name</code> is the name of the WMS service</li>
 <li><code>layername</code> is the WMS layer name</li>
-<li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC2 to the legend service depending on the requested image type.</li>
+<li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC to the legend service depending on the requested image type.</li>
 </ul>
 </li>
 <li>A <code>&lt;legend_images_path&gt;/&lt;legend_image&gt;</code> file with <code>legend_image</code> as specified for the desired layer in the <code>legend</code> service configuration, for example:</li>

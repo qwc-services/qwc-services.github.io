@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Themes - QWC2 - 2025.03.06-master</title>
+    <title>Themes - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -146,7 +146,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -169,11 +169,11 @@
 <p>The basic steps for configuring a theme are:</p>
 <ul>
 <li><a href="#create-qgis-project">Create a QGIS project and deploy it to QGIS Server</a></li>
-<li><a href="#writing-themes-configuration">Writing the QWC2 theme configuration</a></li>
+<li><a href="#writing-themes-configuration">Writing the QWC theme configuration</a></li>
 <li><a href="#generating-themes-configuration">Generating the themes configuration</a></li>
 </ul>
 <h2 id="creating-and-publishing-a-qgis-project">Creating and publishing a QGIS project<a name="create-qgis-project"></a><a class="headerlink" href="#creating-and-publishing-a-qgis-project" title="Permanent link">&para;</a></h2>
-<p>The first step is to prepare a QGIS project for publishing. Besides the common tasks of adding and styling layers, the following table gives an overview of settings which influence how the theme is displayed in QWC2:</p>
+<p>The first step is to prepare a QGIS project for publishing. Besides the common tasks of adding and styling layers, the following table gives an overview of settings which influence how the theme is displayed in QWC:</p>
 <table>
 <thead>
 <tr>
@@ -251,7 +251,7 @@
 <tr>
 <td>Attribute form</td>
 <td>Vector Layer Properties &rarr; Attributes Form</td>
-<td>The configured attribute form will be displayed when editing in QWC2.</td>
+<td>The configured attribute form will be displayed when editing in QWC.</td>
 </tr>
 <tr>
 <td>External layers</td>
@@ -277,7 +277,7 @@ password=qwc_service
 sslmode=disable
 </code></pre>
 <h2 id="configuring-the-themes-in-themesconfigjson">Configuring the themes in <code>themesConfig.json</code> <a name="writing-themes-configuration"></a><a class="headerlink" href="#configuring-the-themes-in-themesconfigjson" title="Permanent link">&para;</a></h2>
-<p>The next step is to configure the theme for QWC2. There are two approaches:</p>
+<p>The next step is to configure the theme for QWC. There are two approaches:</p>
 <ul>
 <li><a href="#automatic-theme-configuration">Automatic theme configuration</a> (only when using <code>qwc-docker</code>): Just copy the project file to the designated location and the <code>qwc-config-generator</code> will automatically generate a theme configuration using default parameters.</li>
 <li><a href="#manual-theme-configuration">Manual theme configuration</a>: Manually configure a theme with the full set of configuration options.</li>
@@ -294,7 +294,7 @@ sslmode=disable
 <h3 id="manual-theme-configuration">Manual theme configuration <a name="manual-theme-configuration"></a><a class="headerlink" href="#manual-theme-configuration" title="Permanent link">&para;</a></h3>
 <p>The theme configuration file is located as follows:</p>
 <ul>
-<li>Standalone viewer: <code>qwc2-app/static/themesConfig.json</code></li>
+<li>Standalone viewer: <code>qwc-app/static/themesConfig.json</code></li>
 <li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code></li>
 </ul>
 <p><em>Note</em>: when using <code>qwc-docker</code>, the themes configuration may also be embedded as <code>themesConfig</code> directly in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/tenantConfig.json</code>.</p>
@@ -618,7 +618,7 @@ sslmode=disable
 </tr>
 <tr>
 <td><code>"extraPrintLayers": ["&lt;layername&gt;", ...],</code></td>
-<td>Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC2 LayerTree.</td>
+<td>Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC LayerTree.</td>
 </tr>
 <tr>
 <td><code>"printLabelBlacklist": ["&lt;LabelId&gt;", ...]</code></td>
@@ -718,7 +718,7 @@ sslmode=disable
 <li>When using <code>qwc-docker</code>, the <code>url</code> can be specified as <code>/ows/&lt;relative_path_to_qgs&gt;</code> where <code>relative_path_to_qgs</code> is the path to the QGIS project file below <code>qwc-docker/volumes/qgs-resources</code>, without the <code>.qgs</code> extension. In the above sample, the project file would be located at <code>qwc-docker/volumes/qgs-resources/my_theme.qgs</code>.</li>
 </ul>
 <h3 id="external-layers">External layers <a name="external-layers"></a><a class="headerlink" href="#external-layers" title="Permanent link">&para;</a></h3>
-<p>External layers can be used to selectively replace layers in a QGIS project with a layer from an external source, for instance in the case of a WMS layer embedded in a QGIS project, to avoid cascading WMS requests. They are handled transparently by QWC2 (they are positioned in the layer tree identically to the internal layer they replace), but the <code>GetMap</code> and <code>GetFeatureInfo</code> requests are sent directly to the specified WMS Service.</p>
+<p>External layers can be used to selectively replace layers in a QGIS project with a layer from an external source, for instance in the case of a WMS layer embedded in a QGIS project, to avoid cascading WMS requests. They are handled transparently by QWC (they are positioned in the layer tree identically to the internal layer they replace), but the <code>GetMap</code> and <code>GetFeatureInfo</code> requests are sent directly to the specified WMS Service.</p>
 <p><strong>Configuring external layers via Data Url</strong></p>
 <p>The simplest way to define an external layer is to set the "Data Url" for a layer in QGIS (Layer Properties &rarr; QGIS Server &rarr; Data Url) to a string of these forms</p>
 <pre><code class="language-text">wms:&lt;service_url&gt;?&lt;options&gt;#&lt;layername&gt;
@@ -1073,13 +1073,13 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 }
 </code></pre>
 <h2 id="generating-the-themes-configuration">Generating the themes configuration <a name="generating-theme-configuration"></a><a class="headerlink" href="#generating-the-themes-configuration" title="Permanent link">&para;</a></h2>
-<p>The file ultimately read by the QWC2 viewer is the <code>themes.json</code> configuration, which includes the contents of <code>themesConfig.json</code> completed with additional data obtained from the QGIS Project.</p>
+<p>The file ultimately read by the QWC viewer is the <code>themes.json</code> configuration, which includes the contents of <code>themesConfig.json</code> completed with additional data obtained from the QGIS Project.</p>
 <ul>
 <li>
 <p>When using <code>qwc-docker</code>, you can generate the themes from the <code>qwc-admin-gui</code> administration backend, running on <a href="http://localhost:8088/qwc_admin">http://localhost:8088/qwc_admin</a> by default. Log in as <code>admin</code> user, then press the green <code>Generate service configuration</code> button. This will invoce the<code>qwc-config-generator</code>, which will generate <code>mapViewerConfig.json</code> located below <code>qwc-docker/volumes/config/&lt;tentant&gt;</code>. You can then inspect the generated <code>themes.json</code> at <a href="http://localhost:8088/themes.json">http://localhost:8088/themes.json</a>.</p>
 </li>
 <li>
-<p>When using QWC2 as a standalone viewer, the <code>themes.json</code> can be generated by invoking</p>
+<p>When using QWC as a standalone viewer, the <code>themes.json</code> can be generated by invoking</p>
 </li>
 </ul>
 <pre><code class="language-bash">yarn run themesconfig
@@ -1104,7 +1104,7 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <li>If using <code>qwc-docker</code>, set <code>QGIS_PROJECT_SUFFIX=qgz</code> in the <code>qwc-qgis-server</code> environment in <code>docker-compose.yml</code>.</li>
 </ul>
 <h2 id="split-categorized-layers">Split categorized layers<a class="headerlink" href="#split-categorized-layers" title="Permanent link">&para;</a></h2>
-<p>By default, symbol categories of a <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">classified</a> layer won't be exposed via WMS and hence in QWC2.</p>
+<p>By default, symbol categories of a <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">classified</a> layer won't be exposed via WMS and hence in QWC.</p>
 <p>To expose symbol categories as separate layers via WMS, you can use the <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">split_categorized</a> QGIS Server plugin.</p>
 <p>To configure the plugin in <code>qwc-docker</code>, proceed as follows:</p>
 <ul>

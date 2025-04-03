@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Printing - QWC2 - 2025.03.06-master</title>
+    <title>Printing - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -128,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -147,14 +147,14 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="printing">Printing<a class="headerlink" href="#printing" title="Permanent link">&para;</a></h1>
-<p>QWC2 supports printing to PDF via the QGIS Server <code>GetPrint</code> request.</p>
+<p>QWC supports printing to PDF via the QGIS Server <code>GetPrint</code> request.</p>
 <p>The basic steps are:</p>
 <ul>
-<li>Ensure the <code>Print</code> plugin is enabled in the QWC2 viewer.</li>
+<li>Ensure the <code>Print</code> plugin is enabled in the QWC viewer.</li>
 <li>Create print layouts in the QGIS project as desired. The layouts must contain one Map element.</li>
 <li><a href="../../configuration/ThemesConfiguration/#generating-theme-configuration">Generate the themes configuration</a>.</li>
 </ul>
-<p>The available print layouts will then appear in the QWC2 print plugin.</p>
+<p>The available print layouts will then appear in the QWC print plugin.</p>
 <p>You can limit the available print scales by setting <code>printScales</code> (or <code>defaultPrintScales</code>) in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration</a> to a list of scale denominators. If the list is empty, the print scale can be freely chosen.</p>
 <p>Similarly, you can limit the available print resolutions by setting <code>printResolutions</code> (or <code>defaultPrintResolutions</code>) in the theme configuration to a list of resolutions. If the list is empty, the print resolution can be freely chosen.</p>
 <p>External WMS layers are automatically printed if the <a href="../references/qwc2_plugins/#print">Print plugin config option</a> <code>printExternalLayers</code> is <code>true</code> (default). Note that printing external <code>WMTS</code> layers is currently not supported by the QGIS Server.</p>
@@ -170,7 +170,7 @@
 <li><a href="#print-atlas">Configuring atlas printing</a></li>
 </ul>
 <h2 id="configuring-print-background-layers">Configuring print background layers <a name="background-layers"></a><a class="headerlink" href="#configuring-print-background-layers" title="Permanent link">&para;</a></h2>
-<p>Background layers are handled purely client-side in QWC2. There are two options for printing the background layer:</p>
+<p>Background layers are handled purely client-side in QWC. There are two options for printing the background layer:</p>
 <p>The first option is to add a <code>printLayer</code> to the background layer entry when writing the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">themes configuration</a>, i.e.:</p>
 <pre><code class="language-json">{
   ...
@@ -179,13 +179,13 @@
   ]
 }
 </code></pre>
-<p>You can set <code>printLayer</code> to a QGIS layer name, or to a resource string (i.e. <code>wms:&lt;baseurl&gt;#&lt;layername&gt;</code>). A QGIS layer marked as <code>printLayer</code> will be filtered out from the QWC2 layer tree, and hence will not be displayed in QWC2.</p>
+<p>You can set <code>printLayer</code> to a QGIS layer name, or to a resource string (i.e. <code>wms:&lt;baseurl&gt;#&lt;layername&gt;</code>). A QGIS layer marked as <code>printLayer</code> will be filtered out from the QWC layer tree, and hence will not be displayed in QWC.</p>
 <p>You can also set <code>printLayer</code> to a list <code>[{"maxScale": &lt;scale&gt;, "name": "&lt;layer name&gt;"}, ..., {"maxScale": null, "name": "&lt;QGis layer name&gt;"}]</code>, ordered in ascending order by <code>maxScale</code>. The last entry should have <code>maxScale</code> <code>null</code>, as the layer used for all remaining scales.</p>
 <p>This approach allows i.e. using a WMTS background layer in the web client for higher performance, and using a WMS background layer when printing for higher quality/resolution.</p>
 <p>The second option is to use WMS background layers, which are automatically printed as external layers.</p>
 <h2 id="user-labels">User labels <a name="user-labels"></a><a class="headerlink" href="#user-labels" title="Permanent link">&para;</a></h2>
-<p>User labels appear as free-text input fields in the QWC2 print dialog. To configure user labels, it is sufficient to add item <code>id</code>s to layout label items in the print layout. The specified <code>id</code> will appear as input field label in the QWC2 print dialog.</p>
-<p><em>Note</em>: Label <code>id</code>s beginning with <code>__</code> (two underscore characters) are ignored as user labels by QWC2.</p>
+<p>User labels appear as free-text input fields in the QWC print dialog. To configure user labels, it is sufficient to add item <code>id</code>s to layout label items in the print layout. The specified <code>id</code> will appear as input field label in the QWC print dialog.</p>
+<p><em>Note</em>: Label <code>id</code>s beginning with <code>__</code> (two underscore characters) are ignored as user labels by QWC.</p>
 <p>You can can customize the input field (max length, number of rows) by setting the <code>printLabelConfig</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration</a>.</p>
 <p>Also, in the theme configuration, you can also set:</p>
 <ul>
@@ -203,15 +203,15 @@
 </code></pre>
 <p>will print a <code>500x500</code> (map units) grid for scales up to <code>1:1000</code>, a <code>1000x1000</code> grid for scales up to <code>1:2000</code>, etc.</p>
 <h2 id="layouts-with-legend">Layouts with legend <a name="print-legend"></a><a class="headerlink" href="#layouts-with-legend" title="Permanent link">&para;</a></h2>
-<p>The QWC2 print dialog will expose a toggle switch to enable the legend in the print output for layout <code>&lt;layout_name&gt;</code> if the QGIS project contains a second layout named <code>&lt;layout_name&gt;_legend</code>. The layout with the <code>_legend</code> suffix is expected to contain a legend item.</p>
+<p>The QWC print dialog will expose a toggle switch to enable the legend in the print output for layout <code>&lt;layout_name&gt;</code> if the QGIS project contains a second layout named <code>&lt;layout_name&gt;_legend</code>. The layout with the <code>_legend</code> suffix is expected to contain a legend item.</p>
 <h2 id="atlas-printing">Atlas printing <a name="print-atlas"></a><a class="headerlink" href="#atlas-printing" title="Permanent link">&para;</a></h2>
-<p>To enable atlas printing in QWC2, configure the QGIS project as follows:</p>
+<p>To enable atlas printing in QWC, configure the QGIS project as follows:</p>
 <ul>
 <li>Check the <code>Generate an atlas</code> checkbox in the desired layout in QGIS layout designer &rarr; Atlas &rarr; Atlas settings, selecting the coverage layer as desired.</li>
 <li>In the layout map item properties, check <code>Controlled by Atlas</code>.</li>
 <li>In the Project properties &rarr; QGIS Server, set <code>Maximum features for Atlas print requests</code> to the desired value.</li>
 </ul>
-<p>QWC2 will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.</p>
+<p>QWC will then display a feature picked in the print dialog which will allow picking the desired atlas features, and QGIS Server will generate a multi-page PDF accordingly.</p>
 <h2 id="layout-templates">Layout templates <a name="layout-templates"></a><a class="headerlink" href="#layout-templates" title="Permanent link">&para;</a></h2>
 <p>The <a href="https://github.com/qwc-services/qwc-qgis-server-plugins">QGIS Server print templates plugin</a> allows providing a common set of print layouts to projects to avoid having to manage potentially identical print layouts multiple times in the individual projects.</p>
 <p>To configure it in <code>qwc-docker</code>, proceed as follows:</p>

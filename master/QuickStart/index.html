@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Quick start - QWC2 - 2025.03.06-master</title>
+    <title>Quick start - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href=".." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -48,9 +48,9 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Quick start</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#running-qwc2-as-part-of-qwc-services">Running QWC2 as part of qwc-services</a>
+    <li class="toctree-l2"><a class="reference internal" href="#running-qwc-as-part-of-qwc-services">Running QWC as part of qwc-services</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#running-qwc2-as-a-standalone-viewer">Running QWC2 as a standalone viewer</a>
+    <li class="toctree-l2"><a class="reference internal" href="#running-qwc-as-a-standalone-viewer">Running QWC as a standalone viewer</a>
     </li>
     </ul>
                   </li>
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">QWC2 - 2025.03.06-master</a>
+          <a href="..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -138,8 +138,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h1>
-<h2 id="running-qwc2-as-part-of-qwc-services">Running QWC2 as part of qwc-services<a class="headerlink" href="#running-qwc2-as-part-of-qwc-services" title="Permanent link">&para;</a></h2>
-<p><code>qwc-services</code> is a collection of loosely coupled micro-services for extending QWC2. The services communicate with each other via HTTP/Rest, and are mostly written in Python.</p>
+<h2 id="running-qwc-as-part-of-qwc-services">Running QWC as part of qwc-services<a class="headerlink" href="#running-qwc-as-part-of-qwc-services" title="Permanent link">&para;</a></h2>
+<p><code>qwc-services</code> is a collection of loosely coupled micro-services for extending QWC. The services communicate with each other via HTTP/Rest, and are mostly written in Python.</p>
 <p>The easiest way to run <code>qwc-services</code> is to use the readily available docker images, using the sample setup at <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
 <p>To be able to run <code>qwc-docker</code>, first install <code>docker</code> and <code>docker compose</code>:</p>
 <ul>
@@ -194,9 +194,9 @@ cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 <li><a href="../configuration/ServiceConfiguration/">Configuring the services</a></li>
 <li><a href="../configuration/ResourcesPermissions/">Set resource permissions</a></li>
 </ul>
-<h2 id="running-qwc2-as-a-standalone-viewer">Running QWC2 as a standalone viewer<a class="headerlink" href="#running-qwc2-as-a-standalone-viewer" title="Permanent link">&para;</a></h2>
-<p>If you don't need the advanced functionalities provided by <code>qwc-services</code> or want to integrate QWC2 in another environment, you can run QWC2 as a standalone viewer.</p>
-<p>To work with QWC2, you will need a minimal development environment consisting of <a href="https://git-scm.com/">git</a>, <a href="https://nodejs.org/">node</a> and <a href="https://yarnpkg.com">yarn</a>. You will also need a running QGIS Server instance which serves your projects.</p>
+<h2 id="running-qwc-as-a-standalone-viewer">Running QWC as a standalone viewer<a class="headerlink" href="#running-qwc-as-a-standalone-viewer" title="Permanent link">&para;</a></h2>
+<p>If you don't need the advanced functionalities provided by <code>qwc-services</code> or want to integrate QWC in another environment, you can run QWC as a standalone viewer.</p>
+<p>To work with QWC, you will need a minimal development environment consisting of <a href="https://git-scm.com/">git</a>, <a href="https://nodejs.org/">node</a> and <a href="https://yarnpkg.com">yarn</a>. You will also need a running QGIS Server instance which serves your projects.</p>
 <p>The fastest way to get started is by cloning the stock application:</p>
 <pre><code class="language-bash">git clone https://github.com/qgis/qwc2.git
 </code></pre>

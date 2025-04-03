@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Editing - QWC2 - 2025.03.06-master</title>
+    <title>Editing - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -140,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -159,7 +159,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="editing">Editing<a class="headerlink" href="#editing" title="Permanent link">&para;</a></h1>
-<p>QWC2 offers comprehensive editing support through a variety of plugins:</p>
+<p>QWC offers comprehensive editing support through a variety of plugins:</p>
 <ul>
 <li>The <a href="../../references/qwc2_plugins/#editing"><code>Editing</code></a> plugin allows creating, editing and removing features of an editable vector layer. It supports editing both geometry and attributes, displaying customizeable attribute forms.</li>
 <li>The <a href="../../references/qwc2_plugins/#attributetable"><code>AttributeTable</code></a> plugin also allows creating, editing and removing features of an editable vector layer. It displays all features of the editable layer in a tabularized view, and allows editing attributes, but not geometries. Noteably, it will allow editing geometryless datasets.</li>
@@ -177,8 +177,8 @@
 <li>Run the config generator from the administration backend to update service configuration.</li>
 </ul>
 <h2 id="designing-the-edit-forms">Designing the edit forms<a name="edit-forms"></a><a class="headerlink" href="#designing-the-edit-forms" title="Permanent link">&para;</a></h2>
-<p>Much of the power of the QWC2 editing functionality resides in its fully customizeable forms, providing support for different input widget types, file uploads and 1:N relations.</p>
-<p>The <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-config-generator</code></a> will automatically generate forms based on the configuration specified in the QGIS Layer Properties &rarr; Attributes Form. If <code>Autogenerate</code> or <code>Drag and Drop Designer</code> is chosen, a corresponding Qt UI form is automatically generated for QWC2 in <code>assets/forms/autogen</code>. If <code>Provide ui-file</code> is chosen, the specified UI form will copied to <code>assets/forms/autogen</code>.</p>
+<p>Much of the power of the QWC editing functionality resides in its fully customizeable forms, providing support for different input widget types, file uploads and 1:N relations.</p>
+<p>The <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-config-generator</code></a> will automatically generate forms based on the configuration specified in the QGIS Layer Properties &rarr; Attributes Form. If <code>Autogenerate</code> or <code>Drag and Drop Designer</code> is chosen, a corresponding Qt UI form is automatically generated for QWC in <code>assets/forms/autogen</code>. If <code>Provide ui-file</code> is chosen, the specified UI form will copied to <code>assets/forms/autogen</code>.</p>
 <p>Localized translation forms are supported. To this end, place a Qt Translation file called <code>&lt;form_basename&gt;_&lt;lang&gt;.ts</code> next to the designer form <code>&lt;form_basename&gt;.ui</code>, where <code>lang</code> is a language or language/country code, i.e. <code>en</code> or <code>en-US</code>. There is a <a href="https://github.com/qgis/qwc2/tree/master/scripts/translateui.sh"><code>translateui.sh</code></a> script to help generate the translation files. Example:</p>
 <pre><code class="language-bash">./translateui.sh .../qwc2/assets/forms/form.ui de it fr
 </code></pre>
@@ -191,7 +191,7 @@
 <p>Attachments are stored on disk below the <code>attachments_base_dir</code> defined in the data service configuration, and the path to the attachments stored in the dataset.</p>
 <p><em>Note:</em></p>
 <ul>
-<li>If you set the format constraint to <code>*.jpeg</code> and your browser has access to a camera, QWC2 will allow you to directly upload images captured from the camera.</li>
+<li>If you set the format constraint to <code>*.jpeg</code> and your browser has access to a camera, QWC will allow you to directly upload images captured from the camera.</li>
 <li>You can set the allowed attachment extensions and maximum file sizes globally by setting <code>allowed_attachment_extensions</code> and <code>max_attachment_file_size</code> in the data service configuration. You may also need to set/increase <code>client_max_body_size</code> in <code>qwc-docker/api-gateway/nginx.conf</code>, which defaults to <code>1M</code>.</li>
 <li>You can also set the allowed attachment extensions and maximum file sizes per dataset by setting <code>max_attachment_file_size_per_dataset</code> and <code>allowed_extensions_per_dataset</code> in the data service configuration. If you set the per dataset values, the global settings will be disregarded (i.e. if an attachment satisfies the per dataset constraint it will be considered valid, even if it violates the global constraint).</li>
 <li>To ensure the uploaded files are properly rendered as download links in GetFeatureInfo responses, use the <a href="https://github.com/qwc-services/qwc-config-generator"><code>qwc-feature-info-service</code></a>.</li>
@@ -223,16 +223,16 @@
 <p>In a manually created Qt-Designer Ui form, create a widget of type <code>QWidget</code>, <code>QGroupBox</code> or <code>QFrame</code> named according to the pattern <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;</code>, where <code>&lt;reltablename&gt;</code> is the name of the relation table and <code>&lt;foreignkeyfield&gt;</code> the name of the foreign key field in the relation table. Inside this widget, add the edit widgets for the values of the relation table. Name the widgets <code>&lt;reltablename&gt;__&lt;fieldname&gt;</code>. These edit widgets will be replicated for each relation record.</p>
 <p><em>Notes</em>:</p>
 <ul>
-<li>In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;__&lt;sortcol&gt;</code>. If a sort-column is specified, QWC2 will display sort arrows for each entry in the relation widget.</li>
+<li>In a manually created Qt-Designer Ui form, you can also specify a sort column for the 1:N relation in the form <code>nrel__&lt;reltablename&gt;__&lt;foreignkeyfield&gt;__&lt;sortcol&gt;</code>. If a sort-column is specified, QWC will display sort arrows for each entry in the relation widget.</li>
 <li>The relation table needs to be added as a (geometryless) table to the QGIS Project. You also need to set appropriate permissions for the relation table dataset in the QWC admin backend.</li>
 </ul>
 <h3 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h3>
-<p>The QWC2 editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.</p>
+<p>The QWC editing components will honour QGIS expressions configured in the field configuration of the QGIS layer properties, in particular "Default value" and "Control Visibility by Expression" will be honoured.</p>
 <p><em>Notes</em>:</p>
 <ul>
 <li>Currently only a limited number of verbs are implemented, see the <a href="https://github.com/qgis/qwc2/blob/master/utils/expr_grammar/grammar.ne">expression grammar</a>. Pull requests for additional verbs are welcome!</li>
 <li>Make sure Data permissions exist for any datasets which are referenced in the expressions.</li>
-<li>The QWC2 expression parser requires a space between brackets and keywords, i.e. <code>attribute('foo')is null</code> is invalid, whereas <code>attribute('foo') is null</code> is valid.</li>
+<li>The QWC expression parser requires a space between brackets and keywords, i.e. <code>attribute('foo')is null</code> is invalid, whereas <code>attribute('foo') is null</code> is valid.</li>
 <li>If the parser fails to parse an expression, an error message will be logged in the browser console.</li>
 </ul>
 <h3 id="special-form-widgets">Special form widgets<a class="headerlink" href="#special-form-widgets" title="Permanent link">&para;</a></h3>

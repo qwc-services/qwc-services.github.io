@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2025.03.06-master</title>
+    <title>Search - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -132,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -151,7 +151,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h1>
-<p>QWC2 can be configured to use arbitrary custom search providers. In addition, the <code>qwc-fulltext-search-service</code> provided by the qwc-services ecosystem can be used.</p>
+<p>QWC can be configured to use arbitrary custom search providers. In addition, the <code>qwc-fulltext-search-service</code> provided by the qwc-services ecosystem can be used.</p>
 <h2 id="adding-search-providers">Adding search providers<a class="headerlink" href="#adding-search-providers" title="Permanent link">&para;</a></h2>
 <p>Search providers can be defined as follows:</p>
 <ul>
@@ -179,7 +179,7 @@
 <pre><code class="language-js">  import './SearchProviders.js';
 </code></pre>
 <p>in <code>js/appConfig.js</code>.</p>
-<p>Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC2 to add/modify search providers.</p>
+<p>Built-in search providers are compiled into the application bundle and avoid the need for an extra resource to be loaded on application startup. The downside is that you need to rebuild QWC to add/modify search providers.</p>
 <p>The format of <code>ProviderDefinition</code> is</p>
 <pre><code class="language-js">{
   label: &quot;&lt;label&gt;&quot;, // Provider label (displayed in provider selection menu)
@@ -315,9 +315,9 @@ searchProviders: [
 ]
 ...
 </code></pre>
-<p>Note: The <code>qwc2</code> stock application (also used by the <code>qwc-map-viewer</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
+<p>Note: The QWC stock application (also used by the <code>qwc-map-viewer</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
 <h2 id="configuring-the-qgis-feature-search">Configuring the QGIS feature search <a name="qgis-search"></a><a class="headerlink" href="#configuring-the-qgis-feature-search" title="Permanent link">&para;</a></h2>
-<p>The QGIS feature search relies on WMS GetFeatureInfo with the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter"><code>FILTER</code></a> parameter to search features of layers which are part of the theme WMS. It is enabled via the <code>qgis</code> search provider, which is part of the <code>qwc2</code> stock application.</p>
+<p>The QGIS feature search relies on WMS GetFeatureInfo with the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter"><code>FILTER</code></a> parameter to search features of layers which are part of the theme WMS. It is enabled via the <code>qgis</code> search provider, which is part of the QWC stock application.</p>
 <p><em>Note</em>: Make sure the QGIS Project is configured to return geometries with the feature info responses (<code>Project</code> &rarr; <code>Properties</code> &rarr; <code>QGIS Server</code> &rarr; <code>Add geometry to feature response</code>).</p>
 <p>In it's simples form, you can configure the theme search provider entry as follows:</p>
 <pre><code class="language-json">  {
@@ -547,7 +547,7 @@ ORDER BY {% for word in words %} similarity(searchterms, '{{ word }}') {% if not
 </tr>
 <tr>
 <td><code>DISPLAYTEXT</code></td>
-<td>Displaytext that will be shown by the QWC2 when a match was found</td>
+<td>Displaytext that will be shown by the QWC when a match was found</td>
 <td><code>name_long</code></td>
 </tr>
 <tr>

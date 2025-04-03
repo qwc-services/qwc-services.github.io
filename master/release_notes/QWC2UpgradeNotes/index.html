@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>QWC2 upgrade notes - QWC2 - 2025.03.06-master</title>
+    <title>QWC2 upgrade notes - QWC2 - 2025.04.03</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-master
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.04.03
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -98,6 +98,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202543">Update to qwc2 2025.4.3</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-574fe2a-06022025">Update to qwc2 submodule revision 574fe2a (06.02.2025)</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts">Update to qwc2 submodule revision 5705361 (30.12.2024) [2024-lts &rarr; 2025-lts]</a>
@@ -160,7 +162,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-master</a>
+          <a href="../..">QWC2 - 2025.04.03</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -179,8 +181,20 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
-<p>This document describes incompatibilites and other aspects which QWC2 applications need to address when updating against the latest qwc2 submodule.</p>
-<p>When updating the <code>qwc2</code> submodule, run <code>yarn install</code> to ensure the dependencies are up to date!</p>
+<p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-202543">Update to qwc2 2025.4.3<a class="headerlink" href="#update-to-qwc2-202543" title="Permanent link">&para;</a></h2>
+<p><strong>Switch to npm package</strong></p>
+<p>The <a href="https://github.com/qgis/qwc2">QWC stock viewer </a> components are now published as an <a href="https://www.npmjs.com/package/qwc2">NPM package</a>.
+If you are building a custom viewer on top of the QWC stock components, it is recommended you pull it in as a dependency in <code>package.json</code> rather than as a git submodule.</p>
+<p>To this end:</p>
+<ul>
+<li>Delete the submodule and adjust the <code>package.json</code> by removing the <code>qwc2</code> workspace and adding the <code>qwc2</code> dependency, see <a href="https://github.com/qgis/qwc2-demo-app/blob/44b4d16b7c8a8684aa98317351d96de7453a922e/package.json"><code>package.json</code></a>.</li>
+<li>Modify the <code>webpack.config.js</code> as follows</li>
+</ul>
+<pre><code>- new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, &quot;qwc2&quot;, &quot;libs&quot;, &quot;openlayers&quot;)),
++ new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, &quot;node_modules&quot;, &quot;qwc2&quot;, &quot;libs&quot;, &quot;openlayers&quot;)),
+</code></pre>
+<p>No further code changes are necessary.</p>
 <h2 id="update-to-qwc2-submodule-revision-574fe2a-06022025">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/574fe2a">574fe2a</a> (06.02.2025)<a class="headerlink" href="#update-to-qwc2-submodule-revision-574fe2a-06022025" title="Permanent link">&para;</a></h2>
 <p><strong>Authentication plugin changes</strong></p>
 <ul>
