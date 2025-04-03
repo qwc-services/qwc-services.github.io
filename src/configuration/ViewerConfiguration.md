@@ -177,7 +177,7 @@ A particularly interesting aspect is the configuration of the entries in the app
 |`⁣  "shortcut": "<shortcut>"`                | Optional, keyboard shortcut which triggers the entry, i.e. `"alt+shift+a"`.       |
 |`}`                                         |                                                                                   |
 
-*Note:* The built-in icons are those located in [`qwc2-app/qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons) and in `qwc-app/icons`. The built-in icon names are the respective file names, without `.svg` extension.
+*Note:* The built-in icons are those located in [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons) and in `qwc-app/icons`. The built-in icon names are the respective file names, without `.svg` extension.
 
 Also the map buttons ([LocationButton](../references/qwc2_plugins.md#locatebutton), [HomeButton](../references/qwc2_plugins.md#homebutton), [TaskButton](../references/qwc2_plugins.md#taskbutton), [ZoomButton](../references/qwc2_plugins.md#zoombutton)) support `themeFlagBlacklist` and `themeFlagWhitelist` for controlling the visibility based on the [theme flags](ThemesConfiguration.md#manual-theme-configuration).
 
@@ -288,11 +288,11 @@ The legend print template `assets/templates/legendprint.html` is used when print
 
 ## Building a custom viewer <a name="custom-viewer"></a>
 
-The QWC stock application, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/), can serve as a base for building a custom application. An example of a custom application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
+The QWC stock application, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/), can serve as a base for building a custom application, and is published as an [NPM package](https://www.npmjs.com/package/qwc2). An example of a custom application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
 
 To build a custom viewer, the first step is cloning the demo application:
 ```bash
-git clone --recursive https://github.com/qgis/qwc2-demo-app.git qwc-app
+git clone https://github.com/qgis/qwc2-demo-app.git qwc-app
 ```
 The typical layout of a QWC app source tree is as follows:
 
@@ -310,7 +310,6 @@ The typical layout of a QWC app source tree is as follows:
 |`│  ├─ Help.jsx`              | Built-in component of custom Help dialog, see [Help dialog](#help-dialog). |
 |`│  └─ SearchProviders.js`    | Built-in custom search providers, see [Search providers](#search-providers). |
 |`├─ icons/`                   | Application icons.                                                    |
-|`├─ qwc2/`                    | Git submodule containing the core QWC components.                    |
 |`├─ index.html`               | Entry point.                                                          |
 |`├─ package.json`             | NodeJS configuration file.                                            |
 |`└─ webpack.config.js`        | Webpack configuration.                                                |
@@ -350,16 +349,8 @@ qwc-map-viewer:
 ```
 ### Keeping the QWC application up to date
 
-As mentioned above, QWC is split into a common components repository and an application specific repository. The goal of this approach is to cleanly separate user-specific configuration and components which common components which serve as a basis for all QWC applications, and to make it as easy as possible to rebase the application onto the latest common QWC components.
+To update the base QWC components, just update the version of the `qwc2` dependency in `package.json`.
 
-The recommended workflow is to keep the `qwc2` folder a submodule referencing the [upstream qwc2 repository](https://github.com/qgis/qwc2). To update it, just checkout/update the desired branch:
-```bash
-cd qwc2
-git checkout master
-# or
-git checkout YYYY-lts
-git pull
-```
 The [QWC Upgrade Notes](../release_notes/QWC2UpgradeNotes.md) documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.
 
 
@@ -375,12 +366,9 @@ The [`Settings`](../references/qwc2_plugins.md#settings) furthermore allows grap
 
 ### Adding and modify translations
 
-When working inside a `qwc-app` source folder, the translations can be found on two levels:
+When working inside a `qwc-app` source folder, the translations are located at `qwc-app/static/translations`.
 
-- At QWC components level, in `qwc-app/qwc2/static/translations`.
-- At application level, in `qwc-app/static/translations`.
-
-A script will take care of merging the component translations into the application translations. This way, when updating the QWC submodule, new translations are automatically obtained. This script is automatically invoked on `yarn start`, but can also be manually invoked using
+A script will take care of merging the translations from the `qwc2` package into the application translations. This way, when updating the `qwc2` dependency, new translations are automatically obtained. This script is automatically invoked on `yarn start`, but can also be manually invoked using
 
     yarn run tsupdate
 

@@ -1,8 +1,25 @@
 # Upgrade notes
 
-This document describes incompatibilites and other aspects which QWC applications need to address when updating against the latest qwc2 submodule.
+This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
-When updating the `qwc2` submodule, run `yarn install` to ensure the dependencies are up to date!
+Update to qwc2 2025.4.3
+-----------------------
+
+**Switch to npm package**
+
+The [QWC stock viewer ](https://github.com/qgis/qwc2) components are now published as an [NPM package](https://www.npmjs.com/package/qwc2).
+If you are building a custom viewer on top of the QWC stock components, it is recommended you pull it in as a dependency in `package.json` rather than as a git submodule.
+
+To this end:
+
+- Delete the submodule and adjust the `package.json` by removing the `qwc2` workspace and adding the `qwc2` dependency, see [`package.json`](https://github.com/qgis/qwc2-demo-app/blob/44b4d16b7c8a8684aa98317351d96de7453a922e/package.json).
+- Modify the `webpack.config.js` as follows
+```
+- new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, "qwc2", "libs", "openlayers")),
++ new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, "node_modules", "qwc2", "libs", "openlayers")),
+```
+
+No further code changes are necessary.
 
 Update to qwc2 submodule revision [574fe2a](https://github.com/qgis/qwc2/tree/574fe2a) (06.02.2025)
 ---------------------------------------------------------------------------------------------------
