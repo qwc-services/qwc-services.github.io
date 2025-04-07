@@ -152,7 +152,7 @@ Update to qwc2 submodule revision [bafb882](https://github.com/qgis/qwc2/tree/ba
 
 **Removal of RasterExport and DxfExport plugins**
 
-The previously deprecated `RasterExport` and `DxfExport` plugins have been removed. Use [`MapExport`](../../references/qwc2_plugins.md#mapexport) instead.
+The previously deprecated `RasterExport` and `DxfExport` plugins have been removed. Use [`MapExport`](../references/qwc2_plugins.md#mapexport) instead.
 
 Update to qwc2 submodule revision [9cb8bab](https://github.com/qgis/qwc2/tree/9cb8bab) (13.11.2024) \[2024-lts &rarr; 2025-lts\]
 ---------------------------------------------------------------------------------------------------

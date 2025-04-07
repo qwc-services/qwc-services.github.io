@@ -13,23 +13,23 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 
 ### Viewer Configuration
-* [Config: Allow overriding plugin config per theme](../../configuration/ThemesConfiguration.md#manual-theme-configuration)
-* [Allow adding custom plugins via QWC API](../../references/qwc2_plugins#api)
-* [Allow registering identify exporters and attribute calculators via QWC2 API](../../references/qwc2_plugins#api)
+* [Config: Allow overriding plugin config per theme](../configuration/ThemesConfiguration#manual-theme-configuration)
+* [Allow adding custom plugins via QWC API](../references/qwc2_plugins#api)
+* [Allow registering identify exporters and attribute calculators via QWC2 API](../references/qwc2_plugins#api)
 
 ### General
 * Allow detaching QWC dialogs (i.e. Attribute Table) to separate browser windows
-* [Allow specifying OverviewMap layer independent from current background layer](../../references/qwc2_plugins#overviewmap)
+* [Allow specifying OverviewMap layer independent from current background layer](../references/qwc2_plugins#overviewmap)
 
 ### Editing / AttributeForm / AttributeTable
-* [Honour expressions in QGIS Attributes Form configuration for group box visibility, default value and value-relation filter as defined](../../topics/Editing.md#expressions) (currently [limited grammar](https://github.com/qgis/qwc2/blob/2025-lts/utils/expr_grammar/grammar.ne))
+* [Honour expressions in QGIS Attributes Form configuration for group box visibility, default value and value-relation filter as defined](../topics/Editing.md#expressions) (currently [limited grammar](https://github.com/qgis/qwc2/blob/2025-lts/utils/expr_grammar/grammar.ne))
 * Allow limiting Attibute Table to current map extent
 * Add CSV export to Attribute Table
 * Highlight hovered / filtered features in Attribute Table
 
 ### Redlining
 * Add support for rotating labels
-* [Allow configuring available tools / default color / unit length](../../references/qwc2_plugins#redlining)
+* [Allow configuring available tools / default color / unit length](../references/qwc2_plugins#redlining)
 * Add CTRL / SHIFT support to transform tool to scale objects from corner / preserving aspect ratio
 
 ### Measure
@@ -40,21 +40,21 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 
 ### Layer tree
 * Allow importing (zipped) Shapefiles
-* [Add option to only show groups](../../references/qwc2_plugins#layertree)
-* [Add option to show a link to the Attribute Table of a layer](../../references/qwc2_plugins#layertree)
+* [Add option to only show groups](../references/qwc2_plugins#layertree)
+* [Add option to show a link to the Attribute Table of a layer](../references/qwc2_plugins#layertree)
 
 ### Identify
 * Show layer selection and feature count
 
 ### New plugins
-* [Portal](../../references/qwc2_plugins#portal)
-* [MapFilter](../../references/qwc2_plugins#mapfilter)
-* [GeometryDigitizer](../../references/qwc2_plugins#geometrydigitizer)
-* [Reports](../../references/qwc2_plugins#reports) (see also [Reports](../../topics/Reports.md))
-* [CookiePopup](../../references/qwc2_plugins#cookiepopup)
+* [Portal](../references/qwc2_plugins#portal)
+* [MapFilter](../references/qwc2_plugins#mapfilter)
+* [GeometryDigitizer](../references/qwc2_plugins#geometrydigitizer)
+* [Reports](../references/qwc2_plugins#reports) (see also [Reports](../topics/Reports.md))
+* [CookiePopup](../references/qwc2_plugins#cookiepopup)
 
 ### QWC services
-* [Make `qwc_config` schema name configurable](../../topics/MultiTenancy.md#multi-tenancy-with-separate-configdb-schemas)
+* [Make `qwc_config` schema name configurable](../topics/MultiTenancy.md#multi-tenancy-with-separate-configdb-schemas)
 
 ### Config Generator
 * Create theme groups for subdirs below scan dir
@@ -82,21 +82,21 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * Honour data source filter as set in the QGIS layer properties
 
 ### Document service
-* Rewrite, drops the requirement on a separate `jasper-reporting-service`, see [Reports](../../topics/Reports.md)
+* Rewrite, drops the requirement on a separate `jasper-reporting-service`, see [Reports](../topics/Reports.md)
 
 ### Feature info service
 * Support authentication via basic auth
 * Add support for `text/plain`, `text/html` and `application/json` info formats
-* [Add support for specifying custom templates by placing a file in `info_templates_path`](../../topics/FeatureInfo.md#html-templates)
+* [Add support for specifying custom templates by placing a file in `info_templates_path`](../topics/FeatureInfo.md#html-templates)
 
 ### Fulltext search service
-* [Add trigram search backend](../../topics/Search.md#fulltext-search-with-trigram-backend)
+* [Add trigram search backend](../topics/Search.md#fulltext-search-with-trigram-backend)
 
 ### Legend service
 * Support authentication via basic auth
 
 ### Mapinfo service
-* [Support returning multiple values from SQL query to `info_title`](../../topics/Mapinfo.md)
+* [Support returning multiple values from SQL query to `info_title`](../topics/Mapinfo.md)
 
 ### OGC service
 * Add support for WFS 1.1.0
@@ -137,28 +137,28 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### General
 
-* [Support common plugin configuration applied to both mobile and desktop](../../configuration/ViewerConfiguration.md#plugin-configuration)
-* [Support resource syntax in background layer definitions](../../configuration/ThemesConfiguration.md#background-layers)
-* [Support per-theme `startupTask`](../../configuration/ViewerConfiguration.md#global-settings-overridable-per-theme)
-* [Support spearate mobile/desktop sections for toplevel config properties](../../configuration/ViewerConfiguration.md#separate-mobile-desktop-global-settings)
-* [Add support for tenantConfig templates](../../topics/MultiTenancy.md#tenantconfig-template)
-* [Add config option for redirect to login if requesting a restricted theme](../../configuration/ResourcesPermissions.md#restricted-themes)
-* [Add support for configuring projects stored in database](../../configuration/ThemesConfiguration.md#projects-in-database)
-* [Add support for qgz projects](../../configuration/ThemesConfiguration.md#using-the-qgz-project-file-format)
+* [Support common plugin configuration applied to both mobile and desktop](../configuration/ViewerConfiguration.md#plugin-configuration)
+* [Support resource syntax in background layer definitions](../configuration/ThemesConfiguration.md#background-layers)
+* [Support per-theme `startupTask`](../configuration/ViewerConfiguration.md#global-settings-overridable-per-theme)
+* [Support spearate mobile/desktop sections for toplevel config properties](../configuration/ViewerConfiguration.md#separate-mobile-desktop-global-settings)
+* [Add support for tenantConfig templates](../topics/MultiTenancy.md#tenantconfig-template)
+* [Add config option for redirect to login if requesting a restricted theme](../configuration/ResourcesPermissions.md#restricted-themes)
+* [Add support for configuring projects stored in database](../configuration/ThemesConfiguration.md#projects-in-database)
+* [Add support for qgz projects](../configuration/ThemesConfiguration.md#using-the-qgz-project-file-format)
 
 ### Editing
 
 * Display clickable links in editable text fields
-* Allow generating nested 1:N relation forms (see [`generate_nested_nrel_forms`](../../topics/Editing.md#1n-relations))
+* Allow generating nested 1:N relation forms (see [`generate_nested_nrel_forms`](../topics/Editing.md#1n-relations))
 * Joined fields as configured in QGIS the project are now handled by the `qwc-data-service`
 
 ### FeatureInfo
 
-* [Allow specifying a info template path rather than requiring to specify the template inline](../../topics/FeatureInfo.md#custom-html-templates)
+* [Allow specifying a info template path rather than requiring to specify the template inline](../topics/FeatureInfo.md#custom-html-templates)
 
 ### HeightProfile
 
-* [Allow printing height profile](../../references/qwc2_plugins#heightprofile)
+* [Allow printing height profile](../references/qwc2_plugins#heightprofile)
 
 ### LayerTree
 
@@ -171,16 +171,16 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 * Show a warning when attempting to load a non-existent theme, theme layer or background layer
 * Allow individually controlling snapping to vertex/edge
-* Snap to all vector layers: Redlining, GeoJSON, KML, WFS (see also [`wfs_max_scale`](../../topics/Snapping.md))
-* [Support external MVT layers](../../configuration/ThemesConfiguration.md#external-layers)
+* Snap to all vector layers: Redlining, GeoJSON, KML, WFS (see also [`wfs_max_scale`](../topics/Snapping.md))
+* [Support external MVT layers](../configuration/ThemesConfiguration.md#external-layers)
 
 ### Print
 
-* [Add support for atlas printing](../../topics/Printing.md#print-atlas)
-* [Add GeoPDF support](../../topics/Printing.md)
+* [Add support for atlas printing](../topics/Printing.md#print-atlas)
+* [Add GeoPDF support](../topics/Printing.md)
 * Support layer resource URIs as `printLayer` (i.e. `wms:https://wms.geo.admin.ch#ch.are.bauzonen`)
-* [Improved print label configuration in `printLabelConfig`](../../configuration/ThemesConfiguration.md)
-* [Add support for print layout templates](../../topics/Printing.md#layout-templates)
+* [Improved print label configuration in `printLabelConfig`](../configuration/ThemesConfiguration.md)
+* [Add support for print layout templates](../topics/Printing.md#layout-templates)
 
 ### Redlining
 
@@ -192,28 +192,28 @@ When upgrading from a 2023-lts setup, please note the entries marked with *\[202
 
 ### Search
 
-* [New QGIS feature search provider](../../topics/Search.md#configuring-the-qgis-feature-search)
-* Theme layer search (see [`searchThemeLayers`](../../configuration/ViewerConfiguration.md#global-settings-overridable-per-theme))
-* [Provider/geometry filtering to search box](../../topics/Search.md#filtering)
-* Allow configuring search highlight style (see [`searchOptions.highlightStyle`](../../references/qwc2_plugins#topbar))
+* [New QGIS feature search provider](../topics/Search.md#configuring-the-qgis-feature-search)
+* Theme layer search (see [`searchThemeLayers`](../configuration/ViewerConfiguration.md#global-settings-overridable-per-theme))
+* [Provider/geometry filtering to search box](../topics/Search.md#filtering)
+* Allow configuring search highlight style (see [`searchOptions.highlightStyle`](../references/qwc2_plugins#topbar))
 
 ### Settings
 
-* [Allow setting default startup theme/bookmark for logged in user](../../references/qwc2_plugins#settings)
+* [Allow setting default startup theme/bookmark for logged in user](../references/qwc2_plugins#settings)
 
 ### Share
 
-* Permalink expiry date (see [`default_expiry_period`](../../references/qwc-permalink-service.md))
+* Permalink expiry date (see [`default_expiry_period`](../references/qwc-permalink-service.md))
 * Allow copying QR code to clipboards on supported browsers
 
 ### New plugins
 
-* [Cyclomedia](../../references/qwc2_plugins#cyclomedia)
-* [QGIS FeatureSearch](../../references/qwc2_plugins#featuresearch)
-* [MapExport](../../references/qwc2_plugins#mapexport) (replacement for `RasterExport` and `DxfExport`)
-* [MapLegend](../../references/qwc2_plugins#maplegend)
-* [NewsPopup](../../references/qwc2_plugins#newspopup)
-* [Routing](../../references/qwc2_plugins#routing)
+* [Cyclomedia](../references/qwc2_plugins#cyclomedia)
+* [QGIS FeatureSearch](../references/qwc2_plugins#featuresearch)
+* [MapExport](../references/qwc2_plugins#mapexport) (replacement for `RasterExport` and `DxfExport`)
+* [MapLegend](../references/qwc2_plugins#maplegend)
+* [NewsPopup](../references/qwc2_plugins#newspopup)
+* [Routing](../references/qwc2_plugins#routing)
 
 
 ### Full changelogs
