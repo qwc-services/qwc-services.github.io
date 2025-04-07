@@ -32,7 +32,7 @@ All settings are optional, with fallback to the default values as documented.
 |`defaultInteractionStyle`            | The default style to use on geometries to measure, snap or edit. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
 |`defaultMarkerStyle`                 | The default style to use as marker icon. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
 |`editingAddLinkAnchors`              | Whether to automatically insert link anchors in text values when editing. Default: `true`, |
-|`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../Topics/Editing.md#recaptcha). |
+|`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../topics/Editing.md#recaptcha). |
 |`editTextNullValue`                  | A text value which represents `NULL` when editing. Default: `""`. |
 |`geodesicMeasurements`               | Whether to perform measurements on the geoid. Default: `false`. |
 |`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [translations](#translations). Default: `false`. |
