@@ -1312,13 +1312,13 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>fileNameTemplate</td>
 <td><code>string</code></td>
-<td>Template for the name of the generated files when downloading.</td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{timestamp}</code>.</td>
 <td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
 <td>formatConfiguration</td>
-<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>}],</code><br /><code>}</code></td>
-<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.</td>
+<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>}],</code><br /><code>}</code></td>
+<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -1751,7 +1751,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>fileNameTemplate</td>
 <td><code>string</code></td>
-<td>Template for the name of the generated files when downloading.</td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{timestamp}</code>.</td>
 <td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
