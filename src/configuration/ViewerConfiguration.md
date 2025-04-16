@@ -161,7 +161,20 @@ Any plugin configuration option can be overridden per theme in the theme item `c
   }
 }
 ```
-A particularly interesting aspect is the configuration of the entries in the application menu and toolbar, i.e. the entries in `menuItems` and `toolbarItems` in the `TopBar` plugin configuration. The format of these entries is as follows:
+
+In general, the procedure for enabling a plugin is:
+
+* Make sure the plugin is compiled into the application (see [Build-time configuration](#build-time configuration)).
+* In the `plugins` section of `config.json`, below `common` (or `mobile` and/or `desktop`), add an entry
+```json
+{
+    "name": "<Plugin name>",
+    "cfg": {
+      <Plugin configuration props>
+    }
+}
+```
+* For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in `menuItems` and/or `toolbarItems` in the `TopBar` configuration. The format of these entires is as follows:
 
 | Setting                                    | Description                                                                       |
 |--------------------------------------------|-----------------------------------------------------------------------------------|
@@ -177,13 +190,12 @@ A particularly interesting aspect is the configuration of the entries in the app
 |`⁣  "shortcut": "<shortcut>"`                | Optional, keyboard shortcut which triggers the entry, i.e. `"alt+shift+a"`.       |
 |`}`                                         |                                                                                   |
 
-*Note:* The built-in icons are those located in [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons) and in `qwc-app/icons`. The built-in icon names are the respective file names, without `.svg` extension.
+  *Note:* The built-in icons are those located in [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons) and in `qwc-app/icons`. The built-in icon names are the respective file names, without `.svg` extension.
 
-Also the map buttons ([LocationButton](../references/qwc2_plugins.md#locatebutton), [HomeButton](../references/qwc2_plugins.md#homebutton), [TaskButton](../references/qwc2_plugins.md#taskbutton), [ZoomButton](../references/qwc2_plugins.md#zoombutton)) support `themeFlagBlacklist` and `themeFlagWhitelist` for controlling the visibility based on the [theme flags](ThemesConfiguration.md#manual-theme-configuration).
 
 **Opening external websites**<a name="opening-external-websites"></a>
 
-As a special case, entries for opening external URLs can be defined as follows:
+As a special case, entries for opening external URLs can be defined in the `menuItems` and/or `toolbarItems` in the `TopBar` configuration as follows:
 
 | Setting                | Description                                                                       |
 |------------------------|-----------------------------------------------------------------------------------|
@@ -192,28 +204,25 @@ As a special case, entries for opening external URLs can be defined as follows:
 |`⁣  "title": "<key>",`   | Optional: Title to use insead of `appmenu.items.<key>`.                           |
 |`⁣  "icon": "<icon>",`   | As above.                                                                         |
 |`⁣  "url": "<url>",`     | The URL to open. Can contain as placeholders the keys listed in [URL Parameters](../topics/Interfacing.md#url-parameters), encolsed in `$` (i.e. `$e$` for the extent). In addition, the placeholders `$x$` and `$y$` for the individual map center coordinates are also supported.               |
-|`⁣  "target": "<target>"`| The target where to open the URL, if empty, `_blank` is assumed. Can be `iframe` to open the link in a iframe window inside QWC. |
+|`⁣  "target": "<target>"`| The target where to open the URL, if empty, `_blank` is assumed. Can be `iframe` or `:iframedialog:<windowname>:<options>` (see below) to open the link in a iframe window inside QWC. |
 |`}`                     |                                                                                   |
 
-In general, the procedure for enabling a plugin is:
+The format of the `:iframedialog:<windowname>:<options>` target is as follows:
 
-* Make sure the plugin is compiled into the application (see [Build-time configuration](#build-time configuration)).
-* In the `plugins` section of `config.json`, below `common` (or `mobile` and/or `desktop`), add an entry
-```json
-{
-    "name": "<Plugin name>",
-    "cfg": {
-      <Plugin configuration props>
-    }
-}
-```
-* For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in `menuItems` and/or `toolbarItems` as desired, i.e.
-```json
-  "menuItems": [
-    ...
-    {"key": "<Plugin name>", "icon": "<icon name>", ...}
-  ]
-```
+- `windowname` is used to identify the name of the iframe window within which the link will be opened, i.e. can be used to make multiple external URLs re-use the same iframe window.
+- `options` is a sequence of `<key>=<value>`, separated by `:`, with the following options:
+
+  - `dockable=<false|left|right|top|bottom>`: whether the window is dockable, and to which screen edge
+  - `docked=<true|false>`: whether the window is docked by default
+  - `splitScreenWhenDocked=<true|false>`: whether to split the screen when docked
+  - `h=<h>`: the initial window height
+  - `w=<w>`: the initial window width
+  - `zIndex=<zIndex>`: the stacking zIndex for the dialog
+  - `icon=<icon>`: the name of a build-in icon (see [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons)) to display in the window title bar (overrides the icon set in the `menuItems`/`tollbarItems` entry)
+  - `title=<title>`: the title to display in the window title bar (overrides the title set in the `menuItems`/`tollbarItems` entry)
+  - `print=<true|false>`: whether to display a print icon in the window title bar
+
+
 ## Customizing the viewer assets <a name="viewer-assets"></a>
 
 The viewer assets are located as follows:
