@@ -212,15 +212,15 @@ The format of the `:iframedialog:<windowname>:<options>` target is as follows:
 - `windowname` is used to identify the name of the iframe window within which the link will be opened, i.e. can be used to make multiple external URLs re-use the same iframe window.
 - `options` is a sequence of `<key>=<value>`, separated by `:`, with the following options:
 
-  - `dockable=<false|left|right|top|bottom>`: whether the window is dockable, and to which screen edge
-  - `docked=<true|false>`: whether the window is docked by default
-  - `splitScreenWhenDocked=<true|false>`: whether to split the screen when docked
-  - `h=<h>`: the initial window height
-  - `w=<w>`: the initial window width
-  - `zIndex=<zIndex>`: the stacking zIndex for the dialog
-  - `icon=<icon>`: the name of a build-in icon (see [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons)) to display in the window title bar (overrides the icon set in the `menuItems`/`tollbarItems` entry)
-  - `title=<title>`: the title to display in the window title bar (overrides the title set in the `menuItems`/`tollbarItems` entry)
-  - `print=<true|false>`: whether to display a print icon in the window title bar
+    - `dockable=<false|left|right|top|bottom>`: whether the window is dockable, and to which screen edge
+    - `docked=<true|false>`: whether the window is docked by default
+    - `splitScreenWhenDocked=<true|false>`: whether to split the screen when docked
+    - `h=<h>`: the initial window height
+    - `w=<w>`: the initial window width
+    - `zIndex=<zIndex>`: the stacking zIndex for the dialog
+    - `icon=<icon>`: the name of a build-in icon (see [`qwc2/icons`](https://github.com/qgis/qwc2/tree/master/icons)) to display in the window title bar (overrides the icon set in the `menuItems`/`tollbarItems` entry)
+    - `title=<title>`: the title to display in the window title bar (overrides the title set in the `menuItems`/`tollbarItems` entry)
+    - `print=<true|false>`: whether to display a print icon in the window title bar
 
 
 ## Customizing the viewer assets <a name="viewer-assets"></a>
