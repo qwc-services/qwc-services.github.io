@@ -185,6 +185,36 @@
 <td><code>&lt;tenant_path_prefix&gt;</code></td>
 <td>Path for which the access cookie is valid for multi-tenant setups.</td>
 </tr>
+<tr>
+<td><code>ENABLE_POOLING</code></td>
+<td><code>False</code></td>
+<td>Enable db connection pooling. Defaults are used, if the following ENV are not set.</td>
+</tr>
+<tr>
+<td><code>POOL_SIZE</code></td>
+<td><code>5</code></td>
+<td>Maximum number of possible data base connections.</td>
+</tr>
+<tr>
+<td><code>MAX_OVERFLOW</code></td>
+<td><code>10</code></td>
+<td>Additional connections beyond pool_size during peak load.</td>
+</tr>
+<tr>
+<td><code>POOL_TIMEOUT</code></td>
+<td><code>30</code></td>
+<td>Time (in seconds) to wait for a connection to become available.</td>
+</tr>
+<tr>
+<td><code>POOL_RECYCLE</code></td>
+<td><code>-1</code></td>
+<td>Time (in seconds) after idle connections will be resetted.</td>
+</tr>
+<tr>
+<td><code>CONFIG_PATH</code></td>
+<td><code>/srv/qwc_service/config</code></td>
+<td>The path under where QWC Services' configuration files reside.</td>
+</tr>
 </tbody>
 </table>
 <h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h1>
