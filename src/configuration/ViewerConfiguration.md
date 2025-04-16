@@ -297,7 +297,7 @@ The legend print template `assets/templates/legendprint.html` is used when print
 
 ## Building a custom viewer <a name="custom-viewer"></a>
 
-The QWC stock application, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/), can serve as a base for building a custom application, and is published as an [NPM package](https://www.npmjs.com/package/qwc2). An example of a custom application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
+The QWC stock application, hosted at [https://github.com/qgis/qwc2/](https://github.com/qgis/qwc2/), can serve as a base for building a custom application, and is published as an [NPM package](https://www.npmjs.com/package/qwc2). The LTS branch is published on NPM as [qwc2-lts](https://www.npmjs.com/package/qwc2-lts). An example of a custom application is hosted at [https://github.com/qgis/qwc2-demo-app](https://github.com/qgis/qwc2-demo-app).
 
 To build a custom viewer, the first step is cloning the demo application:
 ```bash
