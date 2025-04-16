@@ -532,7 +532,21 @@ All settings are optional, with fallback to the default values as documented.</p
   }
 }
 </code></pre>
-<p>A particularly interesting aspect is the configuration of the entries in the application menu and toolbar, i.e. the entries in <code>menuItems</code> and <code>toolbarItems</code> in the <code>TopBar</code> plugin configuration. The format of these entries is as follows:</p>
+<p>In general, the procedure for enabling a plugin is:</p>
+<ul>
+<li>Make sure the plugin is compiled into the application (see <a href="#build-time configuration">Build-time configuration</a>).</li>
+<li>In the <code>plugins</code> section of <code>config.json</code>, below <code>common</code> (or <code>mobile</code> and/or <code>desktop</code>), add an entry</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;&lt;Plugin name&gt;&quot;,
+    &quot;cfg&quot;: {
+      &lt;Plugin configuration props&gt;
+    }
+}
+</code></pre>
+<ul>
+<li>For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in <code>menuItems</code> and/or <code>toolbarItems</code> in the <code>TopBar</code> configuration. The format of these entires is as follows:</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -588,9 +602,8 @@ All settings are optional, with fallback to the default values as documented.</p
 </tbody>
 </table>
 <p><em>Note:</em> The built-in icons are those located in <a href="https://github.com/qgis/qwc2/tree/master/icons"><code>qwc2/icons</code></a> and in <code>qwc-app/icons</code>. The built-in icon names are the respective file names, without <code>.svg</code> extension.</p>
-<p>Also the map buttons (<a href="../../references/qwc2_plugins/#locatebutton">LocationButton</a>, <a href="../../references/qwc2_plugins/#homebutton">HomeButton</a>, <a href="../../references/qwc2_plugins/#taskbutton">TaskButton</a>, <a href="../../references/qwc2_plugins/#zoombutton">ZoomButton</a>) support <code>themeFlagBlacklist</code> and <code>themeFlagWhitelist</code> for controlling the visibility based on the <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a>.</p>
 <p><strong>Opening external websites</strong><a name="opening-external-websites"></a></p>
-<p>As a special case, entries for opening external URLs can be defined as follows:</p>
+<p>As a special case, entries for opening external URLs can be defined in the <code>menuItems</code> and/or <code>toolbarItems</code> in the <code>TopBar</code> configuration as follows:</p>
 <table>
 <thead>
 <tr>
@@ -621,7 +634,7 @@ All settings are optional, with fallback to the default values as documented.</p
 </tr>
 <tr>
 <td><code>⁣  "target": "&lt;target&gt;"</code></td>
-<td>The target where to open the URL, if empty, <code>_blank</code> is assumed. Can be <code>iframe</code> to open the link in a iframe window inside QWC.</td>
+<td>The target where to open the URL, if empty, <code>_blank</code> is assumed. Can be <code>iframe</code> or <code>:iframedialog:&lt;windowname&gt;:&lt;options&gt;</code> (see below) to open the link in a iframe window inside QWC.</td>
 </tr>
 <tr>
 <td><code>}</code></td>
@@ -629,26 +642,24 @@ All settings are optional, with fallback to the default values as documented.</p
 </tr>
 </tbody>
 </table>
-<p>In general, the procedure for enabling a plugin is:</p>
+<p>The format of the <code>:iframedialog:&lt;windowname&gt;:&lt;options&gt;</code> target is as follows:</p>
 <ul>
-<li>Make sure the plugin is compiled into the application (see <a href="#build-time configuration">Build-time configuration</a>).</li>
-<li>In the <code>plugins</code> section of <code>config.json</code>, below <code>common</code> (or <code>mobile</code> and/or <code>desktop</code>), add an entry</li>
+<li><code>windowname</code> is used to identify the name of the iframe window within which the link will be opened, i.e. can be used to make multiple external URLs re-use the same iframe window.</li>
+<li>
+<p><code>options</code> is a sequence of <code>&lt;key&gt;=&lt;value&gt;</code>, separated by <code>:</code>, with the following options:</p>
+</li>
+<li>
+<p><code>dockable=&lt;false|left|right|top|bottom&gt;</code>: whether the window is dockable, and to which screen edge</p>
+</li>
+<li><code>docked=&lt;true|false&gt;</code>: whether the window is docked by default</li>
+<li><code>splitScreenWhenDocked=&lt;true|false&gt;</code>: whether to split the screen when docked</li>
+<li><code>h=&lt;h&gt;</code>: the initial window height</li>
+<li><code>w=&lt;w&gt;</code>: the initial window width</li>
+<li><code>zIndex=&lt;zIndex&gt;</code>: the stacking zIndex for the dialog</li>
+<li><code>icon=&lt;icon&gt;</code>: the name of a build-in icon (see <a href="https://github.com/qgis/qwc2/tree/master/icons"><code>qwc2/icons</code></a>) to display in the window title bar (overrides the icon set in the <code>menuItems</code>/<code>tollbarItems</code> entry)</li>
+<li><code>title=&lt;title&gt;</code>: the title to display in the window title bar (overrides the title set in the <code>menuItems</code>/<code>tollbarItems</code> entry)</li>
+<li><code>print=&lt;true|false&gt;</code>: whether to display a print icon in the window title bar</li>
 </ul>
-<pre><code class="language-json">{
-    &quot;name&quot;: &quot;&lt;Plugin name&gt;&quot;,
-    &quot;cfg&quot;: {
-      &lt;Plugin configuration props&gt;
-    }
-}
-</code></pre>
-<ul>
-<li>For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in <code>menuItems</code> and/or <code>toolbarItems</code> as desired, i.e.</li>
-</ul>
-<pre><code class="language-json">  &quot;menuItems&quot;: [
-    ...
-    {&quot;key&quot;: &quot;&lt;Plugin name&gt;&quot;, &quot;icon&quot;: &quot;&lt;icon name&gt;&quot;, ...}
-  ]
-</code></pre>
 <h2 id="customizing-the-viewer-assets">Customizing the viewer assets <a name="viewer-assets"></a><a class="headerlink" href="#customizing-the-viewer-assets" title="Permanent link">&para;</a></h2>
 <p>The viewer assets are located as follows:</p>
 <ul>
@@ -742,7 +753,7 @@ All settings are optional, with fallback to the default values as documented.</p
 <h3 id="personalizing-the-legend-print-template">Personalizing the legend print template<a class="headerlink" href="#personalizing-the-legend-print-template" title="Permanent link">&para;</a></h3>
 <p>The legend print template <code>assets/templates/legendprint.html</code> is used when printing the map legend from the layer tree. The only requirement for this template is that is must contain a <code>&lt;div id="legendcontainer"&gt;&lt;/div&gt;</code> element.</p>
 <h2 id="building-a-custom-viewer">Building a custom viewer <a name="custom-viewer"></a><a class="headerlink" href="#building-a-custom-viewer" title="Permanent link">&para;</a></h2>
-<p>The QWC stock application, hosted at <a href="https://github.com/qgis/qwc2/">https://github.com/qgis/qwc2/</a>, can serve as a base for building a custom application, and is published as an <a href="https://www.npmjs.com/package/qwc2">NPM package</a>. An example of a custom application is hosted at <a href="https://github.com/qgis/qwc2-demo-app">https://github.com/qgis/qwc2-demo-app</a>.</p>
+<p>The QWC stock application, hosted at <a href="https://github.com/qgis/qwc2/">https://github.com/qgis/qwc2/</a>, can serve as a base for building a custom application, and is published as an <a href="https://www.npmjs.com/package/qwc2">NPM package</a>. The LTS branch is published on NPM as <a href="https://www.npmjs.com/package/qwc2-lts">qwc2-lts</a>. An example of a custom application is hosted at <a href="https://github.com/qgis/qwc2-demo-app">https://github.com/qgis/qwc2-demo-app</a>.</p>
 <p>To build a custom viewer, the first step is cloning the demo application:</p>
 <pre><code class="language-bash">git clone https://github.com/qgis/qwc2-demo-app.git qwc-app
 </code></pre>
