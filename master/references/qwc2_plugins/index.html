@@ -2400,7 +2400,13 @@ queried via GetFeatureInfo.</p>
          ...
     ],
     &quot;tiles3d&quot;: [
-         {&quot;name&quot;: &quot;&lt;name&gt;&quot;, &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;, &quot;title&quot;: &quot;&lt;title&gt;&quot;, &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;}
+         {
+             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
+             &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
+             &quot;title&quot;: &quot;&lt;title&gt;&quot;,
+             &quot;idAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
+             &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;
+         }
     ]
 }
 </code></pre>
@@ -2408,6 +2414,7 @@ queried via GetFeatureInfo.</p>
 <ul>
 <li>The DTM should be a cloud optimized GeoTIFF.</li>
 <li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>.</li>
+<li>The optional <code>idAttr</code> is the name of an attribute stored in the tileset batch table which stores the batch feature id, passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
 <li>The optional <code>colorAttr</code> is the name of an attribute stored in the tileset batch table which stores the batch color, as a 0xRRGGBB integer.</li>
 </ul>
 <table>
@@ -2433,10 +2440,16 @@ queried via GetFeatureInfo.</p>
 <td><code>{</code><br /><code>initialWidth: 600,</code><br /><code>initialHeight: 800,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
 </tr>
 <tr>
-<td>options</td>
-<td><code>{</code><br /><code>searchMinScaleDenom: number,</code><br /><code>}</code></td>
-<td>Various configuration options</td>
-<td><code>{</code><br /><code>searchMinScaleDenom: 1000</code><br /><code>}</code></td>
+<td>searchMinScaleDenom</td>
+<td><code>number</code></td>
+<td>Minimum scale denominator when zooming to search result.</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td>tileInfoServiceUrl</td>
+<td><code>string</code></td>
+<td>URL to service for querying additional tile information.<br />Can contain the <code>{tileset}</code> and <code>{objectid}</code> placeholders.<br />Expected to return a JSON dict with attributes.</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>

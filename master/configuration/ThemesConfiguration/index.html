@@ -1039,11 +1039,12 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
     }
   }
 </code></pre>
-<p>Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier, which will then be resolved at runtime. For example:</p>
+<p>Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier. For example:</p>
 <pre><code class="language-json">{
     &quot;name&quot;:&quot;ch.swisstopo.pixelkarte-grau&quot;,
     &quot;title&quot;:&quot;National map (gray)&quot;,
     &quot;resource&quot;: &quot;wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml#ch.swisstopo.pixelkarte-grau&quot;,
+    &quot;projection&quot;: &quot;EPSG:2056&quot;,
     &quot;thumbnail&quot;:&quot;img/mapthumbs/default.jpg&quot;
 }
 </code></pre>
