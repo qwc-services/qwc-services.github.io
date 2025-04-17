@@ -426,15 +426,17 @@ Some minimal examples of supported background layers:
   }
 ```
 
-Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier, which will then be resolved at runtime. For example:
+Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier. For example:
 ```json
 {
     "name":"ch.swisstopo.pixelkarte-grau",
     "title":"National map (gray)",
     "resource": "wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml#ch.swisstopo.pixelkarte-grau",
+    "projection": "EPSG:2056",
     "thumbnail":"img/mapthumbs/default.jpg"
 }
 ```
+
 A background layer definition can also be a group of layers, in the format
 ```json
 {
