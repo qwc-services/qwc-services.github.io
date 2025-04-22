@@ -715,7 +715,9 @@ If the dataset it editable, the feature attributes can be edited directly in the
 <h2 id="heightprofile">HeightProfile<a name="heightprofile"></a><a class="headerlink" href="#heightprofile" title="Permanent link">&para;</a></h2>
 <p>Displays a height profile along a measured line.</p>
 <p>Triggered automatically when a line is measured via the <code>Measure</code> plugin.</p>
-<p>Requires <code>elevationServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-elevation-service</code>.</p>
+<p>Requires <code>elevationServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-elevation-service</code>,
+or a custom elevation interface to be exposed in <code>window.QWC2ElevationInterface</code>, see
+<a href="https://github.com/qgis/qwc2/blob/master/utils/ElevationInterface.js">ElevationInterface.js</a>.</p>
 <p>The print height profile functionality requires a template located by default at <code>assets/templates/heightprofileprint.html</code>
 with containing a container element with <code>id=heightprofilecontainer</code>.</p>
 <table>
@@ -1391,7 +1393,9 @@ with containing a container element with id=legendcontainer.</p>
 <p>Provides map context information when right-clicking on the map.</p>
 <p>Displays the coordinates at the picked position by default.</p>
 <p>If <code>elevationServiceUrl</code> in <code>config.json</code> to points to a <code>qwc-elevation-service</code>,
-the height at the picked position is also displayed.</p>
+or a custom elevation interface is exposed in <code>window.QWC2ElevationInterface</code> (see
+<a href="https://github.com/qgis/qwc2/blob/master/utils/ElevationInterface.js">ElevationInterface.js</a>), the
+height at the picked position is also displayed.</p>
 <p>If <code>mapInfoService</code> in <code>config.json</code> points to a <code>qwc-mapinfo-service</code>, additional
 custom information according to the <code>qwc-mapinfo-service</code> configuration is returned.</p>
 <p>You can pass additional plugin components to the <code>MapInfoTooltip</code> in <code>appConfig.js</code>:</p>
