@@ -2405,7 +2405,10 @@ queried via GetFeatureInfo.</p>
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;idAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
-             &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;
+             &quot;tilesetStyleUrl&quot;: &quot;&lt;url_to_tilesetStyle.json&gt;&quot;,
+             &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
+             &quot;alphaAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
+             &quot;labelAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
          }
     ]
 }
@@ -2414,9 +2417,20 @@ queried via GetFeatureInfo.</p>
 <ul>
 <li>The DTM should be a cloud optimized GeoTIFF.</li>
 <li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>.</li>
-<li>The optional <code>idAttr</code> is the name of an attribute stored in the tileset batch table which stores the batch feature id, passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
-<li>The optional <code>colorAttr</code> is the name of an attribute stored in the tileset batch table which stores the batch color, as a 0xRRGGBB integer.</li>
+<li><code>idAttr</code>: Batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
+<li><code>tilesetStyleUrl</code>: optional, URL to a tileset style JSON dict, see below. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
+<li><code>colorAttr</code>: optional, batch table attribute which stores the batch color, as a 0xRRGGBB integer.</li>
+<li><code>alphaAttr</code>: optional, batch table attribute which stores the batch alpha (transparency), as a [0, 255] integer.</li>
+<li><code>labelAttr</code>: optional, batch table attribute which stores the batch label, displayed above the geometry.</li>
 </ul>
+<p>The tileset style JSON is shaped as follows:</p>
+<pre><code>{
+    &quot;&lt;object_id&gt;&quot;: {
+        &quot;label&quot;: &quot;&lt;label&gt;&quot;,
+        &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
+    }
+}
+</code></pre>
 <table>
 <thead>
 <tr>
