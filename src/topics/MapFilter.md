@@ -80,4 +80,4 @@ To specify custom filters, the syntax is `"__custom": [{"title": "<title>", "lay
 
 Whenever an startup filter value is specified, the filter is automatically enabled.
 
-*Note*: When specifying `f`, you should also specify `t` as the startup filter configuraiton needs to match the filters of the desired theme.
+*Note*: When specifying `f`, you should also specify `t` as the startup filter configuration needs to match the filters of the desired theme.
