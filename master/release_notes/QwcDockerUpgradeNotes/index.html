@@ -134,7 +134,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="updating-to-qwc-permalink-service-v20250319">Updating to qwc-permalink-service-v2025.03.19<a class="headerlink" href="#updating-to-qwc-permalink-service-v20250319" title="Permanent link">&para;</a></h1>
+                <h1 id="updating-to-qwc-adminguiv20250423-and-qwc-db-authv20250423">Updating to qwc-admin.gui:v2025.04.23 and qwc-db-auth:v2025.04.23<a class="headerlink" href="#updating-to-qwc-adminguiv20250423-and-qwc-db-authv20250423" title="Permanent link">&para;</a></h1>
+<p><code>qwc-admin.gui:v2025.04.23</code> now supports setting a flag that the user password must be changed on the next login, and
+and <code>qwc-db-auth:v2025.04.23</code> enforces this setting. As this requires a DB schema change, make sure you are also using
+<code>qwc-base-db-migrate:v2025.04.23</code> or newer.</p>
+<h1 id="updating-to-qwc-permalink-service-v20250319">Updating to qwc-permalink-service-v2025.03.19<a class="headerlink" href="#updating-to-qwc-permalink-service-v20250319" title="Permanent link">&para;</a></h1>
 <p>Due to a DB schema change required by <code>qwc-permalink-service-v2025.03.19</code>, make sure you are also using <code>qwc-base-db-migrate-v2025.03.19</code> or newer.</p>
 <h1 id="updating-to-qwc-map-viewer-demo-v20250306">Updating to qwc-map-viewer-demo-v2025.03.06<a class="headerlink" href="#updating-to-qwc-map-viewer-demo-v20250306" title="Permanent link">&para;</a></h1>
 <p>The <code>qwc-map-viewer-demo</code> images have been replaced by the <code>qwc-map-viewer</code> images (without the <code>-demo</code> suffix). Reference this image instead in your <code>docker-compose.yml</code>:</p>
