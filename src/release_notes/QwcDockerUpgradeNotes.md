@@ -1,3 +1,9 @@
+# Updating to qwc-admin.gui:v2025.04.23 and qwc-db-auth:v2025.04.23
+
+`qwc-admin.gui:v2025.04.23` now supports setting a flag that the user password must be changed on the next login, and
+and `qwc-db-auth:v2025.04.23` enforces this setting. As this requires a DB schema change, make sure you are also using
+`qwc-base-db-migrate:v2025.04.23` or newer.
+
 # Updating to qwc-permalink-service-v2025.03.19
 
 Due to a DB schema change required by `qwc-permalink-service-v2025.03.19`, make sure you are also using `qwc-base-db-migrate-v2025.03.19` or newer.
