@@ -18,7 +18,7 @@ echo "" >> src/references/index.md
 echo "index.md" > src/references/.gitignore
 
 echo "* Getting latest version..."
-version=$(curl https://raw.githubusercontent.com/qgis/qwc2-demo-app/${branch}/package.json | grep -Eo '^\s*"version": "[^"]+",$' | awk -F'"' '{print $4}')
+version=$(curl https://raw.githubusercontent.com/qgis/qwc2/${branch}/package.json | grep -Eo '^\s*"version": "[^"]+",$' | awk -F'"' '{print $4}')
 sed "s|@version@|$version|" qwc2.yml.in > qwc2.yml
 
 echo "* Downloading plugin reference..."
