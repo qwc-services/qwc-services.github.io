@@ -275,12 +275,14 @@
 <li><code>geomType</code>: <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>Circle</code> or <code>Box</code>.</li>
 <li><code>message</code>: A descriptive string to display in the tool taskbar.</li>
 <li><code>callback</code>: A <code>function(result, crs)</code>, the <code>result</code> being an array of GeoJSON features, and <code>crs</code> the projection of the feature coordinates.</li>
-<li><code>options</code>: Optional configuration:</li>
+<li><code>options</code>: Optional configuration:<ul>
 <li><code>drawMultiple</code>: Whether to allow drawing multiple geometries (default: <code>false</code>).</li>
 <li><code>style</code>: A custom style object to use for the drawn features, in the same format as <code>DEFAULT_FEATURE_STYLE</code> in <code>qwc2/utils/FeatureStyles.js</code>.</li>
 <li><code>initialFeatures</code>: Array of initial geometries.</li>
 <li><code>snapping</code>: Whether snapping is available while drawing (default: <code>false</code>).</li>
 <li><code>snappingActive</code>: Whether snapping is initially active (default: <code>false</code>)</li>
+</ul>
+</li>
 </ul>
 <p><strong>getState()</strong></p>
 <p>Return the current application state.</p>
