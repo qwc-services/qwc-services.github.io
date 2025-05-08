@@ -355,6 +355,7 @@ Some minimal examples of supported background layers:
   "name": "swissboundaries",
   "type":"wms",
   "url":"https://wms.geo.admin.ch",
+  "projection:":"EPSG:2056",
   "params": {
     "LAYERS": "ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill",
     "VERSION": "1.3.0",
