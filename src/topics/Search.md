@@ -172,7 +172,19 @@ searchProviders: [
 ]
 ...
 ```
-Note: The QWC stock application (also used by the `qwc-map-viewer` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
+Note: The QWC stock application (also used by the `qwc-map-viewer` docker image) includes four providers by default: `coordinates`, `nominatim` (OpenStreetMap location search, see <a href="#nominatim-search">below</a>), `qgis` (see <a href="#qgis-search">below</a>) and `fulltext` (see <a href="#fulltext-search">below</a>).
+
+## Configuring the nominatim (OpenStreetMap) location search <a name="nominatim-search"></a>
+
+The nominatim search is build-in and in it's simplest form can be configured by just specifying `nominatim` in the `searchProviders`. You can customize the search by passing parameters described in the [Nominatim API](https://nominatim.org/release-docs/latest/api/Search/) in the provider params, i.e. to restrict the results to Switzerland and Germany you can write:
+```json
+  {
+    "provider": "nominatim",
+    "params": {
+      "countrycodes": "de,ch"
+    }
+  }
+```
 
 ## Configuring the QGIS feature search <a name="qgis-search"></a>
 
