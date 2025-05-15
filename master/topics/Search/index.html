@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2025.05.07.1</title>
+    <title>Search - QWC2 - 2025.05.12</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.05.07.1
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.05.12
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -67,6 +67,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#adding-search-providers">Adding search providers</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-nominatim-openstreetmap-location-search">Configuring the nominatim (OpenStreetMap) location search </a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-qgis-feature-search">Configuring the QGIS feature search </a>
     </li>
@@ -132,7 +134,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.05.07.1</a>
+          <a href="../..">QWC2 - 2025.05.12</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -315,7 +317,16 @@ searchProviders: [
 ]
 ...
 </code></pre>
-<p>Note: The QWC stock application (also used by the <code>qwc-map-viewer</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
+<p>Note: The QWC stock application (also used by the <code>qwc-map-viewer</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search, see <a href="#nominatim-search">below</a>), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
+<h2 id="configuring-the-nominatim-openstreetmap-location-search">Configuring the nominatim (OpenStreetMap) location search <a name="nominatim-search"></a><a class="headerlink" href="#configuring-the-nominatim-openstreetmap-location-search" title="Permanent link">&para;</a></h2>
+<p>The nominatim search is build-in and in it's simplest form can be configured by just specifying <code>nominatim</code> in the <code>searchProviders</code>. You can customize the search by passing parameters described in the <a href="https://nominatim.org/release-docs/latest/api/Search/">Nominatim API</a> in the provider params, i.e. to restrict the results to Switzerland and Germany you can write:</p>
+<pre><code class="language-json">  {
+    &quot;provider&quot;: &quot;nominatim&quot;,
+    &quot;params&quot;: {
+      &quot;countrycodes&quot;: &quot;de,ch&quot;
+    }
+  }
+</code></pre>
 <h2 id="configuring-the-qgis-feature-search">Configuring the QGIS feature search <a name="qgis-search"></a><a class="headerlink" href="#configuring-the-qgis-feature-search" title="Permanent link">&para;</a></h2>
 <p>The QGIS feature search relies on WMS GetFeatureInfo with the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-filter"><code>FILTER</code></a> parameter to search features of layers which are part of the theme WMS. It is enabled via the <code>qgis</code> search provider, which is part of the QWC stock application.</p>
 <p><em>Note</em>: Make sure the QGIS Project is configured to return geometries with the feature info responses (<code>Project</code> &rarr; <code>Properties</code> &rarr; <code>QGIS Server</code> &rarr; <code>Add geometry to feature response</code>).</p>
