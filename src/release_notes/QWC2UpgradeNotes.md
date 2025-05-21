@@ -2,6 +2,13 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.5.21
+------------------------
+
+*Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
+
+- The `changeLayerProperty` action now takes the layer `id`. The `uuid` field of the layer entry has been removed.
+
 Update to qwc2 2025.4.3
 -----------------------
 
