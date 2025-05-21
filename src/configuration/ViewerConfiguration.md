@@ -115,7 +115,7 @@ Some plugins require external services (typically part of the `qwc-services` eco
 |`authServiceUrl`      | Typically the URL of a QWC authentication service like `qwc-db-auth`. |
 |`editServiceUrl`      | Typically the URL of the `qwc-data-service`.             |
 |`elevationServiceUrl` | Typically the URL of the `qwc-elevation-service`.        |
-|`featureReportService`| Typically the URL of the `qwc-document-service`.         |
+|`documentService`     | Typically the URL of the `qwc-document-service`.         |
 |`mapInfoService`      | Typically the URL of the `qwc-map-info-service`.         |
 |`permalinkServiceUrl` | Typically the URL of the `qwc-permalink-service`.        |
 |`searchServiceUrl`    | Typically the URL of the `qwc-fulltext-search-service`.  |

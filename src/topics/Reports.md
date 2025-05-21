@@ -37,13 +37,26 @@ As a second step, associate the report templates to theme layers to expose the r
 
 ```json
     "featureReport": {
-      "<layer_name1>": "<template_name1>",
-      "<layer_name2>": "<template_name2>",
+      "<layer_name1>": "<template_name>",
+      "<layer_name2>": [
+        {
+          "title": "<title>",
+          "template": "<template_name>",
+          "single_report": <false|true>,
+          "format": "<pdf|docx|...>"
+        },
+        ...
+      ],
       ...
     }
 ```
 
-The web client will then display a link to download the report for one or more selected features in the identify results dialog.
+The first case example displays the shorthand syntax for assigning one report template to one layer. The second example displays the syntax for assigning one or more templates to one layer, supporting the following extra options:
+
+- `single_report`: If `true`, one report will be compiled and a list of feature IDs will be passed in the report params. If `false`, one report will be compiled for each feature ID, and the result will be a multi-page report (one report per feature). Default is `false`.
+- `format`: The report format, one of `pdf`, `html`, `csv`, `docx`, `ods`, `odt`, `pptx`, `rtf`, `xslsx`, `xml`. Default is `pdf`.
+
+The web client will then display a link to download the report(s) for one or more selected features in the identify results dialog.
 
 In addition, the [`Reports` plugin](../references/qwc2_plugins.md#reports) provides a convenient interface to directly select a desired report layer and download the reports for one or more, or all, features of the selected layer.
 

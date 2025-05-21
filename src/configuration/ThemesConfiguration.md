@@ -179,7 +179,7 @@ The format of the theme definitions is as follows:
 | `"searchProviders": ["<Provider>"],`            | Optional, list of search providers, see [Search](../topics/Search.md). Defaults to `defaultSearchProviders`. |
 | `"minSearchScaleDenom": <number>,`              | Optional, minimum scale to enforce when zooming to search results. Takes precedence over value in `config.json`. |
 | `"featureReport": {`                            | Optional, available feature report templates.                                    |
-| `⁣  "<LayerId>": "<TemplateID>"  `               | WMS sublayer ID and associated template ID to pass to the `featureReportService`.|
+| `⁣  "<LayerId>": <TemplateCfg>`                  | WMS sublayer ID and associated template ID to pass to the `documentService`. See [Reports](../topics/Reports.md). |
 | `},`                                            |                                                                                  |
 | `"additionalMouseCrs": ["<EPSG code>"],`        | Optional, list of additional projections for displaying the mouse position. WGS84 and `mapCrs` are available by default. Additional projections definitions must be added to `config.json`.         |
 | `"watermark": {`                                | Optional, configuration of watermark to add to raster export images.             |
