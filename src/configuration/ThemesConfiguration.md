@@ -214,12 +214,13 @@ The format of the theme definitions is as follows:
 | `⁣  ...`                                         |                                                                                  |
 | `},`                                            |                                                                                  |
 | `"wmsBasicAuth": "{`                            | Optional, allows to authenticate to QGIS Server during themes.json generation. NOTE: these credentials will solely be used by `yarn run themesConfig` and won't be stored in `themes.json`.|
-| `⁣  "username": <username>`                      | Optional: http basic authentication username.                                    |
+| `⁣  "username": <username>,`                     | Optional: http basic authentication username.                                    |
 | `⁣  "password": <password>`                      | Optional: http basic authentication password.                                    |
 | `},`                                            |                                                                                  |
-| `"layerTreeHiddenSublayers": ["<layername>", ...]`, | Optional: list of sublayer names to omit in layertree (but still displayed in map). |
-| `"predefinedFilters": [{<filter_config>}, ...]`, | Optional: predefined filter configuration, see [MapFilter](../references/qwc2_plugins.md#mapfilter). |
-| `"visibilityPresetsBlacklist": ["<name>", ...]`, | Optional: list of visibility presets (QGIS layer themes) to exclude. You can use`*` as a wildcard character. |
+| `"layerTreeHiddenSublayers": ["<layername>", ...],` | Optional: list of sublayer names to omit in layertree (but still displayed in map). |
+| `"predefinedFilters": [{<filter_config>}, ...],` | Optional: predefined filter configuration, see [MapFilter](../references/qwc2_plugins.md#mapfilter). |
+| `"visibilityPresetsBlacklist": ["<name>", ...],` | Optional: list of visibility presets (QGIS layer themes) to exclude. You can use`*` as a wildcard character. |
+| `"lockedVisibilityPreset":  "<name>",`           | Optional: lock styles of theme layers to those set in the specified visibility preset. |
 
 
 A bare minimum theme entry might look as follows:
