@@ -184,6 +184,11 @@
 </thead>
 <tbody>
 <tr>
+<td>Map projection</td>
+<td>Project Properties &rarr; CRS</td>
+<td>Map projection used in QWC.</td>
+</tr>
+<tr>
 <td>Service Metadata</td>
 <td>Project Properties &rarr; QGIS Server &rarr; Service capabilities</td>
 <td>Shown in the theme info dialog, invokable from the Layer Tree panel titlebar.</td>
@@ -283,7 +288,7 @@ sslmode=disable
 <li><a href="#manual-theme-configuration">Manual theme configuration</a>: Manually configure a theme with the full set of configuration options.</li>
 </ul>
 <h3 id="automatic-theme-configuration">Automatic theme configuration <a name="automatic-theme-configuration"></a><a class="headerlink" href="#automatic-theme-configuration" title="Permanent link">&para;</a></h3>
-<p>When using <code>qwc-docker</code>, save your QGIS projects below <code>qwc-docker/volumes/qgs-resources/scan</code>. Adjust the default settings (<code>defaultMapCrs</code>, <code>defaultBackgroundLayers</code>, etc.) as desired in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>. Then <a href="#generating-theme-configuration">generate the theme configuration</a>.</p>
+<p>When using <code>qwc-docker</code>, save your QGIS projects below <code>qwc-docker/volumes/qgs-resources/scan</code>. Adjust the default settings (<code>defaultBackgroundLayers</code>, <code>defaultSearchProviders</code>, etc.) as desired in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>. Then <a href="#generating-theme-configuration">generate the theme configuration</a>.</p>
 <p>You can configure an automatically configured theme as default theme by setting <code>defaultTheme</code> in <code>themesConfig.json</code> to the path to the QGIS project file below <code>qwc-docker/volumes/qgs-resources</code>, without the <code>.qgs</code> extension. For example to set <code>qwc-docker/volumes/qgs-resources/scan/project.qgs</code> as default theme, you'd write</p>
 <pre><code>...
 "defaultTheme": "scan/project"
@@ -329,7 +334,6 @@ sslmode=disable
       ...
     ],
   },
-  &quot;defaultMapCrs&quot;: &quot;&lt;Default map crs, defaults to EPSG:3857&gt;&quot;,
   &quot;defaultBackgroundLayers&quot;: &quot;&lt;Default background layers, see theme definition below&gt;&quot;,
   &quot;defaultWMSVersion&quot;: &quot;&lt;Default WMS version, i.e. 1.3.0&gt;&quot;,
   &quot;defaultScales&quot;: [&lt;Scale denominators, see theme definition below&gt;],
@@ -362,7 +366,7 @@ sslmode=disable
 </tr>
 <tr>
 <td><code>"mapCrs": "&lt;EPSG code&gt;",</code></td>
-<td>Optional, map projection, defaults to <code>defaultMapCrs</code>.</td>
+<td>Optional, map projection, defaults to project projection.</td>
 </tr>
 <tr>
 <td><code>"wmsOnly": &lt;true|false&gt;</code></td>
