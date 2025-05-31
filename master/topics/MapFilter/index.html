@@ -144,13 +144,16 @@
         &quot;filter&quot;: {
             &quot;&lt;layer&gt;&quot;: &lt;data_service_filter_expression&gt;
         },
-        &quot;fields&quot;: {
-            &quot;id&quot;: &quot;&lt;value_id&gt;&quot;,
-            &quot;title&quot;: &quot;&lt;value_title&quot;&gt;,
-            &quot;titlemsgid&quot;: &quot;&lt;value_title_msgid&gt;&quot;,
-            &quot;defaultValue&quot;: &lt;default_value&gt;,
-            &quot;inputConfig&quot;: {&lt;input_field_opts&gt;}
-        }
+        &quot;fields&quot;: [
+            {
+                &quot;id&quot;: &quot;&lt;value_id&gt;&quot;,
+                &quot;title&quot;: &quot;&lt;value_title&quot;&gt;,
+                &quot;titlemsgid&quot;: &quot;&lt;value_title_msgid&gt;&quot;,
+                &quot;defaultValue&quot;: &lt;default_value&gt;,
+                &quot;inputConfig&quot;: {&lt;input_field_opts&gt;}
+            },
+            ...
+        ]
     },
     ...
 ]
