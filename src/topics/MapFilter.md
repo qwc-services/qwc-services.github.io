@@ -15,13 +15,16 @@ You can set predefined filter expressions for a theme item as follows:
         "filter": {
             "<layer>": <data_service_filter_expression>
         },
-        "fields": {
-            "id": "<value_id>",
-            "title": "<value_title">,
-            "titlemsgid": "<value_title_msgid>",
-            "defaultValue": <default_value>,
-            "inputConfig": {<input_field_opts>}
-        }
+        "fields": [
+            {
+                "id": "<value_id>",
+                "title": "<value_title">,
+                "titlemsgid": "<value_title_msgid>",
+                "defaultValue": <default_value>,
+                "inputConfig": {<input_field_opts>}
+            },
+            ...
+        ]
     },
     ...
 ]
