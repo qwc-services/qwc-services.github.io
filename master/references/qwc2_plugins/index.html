@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.05.27</title>
+    <title>Qwc2 plugins - QWC2 - 2025.06.04</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.05.27
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.06.04
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.05.27</a>
+          <a href="../..">QWC2 - 2025.06.04</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -266,6 +266,17 @@
 <p>Remove identify exporter</p>
 <ul>
 <li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addExternalLayer(resource,optionsOrBeforeLayerName,sublayers)</strong></p>
+<p>Convenience method for adding an external layer.</p>
+<ul>
+<li><code>resource</code>: An external resource of the form <code>wms:&lt;service_url&gt;#&lt;layername&gt;</code> or <code>wmts:&lt;capabilities_url&gt;#&lt;layername&gt;</code>.</li>
+<li><code>options</code>: An object which may contain the following fields:<ul>
+<li><code>beforeLayerName</code>: Insert the new layer before the layer with the specified name. If <code>null</code> or the layer does not exist, the layer is inserted on top.</li>
+<li><code>afterLayerName</code>: Insert the new layer after the layer with the specified name. If <code>null</code> or the layer does not exist, the layer is inserted on top.</li>
+<li><code>sublayers</code>: Whether to import the sublayer structure (<code>true</code>) or just a flat layer (<code>false</code>).</li>
+</ul>
+</li>
 </ul>
 <p><strong>drawScratch(geomType,message,drawMultiple,callback,style)</strong></p>
 <p>Deprecated, use <code>window.qwc2.drawGeometry</code> instead.</p>
