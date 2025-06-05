@@ -54,9 +54,11 @@ The format of `ProviderDefinition` is
 
     const crs = "EPSG:XXXX";
     const hidemarker = <boolean>; // Whether to suppress displaying a search marker on top of the search geometry
-    callback({geometry: geometry, crs: crs, hidemarker: hidemarker});
+    const bbox = [xmin, xmax, ymin, ymax]; // Optional, if null, the bbox of the resultItem will be used
+    const center = [x, y]; // Optional, if null, the center of the resultItem will be used
+    callback({geometry: geometry, crs: crs, hidemarker: hidemarker, bbox: bbox, center: center});
     // or
-    callback({feature: geojson_feature, crs: crs, hidemarker: hidemarker});
+    callback({feature: geojson_feature, crs: crs, hidemarker: hidemarker, bbox: bbox, center: center});
   },
   handlesGeomFilter: <boolean>, // Hint whether provider will completely filter the results on provider side and that no client-side filtering is necessary
   getLayerDefinition: function(resultItem, callback, axios) => {
