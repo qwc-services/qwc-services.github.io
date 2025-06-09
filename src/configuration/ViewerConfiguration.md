@@ -27,6 +27,8 @@ All settings are optional, with fallback to the default values as documented.
 |-------------------------------------|-------------|
 |`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map. Default: `false`. |
 |`assetsPath`                         | Relative path to the `assets` folder. Default: `"assets"`. |
+|`bearingFormat`                      | Format of bearing measurement. Default value is `"bearing"` which shows angle in degrees, minutes and seconds with N/S prefix and W/E suffix, `"azimuth"` is shown as 0° to 360°, `"azimuth180"` is shown as -180° to +180°, `"bearingEW"` is shown as 0° to 180° with E/W suffix.|
+|`bearingPrecision`                   | Defines number of decimals for bearing angle shown in degrees. Default: `0`. |
 |`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. Default: `"default"`. |
 |`defaultFeatureStyle`                | The default style to use for selection geometries and other unstyled features. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
 |`defaultInteractionStyle`            | The default style to use on geometries to measure, snap or edit. Default: see [`qwc2/utils/FeatureStyles.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js). |
