@@ -18,6 +18,7 @@ nav:
             - Editing: topics/Editing.md
             - Snapping: topics/Snapping.md
             - Temporal layers: topics/TimeManager.md
+            - Tour Guide: topics/TourGuide.md
             - Legend graphics: topics/LegendGraphics.md
             - Map filtering: topics/MapFilter.md
             - Reports: topics/Reports.md
