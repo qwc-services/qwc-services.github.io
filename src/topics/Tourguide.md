@@ -2,7 +2,7 @@
 
 A [DriverJS](https://driverjs.com/) implementation is available in QWC. To configure and use it with the [Tour Guide Plugin](../references/qwc2_plugins.md#tourguide), you can customize your tour guide using a `.json` file.
 
-By default, the file is located in the `static` folder of QWC, but you can also provide any JSON file using the `link` parameter in the plugin configuration.
+By default, the file is located in the `static` folder of QWC, but you can also provide any JSON file using the `tourGuideUrl` parameter in the plugin configuration.
 
 Each step of the tour can be configured using the following parameters:
 
