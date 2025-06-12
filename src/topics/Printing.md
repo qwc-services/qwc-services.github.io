@@ -140,3 +140,5 @@ qwc-config-service:
 ```
 
 * In a multi-tenant environment, to provide separate print layouts for each tenant, organize the layouts in separate directories for each tenant below `qgis_print_layouts_dir`, and specify `qgis_print_layouts_tenant_subdir` in the respective `tenantConfig.json` to point to the desired subdir path.
+
+* Finally, place your `*.qpt` print layouts in `volumes/print-layouts` and run the ConfigGenerator.
