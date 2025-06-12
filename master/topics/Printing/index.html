@@ -252,7 +252,12 @@
 }
 </code></pre>
 <ul>
-<li>In a multi-tenant environment, to provide separate print layouts for each tenant, organize the layouts in separate directories for each tenant below <code>qgis_print_layouts_dir</code>, and specify <code>qgis_print_layouts_tenant_subdir</code> in the respective <code>tenantConfig.json</code> to point to the desired subdir path.</li>
+<li>
+<p>In a multi-tenant environment, to provide separate print layouts for each tenant, organize the layouts in separate directories for each tenant below <code>qgis_print_layouts_dir</code>, and specify <code>qgis_print_layouts_tenant_subdir</code> in the respective <code>tenantConfig.json</code> to point to the desired subdir path.</p>
+</li>
+<li>
+<p>Finally, place your <code>*.qpt</code> print layouts in <code>volumes/print-layouts</code> and run the ConfigGenerator.</p>
+</li>
 </ul>
               
             </div>
