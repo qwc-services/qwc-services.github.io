@@ -2,6 +2,13 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.6.10
+------------------------
+
+*Note*: This change is only relevant for custom viewer builds.
+
+The language detection mechanism has been improved, please apply the following [change](https://github.com/qgis/qwc2/commit/118e7407f9d8b2c0fe4e6ce7fb1f26776c54ee27#diff-1fb26bc12ac780c7ad7325730ed09fc4c2c3d757c276c3dacc44bfe20faf166f) to your `webpack.config.js`.
+
 Update to qwc2 2025.5.21
 ------------------------
 
