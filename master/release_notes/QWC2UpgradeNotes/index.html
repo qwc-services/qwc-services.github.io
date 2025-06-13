@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>QWC2 upgrade notes - QWC2 - 2025.06.10</title>
+    <title>QWC2 upgrade notes - QWC2 - 2025.06.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.06.10
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.06.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -100,6 +100,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025610">Update to qwc2 2025.6.10</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025521">Update to qwc2 2025.5.21</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202543">Update to qwc2 2025.4.3</a>
@@ -166,7 +168,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.06.10</a>
+          <a href="../..">QWC2 - 2025.06.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -186,6 +188,9 @@
               
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-2025610">Update to qwc2 2025.6.10<a class="headerlink" href="#update-to-qwc2-2025610" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: This change is only relevant for custom viewer builds.</p>
+<p>The language detection mechanism has been improved, please apply the following <a href="https://github.com/qgis/qwc2/commit/118e7407f9d8b2c0fe4e6ce7fb1f26776c54ee27#diff-1fb26bc12ac780c7ad7325730ed09fc4c2c3d757c276c3dacc44bfe20faf166f">change</a> to your <code>webpack.config.js</code>.</p>
 <h2 id="update-to-qwc2-2025521">Update to qwc2 2025.5.21<a class="headerlink" href="#update-to-qwc2-2025521" title="Permanent link">&para;</a></h2>
 <p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
 <ul>
