@@ -90,6 +90,9 @@ The display behaviour of restricted themes can be configured in the `mapViewer` 
 * `redirect_restricted_themes_to_auth`: Whether to redirect to login on auth service if requesting a restricted theme in URL params, if not currently signed in. Default: `false`.
 * `internal_permalink_service_url`: Internal permalink service URL for getting the theme from a resolved permalink for redirecting to login (default: `http://qwc-permalink-service:9090`). This is used only if `redirect_restricted_themes_to_auth` is enabled and `permalink_service_url` is set.
 
+## WFS
+
+WFS services are disabled by default. To enable them, se `generate_wfs_services` to `true` in the toplevel `config` block of `tenantConfig.json`. If enabled, WFS services are filtered by the OGC Service according to the map, layer and attribute permissions.
 
 ## Permissions file
 
