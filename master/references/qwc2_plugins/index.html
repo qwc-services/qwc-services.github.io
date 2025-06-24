@@ -1341,8 +1341,8 @@ with containing a container element with id=legendcontainer.</p>
 </tr>
 <tr>
 <td>formatConfiguration</td>
-<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>}],</code><br /><code>}</code></td>
-<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.</td>
+<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>}],</code><br /><code>}</code></td>
+<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -2436,11 +2436,19 @@ queried via GetFeatureInfo.</p>
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;idAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
-             &quot;tilesetStyleUrl&quot;: &quot;&lt;url_to_tilesetStyle.json&gt;&quot;,
+             &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
+             &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
              &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
              &quot;alphaAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
              &quot;labelAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
          }
+    ],
+    &quot;objects3d&quot;: [
+        {
+             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
+             &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
+             &quot;title&quot;: &quot;&lt;title&gt;&quot;
+        }
     ]
 }
 </code></pre>
@@ -2448,20 +2456,30 @@ queried via GetFeatureInfo.</p>
 <ul>
 <li>The DTM should be a cloud optimized GeoTIFF.</li>
 <li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>.</li>
+<li>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</li>
 <li><code>idAttr</code>: Batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
-<li><code>tilesetStyleUrl</code>: optional, URL to a tileset style JSON dict, see below. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
+<li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
+<li><code>style</code>: optional, tileset style enabled by default.</li>
 <li><code>colorAttr</code>: optional, batch table attribute which stores the batch color, as a 0xRRGGBB integer.</li>
 <li><code>alphaAttr</code>: optional, batch table attribute which stores the batch alpha (transparency), as a [0, 255] integer.</li>
 <li><code>labelAttr</code>: optional, batch table attribute which stores the batch label, displayed above the geometry.</li>
+<li>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</li>
 </ul>
 <p>The tileset style JSON is shaped as follows:</p>
 <pre><code>{
     &quot;&lt;object_id&gt;&quot;: {
         &quot;label&quot;: &quot;&lt;label&gt;&quot;,
+        &quot;labelOffset&quot;: &lt;offset&gt;,
         &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
     }
 }
 </code></pre>
+<p>Where:</p>
+<ul>
+<li><code>label</code> is an optional string with which to label the object.</li>
+<li><code>labelOffset</code> is an optional number which represents the vertical offset between the object top and the label. Defaults to 80.</li>
+<li><code>color</code> is an optional CSS color string which defines the object color.</li>
+</ul>
 <table>
 <thead>
 <tr>

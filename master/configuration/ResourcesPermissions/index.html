@@ -64,6 +64,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#restricted-themes">Restricted themes</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#wfs">WFS</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#permissions-file">Permissions file</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#group-registration">Group registration</a>
@@ -224,6 +226,8 @@ The service configurations are then modified according to these permissions and 
 <li><code>redirect_restricted_themes_to_auth</code>: Whether to redirect to login on auth service if requesting a restricted theme in URL params, if not currently signed in. Default: <code>false</code>.</li>
 <li><code>internal_permalink_service_url</code>: Internal permalink service URL for getting the theme from a resolved permalink for redirecting to login (default: <code>http://qwc-permalink-service:9090</code>). This is used only if <code>redirect_restricted_themes_to_auth</code> is enabled and <code>permalink_service_url</code> is set.</li>
 </ul>
+<h2 id="wfs">WFS<a class="headerlink" href="#wfs" title="Permanent link">&para;</a></h2>
+<p>WFS services are disabled by default. To enable them, se <code>generate_wfs_services</code> to <code>true</code> in the toplevel <code>config</code> block of <code>tenantConfig.json</code>. If enabled, WFS services are filtered by the OGC Service according to the map, layer and attribute permissions.</p>
 <h2 id="permissions-file">Permissions file<a class="headerlink" href="#permissions-file" title="Permanent link">&para;</a></h2>
 <p>The <a href="https://github.com/qwc-services/qwc-config-generator">QWC Config Generator</a> generates a JSON file for all permissions from the QWC ConfigDB. See READMEs of QWC services for service specific contents in <code>permissions.json</code>.</p>
 <!--Alternatively, a simplified permissions format is also supported, see [unified permissions](doc/unified_permissions.md).-->
