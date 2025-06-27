@@ -100,6 +100,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025625">Update to qwc2 2025.6.25</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025610">Update to qwc2 2025.6.10</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025521">Update to qwc2 2025.5.21</a>
@@ -188,6 +190,17 @@
               
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-2025625">Update to qwc2 2025.6.25<a class="headerlink" href="#update-to-qwc2-2025625" title="Permanent link">&para;</a></h2>
+<p><strong>OverviewMap moved to dedicated plugin</strong></p>
+<p>The <code>OverviewSupport</code> has been moved from a map support tool to a dedicated <code>OverviewMap</code> plugin.</p>
+<p>Make sure you register it in <code>config.json</code> as <a href="https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-c9b5b86d0c26f8a7cfef75915816d853854da00a579036406682b85b78e70351">follows</a>.</p>
+<p>If you are using a custom viewer build, modify your <code>appConfig.js</code> as <a href="https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9">follows</a>.</p>
+<p><strong>Scalebar integrated into BottomBar</strong></p>
+<p>The <code>ScalebarSupport</code> map plugin as been removed and integrated directly into the <code>BottomBar</code>.</p>
+<p>You can choose whether to display a scale bar by setting the <code>displayScalebar</code> option in the <code>BottomBar</code> config section in <code>config.json</code> (default is <code>true</code>).</p>
+<p>If you are using a custom viewer build, modify your <code>appConfig.js</code> as <a href="https://github.com/qgis/qwc2/commit/b423a77229bad441e2b57c06715d9a1b96a17177#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9">follows</a>.</p>
+<p><strong>Map margin handling (only custom plugin code)</strong></p>
+<p>If you have custom plugins which honoured <code>state.windows.mapMargins</code> for placement within the visible map area, it is recommended to render them within the <code>MapContainer</code> element using a portal instead. See <a href="https://github.com/qgis/qwc2/commit/3175dbc79a6b3103c44bd12c81d32202009865b7">this example</a>.</p>
 <h2 id="update-to-qwc2-2025610">Update to qwc2 2025.6.10<a class="headerlink" href="#update-to-qwc2-2025610" title="Permanent link">&para;</a></h2>
 <p><em>Note</em>: This change is only relevant for custom viewer builds.</p>
 <p>The language detection mechanism has been improved, please apply the following <a href="https://github.com/qgis/qwc2/commit/118e7407f9d8b2c0fe4e6ce7fb1f26776c54ee27#diff-1fb26bc12ac780c7ad7325730ed09fc4c2c3d757c276c3dacc44bfe20faf166f">change</a> to your <code>webpack.config.js</code>.</p>

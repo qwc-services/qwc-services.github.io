@@ -163,6 +163,7 @@
 <li><a href="#maptip">MapTip</a></li>
 <li><a href="#measure">Measure</a></li>
 <li><a href="#newspopup">NewsPopup</a></li>
+<li><a href="#overviewmap">OverviewMap</a></li>
 <li><a href="#panoramax">Panoramax</a></li>
 <li><a href="#portal">Portal</a></li>
 <li><a href="#print">Print</a></li>
@@ -184,9 +185,7 @@
 <li><a href="#editingsupport">EditingSupport</a></li>
 <li><a href="#locatesupport">LocateSupport</a></li>
 <li><a href="#measurementsupport">MeasurementSupport</a></li>
-<li><a href="#overviewmap">OverviewMap</a></li>
 <li><a href="#redliningsupport">RedliningSupport</a></li>
-<li><a href="#scalebarsupport">ScaleBarSupport</a></li>
 <li><a href="#snappingsupport">SnappingSupport</a></li>
 </ul>
 <hr />
@@ -453,10 +452,22 @@
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>displayScalebar</td>
+<td><code>bool</code></td>
+<td>Whether to display the scalebar in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
 <td>displayScales</td>
 <td><code>bool</code></td>
 <td>Whether to display the scale in the bottom bar.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>scalebarOptions</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_ScaleLine-ScaleLine.html">OpenLayers API doc</a></td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>termsUrl</td>
@@ -1643,6 +1654,26 @@ revision is published (specified via newsRev prop).</p>
 </tr>
 </tbody>
 </table>
+<h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
+<p>Overview map support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer</code>: Custom overview layer, in the same form as background layer definitions (<code>{type: "&lt;wms|wmts&gt;", "url": ...}</code>).<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="panoramax">Panoramax<a name="panoramax"></a><a class="headerlink" href="#panoramax" title="Permanent link">&para;</a></h2>
 <p>Panoramax Integration for QWC2.</p>
 <table>
@@ -1979,6 +2010,12 @@ an aggregated report for all selected features.</p>
 <td><code>bool</code></td>
 <td>Whether to label the routing waypoint pins with the route point number.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>units</td>
+<td><code>object</code></td>
+<td>Set of units for isochrone time/distance intervals to use.</td>
+<td><code>{</code><br /><code>time: {</code><br /><code>min: 1,</code><br /><code>s: 60</code><br /><code>},</code><br /><code>distance: {</code><br /><code>km: 1,</code><br /><code>m: 1000</code><br /><code>}</code><br /><code>}</code></td>
 </tr>
 <tr>
 <td>zoomAuto</td>
@@ -2561,48 +2598,8 @@ queried via GetFeatureInfo.</p>
 <p>GPS locate support for the map component.</p>
 <h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
 <p>Measurement support for the map component.</p>
-<h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
-<p>Overview map support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>object</code></td>
-<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer</code>: Custom overview layer, in the same form as background layer definitions (<code>{type: "&lt;wms|wmts&gt;", "url": ...}</code>).<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
-<td><code>{}</code></td>
-</tr>
-</tbody>
-</table>
 <h2 id="redliningsupport">RedliningSupport<a name="redliningsupport"></a><a class="headerlink" href="#redliningsupport" title="Permanent link">&para;</a></h2>
 <p>Redlining support for the map component.</p>
-<h2 id="scalebarsupport">ScaleBarSupport<a name="scalebarsupport"></a><a class="headerlink" href="#scalebarsupport" title="Permanent link">&para;</a></h2>
-<p>Scalebar support for the map component.</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>options</td>
-<td><code>object</code></td>
-<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_ScaleLine-ScaleLine.html">OpenLayers API doc</a></td>
-<td><code>undefined</code></td>
-</tr>
-</tbody>
-</table>
 <h2 id="snappingsupport">SnappingSupport<a name="snappingsupport"></a><a class="headerlink" href="#snappingsupport" title="Permanent link">&para;</a></h2>
 <p>Snapping support for the map component.</p>
               
