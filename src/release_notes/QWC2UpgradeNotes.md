@@ -2,6 +2,31 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.6.25
+------------------------
+
+**OverviewMap moved to dedicated plugin**
+
+The `OverviewSupport` has been moved from a map support tool to a dedicated `OverviewMap` plugin.
+
+Make sure you register it in `config.json` as [follows](https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-c9b5b86d0c26f8a7cfef75915816d853854da00a579036406682b85b78e70351).
+
+If you are using a custom viewer build, modify your `appConfig.js` as [follows](https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9).
+
+**Scalebar integrated into BottomBar**
+
+The `ScalebarSupport` map plugin as been removed and integrated directly into the `BottomBar`.
+
+You can choose whether to display a scale bar by setting the `displayScalebar` option in the `BottomBar` config section in `config.json` (default is `true`).
+
+If you are using a custom viewer build, modify your `appConfig.js` as [follows](https://github.com/qgis/qwc2/commit/b423a77229bad441e2b57c06715d9a1b96a17177#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9).
+
+
+**Map margin handling (only custom plugin code)**
+
+If you have custom plugins which honoured `state.windows.mapMargins` for placement within the visible map area, it is recommended to render them within the `MapContainer` element using a portal instead. See [this example](https://github.com/qgis/qwc2/commit/3175dbc79a6b3103c44bd12c81d32202009865b7).
+
+
 Update to qwc2 2025.6.10
 ------------------------
 
