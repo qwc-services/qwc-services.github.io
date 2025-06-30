@@ -24,6 +24,7 @@ sed "s|@version@|$version|" qwc2.yml.in > qwc2.yml
 echo "* Downloading plugin reference..."
 wget -q -O src/references/qwc2_plugins.md https://raw.githubusercontent.com/qgis/qwc2/${branch}/doc/plugins.md
 wget -q -O src/references/qwc-base-db_readme.md https://raw.githubusercontent.com/qwc-services/qwc-base-db/${branch_main}/README.md
+wget -q -O src/references/qwc-qgs-cache-preseed_readme.md https://raw.githubusercontent.com/qwc-services/qwc-qgs-cache-preseed/${branch_main}/README.md
 echo "qwc2_plugins.md" >> src/references/.gitignore
 echo "* QWC2 Client" >> src/references/index.md
 echo "" >> src/references/index.md
@@ -32,6 +33,10 @@ echo "" >> src/references/index.md
 echo "* qwc-base-db" >> src/references/index.md
 echo "" >> src/references/index.md
 echo "    - [README](qwc-base-db_readme.md)" >> src/references/index.md
+echo "" >> src/references/index.md
+echo "* qwc-qgs-cache-preseed" >> src/references/index.md
+echo "" >> src/references/index.md
+echo "    - [README](qwc-qgs-cache-preseed_readme.md)" >> src/references/index.md
 mkdir -p tmp
 echo "* Downloading schema versions..."
 if [ "$branch" == *-lts ]; then
