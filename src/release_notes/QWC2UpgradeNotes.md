@@ -2,6 +2,17 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.7.1
+-----------------------
+
+**ProcessNotifications moved to a built-in component**
+
+The `ProcessNotifications` has been moved from a plugin to a build-in component.
+
+If you are using a custom viewer build, modify your `appConfig.js` as [follows](https://github.com/qgis/qwc2/commit/cd907f27fe99e1576132ddd62d7ee6fa746d237c#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9).
+
+Also, remove the `ProcessNotifications` plugin config entry from `config.json`.
+
 Update to qwc2 2025.6.25
 ------------------------
 
