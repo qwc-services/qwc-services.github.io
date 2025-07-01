@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.06.27</title>
+    <title>Qwc2 plugins - QWC2 - 2025.07.01</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.06.27
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.01
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.06.27</a>
+          <a href="../..">QWC2 - 2025.07.01</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -167,7 +167,6 @@
 <li><a href="#panoramax">Panoramax</a></li>
 <li><a href="#portal">Portal</a></li>
 <li><a href="#print">Print</a></li>
-<li><a href="#processnotifications">ProcessNotifications</a></li>
 <li><a href="#redlining">Redlining</a></li>
 <li><a href="#reports">Reports</a></li>
 <li><a href="#routing">Routing</a></li>
@@ -1861,9 +1860,6 @@ revision is published (specified via newsRev prop).</p>
 </tr>
 </tbody>
 </table>
-<h2 id="processnotifications">ProcessNotifications<a name="processnotifications"></a><a class="headerlink" href="#processnotifications" title="Permanent link">&para;</a></h2>
-<p>Adds support for displaying notifications of background processes.</p>
-<p>Only useful for third-party plugins which use this functionality.</p>
 <h2 id="redlining">Redlining<a name="redlining"></a><a class="headerlink" href="#redlining" title="Permanent link">&para;</a></h2>
 <p>Allows drawing figures and text labels on the map.</p>
 <table>
@@ -2463,7 +2459,7 @@ queried via GetFeatureInfo.</p>
 <pre><code>&quot;map3d&quot;: {
     &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
     &quot;basemaps&quot;: [
-         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true},
+         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true, &quot;overview&quot;: true},
          {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;},
          ...
     ],
@@ -2472,6 +2468,7 @@ queried via GetFeatureInfo.</p>
              &quot;name&quot;: &quot;&lt;name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
+             &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
              &quot;idAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
              &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
              &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
@@ -2492,9 +2489,12 @@ queried via GetFeatureInfo.</p>
 <p>Where:</p>
 <ul>
 <li>The DTM should be a cloud optimized GeoTIFF.</li>
-<li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>.</li>
+<li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>. Additionally:</li>
+<li><code>visibility</code> controls the initially visibile background layer</li>
+<li><code>overview: true</code> controls the name of background layer to display in the overview map. If no background layer is marked with <code>overview: true</code>, the currently visibile background layer id dipslayed in the overview map.</li>
 <li>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</li>
-<li><code>idAttr</code>: Batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
+<li><code>baseColor</code>: the base color for the tile objects, defaults to white.</li>
+<li><code>idAttr</code>: batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
 <li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
 <li><code>style</code>: optional, tileset style enabled by default.</li>
 <li><code>colorAttr</code>: optional, batch table attribute which stores the batch color, as a 0xRRGGBB integer.</li>
@@ -2517,6 +2517,7 @@ queried via GetFeatureInfo.</p>
 <li><code>labelOffset</code> is an optional number which represents the vertical offset between the object top and the label. Defaults to 80.</li>
 <li><code>color</code> is an optional CSS color string which defines the object color.</li>
 </ul>
+<p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
 <table>
 <thead>
 <tr>
@@ -2534,10 +2535,28 @@ queried via GetFeatureInfo.</p>
 <td><code>6</code></td>
 </tr>
 <tr>
+<td>defaultDay</td>
+<td><code>number</code></td>
+<td>Default viewer day (1-365)</td>
+<td><code>182</code></td>
+</tr>
+<tr>
+<td>defaultTime</td>
+<td><code>string</code></td>
+<td>Default viewer time (00:00-23:59)</td>
+<td><code>'12:00'</code></td>
+</tr>
+<tr>
 <td>geometry</td>
 <td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
 <td>Default window geometry.</td>
 <td><code>{</code><br /><code>initialWidth: 600,</code><br /><code>initialHeight: 800,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>importedTilesBaseUrl</td>
+<td><code>string</code></td>
+<td>Base URL of imported tile sets.</td>
+<td><code>':/'</code></td>
 </tr>
 <tr>
 <td>searchMinScaleDenom</td>
