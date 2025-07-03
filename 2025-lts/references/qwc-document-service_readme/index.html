@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC2 - 2025.03.06-lts</title>
+    <title>Qwc document service readme - QWC2 - 2025.0.16-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.03.06-lts
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.0.16-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -114,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.03.06-lts</a>
+          <a href="../..">QWC2 - 2025.0.16-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -164,6 +164,7 @@
 </li>
 </ul>
 <p>If multiple feature ids are specified, an aggregated report for all specified features will be returned.</p>
+<p>Alternatively, provided <code>FEATURE_ID</code> is defined as a list in your report, you can pass <code>single_report=true</code>, and the entire list of feature ids will be passed to the report, which can i.e. render them in a table.</p>
 <p>To map <code>feature</code> to the report feature parameter, and to resolve <code>feature=*</code>, the table name, primary key column and report feature parameter will be extracted, if possible, from the report query string, which is expected to be of the form</p>
 <pre><code>SELECT &lt;...&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
 </code></pre>
