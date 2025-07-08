@@ -39,10 +39,10 @@ sudo chown 8983:8983 volumes/solr/data
 ```
 - Start all containers (will download all images from dockerhub when executed the first time):
 ```bash
-docker-compose up
+docker compose up
 ```
 
-*Note*: If using the newer `docker compose` project, you need to write `docker compose up` instead of `docker-compose up` (and similarly for other `docker-compose` calls).
+*Note*: If using older version of `docker`, you need to write `docker-compose up` instead of `docker compose up` (and similarly for other `docker compose` calls).
 
 *Note*: The sample `docker-compose-example.yml` uses `latest-YYYY-lts` as image versions. This will result in docker always pulling the latest images of the respective lts series. See [Keeping QWC services up to date](configuration/../configuration/ServiceConfiguration.md#upgrading).
 
