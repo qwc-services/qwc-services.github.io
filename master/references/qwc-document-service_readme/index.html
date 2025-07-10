@@ -277,19 +277,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </code></pre>
 <p>If no extension is present in the template name, PDF is used as format.</p>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>To run this docker image you will need a running jasper reporting service.</p>
-<p>The following steps explain how to download a jasper reporting service docker image and how to run the <code>qwc-document-service</code> with <code>docker-compose</code>.</p>
-<p><strong>Step 1: Clone qwc-docker</strong></p>
-<pre><code>git clone https://github.com/qwc-services/qwc-docker
-cd qwc-docker
-</code></pre>
-<p><strong>Step 2: Create docker-compose.yml file</strong></p>
-<pre><code>cp docker-compose-example.yml docker-compose.yml
-</code></pre>
-<p><strong>Step 3: Start docker containers</strong></p>
-<pre><code>docker-compose up qwc-document-service
-</code></pre>
-<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
 <p>Install requirements:</p>
 <pre><code>uv sync

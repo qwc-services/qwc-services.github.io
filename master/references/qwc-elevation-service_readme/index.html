@@ -195,23 +195,7 @@ ELEVATION_DATASET=/vsicurl/https://data.sourcepole.com/srtm_1km_3857.tif uv run 
 <li><em>output</em>: a json document with heights in meters: <code>{elevations: [h1, h2, ...]}</code></li>
 </ul>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>The docker image can be run with the following command:</p>
-<pre><code>docker run -p 5002:9090 sourcepole/qwc-elevation-service
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>docker parameters</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p 5002:9090</code></td>
-<td>Bind port 5002 on the host machine</td>
-</tr>
-</tbody>
-</table>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
               
             </div>
           </div><footer>

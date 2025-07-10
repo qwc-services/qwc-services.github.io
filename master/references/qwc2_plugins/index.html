@@ -2494,6 +2494,7 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
 <p>Displays a 3D map view.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>To add a 3D View to a theme, add the following configuration block to a theme item in <code>themesConfig.json</code>:</p>
 <pre><code>&quot;map3d&quot;: {
     &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
@@ -2532,22 +2533,29 @@ queried via GetFeatureInfo.</p>
 <li><code>visibility</code> controls the initially visibile background layer</li>
 <li><code>overview: true</code> controls the name of background layer to display in the overview map. If no background layer is marked with <code>overview: true</code>, the currently visibile background layer id dipslayed in the overview map.</li>
 <li>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</li>
-<li><code>baseColor</code>: the base color for the tile objects, defaults to white.</li>
 <li><code>idAttr</code>: batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
 <li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
 <li><code>style</code>: optional, tileset style enabled by default.</li>
+<li><code>baseColor</code>: the fallback color for the tile objects, defaults to white.</li>
 <li><code>colorAttr</code>: optional, batch table attribute which stores the batch color, as a 0xRRGGBB integer.</li>
 <li><code>alphaAttr</code>: optional, batch table attribute which stores the batch alpha (transparency), as a [0, 255] integer.</li>
 <li><code>labelAttr</code>: optional, batch table attribute which stores the batch label, displayed above the geometry.</li>
 <li>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</li>
 </ul>
-<p>The tileset style JSON is shaped as follows:</p>
+<h2 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h2>
+<p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
+of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>batchstyles</code> section as follows:</p>
 <pre><code>{
-    &quot;&lt;object_id&gt;&quot;: {
-        &quot;label&quot;: &quot;&lt;label&gt;&quot;,
-        &quot;labelOffset&quot;: &lt;offset&gt;,
-        &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
-    }
+    &quot;color&quot;: {
+       ...
+    },
+    &quot;batchstyles&quot;: {
+      &quot;&lt;object_id&gt;&quot;: {
+          &quot;label&quot;: &quot;&lt;label&gt;&quot;,
+          &quot;labelOffset&quot;: &lt;offset&gt;,
+          &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
+      }
+   }
 }
 </code></pre>
 <p>Where:</p>
@@ -2556,6 +2564,12 @@ queried via GetFeatureInfo.</p>
 <li><code>labelOffset</code> is an optional number which represents the vertical offset between the object top and the label. Defaults to 80.</li>
 <li><code>color</code> is an optional CSS color string which defines the object color.</li>
 </ul>
+<p><em>Note</em>:</p>
+<ul>
+<li>The color declarations in the <code>batchstyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
+<li>You must ensure that your 3D tiles batch table contains all batch attributes which are referenced as variables in a color expression!</li>
+</ul>
+<h2 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h2>
 <p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
 <table>
 <thead>

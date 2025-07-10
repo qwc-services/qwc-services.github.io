@@ -203,19 +203,7 @@ Example:</p>
 <pre><code>http://localhost:5018/api/
 </code></pre>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>To run this docker image you will need a configuration database. For testing purposes you can use the demo DB.</p>
-<p>The following steps explain how to download the demo DB docker image and how to run the <code>qwc-permalink-service</code> with <code>docker-compose</code>.</p>
-<p><strong>Step 1: Clone qwc-docker</strong></p>
-<pre><code>git clone https://github.com/qwc-services/qwc-docker
-cd qwc-docker
-</code></pre>
-<p><strong>Step 2: Create docker-compose.yml file</strong></p>
-<pre><code>cp docker-compose-example.yml docker-compose.yml
-</code></pre>
-<p><strong>Step 3: Start docker containers</strong></p>
-<pre><code>docker-compose up qwc-permalink-service
-</code></pre>
-<p>For more information please visit: https://github.com/qwc-services/qwc-docker</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
 <p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
 <pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
