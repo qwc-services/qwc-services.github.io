@@ -14,6 +14,7 @@ The following parameters can appear in the URL of the QWC application:
 - `s`: The current scale
 - `crs`: The CRS of extent/center coordinates
 - `hc`: If `c` is specified and `hc` is `true` or `1`, a marker is set at `c` when starting the application. Note: requires the `StartupMarkerPlugin` plugin to be active.
+- `ic`: If `c` is specified and `ic` is `true` or `1`, a marker is set at `c` when starting the application.
 - `st`: The search text
 - `hp`, `hf`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
 - `f`: A filter configuration, see [Map filtering](./MapFilter.md).
