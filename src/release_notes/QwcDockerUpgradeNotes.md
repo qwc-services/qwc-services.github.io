@@ -1,4 +1,8 @@
-# Updating to qwc-admin.gui:v2025.04.23 and qwc-db-auth:v2025.04.23
+# Updating to qwc-config-generator:v2025.07.22
+
+As of `qwc-config-generator:v2025.07.22`, attribute resources created in the `qwc-admin-gui` shall be named by the name of the attribute, not its alias.
+
+# Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23
 
 `qwc-admin.gui:v2025.04.23` now supports setting a flag that the user password must be changed on the next login, and
 and `qwc-db-auth:v2025.04.23` enforces this setting. As this requires a DB schema change, make sure you are also using
