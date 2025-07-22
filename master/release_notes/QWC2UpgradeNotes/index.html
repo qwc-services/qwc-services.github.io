@@ -100,6 +100,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025722">Update to qwc2 2025.7.22</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202571">Update to qwc2 2025.7.1</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025625">Update to qwc2 2025.6.25</a>
@@ -192,6 +194,10 @@
               
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-2025722">Update to qwc2 2025.7.22<a class="headerlink" href="#update-to-qwc2-2025722" title="Permanent link">&para;</a></h2>
+<p><strong>Changes to EditingInterface</strong></p>
+<p><em>Note</em>: This change is only relevant if you use a custom <code>EditingInterface</code> or have custom plugins which interact with the <code>EditingInterface</code>.</p>
+<p>To add support for virtual fields, the signature of most <code>EditingInterface</code> functions was changed, see <a href="https://github.com/qgis/qwc2/blob/553c340624cd31ffaf038a4e3c3bd8b3b2f395e7/utils/EditingInterface.js">EditingInterface.js</a> for the new interface.</p>
 <h2 id="update-to-qwc2-202571">Update to qwc2 2025.7.1<a class="headerlink" href="#update-to-qwc2-202571" title="Permanent link">&para;</a></h2>
 <p><strong>ProcessNotifications moved to a built-in component</strong></p>
 <p>The <code>ProcessNotifications</code> has been moved from a plugin to a build-in component.</p>
