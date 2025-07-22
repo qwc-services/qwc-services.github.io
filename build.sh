@@ -74,7 +74,11 @@ echo "* Clean previous HTML build..."
 rm -rf site
 
 echo "* Building HTML..."
-mike deploy -F qwc2.yml --push $branch
+if [ "$1" == "--local" ] || [ "$2" == "--local" ]; then
+    mkdocs build -f qwc2.yml
+else
+    mike deploy -F qwc2.yml --push $branch
+fi
 
 # cleanup venv
 echo "* Clean venv..."

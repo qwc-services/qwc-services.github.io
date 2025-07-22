@@ -8,8 +8,8 @@ Local build
 
 Full build, fetching the service configuration schemas and plugin reference:
 
-    ./build.sh --update
+    ./build.sh --update --local
 
 Build using previously downloaded service configuration schemas and plugin reference:
 
-    ./build.sh
+    ./build.sh --local
