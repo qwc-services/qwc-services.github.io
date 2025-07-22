@@ -153,7 +153,7 @@ You can also set a predefined list of filter areas by setting `searchFilterRegio
   },
   ...
 ]
- ```
+```
 
 ## Configuring theme search providers
 
