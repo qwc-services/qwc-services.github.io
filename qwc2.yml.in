@@ -37,6 +37,8 @@ theme:
     include_homepage_in_sidebar: true
 extra_css:
     - css/custom.css
+extra_javascript:
+  - js/extend-search.js
 markdown_extensions:
   - toc:
       permalink: true
