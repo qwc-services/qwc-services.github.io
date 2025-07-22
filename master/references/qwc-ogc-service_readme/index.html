@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ogc service readme - QWC2 - 2025.07.06</title>
+    <title>Qwc ogc service readme - QWC2 - 2025.07.20</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.06
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.20
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.07.06</a>
+          <a href="../..">QWC2 - 2025.07.20</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -136,7 +136,7 @@
 <a href="https://hub.docker.com/r/sourcepole/qwc-ogc-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-ogc-service?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-ogc-service">QWC OGC Service<a class="headerlink" href="#qwc-ogc-service" title="Permanent link">&para;</a></h1>
 <p>Provide OGC services with permission filters as a proxy to a QGIS server.</p>
-<p><strong>Note:</strong> requires a QGIS server running on <code>default_qgis_server_url</code>.</p>
+<p>It suppports proxying WMS, WFS, WFS-T and OGC API Features.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config and permission files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
 e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
@@ -150,7 +150,8 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-ogc-service/v2/schemas/qwc-ogc-service.json&quot;,
   &quot;service&quot;: &quot;ogc&quot;,
   &quot;config&quot;: {
-    &quot;default_qgis_server_url&quot;: &quot;http://localhost:8001/ows/&quot;
+    &quot;default_qgis_server_url&quot;: &quot;http://localhost:8001/ows/&quot;,
+    &quot;oapi_qgis_server_url&quot;: &quot;http://localhost:8001/wfs3/&quot;
   },
   &quot;resources&quot;: {
     &quot;wms_services&quot;: [
@@ -171,25 +172,25 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
                 {
                   &quot;name&quot;: &quot;edit_points&quot;,
                   &quot;title&quot;: &quot;Edit Points&quot;,
-                  &quot;attributes&quot;: [
-                    &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
-                  ],
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
                   &quot;queryable&quot;: true
                 },
                 {
                   &quot;name&quot;: &quot;edit_lines&quot;,
                   &quot;title&quot;: &quot;Edit Lines&quot;,
-                  &quot;attributes&quot;: [
-                    &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
-                  ],
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
                   &quot;queryable&quot;: true
                 },
                 {
                   &quot;name&quot;: &quot;edit_polygons&quot;,
                   &quot;title&quot;: &quot;Edit Polygons&quot;,
-                  &quot;attributes&quot;: [
-                    &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
-                  ],
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
                   &quot;queryable&quot;: true
                 }
               ]
@@ -206,9 +207,9 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
             {
               &quot;name&quot;: &quot;countries&quot;,
               &quot;title&quot;: &quot;Countries&quot;,
-              &quot;attributes&quot;: [
-                &quot;name&quot;, &quot;formal_en&quot;, &quot;pop_est&quot;, &quot;subregion&quot;, &quot;geometry&quot;
-              ],
+              &quot;attributes&quot;: {
+                &quot;name&quot;: &quot;name&quot;, &quot;formal_en&quot;: &quot;formal_en&quot;, &quot;pop_est&quot;: &quot;pop_est&quot;, &quot;subregion&quot;: &quot;subregion&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+              },
               &quot;queryable&quot;: true
             }
           ]
@@ -226,15 +227,15 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
         &quot;layers&quot;: [
           {
             &quot;name&quot;: &quot;edit_points&quot;,
-            &quot;attributes&quot;: [
-              &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;
-            ]
+            &quot;attributes&quot;: {
+              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+            }
           },
           {
             &quot;name&quot;: &quot;edit_lines&quot;,
-            &quot;attributes&quot;: [
-              &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;
-            ]
+            &quot;attributes&quot;: {
+              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+            }
           }
         ]
       }

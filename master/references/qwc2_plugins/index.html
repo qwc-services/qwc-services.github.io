@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.07.06</title>
+    <title>Qwc2 plugins - QWC2 - 2025.07.20</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.06
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.20
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.07.06</a>
+          <a href="../..">QWC2 - 2025.07.20</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -484,6 +484,12 @@
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>coordinateFormatter</td>
+<td><code>func</code></td>
+<td>Custom coordinate formatter, as <code>(coordinate, crs) =&gt; string</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>displayCoordinates</td>
 <td><code>bool</code></td>
 <td>Whether to display the coordinates in the bottom bar.</td>
@@ -687,6 +693,12 @@ If the dataset it editable, the feature attributes can be edited directly in the
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>clearResultsOnClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the identify results when exiting the identify tool.</td>
+<td><code>true</code></td>
+</tr>
 <tr>
 <td>exitTaskOnResultsClose</td>
 <td><code>bool</code></td>
@@ -1385,7 +1397,7 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>fileNameTemplate</td>
 <td><code>string</code></td>
-<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{timestamp}</code>.</td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{themeTitle}</code>, <code>{timestamp}</code>.</td>
 <td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
@@ -1846,7 +1858,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>fileNameTemplate</td>
 <td><code>string</code></td>
-<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{timestamp}</code>.</td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{layout}</code>, <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{themeTitle}</code>, <code>{timestamp}</code>.</td>
 <td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
@@ -1872,6 +1884,18 @@ revision is published (specified via newsRev prop).</p>
 <td><code>bool</code></td>
 <td>Whether to display the print output in an inline dialog instead triggering a download.</td>
 <td><code>false</code></td>
+</tr>
+<tr>
+<td>layoutHidePrefix</td>
+<td><code>string</code></td>
+<td>Hide layouts which begin with this prefix.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>layoutSortOrder</td>
+<td><code>string</code></td>
+<td>Layout sort order, asc or desc.</td>
+<td><code>'asc'</code></td>
 </tr>
 <tr>
 <td>printExternalLayers</td>
@@ -2494,7 +2518,7 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
 <p>Displays a 3D map view.</p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>To add a 3D View to a theme, add the following configuration block to a theme item in <code>themesConfig.json</code>:</p>
 <pre><code>&quot;map3d&quot;: {
     &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
@@ -2542,7 +2566,7 @@ queried via GetFeatureInfo.</p>
 <li><code>labelAttr</code>: optional, batch table attribute which stores the batch label, displayed above the geometry.</li>
 <li>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</li>
 </ul>
-<h2 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h2>
+<h3 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h3>
 <p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
 of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>batchstyles</code> section as follows:</p>
 <pre><code>{
@@ -2569,7 +2593,7 @@ of which currently the <code>color</code> section is supported, and which may in
 <li>The color declarations in the <code>batchstyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
 <li>You must ensure that your 3D tiles batch table contains all batch attributes which are referenced as variables in a color expression!</li>
 </ul>
-<h2 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h2>
+<h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
 <table>
 <thead>
