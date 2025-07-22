@@ -2,6 +2,15 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.7.22
+------------------------
+
+**Changes to EditingInterface**
+
+*Note*: This change is only relevant if you use a custom `EditingInterface` or have custom plugins which interact with the `EditingInterface`.
+
+To add support for virtual fields, the signature of most `EditingInterface` functions was changed, see [EditingInterface.js](https://github.com/qgis/qwc2/blob/553c340624cd31ffaf038a4e3c3bd8b3b2f395e7/utils/EditingInterface.js) for the new interface.
+
 Update to qwc2 2025.7.1
 -----------------------
 
