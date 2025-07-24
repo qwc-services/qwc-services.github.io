@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc db auth readme - QWC2 - 2025.07.20</title>
+    <title>Qwc db auth readme - QWC2 - 2025.07.23</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.20
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.23
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.07.20</a>
+          <a href="../..">QWC2 - 2025.07.23</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -193,18 +193,20 @@ Usage example: <code>curl -d 'username=demo&amp;password=demo' http://localhost:
   &quot;user_info_fields&quot;: [&quot;surname&quot;, &quot;first_name&quot;]
 }
 </code></pre>
-<p><a href="https://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is used for sending mails like password resets. These are the available options:
-* <code>MAIL_SERVER</code>: default ‘localhost’
-* <code>MAIL_PORT</code>: default 25
-* <code>MAIL_USE_TLS</code>: default False
-* <code>MAIL_USE_SSL</code>: default False
-* <code>MAIL_DEBUG</code>: default app.debug
-* <code>MAIL_USERNAME</code>: default None
-* <code>MAIL_PASSWORD</code>: default None
-* <code>MAIL_DEFAULT_SENDER</code>: default None
-* <code>MAIL_MAX_EMAILS</code>: default None
-* <code>MAIL_SUPPRESS_SEND</code>: default app.testing
-* <code>MAIL_ASCII_ATTACHMENTS</code>: default False</p>
+<p><a href="https://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is used for sending mails like password resets. These are the available options:</p>
+<ul>
+<li><code>MAIL_SERVER</code>: default ‘localhost’</li>
+<li><code>MAIL_PORT</code>: default 25</li>
+<li><code>MAIL_USE_TLS</code>: default False</li>
+<li><code>MAIL_USE_SSL</code>: default False</li>
+<li><code>MAIL_DEBUG</code>: default app.debug</li>
+<li><code>MAIL_USERNAME</code>: default None</li>
+<li><code>MAIL_PASSWORD</code>: default None</li>
+<li><code>MAIL_DEFAULT_SENDER</code>: default None</li>
+<li><code>MAIL_MAX_EMAILS</code>: default None</li>
+<li><code>MAIL_SUPPRESS_SEND</code>: default app.testing</li>
+<li><code>MAIL_ASCII_ATTACHMENTS</code>: default False</li>
+</ul>
 <p>In addition the standard Flask <code>TESTING</code> configuration option is used by Flask-Mail in unit tests.</p>
 <h3 id="two-factor-authentication">Two factor authentication<a class="headerlink" href="#two-factor-authentication" title="Permanent link">&para;</a></h3>
 <p>Two factor authentication using TOTP can be enabled by setting the environment variable <code>TOTP_ENABLED=True</code>.
