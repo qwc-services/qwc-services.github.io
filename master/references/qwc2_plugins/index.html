@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.07.23</title>
+    <title>Qwc2 plugins - QWC2 - 2025.08.07</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.07.23
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.07
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.07.23</a>
+          <a href="../..">QWC2 - 2025.08.07</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -1401,9 +1401,15 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>'{theme}_{timestamp}'</code></td>
 </tr>
 <tr>
+<td>forceAvailableFormats</td>
+<td><code>array</code></td>
+<td>Formats to force as available even if the map capabilities report otherwise. Useful if a serviceUrl is defined in a format configuration.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>formatConfiguration</td>
-<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>}],</code><br /><code>}</code></td>
-<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.</td>
+<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>serviceUrl: string,</code><br /><code>}],</code><br /><code>}</code></td>
+<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.<br /> <code>serviceUrl</code> is the address of a custom service to use instead of the layer OWS service url.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
