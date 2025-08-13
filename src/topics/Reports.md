@@ -54,7 +54,7 @@ As a second step, associate the report templates to theme layers to expose the r
 The first case example displays the shorthand syntax for assigning one report template to one layer. The second example displays the syntax for assigning one or more templates to one layer, supporting the following extra options:
 
 - `single_report`: If `true`, one report will be compiled and a list of feature IDs will be passed in the report params. If `false`, one report will be compiled for each feature ID, and the result will be a multi-page report (one report per feature). Default is `false`.
-- `format`: The report format, one of `pdf`, `html`, `csv`, `docx`, `ods`, `odt`, `pptx`, `rtf`, `xslsx`, `xml`. Default is `pdf`.
+- `format`: The report format, one of `pdf`, `html`, `csv`, `docx`, `ods`, `odt`, `pptx`, `rtf`, `xlsx`, `xml`. Default is `pdf`.
 
 The web client will then display a link to download the report(s) for one or more selected features in the identify results dialog.
 
