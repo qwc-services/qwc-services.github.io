@@ -153,6 +153,24 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   }
 }
 </code></pre>
+<p>Example with multiple datasets:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-elevation-service/master/schemas/qwc-elevation-service.json&quot;,
+  &quot;service&quot;: &quot;elevation&quot;,
+  &quot;config&quot;: {
+    &quot;elevation_datasets&quot;: [
+      {
+        &quot;name&quot;: &quot;SRTM&quot;,
+        &quot;dataset_path&quot;: &quot;/vsicurl/https://data.sourcepole.com/srtm_1km_3857.tif&quot;
+      },
+      {
+        &quot;name&quot;: &quot;Local&quot;,
+        &quot;dataset_path&quot;: &quot;/dtm_local.tif&quot;
+      }
+    ]
+  }
+}
+</code></pre>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <table>
