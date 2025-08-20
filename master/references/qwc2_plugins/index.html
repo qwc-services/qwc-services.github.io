@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.08.07</title>
+    <title>Qwc2 plugins - QWC2 - 2025.08.20</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.07
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.20
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.08.07</a>
+          <a href="../..">QWC2 - 2025.08.20</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -153,8 +153,8 @@
 <li><a href="#layercatalog">LayerCatalog</a></li>
 <li><a href="#layertree">LayerTree</a></li>
 <li><a href="#locatebutton">LocateButton</a></li>
-<li><a href="#mapplugin">MapPlugin</a></li>
-<li><a href="#mapcompareplugin">MapComparePlugin</a></li>
+<li><a href="#map">Map</a></li>
+<li><a href="#mapcompare">MapCompare</a></li>
 <li><a href="#mapcopyright">MapCopyright</a></li>
 <li><a href="#mapexport">MapExport</a></li>
 <li><a href="#mapfilter">MapFilter</a></li>
@@ -178,14 +178,35 @@
 <li><a href="#themeswitcher">ThemeSwitcher</a></li>
 <li><a href="#timemanager">TimeManager</a></li>
 <li><a href="#topbar">TopBar</a></li>
+<li><a href="#tourguide">TourGuide</a></li>
 <li><a href="#valuetool">ValueTool</a></li>
 <li><a href="#view3d">View3D</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
+</ul>
+<p>Map support plugins</p>
+<ul>
 <li><a href="#editingsupport">EditingSupport</a></li>
 <li><a href="#locatesupport">LocateSupport</a></li>
 <li><a href="#measurementsupport">MeasurementSupport</a></li>
 <li><a href="#redliningsupport">RedliningSupport</a></li>
 <li><a href="#snappingsupport">SnappingSupport</a></li>
+</ul>
+<p>3D Plugins</p>
+<ul>
+<li><a href="#backgroundswitcher3d">BackgroundSwitcher3D</a></li>
+<li><a href="#bottombar3d">BottomBar3D</a></li>
+<li><a href="#compare3d">Compare3D</a></li>
+<li><a href="#draw3d">Draw3D</a></li>
+<li><a href="#exportobjects3d">ExportObjects3D</a></li>
+<li><a href="#hideobjects3d">HideObjects3D</a></li>
+<li><a href="#identify3d">Identify3D</a></li>
+<li><a href="#layertree3d">LayerTree3D</a></li>
+<li><a href="#mapcopyright3d">MapCopyright3D</a></li>
+<li><a href="#mapexport3d">MapExport3D</a></li>
+<li><a href="#measure3d">Measure3D</a></li>
+<li><a href="#overviewmap3d">OverviewMap3D</a></li>
+<li><a href="#settings3d">Settings3D</a></li>
+<li><a href="#topbar3d">TopBar3D</a></li>
 </ul>
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
@@ -368,7 +389,7 @@
 <td>showLimitToExtent</td>
 <td><code>bool</code></td>
 <td>Whether to show the "Limit to extent" checkbox</td>
-<td><code>undefined</code></td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>zoomLevel</td>
@@ -1273,7 +1294,7 @@ with containing a container element with id=legendcontainer.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="mapplugin">MapPlugin<a name="mapplugin"></a><a class="headerlink" href="#mapplugin" title="Permanent link">&para;</a></h2>
+<h2 id="map">Map<a name="map"></a><a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
 <p>The main map component.</p>
 <table>
 <thead>
@@ -1312,12 +1333,12 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>toolsOptions</td>
 <td><code>object</code></td>
-<td>Map tool configuraiton options. Refer to the sample config.json.</td>
-<td><code>{}</code></td>
+<td>Options to pass to the map support plugins, in the form <code>{"&lt;Name&gt;": {&lt;options&gt;}}.&lt;br /&gt;Refer to the documentation of the &lt;a href="#mapSupportPlugins"&gt;Map support plugins&lt;/a&gt; for settable options. |</code>{}`</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="mapcompareplugin">MapComparePlugin<a name="mapcompareplugin"></a><a class="headerlink" href="#mapcompareplugin" title="Permanent link">&para;</a></h2>
+<h2 id="mapcompare">MapCompare<a name="mapcompare"></a><a class="headerlink" href="#mapcompare" title="Permanent link">&para;</a></h2>
 <p>Allows comparing the top layer with the rest of the map.</p>
 <p>Activated through a checkbox in the LayerTree.</p>
 <h2 id="mapcopyright">MapCopyright<a name="mapcopyright"></a><a class="headerlink" href="#mapcopyright" title="Permanent link">&para;</a></h2>
@@ -2041,7 +2062,7 @@ an aggregated report for all selected features.</p>
 </table>
 <h2 id="routing">Routing<a name="routing"></a><a class="headerlink" href="#routing" title="Permanent link">&para;</a></h2>
 <p>Compute routes and isochrones.</p>
-<p>Requites <code>routingServiceUrl</code> in <code>config.json</code> pointing to a Valhalla routing service.</p>
+<p>Requires <code>routingServiceUrl</code> in <code>config.json</code> pointing to a Valhalla routing service.</p>
 <table>
 <thead>
 <tr>
@@ -2495,6 +2516,26 @@ an aggregated report for all selected features.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="tourguide">TourGuide<a name="tourguide"></a><a class="headerlink" href="#tourguide" title="Permanent link">&para;</a></h2>
+<p>Launches a tour guide of the application, as configured by a configuration file.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tourGuideUrl</td>
+<td><code>string</code></td>
+<td>Url of the Tourguide JSON configuration.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="valuetool">ValueTool<a name="valuetool"></a><a class="headerlink" href="#valuetool" title="Permanent link">&para;</a></h2>
 <p>Displays raster band values of active raster layers at the hovered mouse position,
 queried via GetFeatureInfo.</p>
@@ -2527,6 +2568,11 @@ queried via GetFeatureInfo.</p>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>To add a 3D View to a theme, add the following configuration block to a theme item in <code>themesConfig.json</code>:</p>
 <pre><code>&quot;map3d&quot;: {
+    &quot;initialView&quot;: {
+      &quot;camera&quot;: [x, y, z],
+      &quot;target&quot;: [x, y, z],
+      &quot;personHeight&quot;: h
+    },
     &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
     &quot;basemaps&quot;: [
          {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true, &quot;overview&quot;: true},
@@ -2539,12 +2585,12 @@ queried via GetFeatureInfo.</p>
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
-             &quot;idAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
+             &quot;idAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
              &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
              &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
-             &quot;colorAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
-             &quot;alphaAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
-             &quot;labelAttr&quot;: &quot;&lt;tile_batch_attr&gt;&quot;,
+             &quot;colorAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+             &quot;alphaAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+             &quot;labelAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
          }
     ],
     &quot;objects3d&quot;: [
@@ -2558,28 +2604,29 @@ queried via GetFeatureInfo.</p>
 </code></pre>
 <p>Where:</p>
 <ul>
+<li><code>initialView</code> is optional and allows to define the initial view when opening the 3D view. If <code>personHeight</code> is specified and greater than 0, the first-person view is activated. If not specified, the 2D view is synchronized.</li>
 <li>The DTM should be a cloud optimized GeoTIFF.</li>
 <li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>. Additionally:</li>
 <li><code>visibility</code> controls the initially visibile background layer</li>
 <li><code>overview: true</code> controls the name of background layer to display in the overview map. If no background layer is marked with <code>overview: true</code>, the currently visibile background layer id dipslayed in the overview map.</li>
 <li>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</li>
-<li><code>idAttr</code>: batch table attribute which stores the batch object id, used for styling and passed to <code>tileInfoServiceUrl</code>. Default: <code>id</code>.</li>
+<li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
 <li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
 <li><code>style</code>: optional, tileset style enabled by default.</li>
 <li><code>baseColor</code>: the fallback color for the tile objects, defaults to white.</li>
-<li><code>colorAttr</code>: optional, batch table attribute which stores the batch color, as a 0xRRGGBB integer.</li>
-<li><code>alphaAttr</code>: optional, batch table attribute which stores the batch alpha (transparency), as a [0, 255] integer.</li>
-<li><code>labelAttr</code>: optional, batch table attribute which stores the batch label, displayed above the geometry.</li>
+<li><code>colorAttr</code>: optional, feature properties table attribute which stores the feature color, as a 0xRRGGBB integer.</li>
+<li><code>alphaAttr</code>: optional, feature properties table attribute which stores the feature alpha (transparency), as a [0, 255] integer.</li>
+<li><code>labelAttr</code>: optional, feature properties table attribute which stores the feature label, displayed above the geometry.</li>
 <li>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</li>
 </ul>
 <h3 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h3>
 <p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
-of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>batchstyles</code> section as follows:</p>
+of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>featureStyles</code> section as follows:</p>
 <pre><code>{
     &quot;color&quot;: {
        ...
     },
-    &quot;batchstyles&quot;: {
+    &quot;featureStyles&quot;: {
       &quot;&lt;object_id&gt;&quot;: {
           &quot;label&quot;: &quot;&lt;label&gt;&quot;,
           &quot;labelOffset&quot;: &lt;offset&gt;,
@@ -2596,8 +2643,8 @@ of which currently the <code>color</code> section is supported, and which may in
 </ul>
 <p><em>Note</em>:</p>
 <ul>
-<li>The color declarations in the <code>batchstyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
-<li>You must ensure that your 3D tiles batch table contains all batch attributes which are referenced as variables in a color expression!</li>
+<li>The color declarations in the <code>featureStyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
+<li>You must ensure that your 3D tiles properties table contains all attributes which are referenced as variables in a color expression!</li>
 </ul>
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
@@ -2618,16 +2665,10 @@ of which currently the <code>color</code> section is supported, and which may in
 <td><code>6</code></td>
 </tr>
 <tr>
-<td>defaultDay</td>
-<td><code>number</code></td>
-<td>Default viewer day (1-365)</td>
-<td><code>182</code></td>
-</tr>
-<tr>
-<td>defaultTime</td>
+<td>controlsPosition</td>
 <td><code>string</code></td>
-<td>Default viewer time (00:00-23:59)</td>
-<td><code>'12:00'</code></td>
+<td>The position of the navigation controls. Either <code>top</code> or <code>bottom</code>.</td>
+<td><code>'top'</code></td>
 </tr>
 <tr>
 <td>geometry</td>
@@ -2636,22 +2677,10 @@ of which currently the <code>color</code> section is supported, and which may in
 <td><code>{</code><br /><code>initialWidth: 600,</code><br /><code>initialHeight: 800,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
 </tr>
 <tr>
-<td>importedTilesBaseUrl</td>
-<td><code>string</code></td>
-<td>Base URL of imported tile sets.</td>
-<td><code>':/'</code></td>
-</tr>
-<tr>
-<td>searchMinScaleDenom</td>
-<td><code>number</code></td>
-<td>Minimum scale denominator when zooming to search result.</td>
-<td><code>1000</code></td>
-</tr>
-<tr>
-<td>tileInfoServiceUrl</td>
-<td><code>string</code></td>
-<td>URL to service for querying additional tile information.<br />Can contain the <code>{tileset}</code> and <code>{objectid}</code> placeholders.<br />Expected to return a JSON dict with attributes.</td>
-<td><code>undefined</code></td>
+<td>pluginOptions</td>
+<td><code>object</code></td>
+<td>Options to pass to the 3D plugins, in the form <code>{"&lt;PluginName&gt;": {&lt;options&gt;}}.&lt;br /&gt;Refer to the documentation of the &lt;a href="#plugins3d"&gt;3D plugins&lt;/a&gt; for settable options. |</code>{}`</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -2694,16 +2723,186 @@ of which currently the <code>color</code> section is supported, and which may in
 </tr>
 </tbody>
 </table>
+<hr />
+<h1 id="map-support-plugins">Map support plugins<a name="mapSupportPlugins"></a><a class="headerlink" href="#map-support-plugins" title="Permanent link">&para;</a></h1>
 <h2 id="editingsupport">EditingSupport<a name="editingsupport"></a><a class="headerlink" href="#editingsupport" title="Permanent link">&para;</a></h2>
 <p>Editing support for the map component.</p>
 <h2 id="locatesupport">LocateSupport<a name="locatesupport"></a><a class="headerlink" href="#locatesupport" title="Permanent link">&para;</a></h2>
 <p>GPS locate support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drawCircle</td>
+<td><code>bool</code></td>
+<td>Whether to draw an accuracy circle around the location point.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>metric</td>
+<td><code>bool</code></td>
+<td>Whether to display the accuracy in meters (<code>true</code>) or in feet (<code>false</code>).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showPopup</td>
+<td><code>bool</code></td>
+<td>Whether to show a popup displaying accuracy information when clicking on the location point.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>startupMode</td>
+<td><code>string</code></td>
+<td>The geolocation startup mode. Either <code>DISABLED</code>, <code>ENABLED</code> or <code>FOLLOWING</code>.</td>
+<td><code>"DISABLED"</code></td>
+</tr>
+<tr>
+<td>stopFollowingOnDrag</td>
+<td><code>bool</code></td>
+<td>Whether to stop following when the map is dragged.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>trackingOptions</td>
+<td><code>object</code></td>
+<td>Tracking options, as documented in the <a href="https://www.w3.org/TR/geolocation-API/#position_options_interface">HTML5 Geolocation spec</a></td>
+<td><code>{</code><br /><code>maximumAge: 2000,</code><br /><code>enableHighAccuracy: true,</code><br /><code>timeout: 10000</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
 <p>Measurement support for the map component.</p>
 <h2 id="redliningsupport">RedliningSupport<a name="redliningsupport"></a><a class="headerlink" href="#redliningsupport" title="Permanent link">&para;</a></h2>
 <p>Redlining support for the map component.</p>
 <h2 id="snappingsupport">SnappingSupport<a name="snappingsupport"></a><a class="headerlink" href="#snappingsupport" title="Permanent link">&para;</a></h2>
 <p>Snapping support for the map component.</p>
+<hr />
+<h1 id="3d-plugins">3D Plugins<a name="plugins3d"></a><a class="headerlink" href="#3d-plugins" title="Permanent link">&para;</a></h1>
+<h2 id="backgroundswitcher3d">BackgroundSwitcher3D<a name="backgroundswitcher3d"></a><a class="headerlink" href="#backgroundswitcher3d" title="Permanent link">&para;</a></h2>
+<p>Map button for switching the background layer of the 3D map.</p>
+<h2 id="bottombar3d">BottomBar3D<a name="bottombar3d"></a><a class="headerlink" href="#bottombar3d" title="Permanent link">&para;</a></h2>
+<p>Bottom bar of the 3D map, displaying coordinates, projection, etc.</p>
+<h2 id="compare3d">Compare3D<a name="compare3d"></a><a class="headerlink" href="#compare3d" title="Permanent link">&para;</a></h2>
+<p>Split-screen and compare objects in the 3D map.</p>
+<h2 id="draw3d">Draw3D<a name="draw3d"></a><a class="headerlink" href="#draw3d" title="Permanent link">&para;</a></h2>
+<p>Draw objects in the 3D map.</p>
+<h2 id="exportobjects3d">ExportObjects3D<a name="exportobjects3d"></a><a class="headerlink" href="#exportobjects3d" title="Permanent link">&para;</a></h2>
+<p>Export objects from the 3D map.</p>
+<h2 id="hideobjects3d">HideObjects3D<a name="hideobjects3d"></a><a class="headerlink" href="#hideobjects3d" title="Permanent link">&para;</a></h2>
+<p>Hide objects in the 3D map.</p>
+<h2 id="identify3d">Identify3D<a name="identify3d"></a><a class="headerlink" href="#identify3d" title="Permanent link">&para;</a></h2>
+<p>Query attributes of objects in the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tileInfoServiceUrl</td>
+<td><code>string</code></td>
+<td>URL to service for querying additional tile information.<br />Can contain the <code>{tileset}</code> and <code>{objectid}</code> placeholders.<br />Expected to return a JSON dict with attributes.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="layertree3d">LayerTree3D<a name="layertree3d"></a><a class="headerlink" href="#layertree3d" title="Permanent link">&para;</a></h2>
+<p>Layer and object tree for the 3D map</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>importedTilesBaseUrl</td>
+<td><code>string</code></td>
+<td>Base URL of imported tile sets.</td>
+<td><code>':/'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapcopyright3d">MapCopyright3D<a name="mapcopyright3d"></a><a class="headerlink" href="#mapcopyright3d" title="Permanent link">&para;</a></h2>
+<p>Displays layer attributions in the bottom right corner of the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefixCopyrightsWithLayerNames</td>
+<td><code>bool</code></td>
+<td>Whether to prepend the layer name to the attribution string.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showThemeCopyrightOnly</td>
+<td><code>bool</code></td>
+<td>Whether to only display the attribution of the theme, omitting external layers.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapexport3d">MapExport3D<a name="mapexport3d"></a><a class="headerlink" href="#mapexport3d" title="Permanent link">&para;</a></h2>
+<p>Export the 3D map image to raster formats.</p>
+<h2 id="measure3d">Measure3D<a name="measure3d"></a><a class="headerlink" href="#measure3d" title="Permanent link">&para;</a></h2>
+<p>Measure in the 3D map.</p>
+<h2 id="overviewmap3d">OverviewMap3D<a name="overviewmap3d"></a><a class="headerlink" href="#overviewmap3d" title="Permanent link">&para;</a></h2>
+<p>Overview map for the 3D map.</p>
+<h2 id="settings3d">Settings3D<a name="settings3d"></a><a class="headerlink" href="#settings3d" title="Permanent link">&para;</a></h2>
+<p>Settings panel for the 3D map.</p>
+<h2 id="topbar3d">TopBar3D<a name="topbar3d"></a><a class="headerlink" href="#topbar3d" title="Permanent link">&para;</a></h2>
+<p>Bottom bar of the 3D map, including the search bar, tool bar and menu.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>menuItems</td>
+<td><code>array</code></td>
+<td>The menu items, in the same format as the 2D <code>TopBar</code> menu items.<br />You can include entries for the View3D plugins.<br />You can also include entries for 2D plugins which are compatible with the 3D view (i.e. <code>ThemeSwitcher</code>, <code>Share</code>, etc.),<br />these will be displayed only in fullsceen 3D mode.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>searchOptions</td>
+<td><code>{</code><br /><code>minScaleDenom: number,</code><br /><code>}</code></td>
+<td>Options passed down to the search component.</td>
+<td><code>{</code><br /><code>minScaleDenom: 1000</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>toolbarItems</td>
+<td><code>array</code></td>
+<td>The toolbar, in the same format as the 2D <code>TopBar</code> toolbar items.<br />You can include entries for the View3D plugins.<br />You can also include entries for 2D plugins which are compatible with the 3D view (i.e. <code>ThemeSwitcher</code>, <code>Share</code>, etc.),<br />these will be displayed only in fullsceen 3D mode.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
