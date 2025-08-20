@@ -2,6 +2,18 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2025.8.20
+------------------------
+
+**Changes to the View3D plugin setup**
+
+The child components of the 3D view are now loaded as plugins:
+
+- If you are building a custom viewer, you need to adapt the `appConfig.js` to pass the desired list of plugins to the `View3D` plugin entry as illustrated in the [stock `appConfig.js`](https://github.com/qgis/qwc2/blob/2e6ea208a06c4bd6efbebb5d6dff5cd4677ed7d6/appConfig.js#L138). *NOTE*: Use `lazy` to delay-load the plugin only when the 3D view is actually started.
+
+- The `View3D` plugin configuration in `config.json` needs to be adapted to include desired plugin options, see the [stock `config.json`](https://github.com/qgis/qwc2/blob/2e6ea208a06c4bd6efbebb5d6dff5cd4677ed7d6/static/config.json#L478). In particular the `menuItems` and `toolbarItems` can and must now be explicitly specified in the `TopBar3D` plugin options.
+
+
 Update to qwc2 2025.7.22
 ------------------------
 
