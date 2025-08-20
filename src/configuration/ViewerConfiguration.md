@@ -328,6 +328,7 @@ The typical layout of a QWC app source tree is as follows:
 ### Application build-time configuration<a name="build-time configuration"></a>
 
 The `js/appConfig.js` is the the principal build-time configuation file, and defines:
+
 - The default application locale, built into the application. This locale is used if no available locale matches the browser locale.
 - Which plugins are built into the application. Plugins left out here will be completely omitted when compiling the application bundle, and will hence also reduce the size of the bundle.
 - Various hook functions, as documented in the sample [sample `js/appConfig.js`](https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js).
