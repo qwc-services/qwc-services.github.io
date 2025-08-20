@@ -839,10 +839,12 @@ All settings are optional, with fallback to the default values as documented.</p
 </tbody>
 </table>
 <h3 id="application-build-time-configuration">Application build-time configuration<a name="build-time configuration"></a><a class="headerlink" href="#application-build-time-configuration" title="Permanent link">&para;</a></h3>
-<p>The <code>js/appConfig.js</code> is the the principal build-time configuation file, and defines:
-- The default application locale, built into the application. This locale is used if no available locale matches the browser locale.
-- Which plugins are built into the application. Plugins left out here will be completely omitted when compiling the application bundle, and will hence also reduce the size of the bundle.
-- Various hook functions, as documented in the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>.</p>
+<p>The <code>js/appConfig.js</code> is the the principal build-time configuation file, and defines:</p>
+<ul>
+<li>The default application locale, built into the application. This locale is used if no available locale matches the browser locale.</li>
+<li>Which plugins are built into the application. Plugins left out here will be completely omitted when compiling the application bundle, and will hence also reduce the size of the bundle.</li>
+<li>Various hook functions, as documented in the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>.</li>
+</ul>
 <p>Refer to the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>appConfig.js</code></a> for a concrete example.</p>
 <h3 id="overriding-icons">Overriding icons<a class="headerlink" href="#overriding-icons" title="Permanent link">&para;</a></h3>
 <p>The common application icons are located in <code>qwc2/icons</code>. They can be overridden by creating an icon with the same filename in the application specific <code>icons</code> folder.</p>

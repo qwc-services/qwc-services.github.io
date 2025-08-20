@@ -1333,8 +1333,8 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>toolsOptions</td>
 <td><code>object</code></td>
-<td>Options to pass to the map support plugins, in the form <code>{"&lt;Name&gt;": {&lt;options&gt;}}.&lt;br /&gt;Refer to the documentation of the &lt;a href="#mapSupportPlugins"&gt;Map support plugins&lt;/a&gt; for settable options. |</code>{}`</td>
-<td></td>
+<td>Options to pass to the map support plugins, in the form <code>{"&lt;Name&gt;": {&lt;options&gt;}}</code>.<br />Refer to the documentation of the <a href="#mapSupportPlugins">Map support plugins</a> for settable options.</td>
+<td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2725,7 +2725,9 @@ of which currently the <code>color</code> section is supported, and which may in
 </table>
 <hr />
 <h1 id="map-support-plugins">Map support plugins<a name="mapSupportPlugins"></a><a class="headerlink" href="#map-support-plugins" title="Permanent link">&para;</a></h1>
-<h2 id="editingsupport">EditingSupport<a name="editingsupport"></a><a class="headerlink" href="#editingsupport" title="Permanent link">&para;</a></h2>
+<p>These plugins must be listed as children of the <a href="#map">Map</a> plugin.
+EditingSupport<a name="editingsupport"></a></p>
+<hr />
 <p>Editing support for the map component.</p>
 <h2 id="locatesupport">LocateSupport<a name="locatesupport"></a><a class="headerlink" href="#locatesupport" title="Permanent link">&para;</a></h2>
 <p>GPS locate support for the map component.</p>
@@ -2785,7 +2787,9 @@ of which currently the <code>color</code> section is supported, and which may in
 <p>Snapping support for the map component.</p>
 <hr />
 <h1 id="3d-plugins">3D Plugins<a name="plugins3d"></a><a class="headerlink" href="#3d-plugins" title="Permanent link">&para;</a></h1>
-<h2 id="backgroundswitcher3d">BackgroundSwitcher3D<a name="backgroundswitcher3d"></a><a class="headerlink" href="#backgroundswitcher3d" title="Permanent link">&para;</a></h2>
+<p>These plugins must be listed as children of the <a href="#view3d">View3D</a> plugin.
+BackgroundSwitcher3D<a name="backgroundswitcher3d"></a></p>
+<hr />
 <p>Map button for switching the background layer of the 3D map.</p>
 <h2 id="bottombar3d">BottomBar3D<a name="bottombar3d"></a><a class="headerlink" href="#bottombar3d" title="Permanent link">&para;</a></h2>
 <p>Bottom bar of the 3D map, displaying coordinates, projection, etc.</p>
