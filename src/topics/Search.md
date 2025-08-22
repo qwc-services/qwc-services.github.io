@@ -454,27 +454,52 @@ curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 ```
 
 
-### Configuring the search for a theme
+### Configuring the search as default or for a specific theme
 
-To use a fulltext search in a theme, configure a `fulltext` search provider in `themesConfig.json` as follows:
+To use a fulltext search as **default for all themes**, configure a `fulltext` search provider in `themesConfig.json` as follows:
 
 ```json
-"searchProviders": [
+{
+  "defaultSearchProviders": [
     {
-        "provider": "fulltext",
-        "params": {
-          "default": [<FACET_NAME>],
-          "layers": {
-              "<layer_name>": "<FACET_NAME>"
-          }
+      "provider": "fulltext",
+      "params": {
+        "default": [<FACET_NAME>],
+        "layers": {
+            "<layer_name>": "<FACET_NAME>"
         }
+      }
     }
-]
+  ]
+}
+```
+
+To use a fulltext search in **a specific theme**, configure a `fulltext` search provider in `themesConfig.json` as follows:
+
+```json
+{
+  "themes": {
+    "items": [
+      {
+        "searchProviders": [
+          {
+            "provider": "fulltext",
+            "params": {
+              "default": [<FACET_NAME>],
+              "layers": {
+                  "<layer_name>": "<FACET_NAME>"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
 ```
 Where:
-
 * `default` lists the search facets enabled by default.
-* `layers` providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
+* `layers` (optional) providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
 
 Next, create the resources in the Admin GUI to control the search permissions:
 
