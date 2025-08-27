@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc qgs cache preseed readme - QWC2 - 2025.08.26</title>
+    <title>Qwc 3d tile info service readme - QWC2 - 2025.08.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Qwc qgs cache preseed readme";
-        var mkdocs_page_input_path = "references/qwc-qgs-cache-preseed_readme.md";
+        var mkdocs_page_name = "Qwc 3d tile info service readme";
+        var mkdocs_page_input_path = "references/qwc-3d-tile-info-service_readme.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -123,7 +123,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Qwc qgs cache preseed readme</li>
+      <li>Qwc 3d tile info service readme</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -132,85 +132,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://github.com/qwc-services/qwc-qgs-cache-preseed/actions"><img alt="" src="https://github.com/qwc-services/qwc-qgs-cache-preseed/workflows/build/badge.svg" /></a>
-<a href="https://hub.docker.com/r/sourcepole/qwc-qgs-cache-preseed"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-qgs-cache-preseed?label=Docker%20image&amp;sort=semver" /></a></p>
-<h1 id="qwc-qgs-cache-pre-seed">QWC QGS Cache Pre-Seed<a class="headerlink" href="#qwc-qgs-cache-pre-seed" title="Permanent link">&para;</a></h1>
-<p>Docker image for pre-seeding the QGIS Server QGS project cache.</p>
-<p>This image will periodically query the capabilities for all/selected QGS projects below
-the projects directory to ensure that the projects are cached in the QGIS Server
-project cache, helping to avoid slow server responses which occur when a project
-is not in cache.</p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>Add the <code>qwc-qgs-cache-preseed</code> container configuration to your QWC <code>docker-compose.yml</code>:</p>
-<pre><code class="language-yml">  qwc-qgis-server:
-    image: docker.io/sourcepole/qwc-qgis-server:&lt;tag&gt;
-    environment:
-      FCGI_MIN_PROCESSES: 10
-      FCGI_MAX_PROCESSES: 10
-      ...
-    volumes:
-      - ./volumes/qgs-resources:/data:ro
-      ...
-
-  qwc-qgs-cache-preseed:
-    image: docker.io/sourcepole/qwc-qgs-cache-preseed:&lt;tag&gt;
-    environment:
-      EXECUTE_ON_STARTUP: 1
-      CRON_SCHEDULE: &quot;0 3 * * *&quot;
-      QGS_EXT: &quot;.qgs&quot;
-      FCGI_INSTANCES: 10
-    volumes:
-      - ./volumes/preseed_services.txt:/preseed_services.txt:ro
-      # OR
-      # - ./volumes/qgs-resources:/data:ro
-</code></pre>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>To control which QGS projects will be processed, you can:</p>
+                <p><a href="https://github.com/qwc-services/qwc-3d-tile-info-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-3d-tile-info-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-3d-tile-info-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-3d-tile-info-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-3d-tile-info-service">QWC 3D Tile Info Service<a class="headerlink" href="#qwc-3d-tile-info-service" title="Permanent link">&para;</a></h1>
+<p>Provides additional data for 3D tiles tilesets, sourced from a GeoPackage or Postgres dataset:</p>
 <ul>
-<li>Mount a file to <code>/preseed_services.txt</code> which contains the services names, one per line. For example:</li>
-<li><code>subdir/projectname</code> for a QGS file located in <code>qgs-resources/subdir/projectname.qgs</code></li>
-<li><code>pg/schema/projectname</code> for a QGS project located in a DB in schema <code>schema</code> and named <code>projectname</code></li>
-<li>Mount the <code>qgs-resources</code> dir (or whichever directory is mounted to <code>/data</code> for <code>qwc-qgis-server</code>) to <code>/data</code>, which will be then searches for projects (ending with <code>$QGS_EXT</code>).</li>
+<li>Object info, via <code>/objinfo?tileset=&lt;tileset_name&gt;&amp;objectid=&lt;object_id&gt;</code></li>
+<li>3D tiles stylesheets, via <code>/stylesheet?tileset=&lt;tileset_name&gt;&amp;stylename=&lt;stylename&gt;</code></li>
 </ul>
-<p>The following environment variables can be set:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CRON_SCHEDULE</code></td>
-<td><code>0 3 * * *</code></td>
-<td>Interval at which the pre-seeding script is run. Default: every day at 03:00.</td>
-</tr>
-<tr>
-<td><code>EXECUTE_ON_STARTUP</code></td>
-<td><code>0</code></td>
-<td>Whether to run the script when the container starts.</td>
-</tr>
-<tr>
-<td><code>QGS_EXT</code></td>
-<td><code>.qgs</code></td>
-<td>The QGS project extension to look for (<code>.qgs</code> or <code>.qgz</code>).</td>
-</tr>
-<tr>
-<td><code>FCGI_INSTANCES</code></td>
-<td><code>10</code></td>
-<td>The number of FCGI instances (i.e. the number if simultaneous requests to send).</td>
-</tr>
-<tr>
-<td><code>SLEEP_INTERVAL</code></td>
-<td><code>1</code></td>
-<td>The sleep interval in seconds between sending requests.</td>
-</tr>
-</tbody>
-</table>
-<p><em>Note</em>: You should set <code>FCGI_MIN_PROCESSES</code> equals to <code>FCGI_MAX_PROCESSES</code> in the <code>qwc-qgis-server</code> container configuration
-and <code>FCGI_INSTANCES</code> to the same number in the <code>qwc-qgs-cache-preseed</code> container configuration.</p>
+<p>This service implements a backend which can be referenced as <code>tileInfoServiceUrl</code> in the QWC View3D plugin configuration, <code>tileset_name</code> being the name of the tileset as configured in the <code>tiles3d</code> dataset entries in the themes configuration, see <a href="https://qwc-services.github.io/master/references/qwc2_plugins/#view3d">View3D configuration</a>.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="tileinfo-service-config">TileInfo Service config<a class="headerlink" href="#tileinfo-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="schemas/qwc-3d-tile-info-service.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/tileinfoConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-3d-tile-info-service/master/schemas/qwc-3d-tile-info-service.json&quot;,
+  &quot;service&quot;: &quot;mapinfo&quot;,
+  &quot;config&quot;: {
+    &quot;info_datasets&quot;: {
+      &quot;&lt;tileset_name&gt;&quot; : {
+        &quot;dataset&quot;: &quot;&lt;dataset path or DB URL&gt;&quot;,
+        &quot;type&quot;: &quot;&lt;gpkg|postgres&gt;&quot;,
+        &quot;layername&quot;: &quot;&lt;layer name in dataset&gt;&quot;,
+        &quot;idfield&quot;: &quot;&lt;id field name in dataset&gt;&quot;,
+        &quot;attribute_aliases&quot;: {
+          &quot;&lt;fieldname&gt;&quot;: &quot;&lt;displayname&gt;&quot;,
+          ...
+        },
+        &quot;attribute_blacklist&quot;: [
+          &quot;&lt;fieldname&gt;&quot;
+        ],
+        &quot;styles&quot;: {
+          &quot;&lt;stylename&gt;&quot;: {
+            &quot;query&quot;: &quot;SELECT styleSLD FROM layer_styles WHERE f_table_name = '&lt;layer name&gt;'&quot;,
+            // or
+            &quot;filename&quot;: &quot;&lt;sld path&gt;&quot;
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Run as</p>
+<pre><code>python src/server.py
+</code></pre>
+<p>API documentation:</p>
+<pre><code>http://localhost:5016/api/
+</code></pre>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run service:</p>
+<pre><code>uv run src/server.py
+</code></pre>
+<p>With config path:</p>
+<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
+</code></pre>
               
             </div>
           </div><footer>

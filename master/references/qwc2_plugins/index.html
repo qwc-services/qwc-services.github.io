@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC2 - 2025.08.20</title>
+    <title>Qwc2 plugins - QWC2 - 2025.08.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.20
+          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -116,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.08.20</a>
+          <a href="../..">QWC2 - 2025.08.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -358,7 +358,7 @@
 <p><strong>getState()</strong></p>
 <p>Return the current application state.</p>
 <h2 id="attributetable">AttributeTable<a name="attributetable"></a><a class="headerlink" href="#attributetable" title="Permanent link">&para;</a></h2>
-<p>Displaying the attribute table of layers in a dialog.</p>
+<p>Display the attribute table of layers in a dialog.</p>
 <p>To make a layer available in the attribute table, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
 <p>The attribute table works for both read-only as well as read-write data resources.</p>
 <p>This plugin queries the dataset via the editing service specified by
@@ -2671,6 +2671,12 @@ of which currently the <code>color</code> section is supported, and which may in
 <td><code>'top'</code></td>
 </tr>
 <tr>
+<td>defaultSceneQuality</td>
+<td><code>number</code></td>
+<td>The default scene quality factor (<code>20</code>: min, <code>100</code>: max).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>geometry</td>
 <td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
 <td>Default window geometry.</td>
@@ -2813,6 +2819,12 @@ BackgroundSwitcher3D<a name="backgroundswitcher3d"></a></p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
 <tr>
 <td>tileInfoServiceUrl</td>
 <td><code>string</code></td>
