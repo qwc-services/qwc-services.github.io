@@ -222,6 +222,7 @@ The format of the theme definitions is as follows:
 | `"predefinedFilters": [{<filter_config>}, ...],` | Optional: predefined filter configuration, see [MapFilter](../references/qwc2_plugins.md#mapfilter). |
 | `"visibilityPresetsBlacklist": ["<name>", ...],` | Optional: list of visibility presets (QGIS layer themes) to exclude. You can use`*` as a wildcard character. |
 | `"lockedVisibilityPreset":  "<name>",`           | Optional: lock styles of theme layers to those set in the specified visibility preset. |
+| `"startupView":  "<view>",`                     | Optional: the view mode to initially display the theme in. Allowed values are `2d`, `3d` and `3d2d`. Default is `2d`. |
 
 
 A bare minimum theme entry might look as follows:
