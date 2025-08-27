@@ -387,16 +387,16 @@ sslmode=disable
 <td>Name of matching <code>BackgroundLayerDefinition</code>, see <a href="#background-layers">below</a>.</td>
 </tr>
 <tr>
+<td><code>⁣  "overview": &lt;boolean&gt;,</code></td>
+<td>Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).</td>
+</tr>
+<tr>
 <td><code>⁣  "printLayer": "&lt;layer name&gt;"\|[&lt;list&gt;],</code></td>
 <td>Optional, a QGIS layer name or layer resource string to use as matching background layer when printing. Alternatively, a list <code>[{"maxScale": &lt;scale&gt;, "name": "&lt;layer name&gt;"}, ..., {"maxScale": null, "name": "&lt;layer name&gt;"}]</code> can be provided, ordered in ascending order by <code>maxScale</code>. The last entry should have <code>maxScale</code> <code>null</code>, as the layer used for all remaining scales. If omitted, no background is printed, unless layer is of type <code>wms</code> and <code>printExternalLayers</code> is <code>true</code> in the Print plugin configuration. See <a href="../../topics/Printing/">Printing</a>.</td>
 </tr>
 <tr>
-<td><code>⁣  "visibility": &lt;boolean&gt;</code>,</td>
+<td><code>⁣  "visibility": &lt;boolean&gt;</code></td>
 <td>Optional, initial visibility of the layer when theme is loaded.</td>
-</tr>
-<tr>
-<td><code>⁣  "overview": &lt;boolean&gt;</code>,</td>
-<td>Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).</td>
 </tr>
 <tr>
 <td><code>}],</code></td>
@@ -415,16 +415,16 @@ sslmode=disable
 <td>Global config settings overridden in theme, see <a href="../ViewerConfiguration/#theme-overridable-settings"><code>config.json</code></a>.</td>
 </tr>
 <tr>
-<td><code>⁣  "plugins": {...},</code></td>
-<td>Plugin configuration overridden in theme, See <a href="../ViewerConfiguration/#plugin-configuration"><code>config.json</code></a>.</td>
-</tr>
-<tr>
 <td><code>⁣  "desktop": {...},</code></td>
 <td>Desktop specific global and plugin configuration overridden in theme.</td>
 </tr>
 <tr>
-<td><code>⁣  "mobile": {...}</code></td>
+<td><code>⁣  "mobile": {...},</code></td>
 <td>Mobile specific global and plugin configuration overridden in theme.</td>
+</tr>
+<tr>
+<td><code>⁣  "plugins": {...}</code></td>
+<td>Plugin configuration overridden in theme, See <a href="../ViewerConfiguration/#plugin-configuration"><code>config.json</code></a>.</td>
 </tr>
 <tr>
 <td><code>}</code></td>
@@ -455,12 +455,12 @@ sslmode=disable
 <td>Optional, external layers to use as replacements for internal layers.</td>
 </tr>
 <tr>
-<td><code>⁣  "name": "&lt;external_layer_name&gt;",</code></td>
-<td>Name of the external layer, matching a <code>ExternalLayerDefinition</code>, see <a href="#external-layers">below</a>.</td>
+<td><code>⁣  "internalLayer": "&lt;QGis_layer_name&gt;",</code></td>
+<td>Name of an internal layer, as contained in the QGIS project, to replace with the external layer.</td>
 </tr>
 <tr>
-<td><code>⁣  "internalLayer": "&lt;QGis_layer_name&gt;"</code></td>
-<td>Name of an internal layer, as contained in the QGIS project, to replace with the external layer.</td>
+<td><code>⁣  "name": "&lt;external_layer_name&gt;"</code></td>
+<td>Name of the external layer, matching a <code>ExternalLayerDefinition</code>, see <a href="#external-layers">below</a>.</td>
 </tr>
 <tr>
 <td><code>}],</code></td>
@@ -575,12 +575,12 @@ sslmode=disable
 <td>Optional, default value.</td>
 </tr>
 <tr>
-<td><code>⁣  ⁣  &lt;textarea config&gt;,</code></td>
-<td>Optional, additional <a href="https://react.dev/reference/react-dom/components/textarea"><code>textarea</code> properties</a>, i.e. <code>maxLength</code>, <code>rows</code>, <code>placeholder</code>, ...</td>
+<td><code>⁣  ⁣  "options": ["&lt;value1&gt;","&lt;value2&gt;",...],</code></td>
+<td>Optional, to display a ComboBox with the specified options instead of a free-input textfield.</td>
 </tr>
 <tr>
-<td><code>⁣  ⁣  "options": ["&lt;value1&gt;","&lt;value2&gt;",...]</code></td>
-<td>Optional, to display a ComboBox with the specified options instead of a free-input textfield.</td>
+<td><code>⁣  ⁣  &lt;textarea config&gt;</code></td>
+<td>Optional, additional <a href="https://react.dev/reference/react-dom/components/textarea"><code>textarea</code> properties</a>, i.e. <code>maxLength</code>, <code>rows</code>, <code>placeholder</code>, ...</td>
 </tr>
 <tr>
 <td><code>},</code></td>
@@ -611,16 +611,16 @@ sslmode=disable
 <td>Optional, custom links to additional resources, shown as a menu in the theme selector in the theme switcher.</td>
 </tr>
 <tr>
+<td><code>⁣  "entries": ["&lt;link_name&gt;", ...],</code></td>
+<td>List of theme info link names, see <a href="#theme-info-links">below</a>.</td>
+</tr>
+<tr>
 <td><code>⁣  "title": "&lt;Menu title&gt;",</code></td>
 <td>An arbitrary string shown as title of the menu.</td>
 </tr>
 <tr>
-<td><code>⁣  "titleMsgId": "&lt;Menu title msgID&gt;",</code></td>
+<td><code>⁣  "titleMsgId": "&lt;Menu title msgID&gt;"</code></td>
 <td>Alternative to <code>title</code>, a message ID, translated through the translation files.</td>
-</tr>
-<tr>
-<td><code>⁣  "entries": ["&lt;link_name&gt;", ...]</code></td>
-<td>List of theme info link names, see <a href="#theme-info-links">below</a>.</td>
 </tr>
 <tr>
 <td><code>},</code></td>
@@ -671,26 +671,6 @@ sslmode=disable
 <td>Optional, configuration of watermark to add to raster export images.</td>
 </tr>
 <tr>
-<td><code>⁣  "text": "&lt;text&gt;",</code></td>
-<td>Arbitrary text.</td>
-</tr>
-<tr>
-<td><code>⁣  "texpadding": &lt;number&gt;,</code></td>
-<td>Optional, padding between text and frame, in points.</td>
-</tr>
-<tr>
-<td><code>⁣  "fontsize": &lt;number&gt;,</code></td>
-<td>Optional, font size.</td>
-</tr>
-<tr>
-<td><code>⁣  "fontfamily": "&lt;Font family&gt;",</code></td>
-<td>Optional, font family.</td>
-</tr>
-<tr>
-<td><code>⁣  "fontcolor": "#RRGGBB",</code></td>
-<td>Optional, font color.</td>
-</tr>
-<tr>
 <td><code>⁣  "backgroundcolor": "#RRGGBB",</code></td>
 <td>Optional, frame background color.</td>
 </tr>
@@ -701,6 +681,26 @@ sslmode=disable
 <tr>
 <td><code>⁣  "framewidth": &lt;number&gt;,</code></td>
 <td>Optional, frame width.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontcolor": "#RRGGBB",</code></td>
+<td>Optional, font color.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontfamily": "&lt;Font family&gt;",</code></td>
+<td>Optional, font family.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontsize": &lt;number&gt;,</code></td>
+<td>Optional, font size.</td>
+</tr>
+<tr>
+<td><code>⁣  "text": "&lt;text&gt;",</code></td>
+<td>Arbitrary text.</td>
+</tr>
+<tr>
+<td><code>⁣  "texpadding": &lt;number&gt;</code></td>
+<td>Optional, padding between text and frame, in points.</td>
 </tr>
 <tr>
 <td><code>},</code></td>
