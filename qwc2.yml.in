@@ -1,7 +1,7 @@
-site_name: QWC2 - @version@
+site_name: QWC - @version@
 docs_dir: src
 nav:
-    - QWC2:
+    - QWC:
         - Home: index.md
         - Quick start: QuickStart.md
         - General configuration:
