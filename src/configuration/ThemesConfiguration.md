@@ -339,16 +339,16 @@ The format of the background layer definitions is as follows:
 | `"name": "<Name>",`              | The name of the background layer, used in the theme definitions.                  |
 | `"title": "<Title>",`            | The title of the background layer, as displayed in the background switcher.       |
 | `"titleMsgId": "<Title msgID>",` | Alternative to `title`, a message ID, translated through the translation files.   |
-| `"thumbnail": "<Filename>",`     | Optional, image file in `assets/img/mapthumbs` (see [Viewer assets](ViewerConfiguration.md#viewer-asset)). Defaults to `img/mapthumbs/default.jpg`. |
-| `"type": "<Type>",`              | The background layer type, i.e. `wms` or `wmts`.                                  |
-| `"opacity": <opacity>,`          | Optional, the layer opacity (between `0` and `255`). Default: `255`.              |
 | `"attribution": "<Attribution>",`| Optional, attribution which will be shown in the bottom right corner of the map.  |
 | `"attributionUrl": "<URL>",`     | Optional, link associated to the attribution                                      |
 | `"group": "<GroupId>",`          | Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher. |
+| `"layerConfig": {...},`          | Optional, extra OpenLayers layer configuration, according to the [API](https://openlayers.org/en/latest/apidoc) of the specific layer type. |
 | `"minScale": <min_scale>,`       | Optional, minimum scale denominator from which to render the layer.               |
 | `"maxScale": <max_scale>,`       | Optional, maximum scale denominator from which to render the layer.               |
-| `"layerConfig": {...},`          | Optional, extra OpenLayers layer configuration, according to the [API](https://openlayers.org/en/latest/apidoc) of the specific layer type. |
+| `"opacity": <opacity>,`          | Optional, the layer opacity (between `0` and `255`). Default: `255`.              |
 | `"sourceConfig": {...},`         | Optional, extra OpenLayers source configuration, according to the [API](https://openlayers.org/en/latest/apidoc) of the specific source type. |
+| `"thumbnail": "<Filename>",`     | Optional, image file in `assets/img/mapthumbs` (see [Viewer assets](ViewerConfiguration.md#viewer-asset)). Defaults to `img/mapthumbs/default.jpg`. |
+| `"type": "<Type>",`              | The background layer type, i.e. `wms` or `wmts`.                                  |
 | `<Layer params>`                 | Parameters according to the specified layer type.                                 |
 
 Some minimal examples of supported background layers:
