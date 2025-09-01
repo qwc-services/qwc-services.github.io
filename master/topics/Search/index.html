@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC2 - 2025.08.26</title>
+    <title>Search - QWC - 2025.08.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.26
+          <a href="../.." class="icon icon-home"> QWC - 2025.08.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,7 +42,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <p class="caption"><span class="caption-text">QWC</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                   </li>
@@ -79,8 +79,6 @@
     <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-trigram-backend">Fulltext search with Trigram backend</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-solr-backend">Fulltext search with Solr backend</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#configuring-the-search-for-a-theme">Configuring the search for a theme</a>
     </li>
         </ul>
     </li>
@@ -138,14 +136,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.08.26</a>
+          <a href="../..">QWC - 2025.08.26</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>QWC2 &raquo;</li>
+          <li>QWC &raquo;</li>
           <li>Selected topics &raquo;</li>
       <li>Search</li>
     <li class="wy-breadcrumbs-aside">
@@ -607,20 +605,32 @@ all searche queries can be written to the same XML file. Each search
 corresponds to exactly one <code>&lt;entity&gt;</code> tag in the XML file.</p>
 <p>After the configuration file has been created, the search must be registered in <code>solr</code>.
 In the <code>volumes/solr/configsets/gdi/conf/solrconfig.xml</code> file you have to look for
-<code>&lt;!-- SearchHandler</code> and add the following configuration</p>
+`<!-- SearchHandler` and add the following configuration
+
+
 <pre><code class="language-xml">&lt;requestHandler name=&quot;/CONFIG_NAME&quot; class=&quot;solr.DataImportHandler&quot;&gt;
     &lt;lst name=&quot;defaults&quot;&gt;
         &lt;str name=&quot;config&quot;&gt;NAME_OF_THE_CONFIGURATION_FILE.xml&lt;/str&gt;
     &lt;/lst&gt;
 &lt;/requestHandler&gt;
 </code></pre>
-<p>Finally, the <code>solr</code> index has to be generated:</p>
+
+
+Finally, the `solr` index has to be generated:
+
+
 <pre><code>rm -rf volumes/solr/data/*
 docker compose restart qwc-solr
 curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 </code></pre>
-<h3 id="configuring-the-search-for-a-theme">Configuring the search for a theme<a class="headerlink" href="#configuring-the-search-for-a-theme" title="Permanent link">&para;</a></h3>
-<p>To use a fulltext search in a theme, configure a <code>fulltext</code> search provider in <code>themesConfig.json</code> as follows:</p>
+
+
+
+### Configuring the search for a theme
+
+To use a fulltext search in a theme, configure a `fulltext` search provider in `themesConfig.json` as follows:
+
+
 <pre><code class="language-json">&quot;searchProviders&quot;: [
     {
         &quot;provider&quot;: &quot;fulltext&quot;,
@@ -633,18 +643,23 @@ curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
     }
 ]
 </code></pre>
-<p>Where:</p>
-<ul>
-<li><code>default</code> lists the search facets enabled by default.</li>
-<li><code>layers</code> providides a mapping of facets which are enabled whenever the theme layer <code>&lt;layer_name&gt;</code> is visible on the map.</li>
-</ul>
-<p>Next, create the resources in the Admin GUI to control the search permissions:</p>
-<ul>
-<li>For feature results, create <code>Search facet</code> resources in the Admin GUI with the facet names you want to permit.</li>
-<li>For layer results, create <code>Dataproduct</code> resources in the Admin GUI with the dataproduct ids you want to permit.</li>
-</ul>
-<p><em>Note</em>: For both <code>Search facet</code> and <code>Dataproduct</code> resources you can create wildcard resources by setting the name to <code>*</code>. This is useful to assign permissions for all available facets/dataproducts with one single resource.</p>
-<p>Finally, create permissions for the newly created resources and regenerate the service configuration.</p>
+
+Where:
+
+* `default` lists the search facets enabled by default.
+* `layers` providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
+
+Next, create the resources in the Admin GUI to control the search permissions:
+
+  * For feature results, create `Search facet` resources in the Admin GUI with the facet names you want to permit.
+  * For layer results, create `Dataproduct` resources in the Admin GUI with the dataproduct ids you want to permit.
+
+*Note*: For both `Search facet` and `Dataproduct` resources you can create wildcard resources by setting the name to `*`. This is useful to assign permissions for all available facets/dataproducts with one single resource.
+
+Finally, create permissions for the newly created resources and regenerate the service configuration.
+
+
+--></p>
               
             </div>
           </div><footer>

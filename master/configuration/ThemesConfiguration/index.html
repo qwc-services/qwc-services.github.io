@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Themes - QWC2 - 2025.08.26</title>
+    <title>Themes - QWC - 2025.08.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC2 - 2025.08.26
+          <a href="../.." class="icon icon-home"> QWC - 2025.08.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -42,7 +42,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">QWC2</span></p>
+              <p class="caption"><span class="caption-text">QWC</span></p>
               <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                   </li>
@@ -148,14 +148,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC2 - 2025.08.26</a>
+          <a href="../..">QWC - 2025.08.26</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>QWC2 &raquo;</li>
+          <li>QWC &raquo;</li>
           <li>General configuration &raquo;</li>
       <li>Themes</li>
     <li class="wy-breadcrumbs-aside">
@@ -941,18 +941,6 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <td>Alternative to <code>title</code>, a message ID, translated through the translation files.</td>
 </tr>
 <tr>
-<td><code>"thumbnail": "&lt;Filename&gt;",</code></td>
-<td>Optional, image file in <code>assets/img/mapthumbs</code> (see <a href="../ViewerConfiguration/#viewer-asset">Viewer assets</a>). Defaults to <code>img/mapthumbs/default.jpg</code>.</td>
-</tr>
-<tr>
-<td><code>"type": "&lt;Type&gt;",</code></td>
-<td>The background layer type, i.e. <code>wms</code> or <code>wmts</code>.</td>
-</tr>
-<tr>
-<td><code>"opacity": &lt;opacity&gt;,</code></td>
-<td>Optional, the layer opacity (between <code>0</code> and <code>255</code>). Default: <code>255</code>.</td>
-</tr>
-<tr>
 <td><code>"attribution": "&lt;Attribution&gt;",</code></td>
 <td>Optional, attribution which will be shown in the bottom right corner of the map.</td>
 </tr>
@@ -965,6 +953,10 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <td>Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher.</td>
 </tr>
 <tr>
+<td><code>"layerConfig": {...},</code></td>
+<td>Optional, extra OpenLayers layer configuration, according to the <a href="https://openlayers.org/en/latest/apidoc">API</a> of the specific layer type.</td>
+</tr>
+<tr>
 <td><code>"minScale": &lt;min_scale&gt;,</code></td>
 <td>Optional, minimum scale denominator from which to render the layer.</td>
 </tr>
@@ -973,12 +965,20 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <td>Optional, maximum scale denominator from which to render the layer.</td>
 </tr>
 <tr>
-<td><code>"layerConfig": {...},</code></td>
-<td>Optional, extra OpenLayers layer configuration, according to the <a href="https://openlayers.org/en/latest/apidoc">API</a> of the specific layer type.</td>
+<td><code>"opacity": &lt;opacity&gt;,</code></td>
+<td>Optional, the layer opacity (between <code>0</code> and <code>255</code>). Default: <code>255</code>.</td>
 </tr>
 <tr>
 <td><code>"sourceConfig": {...},</code></td>
 <td>Optional, extra OpenLayers source configuration, according to the <a href="https://openlayers.org/en/latest/apidoc">API</a> of the specific source type.</td>
+</tr>
+<tr>
+<td><code>"thumbnail": "&lt;Filename&gt;",</code></td>
+<td>Optional, image file in <code>assets/img/mapthumbs</code> (see <a href="../ViewerConfiguration/#viewer-asset">Viewer assets</a>). Defaults to <code>img/mapthumbs/default.jpg</code>.</td>
+</tr>
+<tr>
+<td><code>"type": "&lt;Type&gt;",</code></td>
+<td>The background layer type, i.e. <code>wms</code> or <code>wmts</code>.</td>
 </tr>
 <tr>
 <td><code>&lt;Layer params&gt;</code></td>
