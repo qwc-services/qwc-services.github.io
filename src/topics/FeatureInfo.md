@@ -1,35 +1,56 @@
 # Feature info
 
-The feature info behaviour in QWC is controlled by configuring `identifyTool` in `config.json` (or per-theme in `themesConfig.json`) to the desired plugin as well as whether a `qwc-feature-info-service` is used.
+The feature info displays attributes for picked objects. 
 
-The feature info is by default triggered when clicking on a feature in the map. You can also configure the feature info as an explicit viewer tool by setting `identifyTool: null` and [adding](../configuration/ViewerConfiguration.md#plugin-configuration) a `menuItems` or `toolbarItems` entry.
+The following options are available for displaying feature info:
 
-The following approaches are available for feature info:
+- [`Identify` plugin](#identify): display attributes in a table or custom HTML templates, querying the features via:
 
-- `Identify` plugin:
- - [WMS GetFeatureInfo](#wms-getfeatureinfo), rendered in a table or in a custom HTML template
- - [DB feature info](#db-feature-info) with custom SQL queries
-- [`FeatureForm` plugin](#feature-form): custom attribute forms with `qwc-data-service`
+    - [WMS GetFeatureInfo](#wms-getfeatureinfo)
+    - [Custom SQL queries](#db-feature-info)
 
-## WMS GetFeatureInfo<a name="wms-getfeatureinfo"></a>
+- [`FeatureForm` plugin](#feature-form): display attributes in QGIS attribute forms, querying the features via the `qwc-data-service`
 
-To query features over WMS GetFeatureInfo, set `identifyTool: "Identify"`. By default, results are displayed in a table. To display the results in a custom HTML template, the `qwc-feature-info-service` [can be used](../configuration/ServiceConfiguration.md#enabling-services).
+You can configure the identify tool by setting `identifyTool` in `config.json` (or per-theme in `themesConfig.json`).
+
+By default, it is triggered when clicking on a feature in the map. You can also configure the feature info as an explicit viewer tool by setting `identifyTool: null` and [adding](../configuration/ViewerConfiguration.md#plugin-configuration) a `menuItems` or `toolbarItems` entry.
+
+## Identify plugin<a name="identify"></a>
+
+The identify plugin allows displaying feature attributes queried over WMS GetFeatureInfo or, by using the `qwc-feature-info-service`, from a custom SQL query.
+
+To use it as default identify-tool, set `identifyTool: "Identify"` in `config.json`.
+
+By default, results are displayed in a table. You can also display the results using a custom HTML template by using the `qwc-feature-info-service`.
+
+You can also omit empty attributes by setting `skipEmptyFeatureAttributes: true` in the theme configuration entry in `themesConfig.json`.
 
 *Note:* Use of the `qwc-feature-info-service` is also recommended if the `qwc-data-service` is used for editing, to ensure attribute values containing paths to uploaded files are properly converted to clickable hyperlinks.
+
+### Querying features via WMS GetFeatureInfo<a name="wms-getfeatureinfo"></a>
 
 Set whether a layer is identifyable in `QGIS → Project Properties → Data sources`.
 
 To highlight the geometry, make sure `QGIS → Project Properties → QGIS Server → Add geometry to feature response` is checked.
 
-### Suppressing attributes
-
 You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS → Layer properties → Fields.
 
-Alternatively, you can selectively restrict attributes using the `qwc-admin-gui` and assigning `Attribute` resource permissions as desired.
+Alternatively, you can selectively restrict attributes using the `qwc-admin-gui` and assigning `Attribute` resource permissions as desired, see [Permissions](#permissions).
 
-You can also omit empty attributes by setting `skipEmptyFeatureAttributes: true` in the theme configuration entry in `themesConfig.json`.
+If you use the `qwc-feature-info-service`, you can filter empty attributes service-side by setting `skip_empty_attributes: true` in the `featureInfo` service configuration in `tenantConfig.json`.
 
-If you use the `qwc-feature-info-service`, you can also omit empty attributes directly in the `GetFeatureInfo` by setting `skip_empty_attributes: true` in the `featureInfo` service configuration in `tenantConfig.json`.
+## Querying features via custom SQL queries<a name="db-feature-info"></a>
+
+With the `qwc-feature-info-service`, you can query features directly from a database instead of over WMS GetFeatureInfo, by providing the `featureInfo` service configuration as described in [HTML templates](#html-templates), but specifying a `db_url` and `sql`, for example
+```json
+"info_template": {
+  "type": "sql",
+  "db_url": "postgresql:///?service=qwc_geodb",
+  "sql": "SELECT ogc_fid as _fid_, name, formal_en, pop_est, subregion, ST_AsText(wkb_geometry) as wkt_geom FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_Intersects(wkb_geometry, ST_GeomFromText(:geom, :srid)) LIMIT :feature_count;",
+  "template": "<div><h2>Demo Template</h2>Pos: {{ x }}, {{ y }}<br>Name: {{ feature.Name }}</div>"
+}
+```
+*Note:* `x`, `y` and `geom` are passed as parameters to the SQL query. If a `GetFeatureInfo` request is being processed with a `filter_geom` parameter, `geom` will correspond to that parameter. Otherwise `geom` will be `POINT(x y)`.
 
 ### Attribute values: HTML markup, hyperlinks, images
 
@@ -56,21 +77,17 @@ For displaying images, the following options are supported:
 
 This applies in particular to `<a />` anchor and `<img />` tags for displaying links an images in an attribute value.
 
-### Client side attribute transformations
+### Client side attributes
 
-This functionality is only available *without* the `qwc-feature-info-service`.
-
-To compute derived attributes client-side, you can implement the `customAttributeCalculator` in `qwc2-app/js/IdentifyExtensions.js` (which is passed to the `Identify` plugin in `appConfig.js`).
-
-To transform attributes client-side you can implement the `attributeTransform` in `qwc2-app/js/IdentifyExtensions.js` (which is passed to the `Identify` plugin in `appConfig.js`).
+To compute derived attributes client-side, you can register an attribute calculator via `window.qwc2.addIdentifyAttributeCalculator`, exposed by the [API](../references/qwc2_plugins.md#API) plugin.
 
 ### Custom export
 
-By default, the identify dialog in QWC allows you to export the results to `json` (QWC feature storage format), `geojson` (standard GeoJSON without QWC specific fields), `csv` (single CSV with all layers) or `csv+zip` (ZIP with one CSV per layer). You can define additional export functions by extending `customExporters` in `qwc2-app/js/IdentifyExtensions.js`.
+By default, the identify dialog in QWC allows you to export the results to `json` (QWC feature storage format), `geojson` (standard GeoJSON without QWC specific fields), `csv` (single CSV with all layers) or `csv+zip` (ZIP with one CSV per layer). You can define additional export functions registering an exporter via `window.qwc2.addIdentifyExporter`, exposed by the [API](../references/qwc2_plugins.md#API) plugin.
 
 ### Custom HTML templates<a name="html-templates"></a>
 
-You can specify a custom HTML template for displaying the feature rather than the default table view by [enabling](../configuration/ServiceConfiguration.md#enabling-services) the `qwc-feature-info-service`.
+With the `qwc-feature-info-service`, you can specify a custom HTML template for displaying the feature rather than the default table view.
 
 Mount the info templates folder into the `qwc-feature-info-service` container, i.e.:
 ```yml
@@ -147,20 +164,7 @@ Example `info_template` with template path:
       - ./volumes/info-templates:/info_templates:ro
 ```
 
-## DB query feature info<a name="db-feature-info"></a>
-
-When using the `Identify` plugin and the `qwc-feature-info-service`, you can query features directly from a database instead of over WMS GetFeatureInfo, by providing the `featureInfo` service configuration as described in [HTML templates](#html-templates), but specifying a `db_url` and `sql`, for example
-```json
-"info_template": {
-  "type": "sql",
-  "db_url": "postgresql:///?service=qwc_geodb",
-  "sql": "SELECT ogc_fid as _fid_, name, formal_en, pop_est, subregion, ST_AsText(wkb_geometry) as wkt_geom FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_Intersects(wkb_geometry, ST_GeomFromText(:geom, :srid)) LIMIT :feature_count;",
-  "template": "<div><h2>Demo Template</h2>Pos: {{ x }}, {{ y }}<br>Name: {{ feature.Name }}</div>"
-}
-```
-*Note:* `x`, `y` and `geom` are passed as parameters to the SQL query. If a `GetFeatureInfo` request is being processed with a `filter_geom` parameter, `geom` will correspond to that parameter. Otherwise `geom` will be `POINT(x y)`.
-
-## Localization
+### Localization
 
 The `qwc-feature-info-service` supports switching the runtime locale by setting the `LOCALE` environment variable, i.e.:
 ```yml
@@ -178,7 +182,14 @@ In addition, the [`locale`](https://docs.python.org/3/library/locale.html) objec
 <div>Area: {{ locale.format_string("%.2f", area, True) }}</div>
 ```
 
-## Feature form<a name="feature-form"></a>
+### Permissions<a name="identify-permissions"></a>
+
+If `permissions_default_allow` is set to `true` in `tenantConfig.json`, layers and attributes are queryable by default.
+
+* To restrict the display of single layer attributes to specific roles, create a `Layer` and `Attribute` resource (latter as child of the created `Layer` resource) and create permissions assigning the desired roles to the `Attribute` resources.
+* To restrict whether a layer can be queried, create a `FeatureInfo service` and `FeatureInfo layer` resource (latter as child of the created `FeatureInfo service` resource), and create permissions assigning the desired roles to the `FeatureInfo layer` resources.
+
+## Feature form plugin<a name="feature-form"></a>
 
 The `FeatureForm` plugin displays picked features in a feature form as configured in `QGIS → Layer properties → Attributes form`. It queries the features via `qwc-data-service`, and hence only works for layers with `postgresql` data source.
 
@@ -188,12 +199,6 @@ To use it as default identify-tool, set `identifyTool: "FeatureForm"` in `config
 
 A layer is only identifyable with the `FeatureForm` plugin if corresponding `Data` resources and permissions are configured for the layer data source in the `qwc-admin-gui`. If a write permission is configured, the feature will be editable.
 
-## Permissions
+### Permissions<a name="feature-form-permissions"></a>
 
-When using the `Identify` plugin and the `qwc-feature-info-service`, you can manage the permissions in the `qwc-admin-gui` as follows:
-
-* To restrict the display of single layer attributes to specific roles, create a `Layer` and `Attribute` resource (latter as child of the created `Layer` resource) and create permissions assigning the desired roles to the `Attribute` resources.
-   * *Note*: The name of the `Attribute` resource needs to be equal to the attribute alias name if one is defined in the QGIS project!
-* To restrict whether a layer is identifiable to specific roles, create a `FeatureInfo service` and `FeatureInfo layer` resource (latter as child of the created `FeatureInfo service` resource), and create permissions assigning the desired roles to the `FeatureInfo layer` resources.
-
-When using the `FeatureForm` plugin and the `qwc-data-service`, the `Data` resource permissions are used, see [Editing](Editing.md#quick-start).
+The `FeatureForm` plugin relies on the `qwc-data-service` and the `Data` resource permissions, see [Editing](Editing.md#quick-start).
