@@ -22,6 +22,7 @@ nav:
             - Legend graphics: topics/LegendGraphics.md
             - Map filtering: topics/MapFilter.md
             - Reports: topics/Reports.md
+            - Translations: topics/Translations.md
             - Interfacing with applications: topics/Interfacing.md
             - Multi-tenancy: topics/MultiTenancy.md
         - References: references/index.md

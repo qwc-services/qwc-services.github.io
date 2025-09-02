@@ -37,7 +37,7 @@ All settings are optional, with fallback to the default values as documented.
 |`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../topics/Editing.md#recaptcha). |
 |`editTextNullValue`                  | A text value which represents `NULL` when editing. Default: `""`. |
 |`geodesicMeasurements`               | Whether to perform measurements on the geoid. Default: `false`. |
-|`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [translations](#translations). Default: `false`. |
+|`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [Translations](../topics/Translations.md). Default: `false`. |
 |`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default: `false`. |
 |`measurementPrecision`               | Number of decimal digits to display in measurements. Default: `2`. |
 |`omitUrlParameterUpdates`            | Whether to omit updating the URL parameters. Default: `false`. |
@@ -181,7 +181,7 @@ In general, the procedure for enabling a plugin is:
 | Setting                                    | Description                                                                       |
 |--------------------------------------------|-----------------------------------------------------------------------------------|
 |`{`                                         |                                                                                   |
-|`⁣  "key": "<key>",`                         | The name of a plugin, i.e. `LayerTree`. The label for the entry will be looked up from the translations using the `appmenu.items.<key>` message identifier (see <a href="#translations">Managing translations</a>). |
+|`⁣  "key": "<key>",`                         | The name of a plugin, i.e. `LayerTree`. The label for the entry will be looked up from the translations using the `appmenu.items.<key>` message identifier (see [Translations](../topics/Translations.md). |
 |`⁣  "icon": "<icon>",`                       | The icon of the entry, either a built-in icon name (see below), or `:/<path_to_asset>` containing the path relative to `assetsPath` of an asset image. |
 |`⁣  "themeBlacklist": ["<themename>", ...],` | Optional, allows specifying a blacklist of theme names or titles for which the entry should not be visible. |
 |`⁣  "themeWhitelist": ["<themename>", ...],` | Optional, allows specifying a whitelist of theme names or titles for which the entry should be visible. |
@@ -364,65 +364,3 @@ qwc-map-viewer:
 To update the base QWC components, just update the version of the `qwc2` dependency in `package.json`.
 
 The [QWC Upgrade Notes](../release_notes/QWC2UpgradeNotes.md) documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.
-
-
-## Translations <a name="translations"></a>
-
-This section gives an overview of the common tasks related to the QWC translations.
-
-### Switching language
-
-By default, QWC will attempt to load the translation matching your browser language. Alternatively, you can explicitly specify the language by adding the `lang=<lang>` query parameter to the application URL, i.e. `lang=de-CH`.
-
-The [`Settings`](../references/qwc2_plugins.md#settings) furthermore allows graphically switching the language within QWC, with the list of available languages configured via the `languages` plugin configuration property.
-
-### Adding and modify translations
-
-When working inside a `qwc-app` source folder, the translations are located at `qwc-app/static/translations`.
-
-A script will take care of merging the translations from the `qwc2` package into the application translations. This way, when updating the `qwc2` dependency, new translations are automatically obtained. This script is automatically invoked on `yarn start`, but can also be manually invoked using
-
-    yarn run tsupdate
-
-Translations are stored inside the respective `translations` folder as regular plain-text JSON files, named `<lang>.json` and can be freely edited with any text editor.
-
-The `tsconfig.json` files stored inside the respective `translations` folder contains the list of languages for which translations should be generated and a list of message IDs to include in the translation. The `tsupdate` script will automatically scan the code for message IDs (looking for static strings passed to `LocaleUtils.tr` and `LocaleUtils.trmsg`), store these in `tsconfig.json` and automatically create resp. update the translation files.
-
-In some cases `tsconfig.json` will not pick up a message ID (for instance, if it is computed at runtime). In these cases, the message IDs can be added manually to the `extra_strings` section of the `tsconfig.json`.
-
-Also it may be desired to override a translation inherited from the QWC components at application level. To prevent `tsupdate` from continuously reverting the overridden translation, the respective message IDs can be added to the `overrides` section in the application `tsconfig.json` file.
-
-To add a new language, list it in `qwc-app/qwc2/translations/tsconfig.json` and run `yarn run tsupdate`, then complete the messages taking the english translation file as reference.
-
-When adding or modifying translations at QWC components level, please contribute them by submitting a pull request to the [upstream qwc2 repository](https://github.com/qgis/qwc2).
-
-### Selectively overriding translation strings
-
-Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the `qwc-map-viewer` docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).
-
-To do this:
-
-* Set `loadTranslationOverrides` to `true` in `config.json`.
-* Create a `<lang>_overrides.json` containing just the ovverridden strings, for example `en-US_overrides.json`:
-```json
-{
-  "messages": {
-    "appmenu": {
-      "items": {
-        "LayerTree": "Layers"
-      }
-    }
-  }
-}
-```
-* Place this file inside the `translations` folder of your production build. When using `qwc-docker`, you can place this file in `qwc-docker/volumes/qwc2/translations/` and mount this file inside the container, i.e. :
-```yml
-qwc-map-viewer:
-  image: sourcepole/qwc-map-viewer:vYYYY.MM.DD
-  [...]
-  volumes:
-    - ./volumes/qwc2/translations/en-US_overrides.json:/qwc2/translations/en-US_overrides.json:ro
-```
-### Specifying the default fallback translation
-
-When no translation exists for the requested language (i.e. the current browser language), QWC will fall back to the default translation specified as `defaultLocaleData` in `qwc2-app/js/appConfig.js`. For the stock application, the default fallback translation is `en-US`.
