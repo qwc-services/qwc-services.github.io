@@ -454,7 +454,7 @@ curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 ```
 
 
-### Configuring the search for a theme
+### Configuring the search for a theme<a name="search-permissions"></a>
 
 To use a fulltext search in a theme, configure a `fulltext` search provider in `themesConfig.json` as follows:
 
