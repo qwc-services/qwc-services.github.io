@@ -45,14 +45,15 @@ else
     wget -q -O tmp/schema-versions.json https://raw.githubusercontent.com/qwc-services/qwc-config-generator/${branch}/src/schema-versions.json
 fi
 
+mkdir src/references/schemas
 for schemaUrl in \
     $(cat tmp/schema-versions.json | grep schema_url | awk -F'"' '{print $4}');
 do
     service=$(basename ${schemaUrl%.json})
     echo "* Generating service schema reference for $service..."
     echo "  $schemaUrl"
-    wget -q -O tmp/$service.json $schemaUrl
-    generate-schema-doc tmp/$service.json src/references/$service.md
+    wget -q -O src/references/schemas/$service.json $schemaUrl
+    generate-schema-doc src/references/schemas/$service.json src/references/$service.md
     echo "$service.md" >> src/references/.gitignore
 
     readmeUrl=${schemaUrl/schemas\/*.json/README.md}
