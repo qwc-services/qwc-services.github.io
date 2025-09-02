@@ -1,3 +1,16 @@
+# New WFS permission model, removal of `Data (read)` resource type
+
+As of
+
+- `qwc-config-generator:v2025.08.05`
+- `qwc-ogc-service:2025.09.01`
+- `qwc-admin-gui:v2025.08.05`
+- `qwc-base-db-migrate:v2025.08.05`
+
+a new WFS permission model has been introduced, replacing the setting `generate_wfs_services` in `tenantConfig.json` with proper WFS resources. See [WFS Permissions](../configuration/ResourcesPermissions.md#wfs-permissions) for further information on the new WFS permission model.
+
+Also note that the `Data (read)` resource type has been removed, as it is equivalent to `Data` without the `write` flag. Existing `Data (read)` resources will be automatically converted to `Data` by `qwc-base-db-migrate:v2025.08.05`.
+
 # Updating to qwc-config-generator:v2025.07.22
 
 As of `qwc-config-generator:v2025.07.22`, attribute resources created in the `qwc-admin-gui` shall be named by the name of the attribute, not its alias.
