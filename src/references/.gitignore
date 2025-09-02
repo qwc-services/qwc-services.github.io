@@ -1,5 +1,7 @@
 index.md
 qwc2_plugins.md
+qwc-base-db_readme.md
+qwc-qgs-cache-preseed_readme.md
 qwc-config-generator.md
 qwc-config-generator_readme.md
 qwc-admin-gui.md
@@ -36,3 +38,5 @@ qwc-print-service.md
 qwc-print-service_readme.md
 qwc-search-service.md
 qwc-search-service_readme.md
+qwc-3d-tile-info-service.md
+qwc-3d-tile-info-service_readme.md
