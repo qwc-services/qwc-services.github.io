@@ -78,13 +78,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../../topics/TourGuide.md">Tour Guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -2565,90 +2569,7 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
 <p>Displays a 3D map view.</p>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>To add a 3D View to a theme, add the following configuration block to a theme item in <code>themesConfig.json</code>:</p>
-<pre><code>&quot;map3d&quot;: {
-    &quot;initialView&quot;: {
-      &quot;camera&quot;: [x, y, z],
-      &quot;target&quot;: [x, y, z],
-      &quot;personHeight&quot;: h
-    },
-    &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
-    &quot;basemaps&quot;: [
-         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true, &quot;overview&quot;: true},
-         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;},
-         ...
-    ],
-    &quot;tiles3d&quot;: [
-         {
-             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
-             &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
-             &quot;title&quot;: &quot;&lt;title&gt;&quot;,
-             &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
-             &quot;idAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-             &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
-             &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
-             &quot;colorAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-             &quot;alphaAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-             &quot;labelAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-         }
-    ],
-    &quot;objects3d&quot;: [
-        {
-             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
-             &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
-             &quot;title&quot;: &quot;&lt;title&gt;&quot;
-        }
-    ]
-}
-</code></pre>
-<p>Where:</p>
-<ul>
-<li><code>initialView</code> is optional and allows to define the initial view when opening the 3D view. If <code>personHeight</code> is specified and greater than 0, the first-person view is activated. If not specified, the 2D view is synchronized.</li>
-<li>The DTM should be a cloud optimized GeoTIFF.</li>
-<li>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>. Additionally:</li>
-<li><code>visibility</code> controls the initially visibile background layer</li>
-<li><code>overview: true</code> controls the name of background layer to display in the overview map. If no background layer is marked with <code>overview: true</code>, the currently visibile background layer id dipslayed in the overview map.</li>
-<li>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</li>
-<li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
-<li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
-<li><code>style</code>: optional, tileset style enabled by default.</li>
-<li><code>baseColor</code>: the fallback color for the tile objects, defaults to white.</li>
-<li><code>colorAttr</code>: optional, feature properties table attribute which stores the feature color, as a 0xRRGGBB integer.</li>
-<li><code>alphaAttr</code>: optional, feature properties table attribute which stores the feature alpha (transparency), as a [0, 255] integer.</li>
-<li><code>labelAttr</code>: optional, feature properties table attribute which stores the feature label, displayed above the geometry.</li>
-<li>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</li>
-</ul>
-<p>You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D/3D view via <code>startupView</code> in the <a href="">theme item configuration</a>.</p>
-<h3 id="styling">Styling<a class="headerlink" href="#styling" title="Permanent link">&para;</a></h3>
-<p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
-of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>featureStyles</code> section as follows:</p>
-<pre><code>{
-    &quot;color&quot;: {
-       ...
-    },
-    &quot;featureStyles&quot;: {
-      &quot;&lt;object_id&gt;&quot;: {
-          &quot;label&quot;: &quot;&lt;label&gt;&quot;,
-          &quot;labelOffset&quot;: &lt;offset&gt;,
-          &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
-      }
-   }
-}
-</code></pre>
-<p>Where:</p>
-<ul>
-<li><code>label</code> is an optional string with which to label the object.</li>
-<li><code>labelOffset</code> is an optional number which represents the vertical offset between the object top and the label. Defaults to 80.</li>
-<li><code>color</code> is an optional CSS color string which defines the object color.</li>
-</ul>
-<p><em>Note</em>:</p>
-<ul>
-<li>The color declarations in the <code>featureStyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
-<li>You must ensure that your 3D tiles properties table contains all attributes which are referenced as variables in a color expression!</li>
-</ul>
-<h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
-<p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
+<p>See <a href="../../topics/View3D">3D View</a>.</p>
 <table>
 <thead>
 <tr>

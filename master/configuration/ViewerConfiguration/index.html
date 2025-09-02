@@ -96,18 +96,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#translations">Translations </a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#switching-language">Switching language</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#adding-and-modify-translations">Adding and modify translations</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#selectively-overriding-translation-strings">Selectively overriding translation strings</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#specifying-the-default-fallback-translation">Specifying the default fallback translation</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ResourcesPermissions/">Resources and permissions</a>
@@ -134,13 +122,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../../topics/TourGuide.md">Tour Guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -266,7 +258,7 @@
 </tr>
 <tr>
 <td><code>loadTranslationOverrides</code></td>
-<td>Whether to attempt to load tanslation overrides, see <a href="#translations">translations</a>. Default: <code>false</code>.</td>
+<td>Whether to attempt to load tanslation overrides, see <a href="../../topics/Translations/">Translations</a>. Default: <code>false</code>.</td>
 </tr>
 <tr>
 <td><code>localeAwareNumbers</code></td>
@@ -571,7 +563,7 @@ All settings are optional, with fallback to the default values as documented.</p
 </tr>
 <tr>
 <td><code>⁣  "key": "&lt;key&gt;",</code></td>
-<td>The name of a plugin, i.e. <code>LayerTree</code>. The label for the entry will be looked up from the translations using the <code>appmenu.items.&lt;key&gt;</code> message identifier (see <a href="#translations">Managing translations</a>).</td>
+<td>The name of a plugin, i.e. <code>LayerTree</code>. The label for the entry will be looked up from the translations using the <code>appmenu.items.&lt;key&gt;</code> message identifier (see <a href="../../topics/Translations/">Translations</a>.</td>
 </tr>
 <tr>
 <td><code>⁣  "icon": "&lt;icon&gt;",</code></td>
@@ -867,50 +859,6 @@ All settings are optional, with fallback to the default values as documented.</p
 <h3 id="keeping-the-qwc-application-up-to-date">Keeping the QWC application up to date<a class="headerlink" href="#keeping-the-qwc-application-up-to-date" title="Permanent link">&para;</a></h3>
 <p>To update the base QWC components, just update the version of the <code>qwc2</code> dependency in <code>package.json</code>.</p>
 <p>The <a href="../../release_notes/QWC2UpgradeNotes/">QWC Upgrade Notes</a> documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.</p>
-<h2 id="translations">Translations <a name="translations"></a><a class="headerlink" href="#translations" title="Permanent link">&para;</a></h2>
-<p>This section gives an overview of the common tasks related to the QWC translations.</p>
-<h3 id="switching-language">Switching language<a class="headerlink" href="#switching-language" title="Permanent link">&para;</a></h3>
-<p>By default, QWC will attempt to load the translation matching your browser language. Alternatively, you can explicitly specify the language by adding the <code>lang=&lt;lang&gt;</code> query parameter to the application URL, i.e. <code>lang=de-CH</code>.</p>
-<p>The <a href="../../references/qwc2_plugins/#settings"><code>Settings</code></a> furthermore allows graphically switching the language within QWC, with the list of available languages configured via the <code>languages</code> plugin configuration property.</p>
-<h3 id="adding-and-modify-translations">Adding and modify translations<a class="headerlink" href="#adding-and-modify-translations" title="Permanent link">&para;</a></h3>
-<p>When working inside a <code>qwc-app</code> source folder, the translations are located at <code>qwc-app/static/translations</code>.</p>
-<p>A script will take care of merging the translations from the <code>qwc2</code> package into the application translations. This way, when updating the <code>qwc2</code> dependency, new translations are automatically obtained. This script is automatically invoked on <code>yarn start</code>, but can also be manually invoked using</p>
-<pre><code>yarn run tsupdate
-</code></pre>
-<p>Translations are stored inside the respective <code>translations</code> folder as regular plain-text JSON files, named <code>&lt;lang&gt;.json</code> and can be freely edited with any text editor.</p>
-<p>The <code>tsconfig.json</code> files stored inside the respective <code>translations</code> folder contains the list of languages for which translations should be generated and a list of message IDs to include in the translation. The <code>tsupdate</code> script will automatically scan the code for message IDs (looking for static strings passed to <code>LocaleUtils.tr</code> and <code>LocaleUtils.trmsg</code>), store these in <code>tsconfig.json</code> and automatically create resp. update the translation files.</p>
-<p>In some cases <code>tsconfig.json</code> will not pick up a message ID (for instance, if it is computed at runtime). In these cases, the message IDs can be added manually to the <code>extra_strings</code> section of the <code>tsconfig.json</code>.</p>
-<p>Also it may be desired to override a translation inherited from the QWC components at application level. To prevent <code>tsupdate</code> from continuously reverting the overridden translation, the respective message IDs can be added to the <code>overrides</code> section in the application <code>tsconfig.json</code> file.</p>
-<p>To add a new language, list it in <code>qwc-app/qwc2/translations/tsconfig.json</code> and run <code>yarn run tsupdate</code>, then complete the messages taking the english translation file as reference.</p>
-<p>When adding or modifying translations at QWC components level, please contribute them by submitting a pull request to the <a href="https://github.com/qgis/qwc2">upstream qwc2 repository</a>.</p>
-<h3 id="selectively-overriding-translation-strings">Selectively overriding translation strings<a class="headerlink" href="#selectively-overriding-translation-strings" title="Permanent link">&para;</a></h3>
-<p>Occasionally, it is desireable to selectively override specific translation strings. While one can modify the full translation file as described above, especially when using the <code>qwc-map-viewer</code> docker image, it is easier to just selectively override the desired translation strings and leave the original file unchanged and avoid having to compile a custom viewer (or overwriting the entire file with a docker volume mount).</p>
-<p>To do this:</p>
-<ul>
-<li>Set <code>loadTranslationOverrides</code> to <code>true</code> in <code>config.json</code>.</li>
-<li>Create a <code>&lt;lang&gt;_overrides.json</code> containing just the ovverridden strings, for example <code>en-US_overrides.json</code>:</li>
-</ul>
-<pre><code class="language-json">{
-  &quot;messages&quot;: {
-    &quot;appmenu&quot;: {
-      &quot;items&quot;: {
-        &quot;LayerTree&quot;: &quot;Layers&quot;
-      }
-    }
-  }
-}
-</code></pre>
-<ul>
-<li>Place this file inside the <code>translations</code> folder of your production build. When using <code>qwc-docker</code>, you can place this file in <code>qwc-docker/volumes/qwc2/translations/</code> and mount this file inside the container, i.e. :</li>
-</ul>
-<pre><code class="language-yml">qwc-map-viewer:
-  image: sourcepole/qwc-map-viewer:vYYYY.MM.DD
-  [...]
-  volumes:
-    - ./volumes/qwc2/translations/en-US_overrides.json:/qwc2/translations/en-US_overrides.json:ro
-</code></pre>
-<h3 id="specifying-the-default-fallback-translation">Specifying the default fallback translation<a class="headerlink" href="#specifying-the-default-fallback-translation" title="Permanent link">&para;</a></h3>
-<p>When no translation exists for the requested language (i.e. the current browser language), QWC will fall back to the default translation specified as <code>defaultLocaleData</code> in <code>qwc2-app/js/appConfig.js</code>. For the stock application, the default fallback translation is <code>en-US</code>.</p>
               
             </div>
           </div><footer>

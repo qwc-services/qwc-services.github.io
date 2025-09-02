@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-fulltext-search-service/master/schemas/qwc-search-service.json",
+  "title": "QWC Fulltext Search Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-fulltext-search-service/master/schemas/qwc-search-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "search"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "search_backend": {
+          "description": "Search backend: solr or trgm. Default: solr.",
+          "type": "string"
+        },
+        "solr_service_url": {
+          "description": "SOLR service URL",
+          "type": "string"
+        },
+        "solr_service_auth": {
+          "description": "SOLR service basic authentication. Default: None",
+          "type": "object",
+          "properties": {
+            "username": {
+              "description": "Username for SOLR service authentication",
+              "type": "string"
+            },
+            "password": {
+              "description": "Password for SOLR service authentication",
+              "type": "string"
+            }
+          }
+        },
+        "search_result_sort": {
+          "description": "Search result ordering for solr search results. Default: search_result_sort",
+          "type": "string"
+        },
+        "trgm_feature_query_template": {
+          "description": "Jinja template string to generate the feature query SQL. The following variables are passed to the template: `searchtext` (the full search text, as a string), `words` (the single words of the search text, as an array), `facets` (the permitted search facets, as an array) and `facetlimit` (maximum number of results per facet). The generated SQL can accept the same placeholder parameters and must return the columns as documented in `trgm_feature_query`.",
+          "type": "string"
+        },
+        "trgm_feature_query": {
+          "description": "Trigram feature query SQL. You can use the placeholder parameters `:term` (full search string), `:terms` (list of words of the search string), `:thres` (similarity threshold), `:facets` (the permitted search facets, as a list) and `:facetlimit` (maximum number of results per facet). The query must return the columns display, facet_id, id_field_name, feature_id, bbox (as a `[xmin,ymin,xmax,ymax]` string), srid.",
+          "type": "string"
+        },
+        "trgm_layer_query_template": {
+          "description": "Jinja template string to generate the layer query SQL. The following variables are passed to the template: `searchtext` (the full search text, as a string), `words` (the single words of the search text, as an array) and `facets` (the permitted search facets, as an array). The generated SQL can accept the same placeholder parameters and must return the columns as documented in `trgm_layer_query`.",
+          "type": "string"
+        },
+        "trgm_layer_query": {
+          "description": "Trigram layer query SQL. You can use the placeholder parameters `:term` (full search string), `:terms` (list of words of the search string), `:thres` (similarity threshold) and `:facets` (the permitted search facets, as a list). The query must return the columns display, dataproduct_id, dset_info, sublayers, stacktype.",
+          "type": "string"
+        },
+        "trgm_similarity_threshold": {
+          "description": "Trigram similarity treshold. Default: 0.3",
+          "type": "number"
+        },
+        "trgm_facet_search_limit": {
+          "description": "Trigram search result limit per facet. Controls the `facetlimit` parameter passed to the `trgm_feature_query`. Note: `trgm_facet_search_limit + 1` will be passed to the query, and the results will be limited to `trgm_facet_search_limit` in the backed, in order to discover where more than `trgm_facet_search_limit` results exist, in which case the backend will return `count: -1` in the facet result counts. ",
+          "type": "number",
+          "default": 50
+        },
+        "word_split_re": {
+          "description": "Word split Regex",
+          "type": "string",
+          "default": "[\\s,.:;\"]+"
+        },
+        "search_result_limit": {
+          "description": "Result count limit per search",
+          "type": "integer",
+          "default": 50
+        },
+        "db_url": {
+          "description": "Default DB connection for geometry result query",
+          "type": "string"
+        }
+      },
+      "required": []
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "facets": {
+          "title": "Search facets",
+          "type": "array",
+          "items": {
+            "title": "Facet",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Facet name",
+                "type": "string"
+              },
+              "filter_word": {
+                "type": "string"
+              },
+              "table_name": {
+                "description": "Table/View for search result geometries",
+                "type": "string",
+                "default": "search_v"
+              },
+              "geometry_column": {
+                "description": "Geometry column in search result table",
+                "type": "string",
+                "default": "geom"
+              },
+              "facet_column": {
+                "description": "Facet name column in search result table",
+                "type": "string",
+                "default": "subclass"
+              },
+              "db_url": {
+                "description": "DB connection for geometry result query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "filter_word"
+            ]
+          }
+        }
+      },
+      "required": [
+        "facets"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ]
+}

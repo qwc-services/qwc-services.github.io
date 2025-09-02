@@ -78,13 +78,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../../topics/TourGuide.md">Tour Guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -136,7 +140,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="updating-to-qwc-config-generatorv20250722">Updating to qwc-config-generator:v2025.07.22<a class="headerlink" href="#updating-to-qwc-config-generatorv20250722" title="Permanent link">&para;</a></h1>
+                <h1 id="new-wfs-permission-model-removal-of-data-read-resource-type">New WFS permission model, removal of <code>Data (read)</code> resource type<a class="headerlink" href="#new-wfs-permission-model-removal-of-data-read-resource-type" title="Permanent link">&para;</a></h1>
+<p>As of</p>
+<ul>
+<li><code>qwc-config-generator:v2025.08.05</code></li>
+<li><code>qwc-ogc-service:2025.09.01</code></li>
+<li><code>qwc-admin-gui:v2025.08.05</code></li>
+<li><code>qwc-base-db-migrate:v2025.08.05</code></li>
+</ul>
+<p>a new WFS permission model has been introduced, replacing the setting <code>generate_wfs_services</code> in <code>tenantConfig.json</code> with proper WFS resources. See <a href="../../configuration/ResourcesPermissions/#wfs-permissions">WFS Permissions</a> for further information on the new WFS permission model.</p>
+<p>Also note that the <code>Data (read)</code> resource type has been removed, as it is equivalent to <code>Data</code> without the <code>write</code> flag. Existing <code>Data (read)</code> resources will be automatically converted to <code>Data</code> by <code>qwc-base-db-migrate:v2025.08.05</code>.</p>
+<h1 id="updating-to-qwc-config-generatorv20250722">Updating to qwc-config-generator:v2025.07.22<a class="headerlink" href="#updating-to-qwc-config-generatorv20250722" title="Permanent link">&para;</a></h1>
 <p>As of <code>qwc-config-generator:v2025.07.22</code>, attribute resources created in the <code>qwc-admin-gui</code> shall be named by the name of the attribute, not its alias.</p>
 <h1 id="updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423">Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23<a class="headerlink" href="#updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423" title="Permanent link">&para;</a></h1>
 <p><code>qwc-admin.gui:v2025.04.23</code> now supports setting a flag that the user password must be changed on the next login, and

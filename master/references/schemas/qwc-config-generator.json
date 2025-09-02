@@ -1,0 +1,290 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json",
+  "title": "QWC Config generator",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json"
+    },
+    "template": {
+      "title": "Optional, path to a tenantConfig template. If specified, the contents of the file is merged with the contents of tenantConfig.json. Any occurence of $tenant$ in the template will be replaced with the current tenant name.",
+      "type": "string"
+    },
+    "themesConfig": {
+      "title": "QWC2 themes configuration",
+      "oneOf": [
+        {
+          "description": "Corresponds to contents of standalone QWC2 themesConfig.json",
+          "type": "object",
+          "properties": {
+            "themes": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "themes"
+          ]
+        },
+        {
+          "description": "Path to themesConfig.json",
+          "type": "string"
+        }
+      ]
+    },
+    "config": {
+      "title": "Config options for Config generator",
+      "type": "object",
+      "properties": {
+        "tenant": {
+          "description": "Tenant name. Example: default",
+          "type": "string"
+        },
+        "config_db_url": {
+          "description": "Connection URL for configuration database. Example: `postgresql:///?service=qwc_configdb`",
+          "type": "string",
+          "format": "uri"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: `qwc_config`",
+          "type": "string"
+        },
+        "default_qgis_server_url": {
+          "description": "Default QGIS Server URL for OGC requests. Example: `http://qwc-qgis-server/ows/`",
+          "type": "string",
+          "format": "uri"
+        },
+        "qgis_project_extension": {
+          "description": "The QGIS project file extension to look for. Default: `.qgs`",
+          "type": "string"
+        },
+        "qgis_projects_base_dir": {
+          "description": "Base path for QGIS projects. Example: `/data`",
+          "type": "string"
+        },
+        "qgis_print_layouts_dir": {
+          "description": "Directory containing print layouts. Default: `/layouts`",
+          "type": "string"
+        },
+        "qgis_print_layouts_tenant_subdir": {
+          "description": "Subdirectory path relative to `qgis_print_layouts_dir`. If specified, only layouts within this subdir will be processed. Useful to specify separate print layouts per tenant. Default: ``",
+          "type": "string"
+        },
+        "document_templates_dir": {
+          "description": "Directory containing the jasper report templates (*.jrxml). Default: `/reports`",
+          "type": "string"
+        },
+        "qgis_projects_scan_base_dir": {
+          "description": "Path for QGIS projects, which should be automatically detected. Must be a subdir `qgis_projects_base_dir`. Example: `/data/scan`",
+          "type": "string"
+        },
+        "group_scanned_projects_by_dir": {
+          "description": "Option to group scanned projects by directory in themes configuration. Default: `false`",
+          "type": "boolean"
+        },
+        "save_scanned_projects_in_config": {
+          "description": "Option to save scanned projects and groups in themes configuration. Requires write access to `$INPUT_CONFIG_PATH` for config generator service. Default: `false`",
+          "type": "boolean"
+        },
+        "permissions_default_allow": {
+          "description": "Set whether resources are permitted or restricted by default. Example: `true`",
+          "type": "boolean"
+        },
+        "inherit_info_permissions": {
+          "description": "Whether info service/layer/attribute permissions should be inherited from the corresponding map/layer/attribute. Only useful if `permissions_default_allow=false`. Default: `false`",
+          "type": "boolean"
+        },
+        "validate_schema": {
+          "description": "Validate configuration against schema. Example: `true`",
+          "type": "boolean"
+        },
+        "config_path": {
+          "description": "Target path for generated service configs and permissions, if not set by `$OUTPUT_CONFIG_PATH`. Default: `/tmp`",
+          "type": "string"
+        },
+        "skip_print_layer_groups": {
+          "description": "Skip group layers containing print layers. Default: `false`",
+          "type": "boolean"
+        },
+        "layer_opacities": {
+          "description": "Layer opacity values for QGIS <= 3.10. Default: `{}`",
+          "type": "object"
+        },
+        "project_settings_read_timeout": {
+          "description": "Timeout for GetProjectSettings, GetCapabilities and DescribeFeatureType requests, in seconds. Default: `60`",
+          "type": "number"
+        },
+        "autogen_keyvaltable_datasets": {
+          "description": "Whether to automatically generate data service datasets used for key-value relationships without requiring corresponding data resources to be created. Warning: this will expose the key and value fields of the key-value table as world readable. Default: `false`",
+          "type": "boolean"
+        },
+        "generate_nested_nrel_forms": {
+          "description": "Whether to generate nested nrelation forms instead of a tabluar view. Default: `false`",
+          "type": "boolean"
+        },
+        "use_default_map_thumbnail": {
+          "description": "Whether to use the default mapthumb (`mapthumbs/default.jpg`) instead of generating the thumbnail via GetMap if no custom thumbnail is provided. Default: `false`"
+        },
+        "generate_thumbnail_timeout": {
+          "description": "Timeout for GetMap request when generating thumbnail, in seconds. Default: `10`",
+          "type": "number"
+        },
+        "ignore_errors": {
+          "description": "Ignore errors during generation to allow creating configuration files despite some errors. Default: `false`",
+          "type": "boolean"
+        },
+        "strip_scan_prefix_from_theme_names": {
+          "description": "Whether to strip the scan dir prefix from the generated theme names. Avoids the 'scan/<name>' prefix in the theme ids which appear in the t parameter in the viewer URL. Default: `false`",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "tenant",
+        "default_qgis_server_url",
+        "config_db_url",
+        "qgis_projects_base_dir"
+      ]
+    },
+    "services": {
+      "title": "Service configs",
+      "description": "Service specific config options for generating their service configs",
+      "type": "array",
+      "items": {
+        "description": "Generator config for a service",
+        "anyOf": [
+          {"$ref": "#/definitions/common_service"},
+          {"$ref": "#/definitions/mapViewer"},
+          {"$ref": "#/definitions/ogc"}
+        ]
+      }
+    }
+  },
+  "required": [
+    "themesConfig",
+    "config",
+    "services"
+  ],
+  "definitions": {
+    "common_service": {
+      "description": "Generator config for a QWC service",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Service name",
+          "type": "string"
+        },
+        "config": {
+          "description": "QWC service config options (cf. its JSON schema). This is copied unmodified to the service config.",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
+    },
+    "mapViewer": {
+      "description": "Generator config for Map Viewer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Service name",
+          "type": "string",
+          "const": "mapViewer"
+        },
+        "generator_config": {
+          "description": "Additional config for generating MapViewer resources",
+          "type": "object",
+          "properties": {
+            "qwc2_config": {
+              "description": "Additional config for QWC2 application configuration",
+              "type": "object",
+              "properties": {
+                "qwc2_config_file": {
+                  "description": "Path to QWC2 config.json file. Example: /qwc2/config.json",
+                  "type": "string"
+                },
+                "qwc2_index_file": {
+                  "description": "Path to QWC2 index.html file. Example: /qwc2/index.html",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "qwc2_config_file",
+                "qwc2_index_file"
+              ]
+            }
+          },
+          "required": [
+            "qwc2_config"
+          ]
+        },
+        "config": {
+          "description": "Map Viewer config options (cf. JSON schema qwc-map-viewer.json). This is copied unmodified to the service config.",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "generator_config",
+        "config"
+      ]
+    },
+    "ogc": {
+      "description": "Generator config for OGC service",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Service name",
+          "type": "string",
+          "const": "ogc"
+        },
+        "generator_config": {
+          "description": "Additional config for generating OGC service resources",
+          "type": "object",
+          "properties": {
+            "wms_services": {
+              "description": "Additional config for WMS services",
+              "type": "object",
+              "properties": {
+                "online_resources": {
+                  "description": "Custom OnlineResources shown in GetCapabilities",
+                  "type": "object",
+                  "properties": {
+                    "service": {
+                      "description": "Default public base URL for OnlineResources",
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "feature_info": {
+                      "description": "Public base URL for FeatureInfo OnlineResources",
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "legend": {
+                      "description": "Public base URL for Legend OnlineResources",
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": {
+          "description": "OGC service config options (cf. JSON schema qwc-ogc-service.json). This is copied unmodified to the service config.",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ]
+    }
+  }
+}

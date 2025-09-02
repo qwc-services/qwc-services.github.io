@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/qwc-services/qwc-oidc-auth/raw/main/schemas/qwc-oidc-auth.json",
+  "title": "QWC OIDC authentication service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://github.com/qwc-services/qwc-oidc-auth/raw/main/schemas/qwc-oidc-auth.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "oidc-auth"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "issuer_url": {
+          "description": "OpenID Connect Issuer URL",
+          "type": "string",
+          "format": "uri"
+        },
+        "client_id": {
+          "description": "Client ID",
+          "type": "string"
+        },
+        "client_secret": {
+          "description": "Client secret",
+          "type": "string"
+        },
+        "openid_scopes": {
+          "description": "Scopes",
+          "type": "string",
+          "default": "openid email profile"
+        },
+        "redirect_uri": {
+          "description": "Custom redirect URI after calling authorization endpoint",
+          "type": "string"
+        },
+        "username": {
+          "description": "Attribute for user name",
+          "type": "string"
+        },
+        "groupinfo": {
+          "description": "Attribute name of group memberships",
+          "type": "string"
+        },
+        "authorized_api_token": {
+          "description": "List of api token authorized to use tokenlogin endpoint",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "keys_url": {
+                "description": "Public keys URL to decode token",
+                "type": "string"
+              },
+              "claims_options":{
+                "description": "Token validation parameters following authlib specs : https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "db_url": {
+          "description": "DB connection URL (to sync users and user_info_fields). Can be set to an empty string if sync is not needed. Default: `postgresql:///?service=qwc_configdb`",
+          "type": "string"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: `qwc_config`",
+          "type": "string"
+        },
+        "user_info_fields": {
+          "description": "List of user info fields to get from IdP and to include in JWT identity and DB (if db_url is set). Default: `[]`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "issuer_url", "client_id", "client_secret"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

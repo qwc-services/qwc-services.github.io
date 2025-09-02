@@ -1,0 +1,314 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-ogc-service/master/schemas/qwc-ogc-service.json",
+  "title": "QWC OGC Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-ogc-service/master/schemas/qwc-ogc-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "ogc"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "default_qgis_server_url": {
+          "description": "Default base URL for WMS/WFS requests. Default: `http://localhost:8001/ows`",
+          "type": "string"
+        },
+        "oapi_qgis_server_url": {
+          "description": "Default base URL for OGC API requests. Default: `http://localhost:8001/wfs3`",
+          "type": "string"
+        },
+        "qgis_server_url_tenant_suffix": {
+          "description": "If qgs_resources are placed in tenant specific subdirs, set this property to the respective subdir path portion. Default: `<empty>`",
+          "type": "string"
+        },
+        "basic_auth_login_url": {
+          "description": "Login verification URL for requests with basic auth. Example: `http://qwc-auth-service:9090/verify_login`. Default: `null`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "network_timeout": {
+          "description": "Network timeout for requests forwarded to the QGIS Server, in seconds. Default: `30`",
+          "type": "number"
+        },
+        "qgis_server_identity_parameter": {
+          "description": "Name of the active user parameter for the QGIS Server. Will be set to the name of the logged in user in qwc2.",
+          "type": "string"
+        },
+        "auth_required": {
+          "description": "Whether to enforce authentication before processing requests. Default: `false`",
+          "type": "boolean"
+        },
+        "public_paths": {
+          "description": "Optional: List of paths that will be accessible without a JWT identity, if `auth_required` is set. Default: `[]`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "marker_params": {
+          "description": "Optional: Marker parameter definitions",
+          "type": "object",
+          "properties": {
+            "default": {
+              "description": "Default value",
+              "type": "string"
+            },
+            "type": {
+              "description": "Parameter type (number, color, string)",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "wms_services": {
+          "title": "WMS services",
+          "type": "array",
+          "items": {
+            "title": "WMS service",
+            "description": "WMS service with nested layers and group layers",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "WMS service name",
+                "type": "string"
+              },
+              "wms_url": {
+                "description": "Custom WMS URL if different from `default_qgis_server_url`",
+                "type": "string"
+              },
+              "online_resources": {
+                "description": "Custom OnlineResources shown in GetCapabilities",
+                "type": "object",
+                "properties": {
+                  "service": {
+                    "description": "Default public base URL for OnlineResources",
+                    "type": "string"
+                  },
+                  "feature_info": {
+                    "description": "Public base URL for FeatureInfo OnlineResources",
+                    "type": "string"
+                  },
+                  "legend": {
+                    "description": "Public base URL for Legend OnlineResources",
+                    "type": "string"
+                  }
+                }
+              },
+              "root_layer": {
+                "description": "Root layer of WMS (layer or group layer)",
+                "oneOf": [
+                  {"$ref": "#/definitions/wms_layer"},
+                  {"$ref": "#/definitions/wms_group_layer"}
+                ]
+              },
+              "print_url": {
+                "description": "Custom WMS URL for printing, e.g. if using a separate QGIS project.",
+                "type": "string"
+              },
+              "print_templates": {
+                "description": "Available print templates",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "legend_default_font_size": {
+                "description": "Default font size for GetLegendGraphic request",
+                "type": "number"
+              },
+              "internal_print_layers": {
+                "description": "Internal layer names used for printing and raster export of background and external layers",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "name",
+              "root_layer"
+            ]
+          }
+        },
+        "wfs_services": {
+          "title": "WFS services",
+          "type": "array",
+          "items": {
+            "title": "WFS service",
+            "description": "WFS service with list of layers",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "WFS service name",
+                "type": "string"
+              },
+              "wfs_url": {
+                "description": "Custom WFS URL if different from `default_qgis_server_url`",
+                "type": "string"
+              },
+              "online_resource": {
+                "description": "Custom OnlineResource shown in GetCapabilities",
+                "type": "string"
+              },
+              "layers": {
+                "description": "List of WFS layers",
+                "type": "array",
+                "items": {"$ref": "#/definitions/wfs_layer"}
+              }
+            },
+            "required": [
+              "name",
+              "layers"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ],
+  "definitions": {
+    "wms_layer": {
+      "title": "WMS Layer",
+      "description": "Single layer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layer"
+        },
+        "title": {
+          "description": "Layer title",
+          "type": "string"
+        },
+        "attributes": {
+          "description": "Attributes for GetFeatureInfo, as a list of attribute names or a attrib_name:attrib_alias lookup",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "description": "Field alias"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "queryable": {
+          "description": "Whether this layer is queryable",
+          "type": "boolean"
+        },
+        "opacity": {
+          "description": "Custom base opacity from 0-100 (Hidden sublayers only)",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "wms_group_layer": {
+      "title": "WMS Group Layer",
+      "description": "Group layer with nested sublayers",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS group layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layergroup"
+        },
+        "title": {
+          "description": "Group title",
+          "type": "string"
+        },
+        "layers": {
+          "description": "Sublayers of this group layer (layers or group layers)",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"$ref": "#/definitions/wms_layer"},
+              {"$ref": "#/definitions/wms_group_layer"}
+            ]
+          }
+        },
+        "hide_sublayers": {
+          "description": "Hide sublayers of this group layer if set, to make the group layer look like a regular layer (Facade layer)",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "layers"
+      ],
+      "additionalProperties": false
+    },
+    "wfs_layer": {
+      "title": "WFS Layer",
+      "description": "Single layer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WFS layer name",
+          "type": "string"
+        },
+        "attributes": {
+          "description": "Attributes for GetFeatureInfo, as a list of attribute names or a attrib_name:attrib_alias lookup",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string",
+                "description": "Field alias"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  }
+}

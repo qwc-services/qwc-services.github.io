@@ -78,13 +78,17 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../../topics/TourGuide.md">Tour Guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
@@ -138,7 +142,7 @@
 <p>Provides additional data for 3D tiles tilesets, sourced from a GeoPackage or Postgres dataset:</p>
 <ul>
 <li>Object info, via <code>/objinfo?tileset=&lt;tileset_name&gt;&amp;objectid=&lt;object_id&gt;</code></li>
-<li>3D tiles stylesheets, via <code>/stylesheet?tileset=&lt;tileset_name&gt;&amp;stylename=&lt;stylename&gt;</code></li>
+<li>3D tiles stylesheets, generated from 2D SLD styles, via <code>/stylesheet?tileset=&lt;tileset_name&gt;&amp;stylename=&lt;stylename&gt;</code></li>
 </ul>
 <p>This service implements a backend which can be referenced as <code>tileInfoServiceUrl</code> in the QWC View3D plugin configuration, <code>tileset_name</code> being the name of the tileset as configured in the <code>tiles3d</code> dataset entries in the themes configuration, see <a href="https://qwc-services.github.io/master/references/qwc2_plugins/#view3d">View3D configuration</a>.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
@@ -146,7 +150,7 @@
 e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
 <h3 id="tileinfo-service-config">TileInfo Service config<a class="headerlink" href="#tileinfo-service-config" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="schemas/qwc-3d-tile-info-service.json">JSON schema</a></li>
+<li><a href="../schemas/qwc-3d-tile-info-service.json">JSON schema</a></li>
 <li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/tileinfoConfig.json</code></li>
 </ul>
 <p>Example:</p>

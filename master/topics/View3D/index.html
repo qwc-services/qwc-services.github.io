@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>3D View - QWC - 2025.08.26</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "3D View";
+        var mkdocs_page_input_path = "topics/View3D.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2025.08.26
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">3D View</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-3d-view">Configuring the 3D View</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#styling-3d-tiles">Styling 3D tiles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#3d-tile-info-service">3D Tile Info Service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#import">Import</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2025.08.26</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>3D View</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="3d-view">3D View<a class="headerlink" href="#3d-view" title="Permanent link">&para;</a></h1>
+<p>QWC offers a full 3D view based on <a href="https://threejs.org/">THREE.js</a> and <a href="https://giro3d.org/">Giro3D</a>. It allows displaying 3D objects, mainly served as 3D Tiles, on a terrain provided by a COG (Cloud Optimised GeoTIFF). Layers from the 2D view will be rendered as draped textures on the 3D terrain.</p>
+<p><img alt="QWC 3D Arch" src="../../images/qwc3d.png?style=centerme" /></p>
+<h2 id="configuring-the-3d-view">Configuring the 3D View<a class="headerlink" href="#configuring-the-3d-view" title="Permanent link">&para;</a></h2>
+<p>To enable the 3D view, you need to configure the plugin in <code>config.json</code>. A typical <code>View3D</code> plugin configuration may look as follows:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;View3D&quot;,
+  &quot;cfg&quot;: {
+    &quot;pluginOptions&quot;: {
+      &quot;Identify3D&quot;: {
+        &quot;tileInfoServiceUrl&quot;: &quot;/api/v1/tileinfo/objinfo?tileset={tileset}&amp;objectid={objectid}&quot;
+      },
+      &quot;LayerTree3D&quot;: {
+        &quot;importedTilesBaseUrl&quot;: &quot;/assets/&quot;
+      },
+      &quot;TopBar3D&quot;: {
+        &quot;menuItems&quot;: [
+          {&quot;key&quot;: &quot;ThemeSwitcher&quot;, &quot;icon&quot;: &quot;themes&quot;},
+          {&quot;key&quot;: &quot;LayerTree3D&quot;, &quot;icon&quot;: &quot;layers&quot;},
+          {&quot;key&quot;: &quot;Draw3D&quot;, &quot;icon&quot;: &quot;draw&quot;},
+          {&quot;key&quot;: &quot;Measure3D&quot;, &quot;icon&quot;: &quot;measure&quot;},
+          {&quot;key&quot;: &quot;Compare3D&quot;, &quot;icon&quot;: &quot;compare&quot;},
+          {&quot;key&quot;: &quot;HideObjects3D&quot;, &quot;icon&quot;: &quot;eye&quot;},
+          {&quot;key&quot;: &quot;MapLight3D&quot;, &quot;icon&quot;: &quot;light&quot;},
+          {&quot;key&quot;: &quot;MapExport3D&quot;, &quot;icon&quot;: &quot;rasterexport&quot;},
+          {&quot;key&quot;: &quot;ExportObjects3D&quot;, &quot;icon&quot;: &quot;export&quot;},
+          {&quot;key&quot;: &quot;Share&quot;, &quot;icon&quot;: &quot;share&quot;},
+          {&quot;key&quot;: &quot;Bookmark&quot;, &quot;icon&quot;: &quot;bookmark&quot;},
+          {&quot;key&quot;: &quot;Help&quot;, &quot;icon&quot;: &quot;info&quot;},
+          {&quot;key&quot;: &quot;Settings3D&quot;, &quot;icon&quot;: &quot;cog&quot;},
+          {&quot;key&quot;: &quot;Settings&quot;, &quot;icon&quot;: &quot;cog&quot;}
+        ],
+        &quot;toolbarItems&quot;: [
+          {&quot;key&quot;: &quot;Measure3D&quot;, &quot;icon&quot;: &quot;measure&quot;}
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+<p><em>NOTE</em>:</p>
+<ul>
+<li>The <code>menuItems</code> and <code>toolbarItems</code> can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed. </li>
+<li>Consult the <a href="../../references/qwc2_plugins/#view3d">View3D plugin reference</a> as well as well as the <a href="../../references/qwc2_plugins/#3d-plugins">3D tool plugins reference</a> for additional configuation options.</li>
+</ul>
+<p>Next, to add a 3D View to a theme, add a <code>map3d</code> configuration to the desired theme item in <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration"><code>themesConfig.json</code></a>:</p>
+<pre><code>&quot;map3d&quot;: {
+    &quot;initialView&quot;: {
+      &quot;camera&quot;: [x, y, z],
+      &quot;target&quot;: [x, y, z],
+      &quot;personHeight&quot;: h
+    },
+    &quot;dtm&quot;: {&quot;url&quot;: &quot;&lt;url_to_dtm.tif&gt;&quot;, &quot;crs&quot;: &quot;&lt;dtm_epsg_code&gt;},
+    &quot;basemaps&quot;: [
+         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;, &quot;visibility&quot;: true, &quot;overview&quot;: true},
+         {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;},
+         ...
+    ],
+    &quot;tiles3d&quot;: [
+         {
+             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
+             &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
+             &quot;title&quot;: &quot;&lt;title&gt;&quot;,
+             &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
+             &quot;idAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+             &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
+             &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
+             &quot;colorAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+             &quot;alphaAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+             &quot;labelAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
+         }
+    ],
+    &quot;objects3d&quot;: [
+        {
+             &quot;name&quot;: &quot;&lt;name&gt;&quot;,
+             &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
+             &quot;title&quot;: &quot;&lt;title&gt;&quot;
+        }
+    ]
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>initialView</code> is optional and allows to define the initial view when opening the 3D view. If <code>personHeight</code> is specified and greater than 0, the first-person view is activated. If not specified, the 2D view is synchronized.</li>
+<li>The <code>dtm</code> URL should point to a cloud optimized GeoTIFF.</li>
+<li>
+<p>The background layer names refer to the names of the entries defined in <code>backgroundLayers</code> in the <code>themesConfig.json</code>. Additionally:</p>
+<ul>
+<li><code>visibility</code> controls the initially visibile background layer</li>
+<li><code>overview: true</code> controls the name of background layer to display in the overview map. If no background layer is marked with <code>overview: true</code>, the currently visibile background layer id dipslayed in the overview map.</li>
+</ul>
+</li>
+<li>
+<p>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</p>
+<ul>
+<li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
+<li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
+<li><code>style</code>: optional, tileset style enabled by default.</li>
+<li><code>baseColor</code>: the fallback color for the tile objects, defaults to <code>white</code>.</li>
+<li><code>colorAttr</code>: optional, feature properties table attribute which stores the feature color, as a <code>0xRRGGBB</code> integer.</li>
+<li><code>alphaAttr</code>: optional, feature properties table attribute which stores the feature alpha (transparency), as an integer between <code>0</code> and <code>255</code>.</li>
+<li><code>labelAttr</code>: optional, feature properties table attribute which stores the feature label, displayed above the geometry.</li>
+</ul>
+</li>
+<li>
+<p>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</p>
+</li>
+</ul>
+<p>You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D/3D view via <code>startupView</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme item configuration</a>.</p>
+<p><em>NOTE</em>: If a theme contains a <code>map3d</code> configuration, a view switcher map button will automatically be displayed.</p>
+<h3 id="permissions">Permissions <a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<p>To restrict 3D tiles configured in <code>tiles3d</code> of a <code>map3d</code> theme configuration, create a <code>3D Tiles Tileset</code> resource named according to the <code>name</code> of the <code>tiles3d</code> entry and create permissions assigning the desired roles to the resources.</p>
+<h3 id="styling-3d-tiles">Styling 3D tiles<a class="headerlink" href="#styling-3d-tiles" title="Permanent link">&para;</a></h3>
+<p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
+of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>featureStyles</code> section as follows:</p>
+<pre><code>{
+    &quot;color&quot;: {
+       ...
+    },
+    &quot;featureStyles&quot;: {
+      &quot;&lt;object_id&gt;&quot;: {
+          &quot;label&quot;: &quot;&lt;label&gt;&quot;,
+          &quot;labelOffset&quot;: &lt;offset&gt;,
+          &quot;color&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;
+      }
+   }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>label</code> is an optional string with which to label the object.</li>
+<li><code>labelOffset</code> is an optional number which represents the vertical offset between the object top and the label. Defaults to <code>80</code>.</li>
+<li><code>color</code> is an optional CSS color string which defines the object color.</li>
+</ul>
+<p><em>Note</em>:</p>
+<ul>
+<li>The color declarations in the <code>featureStyles</code> section override any color resulting from a color expression in the <code>color</code> section.</li>
+<li>You must ensure that your 3D tiles properties table contains all attributes which are referenced as variables in a color expression!</li>
+</ul>
+<h3 id="3d-tile-info-service">3D Tile Info Service<a class="headerlink" href="#3d-tile-info-service" title="Permanent link">&para;</a></h3>
+<p>The <a href="../../references/qwc-3d-tile-info-service_readme/">qwc-3d-tile-info-service</a> serves two purposes:</p>
+<ul>
+<li>It provides additional info attributes for 3D Tiles via <code>/objinfo?tileset=&lt;tileset_name&gt;&amp;objectid=&lt;feature_id&gt;</code>.</li>
+<li>It provides 3D Tiles stylesheets, converted from 2D <code>SLD</code> styles via <code>/tileinfo/stylesheet?tileset=&lt;tileset_name&gt;&amp;stylename=&lt;style_name&gt;</code>.</li>
+</ul>
+<p>To set up the <code>qwc-3d-tile-info-service</code>, add the following to <code>docker-compose.yml</code>:</p>
+<pre><code class="language-yml">  qwc-3d-tile-info-service:
+    image: docker.io/sourcepole/qwc-3d-tile-info-service:&lt;tag&gt;
+    environment:
+      &lt;&lt;: *qwc-service-variables
+      SERVICE_MOUNTPOINT: '/api/v1/tileinfo'
+    volumes:
+      - ./pg_service.conf:/srv/pg_service.conf:ro
+      - ./volumes/config:/srv/qwc_service/config:ro
+      - ./volumes/qgs-resources:/data:ro
+</code></pre>
+<p>and configure the route in the <code>api-gateway/nginx.conf</code>:</p>
+<pre><code>location /api/v1/tileinfo {
+    proxy_pass http://qwc-3d-tile-info-service:9090;
+}
+</code></pre>
+<p>Then, assuming a <code>buildings</code> 3D Tiles dataset configured as</p>
+<pre><code>&quot;tiles3d&quot;:[
+  {
+    &quot;name&quot;: &quot;buildings&quot;,
+    &quot;url&quot;:&quot; :/assets/3dtiles/buildings/tileset.json&quot;,
+    &quot;title&quot;:&quot;Buildings&quot;,
+    &quot;idAttr&quot;:&quot;gml_id&quot;,
+    &quot;styles&quot;:{&quot;default&quot;:&quot;/api/v1/tileinfo/stylesheet?tileset=buildings&amp;stylename=default&quot;},
+    &quot;style&quot;: &quot;default&quot;
+  }
+]
+</code></pre>
+<p>a possible <code>tileinfo</code> configuration in <code>tenantConfig.json</code> may look as follows:</p>
+<pre><code>{
+      &quot;name&quot;: &quot;tileinfo&quot;,
+      &quot;config&quot;: {
+        &quot;info_datasets&quot;: {
+          &quot;buildings&quot; : {
+            &quot;dataset&quot;: &quot;/data/buildings2d.gpkg&quot;,
+            &quot;layername&quot;: &quot;buildings2d&quot;,
+            &quot;idfield&quot;: &quot;gml_id&quot;,
+            &quot;type&quot;: &quot;gpkg&quot;,
+            &quot;attribute_aliases&quot;: {
+              &quot;function&quot;: &quot;Building function&quot;,
+              &quot;description&quot;: &quot;Description&quot;
+            },
+            &quot;attribute_blacklist&quot;: [
+              &quot;gml_id&quot;
+            ],
+            &quot;styles&quot;: {
+              &quot;default&quot;: {
+                &quot;filename&quot;: &quot;/data/buildings.sld&quot;
+                // or
+                &quot;query&quot;: &quot;SELECT styleSLD FROM layer_styles WHERE f_table_name = 'buildings'&quot;
+              }
+            }
+          }
+        }
+      }
+    }
+</code></pre>
+<p><em>NOTE</em>:</p>
+<ul>
+<li>The <code>idAttr</code> in the <code>tiles3d</code> entry of the themes configuration specifies the tile feature properties attribute which contains the feature id passed to <code>/objinfo</code>.</li>
+<li>The <code>idfield</code> in the <code>info_datasets</code> entry of the service configuration specifies the feature id attribute of the <code>buildings2d</code> dataset to use for looking up the feature id passed to <code>/objinfo</code>.</li>
+</ul>
+<h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
+<p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Reports/" class="btn btn-neutral float-left" title="Reports"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Translations/" class="btn btn-neutral float-right" title="Translations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Reports/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Translations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

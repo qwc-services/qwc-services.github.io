@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-print-service/master/schemas/qwc-print-service.json",
+  "title": "QWC Print Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-print-service/master/schemas/qwc-print-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "print"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "ogc_service_url": {
+          "description": "Internal OGC service url. Default: `http://qwc-ogc-service:9090/`",
+          "type": "string"
+        },
+        "qgs_postfix": {
+          "description": "Optional QGIS project name postfix, to use a different project when printing. Default: ``",
+          "type": "string"
+        },
+        "label_values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "description": "Name of field to inject into print params."
+              },
+              "value": {
+                "type": "string",
+                "description": "Value of field to inject into print params. May contain `$username$`, which will be replaced with the current user name."
+              }
+            },
+            "required": [
+              "field",
+              "value"
+            ]
+          }
+        },
+        "label_queries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "db_url": {
+                "type": "string",
+                "description": "DB url"
+              },
+              "query": {
+                "type": "string",
+                "description": "SQL Query. May contain `$username$`, which will be replaced with the current user name."
+              },
+              "params": {
+                "type": "array",
+                "description": "Names of params to inject into the print params, in order of the values returned by the query.",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "db_url",
+              "params",
+              "query"
+            ]
+          }
+        }
+      },
+      "required": [
+        "ogc_service_url"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

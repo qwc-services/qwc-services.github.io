@@ -78,7 +78,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
                 </li>
-                <li class="toctree-l2"><a class="" href="../TourGuide.md">Tour Guide</a>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
                 </li>
@@ -92,9 +92,15 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permissions">Permissions</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
                 </li>
@@ -259,14 +265,14 @@
 <p>Generate the document service configuration by running the ConfigGenerator. It will automatically pick up all <code>*.jrxml</code> files and generate corresponding <code>document_templates</code> resources, complementing any manually defined resources.</p>
 </li>
 <li>
-<p>To restrict document templates to specified roles, create <code>Document template</code> resources and permissions as desired. These permissions will also apply to any reports included as subreports by a parent report.</p>
-</li>
-<li>
 <p>Test your report, either through the QWC interface, or via a direct call to the document service, i.e.:</p>
 <pre><code>http://localhost:8088/api/v1/document/MyReport.pdf?feature=&lt;fid&gt;
 </code></pre>
 </li>
 </ul>
+<h2 id="permissions">Permissions<a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<p>Report permissions are managed through the <code>Document template</code> resources and permissions. They are allowed by default if <code>permissions_default_allow</code> is <code>true</code> in the <code>tenantConfig.json</code>.</p>
+<p>Permissions / restrictions will by default also be applied to any reports included as subreports by a parent report. If you set <code>permit_subreports</code> to <code>true</code> in the <code>document</code> service config in <code>tenantConfig.json</code>, subreports will always be permitted if the parent report is permitted.</p>
 <h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Check the logs of the <code>qwc-document-service</code> (in particular with <code>FLASK_DEBUG: 1</code>) to get detailed information about the report generation.</li>
@@ -291,7 +297,7 @@ java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../MapFilter/" class="btn btn-neutral float-left" title="Map filtering"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Interfacing/" class="btn btn-neutral float-right" title="Interfacing with applications">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../View3D/" class="btn btn-neutral float-right" title="3D View">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -317,7 +323,7 @@ java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
       <span><a href="../MapFilter/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../Interfacing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../View3D/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

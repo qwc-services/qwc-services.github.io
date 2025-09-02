@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-document-service/master/schemas/qwc-document-service.json",
+  "title": "QWC Document Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-document-service/master/schemas/qwc-document-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "document"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "basic_auth_login_url": {
+          "description": "Login verification URL for requests with basic auth. Example: http://qwc-auth-service:9090/verify_login",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "report_dir": {
+          "description": "Directory which contains reports.",
+          "type": "string",
+          "default": "/reports"
+        },
+        "permit_subreports": {
+          "description": "Whether to automatically permit subreports included from a permitted parent report",
+          "type": "boolean",
+          "default": false
+        },
+        "max_memory": {
+          "description": "Maximum Java heap size for compiling like 1024M or 2G.",
+          "type": "string",
+          "default": "1024M"
+        },
+        "locale": {
+          "description": "The JVM locale, as a `<lang>_<COUNTRY>` string.",
+          "type": "string",
+          "default": "en_US"
+        },
+        "virtualizer": {
+          "title": "JRSwapFileVirtualizer",
+          "description": "If configuration is set, a JRSwapFileVirtualizer is used for report generation.",
+          "type": "object",
+          "properties": {
+            "swapfile_blocksize": {
+              "description": "The size of the blocks allocated by the swap file.",
+              "type": "integer",
+              "default": 4096
+            },
+            "swapfile_mingrowcount": {
+              "description": "The minimum number of blocks by which the swap file grows when full.",
+              "type": "integer",
+              "default": 100
+            },
+            "virtualizer_maxsize": {
+              "description": "The maximum size (in JRVirtualizable objects) of the paged in cache.",
+              "type": "integer",
+              "default": 5
+            }
+          }
+        }
+      },
+      "required": [
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "document_templates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "template": {
+                "type": "string"
+              },
+              "datasource": {
+                "type": "string"
+              },
+              "table": {
+                "type": "string"
+              },
+              "primary_key": {
+                "type": "string"
+              },
+              "parameter_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "template"
+            ]
+          }
+        }
+      },
+      "required": [
+        "document_templates"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ]
+}

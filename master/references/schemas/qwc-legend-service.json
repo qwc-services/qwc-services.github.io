@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-legend-service/v2/schemas/qwc-legend-service.json",
+  "title": "QWC Legend Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-legend-service/v2/schemas/qwc-legend-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "legend"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "default_qgis_server_url": {
+          "description": "Default base URL for forwarding WMS GetLegendGraphics requests. Default: `http://localhost:8001/ows/`",
+          "type": "string"
+        },
+        "network_timeout": {
+          "description": "Network timeout for requests forwarded to the QGIS Server, in seconds. Default: `30`",
+          "type": "number"
+        },
+        "qgis_server_url_tenant_suffix": {
+          "description": "If qgs_resources are placed in tenant specific subdirs, set this property to the respective subdir path portion. Default: `<empty>`",
+          "type": "string"
+        },
+        "legend_default_font_size": {
+          "description": "Default font size for GetLegendGraphic request. Default: `null`",
+          "type": "number"
+        },
+        "legend_images_path": {
+          "description": "Path to legend images (required if using `legend_image`). Default: `/legends/`",
+          "type": "string"
+        },
+        "basic_auth_login_url": {
+          "description": "Login verification URL for requests with basic auth. Example: `http://qwc-auth-service:9090/verify_login`. Default: `null`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "default_qgis_server_url"
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "wms_services": {
+          "title": "WMS services",
+          "type": "array",
+          "items": {
+            "title": "WMS service",
+            "description": "WMS service with nested layers and group layers",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "WMS service name",
+                "type": "string"
+              },
+              "root_layer": {
+                "description": "Root layer of WMS (layer or group layer)",
+                "oneOf": [
+                  {"$ref": "#/definitions/layer"},
+                  {"$ref": "#/definitions/group_layer"}
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "root_layer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ],
+  "definitions": {
+    "layer": {
+      "title": "Layer",
+      "description": "Single layer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layer"
+        },
+        "legend_image": {
+          "description": "Legend image path relative to 'legend_images_path'",
+          "type": "string"
+        },
+        "legend_image_base64": {
+          "description": "Legend image in Base64 encoding",
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "group_layer": {
+      "title": "Group Layer",
+      "description": "Group layer with nested sublayers",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS group layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layergroup"
+        },
+        "layers": {
+          "description": "Sublayers of this group layer (layers or group layers)",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"$ref": "#/definitions/layer"},
+              {"$ref": "#/definitions/group_layer"}
+            ]
+          }
+        },
+        "hide_sublayers": {
+          "description": "Hide sublayers of this group layer if set, to make the group layer look like a regular layer (Facade layer)",
+          "type": "boolean"
+        },
+        "legend_image": {
+          "description": "Legend image path relative to 'legend_images_path' (only if hide_sublayers is set)",
+          "type": "string"
+        },
+        "legend_image_base64": {
+          "description": "Legend image in Base64 encoding (only if hide_sublayers is set)",
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "name",
+        "layers"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
