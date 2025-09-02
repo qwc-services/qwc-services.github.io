@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resources and permissions - QWC - 2025.09.01</title>
+    <title>Resources and permissions - QWC - 2025.09.02</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.01
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.02
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -67,6 +67,8 @@
         </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#viewer-task-permissions">Viewer task permissions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#viewer-asset-permissions">Viewer asset permissions</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#wfsoapif-permissions">WFS/OAPIF permissions</a>
     </li>
@@ -138,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.01</a>
+          <a href="../..">QWC - 2025.09.02</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -256,6 +258,10 @@
 <td>Viewer task key, see <a href="#viewer-task-permissions">Viewer task permissions</a>.</td>
 </tr>
 <tr>
+<td><code>Viewer asset</code></td>
+<td>Viewer asset path, see <a href="#viewer-asset-permissions">Viewer asset permissions</a>.</td>
+</tr>
+<tr>
 <td><code>Document template</code></td>
 <td>Document template name, see <a href="../../topics/Reports/#Permissions">Report permissions</a>.</td>
 </tr>
@@ -301,7 +307,7 @@ A special role is <code>public</code>. The <code>public</code> role always appli
 <p>The <code>Data</code> and subordinate <code>Attribute</code> resources control whether access to a dataset is permitted via the <a href="https://github.com/qwc-services/qwc-data-service">qwc-data-service</a>. <code>Data</code> resources are not permitted by default. They are used for controlling the dataset accessible for <a href="../../topics/Editing/">Editing</a> and by the <a href="../../topics/FeatureInfo/#feature-form">FeatureForm</a>.</p>
 <p>For more detailed <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> permissions <code>Data (create)</code>, <code>Data (update)</code> and <code>Date (delete)</code> can be used instead of <code>Data</code>. A <code>Data</code> permission with <code>write=true</code> permits all CRUD operations.</p>
 <h2 id="viewer-task-permissions">Viewer task permissions<a name="viewer-task-permissions"></a><a class="headerlink" href="#viewer-task-permissions" title="Permanent link">&para;</a></h2>
-<p>The <code>Viewer task</code> resource defines viewer functionalities (e.g. <code>Print</code> or <code>MapExport</code>) that can be restricted or permitted.</p>
+<p>The <code>Viewer task</code> resource defines viewer functionalities (e.g. <code>Print</code> or <code>MapExport</code>) which can be restricted.</p>
 <p>The resource name will be matched against:</p>
 <ul>
 <li>The <code>key</code> in <code>menuItems</code> and <code>toolbarItems</code> in the QWC <code>config.json</code>.</li>
@@ -310,6 +316,10 @@ A special role is <code>public</code>. The <code>public</code> role always appli
 </ul>
 <p><em>Note</em>: You can restrict tasks entires which specify a mode (i.e. <code>{"key": "Measure", "mode": "LineString"}</code>) by concatenating the task key and the mode as the <code>viewer_task</code> resource name, i.e. <code>MeasureLineString</code>.</p>
 <p>Restricted viewer task items are then removed from the menu and toolbar in the map viewer.</p>
+<h2 id="viewer-asset-permissions">Viewer asset permissions<a name="viewer-asset-permissions"></a><a class="headerlink" href="#viewer-asset-permissions" title="Permanent link">&para;</a></h2>
+<p>The <code>Viewer asset</code> resource defines viewer assets (i.e. files below the QWC assets folder) which can be restricted.</p>
+<p>The resource name is a file path below the assets folder (i.e. <code>pdfs/mydocument.pdf</code> for <code>&lt;baseurl&gt;/assets/pdfs/mydocument.pdf</code>).</p>
+<p>Accessing a viewer asset which is not permitted will result in a <code>404 Not Found</code> error.</p>
 <h2 id="wfsoapif-permissions">WFS/OAPIF permissions<a name="wfs-permissions"></a><a class="headerlink" href="#wfsoapif-permissions" title="Permanent link">&para;</a></h2>
 <p>WFS and OGC API Features (OAPIF) services are disabled by default and need to be explicitly permitted to be exposed by the <code>qwc-ogc-service</code>. The services also need to be published in in <code>QGIS → Project Properties → QGIS Server → WFS/OAPIF</code>.</p>
 <p>The <code>WFS Service</code> resource permissions control whether a WFS service is exposed by the <code>qwc-ogc-service</code>. If a <code>WFS Service</code> is permitted, all its (published) child layers are permitted by default, without write permissions.</p>

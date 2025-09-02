@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Translations - QWC - 2025.09.01</title>
+    <title>Translations - QWC - 2025.09.02</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.01
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.02
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -92,6 +92,8 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#translated-themes">Translated themes</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#localized-viewer-asssets">Localized viewer asssets</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#adding-and-modifying-viewer-translations">Adding and modifying Viewer translations</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#selectively-overriding-translation-strings">Selectively overriding translation strings</a>
@@ -130,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.01</a>
+          <a href="../..">QWC - 2025.09.02</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -179,6 +181,12 @@
 }
 </code></pre>
 <p>Finally, run the <code>ConfigGenerator</code> to include the translated theme names in the themes configuration.</p>
+<h3 id="localized-viewer-asssets">Localized viewer asssets<a class="headerlink" href="#localized-viewer-asssets" title="Permanent link">&para;</a></h3>
+<p>The <code>qwc-map-viewer</code> supports returning localized viewer assets if the <code>lang=&lt;lang&gt;-&lt;COUNTRY&gt;</code> query parameter is added to the asset URL, i.e.</p>
+<pre><code>&lt;baseurl&gt;/assets/myfile.ext?lang=&lt;lang&gt;-&lt;COUNTRY&gt;
+</code></pre>
+<p>where <code>&lt;lang&gt;-&lt;COUNTRY&gt;</code> is a language-country code like <code>de-CH</code>.</p>
+<p>The service will then check if <code>myfile_&lt;lang&gt;-&lt;COUNTRY&gt;.ext</code> or <code>myfile_&lt;lang&gt;.ext</code> exist, returning the first possible match, falling back to <code>myfile.ext</code> if neither exists.</p>
 <h3 id="adding-and-modifying-viewer-translations">Adding and modifying Viewer translations<a class="headerlink" href="#adding-and-modifying-viewer-translations" title="Permanent link">&para;</a></h3>
 <p>When working inside a <code>qwc-app</code> source folder, the translations are located at <code>qwc-app/static/translations</code>.</p>
 <p>A script will take care of merging the translations from the <code>qwc2</code> package into the application translations. This way, when updating the <code>qwc2</code> dependency, new translations are automatically obtained. This script is automatically invoked on <code>yarn start</code>, but can also be manually invoked using</p>
