@@ -112,11 +112,16 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 ```
 - Generate the document service configuration by running the ConfigGenerator. It will automatically pick up all `*.jrxml` files and generate corresponding `document_templates` resources, complementing any manually defined resources.
 
-- To restrict document templates to specified roles, create `Document template` resources and permissions as desired. These permissions will also apply to any reports included as subreports by a parent report.
-
 - Test your report, either through the QWC interface, or via a direct call to the document service, i.e.:
 
         http://localhost:8088/api/v1/document/MyReport.pdf?feature=<fid>
+
+## Permissions<a name="permissions"></a>
+
+Report permissions are managed through the `Document template` resources and permissions. They are allowed by default if `permissions_default_allow` is `true` in the `tenantConfig.json`.
+
+Permissions / restrictions will by default also be applied to any reports included as subreports by a parent report. If you set `permit_subreports` to `true` in the `document` service config in `tenantConfig.json`, subreports will always be permitted if the parent report is permitted.
+
 
 ## Debugging
 
