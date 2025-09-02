@@ -41,6 +41,18 @@ Since the QGIS project translations mechanism does not currently allow translati
 
 Finally, run the `ConfigGenerator` to include the translated theme names in the themes configuration.
 
+
+### Localized viewer asssets
+
+The `qwc-map-viewer` supports returning localized viewer assets if the `lang=<lang>-<COUNTRY>` query parameter is added to the asset URL, i.e.
+```
+<baseurl>/assets/myfile.ext?lang=<lang>-<COUNTRY>
+```
+where `<lang>-<COUNTRY>` is a language-country code like `de-CH`.
+
+The service will then check if `myfile_<lang>-<COUNTRY>.ext` or `myfile_<lang>.ext` exist, returning the first possible match, falling back to `myfile.ext` if neither exists.
+
+
 ### Adding and modifying Viewer translations
 
 When working inside a `qwc-app` source folder, the translations are located at `qwc-app/static/translations`.
