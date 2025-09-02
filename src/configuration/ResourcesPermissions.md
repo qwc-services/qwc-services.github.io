@@ -35,6 +35,7 @@ The following resource types are available:
 | `╰─ WFS Layer (delete)`| WFS layer for deleting features.                                                            |
 | `Search facet`         | Fulltext search facet, see [Search permissions](../topics/Search.md#search-permissions).    |
 | `Viewer task`          | Viewer task key, see [Viewer task permissions](#viewer-task-permissions).                   |
+| `Viewer asset`         | Viewer asset path, see [Viewer asset permissions](#viewer-asset-permissions).               |
 | `Document template`    | Document template name, see [Report permissions](../topics/Reports.md#Permissions).         |
 | `Theme info link`      | Theme info link name, see [theme info links](ThemesConfiguration.md#theme-info-links).      |
 | `Plugin`               | Plugin name of [Plugin data](ThemesConfiguration.md#plugin-data) entries.                   |
@@ -84,7 +85,7 @@ For more detailed [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_
 
 ## Viewer task permissions<a name="viewer-task-permissions"></a>
 
-The `Viewer task` resource defines viewer functionalities (e.g. `Print` or `MapExport`) that can be restricted or permitted.
+The `Viewer task` resource defines viewer functionalities (e.g. `Print` or `MapExport`) which can be restricted.
 
 The resource name will be matched against:
 
@@ -95,6 +96,14 @@ The resource name will be matched against:
 *Note*: You can restrict tasks entires which specify a mode (i.e. `{"key": "Measure", "mode": "LineString"}`) by concatenating the task key and the mode as the `viewer_task` resource name, i.e. `MeasureLineString`.
 
 Restricted viewer task items are then removed from the menu and toolbar in the map viewer.
+
+## Viewer asset permissions<a name="viewer-asset-permissions"></a>
+
+The `Viewer asset` resource defines viewer assets (i.e. files below the QWC assets folder) which can be restricted.
+
+The resource name is a file path below the assets folder (i.e. `pdfs/mydocument.pdf` for `<baseurl>/assets/pdfs/mydocument.pdf`).
+
+Accessing a viewer asset which is not permitted will result in a `404 Not Found` error.
 
 ## WFS/OAPIF permissions<a name="wfs-permissions"></a>
 
