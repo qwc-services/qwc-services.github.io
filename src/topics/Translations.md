@@ -39,6 +39,11 @@ Since the QGIS project translations mechanism does not currently allow translati
 }
 ```
 
+Where:
+
+- `layouts` is used to translate print layout names
+- `theme` is used to translate the theme title (and possibly other strings in the future)
+
 Finally, run the `ConfigGenerator` to include the translated theme names in the themes configuration.
 
 
