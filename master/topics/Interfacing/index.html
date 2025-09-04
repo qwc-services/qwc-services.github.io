@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Interfacing with applications - QWC - 2025.09.03</title>
+    <title>Interfacing with applications - QWC - 2025.09.04</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.03
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.04
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -132,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.03</a>
+          <a href="../..">QWC - 2025.09.04</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -168,7 +168,9 @@
 <li><code>hp</code>, <code>hf</code>: Startup highlight parameters used in conjunction with the <code>qwc-fulltext-search-service</code>, see below.</li>
 <li><code>f</code>: A filter configuration, see <a href="../MapFilter/">Map filtering</a>.</li>
 <li><code>localConfig</code>: Override the name of the loaded config file, i.e. to load <code>myconfig.json</code> instead of the default <code>config.json</code>, pass <code>localConfig=myconfig</code>.</li>
-<li><code>v</code>: Which view to load: <code>3d</code> for the fullscreen 3D view, <code>3d2d</code> for the split-screen 3D/2D view.</li>
+<li><code>v</code>: Which view to load: <code>2d</code> for the 2D view, <code>3d</code> for the fullscreen 3D view, <code>3d2d</code> for the split-screen 3D/2D view.</li>
+<li><code>v3d</code>: The 3D view, as <code>camera_x,camera_y,camera_z,target_x,target_y,target_z,h</code>, where <code>camera</code> is the camera position, <code>target</code> the scene target ("look at") position. If <code>h</code> is specified and non-zero, a first-person-view is assumed and <code>h</code> denotes the height above terrain of the camera.</li>
+<li><code>bl3d</code>: The visible background layer in the 3D view.</li>
 </ul>
 <p>The <code>l</code> parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form</p>
 <pre><code class="language-text">&lt;layername&gt;[&lt;transparency&gt;]{&lt;style&gt;}!
