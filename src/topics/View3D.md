@@ -46,7 +46,7 @@ To enable the 3D view, you need to configure the plugin in `config.json`. A typi
 ```
 *NOTE*:
 
-* The `menuItems` and `toolbarItems` can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed. 
+* The `menuItems` and `toolbarItems` can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed.
 * Consult the [View3D plugin reference](../references/qwc2_plugins.md#view3d) as well as well as the [3D tool plugins reference](../references/qwc2_plugins.md#3d-plugins) for additional configuation options.
 
 Next, to add a 3D View to a theme, add a `map3d` configuration to the desired theme item in [`themesConfig.json`](../configuration/ThemesConfiguration.md#manual-theme-configuration):
@@ -222,3 +222,61 @@ a possible `tileinfo` configuration in `tenantConfig.json` may look as follows:
 ### Import
 
 To import scene objects in formats other than GLTF, a `ogcProcessesUrl` in `config.json` needs to point to a BBOX OGC processes server.
+
+
+### Generating 3D tiles
+
+QWC is specialized on 3D tiles in local coordinate reference systems. The following workflow shows all steps to a import CityGML model
+in EPSG:25832 into a 3DCity PostgreSQL database and generating 3D tiles with attributes.
+
+Create docker network:
+```
+docker network create citydb-net
+```
+
+Set PostgreSQL password:
+```
+ export CITYDB_PASSWORD="citydb"
+```
+
+Start PostgreSQL database container:
+```
+docker run -t -d --rm --name citydb --network=citydb-net \
+  -e POSTGRES_USER=citydb -e POSTGRES_DB=citydb -e POSTGRES_PASSWORD=$CITYDB_PASSWORD \
+  -e SRID=25832 -e SRS_NAME="urn:ogc:def:crs,crs:EPSG::25832,crs:EPSG::5783" \
+  -p 127.0.0.1:5439:5432 -v $PWD/db:/var/lib/postgresql/data \
+  3dcitydb/3dcitydb-pg:15-3.4-5
+```
+
+Import CityGML file (`./data/LoD2_Flughafen.gml`) into 3DCityDB:
+```
+docker run -t --rm --user=$UID --network=citydb-net -v $PWD/data:/data:ro \
+  3dcitydb/citydb-tool:1.0 import citygml LoD2_Flughafen.gml -H citydb -d citydb -u citydb -p $CITYDB_PASSWORD
+```
+
+Create a view with a filter on PolyhedralSurface geometries and joined attributes:
+```
+docker exec -it citydb psql -U citydb -d citydb -c "CREATE VIEW geometry_data_ext AS
+      SELECT g.*, coalesce(p1.feature_id, g.feature_id) AS parent_feature_id, p2.val_uri AS gml_id, split_part(p3.val_string, '_', 2)::integer AS function, p4.val_string::integer AS roof_type
+    	  FROM geometry_data g
+    	  LEFT JOIN property p1 ON (p1.name = 'buildingPart' and p1.val_feature_id = g.feature_id)
+    	  LEFT JOIN property p2 ON (p2.name = 'externalReference' and p2.feature_id IN (p1.feature_id, g.feature_id))
+    	  LEFT JOIN property p3 ON (p3.name = 'function' and p3.feature_id IN (p1.feature_id, g.feature_id))
+    	  LEFT JOIN property p4 ON (p4.name = 'roofType' and p4.feature_id = g.feature_id)
+      WHERE ST_GeometryType(geometry) = 'ST_PolyhedralSurface'
+      "
+```
+
+Create a spatial index:
+```
+docker exec -it citydb psql -U citydb -d citydb -c "CREATE INDEX ON geometry_data USING gist(st_centroid(st_envelope(geometry)))"
+```
+
+Generate 3D tiles with pg2b3dm:
+```
+docker run -t --rm --user $(id -u):$(id -g) -v $PWD/dataout:/app/output --network=citydb-net -e PGPASSWORD=$DB_PASSWORD geodan/pg2b3dm:2.20.2 -h citydb -U citydb -d citydb -t geometry_data_ext -c geometry --keep_projection true --attributecolumns feature_id,gml_id,function,roof_type
+```
+
+For an overview of 3D tile generation see this [talk from FOSS4G Europe 2025](https://blog.sourcepole.ch/assets/2025/creating-3d-tiles.pdf).
+
+More tools and information can be found in the [Awesome 3D Tiles](https://github.com/pka/awesome-3d-tiles) collection.
