@@ -98,6 +98,8 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#import">Import</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#generating-3d-tiles">Generating 3D tiles</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -194,7 +196,7 @@
 </code></pre>
 <p><em>NOTE</em>:</p>
 <ul>
-<li>The <code>menuItems</code> and <code>toolbarItems</code> can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed. </li>
+<li>The <code>menuItems</code> and <code>toolbarItems</code> can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed.</li>
 <li>Consult the <a href="../../references/qwc2_plugins/#view3d">View3D plugin reference</a> as well as well as the <a href="../../references/qwc2_plugins/#3d-plugins">3D tool plugins reference</a> for additional configuation options.</li>
 </ul>
 <p>Next, to add a 3D View to a theme, add a <code>map3d</code> configuration to the desired theme item in <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration"><code>themesConfig.json</code></a>:</p>
@@ -361,6 +363,45 @@ of which currently the <code>color</code> section is supported, and which may in
 </ul>
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <p>To import scene objects in formats other than GLTF, a <code>ogcProcessesUrl</code> in <code>config.json</code> needs to point to a BBOX OGC processes server.</p>
+<h3 id="generating-3d-tiles">Generating 3D tiles<a class="headerlink" href="#generating-3d-tiles" title="Permanent link">&para;</a></h3>
+<p>QWC is specialized on 3D tiles in local coordinate reference systems. The following workflow shows all steps to a import CityGML model
+in EPSG:25832 into a 3DCity PostgreSQL database and generating 3D tiles with attributes.</p>
+<p>Create docker network:</p>
+<pre><code>docker network create citydb-net
+</code></pre>
+<p>Set PostgreSQL password:</p>
+<pre><code> export CITYDB_PASSWORD=&quot;citydb&quot;
+</code></pre>
+<p>Start PostgreSQL database container:</p>
+<pre><code>docker run -t -d --rm --name citydb --network=citydb-net \
+  -e POSTGRES_USER=citydb -e POSTGRES_DB=citydb -e POSTGRES_PASSWORD=$CITYDB_PASSWORD \
+  -e SRID=25832 -e SRS_NAME=&quot;urn:ogc:def:crs,crs:EPSG::25832,crs:EPSG::5783&quot; \
+  -p 127.0.0.1:5439:5432 -v $PWD/db:/var/lib/postgresql/data \
+  3dcitydb/3dcitydb-pg:15-3.4-5
+</code></pre>
+<p>Import CityGML file (<code>./data/LoD2_Flughafen.gml</code>) into 3DCityDB:</p>
+<pre><code>docker run -t --rm --user=$UID --network=citydb-net -v $PWD/data:/data:ro \
+  3dcitydb/citydb-tool:1.0 import citygml LoD2_Flughafen.gml -H citydb -d citydb -u citydb -p $CITYDB_PASSWORD
+</code></pre>
+<p>Create a view with a filter on PolyhedralSurface geometries and joined attributes:</p>
+<pre><code>docker exec -it citydb psql -U citydb -d citydb -c &quot;CREATE VIEW geometry_data_ext AS
+      SELECT g.*, coalesce(p1.feature_id, g.feature_id) AS parent_feature_id, p2.val_uri AS gml_id, split_part(p3.val_string, '_', 2)::integer AS function, p4.val_string::integer AS roof_type
+          FROM geometry_data g
+          LEFT JOIN property p1 ON (p1.name = 'buildingPart' and p1.val_feature_id = g.feature_id)
+          LEFT JOIN property p2 ON (p2.name = 'externalReference' and p2.feature_id IN (p1.feature_id, g.feature_id))
+          LEFT JOIN property p3 ON (p3.name = 'function' and p3.feature_id IN (p1.feature_id, g.feature_id))
+          LEFT JOIN property p4 ON (p4.name = 'roofType' and p4.feature_id = g.feature_id)
+      WHERE ST_GeometryType(geometry) = 'ST_PolyhedralSurface'
+      &quot;
+</code></pre>
+<p>Create a spatial index:</p>
+<pre><code>docker exec -it citydb psql -U citydb -d citydb -c &quot;CREATE INDEX ON geometry_data USING gist(st_centroid(st_envelope(geometry)))&quot;
+</code></pre>
+<p>Generate 3D tiles with pg2b3dm:</p>
+<pre><code>docker run -t --rm --user $(id -u):$(id -g) -v $PWD/dataout:/app/output --network=citydb-net -e PGPASSWORD=$DB_PASSWORD geodan/pg2b3dm:2.20.2 -h citydb -U citydb -d citydb -t geometry_data_ext -c geometry --keep_projection true --attributecolumns feature_id,gml_id,function,roof_type
+</code></pre>
+<p>For an overview of 3D tile generation see this <a href="https://blog.sourcepole.ch/assets/2025/creating-3d-tiles.pdf">talk from FOSS4G Europe 2025</a>.</p>
+<p>More tools and information can be found in the <a href="https://github.com/pka/awesome-3d-tiles">Awesome 3D Tiles</a> collection.</p>
               
             </div>
           </div><footer>

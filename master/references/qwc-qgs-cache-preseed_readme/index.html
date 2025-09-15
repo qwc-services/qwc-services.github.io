@@ -167,6 +167,8 @@ is not in cache.</p>
       - ./volumes/preseed_services.txt:/preseed_services.txt:ro
       # OR
       # - ./volumes/qgs-resources:/data:ro
+      # OR
+      # - ./pg_service.conf:/srv/pg_service.conf:ro
 </code></pre>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>To control which QGS projects will be processed, you can:</p>
@@ -175,6 +177,7 @@ is not in cache.</p>
 <li><code>subdir/projectname</code> for a QGS file located in <code>qgs-resources/subdir/projectname.qgs</code></li>
 <li><code>pg/schema/projectname</code> for a QGS project located in a DB in schema <code>schema</code> and named <code>projectname</code></li>
 <li>Mount the <code>qgs-resources</code> dir (or whichever directory is mounted to <code>/data</code> for <code>qwc-qgis-server</code>) to <code>/data</code>, which will be then searches for projects (ending with <code>$QGS_EXT</code>).</li>
+<li>Mount a postgres service configuration file to <code>/srv/pg_service.conf</code>. The service file should contain a <code>[qgisprojects]</code> service definition. It would consider all projects located in the service DB in a specific schema. The ENV <code>PG_DB_SCHEMA</code> can be used to set the schema name (defaults to <code>qwc_config</code>). </li>
 </ul>
 <p>The following environment variables can be set:</p>
 <table>
@@ -210,6 +213,16 @@ is not in cache.</p>
 <td><code>SLEEP_INTERVAL</code></td>
 <td><code>1</code></td>
 <td>The sleep interval in seconds between sending requests.</td>
+</tr>
+<tr>
+<td><code>DEFAULT_QGIS_SERVER_URL</code></td>
+<td><code>http://qwc-qgis-server/ows/</code></td>
+<td>The default URL of the QGIS server to send requests to.</td>
+</tr>
+<tr>
+<td><code>PG_DB_SCHEMA</code></td>
+<td><code>qwc_config</code></td>
+<td>The name of the DB schema which stores QGIS projects in a table <code>qgis_projects</code>.</td>
 </tr>
 </tbody>
 </table>
