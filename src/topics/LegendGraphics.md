@@ -29,11 +29,22 @@ Mount the legend folder into the `qwc-legend-service` container, i.e.:
 
 Then, legend images will be searched for in this order (the first one found is used):
 
- * A `<legend_images_path>/<service_name>/<layername><suffix>.png` file, where
-    * `service_name` is the name of the WMS service
-    * `layername` is the WMS layer name
-    * `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC to the legend service depending on the requested image type.
- * A `<legend_images_path>/<legend_image>` file with `legend_image` as specified for the desired layer in the `legend` service configuration, for example:
+- A filename matching `<legend_images_path>/<service_name>/<layername>_<style>_<suffix>.png`
+- A filename matching `<legend_images_path>/<service_name>/<layername>_<suffix>.png`
+- A filename matching `<legend_images_path>/<service_name>/default_<suffix>.png`
+- A filename matching `<legend_images_path>/<service_name>/<layername>_<style>.png`
+- A filename matching `<legend_images_path>/<service_name>/<layername>.png`
+- A filename matching `<legend_images_path>/<resource_entry[legend_image]>`
+- A filename matching `<legend_images_path>/<service_name>/default.png`
+- As base64, as set in `<resource_entry[legend_image_base64]>`
+
+Where
+
+* `service_name` is the name of the WMS service
+* `layername` is the WMS layer name
+* `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC to the legend service depending on the requested image type.
+* `resource_entry[legend_image]` and `resource_entry[legend_image_base64]` are the `legend_image` resp. `legend_image_base64` settings of a layer as configurd in the `legend` service resource configuration, for example:
+
 ```json
 {
   "name": "legend",
@@ -47,7 +58,8 @@ Then, legend images will be searched for in this order (the first one found is u
           "layers": [
             {
               "name": "<layer_name>",
-              "legend_image": "edit_points.png"
+              "legend_image": "edit_points.png",
+              "legend_image_base64": "<base64_string>"
             }
           ]
         }
@@ -56,4 +68,3 @@ Then, legend images will be searched for in this order (the first one found is u
   }
 }
 ```
- * A `<legend_images_path>/default<suffix>.png` file for a default legend image, with `suffix` as documented above.
