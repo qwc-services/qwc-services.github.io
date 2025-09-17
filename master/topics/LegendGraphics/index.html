@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Legend graphics - QWC - 2025.09.04</title>
+    <title>Legend graphics - QWC - 2025.09.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.04
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -126,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.04</a>
+          <a href="../..">QWC - 2025.09.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -167,13 +167,21 @@
 </code></pre>
 <p>Then, legend images will be searched for in this order (the first one found is used):</p>
 <ul>
-<li>A <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;&lt;suffix&gt;.png</code> file, where<ul>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;style&gt;_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;style&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;resource_entry[legend_image]&gt;</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default.png</code></li>
+<li>As base64, as set in <code>&lt;resource_entry[legend_image_base64]&gt;</code></li>
+</ul>
+<p>Where</p>
+<ul>
 <li><code>service_name</code> is the name of the WMS service</li>
 <li><code>layername</code> is the WMS layer name</li>
 <li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC to the legend service depending on the requested image type.</li>
-</ul>
-</li>
-<li>A <code>&lt;legend_images_path&gt;/&lt;legend_image&gt;</code> file with <code>legend_image</code> as specified for the desired layer in the <code>legend</code> service configuration, for example:</li>
+<li><code>resource_entry[legend_image]</code> and <code>resource_entry[legend_image_base64]</code> are the <code>legend_image</code> resp. <code>legend_image_base64</code> settings of a layer as configurd in the <code>legend</code> service resource configuration, for example:</li>
 </ul>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;legend&quot;,
@@ -187,7 +195,8 @@
           &quot;layers&quot;: [
             {
               &quot;name&quot;: &quot;&lt;layer_name&gt;&quot;,
-              &quot;legend_image&quot;: &quot;edit_points.png&quot;
+              &quot;legend_image&quot;: &quot;edit_points.png&quot;,
+              &quot;legend_image_base64&quot;: &quot;&lt;base64_string&gt;&quot;
             }
           ]
         }
@@ -196,9 +205,6 @@
   }
 }
 </code></pre>
-<ul>
-<li>A <code>&lt;legend_images_path&gt;/default&lt;suffix&gt;.png</code> file for a default legend image, with <code>suffix</code> as documented above.</li>
-</ul>
               
             </div>
           </div><footer>
