@@ -38,6 +38,7 @@ The following resource types are available:
 | `Viewer asset`         | Viewer asset path, see [Viewer asset permissions](#viewer-asset-permissions).               |
 | `Document template`    | Document template name, see [Report permissions](../topics/Reports.md#Permissions).         |
 | `Theme info link`      | Theme info link name, see [theme info links](ThemesConfiguration.md#theme-info-links).      |
+| `Map info query`       | Map info query identifier, see [Map info permissions](../topics/Mapinfo.md#permissions).    |
 | `Plugin`               | Plugin name of [Plugin data](ThemesConfiguration.md#plugin-data) entries.                   |
 | `╰─ Plugin data`       | Plugin resource name [Plugin data](ThemesConfiguration.md#plugin-data) entries.             |
 
