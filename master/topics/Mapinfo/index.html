@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Map info - QWC - 2025.09.16</title>
+    <title>Map info - QWC - 2025.09.24</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.16
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.24
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -72,6 +72,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">Map info</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#permissions">Permissions </a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
@@ -122,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.16</a>
+          <a href="../..">QWC - 2025.09.24</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -155,17 +157,20 @@
         &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
         &quot;info_display_col&quot;: &quot;name&quot;,
         &quot;info_where&quot;: &quot;type = 'Sovereign country'&quot;,
-        &quot;info_title&quot;: &quot;Country&quot;
+        &quot;info_title&quot;: &quot;Country&quot;,
+        &quot;info_id&quot;: &quot;country&quot;
       },
       {
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         &quot;info_sql&quot;: &quot;SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
-        &quot;info_title&quot;: &quot;Type&quot;
+        &quot;info_title&quot;: &quot;Type&quot;,
+        &quot;info_id&quot;: &quot;type&quot;
       },
       {
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         &quot;info_sql&quot;: &quot;SELECT abbrev, postal, subregion FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
-        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;]
+        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;],
+        &quot;info_id&quot;: &quot;details&quot;
       }
     ]
   }
@@ -182,7 +187,10 @@
 <p>will be returned and displayed in the map-info popup as with title as specified in <code>info_title</code>.</p>
 <ul>
 <li>If <code>info_sql</code> is provided, the result obtained from the specified query will be returned. Use the <code>:x</code>, <code>:y</code> and <code>:srid</code> placeholders.</li>
+<li>The <code>info_id</code> is required if you want to assign permissions to the mapinfo queries, see below.</li>
 </ul>
+<h2 id="permissions">Permissions <a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<p>You can assign permissions to the mapinfo queries by creating and permitting <code>Map info query</code> resources, which shall be named according to the <code>info_id</code> of the query. If <code>permissions_default_allow</code> is <code>true</code> in <code>tenatConfig.json</code>, all mapinfo queries are permitted by default unless a permission is assigned to a specific role.</p>
               
             </div>
           </div><footer>

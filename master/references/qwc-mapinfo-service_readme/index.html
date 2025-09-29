@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc mapinfo service readme - QWC - 2025.09.16</title>
+    <title>Qwc mapinfo service readme - QWC - 2025.09.24</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.09.16
+          <a href="../.." class="icon icon-home"> QWC - 2025.09.24
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.09.16</a>
+          <a href="../..">QWC - 2025.09.24</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -157,7 +157,8 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
     &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
     &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
     &quot;info_display_col&quot;: &quot;name&quot;,
-    &quot;info_title&quot;: &quot;Country&quot;
+    &quot;info_title&quot;: &quot;Country&quot;,
+    &quot;info_id&quot;: &quot;country&quot;
   }
 }
 </code></pre>
@@ -170,6 +171,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
     &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
     &quot;info_display_col&quot;: &quot;name&quot;,
     &quot;info_title&quot;: &quot;Country&quot;,
+    &quot;info_id&quot;: &quot;country&quot;,
     &quot;info_where&quot;: &quot;pop_est &gt; 600000&quot;
   }
 }
@@ -184,17 +186,20 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
         &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
         &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
         &quot;info_display_col&quot;: &quot;name&quot;,
-        &quot;info_title&quot;: &quot;Country&quot;
+        &quot;info_title&quot;: &quot;Country&quot;,
+        &quot;info_id&quot;: &quot;country&quot;
       },
       {
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         &quot;info_sql&quot;: &quot;SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
-        &quot;info_title&quot;: &quot;Type&quot;
+        &quot;info_title&quot;: &quot;Type&quot;,
+        &quot;info_id&quot;: &quot;type&quot;
       },
       {
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
         &quot;info_sql&quot;: &quot;SELECT abbrev, postal, subregion FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
-        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;]
+        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;],
+        &quot;info_id&quot;: &quot;region&quot;
       }
     ]
   }
@@ -228,6 +233,47 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </tr>
 </tbody>
 </table>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;mapinfo_query&quot;: [
+          &quot;country&quot;,
+          &quot;type&quot;,
+          &quot;region&quot;
+        ]
+      }
+    },
+    {
+      &quot;role&quot;: &quot;demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;mapinfo_query&quot;: []
+      }
+    }
+  ]
+}
+</code></pre>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Run as</p>
 <pre><code>python src/server.py

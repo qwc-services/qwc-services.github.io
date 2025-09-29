@@ -43,6 +43,10 @@
             "type": "string"
           }
         },
+        "info_id": {
+          "description": "ID for permission checks",
+          "type": "string"
+        },
         "info_where": {
           "description": "Additional WHERE query",
           "type": "string"
@@ -72,6 +76,13 @@
               },
               "info_title": {
                 "description": "Display title",
+                "type": ["string", "array"],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "info_id": {
+                "description": "ID for permission checks",
                 "type": "string"
               },
               "info_where": {
