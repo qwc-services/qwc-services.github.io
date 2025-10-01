@@ -168,6 +168,7 @@ The format of the theme definitions is as follows:
 | `},`                                                 |                                                                                                       |
 | `"flags": ["<flag1>", "<flag2>", ...],`              | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"format": "<mimetype>",`                            | Optional, the format to use for WMS GetMap. Defaults to `image/png`.                                  |
+| `"hidden_in_ows_landing_page": <true|false>,`        | Optional, whether the service should be hidden from the OGC Service OWS landing page. Default: `false`|
 | `"layerTreeHiddenSublayers": ["<layername>", ...],`  | Optional: list of sublayer names to omit in layertree (but still displayed in map).                   |
 | `"lockedVisibilityPreset":  "<name>",`               | Optional: lock styles of theme layers to those set in the specified visibility preset.                |
 | `"mapCrs": "<EPSG code>",`                           | Optional, map projection, defaults to project projection.                                             |
@@ -204,7 +205,6 @@ The format of the theme definitions is as follows:
 | `"scales": [<Scale denominators>],`                  | List of denominators of allowed map scales. If omitted, defaults to `defaultScales`.                  |
 | `"snapping": {...},`                                 | Optional, snapping configuration, see [Snapping](../topics/Snapping.md).                              |
 | `"startupView":  "<view>",`                          | Optional: the view mode to initially display the theme in. Allowed values are `2d`, `3d` and `3d2d`. Default is `2d`. |
-| `"wmsOnly": <true|false>,`                           | Optional, whether the entry should only be configured as a WMS, and not as a theme.                   |
 | `"tiled": <boolean>,`                                | Optional, use tiled WMS, defaults to `false`.                                                         |
 | `"tileSize": [<tile_width>, <tile_height>]`          | Optional, the WMS tile width and height.                                                              |
 | `"searchProviders": ["<Provider>"],`                 | Optional, list of search providers, see [Search](../topics/Search.md). Defaults to `defaultSearchProviders`. |
@@ -223,6 +223,7 @@ The format of the theme definitions is as follows:
 | `⁣  "username": <username>,`                          | Optional: http basic authentication username.                                                         |
 | `⁣  "password": <password>`                           | Optional: http basic authentication password.                                                         |
 | `},`                                                 |                                                                                                       |
+| `"wmsOnly": <true|false>,`                           | Optional, whether the entry should only be configured as a WMS, and not as a theme.                   |
 
 
 A bare minimum theme entry might look as follows:
