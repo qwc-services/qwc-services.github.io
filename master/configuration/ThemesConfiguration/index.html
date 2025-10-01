@@ -507,6 +507,10 @@ sslmode=disable
 <td>Optional, the format to use for WMS GetMap. Defaults to <code>image/png</code>.</td>
 </tr>
 <tr>
+<td><code>"hidden_in_ows_landing_page": &lt;true|false&gt;,</code></td>
+<td>Optional, whether the service should be hidden from the OGC Service OWS landing page. Default: <code>false</code></td>
+</tr>
+<tr>
 <td><code>"layerTreeHiddenSublayers": ["&lt;layername&gt;", ...],</code></td>
 <td>Optional: list of sublayer names to omit in layertree (but still displayed in map).</td>
 </tr>
@@ -651,10 +655,6 @@ sslmode=disable
 <td>Optional: the view mode to initially display the theme in. Allowed values are <code>2d</code>, <code>3d</code> and <code>3d2d</code>. Default is <code>2d</code>.</td>
 </tr>
 <tr>
-<td><code>"wmsOnly": &lt;true|false&gt;,</code></td>
-<td>Optional, whether the entry should only be configured as a WMS, and not as a theme.</td>
-</tr>
-<tr>
 <td><code>"tiled": &lt;boolean&gt;,</code></td>
 <td>Optional, use tiled WMS, defaults to <code>false</code>.</td>
 </tr>
@@ -725,6 +725,10 @@ sslmode=disable
 <tr>
 <td><code>},</code></td>
 <td></td>
+</tr>
+<tr>
+<td><code>"wmsOnly": &lt;true|false&gt;,</code></td>
+<td>Optional, whether the entry should only be configured as a WMS, and not as a theme.</td>
 </tr>
 </tbody>
 </table>
