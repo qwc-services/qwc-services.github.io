@@ -60,12 +60,14 @@ For displaying interactive hyperlinks, the following options are supported:
 
 - URLs in attribute text values with no HTML markup are automatically converted to an interactive hyperlink.
 - Alternatively, you can enclose the URL in a HTML `<a>` tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to `:iframedialog:<dialogname>:<optkey>=<optval>:<optkey>=<optval>:...` where the supported options are:
-  * `w`: Dialog width in pixels, default: `640`.
-  * `h`: Dialog height in pixels, default: `480`.
-  * `title`: Dialog window title, by default the translation string `windows.<dialogname>`.
-  * `print`: Whether to add a print icon for printing the dialog contents, default: `true`.
-  * `dockable`: Whether the dialog can be docked, default `false`.
-  * `docked`: Whether the dialog is initially docked, default `false`.
+
+    * `w`: Dialog width in pixels, default: `640`.
+    * `h`: Dialog height in pixels, default: `480`.
+    * `title`: Dialog window title, by default the translation string `windows.<dialogname>`.
+    * `print`: Whether to add a print icon for printing the dialog contents, default: `true`.
+    * `dockable`: Whether the dialog can be docked, default `false`.
+    * `docked`: Whether the dialog is initially docked, default `false`.
+
   Example:
 ```
 <a href="https://example.com" target=":iframedialog:w=1024:h=768:title=Example">Link text</a>
