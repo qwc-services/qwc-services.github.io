@@ -212,15 +212,19 @@
 <p>For displaying interactive hyperlinks, the following options are supported:</p>
 <ul>
 <li>URLs in attribute text values with no HTML markup are automatically converted to an interactive hyperlink.</li>
-<li>Alternatively, you can enclose the URL in a HTML <code>&lt;a&gt;</code> tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to <code>:iframedialog:&lt;dialogname&gt;:&lt;optkey&gt;=&lt;optval&gt;:&lt;optkey&gt;=&lt;optval&gt;:...</code> where the supported options are:</li>
+<li>
+<p>Alternatively, you can enclose the URL in a HTML <code>&lt;a&gt;</code> tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to <code>:iframedialog:&lt;dialogname&gt;:&lt;optkey&gt;=&lt;optval&gt;:&lt;optkey&gt;=&lt;optval&gt;:...</code> where the supported options are:</p>
+<ul>
 <li><code>w</code>: Dialog width in pixels, default: <code>640</code>.</li>
 <li><code>h</code>: Dialog height in pixels, default: <code>480</code>.</li>
 <li><code>title</code>: Dialog window title, by default the translation string <code>windows.&lt;dialogname&gt;</code>.</li>
 <li><code>print</code>: Whether to add a print icon for printing the dialog contents, default: <code>true</code>.</li>
 <li><code>dockable</code>: Whether the dialog can be docked, default <code>false</code>.</li>
-<li><code>docked</code>: Whether the dialog is initially docked, default <code>false</code>.
-  Example:</li>
+<li><code>docked</code>: Whether the dialog is initially docked, default <code>false</code>.</li>
 </ul>
+</li>
+</ul>
+<p>Example:</p>
 <pre><code>&lt;a href=&quot;https://example.com&quot; target=&quot;:iframedialog:w=1024:h=768:title=Example&quot;&gt;Link text&lt;/a&gt;
 </code></pre>
 <p>For displaying images, the following options are supported:</p>
