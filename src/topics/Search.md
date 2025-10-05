@@ -230,7 +230,23 @@ A more complex form, useable through the [`FeatureSearch`](../references/qwc2_pl
   }
 ```
 
-Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type. In addition, the `select` field type is supported to display a ComboBox, with the entries provided as `options` as in the example above. It is also possible to pass a flat list as `options`, i.e. `["Female", "Male"]` if the value is equal to the label.
+Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type.
+
+In addition, the `select` field type is supported to display a ComboBox. You can specify the options:
+
+* As a `[{"value": "<value>", "label": "<label>"}, ...]` value-label list.
+* As a flat `["<value1>", "<value2>", ...]` list, in which case value and label are equal.
+* By specifying a dynamic lookup URL as `options_query` instead of `options`, as follows:
+
+    * You can query the options via `qwc-data-service` by setting `options_query` to `<data_service_url>/<dataset>/keyvals?key=<key_field>&value=<value_field>`.
+    * In addition, you can pass a filter to dynamically query the key-values depending on the value of another field by specifying `filter`, i.e. `<data_service_url>/<dataset>/keyvals?key=<key_field>&value=<value_field>&filter=[["<field>","=","$FIELDNAME$"]]`, where `$FIELDNAME$` will be replaced by the currently selected value for field `FIELDNAME`.
+    * Alternatively, you can also query any service (including the `qwc-data-service`, or a WFS/OAPIF service) which returns a GeoJSON Feature Collection by specifying `options_query`, `value_field` and `label_field`, in which case the options will be populated with the unique sets of `{"<value_field>": "<label_field>"`} extracted from the returned GeoJSON features. For example:
+```
+    "type": "select",
+    "options_query": "http://<data_service_url>/<dataset>?fields=<value_field>,<label_field>&filter=[[\"<otherfield>\",\"=\",\"$FIELDNAME$\"]]",
+    "value_field": "<value_field>",
+    "label_field": "<label_field>"
+```
 
 *Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
 
