@@ -371,16 +371,16 @@ searchProviders: [
 <li>As a flat <code>["&lt;value1&gt;", "&lt;value2&gt;", ...]</code> list, in which case value and label are equal.</li>
 <li>
 <p>By specifying a dynamic lookup URL as <code>options_query</code> instead of <code>options</code>, as follows:</p>
-</li>
-<li>
-<p>You can query the options via <code>qwc-data-service</code> by setting <code>options_query</code> to <code>&lt;data_service_url&gt;/&lt;dataset&gt;/keyvals?key=&lt;key_field&gt;&amp;value=&lt;value_field&gt;</code>.</p>
-</li>
+<ul>
+<li>You can query the options via <code>qwc-data-service</code> by setting <code>options_query</code> to <code>&lt;data_service_url&gt;/&lt;dataset&gt;/keyvals?key=&lt;key_field&gt;&amp;value=&lt;value_field&gt;</code>.</li>
 <li>In addition, you can pass a filter to dynamically query the key-values depending on the value of another field by specifying <code>filter</code>, i.e. <code>&lt;data_service_url&gt;/&lt;dataset&gt;/keyvals?key=&lt;key_field&gt;&amp;value=&lt;value_field&gt;&amp;filter=[["&lt;field&gt;","=","$FIELDNAME$"]]</code>, where <code>$FIELDNAME$</code> will be replaced by the currently selected value for field <code>FIELDNAME</code>.</li>
 <li>Alternatively, you can also query any service (including the <code>qwc-data-service</code>, or a WFS/OAPIF service) which returns a GeoJSON Feature Collection by specifying <code>options_query</code>, <code>value_field</code> and <code>label_field</code>, in which case the options will be populated with the unique sets of <code>{"&lt;value_field&gt;": "&lt;label_field&gt;"</code>} extracted from the returned GeoJSON features. For example:
-   <code>"type": "select",
-   "options_query": "http://&lt;data_service_url&gt;/&lt;dataset&gt;?fields=&lt;value_field&gt;,&lt;label_field&gt;&amp;filter=[[\"&lt;otherfield&gt;\",\"=\",\"$FIELDNAME$\"]]",
-   "value_field": "&lt;value_field&gt;",
-   "label_field": "&lt;label_field&gt;"</code></li>
+<code>"type": "select",
+"options_query": "http://&lt;data_service_url&gt;/&lt;dataset&gt;?fields=&lt;value_field&gt;,&lt;label_field&gt;&amp;filter=[[\"&lt;otherfield&gt;\",\"=\",\"$FIELDNAME$\"]]",
+"value_field": "&lt;value_field&gt;",
+"label_field": "&lt;label_field&gt;"</code></li>
+</ul>
+</li>
 </ul>
 <p><em>Note</em>: <code>qgis</code> provider searches are exposed to the search field only if no <code>fields</code> are specified (i.e. single input search). The <code>FeatureSearch</code> plugin on the other hand will list all <code>qgis</code> provider searches.</p>
 <p>In addition to the configuration described above, you can specify these additional parameters in <code>params</code>:</p>
