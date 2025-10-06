@@ -67,6 +67,7 @@ For displaying interactive hyperlinks, the following options are supported:
     * `print`: Whether to add a print icon for printing the dialog contents, default: `true`.
     * `dockable`: Whether the dialog can be docked, default `false`.
     * `docked`: Whether the dialog is initially docked, default `false`.
+    * `detachable`: Whether the dialog can be detached, default `true`.
 
   Example:
 ```
