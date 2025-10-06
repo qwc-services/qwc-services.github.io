@@ -155,6 +155,8 @@ You can also set a predefined list of filter areas by setting `searchFilterRegio
 ]
 ```
 
+Alternatively, you can also set `searchFilterRegions` to an URL returning a JSON document structured like in the above example.
+
 ## Configuring theme search providers
 
 For each theme item in `themesConfig.json`, you can define a list of search providers to enable for the theme as follows:
