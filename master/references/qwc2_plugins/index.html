@@ -2029,55 +2029,61 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>defaultAreaUnit</td>
 <td><code>string</code></td>
-<td>Default area unit. Options: metric, imperial, sqm, ha, sqkm, sqft, acre, sqmi</td>
+<td>Default area unit. Options: <code>metric</code>, <code>imperial</code>, <code>sqm</code>, <code>ha</code>, <code>sqkm</code>, <code>sqft</code>, <code>acre</code>, <code>sqmi</code></td>
 <td><code>'metric'</code></td>
 </tr>
 <tr>
 <td>defaultBorderColor</td>
 <td><code>array</code></td>
-<td>Default border color. In format [r, g, b, a].</td>
+<td>Default border color. In format <code>[r, g, b, a]</code>.</td>
 <td><code>[255, 0, 0, 1]</code></td>
 </tr>
 <tr>
 <td>defaultFillColor</td>
 <td><code>array</code></td>
-<td>Default fill color. In format [r, g, b, a].</td>
+<td>Default fill color. In format <code>[r, g, b, a]</code>.</td>
 <td><code>[255, 255, 255, 1]</code></td>
 </tr>
 <tr>
 <td>defaultLengthUnit</td>
 <td><code>string</code></td>
-<td>Default length unit. Options: metric, imperial, m, km, ft, mi</td>
+<td>Default length unit. Options: <code>metric</code>, <code>imperial</code>, <code>m</code>, <code>km</code>, <code>ft</code>, <code>mi</code></td>
 <td><code>'metric'</code></td>
 </tr>
 <tr>
 <td>defaultTextFillColor</td>
 <td><code>array</code></td>
-<td>Default text fill color. In format [r, g, b, a].</td>
+<td>Default text fill color. In format <code>[r, g, b, a]</code>.</td>
 <td><code>[0, 0, 0, 1]</code></td>
 </tr>
 <tr>
 <td>defaultTextOutlineColor</td>
 <td><code>array</code></td>
-<td>Default text outline color. In format [r, g, b, a].</td>
+<td>Default text outline color. In format <code>[r, g, b, a]</code>.</td>
 <td><code>[255, 255, 255, 1]</code></td>
 </tr>
 <tr>
 <td>hiddenTools</td>
 <td><code>array</code></td>
-<td>Tools to hide. Available tools: Circle, Ellipse, Square, Box, HandDrawing, Transform, NumericInput, Buffer, Export.</td>
+<td>Tools to hide. Available tools: <code>Circle</code>, <code>Ellipse</code>, <code>Square</code>, <code>Box</code>, <code>HandDrawing</code>, <code>Transform</code>, <code>NumericInput</code>, <code>Buffer</code>, <code>Export</code>.</td>
 <td><code>[]</code></td>
 </tr>
 <tr>
 <td>predefinedBorderColors</td>
 <td><code>[array]</code></td>
-<td>Predefined border colors. In format [[r, g, b, a], ...].</td>
+<td>Predefined border colors. In format <code>[[r, g, b, a], ...]</code>.</td>
 <td><code>undefined</code></td>
+</tr>
+<tr>
+<td>predefinedDashPatterns</td>
+<td><code>[array]</code></td>
+<td>Predefined dash patterns. In format <code>[&lt;dash-array&gt;, ...]</code>, where a dash-array is list of alternating dash and gap widths, i.e. <code>[8 4]</code> for long dashes followed by shorter gaps.</td>
+<td><code>[[], [8, 8], [1, 8], [8, 8, 1, 8]]</code></td>
 </tr>
 <tr>
 <td>predefinedFillColors</td>
 <td><code>[array]</code></td>
-<td>Predefined fill colors. In format [[r, g, b, a], ...].</td>
+<td>Predefined fill colors. In format <code>[[r, g, b, a], ...]</code>.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
