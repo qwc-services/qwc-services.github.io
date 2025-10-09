@@ -163,7 +163,7 @@
 <h2 id="adding-search-providers">Adding search providers<a class="headerlink" href="#adding-search-providers" title="Permanent link">&para;</a></h2>
 <p>Search providers can be defined as follows:</p>
 <ul>
-<li>As resource, defined in <code>static/assets/searchProviders.js</code>. This file is structured as follows:</li>
+<li>In an external script loaded at runtime, defined i.e. in <code>static/assets/searchProviders.js</code>. This file is structured as follows:</li>
 </ul>
 <pre><code class="language-js">window.QWC2SearchProviders = {
     &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
@@ -171,11 +171,11 @@
     ...
 };
 </code></pre>
-<p>This script file needs to be loaded explicitly by <code>index.html</code> via</p>
+<p>This script file needs to be include in <code>index.html</code>:</p>
 <pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;assets/searchProviders.js&quot; &gt;&lt;/script&gt;
 </code></pre>
 <ul>
-<li>Built-in, defined in <code>js/SearchProviders.js</code>. This file is structured as follows:</li>
+<li>Built-in in a custom QWC build, i.e. defined in <code>js/SearchProviders.js</code>. This file is structured as follows:</li>
 </ul>
 <pre><code class="language-js">window.QWC2SearchProviders = {
     &lt;providerkey1&gt;: &lt;ProviderDefinition1&gt;,
@@ -223,64 +223,213 @@
 </code></pre>
 <p><em>Notes:</em></p>
 <ul>
-<li>The format of <code>searchParams</code> is</li>
+<li>The format of <code>searchParams</code> is as follows:</li>
 </ul>
-<pre><code class="language-js">{
-  displaycrs: &quot;EPSG:XXXX&quot;, // Currently selected mouse coordinate display CRS
-  mapcrs: &quot;EPSG:XXXX&quot;, // The current map CRS
-  lang: &quot;&lt;code&gt;&quot;, // The current application language, i.e. en-US or en
-  cfgParams: &lt;params&gt;, // Additional parameters passed in the theme search provider configuration, see below
-  limit: &lt;number&gt;, // Result count limit
-  activeLayers: [&quot;&lt;layername&gt;&quot;, ...], // List of active layers in the map
-  filterBBox: [xmin, ymin, xmax, ymax]|null, // A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results
-  filterPoly: [[x0, y0], [x1, y1], ....], // A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results
-}
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>displaycrs: "EPSG:XXXX",</code></td>
+<td>Currently selected mouse coordinate display CRS.</td>
+</tr>
+<tr>
+<td><code>mapcrs: "EPSG:XXXX",</code></td>
+<td>The current map CRS.</td>
+</tr>
+<tr>
+<td><code>lang: "&lt;code&gt;",</code></td>
+<td>The current application language, i.e. en-US or en.</td>
+</tr>
+<tr>
+<td><code>cfgParams: &lt;params&gt;,</code></td>
+<td>Additional parameters passed in the theme search provider configuration, see below.</td>
+</tr>
+<tr>
+<td><code>limit: &lt;number&gt;,</code></td>
+<td>Result count limit.</td>
+</tr>
+<tr>
+<td><code>activeLayers: ["&lt;layername&gt;", ...],</code></td>
+<td>List of active layers in the map.</td>
+</tr>
+<tr>
+<td><code>filterBBox: [xmin, ymin, xmax, ymax]|null,</code></td>
+<td>A filter bbox, in mapcrs, the search component may pass to the provider to narrow down the results.</td>
+</tr>
+<tr>
+<td><code>filterPoly: [[x0, y0], [x1, y1], ...]|null</code></td>
+<td>A filter polygon, in mapcrs, the search component may pass to the provider to narrow down the results.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>
 <p><code>axios</code> is passed for convenience so that providers can use the compiled-in <code>axios</code> library for network requests.</p>
 </li>
 <li>
-<p>The format of the <code>results</code> list returned by <code>onSearch</code> is as follows:</p>
+<p><code>onSearch</code> is expected to return a list of search category results structured as follows:</p>
 </li>
 </ul>
-<pre><code class="language-js">results = [
-  {
-    id: &quot;&lt;categoryid&gt;&quot;,                        // Unique category ID
-    title: &quot;&lt;display_title&gt;&quot;,                  // Text to display as group title in the search results
-    titlemsgid: &quot;&lt;display_title_msgid&gt;&quot;,       // Translation message id for group title, instead of &quot;title&quot;
-    resultCount: &lt;result_count&gt;,               // Optional: true result count (i.e. not limited to the &quot;limit&quot; specified in searchParams).
-    priority: priority_nr,                     // Optional: search result group priority. Groups with higher priority are displayed first in the list.
-    type: SearchResultType.{PLACE|THEMELAYER|EXTERNALLAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
-    items: [
-      // PLACE result
-      {
-        id: &quot;&lt;item_id&gt;&quot;,                       // Unique item ID
-        text: &quot;&lt;display_text&gt;&quot;,                // Text to display as search result
-        label: &quot;&lt;map_marker_text&gt;&quot;,            // Optional, text to show next to the position marker on the map instead of `text`
-        x: x,                                  // X coordinate of result
-        y: y,                                  // Y coordinate of result
-        crs: crs,                              // CRS of result coordinates and bbox. If not specified, the current map crs is assumed.
-        bbox: [xmin, ymin, xmax, ymax],        // Bounding box of result (if non-empty, map will zoom to this extent when selecting result)
-        geometry: &lt;GeoJSON geometry&gt;,          // Optional, result geometry. Note: geometries may also be fetched separately via getResultGeometry.
-        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,          // Optional: thumbnail to display next to the search result text in the result list,
-        externalLink: &quot;&lt;url&gt;&quot;                  // Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.
-        target: &quot;&lt;target&gt;&quot;                     // Optional: external link target, i.e. _blank or iframe
-      },
-      // THEMELAYER or EXTERNALLAYER result
-      {
-        id: &quot;&lt;item_id&gt;&quot;,                        // Unique item ID
-        text: &quot;&lt;display_text&gt;&quot;,                 // Text to display as search result
-        layer: {&lt;layer_definition&gt;}             // Optional: layer definition, in the same format as a &quot;sublayers&quot; entry in themes.json. Layer definitions may also be fetched separately via getLayerDefinition.
-        info: &lt;bool&gt;,                           // Optional: Whether to display a info icon in the result list. The info is read from layer.abstract. If layer is not specified, the layer is fecthed via getLayerDefinition.
-        thumbnail: &quot;&lt;thumbnail_url&gt;&quot;,           // Optional: thumbnail to display next to the search result text in the result list,
-        sublayers: [{&lt;sublayer&gt;}, ...]          // Optional: list of sublayers, in the format {id: &quot;&lt;item_id&gt;&quot;, text: &quot;&lt;display_text&gt;&quot;, has_info: &lt;bool&gt;, etc..}
-      }
-    ]
-  }
-]
-</code></pre>
-<p>Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for a full examples.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>id: "&lt;categoryid&gt;",</code></td>
+<td>Unique category ID.</td>
+</tr>
+<tr>
+<td><code>title: "&lt;display_title&gt;",</code></td>
+<td>Text to display as group title in the search results.</td>
+</tr>
+<tr>
+<td><code>titlemsgid: "&lt;display_title_msgid&gt;",</code></td>
+<td>Translation message id for group title, instead of <code>title</code>.</td>
+</tr>
+<tr>
+<td><code>resultCount: &lt;result_count&gt;,</code></td>
+<td>Optional: true result count (i.e. not limited to the <code>limit</code> specified in searchParams).</td>
+</tr>
+<tr>
+<td><code>priority: &lt;priority_nr&gt;,</code></td>
+<td>Optional: search result group priority. Groups with higher priority are displayed first in the list.</td>
+</tr>
+<tr>
+<td><code>type: SearchResultType.{PLACE|THEMELAYER|EXTERNALLAYER},</code></td>
+<td>Specifies the type of results. Defaults to <code>SearchResultType.PLACE</code>.</td>
+</tr>
+<tr>
+<td><code>items: [</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>{</code></td>
+<td>Format for <code>PLACE</code> result:</td>
+</tr>
+<tr>
+<td><code>id: "&lt;item_id&gt;",</code></td>
+<td>Unique item ID.</td>
+</tr>
+<tr>
+<td><code>text: "&lt;display_text&gt;",</code></td>
+<td>Text to display as search result.</td>
+</tr>
+<tr>
+<td><code>label: "&lt;map_marker_text&gt;",</code></td>
+<td>Optional, text to show next to the position marker on the map instead of <code>text</code>.</td>
+</tr>
+<tr>
+<td><code>x: &lt;x&gt;,</code></td>
+<td>X coordinate of result.</td>
+</tr>
+<tr>
+<td><code>y: &lt;y&gt;,</code></td>
+<td>Y coordinate of result</td>
+</tr>
+<tr>
+<td><code>crs: &lt;crs&gt;,</code></td>
+<td>CRS of result coordinates and bbox. If not specified, the current map crs is assumed.</td>
+</tr>
+<tr>
+<td><code>bbox: [xmin, ymin, xmax, ymax],</code></td>
+<td>Bounding box of result (if non-empty, map will zoom to this extent when selecting result).</td>
+</tr>
+<tr>
+<td><code>geometry: &lt;GeoJSON geometry&gt;,</code></td>
+<td>Optional, result geometry. Geometries may also be fetched separately via <code>getResultGeometry</code>.</td>
+</tr>
+<tr>
+<td><code>thumbnail: "&lt;thumbnail_url&gt;",</code></td>
+<td>Optional: thumbnail image to display next to the search result text in the result list.</td>
+</tr>
+<tr>
+<td><code>externalLink: "&lt;url&gt;",</code></td>
+<td>Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.</td>
+</tr>
+<tr>
+<td><code>target: "&lt;target&gt;"</code></td>
+<td>Optional: external link target. Can be <code>_blank</code> (default) or <code>iframe</code>.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>{</code></td>
+<td>Format for <code>THEMELAYER</code> or <code>EXTERNALLAYER</code> result:</td>
+</tr>
+<tr>
+<td><code>id: "&lt;item_id&gt;",</code></td>
+<td>Unique item ID.</td>
+</tr>
+<tr>
+<td><code>text: "&lt;display_text&gt;",</code></td>
+<td>Text to display as search result.</td>
+</tr>
+<tr>
+<td><code>layer: {&lt;layer_definition&gt;},</code></td>
+<td>Optional, layer definition:., in the same format as a "sublayers" entry in themes.json.</td>
+</tr>
+<tr>
+<td></td>
+<td>* For <code>THEMELAYER</code> results, the entry should be in the same format as a <code>sublayer</code> entry of a theme layer in <code>themes.json</code>.</td>
+</tr>
+<tr>
+<td></td>
+<td>* For <code>EXTERNALLAYER</code> results, the entry can be of the form <code>{resource: "&lt;resource_string&gt;}</code> or a full layer definition.</td>
+</tr>
+<tr>
+<td></td>
+<td>If <code>layer</code> is not specified, the layer definition will be queried via <code>getLayerDefinition</code>.</td>
+</tr>
+<tr>
+<td><code>info: &lt;bool&gt;,</code></td>
+<td>Optional: Whether to display a info icon in the result list. The info is read from <code>layer.abstract</code>.</td>
+</tr>
+<tr>
+<td><code>thumbnail: "&lt;thumbnail_url&gt;",</code></td>
+<td>Optional: thumbnail image to display next to the search result text in the result list.</td>
+</tr>
+<tr>
+<td><code>sublayers: [{&lt;sublayer&gt;}, ...]</code></td>
+<td>Optional: list of sublayers, in the same format as the format parent result item (i.e. <code>{id: "&lt;item_id&gt;", text: "&lt;display_text&gt;", layer: {&lt;layer&gt;}, ...}</code>).</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>]</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for a full example.</p>
 <h2 id="filtering">Filtering <a name="filtering"></a><a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h2>
 <p>When using the <code>SearchBox</code> search component with <code>allowSearchFilters: true</code> passed in the <code>TopBar</code> <code>searchOptions</code>, you a filter menu will be displayed allowing to restrict the search area.</p>
 <p>If the provider does not fully handle the filter geometry internally (<code>handlesGeomFilter != true</code>), client-side filtering will be performed as follows:</p>
@@ -308,21 +457,56 @@
 <p>Alternatively, you can also set <code>searchFilterRegions</code> to an URL returning a JSON document structured like in the above example.</p>
 <h2 id="configuring-theme-search-providers">Configuring theme search providers<a class="headerlink" href="#configuring-theme-search-providers" title="Permanent link">&para;</a></h2>
 <p>For each theme item in <code>themesConfig.json</code>, you can define a list of search providers to enable for the theme as follows:</p>
-<pre><code class="language-json">...
-searchProviders: [
-  &quot;&lt;providerkey1&gt;&quot;,             // Simple form
-  {                             // Provider with custom params
-    &quot;provider&quot;: &quot;&lt;providerkey2&gt;&quot;,
-    &quot;key&quot;: &quot;&lt;key&gt;&quot;,             // Optional: key to disambiguate multiple provider configurations of the same provider type (i.e. multiple `qgis` provider configurations)
-    &quot;label&quot;: &quot;&lt;label&gt;&quot;,         // Optional: provider label (displayed in provider selection menu). If not specified, the label/labelmsgid from the provider definition is used.
-    &quot;labelmsgid&quot;: &quot;&lt;msgid&gt;&quot;,    // Optional: translateable label message ID, instead of `label`
-    &quot;params&quot;: {
-      ...                       // Additional params passed to the provider `onSearch` function as `searchParams.cfgParams`
-    }
-  }
-]
-...
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>searchProviders: [</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"&lt;providerkey1&gt;",</code></td>
+<td>Simple form.</td>
+</tr>
+<tr>
+<td><code>{</code></td>
+<td>Complex form with custom params:</td>
+</tr>
+<tr>
+<td><code>"provider": "&lt;providerkey2&gt;",</code></td>
+<td>Provider key.</td>
+</tr>
+<tr>
+<td><code>"key": "&lt;key&gt;",</code></td>
+<td>Optional: key to disambiguate multiple provider configurations of the same provider type (i.e. multiple <code>qgis</code> provider configurations).</td>
+</tr>
+<tr>
+<td><code>"label": "&lt;label&gt;",</code></td>
+<td>Optional: provider label (displayed in provider selection menu). If not specified, the label/labelmsgid from the provider definition is used.</td>
+</tr>
+<tr>
+<td><code>"labelmsgid": "&lt;msgid&gt;",</code></td>
+<td>Optional: translateable label message ID, instead of <code>label</code>.</td>
+</tr>
+<tr>
+<td><code>"params": {...}</code></td>
+<td>Additional params passed to the provider <code>onSearch</code> function as <code>searchParams.cfgParams</code>.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>]</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>Note: The QWC stock application (also used by the <code>qwc-map-viewer</code> docker image) includes four providers by default: <code>coordinates</code>, <code>nominatim</code> (OpenStreetMap location search, see <a href="#nominatim-search">below</a>), <code>qgis</code> (see <a href="#qgis-search">below</a>) and <code>fulltext</code> (see <a href="#fulltext-search">below</a>).</p>
 <h2 id="configuring-the-nominatim-openstreetmap-location-search">Configuring the nominatim (OpenStreetMap) location search <a name="nominatim-search"></a><a class="headerlink" href="#configuring-the-nominatim-openstreetmap-location-search" title="Permanent link">&para;</a></h2>
 <p>The nominatim search is build-in and in it's simplest form can be configured by just specifying <code>nominatim</code> in the <code>searchProviders</code>. You can customize the search by passing parameters described in the <a href="https://nominatim.org/release-docs/latest/api/Search/">Nominatim API</a> in the provider params, i.e. to restrict the results to Switzerland and Germany you can write:</p>
