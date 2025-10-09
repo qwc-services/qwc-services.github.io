@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc permalink service readme - QWC - 2025.10.02</title>
+    <title>Qwc permalink service readme - QWC - 2025.10.08</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.02
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.08
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.02</a>
+          <a href="../..">QWC - 2025.10.08</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -156,7 +156,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;config&quot;: {
     &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
     &quot;permalinks_table&quot;: &quot;qwc_config.permalinks&quot;,
-    &quot;user_permalink_table&quot;: &quot;qwc_config.user_permalinks&quot;
+    &quot;user_bookmark_table&quot;: &quot;qwc_config.user_bookmarks&quot;
   }
 }
 </code></pre>
@@ -182,15 +182,15 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <td>Permalink table</td>
 </tr>
 <tr>
-<td><code>USER_PERMALINK_TABLE</code></td>
-<td><code>qwc_config.user_permalinks</code></td>
-<td>User permalink table</td>
+<td><code>USER_BOOKMARK_TABLE</code></td>
+<td><code>qwc_config.user_bookmarks</code></td>
+<td>User bookmarks table</td>
 </tr>
 </tbody>
 </table>
 <p>[1] https://docs.sqlalchemy.org/en/13/core/engines.html#postgresql</p>
-<p>If you don't use <code>qwc-config-db</code> you have to create the tables for storing permalinks first.
-Example:</p>
+<p>If you don't use <code>qwc-config-db</code> you have to create the tables first.</p>
+<p>Example:</p>
 <pre><code>CREATE TABLE permalinks
 (
   key character(10) NOT NULL PRIMARY KEY,
@@ -198,6 +198,14 @@ Example:</p>
   date date,
   expires date
 );
+
+  CREATE TABLE user_bookmarks (
+      username character varying NOT NULL PRIMARY KEY,
+      data text,
+      key varchar(10),
+      date date,
+      description text
+  );
 </code></pre>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Base URL:</p>

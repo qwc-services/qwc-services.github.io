@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2025.10.02</title>
+    <title>Qwc2 plugins - QWC - 2025.10.08</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.02
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.08
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.02</a>
+          <a href="../..">QWC - 2025.10.08</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -392,7 +392,7 @@
 <tr>
 <td>showHiddenFields</td>
 <td><code>bool</code></td>
-<td>Whether to show hidden Fields.</td>
+<td>Whether to show hidden fields.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -1682,6 +1682,30 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 </thead>
 <tbody>
 <tr>
+<td>bearingHeadMarker</td>
+<td><code>string</code></td>
+<td>Head marker of bearing line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>bearingTailMarker</td>
+<td><code>string</code></td>
+<td>Tail marker of bearing line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>lineHeadMarker</td>
+<td><code>string</code></td>
+<td>Head marker of distance line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>lineTailMarker</td>
+<td><code>string</code></td>
+<td>Tail marker of distance line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>showMeasureModeSwitcher</td>
 <td><code>bool</code></td>
 <td>Whether to show the widget to switch between measure modes.</td>
@@ -1959,6 +1983,12 @@ revision is published (specified via newsRev prop).</p>
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>restrictToPrintScales</td>
+<td><code>bool</code></td>
+<td>Restrict print scale to list of predefine print scales, if any.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>scaleFactor</td>
 <td><code>number</code></td>
 <td>Scale factor to apply to line widths, font sizes, ... of redlining drawings passed to GetPrint.</td>
@@ -2111,7 +2141,7 @@ an aggregated report for all selected features.</p>
 <td>geometry</td>
 <td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
 <td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
-<td><code>{</code><br /><code>initialWidth: 320,</code><br /><code>initialHeight: 640,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 640,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
 </tr>
 <tr>
 <td>showPinLabels</td>
@@ -2321,6 +2351,12 @@ an aggregated report for all selected features.</p>
 <td><code>bool</code></td>
 <td>Whether to hide the add theme layers button. Note: the button will also be hidden if the global option <code>allowAddingOtherThemes</code> is <code>false</code>.</td>
 <td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showActiveTheme</td>
+<td><code>bool</code></td>
+<td>Whether to display the currently active theme below the application menu button. Default: false</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>showDefaultThemeSelector</td>

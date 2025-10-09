@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ldap auth readme - QWC - 2025.10.02</title>
+    <title>Qwc ldap auth readme - QWC - 2025.10.08</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.02
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.08
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.02</a>
+          <a href="../..">QWC - 2025.10.08</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -247,6 +247,26 @@
 </tr>
 </tbody>
 </table>
+<h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
+<p>You can add a custom logo and a custom background image by setting the following <code>config</code> options:</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;background_image_url&quot;: &quot;&lt;url&gt;&quot;,
+  &quot;logo_image_url&quot;: &quot;&lt;url&gt;&quot;
+}
+</code></pre>
+<p>The specified URLs can be absolute or relative. For relative URLs, you can write i.e.</p>
+<pre><code class="language-json">&quot;config&quot;: {
+  &quot;background_image_url&quot;: &quot;/auth/static/background.jpg&quot;,
+  &quot;logo_image_url&quot;: &quot;/auth/static/logo.jpg&quot;
+}
+</code></pre>
+<p>where <code>/auth</code> is the service mountpoint and place your custom images inside the <code>static</code> subfolder of the auth-service, or, if using docker and docker-compose, mount them accordingly:</p>
+<pre><code>qwc-auth-service:
+  [...]
+  volumes:
+    - ./volumes/assets/Background.jpg:/srv/qwc_service/static/background.jpg
+    - ./volumes/assets/logo.png:/srv/qwc_service/static/logo.jpg
+</code></pre>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Run standalone application:</p>
 <pre><code>uv run src/server.py
