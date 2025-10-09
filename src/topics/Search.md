@@ -95,7 +95,7 @@ results = [
     titlemsgid: "<display_title_msgid>",       // Translation message id for group title, instead of "title"
     resultCount: <result_count>,               // Optional: true result count (i.e. not limited to the "limit" specified in searchParams).
     priority: priority_nr,                     // Optional: search result group priority. Groups with higher priority are displayed first in the list.
-    type: SearchResultType.{PLACE|THEMELAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
+    type: SearchResultType.{PLACE|THEMELAYER|EXTERNALLAYER}, // Specifies the type of results. Default: SearchResultType.PLACE
     items: [
       // PLACE result
       {
@@ -111,7 +111,7 @@ results = [
         externalLink: "<url>"                  // Optional: a url to an external resource. If specified, a info icon is displayed in the result entry to open the link.
         target: "<target>"                     // Optional: external link target, i.e. _blank or iframe
       },
-      // THEMELAYER result
+      // THEMELAYER or EXTERNALLAYER result
       {
         id: "<item_id>",                        // Unique item ID
         text: "<display_text>",                 // Text to display as search result
