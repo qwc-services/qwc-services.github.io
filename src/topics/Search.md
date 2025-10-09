@@ -259,6 +259,7 @@ In addition to the configuration described above, you can specify these addition
 * `description`: An arbitrary descriptive text which will be displayed above the search fields in the `FeatureSearch` plugin.
 * `default`: Whether the search is selected by default when opening the `FeatureSearch` plugin.
 * `group`: A group name, used to group the searches in the `FeatureSearch` selection combobox.
+* For each entry in `fields`, you can set `order` to override the position of the field in the search form.
 
 ## Configuring the fulltext search service <a name="fulltext-search"></a>
 
