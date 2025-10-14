@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>3D View - QWC - 2025.10.08</title>
+    <title>3D View - QWC - 2025.10.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.08
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -136,7 +136,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.08</a>
+          <a href="../..">QWC - 2025.10.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -201,6 +201,10 @@
 </ul>
 <p>Next, to add a 3D View to a theme, add a <code>map3d</code> configuration to the desired theme item in <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration"><code>themesConfig.json</code></a>:</p>
 <pre><code>&quot;map3d&quot;: {
+    &quot;extent&quot;: {
+      &quot;bounds&quot;: [&lt;xmin&gt;,&lt;ymin&gt;,&lt;xmax&gt;,&lt;ymax&gt;],
+      &quot;crs&quot;: &quot;&lt;epsg_code&gt;&quot;
+    },
     &quot;initialView&quot;: {
       &quot;camera&quot;: [x, y, z],
       &quot;target&quot;: [x, y, z],
@@ -237,6 +241,7 @@
 </code></pre>
 <p>Where:</p>
 <ul>
+<li><code>extent</code> is optional and allows setting the full extent of the 3D view. If not set, the extent of the 2D view is used.</li>
 <li><code>initialView</code> is optional and allows to define the initial view when opening the 3D view. If <code>personHeight</code> is specified and greater than 0, the first-person view is activated. If not specified, the 2D view is synchronized.</li>
 <li>The <code>dtm</code> URL should point to a cloud optimized GeoTIFF.</li>
 <li>
