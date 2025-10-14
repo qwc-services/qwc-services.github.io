@@ -52,6 +52,10 @@ To enable the 3D view, you need to configure the plugin in `config.json`. A typi
 Next, to add a 3D View to a theme, add a `map3d` configuration to the desired theme item in [`themesConfig.json`](../configuration/ThemesConfiguration.md#manual-theme-configuration):
 ```
 "map3d": {
+    "extent": {
+      "bounds": [<xmin>,<ymin>,<xmax>,<ymax>],
+      "crs": "<epsg_code>"
+    },
     "initialView": {
       "camera": [x, y, z],
       "target": [x, y, z],
@@ -88,6 +92,7 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
 ```
 Where:
 
+- `extent` is optional and allows setting the full extent of the 3D view. If not set, the extent of the 2D view is used.
 - `initialView` is optional and allows to define the initial view when opening the 3D view. If `personHeight` is specified and greater than 0, the first-person view is activated. If not specified, the 2D view is synchronized.
 - The `dtm` URL should point to a cloud optimized GeoTIFF.
 - The background layer names refer to the names of the entries defined in `backgroundLayers` in the `themesConfig.json`. Additionally:
