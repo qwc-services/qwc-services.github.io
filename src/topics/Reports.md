@@ -77,7 +77,7 @@ Here is an example to configure a report for a layer, whose datasource is a Post
 
 - Save your report to the document service report dir, i.e. as `volumes/reports/MyReport.jrxml`.
 
-    - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts` respecting the naming convention described in the [`README`](../references/qwc-document-service_readme.md).
+    - If you included any custom fonts in your report, place these in `ttf` format in `volumes/reports/fonts`.
     
     - If your report requires third party java classes, you can mount the corresponding JARs as volumes to `/srv/qwc_service/libs/`.
 
