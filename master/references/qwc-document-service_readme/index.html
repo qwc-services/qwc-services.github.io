@@ -179,13 +179,7 @@
 <pre><code>$P{REPORT_DIR} + "mysubfolder/myimage.png"
 </code></pre>
 <p>If you may have a very large amount of input data, the report generation might result in a very large output file. This can lead to an Out-of-memory exception. To handle this, a "Virtualizer" could be used, which will cut the report into different files and save them on the hard drive during the generation process. The result generally makes the generation of the report a bit slower but it will solve the memory exception. To use a "JRSwapFileVirtualizer" for report generation, the <code>virtualizer</code> configuration has to be set (see example below).</p>
-<p>If your report requires extra fonts, place the <code>*.ttfs</code> below the <code>src/fonts</code> directory (when running locally) resp. mount them inside the <code>/srv/qwc_service/fonts/</code> when running as docker container. Font names must respect the following naming convention:</p>
-<ul>
-<li>Regular: <code>&lt;FontName&gt;.ttf</code> or <code>&lt;FontName&gt;-Regular.ttf</code></li>
-<li>Bold: <code>&lt;FontName&gt;-Bold.ttf</code></li>
-<li>Italic: <code>&lt;FontName&gt;-Italic.ttf</code></li>
-<li>BoldItalic: <code>&lt;FontName&gt;-BoldItalic.ttf</code></li>
-</ul>
+<p>If your report requires extra fonts, place the <code>*.ttfs</code> below the <code>src/fonts</code> directory (when running locally) resp. mount them inside the <code>/srv/qwc_service/fonts/</code> when running as docker container. The font names and faces are read from the <code>*.tff</code> file metadata. Currently only static TTFs are supported, not variable font TTFs.</p>
 <p>Set <code>FLASK_DEBUG=1</code> to get additional logging output.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,

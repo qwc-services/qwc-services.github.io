@@ -54,8 +54,7 @@
         }
       },
       "required": [
-        "db_url",
-        "permalinks_table"
+        "db_url"
       ]
     }
   },

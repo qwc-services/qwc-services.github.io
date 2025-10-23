@@ -167,6 +167,7 @@
 <li><a href="#maptip">MapTip</a></li>
 <li><a href="#measure">Measure</a></li>
 <li><a href="#newspopup">NewsPopup</a></li>
+<li><a href="#objectlist">ObjectList</a></li>
 <li><a href="#overviewmap">OverviewMap</a></li>
 <li><a href="#panoramax">Panoramax</a></li>
 <li><a href="#portal">Portal</a></li>
@@ -1786,6 +1787,42 @@ revision is published (specified via newsRev prop).</p>
 <td><code>string</code></td>
 <td>The default width of the sidebar, as a CSS width string.</td>
 <td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="objectlist">ObjectList<a name="objectlist"></a><a class="headerlink" href="#objectlist" title="Permanent link">&para;</a></h2>
+<p>Display layer object lists in a dialog.</p>
+<p>The object list is similar to the attribute table, but displays only the display field for each object and contains no edit functionality.</p>
+<p>To make a layer available in the object list, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
+<p>This plugin queries the dataset via the editing service specified by
+<code>editServiceUrl</code> in <code>config.json</code> (by default the <code>qwc-data-service</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to limit to the extent by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showLimitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to show the "Limit to extent" checkbox</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>zoomLevel</td>
+<td><code>number</code></td>
+<td>The zoom level for zooming to point features.</td>
+<td><code>1000</code></td>
 </tr>
 </tbody>
 </table>
