@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc data service - QWC - 2025.10.16</title>
+    <title>Qwc data service - QWC - 2025.10.29</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.16
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.29
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.16</a>
+          <a href="../..">QWC - 2025.10.29</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -408,7 +408,130 @@
             />
         </svg>
     <a href="#config_allowed_attachment_extensions" onclick="anchorLink('config_allowed_attachment_extensions')">allowed_attachment_extensions</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Comma separated list of allowed attachment file extensions, i.e. '.png,.jpg'</p>
+<span class="description"><p>Comma separated list of allowed attachment file extensions, i.e. '.png,.jpg'. If empty, all extensions are allowed. Default: `` (empty).</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_allowed_extensions_per_dataset">
+    <div class="card">
+        <div class="card-header" id="headingconfig_allowed_extensions_per_dataset">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_allowed_extensions_per_dataset"
+                        aria-expanded="" aria-controls="config_allowed_extensions_per_dataset" onclick="setAnchor('#config_allowed_extensions_per_dataset')"><span class="property-name">allowed_extensions_per_dataset</span></button>
+            </h2>
+        </div>
+
+        <div id="config_allowed_extensions_per_dataset"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_allowed_extensions_per_dataset"
+             data-parent="#accordionconfig_allowed_extensions_per_dataset">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_allowed_extensions_per_dataset" onclick="anchorLink('config_allowed_extensions_per_dataset')">allowed_extensions_per_dataset</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
+<span class="description"><p>Loopup of allowed attachment file extensions per dataset, values as comma separated list, i.e. '.png,.jpg'</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_max_attachment_file_size">
+    <div class="card">
+        <div class="card-header" id="headingconfig_max_attachment_file_size">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_max_attachment_file_size"
+                        aria-expanded="" aria-controls="config_max_attachment_file_size" onclick="setAnchor('#config_max_attachment_file_size')"><span class="property-name">max_attachment_file_size</span></button>
+            </h2>
+        </div>
+
+        <div id="config_max_attachment_file_size"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_max_attachment_file_size"
+             data-parent="#accordionconfig_max_attachment_file_size">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_max_attachment_file_size" onclick="anchorLink('config_max_attachment_file_size')">max_attachment_file_size</a></div><span class="badge badge-dark value-type">Type: number</span><br/>
+<span class="description"><p>Maximum attachment file size in bytes. Default is <code>10485760</code> (10 MB).</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_max_attachment_file_size_per_dataset">
+    <div class="card">
+        <div class="card-header" id="headingconfig_max_attachment_file_size_per_dataset">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_max_attachment_file_size_per_dataset"
+                        aria-expanded="" aria-controls="config_max_attachment_file_size_per_dataset" onclick="setAnchor('#config_max_attachment_file_size_per_dataset')"><span class="property-name">max_attachment_file_size_per_dataset</span></button>
+            </h2>
+        </div>
+
+        <div id="config_max_attachment_file_size_per_dataset"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_max_attachment_file_size_per_dataset"
+             data-parent="#accordionconfig_max_attachment_file_size_per_dataset">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_max_attachment_file_size_per_dataset" onclick="anchorLink('config_max_attachment_file_size_per_dataset')">max_attachment_file_size_per_dataset</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
+<span class="description"><p>Lookup of maximum attachment file size in bytes per dataset.</p>
 </span>
 
 
@@ -450,47 +573,6 @@
         </svg>
     <a href="#config_recaptcha_site_secret_key" onclick="anchorLink('config_recaptcha_site_secret_key')">recaptcha_site_secret_key</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
 <span class="description"><p>Captcha site secret key. Set to enable ReCAPTCHA verification for public users</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_max_attachment_file_size">
-    <div class="card">
-        <div class="card-header" id="headingconfig_max_attachment_file_size">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_max_attachment_file_size"
-                        aria-expanded="" aria-controls="config_max_attachment_file_size" onclick="setAnchor('#config_max_attachment_file_size')"><span class="property-name">max_attachment_file_size</span></button>
-            </h2>
-        </div>
-
-        <div id="config_max_attachment_file_size"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_max_attachment_file_size"
-             data-parent="#accordionconfig_max_attachment_file_size">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_max_attachment_file_size" onclick="anchorLink('config_max_attachment_file_size')">max_attachment_file_size</a></div><span class="badge badge-dark value-type">Type: number</span><br/>
-<span class="description"><p>Maximum attachment file size in bytes</p>
 </span>
 
 
@@ -819,88 +901,6 @@
         </svg>
     <a href="#config_geometry_default_allow_null" onclick="anchorLink('config_geometry_default_allow_null')">geometry_default_allow_null</a></div><span class="badge badge-dark value-type">Type: boolean</span><br/>
 <span class="description"><p>Whether to allow null geometries by default</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_allowed_extensions_per_dataset">
-    <div class="card">
-        <div class="card-header" id="headingconfig_allowed_extensions_per_dataset">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_allowed_extensions_per_dataset"
-                        aria-expanded="" aria-controls="config_allowed_extensions_per_dataset" onclick="setAnchor('#config_allowed_extensions_per_dataset')"><span class="property-name">allowed_extensions_per_dataset</span></button>
-            </h2>
-        </div>
-
-        <div id="config_allowed_extensions_per_dataset"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_allowed_extensions_per_dataset"
-             data-parent="#accordionconfig_allowed_extensions_per_dataset">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_allowed_extensions_per_dataset" onclick="anchorLink('config_allowed_extensions_per_dataset')">allowed_extensions_per_dataset</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
-<span class="description"><p>Loopup of allowed attachment file extensions per dataset, values as comma separated list, i.e. '.png,.jpg'</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_max_attachment_file_size_per_dataset">
-    <div class="card">
-        <div class="card-header" id="headingconfig_max_attachment_file_size_per_dataset">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_max_attachment_file_size_per_dataset"
-                        aria-expanded="" aria-controls="config_max_attachment_file_size_per_dataset" onclick="setAnchor('#config_max_attachment_file_size_per_dataset')"><span class="property-name">max_attachment_file_size_per_dataset</span></button>
-            </h2>
-        </div>
-
-        <div id="config_max_attachment_file_size_per_dataset"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_max_attachment_file_size_per_dataset"
-             data-parent="#accordionconfig_max_attachment_file_size_per_dataset">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_max_attachment_file_size_per_dataset" onclick="anchorLink('config_max_attachment_file_size_per_dataset')">max_attachment_file_size_per_dataset</a></div><span class="badge badge-dark value-type">Type: object</span><br/>
-<span class="description"><p>Lookup of maximum attachment file size in bytes per dataset</p>
 </span>
 
 
@@ -2967,7 +2967,7 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-10-23 at 21:05:52 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-10-30 at 11:12:58 +0000</p>
     </footer></body>
 <p></html></p>
               
