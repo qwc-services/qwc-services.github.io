@@ -72,6 +72,7 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
              "name": "<name>",
              "url": "<url_to_tileset.json>",
              "title": "<title>",
+             "visibility": <true|false>,
              "baseColor": "<css RGB(A) color string>",
              "idAttr": "<tile_feature_attr>",
              "styles": {"<styleName>", "<url_to_tilesetStyle.json>", ...},
@@ -85,7 +86,8 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
         {
              "name": "<name>",
              "url": "<url_to_file.gltf>",
-             "title": "<title>"
+             "title": "<title>",
+             "visibility": <true|false>
         }
     ]
 }
