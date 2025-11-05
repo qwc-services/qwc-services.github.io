@@ -1,3 +1,7 @@
+# Updating to qwc-admin-gui:v2025.11.05
+
+The `qwc-admin-gui:v2025.11.05` uses the new possibilities to abort the config generator workers introduced in `qwc-config-generator:v2025.11.05`. When updating to `qwc-admin-gui:v2025.11.05`, also update to `qwc-config-generator:v2025.11.05`.
+
 # New WFS permission model, removal of `Data (read)` resource type
 
 As of
