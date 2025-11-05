@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc config generator readme - QWC - 2025.10.29</title>
+    <title>Qwc config generator readme - QWC - 2025.10.30</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.10.29
+          <a href="../.." class="icon icon-home"> QWC - 2025.10.30
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -120,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.10.29</a>
+          <a href="../..">QWC - 2025.10.30</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -167,7 +167,7 @@
 </code></pre>
 <p><em>Note</em>: <code>service_name</code> is expected to be camel case (i.e. <code>adminGui</code>), and the service name in the generated config will lowercase and hyphenated (i.e. <code>admin-gui</code>).</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="script">Script<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
+<h3 id="cli-interface">CLI interface<a class="headerlink" href="#cli-interface" title="Permanent link">&para;</a></h3>
 <p>Show command options:</p>
 <pre><code>uv run src/config_generator_cli.py --help
 </code></pre>
@@ -180,14 +180,34 @@
 <p>Generate permissions file:</p>
 <pre><code>uv run src/config_generator_cli.py ./tenantConfig.json permissions
 </code></pre>
-<h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
+<p>Additionally, the following command line args may be specified:</p>
+<ul>
+<li><code>--use_cached_project_metadata=1</code>: Whether to use cached project metadata</li>
+<li><code>--force_readonly_datasets=1</code>: Whether to force read-only dataset permissions</li>
+</ul>
+<h3 id="service-interface">Service interface<a class="headerlink" href="#service-interface" title="Permanent link">&para;</a></h3>
 <p>Set the <code>INPUT_CONFIG_PATH</code> environment variable to the base directory where for the configuration files are that should be read by the ConfigGenerator (default: <code>config-in/</code>).
 Set the <code>OUTPUT_CONFIG_PATH</code> environment variable to the base directory where the ConfigGenerator should output service configurations and permissions (default: <code>/tmp/</code>).</p>
 <p>Base URL:</p>
 <pre><code>http://localhost:5010/
 </code></pre>
 <p>Generate both service configs and permissions for <code>default</code> tenant:</p>
-<pre><code>curl -X POST "http://localhost:5010/generate_configs?tenant=default"
+<pre><code># Non-blocking call, returns task_id
+curl "http://localhost:5010/generate_configs?tenant=default"
+
+# Blocking call, streams log output
+curl "http://localhost:5010/generate_configs?tenant=default&amp;stream_response=1"
+</code></pre>
+<p>Additionally, the following query parameters may be specified:</p>
+<ul>
+<li><code>use_cached_project_metadata=1</code>: Whether to use cached project metadata</li>
+<li><code>force_readonly_datasets=1</code>: Whether to force read-only dataset permissions</li>
+</ul>
+<p>Watch config generator task status:</p>
+<pre><code>curl "http://localhost:5010/generate_configs_status?task_id=&lt;task_id&gt;"
+</code></pre>
+<p>Cancel config generator task:</p>
+<pre><code>curl "http://localhost:5010/generate_configs_cancel?task_id=&lt;task_id&gt;"
 </code></pre>
 <h3 id="update-json-schemas">Update JSON schemas<a class="headerlink" href="#update-json-schemas" title="Permanent link">&para;</a></h3>
 <p>You can change the directory from where the ConfigGenerator reads its schemas via the <code>JSON_SCHEMAS_PATH</code> environment variable (default <code>/tmp/</code>).
