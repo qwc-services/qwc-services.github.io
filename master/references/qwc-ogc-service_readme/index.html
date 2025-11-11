@@ -90,6 +90,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
@@ -357,6 +359,9 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <pre><code class="language-json">  &quot;config&quot;: {
     &quot;basic_auth_login_url&quot;: [&quot;http://qwc-auth-service:9090/verify_login&quot;]
   },
+</code></pre>
+<p>To force the <code>qwc-ogc-service</code> to return a <code>401 Unauthorized</code> response if not authenticated, pass <code>REQUIREAUTH=1</code> to the <code>WMS</code> or <code>WFS</code> request args, example:</p>
+<pre><code>http://qwc-ogc-service/&lt;service&gt;?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;REQUIREAUTH=1
 </code></pre>
 <h3 id="marker-params">Marker params<a class="headerlink" href="#marker-params" title="Permanent link">&para;</a></h3>
 <p>The OGC service supports specifying marker parameters to insert a SLD styled marker into GetMap requests via QGIS Server <code>HIGHLIGHT_SYMBOL</code> and <code>HIGHLIGHT_GEOM</code>. To use this feature, provide a SLD template and parameter definitions in the ogc service config, for example:</p>
