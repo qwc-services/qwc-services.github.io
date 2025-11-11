@@ -24,6 +24,7 @@ nav:
             - Reports: topics/Reports.md
             - 3D View: topics/View3D.md
             - Translations: topics/Translations.md
+            - Authentication: topics/authentication.md
             - Interfacing with applications: topics/Interfacing.md
             - Multi-tenancy: topics/MultiTenancy.md
         - References: references/index.md

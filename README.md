@@ -1,5 +1,5 @@
-QWC2 Documentation
-==================
+QWC Documentation
+=================
 
 Published at [qwc-services.github.io](https://qwc-services.github.io).
 
