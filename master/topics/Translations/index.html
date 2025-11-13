@@ -173,6 +173,10 @@
 </ol>
 <p>Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file <code>&lt;projectname&gt;_&lt;lang&gt;.json</code> structured as follows:</p>
 <pre><code class="language-json">{
+  &quot;layertree&quot;: {
+    &quot;&lt;layer_name&gt;&quot;: &quot;&lt;translated_layer_name&gt;&quot;,
+    ...
+  },
   &quot;layouts&quot;: {
     &quot;&lt;layout_name&gt;&quot;: &quot;&lt;translated_layout_name&gt;&quot;,
     ...
@@ -184,10 +188,28 @@
 </code></pre>
 <p>Where:</p>
 <ul>
+<li><code>layertree</code> is used to translated layer/group names. Most layer names can be translated via <code>.ts</code> files, but for instance group names of embedded projects are currently not handled by QGIS.</li>
 <li><code>layouts</code> is used to translate print layout names. Note that if you want to translate the name of a (print layout templates)[Printing.md#layout-templates], the <code>layout_name</code> may need to include the path portion of the layout (i.e. <code>&lt;subdir&gt;/&lt;layout_name&gt;</code>).</li>
 <li><code>theme</code> is used to translate the theme title (and possibly other strings in the future)</li>
 </ul>
 <p>Finally, run the <code>ConfigGenerator</code> to include the translated theme names in the themes configuration.</p>
+<p>You can specify common translations which will be applied to all themes by adding a <code>maptranslations</code> block to the viewer translations (see below) in the form</p>
+<pre><code>{
+  &quot;messages&quot;: {
+    &quot;maptranslations&quot;: {
+      &quot;layertree&quot;: {
+        &quot;&lt;layer_name&gt;&quot;: &quot;&lt;translated_layer_name&gt;&quot;,
+        ...
+      },
+      &quot;layouts&quot;: {
+        &quot;&lt;layout_name&gt;&quot;: &quot;&lt;translated_layout_name&gt;&quot;,
+        ...
+      }
+    }
+  }
+}
+</code></pre>
+<p>In particular, these common translations can be specified in a <code>&lt;lang&gt;_overrides.json</code> file, see below.</p>
 <h3 id="localized-viewer-asssets">Localized viewer asssets<a class="headerlink" href="#localized-viewer-asssets" title="Permanent link">&para;</a></h3>
 <p>The <code>qwc-map-viewer</code> supports returning localized viewer assets if the <code>lang=&lt;lang&gt;-&lt;COUNTRY&gt;</code> query parameter is added to the asset URL, i.e.</p>
 <pre><code>&lt;baseurl&gt;/assets/myfile.ext?lang=&lt;lang&gt;-&lt;COUNTRY&gt;
