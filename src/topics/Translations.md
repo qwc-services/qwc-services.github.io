@@ -29,6 +29,10 @@ Then, to localize a theme:
 Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file `<projectname>_<lang>.json` structured as follows:
 ```json
 {
+  "layertree": {
+    "<layer_name>": "<translated_layer_name>",
+    ...
+  },
   "layouts": {
     "<layout_name>": "<translated_layout_name>",
     ...
@@ -41,11 +45,31 @@ Since the QGIS project translations mechanism does not currently allow translati
 
 Where:
 
+- `layertree` is used to translated layer/group names. Most layer names can be translated via `.ts` files, but for instance group names of embedded projects are currently not handled by QGIS.
 - `layouts` is used to translate print layout names. Note that if you want to translate the name of a (print layout templates)[Printing.md#layout-templates], the `layout_name` may need to include the path portion of the layout (i.e. `<subdir>/<layout_name>`).
 - `theme` is used to translate the theme title (and possibly other strings in the future)
 
 Finally, run the `ConfigGenerator` to include the translated theme names in the themes configuration.
 
+You can specify common translations which will be applied to all themes by adding a `maptranslations` block to the viewer translations (see below) in the form
+```
+{
+  "messages": {
+    "maptranslations": {
+      "layertree": {
+        "<layer_name>": "<translated_layer_name>",
+        ...
+      },
+      "layouts": {
+        "<layout_name>": "<translated_layout_name>",
+        ...
+      }
+    }
+  }
+}
+```
+
+In particular, these common translations can be specified in a `<lang>_overrides.json` file, see below.
 
 ### Localized viewer asssets
 
