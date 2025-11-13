@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2025.11.05</title>
+    <title>Qwc2 plugins - QWC - 2025.11.12</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.05
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.12
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.05</a>
+          <a href="../..">QWC - 2025.11.12</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -627,7 +627,7 @@
 <td>cyclomediaVersion</td>
 <td><code>string</code></td>
 <td>The cyclomedia version.</td>
-<td><code>'24.1'</code></td>
+<td><code>'25.7'</code></td>
 </tr>
 <tr>
 <td>displayMeasurements</td>
@@ -739,12 +739,6 @@ If the dataset it editable, the feature attributes can be edited directly in the
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>clearResultsOnClose</td>
-<td><code>bool</code></td>
-<td>Whether to clear the identify results when exiting the identify tool.</td>
-<td><code>true</code></td>
-</tr>
 <tr>
 <td>exitTaskOnResultsClose</td>
 <td><code>bool</code></td>
@@ -1763,7 +1757,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>newsDocument</td>
 <td><code>string</code></td>
-<td>URL to the news HTML document to display in the popup.</td>
+<td>URL to the news HTML document to display in the popup. Can contain <code>{lang}</code> as a placeholder which will be replaced with the current viewer language.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -1908,7 +1902,13 @@ revision is published (specified via newsRev prop).</p>
 <td>collapsibleGroups</td>
 <td><code>bool</code></td>
 <td>Whether to allow collapsing groups in the theme switcher.</td>
-<td><code>true</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>expandGroups</td>
+<td><code>bool</code></td>
+<td>Whether to expand theme groups by default.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>logo</td>
@@ -2401,6 +2401,12 @@ an aggregated report for all selected features.</p>
 <td>collapsibleGroups</td>
 <td><code>bool</code></td>
 <td>Whether to allow collapsing theme groups.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>expandGroups</td>
+<td><code>bool</code></td>
+<td>Whether to expand theme groups by default.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
