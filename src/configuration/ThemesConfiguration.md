@@ -90,7 +90,8 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
       ...
     ], "groups": [
       {
-        "title": <Group title>,
+        "title": "<Group title>",
+        "titleMsgId": "<Group title translation msgID>",
         "items": [{ <ThemeDefinition> }, ...],
         "groups": [ { <Group> }, ...]
         },
