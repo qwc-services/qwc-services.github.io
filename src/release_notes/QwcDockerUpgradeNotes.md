@@ -1,3 +1,21 @@
+# Updating to qwc-map-viewer:v2025.11.12
+
+`qwc-map-viewer:v2025.11.12` now supports reading editConfigs from imported layers if the service capabilities, returned by a `qwc-ogc-service`, report an `EditConfig` address. For this to work, also update to `qwc-config-generator:v2025.11.12` and `qwc-ogc-service:v2025.11.12` and ensure your `tenantConfig.json` contains an `edit_config` entry in the `ogc` service configuration as follows:
+```
+      "name": "ogc",
+      "generator_config": {
+        "wms_services": {
+          "online_resources": {
+            "service": "/ows/",
+            "feature_info": "/api/v1/featureinfo/",
+            "legend": "/api/v1/legend/",
+            "edit_config": "/editConfig.json?map="
+          }
+        }
+      },
+      ...
+```
+
 # Updating to qwc-admin-gui:v2025.11.05
 
 The `qwc-admin-gui:v2025.11.05` uses the new possibilities to abort the config generator workers introduced in `qwc-config-generator:v2025.11.05`. When updating to `qwc-admin-gui:v2025.11.05`, also update to `qwc-config-generator:v2025.11.05`.
