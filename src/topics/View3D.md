@@ -47,6 +47,10 @@ To enable the 3D view, you need to configure the plugin in `config.json`. A typi
 *NOTE*:
 
 * The `menuItems` and `toolbarItems` can contain both 3D tools as well as generic tools (which are not specifically 2D map tools). If you run the 3D View in split-screen 3D+2D mode, only 3D tools will be displayed in the 3D window toolbar and menu. If you run the 3D View in fullscreen, all configured entries will be displayed.
+* If you want to keep the identify tool active while a 3D tool is active, you can add `"mapClickAction": "identify"`, for example:
+
+      `{"key": "LayerTree3D", "icon": "layers", "mapClickAction": "identify"},
+
 * Consult the [View3D plugin reference](../references/qwc2_plugins.md#view3d) as well as well as the [3D tool plugins reference](../references/qwc2_plugins.md#3d-plugins) for additional configuation options.
 
 Next, to add a 3D View to a theme, add a `map3d` configuration to the desired theme item in [`themesConfig.json`](../configuration/ThemesConfiguration.md#manual-theme-configuration):
