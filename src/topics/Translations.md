@@ -36,7 +36,7 @@ Then, to localize a theme:
 
 1. In `QGIS → Project Properties → General`, generate a project translation file by selecting the source language and pressing `Generate TS File`.
 2. Rename the generated `<projectname>.ts` to `<projectname>_<lang>.ts`, where `<lang>` is language code like `de` or `de-CH`.
-3. Open the `<projectname>_<lang>.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as "finished" in Qt Linguist
+3. Open the `<projectname>_<lang>.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as "finished" in Qt Linguist.
 
 Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file `<projectname>_<lang>.json` structured as follows:
 ```json
@@ -44,6 +44,13 @@ Since the QGIS project translations mechanism does not currently allow translati
   "layertree": {
     "<layer_name>": "<translated_layer_name>",
     ...
+  },
+  "layers": {
+    "<layer_name>": {
+      "fields": {
+        "<field_name>": "<translated_field_name>"
+      }
+    }
   },
   "layouts": {
     "<layout_name>": "<translated_layout_name>",
@@ -57,9 +64,12 @@ Since the QGIS project translations mechanism does not currently allow translati
 
 Where:
 
-- `layertree` is used to translated layer/group names. Most layer names can be translated via `.ts` files, but for instance group names of embedded projects are currently not handled by QGIS.
+- `layertree` is used to translated layer/group names. Most layer names can be translated via `.ts` files, but for instance group names of embedded projects are currently not handled by QGIS. Note that `<layer_name>` is a technical layer name (or short name, if set), not a layer title.
+- `layers` is used to translate layer attributes, where `<layer_name>` is again a technical layer name, and `<filed_name>` a technical field name (i.e. not alias).
 - `layouts` is used to translate print layout names. Note that if you want to translate the name of a (print layout templates)[Printing.md#layout-templates], the `layout_name` may need to include the path portion of the layout (i.e. `<subdir>/<layout_name>`).
 - `theme` is used to translate the theme title (and possibly other strings in the future)
+
+*Note*: You can also manage all string translations in the auxiliary `json` file and avoid using the `.ts` based mechanism.
 
 Finally, run the `ConfigGenerator` to include the translated theme names in the themes configuration.
 
