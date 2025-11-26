@@ -180,7 +180,7 @@ Then, to localize a theme:
 
 1. In `QGIS → Project Properties → General`, generate a project translation file by selecting the source language and pressing `Generate TS File`.
 2. Rename the generated `&lt;projectname&gt;.ts` to `&lt;projectname&gt;_&lt;lang&gt;.ts`, where `&lt;lang&gt;` is language code like `de` or `de-CH`.
-3. Open the `&lt;projectname&gt;_&lt;lang&gt;.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as &quot;finished&quot; in Qt Linguist
+3. Open the `&lt;projectname&gt;_&lt;lang&gt;.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as &quot;finished&quot; in Qt Linguist.
 
 Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file `&lt;projectname&gt;_&lt;lang&gt;.json` structured as follows:
 ```json
@@ -188,6 +188,13 @@ Since the QGIS project translations mechanism does not currently allow translati
   &quot;layertree&quot;: {
     &quot;&lt;layer_name&gt;&quot;: &quot;&lt;translated_layer_name&gt;&quot;,
     ...
+  },
+  &quot;layers&quot;: {
+    &quot;&lt;layer_name&gt;&quot;: {
+      &quot;fields&quot;: {
+        &quot;&lt;field_name&gt;&quot;: &quot;&lt;translated_field_name&gt;&quot;
+      }
+    }
   },
   &quot;layouts&quot;: {
     &quot;&lt;layout_name&gt;&quot;: &quot;&lt;translated_layout_name&gt;&quot;,
@@ -200,10 +207,12 @@ Since the QGIS project translations mechanism does not currently allow translati
 </code></pre>
 <p>Where:</p>
 <ul>
-<li><code>layertree</code> is used to translated layer/group names. Most layer names can be translated via <code>.ts</code> files, but for instance group names of embedded projects are currently not handled by QGIS.</li>
+<li><code>layertree</code> is used to translated layer/group names. Most layer names can be translated via <code>.ts</code> files, but for instance group names of embedded projects are currently not handled by QGIS. Note that <code>&lt;layer_name&gt;</code> is a technical layer name (or short name, if set), not a layer title.</li>
+<li><code>layers</code> is used to translate layer attributes, where <code>&lt;layer_name&gt;</code> is again a technical layer name, and <code>&lt;filed_name&gt;</code> a technical field name (i.e. not alias).</li>
 <li><code>layouts</code> is used to translate print layout names. Note that if you want to translate the name of a (print layout templates)[Printing.md#layout-templates], the <code>layout_name</code> may need to include the path portion of the layout (i.e. <code>&lt;subdir&gt;/&lt;layout_name&gt;</code>).</li>
 <li><code>theme</code> is used to translate the theme title (and possibly other strings in the future)</li>
 </ul>
+<p><em>Note</em>: You can also manage all string translations in the auxiliary <code>json</code> file and avoid using the <code>.ts</code> based mechanism.</p>
 <p>Finally, run the <code>ConfigGenerator</code> to include the translated theme names in the themes configuration.</p>
 <p>You can specify common translations which will be applied to all themes by adding a <code>maptranslations</code> block to the viewer translations (see below) in the form</p>
 <pre><code>{
