@@ -20,6 +20,18 @@ As a prerequisite, the [`get_translations`](https://github.com/qwc-services/qwc-
     ...
 ```
 
+Also, ensure a `tsconfig.json` file exists in in `volumes/qwc2/translations` containing the list of translatable languages, for example:
+```
+{
+  "languages": [
+    "de-DE",
+    "de-CH",
+    "en-US",
+    "it-IT"
+  ]
+}
+  ```
+
 Then, to localize a theme:
 
 1. In `QGIS → Project Properties → General`, generate a project translation file by selecting the source language and pressing `Generate TS File`.
