@@ -37,11 +37,6 @@
           "type": "boolean",
           "default": false
         },
-        "max_memory": {
-          "description": "Maximum Java heap size for compiling like 1024M or 2G.",
-          "type": "string",
-          "default": "1024M"
-        },
         "locale": {
           "description": "The JVM locale, as a `<lang>_<COUNTRY>` string.",
           "type": "string",

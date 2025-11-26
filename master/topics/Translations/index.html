@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Translations - QWC - 2025.11.18</title>
+    <title>Translations - QWC - 2025.11.19</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.18
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.19
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -134,7 +134,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.18</a>
+          <a href="../..">QWC - 2025.11.19</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -165,14 +165,26 @@
       - ./volumes/qgis-server-plugins/get_translations:/usr/share/qgis/python/plugins/get_translations:ro
     ...
 </code></pre>
-<p>Then, to localize a theme:</p>
-<ol>
-<li>In <code>QGIS → Project Properties → General</code>, generate a project translation file by selecting the source language and pressing <code>Generate TS File</code>.</li>
-<li>Rename the generated <code>&lt;projectname&gt;.ts</code> to <code>&lt;projectname&gt;_&lt;lang&gt;.ts</code>, where <code>&lt;lang&gt;</code> is language code like <code>de</code> or <code>de-CH</code>.</li>
-<li>Open the <code>&lt;projectname&gt;_&lt;lang&gt;.ts</code> with the <code>Qt Linguist</code> application and fill out the translations. Note that translations need to be marked as "finished" in Qt Linguist</li>
-</ol>
-<p>Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file <code>&lt;projectname&gt;_&lt;lang&gt;.json</code> structured as follows:</p>
-<pre><code class="language-json">{
+<p>Also, ensure a <code>tsconfig.json</code> file exists in in <code>volumes/qwc2/translations</code> containing the list of translatable languages, for example:</p>
+<pre><code>{
+  &quot;languages&quot;: [
+    &quot;de-DE&quot;,
+    &quot;de-CH&quot;,
+    &quot;en-US&quot;,
+    &quot;it-IT&quot;
+  ]
+}
+  ```
+
+Then, to localize a theme:
+
+1. In `QGIS → Project Properties → General`, generate a project translation file by selecting the source language and pressing `Generate TS File`.
+2. Rename the generated `&lt;projectname&gt;.ts` to `&lt;projectname&gt;_&lt;lang&gt;.ts`, where `&lt;lang&gt;` is language code like `de` or `de-CH`.
+3. Open the `&lt;projectname&gt;_&lt;lang&gt;.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as &quot;finished&quot; in Qt Linguist
+
+Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file `&lt;projectname&gt;_&lt;lang&gt;.json` structured as follows:
+```json
+{
   &quot;layertree&quot;: {
     &quot;&lt;layer_name&gt;&quot;: &quot;&lt;translated_layer_name&gt;&quot;,
     ...

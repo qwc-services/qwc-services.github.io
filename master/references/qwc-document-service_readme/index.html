@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC - 2025.11.18</title>
+    <title>Qwc document service readme - QWC - 2025.11.19</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.18
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.19
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.18</a>
+          <a href="../..">QWC - 2025.11.19</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -197,7 +197,6 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;service&quot;: &quot;document&quot;,
   &quot;config&quot;: {
     &quot;report_dir&quot;: &quot;/path/to/report/dir&quot;,
-    &quot;max_memory&quot;: &quot;1024M&quot;,
     &quot;virtualizer&quot;: {
       &quot;swapfile_blocksize&quot;: 4096,
       &quot;swapfile_mingrowcount&quot; : 100,
@@ -219,6 +218,21 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </code></pre>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables can be set</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX_MEMORY</code></td>
+<td>Maximum Java heap size for compiling like <code>1024M</code> or <code>2G</code>. Default: <code>1024M</code>.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
