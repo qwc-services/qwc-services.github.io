@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Viewer - QWC - 2025.11.19</title>
+    <title>Viewer - QWC - 2025.11.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.19
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -166,7 +166,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.19</a>
+          <a href="../..">QWC - 2025.11.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -539,16 +539,16 @@ All settings are optional, with fallback to the default values as documented.</p
 <p>In general, the procedure for enabling a plugin is:</p>
 <ul>
 <li>Make sure the plugin is compiled into the application (see <a href="#build-time configuration">Build-time configuration</a>).</li>
-<li>In the <code>plugins</code> section of <code>config.json</code>, below <code>common</code> (or <code>mobile</code> and/or <code>desktop</code>), add an entry</li>
-</ul>
-<pre><code class="language-json">{
-    &quot;name&quot;: &quot;&lt;Plugin name&gt;&quot;,
-    &quot;cfg&quot;: {
-      &lt;Plugin configuration props&gt;
-    }
-}
-</code></pre>
-<ul>
+<li>In the <code>plugins</code> section of <code>config.json</code>, below <code>common</code> (or <code>mobile</code> and/or <code>desktop</code>), add an entry
+    <code>json
+    {
+        "name": "&lt;Plugin name&gt;",
+        "cfg": {
+          &lt;Plugin configuration props&gt;
+        },
+        "order": &lt;render_order&gt;
+    }</code>
+    where <code>order</code> is optional and denotes the render order, useful to control the tab-focus order. Default is <code>0</code>, can be an arbitrary positive or negative number.</li>
 <li>For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in <code>menuItems</code> and/or <code>toolbarItems</code> in the <code>TopBar</code> configuration. The format of these entires is as follows:</li>
 </ul>
 <table>

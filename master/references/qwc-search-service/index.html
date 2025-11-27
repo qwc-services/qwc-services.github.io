@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc search service - QWC - 2025.11.19</title>
+    <title>Qwc search service - QWC - 2025.11.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.19
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.19</a>
+          <a href="../..">QWC - 2025.11.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -287,7 +287,7 @@
             />
         </svg>
     <a href="#config_search_backend" onclick="anchorLink('config_search_backend')">search_backend</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Search backend: solr or trgm. Default: solr.</p>
+<span class="description"><p>Search backend: solr or pg. Default: solr.</p>
 </span>
 
 
@@ -518,18 +518,18 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionconfig_trgm_feature_query_template">
+<div class="accordion" id="accordionconfig_pg_feature_query">
     <div class="card">
-        <div class="card-header" id="headingconfig_trgm_feature_query_template">
+        <div class="card-header" id="headingconfig_pg_feature_query">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_feature_query_template"
-                        aria-expanded="" aria-controls="config_trgm_feature_query_template" onclick="setAnchor('#config_trgm_feature_query_template')"><span class="property-name">trgm_feature_query_template</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_pg_feature_query"
+                        aria-expanded="" aria-controls="config_pg_feature_query" onclick="setAnchor('#config_pg_feature_query')"><span class="property-name">pg_feature_query</span></button>
             </h2>
         </div>
 
-        <div id="config_trgm_feature_query_template"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_feature_query_template"
-             data-parent="#accordionconfig_trgm_feature_query_template">
+        <div id="config_pg_feature_query"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_pg_feature_query"
+             data-parent="#accordionconfig_pg_feature_query">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -546,8 +546,172 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#config_trgm_feature_query_template" onclick="anchorLink('config_trgm_feature_query_template')">trgm_feature_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Jinja template string to generate the feature query SQL. The following variables are passed to the template: <code>searchtext</code> (the full search text, as a string), <code>words</code> (the single words of the search text, as an array), <code>facets</code> (the permitted search facets, as an array) and <code>facetlimit</code> (maximum number of results per facet). The generated SQL can accept the same placeholder parameters and must return the columns as documented in <code>trgm_feature_query</code>.</p>
+    <a href="#config_pg_feature_query" onclick="anchorLink('config_pg_feature_query')">pg_feature_query</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Postgres feature query SQL. You can use the placeholder parameters <code>:term</code> (full search string), <code>:terms</code> (list of words of the search string), <code>:thres</code> (similarity threshold), <code>:facets</code> (the permitted search facets, as a list) and <code>:facetlimit</code> (maximum number of results per facet). The query must return the columns display, facet<em>id, id</em>field<em>name, feature</em>id, bbox (as a <code>[xmin,ymin,xmax,ymax]</code> string), srid.</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_pg_feature_query_template">
+    <div class="card">
+        <div class="card-header" id="headingconfig_pg_feature_query_template">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_pg_feature_query_template"
+                        aria-expanded="" aria-controls="config_pg_feature_query_template" onclick="setAnchor('#config_pg_feature_query_template')"><span class="property-name">pg_feature_query_template</span></button>
+            </h2>
+        </div>
+
+        <div id="config_pg_feature_query_template"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_pg_feature_query_template"
+             data-parent="#accordionconfig_pg_feature_query_template">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_pg_feature_query_template" onclick="anchorLink('config_pg_feature_query_template')">pg_feature_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Jinja template string to generate the feature query SQL. The following variables are passed to the template: <code>searchtext</code> (the full search text, as a string), <code>words</code> (the single words of the search text, as an array), <code>facets</code> (the permitted search facets, as an array) and <code>facetlimit</code> (maximum number of results per facet). The generated SQL can accept the same placeholder parameters and must return the columns as documented in <code>pg_feature_query</code>.</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_pg_layer_query">
+    <div class="card">
+        <div class="card-header" id="headingconfig_pg_layer_query">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_pg_layer_query"
+                        aria-expanded="" aria-controls="config_pg_layer_query" onclick="setAnchor('#config_pg_layer_query')"><span class="property-name">pg_layer_query</span></button>
+            </h2>
+        </div>
+
+        <div id="config_pg_layer_query"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_pg_layer_query"
+             data-parent="#accordionconfig_pg_layer_query">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_pg_layer_query" onclick="anchorLink('config_pg_layer_query')">pg_layer_query</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Postgres layer query SQL. You can use the placeholder parameters <code>:term</code> (full search string), <code>:terms</code> (list of words of the search string), <code>:thres</code> (similarity threshold) and <code>:facets</code> (the permitted search facets, as a list). The query must return the columns display, dataproduct<em>id, dset</em>info, sublayers, stacktype.</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_pg_layer_query_template">
+    <div class="card">
+        <div class="card-header" id="headingconfig_pg_layer_query_template">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_pg_layer_query_template"
+                        aria-expanded="" aria-controls="config_pg_layer_query_template" onclick="setAnchor('#config_pg_layer_query_template')"><span class="property-name">pg_layer_query_template</span></button>
+            </h2>
+        </div>
+
+        <div id="config_pg_layer_query_template"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_pg_layer_query_template"
+             data-parent="#accordionconfig_pg_layer_query_template">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_pg_layer_query_template" onclick="anchorLink('config_pg_layer_query_template')">pg_layer_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>Jinja template string to generate the layer query SQL. The following variables are passed to the template: <code>searchtext</code> (the full search text, as a string), <code>words</code> (the single words of the search text, as an array) and <code>facets</code> (the permitted search facets, as an array). The generated SQL can accept the same placeholder parameters and must return the columns as documented in <code>pg_layer_query</code>.</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_pg_facet_search_limit">
+    <div class="card">
+        <div class="card-header" id="headingconfig_pg_facet_search_limit">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_pg_facet_search_limit"
+                        aria-expanded="" aria-controls="config_pg_facet_search_limit" onclick="setAnchor('#config_pg_facet_search_limit')"><span class="property-name">pg_facet_search_limit</span></button>
+            </h2>
+        </div>
+
+        <div id="config_pg_facet_search_limit"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_pg_facet_search_limit"
+             data-parent="#accordionconfig_pg_facet_search_limit">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_pg_facet_search_limit" onclick="anchorLink('config_pg_facet_search_limit')">pg_facet_search_limit</a></div><span class="badge badge-dark value-type">Type: number</span> <span class="badge badge-success default-value">Default: 50</span><br/>
+<span class="description"><p>Postgres search result limit per facet. Controls the <code>facetlimit</code> parameter passed to the <code>trgm_feature_query</code>. Note: <code>trgm_facet_search_limit + 1</code> will be passed to the query, and the results will be limited to <code>trgm_facet_search_limit</code> in the backed, in order to discover where more than <code>trgm_facet_search_limit</code> results exist, in which case the backend will return <code>count: -1</code> in the facet result counts. </p>
 </span>
 
 
@@ -588,7 +752,7 @@
             />
         </svg>
     <a href="#config_trgm_feature_query" onclick="anchorLink('config_trgm_feature_query')">trgm_feature_query</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Trigram feature query SQL. You can use the placeholder parameters <code>:term</code> (full search string), <code>:terms</code> (list of words of the search string), <code>:thres</code> (similarity threshold), <code>:facets</code> (the permitted search facets, as a list) and <code>:facetlimit</code> (maximum number of results per facet). The query must return the columns display, facet<em>id, id</em>field<em>name, feature</em>id, bbox (as a <code>[xmin,ymin,xmax,ymax]</code> string), srid.</p>
+<span class="description"><p>DEPRECATED - use pg<em>feature</em>query instead</p>
 </span>
 
 
@@ -600,18 +764,18 @@
         </div>
     </div>
 </div>
-<div class="accordion" id="accordionconfig_trgm_layer_query_template">
+<div class="accordion" id="accordionconfig_trgm_feature_query_template">
     <div class="card">
-        <div class="card-header" id="headingconfig_trgm_layer_query_template">
+        <div class="card-header" id="headingconfig_trgm_feature_query_template">
             <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_layer_query_template"
-                        aria-expanded="" aria-controls="config_trgm_layer_query_template" onclick="setAnchor('#config_trgm_layer_query_template')"><span class="property-name">trgm_layer_query_template</span></button>
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_feature_query_template"
+                        aria-expanded="" aria-controls="config_trgm_feature_query_template" onclick="setAnchor('#config_trgm_feature_query_template')"><span class="property-name">trgm_feature_query_template</span></button>
             </h2>
         </div>
 
-        <div id="config_trgm_layer_query_template"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_layer_query_template"
-             data-parent="#accordionconfig_trgm_layer_query_template">
+        <div id="config_trgm_feature_query_template"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_feature_query_template"
+             data-parent="#accordionconfig_trgm_feature_query_template">
             <div class="card-body pl-5">
 
     <div class="breadcrumbs">root
@@ -628,8 +792,8 @@
                 d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
             />
         </svg>
-    <a href="#config_trgm_layer_query_template" onclick="anchorLink('config_trgm_layer_query_template')">trgm_layer_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Jinja template string to generate the layer query SQL. The following variables are passed to the template: <code>searchtext</code> (the full search text, as a string), <code>words</code> (the single words of the search text, as an array) and <code>facets</code> (the permitted search facets, as an array). The generated SQL can accept the same placeholder parameters and must return the columns as documented in <code>trgm_layer_query</code>.</p>
+    <a href="#config_trgm_feature_query_template" onclick="anchorLink('config_trgm_feature_query_template')">trgm_feature_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>DEPRECATED - use pg<em>feature</em>query_template instead</p>
 </span>
 
 
@@ -670,7 +834,89 @@
             />
         </svg>
     <a href="#config_trgm_layer_query" onclick="anchorLink('config_trgm_layer_query')">trgm_layer_query</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
-<span class="description"><p>Trigram layer query SQL. You can use the placeholder parameters <code>:term</code> (full search string), <code>:terms</code> (list of words of the search string), <code>:thres</code> (similarity threshold) and <code>:facets</code> (the permitted search facets, as a list). The query must return the columns display, dataproduct<em>id, dset</em>info, sublayers, stacktype.</p>
+<span class="description"><p>DEPRECATED - use pg<em>layer</em>query instead</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_trgm_layer_query_template">
+    <div class="card">
+        <div class="card-header" id="headingconfig_trgm_layer_query_template">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_layer_query_template"
+                        aria-expanded="" aria-controls="config_trgm_layer_query_template" onclick="setAnchor('#config_trgm_layer_query_template')"><span class="property-name">trgm_layer_query_template</span></button>
+            </h2>
+        </div>
+
+        <div id="config_trgm_layer_query_template"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_layer_query_template"
+             data-parent="#accordionconfig_trgm_layer_query_template">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_trgm_layer_query_template" onclick="anchorLink('config_trgm_layer_query_template')">trgm_layer_query_template</a></div><span class="badge badge-dark value-type">Type: string</span><br/>
+<span class="description"><p>DEPRECATED - use pg<em>layer</em>query_template instead</p>
+</span>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="accordion" id="accordionconfig_trgm_facet_search_limit">
+    <div class="card">
+        <div class="card-header" id="headingconfig_trgm_facet_search_limit">
+            <h2 class="mb-0">
+                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_facet_search_limit"
+                        aria-expanded="" aria-controls="config_trgm_facet_search_limit" onclick="setAnchor('#config_trgm_facet_search_limit')"><span class="property-name">trgm_facet_search_limit</span></button>
+            </h2>
+        </div>
+
+        <div id="config_trgm_facet_search_limit"
+             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_facet_search_limit"
+             data-parent="#accordionconfig_trgm_facet_search_limit">
+            <div class="card-body pl-5">
+
+    <div class="breadcrumbs">root
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config" onclick="anchorLink('config')">config</a>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fill-rule="evenodd"
+                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+            />
+        </svg>
+    <a href="#config_trgm_facet_search_limit" onclick="anchorLink('config_trgm_facet_search_limit')">trgm_facet_search_limit</a></div><span class="badge badge-dark value-type">Type: number</span> <span class="badge badge-success default-value">Default: 50</span><br/>
+<span class="description"><p>DEPRECATED - use pg<em>facet</em>search_limit instead</p>
 </span>
 
 
@@ -712,47 +958,6 @@
         </svg>
     <a href="#config_trgm_similarity_threshold" onclick="anchorLink('config_trgm_similarity_threshold')">trgm_similarity_threshold</a></div><span class="badge badge-dark value-type">Type: number</span><br/>
 <span class="description"><p>Trigram similarity treshold. Default: 0.3</p>
-</span>
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="accordion" id="accordionconfig_trgm_facet_search_limit">
-    <div class="card">
-        <div class="card-header" id="headingconfig_trgm_facet_search_limit">
-            <h2 class="mb-0">
-                <button class="btn btn-link property-name-button" type="button" data-toggle="collapse" data-target="#config_trgm_facet_search_limit"
-                        aria-expanded="" aria-controls="config_trgm_facet_search_limit" onclick="setAnchor('#config_trgm_facet_search_limit')"><span class="property-name">trgm_facet_search_limit</span></button>
-            </h2>
-        </div>
-
-        <div id="config_trgm_facet_search_limit"
-             class="collapse property-definition-div" aria-labelledby="headingconfig_trgm_facet_search_limit"
-             data-parent="#accordionconfig_trgm_facet_search_limit">
-            <div class="card-body pl-5">
-
-    <div class="breadcrumbs">root
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config" onclick="anchorLink('config')">config</a>
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-            />
-        </svg>
-    <a href="#config_trgm_facet_search_limit" onclick="anchorLink('config_trgm_facet_search_limit')">trgm_facet_search_limit</a></div><span class="badge badge-dark value-type">Type: number</span> <span class="badge badge-success default-value">Default: 50</span><br/>
-<span class="description"><p>Trigram search result limit per facet. Controls the <code>facetlimit</code> parameter passed to the <code>trgm_feature_query</code>. Note: <code>trgm_facet_search_limit + 1</code> will be passed to the query, and the results will be limited to <code>trgm_facet_search_limit</code> in the backed, in order to discover where more than <code>trgm_facet_search_limit</code> results exist, in which case the backend will return <code>count: -1</code> in the facet result counts. </p>
 </span>
 
 
@@ -1330,7 +1535,7 @@
 </div>
 
     <footer>
-        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-11-26 at 12:54:03 +0000</p>
+        <p class="generated-by-footer">Generated using <a href="https://github.com/coveooss/json-schema-for-humans">json-schema-for-humans</a> on 2025-11-27 at 11:01:36 +0000</p>
     </footer></body>
 <p></html></p>
               

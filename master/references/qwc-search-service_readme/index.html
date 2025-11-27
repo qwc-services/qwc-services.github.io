@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc search service readme - QWC - 2025.11.19</title>
+    <title>Qwc search service readme - QWC - 2025.11.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.19
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.19</a>
+          <a href="../..">QWC - 2025.11.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -258,11 +258,11 @@ curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
 <p>If you encounter permission problems with the solr service then try the following command:</p>
 <pre><code>chown 8983:8983 volumes/solr/data
 </code></pre>
-<h3 id="trgm-backend">Trgm backend<a class="headerlink" href="#trgm-backend" title="Permanent link">&para;</a></h3>
-<p>You can choose the trgm backend by setting</p>
-<pre><code>"search_backend": "trgm"
+<h3 id="postgres-backend">Postgres backend<a class="headerlink" href="#postgres-backend" title="Permanent link">&para;</a></h3>
+<p>You can choose the pg backend by setting</p>
+<pre><code>"search_backend": "pg"
 </code></pre>
-<p>and setting the <code>trgm_feature_query</code>, <code>trgm_layer_query</code>, <code>trgm_similarity_threshold</code> variables. See also the <a href="https://qwc-services.github.io/master/topics/Search/#configuring-the-fulltext-search-service">Search chapter in the qwc-services documentation</a>.</p>
+<p>and setting the <code>pg_feature_query</code>, <code>pg_layer_query</code> variables. See also the <a href="https://qwc-services.github.io/master/topics/Search/#configuring-the-fulltext-search-service">Search chapter in the qwc-services documentation</a>.</p>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <table>
@@ -276,7 +276,7 @@ curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
 <tbody>
 <tr>
 <td>SEARCH_BACKEND</td>
-<td>Search backend</td>
+<td>Search backend, 'solr' or 'pg'</td>
 <td><code>solr</code></td>
 </tr>
 <tr>
@@ -305,23 +305,23 @@ curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
 <td></td>
 </tr>
 <tr>
-<td>TRGM_FEATURE_QUERY</td>
-<td>Feature query SQL (trigram backend)</td>
+<td>PG_FEATURE_QUERY</td>
+<td>Feature query SQL (pg backend)</td>
 <td></td>
 </tr>
 <tr>
-<td>TRGM_FEATURE_QUERY_TEMPLATE</td>
-<td>Feature query SQL Jinja template (trigram backend)</td>
+<td>PG_FEATURE_QUERY_TEMPLATE</td>
+<td>Feature query SQL Jinja template (pg backend)</td>
 <td></td>
 </tr>
 <tr>
-<td>TRGM_LAYER_QUERY_TEMPLATE</td>
-<td>Layer query SQL Jinja template (trigram backend)</td>
+<td>PG_FEATURE_QUERY</td>
+<td>Feature query SQL (pg backend)</td>
 <td></td>
 </tr>
 <tr>
 <td>TRGM_SIMILARITY_THRESHOLD</td>
-<td>Trigram similarity treshold (trigram backend)</td>
+<td>Trigram similarity treshold (pg backend)</td>
 <td><code>0.3</code></td>
 </tr>
 </tbody>
@@ -356,7 +356,7 @@ curl -g 'http://localhost:5011/geom/ne_10m_admin_0_countries/?filter=[["ogc_fid"
 <p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Run all tests:</p>
-<pre><code>python test.py
+<pre><code>PYTHONPATH=$PWD/src uv run test.py
 </code></pre>
               
             </div>
