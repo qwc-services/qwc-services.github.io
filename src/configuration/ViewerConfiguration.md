@@ -168,14 +168,16 @@ In general, the procedure for enabling a plugin is:
 
 * Make sure the plugin is compiled into the application (see [Build-time configuration](#build-time configuration)).
 * In the `plugins` section of `config.json`, below `common` (or `mobile` and/or `desktop`), add an entry
-```json
-{
-    "name": "<Plugin name>",
-    "cfg": {
-      <Plugin configuration props>
+    ```json
+    {
+        "name": "<Plugin name>",
+        "cfg": {
+          <Plugin configuration props>
+        },
+        "order": <render_order>
     }
-}
-```
+    ```
+    where `order` is optional and denotes the render order, useful to control the tab-focus order. Default is `0`, can be an arbitrary positive or negative number.
 * For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in `menuItems` and/or `toolbarItems` in the `TopBar` configuration. The format of these entires is as follows:
 
 | Setting                                    | Description                                                                       |
