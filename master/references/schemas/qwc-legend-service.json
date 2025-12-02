@@ -46,6 +46,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "qgis_server_identity_parameter": {
+          "description": "Name of the GET parameter through which the active QWC user will be sent to QGIS Server, to be used i.e. in plugins. Default: `QWC_USERNAME`",
+          "type": "string"
         }
       },
       "required": [

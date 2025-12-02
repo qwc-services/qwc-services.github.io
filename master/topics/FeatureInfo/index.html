@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Feature info - QWC - 2025.11.26</title>
+    <title>Feature info - QWC - 2025.11.27</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.11.26
+          <a href="../.." class="icon icon-home"> QWC - 2025.11.27
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -152,7 +152,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.11.26</a>
+          <a href="../..">QWC - 2025.11.27</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -208,7 +208,26 @@
   &quot;template&quot;: &quot;&lt;div&gt;&lt;h2&gt;Demo Template&lt;/h2&gt;Pos: {{ x }}, {{ y }}&lt;br&gt;Name: {{ feature.Name }}&lt;/div&gt;&quot;
 }
 </code></pre>
-<p><em>Note:</em> <code>x</code>, <code>y</code> and <code>geom</code> are passed as parameters to the SQL query. If a <code>GetFeatureInfo</code> request is being processed with a <code>filter_geom</code> parameter, <code>geom</code> will correspond to that parameter. Otherwise <code>geom</code> will be <code>POINT(x y)</code>.</p>
+<p>In a DB Query the following values are replaced in the SQL:</p>
+<ul>
+<li><code>:x</code>: X coordinate of query</li>
+<li><code>:y</code>: Y coordinate of query</li>
+<li><code>:srid</code>: SRID of query coordinates</li>
+<li><code>:resolution</code>: Resolution in map units per pixel</li>
+<li><code>:FI_POINT_TOLERANCE</code>: Tolerance for picking points, in pixels (default=16)</li>
+<li><code>:FI_LINE_TOLERANCE</code>: Tolerance for picking lines, in pixels (default=8)</li>
+<li><code>:FI_POLYGON_TOLERANCE</code>: Tolerance for picking polygons, in pixels (default=4)</li>
+<li><code>:i</code>: X ordinate of query point on map, in pixels</li>
+<li><code>:j</code>: Y ordinate of query point on map, in pixels</li>
+<li><code>:height</code>: Height of map output, in pixels</li>
+<li><code>:width</code>: Width of map output, in pixels</li>
+<li><code>:bbox</code>: 'Bounding box for map extent as minx,miny,maxx,maxy'</li>
+<li><code>:crs</code>: 'CRS for map extent'</li>
+<li><code>:feature_count</code>: Max feature count</li>
+<li><code>:with_geometry</code>: Whether to return geometries in response (default=1)</li>
+<li><code>:with_maptip</code>: Whether to return maptip in response (default=1)</li>
+<li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
+</ul>
 <h3 id="attribute-values-html-markup-hyperlinks-images">Attribute values: HTML markup, hyperlinks, images<a class="headerlink" href="#attribute-values-html-markup-hyperlinks-images" title="Permanent link">&para;</a></h3>
 <p>In general, HTML markup in attribute values is preserved.</p>
 <p>For displaying interactive hyperlinks, the following options are supported:</p>
@@ -294,17 +313,40 @@
   &quot;template_path&quot;: &quot;/info_templates/template.html&quot;
 }
 </code></pre>
-<p><em>Note:</em></p>
+<p>The template must only contain the body content (without <code>head</code>, <code>script</code>, <code>body</code>).</p>
+<p>This template can contain attribute value placeholders, in the form</p>
+<pre><code>{{ feature.attr }}
+</code></pre>
+<p>which are replaced with the respective values when the template is rendered (using <a href="http://jinja.pocoo.org/">Jinja2</a>).
+The following values are available in the template:</p>
 <ul>
-<li><code>x</code> and <code>y</code> are the info query coordinates. <code>feature.&lt;attr&gt;</code> renders the <code>attr</code> attribute value of the feature.</li>
-<li>The templates must be HTML fragments <em>without</em> <code>html</code> or <code>body</code> tags.</li>
-<li>The templates folder needs to be mounted into the <code>qwc-feature-info-service</code> container, i.e.:</li>
+<li><code>x</code>, <code>y</code>, <code>crs</code>: Coordinates and CRS of info query</li>
+<li><code>feature</code>: Feature with attributes from info result as properties, e.g. <code>feature.name</code></li>
+<li><code>fid</code>: Feature ID (if present)</li>
+<li><code>bbox</code>: Feature bounding box as <code>[&lt;minx&gt;, &lt;miny&gt;, &lt;maxx&gt;, &lt;maxy&gt;]</code> (if present)</li>
+<li><code>geometry</code>: Feature geometry as WKT (if present)</li>
+<li><code>layer</code>: Layer name</li>
 </ul>
-<pre><code class="language-yml">  qwc-feature-info-service:
-    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
-    volumes:
-      ...
-      - ./volumes/info-templates:/info_templates:ro
+<p>To automatically detect hyperlinks in values and replace them as HTML links as well as transform image URLs to inline images the following helper can be used in the template:</p>
+<pre><code>render_value(value)
+</code></pre>
+<p>When using <a href="../Translations/#translated-themes">localized themes</a>, if you want to make QWC translate the attribute names, enclose these in <code>translate()</code>.</p>
+<p>Example:</p>
+<pre><code class="language-xml">    &lt;div&gt;Result at coordinates {{ x }}, {{ y }}&lt;/div&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Name):&lt;/td&gt;
+            &lt;td&gt;{{ feature.name }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Description):&lt;/td&gt;
+            &lt;td&gt;{{ feature.description }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Link):&lt;/td&gt;
+            &lt;td&gt;{{ render_value(feature.link) }}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
 </code></pre>
 <h3 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">&para;</a></h3>
 <p>The <code>qwc-feature-info-service</code> supports switching the runtime locale by setting the <code>LOCALE</code> environment variable, i.e.:</p>
