@@ -50,7 +50,26 @@ With the `qwc-feature-info-service`, you can query features directly from a data
   "template": "<div><h2>Demo Template</h2>Pos: {{ x }}, {{ y }}<br>Name: {{ feature.Name }}</div>"
 }
 ```
-*Note:* `x`, `y` and `geom` are passed as parameters to the SQL query. If a `GetFeatureInfo` request is being processed with a `filter_geom` parameter, `geom` will correspond to that parameter. Otherwise `geom` will be `POINT(x y)`.
+
+In a DB Query the following values are replaced in the SQL:
+
+* `:x`: X coordinate of query
+* `:y`: Y coordinate of query
+* `:srid`: SRID of query coordinates
+* `:resolution`: Resolution in map units per pixel
+* `:FI_POINT_TOLERANCE`: Tolerance for picking points, in pixels (default=16)
+* `:FI_LINE_TOLERANCE`: Tolerance for picking lines, in pixels (default=8)
+* `:FI_POLYGON_TOLERANCE`: Tolerance for picking polygons, in pixels (default=4)
+* `:i`: X ordinate of query point on map, in pixels
+* `:j`: Y ordinate of query point on map, in pixels
+* `:height`: Height of map output, in pixels
+* `:width`: Width of map output, in pixels
+* `:bbox`: 'Bounding box for map extent as minx,miny,maxx,maxy'
+* `:crs`: 'CRS for map extent'
+* `:feature_count`: Max feature count
+* `:with_geometry`: Whether to return geometries in response (default=1)
+* `:with_maptip`: Whether to return maptip in response (default=1)
+* `:geom`: The `filter_geom` passed to the `GetFeatureInfo` request, if any, otherwise `POINT(x y)`
 
 ### Attribute values: HTML markup, hyperlinks, images
 
@@ -154,18 +173,48 @@ Example `info_template` with template path:
 }
 ```
 
-*Note:*
+The template must only contain the body content (without `head`, `script`, `body`).
 
-- `x` and `y` are the info query coordinates. `feature.<attr>` renders the `attr` attribute value of the feature.
-- The templates must be HTML fragments *without* `html` or `body` tags.
-- The templates folder needs to be mounted into the `qwc-feature-info-service` container, i.e.:
-```yml
-  qwc-feature-info-service:
-    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
-    volumes:
-      ...
-      - ./volumes/info-templates:/info_templates:ro
+This template can contain attribute value placeholders, in the form
+
+    {{ feature.attr }}
+
+which are replaced with the respective values when the template is rendered (using [Jinja2](http://jinja.pocoo.org/)).
+The following values are available in the template:
+
+* `x`, `y`, `crs`: Coordinates and CRS of info query
+* `feature`: Feature with attributes from info result as properties, e.g. `feature.name`
+* `fid`: Feature ID (if present)
+* `bbox`: Feature bounding box as `[<minx>, <miny>, <maxx>, <maxy>]` (if present)
+* `geometry`: Feature geometry as WKT (if present)
+* `layer`: Layer name
+
+To automatically detect hyperlinks in values and replace them as HTML links as well as transform image URLs to inline images the following helper can be used in the template:
+
+    render_value(value)
+
+When using [localized themes](./Translations.md#translated-themes), if you want to make QWC translate the attribute names, enclose these in `translate()`.
+
+Example:
+
+```xml
+    <div>Result at coordinates {{ x }}, {{ y }}</div>
+    <table>
+        <tr>
+            <td>translate(Name):</td>
+            <td>{{ feature.name }}</td>
+        </tr>
+        <tr>
+            <td>translate(Description):</td>
+            <td>{{ feature.description }}</td>
+        </tr>
+        <tr>
+            <td>translate(Link):</td>
+            <td>{{ render_value(feature.link) }}</td>
+        </tr>
+    </table>
 ```
+
 
 ### Localization
 

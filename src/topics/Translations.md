@@ -6,7 +6,7 @@ By default, QWC will attempt to load the translation matching your browser langu
 
 The [Settings Plugin](../references/qwc2_plugins.md#settings) furthermore allows graphically switching the language within QWC, with the list of available languages configured via the `languages` plugin configuration property.
 
-### Translated themes
+### Translated themes <a name="translated-themes"></a>
 
 QWC also supports localized themes, including in particular the theme name, layer and attribute names.
 
@@ -104,7 +104,7 @@ where `<lang>-<COUNTRY>` is a language-country code like `de-CH`.
 The service will then check if `myfile_<lang>-<COUNTRY>.ext` or `myfile_<lang>.ext` exist, returning the first possible match, falling back to `myfile.ext` if neither exists.
 
 
-### Adding and modifying Viewer translations
+### Adding and modifying viewer translations
 
 When working inside a `qwc-app` source folder, the translations are located at `qwc-app/static/translations`.
 
