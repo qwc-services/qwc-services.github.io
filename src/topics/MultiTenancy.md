@@ -17,14 +17,14 @@ Multi-tenancy works by extracting a tenant name from the request URL and passing
 
 The simplest approach is to extract the tenant name in a rewrite rule and set a corresponding header which will be read by the QWC services. This can be accomplished as follows:
 
-1. Define the name of the tenant header in `qwc-docker/docker-compose.yml` by setting the `TENANT_HEADER` environment variable in the `qwc-service-variables` block, i.e.:
+- Define the name of the tenant header in `qwc-docker/docker-compose.yml` by setting the `TENANT_HEADER` environment variable in the `qwc-service-variables` block, i.e.:
 ```yml
 x-qwc-service-variables: &qwc-service-variables
   [...]
   TENANT_HEADER: Tenant
 ```
 
-2. Add rewrite rules to the `api-gateway` configuration file `qwc-docker/api-gateway/nginx.conf`, extracting the tenant name and setting the tenant header. For example
+- Add rewrite rules to the `api-gateway` configuration file `qwc-docker/api-gateway/nginx.conf`, extracting the tenant name and setting the tenant header. For example
 
 ```
 server {
