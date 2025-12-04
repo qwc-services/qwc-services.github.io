@@ -163,16 +163,16 @@
 <pre><code>https://&lt;hostname&gt;/&lt;tenant&gt;/
 </code></pre>
 <p>The simplest approach is to extract the tenant name in a rewrite rule and set a corresponding header which will be read by the QWC services. This can be accomplished as follows:</p>
-<ol>
+<ul>
 <li>Define the name of the tenant header in <code>qwc-docker/docker-compose.yml</code> by setting the <code>TENANT_HEADER</code> environment variable in the <code>qwc-service-variables</code> block, i.e.:</li>
-</ol>
+</ul>
 <pre><code class="language-yml">x-qwc-service-variables: &amp;qwc-service-variables
   [...]
   TENANT_HEADER: Tenant
 </code></pre>
-<ol>
+<ul>
 <li>Add rewrite rules to the <code>api-gateway</code> configuration file <code>qwc-docker/api-gateway/nginx.conf</code>, extracting the tenant name and setting the tenant header. For example</li>
-</ol>
+</ul>
 <pre><code>server {
     listen       80;
     server_name  localhost;
