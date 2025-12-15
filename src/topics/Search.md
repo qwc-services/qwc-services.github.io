@@ -293,6 +293,7 @@ A facet references a searchable dataset. The configuration of the fulltext searc
             {
                 "name": "<facet name>",
                 "filter_word": "<filter word>",
+                "db_url": "<db_url>",
                 "table_name": "<schema.tablename>",
                 "geometry_column": "<geometry column name>",
                 "search_id_col": "<id column name>"
@@ -312,6 +313,7 @@ The facets describe a searchable dataset and are referenced by the search index:
 
 - `name` specifies the facet identifier.
 - `filter_word` is a short (human readable) name which appears as result category in the search results (i.e. `Address`).
+- `db_url` is optional and specified the DB which contains the table name specified by `table_name`. If not specified, the `db_url` of the search config is used.
 - `table_name` specifies the table containing the features referenced by the search index (in the format `schema.table_name`).
 - `geometry_column` specifies the name of the geometry column in this table.
 - `search_id_col` specifies the name of the id column in this table. If unset, field from search filter expression is used.
