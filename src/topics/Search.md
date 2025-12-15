@@ -454,7 +454,7 @@ corresponds to exactly one `<entity>` tag in the XML file.
 
 After the configuration file has been created, the search must be registered in `solr`.
 In the `volumes/solr/configsets/gdi/conf/solrconfig.xml` file you have to look for
-`<!-- SearchHandler` and add the following configuration
+`&lt;!-- SearchHandler` and add the following configuration
 
 ```xml
 <requestHandler name="/CONFIG_NAME" class="solr.DataImportHandler">
