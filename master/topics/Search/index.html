@@ -611,6 +611,7 @@
             {
                 &quot;name&quot;: &quot;&lt;facet name&gt;&quot;,
                 &quot;filter_word&quot;: &quot;&lt;filter word&gt;&quot;,
+                &quot;db_url&quot;: &quot;&lt;db_url&gt;&quot;,
                 &quot;table_name&quot;: &quot;&lt;schema.tablename&gt;&quot;,
                 &quot;geometry_column&quot;: &quot;&lt;geometry column name&gt;&quot;,
                 &quot;search_id_col&quot;: &quot;&lt;id column name&gt;&quot;
@@ -630,6 +631,7 @@
 <ul>
 <li><code>name</code> specifies the facet identifier.</li>
 <li><code>filter_word</code> is a short (human readable) name which appears as result category in the search results (i.e. <code>Address</code>).</li>
+<li><code>db_url</code> is optional and specified the DB which contains the table name specified by <code>table_name</code>. If not specified, the <code>db_url</code> of the search config is used.</li>
 <li><code>table_name</code> specifies the table containing the features referenced by the search index (in the format <code>schema.table_name</code>).</li>
 <li><code>geometry_column</code> specifies the name of the geometry column in this table.</li>
 <li><code>search_id_col</code> specifies the name of the id column in this table. If unset, field from search filter expression is used.</li>
