@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2025.12.18</title>
+    <title>Qwc2 plugins - QWC - 2025.12.19</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2025.12.18
+          <a href="../.." class="icon icon-home"> QWC - 2025.12.19
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -122,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2025.12.18</a>
+          <a href="../..">QWC - 2025.12.19</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -796,16 +796,16 @@ If the dataset it editable, the feature attributes can be edited directly in the
   &quot;pluginData&quot;: {
     &quot;geometryLinks&quot;: [
       {
-        &quot;name&quot;: &quot;&lt;geomLinkName&gt;&quot;,                // Link name referenced in theme item
-        &quot;title&quot;: &quot;&lt;geomLinkTitle&gt;&quot;,              // Link title, displayed in the selection combo
-        &quot;geomType&quot;: [&quot;&lt;geomType&gt;&quot;, &quot;&lt;geomType&gt;&quot;] // Supported geometry types (Point, LineString, Polygon)
-        &quot;format&quot;: &quot;wkt|geojson&quot;,                 // Format of data to send to application
-        &quot;url&quot;: &quot;&lt;targetApplicationUrl&gt;&quot;,         // Application target URL, receiving the POST submit. Can contain the $username$ placeholder parameter.
-        &quot;params&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;, ...}      // Optional: additional form parameters to post to URL
-        &quot;target&quot;: &quot;&lt;target&gt;&quot; | {                 // Optional: form POST target which to display the result
-          &quot;iframedialog&quot;: true,                  // Use an iframe dialog
-          &quot;w&quot;: &lt;dialogWidth&gt;,                    // Dialog width
-          &quot;h&quot;: &lt;dialogHeight&gt;                    // Dialog height
+        &quot;name&quot;: &quot;&lt;geomLinkName&gt;&quot;,                 // Link name referenced in theme item
+        &quot;title&quot;: &quot;&lt;geomLinkTitle&gt;&quot;,               // Link title, displayed in the selection combo
+        &quot;geomType&quot;: [&quot;&lt;geomType&gt;&quot;, &quot;&lt;geomType&gt;&quot;], // Supported geometry types (Point, LineString, Polygon)
+        &quot;format&quot;: &quot;wkt|geojson&quot;,                  // Format of data to send to application
+        &quot;url&quot;: &quot;&lt;targetApplicationUrl&gt;&quot;,          // Application target URL, receiving the POST submit. Can contain the $username$ placeholder parameter.
+        &quot;params&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;, ...}       // Optional: additional form parameters to post to URL
+        &quot;target&quot;: &quot;&lt;target&gt;&quot; | {                  // Optional: form POST target which to display the result
+          &quot;iframedialog&quot;: true,                   // Use an iframe dialog
+          &quot;w&quot;: &lt;dialogWidth&gt;,                     // Dialog width
+          &quot;h&quot;: &lt;dialogHeight&gt;                     // Dialog height
         }
       }
     ]
@@ -1849,6 +1849,24 @@ revision is published (specified via newsRev prop).</p>
 </table>
 <h2 id="obliqueview">ObliqueView<a name="obliqueview"></a><a class="headerlink" href="#obliqueview" title="Permanent link">&para;</a></h2>
 <p>Display oblique satellite imagery.</p>
+<p>Requires <code>obliqueImageryServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-oblique-imagery-service</code>.</p>
+<p>You can configure oblique imagery datasets in the <code>obliqueDatasets</code> entry in a QWC theme configuration as follows:</p>
+<pre><code>{
+  ...
+  &quot;obliqueDatasets&quot;: [{
+    {
+      &quot;name&quot;: &quot;&lt;dataset_name&gt;&quot;,
+      &quot;default&quot;: &lt;false|true&gt;,
+      &quot;backgroundLayer&quot;: &quot;&lt;background_layer_name&gt;&quot;,
+      &quot;backgroundOpacity&quot;: &lt;0-255&gt;,
+      &quot;title&quot;: &quot;&lt;dataset_title&gt;&quot;,
+      &quot;titleMsgId&quot;: &quot;&lt;dataset_title_msgid&gt;&quot;
+    },
+    ...
+  ]
+}
+</code></pre>
+<p>where <code>dataset_name</code> is the the name of a dataset configured in the <code>qwc-oblique-imagery-service</code>.</p>
 <table>
 <thead>
 <tr>
