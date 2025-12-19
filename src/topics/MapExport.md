@@ -49,7 +49,7 @@ For GeoTIFF image export to become available (image format `image/tiff`), set up
 # DXF export
 To enable the DXF export format, the desired layers are marked as *Published* in the QGIS Project Properties &rarr; QGIS Server &rarr; WFS/OAPIF.
 
-You can configure the DXF export by passing supported [`FORMAT_OPTIONS`](https://docs.qgis.org/latest/en/docs/server_manual/services.html#wms-formatoptions) as `formatOptions`, i.e.
+You can configure the DXF export by passing supported [`FORMAT_OPTIONS`](https://docs.qgis.org/3.40/en/docs/server_manual/services/wms.html#wms-getmap-formatoptions) as `formatOptions`, i.e.
 
     "formatOptions": "MODE:NOSYMBOLOGY;NO_MTEXT:1"
 
