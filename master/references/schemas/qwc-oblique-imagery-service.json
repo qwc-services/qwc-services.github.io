@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-oblique-imagery-service/master/schemas/qwc-oblique-imagery-service.json",
+  "title": "QWC Document Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-oblique-imagery-service/master/schemas/qwc-oblique-imagery-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "document"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "dataset_basedir": {
+          "description": "Dataset base directory. Default: `/images`",
+          "type": "string"
+        },
+        "tile_size": {
+          "description": "Tile size of the returned image tiles. Default: `256`",
+          "type": "number"
+        },
+        "margin": {
+          "description": "Margin, added to the maximum dataset extent. Default: `500`",
+          "type": "number"
+        }
+      },
+      "required": [
+      ]
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "oblique_image_datasets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "crs": {
+                "type": "string"
+              },
+              "pattern_north": {
+                "type": "string"
+              },
+              "pattern_south": {
+                "type": "string"
+              },
+              "pattern_east": {
+                "type": "string"
+              },
+              "pattern_west": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name", "crs"
+            ]
+          }
+        }
+      },
+      "required": [
+        "oblique_image_datasets"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ]
+}
