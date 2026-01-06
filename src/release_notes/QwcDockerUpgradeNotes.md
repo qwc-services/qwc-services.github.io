@@ -1,3 +1,7 @@
+# Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06
+
+Due to some changes in how viewer asset and viewer task permissions are enforced, when updating to `qwc-map-viewer:v2026.01.06`, also the `qwc-config-generator` image should be updated to `v2026.01.06`.
+
 # Updating to qwc-map-viewer:v2025.11.12
 
 `qwc-map-viewer:v2025.11.12` now supports reading editConfigs from imported layers if the service capabilities, returned by a `qwc-ogc-service`, report an `EditConfig` address. For this to work, also update to `qwc-config-generator:v2025.11.12` and `qwc-ogc-service:v2025.11.12` and ensure your `tenantConfig.json` contains an `edit_config` entry in the `ogc` service configuration as follows:
