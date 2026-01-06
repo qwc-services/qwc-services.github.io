@@ -42,7 +42,7 @@ echo "    - [README](qwc-qgs-cache-preseed_readme.md)" >> src/references/index.m
 mkdir -p tmp
 echo "* Downloading schema versions..."
 if [ "$branch" == *-lts ]; then
-    wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/schema-versions.json
+    wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/src/schema-versions.json
 else
     wget -q -O tmp/schema-versions.json https://raw.githubusercontent.com/qwc-services/qwc-config-generator/${branch}/src/schema-versions.json
 fi
