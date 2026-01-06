@@ -37,6 +37,7 @@ The following resource types are available:
 | `Viewer task`          | Viewer task key, see [Viewer task permissions](#viewer-task-permissions).                   |
 | `Viewer asset`         | Viewer asset path, see [Viewer asset permissions](#viewer-asset-permissions).               |
 | `Document template`    | Document template name, see [Report permissions](../topics/Reports.md#Permissions).         |
+| `Oblique Image Dataset`| Oblique image dataset name, see [Oblique view](../topics/ObliqueView.md).                   |
 | `Theme info link`      | Theme info link name, see [theme info links](ThemesConfiguration.md#theme-info-links).      |
 | `Map info query`       | Map info query identifier, see [Map info permissions](../topics/Mapinfo.md#permissions).    |
 | `Plugin`               | Plugin name of [Plugin data](ThemesConfiguration.md#plugin-data) entries.                   |

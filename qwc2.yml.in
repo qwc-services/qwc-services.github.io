@@ -23,6 +23,7 @@ nav:
             - Map filtering: topics/MapFilter.md
             - Reports: topics/Reports.md
             - 3D View: topics/View3D.md
+            - Oblique View: topics/ObliqueView.md
             - Translations: topics/Translations.md
             - Authentication: topics/authentication.md
             - Interfacing with applications: topics/Interfacing.md
