@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.01.06</title>
+    <title>Qwc2 plugins - QWC - 2026.01.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.01.06
+          <a href="../.." class="icon icon-home"> QWC - 2026.01.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.01.06</a>
+          <a href="../..">QWC - 2026.01.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -692,6 +692,12 @@
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>omitReadOnlyDatasets</td>
+<td><code>bool</code></td>
+<td>Whether to omit read only datasets from the dataset selection menu.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>showAttributeTableButton</td>
 <td><code>bool</code></td>
 <td>Whether to show a button to open the AttributeTable (if the plugin is available).</td>
@@ -1054,9 +1060,21 @@ for customized queries and templates for the result presentation.</p>
 <td><code>200</code></td>
 </tr>
 <tr>
+<td>resultMultiDisplay</td>
+<td><code>bool</code></td>
+<td>Whether multi-display mode should be enabled by default, only relevant if <code>resultDisplayMode</code> is <code>paginated</code>.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
 <td>showLayerSelector</td>
 <td><code>bool</code></td>
 <td>Whether to show a layer selector to filter the identify results by layer.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showLayerTitles</td>
+<td><code>bool</code></td>
+<td>Whether to prefix the identify result titles with the respecitve layer name.</td>
 <td><code>true</code></td>
 </tr>
 </tbody>

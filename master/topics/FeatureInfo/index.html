@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Feature info - QWC - 2026.01.06</title>
+    <title>Feature info - QWC - 2026.01.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.01.06
+          <a href="../.." class="icon icon-home"> QWC - 2026.01.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -74,6 +74,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#querying-features-via-custom-sql-queries">Querying features via custom SQL queries</a>
         <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#display-field">Display field </a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#attribute-values-html-markup-hyperlinks-images">Attribute values: HTML markup, hyperlinks, images</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#client-side-attributes">Client side attributes</a>
@@ -154,7 +156,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.01.06</a>
+          <a href="../..">QWC - 2026.01.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -230,6 +232,8 @@
 <li><code>:with_maptip</code>: Whether to return maptip in response (default=1)</li>
 <li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
 </ul>
+<h3 id="display-field">Display field <a name="displayfield"></a><a class="headerlink" href="#display-field" title="Permanent link">&para;</a></h3>
+<p>The display field configured in QGIS Vector Layer Properties &rarr; Display is used as display title of an identify result. If no display field ist configured, the fallback fields <code>name</code> and <code>id</code> will be tried (case-insensitive). You can configure the fallback field names by setting <code>fallbackDisplayFields</code> to the list of desired fallback field names at top-level in <code>config.json</code>. If you set <code>fallbackDisplayFields</code> to an empty list, no fallback display name will be set.</p>
 <h3 id="attribute-values-html-markup-hyperlinks-images">Attribute values: HTML markup, hyperlinks, images<a class="headerlink" href="#attribute-values-html-markup-hyperlinks-images" title="Permanent link">&para;</a></h3>
 <p>In general, HTML markup in attribute values is preserved.</p>
 <p>For displaying interactive hyperlinks, the following options are supported:</p>
