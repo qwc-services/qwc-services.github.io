@@ -1,3 +1,7 @@
+# Updating to qwc-map-viewer:v2026.01.14
+
+The Bookmarks plugin UI refresh in `qwc-map-viewer:v2026.01.14` also requires an update to `qwc-permalink-service:v2026.01.14`.
+
 # Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06
 
 Due to some changes in how viewer asset and viewer task permissions are enforced, when updating to `qwc-map-viewer:v2026.01.06`, also the `qwc-config-generator` image should be updated to `v2026.01.06`.
