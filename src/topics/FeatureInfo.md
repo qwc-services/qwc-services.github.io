@@ -71,6 +71,10 @@ In a DB Query the following values are replaced in the SQL:
 * `:with_maptip`: Whether to return maptip in response (default=1)
 * `:geom`: The `filter_geom` passed to the `GetFeatureInfo` request, if any, otherwise `POINT(x y)`
 
+### Display field <a name="displayfield"></a>
+
+The display field configured in QGIS Vector Layer Properties &rarr; Display is used as display title of an identify result. If no display field ist configured, the fallback fields `name` and ` id` will be tried (case-insensitive). You can configure the fallback field names by setting `fallbackDisplayFields` to the list of desired fallback field names at top-level in `config.json`. If you set `fallbackDisplayFields` to an empty list, no fallback display name will be set.
+
 ### Attribute values: HTML markup, hyperlinks, images
 
 In general, HTML markup in attribute values is preserved.

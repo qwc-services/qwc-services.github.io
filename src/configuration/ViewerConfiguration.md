@@ -36,6 +36,7 @@ All settings are optional, with fallback to the default values as documented.
 |`editingAddLinkAnchors`              | Whether to automatically insert link anchors in text values when editing. Default: `true`, |
 |`editServiceCaptchaSiteKey`          | ReCAPTCHA public site key for public editing, see [ReCAPTCHA validation](../topics/Editing.md#recaptcha). |
 |`editTextNullValue`                  | A text value which represents `NULL` when editing. Default: `""`. |
+|`fallbackDisplayFields`              | List of fallback display field names, see [Display field](../topics/FeatureInfo.md#displayfield). Default: `["name", "id"]`. |
 |`geodesicMeasurements`               | Whether to perform measurements on the geoid. Default: `false`. |
 |`loadTranslationOverrides`           | Whether to attempt to load tanslation overrides, see [Translations](../topics/Translations.md). Default: `false`. |
 |`localeAwareNumbers`                 | Whether to use locale aware numbers throughout. Default: `false`. |
