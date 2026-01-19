@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.01.14</title>
+    <title>Qwc2 plugins - QWC - 2026.01.18</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.01.14
+          <a href="../.." class="icon icon-home"> QWC - 2026.01.18
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.01.14</a>
+          <a href="../..">QWC - 2026.01.18</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -193,7 +193,7 @@
 <li><a href="#view3d">View3D</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
 </ul>
-<p>Map support plugins</p>
+<p><a href="#mapSupportPlugins">Map support plugins</a></p>
 <ul>
 <li><a href="#editingsupport">EditingSupport</a></li>
 <li><a href="#locatesupport">LocateSupport</a></li>
@@ -201,7 +201,7 @@
 <li><a href="#redliningsupport">RedliningSupport</a></li>
 <li><a href="#snappingsupport">SnappingSupport</a></li>
 </ul>
-<p>3D Plugins</p>
+<p><a href="#plugins3d">3D Plugins</a></p>
 <ul>
 <li><a href="#backgroundswitcher3d">BackgroundSwitcher3D</a></li>
 <li><a href="#bottombar3d">BottomBar3D</a></li>
@@ -217,6 +217,10 @@
 <li><a href="#overviewmap3d">OverviewMap3D</a></li>
 <li><a href="#settings3d">Settings3D</a></li>
 <li><a href="#topbar3d">TopBar3D</a></li>
+</ul>
+<p><a href="#extraPlugins">Extra Plugins</a></p>
+<ul>
+<li><a href="#plotinfotool">PlotInfoTool</a></li>
 </ul>
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
@@ -1760,6 +1764,18 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>clearMeasurementsOnExit</td>
+<td><code>bool</code></td>
+<td>Whether to clear measurements when exiting measurement tool.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>clearMeasurementsOnModeChange</td>
+<td><code>bool</code></td>
+<td>Whether to clear measurements when changing measurement mode.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
 <td>lineHeadMarker</td>
 <td><code>string</code></td>
 <td>Head marker of distance line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
@@ -1782,6 +1798,12 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 <td><code>bool</code></td>
 <td>Whether to show the widget to switch between measure modes.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>showPerimeterLength</td>
+<td><code>bool</code></td>
+<td>Whether to show the perimeter length of area measurements.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>snapping</td>
@@ -3060,6 +3082,81 @@ BackgroundSwitcher3D<a name="backgroundswitcher3d"></a></p>
 </tr>
 </tbody>
 </table>
+<hr />
+<h1 id="extra-plugins">Extra plugins<a name="extraPlugins"></a><a class="headerlink" href="#extra-plugins" title="Permanent link">&para;</a></h1>
+<p>These plugins are not enabled in the stock viewer, and must be enabled in a custom viewer build.
+PlotInfoTool<a name="plotinfotool"></a></p>
+<hr />
+<p>Plugin for requesting plot information, including Swiss Public-law Restrictions on landownership (PLR) cadastre.</p>
+<p><strong><code>config.json</code> sample configuration:</strong></p>
+<pre><code>{
+  &quot;name&quot;: &quot;PlotInfoTool&quot;,
+  &quot;cfg&quot;: {
+    &quot;toolLayers&quot;: [&quot;&lt;layer_name&gt;&quot;, ...],
+    &quot;infoQueries&quot;: [
+      {
+        &quot;key&quot;: &quot;plotdescr&quot;,
+        &quot;titleMsgId&quot;: &quot;plotdescr.title&quot;,
+        &quot;query&quot;: &quot;/plot/$egrid$&quot;,
+        &quot;pdfQuery&quot;: null,
+        &quot;urlKey&quot;: &quot;cadastre_egrid&quot;
+      },
+      {
+        &quot;key&quot;: &quot;oereb&quot;,
+        &quot;titleMsgId&quot;: &quot;oereb.title&quot;,
+        &quot;query&quot;: &quot;/oereb/json/$egrid$&quot;,
+        &quot;pdfQuery&quot;: &quot;/oereb/pdf/$egrid$&quot;,
+        &quot;pdfTooltip&quot;: &quot;oereb.requestPdf&quot;,
+        &quot;urlKey&quot;: &quot;oereb_egrid&quot;,
+        &quot;cfg&quot;: {
+          &quot;subthemes&quot;: {
+            &quot;LandUsePlans&quot;: [&quot;Grundnutzung&quot;, &quot;Überlagerungen&quot;, &quot;Linienbezogene Festlegungen&quot;, &quot;Objektbezogene Festlegungen&quot;]
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>toolLayers</code>: List of layers to load when activating tool.</li>
+<li><code>infoQueries</code>: List of additional info queries to offer in the dialog (PLR cadastre query is built-in). By default, these render some HTML data in an iframe. If a custom component is needed for rendering the result, see configuration in <code>appConfig.js</code> below.</li>
+<li><code>key</code>: A unique key name.</li>
+<li><code>title</code>: The human visible title.</li>
+<li><code>titleMsgId</code>: Instead of <code>title</code>, a message id for the title which will be looked up in the translations.</li>
+<li><code>query</code>: The query to perform to retreive the info. Must return HTML, which is then rendered in an iframe. <code>$egrid$</code> is replaced with the EGRID of the current plot. If the specified URL is relative, it is resolved with respect to <code>plotInfoService</code> as defined in <code>config.json</code>.</li>
+<li><code>pdfQuery</code>: Optional query to retreive a PDF report, which is then presented as a download the the user. Again, <code>$egrid$</code> is replaced with the EGRID of the current plot.</li>
+<li><code>pdfTooltip</code>: Message id for the pdf button tooltip.</li>
+<li><code>urlKey</code>: Optional query parameter key name. If QWC2 is started with <code>&lt;urlKey&gt;=&lt;egrid&gt;</code> in the URL, the plot info tool is automatically enabled and the respective query performed.</li>
+<li><code>cfg</code>: Arbitrary custom config to pass to a custom component, see <code>appConfig.js</code> configuration below.</li>
+</ul>
+<p><strong><code>appConfig.js</code> configuration:</strong></p>
+<p>Sample <code>PlotInfoToolPlugin</code> configuration, as can be defined in the <code>cfg</code> section of <code>pluginsDef</code> in <code>appConfig.js</code>:</p>
+<pre><code>PlotInfoToolPlugin: {
+  themeLayerRestorer: require('./themeLayerRestorer'),
+  customInfoComponents: {
+    oereb: require('qwc2-extra/components/OerebDocument')
+  }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>themeLayerRestorer</code>: Function which restores theme layers, used for loading the <code>toolLayers</code> specified in the configuration in <code>config.json</code>. See <code>themeLayerRestorer</code> in the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>appConfig.js</code></a>.</li>
+<li>
+<p><code>customInfoComponents</code>: Customized components for rendering plot info query results. The <code>key</code> specifies a the info query for which this component should be used, as specified in <code>infoQueries</code> in config.json (see above). An example of a minimal custom component:</p>
+<p>class CustomPlotInfoComponent extends React.Component {
+    static propTypes = {
+      data: PropTypes.object, // PropType according to format of data returned by the specified query URL
+      config: PropTypes.object // Custom configuration
+    }
+    render() {
+      return (<div>{this.props.data.field}</div>);
+    }
+  };</p>
+<p>module.exports = CustomPlotInfoComponent;</p>
+</li>
+</ul>
               
             </div>
           </div><footer>
