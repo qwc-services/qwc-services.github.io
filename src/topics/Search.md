@@ -495,7 +495,7 @@ To use a fulltext search in a theme, configure a `fulltext` search provider in `
 Where:
 
 * `default` lists the search facets enabled by default.
-* `layers` providides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
+* `layers` provides a mapping of facets which are enabled whenever the theme layer `<layer_name>` is visible on the map.
 
 Next, create the resources in the Admin GUI to control the search permissions:
 
