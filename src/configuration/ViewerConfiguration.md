@@ -44,7 +44,7 @@ All settings are optional, with fallback to the default values as documented.
 |`omitUrlParameterUpdates`            | Whether to omit updating the URL parameters. Default: `false`. |
 |`projections`                        | A list of map projections to register, in the format `{"code": "<code>", "proj": "<proj4def>", "label": "<label>", "precision": <decimals>}`. By default, `EPSG:3857` and `EPSG:4326` are registered. |
 |`qgisServerVersion`                  | The QGIS Server major version in use. Default: `3`. |
-|`startupTask`                        | Task to automatically activate on application start, in the format `{key: "<Task>", "mode": "<Mode>"}`. |
+|`startupTask`                        | Task to automatically activate on application start, in the format `{"key": "<Task>", "mode": "<Mode>"}`. |
 |`storeAllLayersInPermalink`          | Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If `false`, remote layers are re-queried from the respective services, if `true`, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities). Default: `false`. |
 |`tilePreloadLevels`                  | For tiled layers, load low-resolution tiles up to preload levels. 0 means no preloading. Default: `0`. |
 |`translationsPath`                   | Relative path to the `translations` folder. Default: `"translations"`.   |
