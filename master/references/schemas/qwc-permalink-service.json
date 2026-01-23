@@ -40,8 +40,12 @@
           "description": "User bookmarks table. Defaults to qwc_config.user_bookmarks.",
           "type": "string"
         },
+        "user_visibility_presets_table": {
+          "description": "User visibility presets table. Defaults to qwc_config.user_visibility_presets.",
+          "type": "string"
+        },
         "bookmarks_sort_order": {
-          "description": "Bookmarks sort order, defaults to \"date, description\".",
+          "description": "Bookmarks sort order, defaults to \"date DESC, description\".",
           "type": "string"
         },
         "default_expiry_period": {

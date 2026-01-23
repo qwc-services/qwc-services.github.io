@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc admin gui readme - QWC - 2026.01.19</title>
+    <title>Qwc admin gui readme - QWC - 2026.01.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.01.19
+          <a href="../.." class="icon icon-home"> QWC - 2026.01.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.01.19</a>
+          <a href="../..">QWC - 2026.01.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -143,17 +143,17 @@
                 <p><a href="https://github.com/qwc-services/qwc-admin-gui/actions"><img alt="" src="https://github.com/qwc-services/qwc-admin-gui/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-admin-gui"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-admin-gui?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-admin-gui">QWC Admin GUI<a class="headerlink" href="#qwc-admin-gui" title="Permanent link">&para;</a></h1>
-<p>GUI for administration of QWC Services.</p>
+<p>Web backend for administration of QWC Services.</p>
 <ul>
-<li>manage users, groups and roles</li>
-<li>define QWC resources and assign <a href="https://github.com/qwc-services/qwc-services-core#resources-and-permissions">permissions</a></li>
-<li>define registrable groups and manage <a href="https://github.com/qwc-services/qwc-services-core#group_registration">group registration requests</a></li>
+<li>Manage users, groups and roles</li>
+<li>Define resources and assign permissions</li>
+<li>Define registrable groups and manage group registration requests</li>
 </ul>
-<p><strong>Note:</strong> requires a QWC ConfigDB</p>
+<p>See also <a href="https://qwc-services.github.io/master/configuration/ResourcesPermissions/">Managing Users, Resources and Permissions</a>.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
 e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
-<h3 id="admin-gui-service-config">Admin Gui Service config<a class="headerlink" href="#admin-gui-service-config" title="Permanent link">&para;</a></h3>
+<h3 id="json-config">JSON config<a class="headerlink" href="#json-config" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="../schemas/qwc-admin-gui.json">JSON schema</a></li>
 <li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/adminGuiConfig.json</code></li>
@@ -172,18 +172,98 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   }
 }
 </code></pre>
-<p>To connect with the demo database, the following <code>~/.pg_service.conf</code> entry is expected:</p>
-<pre><code>[qwc_configdb]
-host=localhost
-port=5439
-dbname=qwc_demo
-user=qwc_admin
-password=qwc_admin
-sslmode=disable
-</code></pre>
-<p>Set the <code>GROUP_REGISTRATION_ENABLED</code> environment variable to <code>False</code> to disable registrable groups and group registration requests, if not using the <a href="https://github.com/qwc-services/qwc-registration-gui">Registration GUI</a> (default: <code>True</code>).</p>
-<p>To automatically logout from the admin gui after a period of inactivity, set the <code>IDLE_TIMEOUT</code> environment variable to the desired period, in seconds (default: <code>0</code>, i.e. disabled).</p>
-<p>Set <code>totp_enabled</code> to <code>true</code> to show the TOTP fields in the user form, if two factor authentication is enabled in the <a href="https://github.com/qwc-services/qwc-db-auth">DB-Auth service</a> (default: <code>false</code>).</p>
+<p>See the <a href="../schemas/qwc-admin-gui.json">schema definition</a> for the full set of supported config variables.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GROUP_REGISTRATION_ENABLED</code></td>
+<td><code>True</code></td>
+<td>Whether to allow registrable groups and group registration requests via <a href="https://github.com/qwc-services/qwc-registration-gui">Registration GUI</a>.</td>
+</tr>
+<tr>
+<td><code>IDLE_TIMEOUT</code></td>
+<td><code>0</code></td>
+<td>Idle timeout after which to automatically log out (<code>0</code> disables automatic logout).</td>
+</tr>
+<tr>
+<td><code>SKIP_LOGIN</code></td>
+<td><code>False</code></td>
+<td>Whether to skip redirect to the <code>auth_service_url</code> is user is not authenticated (for development).</td>
+</tr>
+<tr>
+<td><code>DEFAULT_LOCALE</code></td>
+<td><code>en</code></td>
+<td>Admin GUI language (see <a href="src/translations">src/translations</a> for available languages).</td>
+</tr>
+<tr>
+<td><code>MAIL_SERVER</code></td>
+<td><code>localhost</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_PORT</code></td>
+<td><code>25</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_USE_TLS</code></td>
+<td><code>False</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_USE_SSL</code></td>
+<td><code>False</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_DEBUG</code></td>
+<td><code>app.debug</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_USERNAME</code></td>
+<td><code>None</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_PASSWORD</code></td>
+<td><code>None</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_DEFAULT_SENDER</code></td>
+<td><code>None</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_MAX_EMAILS</code></td>
+<td><code>None</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_SUPPRESS_SEND</code></td>
+<td><code>app.testing</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+<tr>
+<td><code>MAIL_ASCII_ATTACHMENTS</code></td>
+<td><code>False</code></td>
+<td>Mailer setup, see (Flask-Mail)[https://flask-mail.readthedocs.io/en/latest/#configuring].</td>
+</tr>
+</tbody>
+</table>
+<h3 id="two-factor-authentication">Two-factor authentication<a class="headerlink" href="#two-factor-authentication" title="Permanent link">&para;</a></h3>
+<p>If two factor authentication is enabled in the <a href="https://github.com/qwc-services/qwc-db-auth">DB-Auth service</a>, set <code>totp_enabled</code> to <code>true</code> to show the TOTP fields in the user form.</p>
 <h3 id="additional-user-fields">Additional user fields<a class="headerlink" href="#additional-user-fields" title="Permanent link">&para;</a></h3>
 <p>Additional user fields are saved in the table <code>qwc_config.user_infos</code> with a a one-to-one relation to <code>qwc_config.users</code> via the <code>user_id</code> foreign key.
 To add custom user fields, add new columns to your <code>qwc_config.user_infos</code> table and set your <code>user_info_fields</code> to a JSON with the following structure:</p>
@@ -199,35 +279,13 @@ To add custom user fields, add new columns to your <code>qwc_config.user_infos</
 </code></pre>
 <p>These fields are then added to the user form.</p>
 <p>Example:</p>
-<pre><code class="language-sql">-- add custom columns
-ALTER TABLE qwc_config.user_infos ADD COLUMN surname character varying NOT NULL;
+<pre><code class="language-sql">ALTER TABLE qwc_config.user_infos ADD COLUMN surname character varying NOT NULL;
 ALTER TABLE qwc_config.user_infos ADD COLUMN first_name character varying NOT NULL;
 </code></pre>
-<pre><code class="language-bash"># set user info fields config
-&quot;user_info_fields&quot;: [{&quot;title&quot;: &quot;Surname&quot;, &quot;name&quot;: &quot;surname&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}, {&quot;title&quot;: &quot;First name&quot;, &quot;name&quot;: &quot;first_name&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}]
+<pre><code class="language-json">&quot;user_info_fields&quot;: [{&quot;title&quot;: &quot;Surname&quot;, &quot;name&quot;: &quot;surname&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}, {&quot;title&quot;: &quot;First name&quot;, &quot;name&quot;: &quot;first_name&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}]
 </code></pre>
-<h3 id="mailer">Mailer<a class="headerlink" href="#mailer" title="Permanent link">&para;</a></h3>
-<p><a href="https://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is used for sending mails like user notifications. These are the available options:
-* <code>MAIL_SERVER</code>: default ‘localhost’
-* <code>MAIL_PORT</code>: default 25
-* <code>MAIL_USE_TLS</code>: default False
-* <code>MAIL_USE_SSL</code>: default False
-* <code>MAIL_DEBUG</code>: default app.debug
-* <code>MAIL_USERNAME</code>: default None
-* <code>MAIL_PASSWORD</code>: default None
-* <code>MAIL_DEFAULT_SENDER</code>: default None
-* <code>MAIL_MAX_EMAILS</code>: default None
-* <code>MAIL_SUPPRESS_SEND</code>: default app.testing
-* <code>MAIL_ASCII_ATTACHMENTS</code>: default False</p>
-<p>In addition the standard Flask <code>TESTING</code> configuration option is used by Flask-Mail in unit tests.</p>
-<h3 id="proxy-to-internal-services">Proxy to internal services<a class="headerlink" href="#proxy-to-internal-services" title="Permanent link">&para;</a></h3>
-<p>The route <code>/proxy?url=http://example.com/path?a=1</code> serves as a proxy for calling whitelisted internal services. This can be used e.g. to call other internal services from custom pages in the Admin GUI, without having to expose those services externally.</p>
-<p>Set <code>proxy_url_whitelist</code> to a list of RegExes for whitelisted URLs (default: <code>[]</code>), e.g.</p>
-<pre><code class="language-json">    [&quot;&lt;RegEx pattern for full URL from proxy request&gt;&quot;, &quot;^http://example.com/path\\?.*$&quot;]
-</code></pre>
-<p>Set <code>proxy_timeout</code> to the timeout in seconds for proxy requests (default: <code>60</code>s).</p>
 <h3 id="translations">Translations<a class="headerlink" href="#translations" title="Permanent link">&para;</a></h3>
-<p>Translation strings are stored in a JSON file for each locale in <code>translations/&lt;locale&gt;.json</code> (e.g. <code>en.json</code>). Add any new languages as new JSON files.</p>
+<p>Translation strings are stored in a JSON file for each locale in <code>translations/&lt;locale&gt;.json</code> (e.g. <code>en.json</code>). Add any new languages as new JSON files. You can use the <a href="updateTranslations.py">updateTranslations.py</a> helper script to update the translation files with all message ids from the source files.</p>
 <p>Set the <code>DEFAULT_LOCALE</code> environment variable to choose the locale for the user notification mails (default: <code>en</code>).</p>
 <h3 id="solr-search-index-update">Solr search index update<a class="headerlink" href="#solr-search-index-update" title="Permanent link">&para;</a></h3>
 <p>If using a Solr search service, the Solr search index of a tenant may be updated via a button on the main page. This can be activated by adding the following configuration options to the Admin GUI service config:</p>
@@ -263,31 +321,24 @@ ALTER TABLE qwc_config.user_infos ADD COLUMN first_name character varying NOT NU
 </code></pre>
 <h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h3>
 <p>The admin gui is extendable through plugins, which reside in the <code>plugins</code> folder. To enable them, list them in <code>plugins</code> in the admin gui configuration. See the JSON schema for details, and for configuration parameters which may be required by plugins shipped by default with <code>qwc-admin-gui</code>.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Base URL:</p>
-<pre><code>http://localhost:5031/
+<h3 id="proxy-to-internal-services">Proxy to internal services<a class="headerlink" href="#proxy-to-internal-services" title="Permanent link">&para;</a></h3>
+<p>The route <code>/proxy?url=&lt;url&gt;</code> serves as a proxy for calling whitelisted internal services. This can be used e.g. to call other internal services from custom pages in the Admin GUI, without having to expose those services externally.</p>
+<p>Set <code>proxy_url_whitelist</code> to a list of RegExes for whitelisted URLs (default: <code>[]</code>), e.g.</p>
+<pre><code class="language-json">    [&quot;&lt;RegEx pattern for full URL from proxy request&gt;&quot;, &quot;^http://example.com/path\\?.*$&quot;]
 </code></pre>
-<h3 id="default-login">Default login<a class="headerlink" href="#default-login" title="Permanent link">&para;</a></h3>
-<p>username: admin
-password: admin</p>
+<p>Set <code>proxy_timeout</code> to the timeout in seconds for proxy requests (default: <code>60</code>s).</p>
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
+</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>SKIP_LOGIN=1</code> if running without an authentication service (i.e. for development).</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-admin-gui">Dockerhub</a>.</p>
 <p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Install requirements:</p>
-<pre><code>uv sync
-</code></pre>
-<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
-<pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
-</code></pre>
-<p>Configure environment:</p>
-<pre><code>echo FLASK_ENV=development &gt;.flaskenv
-</code></pre>
-<p>Update translation files:</p>
-<pre><code> uv run ./updateTranslations.py
-</code></pre>
-<p>Start local service:</p>
-<pre><code> uv run src/server.py
-</code></pre>
               
             </div>
           </div><footer>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc permalink service readme - QWC - 2026.01.19</title>
+    <title>Qwc permalink service readme - QWC - 2026.01.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.01.19
+          <a href="../.." class="icon icon-home"> QWC - 2026.01.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.01.19</a>
+          <a href="../..">QWC - 2026.01.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -143,7 +143,7 @@
                 <p><a href="https://github.com/qwc-services/qwc-permalink-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-permalink-service/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-permalink-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-permalink-service?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-permalink-service">QWC Permalink Service<a class="headerlink" href="#qwc-permalink-service" title="Permanent link">&para;</a></h1>
-<p>Stores and resolves compact permalinks for the Web Client.</p>
+<p>Stores and resolves compact permalinks for the QGIS Web Client.</p>
 <p>Permalinks are stored in a database table.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
@@ -160,41 +160,16 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;config&quot;: {
     &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
     &quot;permalinks_table&quot;: &quot;qwc_config.permalinks&quot;,
-    &quot;user_bookmark_table&quot;: &quot;qwc_config.user_bookmarks&quot;
+    &quot;user_bookmark_table&quot;: &quot;qwc_config.user_bookmarks&quot;,
+    &quot;bookmarks_sort_order&quot;: &quot;date DESC, description&quot;
   }
 }
 </code></pre>
+<p>See the <a href="../schemas/qwc-permalink-service.json">schema definition</a> for the full set of supported config variables.</p>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Default value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DB_URL</code></td>
-<td><code>postgresql:///?service=qwc_configdb</code></td>
-<td>DB connection URL [1]</td>
-</tr>
-<tr>
-<td><code>PERMALINKS_TABLE</code></td>
-<td><code>qwc_config.permalinks</code></td>
-<td>Permalink table</td>
-</tr>
-<tr>
-<td><code>USER_BOOKMARK_TABLE</code></td>
-<td><code>qwc_config.user_bookmarks</code></td>
-<td>User bookmarks table</td>
-</tr>
-</tbody>
-</table>
-<p>[1] https://docs.sqlalchemy.org/en/13/core/engines.html#postgresql</p>
-<p>If you don't use <code>qwc-config-db</code> you have to create the tables first.</p>
-<p>Example:</p>
+<h3 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h3>
+<p>If you don't use the <a href="https://github.com/qwc-services/qwc-base-db"><code>qwc-base-db</code></a>, you have to create the tables first:</p>
 <pre><code>CREATE TABLE permalinks
 (
   key character(10) NOT NULL PRIMARY KEY,
@@ -203,13 +178,21 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   expires date
 );
 
-  CREATE TABLE user_bookmarks (
-      username character varying NOT NULL PRIMARY KEY,
-      data text,
-      key varchar(10),
-      date date,
-      description text
-  );
+CREATE TABLE user_bookmarks (
+  username character varying NOT NULL PRIMARY KEY,
+  data text,
+  key varchar(10),
+  date date,
+  description text
+);
+
+CREATE TABLE user_visibility_presets (
+  username character varying NOT NULL PRIMARY KEY,
+  data text,
+  key varchar(10),
+  date date,
+  description text,
+)
 </code></pre>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>Base URL:</p>
