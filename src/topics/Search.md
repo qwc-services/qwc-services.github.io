@@ -40,6 +40,7 @@ The format of `ProviderDefinition` is
 {
   label: "<label>", // Provider label (displayed in provider selection menu)
   labelmsgid: "<msgid>", // Translateable label message ID, instead of `label`
+  requiresLayer: "<layerName>" // Optional, only enable search provider if map contains a layer with this name
   onSearch: function(searchText, searchParams, callback, axios) => {
     const results = []; // See below
     /* Populate results... */
