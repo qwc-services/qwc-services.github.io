@@ -1,3 +1,7 @@
+# Updating to qwc-map-viewer:v2026.02.01
+
+As of `qwc-map-viewer:v2026.02.01`, the `editConfig` will not be embedded in the `themes.json` anymore, but will be dynamically loaded on-demand. This reduces the size of the initial `themes.json`. When updating to `qwc-map-viewer:v2026.02.01`, you will also need to update to `qwc-config-generator:v2026.01.30` and then run the config generator.
+
 # Updating to qwc-map-viewer:v2026.01.14
 
 The Bookmarks plugin UI refresh in `qwc-map-viewer:v2026.01.14` also requires an update to `qwc-permalink-service:v2026.01.14`.
