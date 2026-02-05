@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc admin gui readme - QWC - 2026.02.01</title>
+    <title>Qwc admin gui readme - QWC - 2026.02.05</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.01
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.01</a>
+          <a href="../..">QWC - 2026.02.05</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -284,6 +284,8 @@ ALTER TABLE qwc_config.user_infos ADD COLUMN first_name character varying NOT NU
 </code></pre>
 <pre><code class="language-json">&quot;user_info_fields&quot;: [{&quot;title&quot;: &quot;Surname&quot;, &quot;name&quot;: &quot;surname&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}, {&quot;title&quot;: &quot;First name&quot;, &quot;name&quot;: &quot;first_name&quot;, &quot;type&quot;: &quot;text&quot;, &quot;required&quot;: true}]
 </code></pre>
+<h3 id="invitations">Invitations<a class="headerlink" href="#invitations" title="Permanent link">&para;</a></h3>
+<p>You can send invitation mails to users from the <code>Users</code> page. You will need to configure the mailer using the <code>MAIL_*</code> environment variables documented above. You can customize the invitation mail by setting the <code>application_name</code> and <code>application_url</code> JSON config variables, or provide a fully custom template by replacing the <a href="src/templates/users"><code>invite_email_body.&lt;lang&gt;.txt</code></a> files. If you are running <code>qwc-admin-gui</code> in Docker, you can mount your custom templates to <code>/srv/qwc_service/templates/users/</code>.</p>
 <h3 id="translations">Translations<a class="headerlink" href="#translations" title="Permanent link">&para;</a></h3>
 <p>Translation strings are stored in a JSON file for each locale in <code>translations/&lt;locale&gt;.json</code> (e.g. <code>en.json</code>). Add any new languages as new JSON files. You can use the <a href="updateTranslations.py">updateTranslations.py</a> helper script to update the translation files with all message ids from the source files.</p>
 <p>Set the <code>DEFAULT_LOCALE</code> environment variable to choose the locale for the user notification mails (default: <code>en</code>).</p>
