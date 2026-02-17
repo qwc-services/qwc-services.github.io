@@ -27,6 +27,7 @@ All settings are optional, with fallback to the default values as documented.
 |-------------------------------------|-------------|
 |`allowFractionalZoom`                | Whether to allow arbitrary scales for viewing the map. Default: `false`. |
 |`assetsPath`                         | Relative path to the `assets` folder. Default: `"assets"`. |
+|`availableLocales`                   | The available viewer locales, in the format `{"<code>": "<Native name>"}`. Defaults to the languages detected from `tsconfig.json` at build time. |
 |`bearingFormat`                      | Format of bearing measurement. Default value is `"bearing"` which shows angle in degrees, minutes and seconds with N/S prefix and W/E suffix, `"azimuth"` is shown as 0° to 360°, `"azimuth180"` is shown as -180° to +180°, `"bearingEW"` is shown as 0° to 180° with E/W suffix.|
 |`bearingPrecision`                   | Defines number of decimals for bearing angle shown in degrees. Default: `0`. |
 |`defaultColorScheme`                 | The color scheme to use. See [Color schemes](#color-schemes) for details. Default: `"default"`. |
