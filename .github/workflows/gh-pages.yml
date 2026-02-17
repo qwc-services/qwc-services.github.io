@@ -6,6 +6,7 @@ on:
       - master
       - 2024-lts
       - 2025-lts
+      - 2026-lts
   pull_request:
 
 jobs:
