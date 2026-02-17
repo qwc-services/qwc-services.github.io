@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc config generator readme - QWC - 2026.02.05</title>
+    <title>Qwc config generator readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -153,8 +153,39 @@
 <li><a href="https://github.com/qwc-services/qwc-docker/blob/master/volumes/config-in/default/tenantConfig.json">Example <code>tenantConfig.json</code></a></li>
 </ul>
 <p><em>NOTE:</em> the Search service configuration takes its resources directly from the ConfigGenerator configuration. Its Permissions are collected from the ConfigDB (<code>solr_facet</code> resources), unless they are defined in the ConfigGenerator configuration.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INPUT_CONFIG_PATH</code></td>
+<td><code>config-in/</code></td>
+<td>Base directory where the input configuration files are located.</td>
+</tr>
+<tr>
+<td><code>OUTPUT_CONFIG_PATH</code></td>
+<td><code>/tmp/</code></td>
+<td>Base directory where generated service and permission configuration files are located.</td>
+</tr>
+<tr>
+<td><code>JSON_SCHEMAS_PATH</code></td>
+<td><code>/tmp/</code></td>
+<td>Directory where service schemas are loaded.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-validation">Schema validation<a class="headerlink" href="#schema-validation" title="Permanent link">&para;</a></h3>
 <p>By default, the ConfigGenerator will validate the service configurations in <code>tenantConfig.json</code> against the schema definition of the service. The JSON Schemas are loaded from local files in <code>JSON_SCHEMAS_PATH</code>, or else downloaded from https://github.com/qwc-services/ if no schema files are present. You can disable the schema validation by setting <code>"validate_schema": false</code> in the ConfigGenerator's <code>config</code> block in <code>tenantConfig.json</code>.</p>
+<p>You can change the versions of the schemas that the ConfigGenerator uses for verification inside <a href="src/schema-versions.json">schema-versions.json</a>.</p>
+<p>A helper script to download the JSON schemas of all QWC services registered in <code>schema-versions.json</code> is available at <a href="src/download_json_schemas.py">src/download_json_schemas.py</a>.</p>
 <h3 id="custom-resource-types">Custom resource types<a class="headerlink" href="#custom-resource-types" title="Permanent link">&para;</a></h3>
 <p>If you want to define custom resource types for a custom service, you can add a record for the resource type to the configdb</p>
 <pre><code>INSERT INTO qwc_config.resource_types(name, description, list_order) values ('&lt;resource_name&gt;', '&lt;resource_description&gt;', &lt;list_order&gt;);
@@ -190,17 +221,22 @@
 <li><code>--force_readonly_datasets=1</code>: Whether to force read-only dataset permissions</li>
 </ul>
 <h3 id="service-interface">Service interface<a class="headerlink" href="#service-interface" title="Permanent link">&para;</a></h3>
-<p>Set the <code>INPUT_CONFIG_PATH</code> environment variable to the base directory where for the configuration files are that should be read by the ConfigGenerator (default: <code>config-in/</code>).
-Set the <code>OUTPUT_CONFIG_PATH</code> environment variable to the base directory where the ConfigGenerator should output service configurations and permissions (default: <code>/tmp/</code>).</p>
-<p>Base URL:</p>
-<pre><code>http://localhost:5010/
+<p>Install dependencies and run:</p>
+<pre><code># Setup venv
+uv venv .venv
+
+export INPUT_CONFIG_PATH=&lt;INPUT_CONFIG_PATH&gt;
+export OUTPUT_CONFIG_PATH=&lt;INPUT_CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
 <p>Generate both service configs and permissions for <code>default</code> tenant:</p>
 <pre><code># Non-blocking call, returns task_id
-curl "http://localhost:5010/generate_configs?tenant=default"
+curl "http://localhost:5000/generate_configs?tenant=default"
 
 # Blocking call, streams log output
-curl "http://localhost:5010/generate_configs?tenant=default&amp;stream_response=1"
+curl "http://localhost:5000/generate_configs?tenant=default&amp;stream_response=1"
 </code></pre>
 <p>Additionally, the following query parameters may be specified:</p>
 <ul>
@@ -208,18 +244,13 @@ curl "http://localhost:5010/generate_configs?tenant=default&amp;stream_response=
 <li><code>force_readonly_datasets=1</code>: Whether to force read-only dataset permissions</li>
 </ul>
 <p>Watch config generator task status:</p>
-<pre><code>curl "http://localhost:5010/generate_configs_status?task_id=&lt;task_id&gt;"
+<pre><code>curl "http://localhost:5000/generate_configs_status?task_id=&lt;task_id&gt;"
 </code></pre>
 <p>Cancel config generator task:</p>
-<pre><code>curl "http://localhost:5010/generate_configs_cancel?task_id=&lt;task_id&gt;"
-</code></pre>
-<h3 id="update-json-schemas">Update JSON schemas<a class="headerlink" href="#update-json-schemas" title="Permanent link">&para;</a></h3>
-<p>You can change the directory from where the ConfigGenerator reads its schemas via the <code>JSON_SCHEMAS_PATH</code> environment variable (default <code>/tmp/</code>).
-You can change the versions of the schemas that the ConfigGenerator uses for verification inside <a href="src/schema-versions.json">schema-versions.json</a>.</p>
-<p>Download JSON schemas:</p>
-<pre><code>uv run src/download_json_schemas.py master
+<pre><code>curl "http://localhost:5000/generate_configs_cancel?task_id=&lt;task_id&gt;"
 </code></pre>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-config-generator">Dockerhub</a>.</p>
 <p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
               
             </div>

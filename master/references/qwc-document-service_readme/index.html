@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC - 2026.02.05</title>
+    <title>Qwc document service readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -151,7 +151,7 @@
 </code></pre>
 <p>is <code>topic/myreport</code>.</p>
 <p>The request format is</p>
-<pre><code>http://localhost:5018/&lt;template&gt;.&lt;ext&gt;?&lt;key&gt;=&lt;value&gt;&amp;...
+<pre><code>http://localhost:5000/&lt;template&gt;.&lt;ext&gt;?&lt;key&gt;=&lt;value&gt;&amp;...
 </code></pre>
 <p>where</p>
 <ul>
@@ -159,18 +159,18 @@
 <li>Query KVPs are passed to the Jasper as report parameters.</li>
 </ul>
 <p>Example request:</p>
-<pre><code>http://localhost:5018/topic/myreport.pdf?FEATURE_ID=1
+<pre><code>http://localhost:5000/topic/myreport.pdf?FEATURE_ID=1
 </code></pre>
 <p>If your report uses a PostgresSQL data adapter, use the name of the desired PG service connection as data adapter name in the report, and the connection will be automatically looked up from the <code>pg_service.conf</code> file. Alternatively, you can set the name of the desired PG service connection as <code>datasource</code> of in the service resource configuration, see below.</p>
 <p>You can generically pass the generic <code>feature</code> query parameter, which will be resolved to the report feature parameter configured in the report query string. You can pass:</p>
 <ul>
 <li>
 <p>A single or a comma-separated list of feature ids, i.e.</p>
-<p>http://localhost:5018/topic/myreport.pdf?feature=1,3,6,9</p>
+<p>http://localhost:5000/topic/myreport.pdf?feature=1,3,6,9</p>
 </li>
 <li>
 <p><code>*</code> to specify all features of the report datasource, i.e.</p>
-<p>http://localhost:5018/topic/myreport.pdf?feature=*</p>
+<p>http://localhost:5000/topic/myreport.pdf?feature=*</p>
 </li>
 </ul>
 <p>If multiple feature ids are specified, an aggregated report for all specified features will be returned.</p>
@@ -225,13 +225,25 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <thead>
 <tr>
 <th>Name</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>MAX_MEMORY</code></td>
-<td>Maximum Java heap size for compiling like <code>1024M</code> or <code>2G</code>. Default: <code>1024M</code>.</td>
+<td><code>1024M</code></td>
+<td>Maximum Java heap size for compiling, for example <code>1024M</code> or <code>2G</code>.</td>
+</tr>
+<tr>
+<td><code>FONT_DIR</code></td>
+<td><code>./fonts</code></td>
+<td>Directory where custom fonts are located.</td>
+</tr>
+<tr>
+<td><code>PGSERVICEFILE</code></td>
+<td><code>~/.pg_service.conf</code></td>
+<td>PG Service file location, used to resolve PG service names.</td>
 </tr>
 </tbody>
 </table>
@@ -275,37 +287,26 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   ]
 }
 </code></pre>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>API documentation:</p>
-<pre><code>http://localhost:5018/api/
-</code></pre>
-<p>Request format:</p>
-<pre><code>http://localhost:5018/&lt;template&gt;?&lt;key&gt;=&lt;value&gt;&amp;...
-</code></pre>
-<p>Example:</p>
-<pre><code>http://localhost:5018/BelasteteStandorte.pdf
-</code></pre>
-<p>Arbitrary parameters can be appended to the request:</p>
-<pre><code>http://localhost:5018/BelasteteStandorte.pdf?feature=123
-</code></pre>
-<p>The format of the report is extracted from the template name, i.e.</p>
-<pre><code>http://localhost:5018/BelasteteStandorte.xls?feature=123
-</code></pre>
-<p>If no extension is present in the template name, PDF is used as format.</p>
-<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
-<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Install requirements:</p>
-<pre><code>uv sync
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code># Setup venv
+uv venv .venv
+
+# Fetch JAR dependencies
 wget -P src/libs -i libs.txt
+
+export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
-<p>Start local service:</p>
-<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:5000/api/
 </code></pre>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>Run all tests:</p>
-<pre><code>FLASK_DEBUG=1 PYTHONPATH=$PWD/src FONT_DIR=$PWD/tests/fonts CONFIG_PATH=$PWD/tests/config/ uv run test.py
-</code></pre>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-document-auth">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
               
             </div>
           </div><footer>

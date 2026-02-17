@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.02.05</title>
+    <title>Qwc2 plugins - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -224,8 +224,39 @@
 </ul>
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<p>Exposes an API for interacting with QWC2 via <code>window.qwc2</code>.</p>
+<p>Exposes an API for interacting with QWC.</p>
 <p>You can interact with the API as soon as the <code>QWC2ApiReady</code> event is dispatched.</p>
+<h3 id="postmessage-interface"><code>postMessage</code> interface<a class="headerlink" href="#postmessage-interface" title="Permanent link">&para;</a></h3>
+<p>You can interact with a QWC instance from a parent application either via the <code>window.qwc2</code>
+interface (see below), if the embedded QWC runs under the same origin as the parent application,
+or via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage</code></a>
+if the origins differ. When using <code>postMessage</code>, you must register the allowed parent origins
+via the <code>allowedMessageOrigins</code> config prop. For a QWC embedded in an iframe, a sample call could
+then be</p>
+<pre><code>qwcframe = document.getElementById(&quot;qwciframe&quot;);
+qwcframe.contentWindow.postMessage({
+  &quot;method&quot;: &quot;zoomToPoint&quot;,
+  &quot;params&quot;: [[2684764, 1247841], 18, &quot;EPSG:2056&quot;]
+}, &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;)
+</code></pre>
+<p>If you call a method which returns a value, pass a <code>requestId</code> and listen to response messages:</p>
+<pre><code>window.addEventListener(&quot;message&quot;, (ev) =&gt; {
+  console.log(ev.data.requestId);
+  console.log(ev.data.result);
+});
+qwcframe.contentWindow.postMessage(
+  {&quot;method&quot;: &quot;getState&quot;, &quot;requestId&quot;: &quot;&lt;arbitrary_id_string&gt;&quot;},
+  &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;
+)
+</code></pre>
+<p>A list of supported methods will be printed to the console if you run</p>
+<pre><code>qwcframe.contentWindow.postMessage(&quot;help&quot;, &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;)
+</code></pre>
+<p>To check the full signature of a method (including default param values), check
+the respective action function definitions as referenced in the <em><code>window.qwc2</code> API</em>
+section below. Note that you can only pass values which can be serialized via
+structured clone in the message params.</p>
+<h3 id="custom-plugins">Custom plugins<a class="headerlink" href="#custom-plugins" title="Permanent link">&para;</a></h3>
 <p>Here is an example of a custom plugin:</p>
 <pre><code>function registerPlugin() {
     const {React, PropTypes, connect} = window.qwc2.libs;
@@ -273,6 +304,7 @@ if (window.qwc2) {
 </code></pre>
 </li>
 </ul>
+<h3 id="windowqwc2-api"><code>window.qwc2</code> API<a class="headerlink" href="#windowqwc2-api" title="Permanent link">&para;</a></h3>
 <p>The following action functions are exposed in the API:</p>
 <ul>
 <li><a href="https://github.com/qgis/qwc2/blob/master/actions/display.js">display</a></li>
@@ -403,6 +435,12 @@ if (window.qwc2) {
 <td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
 <td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
 <td><code>{</code><br /><code>initialWidth: 800,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'bottom'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>hideIdColumn</td>
+<td><code>bool</code></td>
+<td>Whether to hide the id (primary key) column.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>limitToExtent</td>
@@ -2766,9 +2804,9 @@ an aggregated report for all selected features.</p>
 </tr>
 <tr>
 <td>searchOptions</td>
-<td><code>{</code><br /><code>allowSearchFilters: bool,</code><br /><code>focusOnStartup: bool,</code><br /><code>hideResultLabels: bool,</code><br /><code>highlightStyle: {</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>},</code><br /><code>minScaleDenom: number,</code><br /><code>resultLimit: number,</code><br /><code>sectionsDefaultCollapsed: bool,</code><br /><code>showHighlightMarker: bool,</code><br /><code>showLayerAfterChangeTheme: bool,</code><br /><code>showLayerResultsBeforePlaces: bool,</code><br /><code>showResultInSearchText: bool,</code><br /><code>zoomToLayers: bool,</code><br /><code>}</code></td>
+<td><code>{</code><br /><code>allowAddLayerAsGroup: bool,</code><br /><code>allowSearchFilters: bool,</code><br /><code>focusOnStartup: bool,</code><br /><code>hideResultLabels: bool,</code><br /><code>highlightStyle: {</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>},</code><br /><code>minScaleDenom: number,</code><br /><code>resultLimit: number,</code><br /><code>sectionsDefaultCollapsed: bool,</code><br /><code>showHighlightMarker: bool,</code><br /><code>showLayerAfterChangeTheme: bool,</code><br /><code>showLayerResultsBeforePlaces: bool,</code><br /><code>showResultInSearchText: bool,</code><br /><code>zoomToLayers: bool,</code><br /><code>}</code></td>
 <td>Options passed down to the search component.</td>
-<td><code>{</code><br /><code>showHighlightMarker: true,</code><br /><code>showResultInSearchText: true,</code><br /><code>minScaleDenom: 1000</code><br /><code>}</code></td>
+<td><code>{</code><br /><code>allowAddLayerAsGroup: true,</code><br /><code>showHighlightMarker: true,</code><br /><code>showResultInSearchText: true,</code><br /><code>minScaleDenom: 1000</code><br /><code>}</code></td>
 </tr>
 <tr>
 <td>toolbarItems</td>
@@ -2849,6 +2887,12 @@ queried via GetFeatureInfo.</p>
 <td><code>string</code></td>
 <td>The position of the navigation controls. Either <code>top</code> or <code>bottom</code>.</td>
 <td><code>'top'</code></td>
+</tr>
+<tr>
+<td>defaultFov</td>
+<td><code>number</code></td>
+<td>The default field of view (<code>20</code>: min, <code>100</code>: max).</td>
+<td><code>30</code></td>
 </tr>
 <tr>
 <td>defaultSceneQuality</td>

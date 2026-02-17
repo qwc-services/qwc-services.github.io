@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ext service readme - QWC - 2026.02.05</title>
+    <title>Qwc ext service readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -143,9 +143,7 @@
                 <p><a href="https://github.com/qwc-services/qwc-ext-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-ext-service/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-ext-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-ext-service?label=Docker%20image&amp;sort=semver" /></a></p>
 <h1 id="qwc-external-link-service">QWC external link service<a class="headerlink" href="#qwc-external-link-service" title="Permanent link">&para;</a></h1>
-<p>API documentation:</p>
-<pre><code>http://localhost:5023/api/
-</code></pre>
+<p>Proxy service for external application links, identified by a program name, with access control.</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>Declare the resource type in the config database:</p>
 <pre><code>INSERT INTO qwc_config.resource_types(name, description, list_order) values ('external_links', 'External link name', &lt;list_order&gt;);
@@ -163,28 +161,30 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <pre><code class="language-json">{
   &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-ext-service/master/schemas/qwc-ext-service.json&quot;,
   &quot;service&quot;: &quot;ext&quot;,
-  &quot;config&quot;: {
-    &quot;program_map&quot;: {
-      &quot;prog1&quot;: &quot;http://my.secret.site/path/?tenant=$tenant$&amp;user=$username$&quot;,
-    }
-  },
   &quot;resources&quot;: {
-    &quot;external_program_names&quot;: [
-      &quot;prog1&quot;
+    &quot;external_links&quot;: [
+      {&quot;name&quot;: &quot;prog1&quot;, &quot;url&quot;: &quot;http://my.secret.site/path/?tenant=$tenant$&amp;user=$username$&quot;}
     ]
   }
 }
 </code></pre>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
-<pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code># Setup venv
+uv venv .venv
+
+export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
-<p>Configure environment:</p>
-<pre><code>echo FLASK_ENV=development &gt;.flaskenv
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:$FLASK_RUN_PORT/api/
 </code></pre>
-<p>Install dependencies and run service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-ext-service">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
               
             </div>
           </div><footer>

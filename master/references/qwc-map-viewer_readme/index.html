@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc map viewer readme - QWC - 2026.02.05</title>
+    <title>Qwc map viewer readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -140,246 +140,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://github.com/qwc-services/qwc-map-viewer/actions"><img alt="" src="https://github.com/qwc-services/qwc-map-viewer/workflows/build/badge.svg" /></a>
-<a href="https://hub.docker.com/r/sourcepole/qwc-map-viewer"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-map-viewer?label=Docker%20image&amp;sort=semver" /></a></p>
-<h1 id="qwc-map-viewer">QWC Map Viewer<a class="headerlink" href="#qwc-map-viewer" title="Permanent link">&para;</a></h1>
-<p>Provide a <a href="https://github.com/qgis/qwc2">QWC2 Web Client</a> application using QWC services.</p>
-<p><strong>Note:</strong> Requires a QWC OGC service or QGIS server running on <code>ogc_service_url</code>. Additional QWC Services are optional.</p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>Copy your QWC2 files from a production build:</p>
-<pre><code>SRCDIR=path/to/qwc2/prod/ DSTDIR=$PWD
-mkdir $DSTDIR/qwc2 &amp;&amp; mkdir $DSTDIR/qwc2/dist
-cd $SRCDIR &amp;&amp; \
-cp -r assets $DSTDIR/qwc2 &amp;&amp; \
-cp -r translations $DSTDIR/qwc2/translations &amp;&amp; \
-cp dist/QWC2App.js $DSTDIR/qwc2/dist/ &amp;&amp; \
-cp index.html $DSTDIR/qwc2/ &amp;&amp; \
-cp config.json $DSTDIR/qwc2/config.json &amp;&amp; \
-cd -
-</code></pre>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>The static config and permission files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
-e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
-<p><strong>Note:</strong>: Custom viewers have been replaced by tenants in v2.</p>
-<h3 id="map-viewer-config">Map Viewer config<a class="headerlink" href="#map-viewer-config" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="../schemas/qwc-map-viewer.json">JSON schema</a></li>
-<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/mapViewerConfig.json</code></li>
-</ul>
-<p>Example:</p>
-<pre><code class="language-jsonc">{
-  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-map-viewer/v2/schemas/qwc-map-viewer.json&quot;,
-  &quot;service&quot;: &quot;map-viewer&quot;,
-  &quot;config&quot;: {
-    // path to QWC2 files
-    &quot;qwc2_path&quot;: &quot;qwc2/&quot;,
-    // QWC OGC service (required)
-    &quot;ogc_service_url&quot;: &quot;http://localhost:5013/&quot;,
-    // some optional QWC services
-    &quot;auth_service_url&quot;: &quot;http://localhost:5017/&quot;,
-    &quot;data_service_url&quot;: &quot;http://localhost:5012/&quot;
-  },
-  &quot;resources&quot;: {
-    &quot;qwc2_config&quot;: {
-      // restricted menu items
-      &quot;restricted_viewer_tasks&quot;: [&quot;RasterExport&quot;],
-
-      &quot;config&quot;: {
-        // contents from QWC2 config.json
-        &quot;assetsPath&quot;: &quot;/assets&quot;,
-        // ...
-      }
-    },
-    &quot;qwc2_themes&quot;: {
-      // contents from QWC2 themes.json
-      &quot;themes&quot;: {
-        &quot;items&quot;: [
-          {
-            &quot;name&quot;: &quot;qwc_demo&quot;,
-            &quot;title&quot;: &quot;Demo&quot;,
-            &quot;url&quot;: &quot;/ows/qwc_demo&quot;,
-            // ...
-            &quot;sublayers&quot;: [
-              // ...
-            ]
-          }
-        ],
-        &quot;backgroundLayers&quot;: [
-          // ...
-        ],
-        // ...
-      }
-    }
-  }
-}
-</code></pre>
-<p>All <code>config</code> options may be overridden by setting corresponding upper-case environment variables, e.g. <code>OGC_SERVICE_URL</code> for <code>ogc_service_url</code>.</p>
-<p>Main optional QWC services:
- * <code>auth_service_url</code>: QWC Auth Service URL
- * <code>data_service_url</code>: QWC Data Service URL
- * <code>elevation_service_url</code>: QWC Elevation Service URL
- * <code>info_service_url</code>: QWC FeatureInfo Service URL
- * <code>legend_service_url</code>: QWC Legend Service URL
- * <code>permalink_service_url</code>: QWC Permalink Service URL
- * <code>print_service_url</code>: QWC Print Service URL
- * <code>proxy_service_url</code>: Proxy Service URL
- * <code>search_service_url</code>: QWC Search Service URL
- * <code>search_data_service_url</code>: QWC Search Result Service URL</p>
-<p>Additional user info fields may be read from the JWT identity by setting <code>user_info_fields</code>:</p>
-<pre><code class="language-json">&quot;config&quot;: {
-  &quot;user_info_fields&quot;: [&quot;surname&quot;, &quot;first_name&quot;]
-}
-</code></pre>
-<p>These will be added as <code>user_infos</code> in the <code>config.json</code> response if present in the current identity.</p>
-<p><code>qwc2_config</code> contains the QWC2 application configuration, with <code>config</code> corresponding to the contents of your standalone <code>config.json</code> file (see <a href="https://qwc-services.github.io/master/configuration/ViewerConfiguration/#load-time-configuration-configjson">Documentation</a>).</p>
-<p><code>qwc2_themes</code> contains the full themes configuration, corresponding to the contents of your standalone <code>themes.json</code> collected from <code>themesConfig.json</code>.</p>
-<p>Add new themes to your <code>themesConfig.json</code> (see <a href="https://qwc-services.github.io/master/configuration/ThemesConfiguration/">Documentation</a>) and put any theme thumbnails into <code>$QWC2_PATH/assets/img/mapthumbs/</code>.
-The <code>themesConfig.json</code> file is used to collect the full themes configuration using GetProjectSettings.</p>
-<p>Optional settings for restricted themes:</p>
-<pre><code class="language-json">&quot;config&quot;: {
-  &quot;show_restricted_themes&quot;: false,
-  &quot;show_restricted_themes_whitelist&quot;: [],
-  &quot;redirect_restricted_themes_to_auth&quot;: false,
-  &quot;internal_permalink_service_url&quot;: &quot;http://qwc-permalink-service:9090&quot;
-}
-</code></pre>
-<ul>
-<li><code>show_restricted_themes</code> (optional): Whether to insert placeholder items for restricted themes in themes.json (default: <code>false</code>)</li>
-<li><code>show_restricted_themes_whitelist</code> (optional): Whitelist of restricted theme names to include in themes.json. If empty, all restricted themes are shown. (default: <code>[]</code>)</li>
-<li><code>redirect_restricted_themes_to_auth</code> (optional): Whether to redirect to login on auth service if requesting a restricted theme in URL params, if not currently signed in (default: <code>false</code>)</li>
-<li><code>internal_permalink_service_url</code> (optional): Internal Permalink service URL for getting the theme from a resolved permalink for redirecting to login (default: <code>http://qwc-permalink-service:9090</code>). This is used only if <code>redirect_restricted_themes_to_auth</code> is enabled and <code>permalink_service_url</code> is set.</li>
-</ul>
-<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
-<ul>
-<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
-</ul>
-<p>Example:</p>
-<pre><code class="language-json">{
-  &quot;users&quot;: [
-    {
-      &quot;name&quot;: &quot;demo&quot;,
-      &quot;groups&quot;: [&quot;demo&quot;],
-      &quot;roles&quot;: []
-    }
-  ],
-  &quot;groups&quot;: [
-    {
-      &quot;name&quot;: &quot;demo&quot;,
-      &quot;roles&quot;: [&quot;demo&quot;]
-    }
-  ],
-  &quot;roles&quot;: [
-    {
-      &quot;role&quot;: &quot;public&quot;,
-      &quot;permissions&quot;: {
-        &quot;viewer_tasks&quot;: [],
-        &quot;wms_services&quot;: [
-          {
-            &quot;name&quot;: &quot;qwc_demo&quot;,
-            &quot;layers&quot;: [
-              {
-                &quot;name&quot;: &quot;qwc_demo&quot;
-              },
-              {
-                &quot;name&quot;: &quot;edit_demo&quot;
-              },
-              {
-                &quot;name&quot;: &quot;edit_points&quot;
-              },
-              {
-                &quot;name&quot;: &quot;edit_lines&quot;
-              },
-              {
-                &quot;name&quot;: &quot;edit_polygons&quot;
-              },
-              {
-                &quot;name&quot;: &quot;geographic_lines&quot;
-              },
-              {
-                &quot;name&quot;: &quot;country_names&quot;
-              },
-              {
-                &quot;name&quot;: &quot;states_provinces&quot;
-              },
-              {
-                &quot;name&quot;: &quot;countries&quot;
-              },
-              {
-                &quot;name&quot;: &quot;bluemarble_bg&quot;
-              },
-              {
-                &quot;name&quot;: &quot;osm_bg&quot;
-              }
-            ],
-            &quot;print_templates&quot;: [&quot;A4 Landscape&quot;]
-          }
-        ],
-        &quot;background_layers&quot;: [&quot;bluemarble&quot;, &quot;mapnik&quot;],
-        &quot;data_datasets&quot;: [
-          {
-            &quot;name&quot;: &quot;qwc_demo.edit_points&quot;,
-            &quot;attributes&quot;: [
-              &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;
-            ]
-          }
-        ]
-      }
-    },
-    {
-      &quot;role&quot;: &quot;demo&quot;,
-      &quot;permissions&quot;: {
-        &quot;viewer_tasks&quot;: [&quot;RasterExport&quot;]
-      }
-    }
-  ]
-}
-</code></pre>
-<ul>
-<li><code>viewer_tasks</code>: permitted menu items if any are restricted</li>
-<li><code>wms_services</code>: permitted WMS services, layers and print templates</li>
-<li><code>background_layers</code>: permitted background layers (use the wildcard string "*" to allow all background layers)</li>
-<li><code>data_datasets</code>: permitted datasets for editing</li>
-</ul>
-<p>In this example, the <em>Raster Export</em> map tool will only be visible for users with the role <code>demo</code>.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
-<p>Base URL:</p>
-<pre><code>http://localhost:5030/
-</code></pre>
-<p>Sample requests:</p>
-<pre><code>curl 'http://localhost:5030/config.json'
-curl 'http://localhost:5030/themes.json'
-</code></pre>
-<h2 id="docker-images">Docker images<a class="headerlink" href="#docker-images" title="Permanent link">&para;</a></h2>
-<p>The following Docker images are available:
-* <code>sourcepole/qwc-map-viewer</code>: Map viewer service with stock qwc2 application
-* <code>sourcepole/qwc-map-viewer-base</code>: Map viewer service to use with a custom qwc2 application</p>
-<p>Dependencies:</p>
-<pre><code>    git repos                Docker images
-
- ┌───────────────┐
- │     qwc2      ├────────────┐
- │  config.json  │ CI Build   │
- └───────────────┘      ┌─────▼───────────────┐
-                     ┌──► qwc-map-viewer      │
- ┌───────────────┐   │  └─────────────────────┘
- │ qwc-map-viewer├───┤
- └───────────────┘   │  ┌─────────────────────┐
-                     └──► qwc-map-viewer-base │
-                        └─────────────────────┘
-</code></pre>
-<h4 id="qwc-map-viewer_1">qwc-map-viewer<a class="headerlink" href="#qwc-map-viewer_1" title="Permanent link">&para;</a></h4>
-<p>This is the stock version used in the <code>docker-compose-example.yml</code> file. With this version, the docker image comes with a preinstalled version of the latest qwc2 stock application build and the python application for the viewer. Use this docker image, if you don't have your own build of the QWC2 app.</p>
-<h4 id="qwc-map-viewer-base">qwc-map-viewer-base<a class="headerlink" href="#qwc-map-viewer-base" title="Permanent link">&para;</a></h4>
-<p>If you want to use your own QWC2 build then this is the docker image that you want to use. This docker image comes with only the python application installed on. Here is an example, on how you can add you own QWC2 build to the docker image.</p>
-<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Install dependencies and run service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
-<p>With config path:</p>
-<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
-</code></pre>
+                
               
             </div>
           </div><footer>

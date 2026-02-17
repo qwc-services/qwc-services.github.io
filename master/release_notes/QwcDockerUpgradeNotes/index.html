@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>qwc-docker upgrade notes - QWC - 2026.02.05</title>
+    <title>qwc-docker upgrade notes - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -126,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -144,13 +144,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="updating-to-qwc-map-viewerv20260201">Updating to qwc-map-viewer:v2026.02.01<a class="headerlink" href="#updating-to-qwc-map-viewerv20260201" title="Permanent link">&para;</a></h1>
+                <h1 id="updating-to-qwc-map-viewerv20260201-2025-lts-2026-lts">Updating to qwc-map-viewer:v2026.02.01 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-map-viewerv20260201-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>As of <code>qwc-map-viewer:v2026.02.01</code>, the <code>editConfig</code> will not be embedded in the <code>themes.json</code> anymore, but will be dynamically loaded on-demand. This reduces the size of the initial <code>themes.json</code>. When updating to <code>qwc-map-viewer:v2026.02.01</code>, you will also need to update to <code>qwc-config-generator:v2026.01.30</code> and then run the config generator.</p>
-<h1 id="updating-to-qwc-map-viewerv20260114">Updating to qwc-map-viewer:v2026.01.14<a class="headerlink" href="#updating-to-qwc-map-viewerv20260114" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-map-viewerv20260114-2025-lts-2026-lts">Updating to qwc-map-viewer:v2026.01.14 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-map-viewerv20260114-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>The Bookmarks plugin UI refresh in <code>qwc-map-viewer:v2026.01.14</code> also requires an update to <code>qwc-permalink-service:v2026.01.14</code>.</p>
-<h1 id="updating-to-qwc-map-viewerv20260106-and-qwc-config-generatorv20260106">Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06<a class="headerlink" href="#updating-to-qwc-map-viewerv20260106-and-qwc-config-generatorv20260106" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-map-viewerv20260106-and-qwc-config-generatorv20260106-2025-lts-2026-lts">Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-map-viewerv20260106-and-qwc-config-generatorv20260106-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>Due to some changes in how viewer asset and viewer task permissions are enforced, when updating to <code>qwc-map-viewer:v2026.01.06</code>, also the <code>qwc-config-generator</code> image should be updated to <code>v2026.01.06</code>.</p>
-<h1 id="updating-to-qwc-map-viewerv20251112">Updating to qwc-map-viewer:v2025.11.12<a class="headerlink" href="#updating-to-qwc-map-viewerv20251112" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-map-viewerv20251112-2025-lts-2026-lts">Updating to qwc-map-viewer:v2025.11.12 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-map-viewerv20251112-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p><code>qwc-map-viewer:v2025.11.12</code> now supports reading editConfigs from imported layers if the service capabilities, returned by a <code>qwc-ogc-service</code>, report an <code>EditConfig</code> address. For this to work, also update to <code>qwc-config-generator:v2025.11.12</code> and <code>qwc-ogc-service:v2025.11.12</code> and ensure your <code>tenantConfig.json</code> contains an <code>edit_config</code> entry in the <code>ogc</code> service configuration as follows:</p>
 <pre><code>      &quot;name&quot;: &quot;ogc&quot;,
       &quot;generator_config&quot;: {
@@ -165,9 +165,9 @@
       },
       ...
 </code></pre>
-<h1 id="updating-to-qwc-admin-guiv20251105">Updating to qwc-admin-gui:v2025.11.05<a class="headerlink" href="#updating-to-qwc-admin-guiv20251105" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-admin-guiv20251105-2025-lts-2026-lts">Updating to qwc-admin-gui:v2025.11.05 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-admin-guiv20251105-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>The <code>qwc-admin-gui:v2025.11.05</code> uses the new possibilities to abort the config generator workers introduced in <code>qwc-config-generator:v2025.11.05</code>. When updating to <code>qwc-admin-gui:v2025.11.05</code>, also update to <code>qwc-config-generator:v2025.11.05</code>.</p>
-<h1 id="new-wfs-permission-model-removal-of-data-read-resource-type">New WFS permission model, removal of <code>Data (read)</code> resource type<a class="headerlink" href="#new-wfs-permission-model-removal-of-data-read-resource-type" title="Permanent link">&para;</a></h1>
+<h1 id="new-wfs-permission-model-removal-of-data-read-resource-type-2025-lts-2026-lts">New WFS permission model, removal of <code>Data (read)</code> resource type [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#new-wfs-permission-model-removal-of-data-read-resource-type-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>As of</p>
 <ul>
 <li><code>qwc-config-generator:v2025.08.05</code></li>
@@ -177,15 +177,15 @@
 </ul>
 <p>a new WFS permission model has been introduced, replacing the setting <code>generate_wfs_services</code> in <code>tenantConfig.json</code> with proper WFS resources. See <a href="../../configuration/ResourcesPermissions/#wfs-permissions">WFS Permissions</a> for further information on the new WFS permission model.</p>
 <p>Also note that the <code>Data (read)</code> resource type has been removed, as it is equivalent to <code>Data</code> without the <code>write</code> flag. Existing <code>Data (read)</code> resources will be automatically converted to <code>Data</code> by <code>qwc-base-db-migrate:v2025.08.05</code>.</p>
-<h1 id="updating-to-qwc-config-generatorv20250722">Updating to qwc-config-generator:v2025.07.22<a class="headerlink" href="#updating-to-qwc-config-generatorv20250722" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-config-generatorv20250722-2025-lts-2026-lts">Updating to qwc-config-generator:v2025.07.22 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-config-generatorv20250722-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>As of <code>qwc-config-generator:v2025.07.22</code>, attribute resources created in the <code>qwc-admin-gui</code> shall be named by the name of the attribute, not its alias.</p>
-<h1 id="updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423">Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23<a class="headerlink" href="#updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423-2025-lts-2026-lts">Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-admin-guiv20250423-and-qwc-db-authv20250423-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p><code>qwc-admin.gui:v2025.04.23</code> now supports setting a flag that the user password must be changed on the next login, and
 and <code>qwc-db-auth:v2025.04.23</code> enforces this setting. As this requires a DB schema change, make sure you are also using
 <code>qwc-base-db-migrate:v2025.04.23</code> or newer.</p>
-<h1 id="updating-to-qwc-permalink-service-v20250319">Updating to qwc-permalink-service-v2025.03.19<a class="headerlink" href="#updating-to-qwc-permalink-service-v20250319" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-permalink-service-v20250319-2025-lts-2026-lts">Updating to qwc-permalink-service-v2025.03.19 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-permalink-service-v20250319-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>Due to a DB schema change required by <code>qwc-permalink-service-v2025.03.19</code>, make sure you are also using <code>qwc-base-db-migrate-v2025.03.19</code> or newer.</p>
-<h1 id="updating-to-qwc-map-viewer-demo-v20250306">Updating to qwc-map-viewer-demo-v2025.03.06<a class="headerlink" href="#updating-to-qwc-map-viewer-demo-v20250306" title="Permanent link">&para;</a></h1>
+<h1 id="updating-to-qwc-map-viewer-demo-v20250306-2025-lts-2026-lts">Updating to qwc-map-viewer-demo-v2025.03.06 [2025-lts &rarr; 2026-lts]<a class="headerlink" href="#updating-to-qwc-map-viewer-demo-v20250306-2025-lts-2026-lts" title="Permanent link">&para;</a></h1>
 <p>The <code>qwc-map-viewer-demo</code> images have been replaced by the <code>qwc-map-viewer</code> images (without the <code>-demo</code> suffix). Reference this image instead in your <code>docker-compose.yml</code>:</p>
 <pre><code class="language-yml">   qwc-map-viewer:
 -    image: docker.io/sourcepole/qwc-map-viewer-demo:&lt;tag&gt;

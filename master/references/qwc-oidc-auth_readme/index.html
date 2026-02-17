@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc oidc auth readme - QWC - 2026.02.05</title>
+    <title>Qwc oidc auth readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -150,33 +150,8 @@
 <li><a href="http://flask-jwt-extended.readthedocs.io/">Flask-JWT-Extended</a></li>
 </ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>Environment variables (single tenant):</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ISSUER_URL</code></td>
-<td>OpenID Connect Issuer URL</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>CLIENT_ID</code></td>
-<td>Client ID</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>CLIENT_SECRET</code></td>
-<td>Client secret</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
 <h3 id="service-config">Service config<a class="headerlink" href="#service-config" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="../schemas/qwc-oidc-auth.json">JSON schema</a></li>
@@ -193,8 +168,10 @@
   }
 }
 </code></pre>
-<p>The service expects authentication service information at $ISSUER_URL/.well-known/openid-configuration</p>
-<p>See <a href="../schemas/qwc-oidc-auth.json">JSON schema</a> for optional configuration options.</p>
+<p>The service expects authentication service information at <code>$ISSUER_URL/.well-known/openid-configuration</code></p>
+<p>See the <a href="../schemas/qwc-oidc-auth.json">schema definition</a> for the full set of supported config variables.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <h4 id="configure-access-token-endpoint">Configure Access Token endpoint<a class="headerlink" href="#configure-access-token-endpoint" title="Permanent link">&para;</a></h4>
 <p>It is possible to authorize connection with a external Access Token in  the Authorization Header (endpoint <code>/tokenlogin</code>).</p>
 <p>For each token a configuration needs to be add in <code>authorized_api_token</code>.</p>
@@ -231,15 +208,17 @@
 <p>CLIENT_ID and CLIENT_SECRET are defined on identity provider side.</p>
 <p>The Redirect URI is the public base URL with the endpoint /callback (Example: https://qwc2.sourcepole.ch/oauth/callback).</p>
 <p>This redirect URI can be manually configured with <code>redirect_uri</code>.</p>
-<h2 id="usagedevelopment">Usage/Development<a class="headerlink" href="#usagedevelopment" title="Permanent link">&para;</a></h2>
-<p>Configure environment:</p>
-<pre><code>echo FLASK_ENV=development &gt;.flaskenv
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
-<p>Install dependencies and run service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
-<p>Login:
-    http://127.0.0.1:5017/login</p>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-oidc-auth">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
               
             </div>
           </div><footer>

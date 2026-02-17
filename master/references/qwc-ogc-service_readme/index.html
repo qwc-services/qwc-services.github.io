@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ogc service readme - QWC - 2026.02.05</title>
+    <title>Qwc ogc service readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -252,6 +252,8 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 }
 </code></pre>
 <p><strong>Note</strong>: <code>wfs_services</code> example for a separate QGIS project <code>qwc_demo_wfs</code> with WFS enabled.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
@@ -355,6 +357,25 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 }
 </code></pre>
 <p><strong>Note</strong>: <code>layers</code> in <code>wms_services</code> is a flat list of all permitted layers, group layers and internal print layers.</p>
+<h3 id="supported-services-and-landing-page">Supported services and landing page<a class="headerlink" href="#supported-services-and-landing-page" title="Permanent link">&para;</a></h3>
+<p>The OGC Service supports:</p>
+<ul>
+<li>
+<p>WMS</p>
+<p>http://<ogc-service-url>/<service_name>?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=...</p>
+</li>
+<li>
+<p>WFS (version 1.0.0 and 1.1.0), including WFS-T</p>
+<p>http://<ogc-service-url>/<service_name>?SERVICE=WFS&amp;VERSION=1.1.0&amp;REQUEST=...</p>
+</li>
+<li>
+<p>OGC API features</p>
+<p>http://<ogc-service-url>/<service_name>/<features></p>
+</li>
+</ul>
+<p>A landing page will be returned when requesting the service root endpoint (i.e. <code>http://&lt;ogc-service-url&gt;/</code>). It displays an overview of all available services/datasets.</p>
+<p>The landing page is rendered from templates which are located at <a href="src/templates/ogcapi">src/templates/ogcapi</a>.
+You can customize the landing page by modifying these templates, resp. if using Docker by mounting the modified templates to <code>/srv/qwc_service/templates/ogcapi/</code>.</p>
 <h3 id="basic-auth">Basic Auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
 <p>The OGC service be configured to accept password authentication using Basic authentication.</p>
 <p>Example:</p>
@@ -363,7 +384,7 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   },
 </code></pre>
 <p>To force the <code>qwc-ogc-service</code> to return a <code>401 Unauthorized</code> response if not authenticated, pass <code>REQUIREAUTH=1</code> to the <code>WMS</code> or <code>WFS</code> request args, example:</p>
-<pre><code>http://qwc-ogc-service/&lt;service&gt;?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;REQUIREAUTH=1
+<pre><code>http://&lt;ogc-service-url&gt;/&lt;service_nae&gt;?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;REQUIREAUTH=1
 </code></pre>
 <h3 id="marker-params">Marker params<a class="headerlink" href="#marker-params" title="Permanent link">&para;</a></h3>
 <p>The OGC service supports specifying marker parameters to insert a SLD styled marker into GetMap requests via QGIS Server <code>HIGHLIGHT_SYMBOL</code> and <code>HIGHLIGHT_GEOM</code>. To use this feature, provide a SLD template and parameter definitions in the ogc service config, for example:</p>
@@ -395,29 +416,20 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <pre><code>...?SERVICE=WMS&amp;REQUEST=GetMap&amp;...&amp;MARKER=X-&gt;123456|Y-&gt;123456|STROKE-&gt;000FFA...
 </code></pre>
 <p><code>X</code> and <code>Y</code> are compulsory and specify the marker position in map CRS, any other additional parameters are optional and will override the default values if provided. All parameters have to written in uppercase.</p>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
-<p>Set the <code>DEFAULT_QGIS_SERVER_URL</code> environment variable to the QGIS server URL
-when starting this service. (default: <code>http://localhost:8001/ows/</code> on
-qwc-qgis-server container)</p>
-<p>Base URL:</p>
-<pre><code>http://localhost:5013/
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
-<p>Service API:</p>
-<pre><code>http://localhost:5013/api/
-</code></pre>
-<p>Sample requests:</p>
-<pre><code>curl 'http://localhost:5013/qwc_demo?VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities'
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:$FLASK_RUN_PORT/api/
 </code></pre>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-ogc-service">Dockerhub</a>.</p>
 <p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Install dependencies and run service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
-<p>With config path:</p>
-<pre><code>CONFIG_PATH=/PATH/TO/CONFIGS/ uv run src/server.py
-</code></pre>
               
             </div>
           </div><footer>

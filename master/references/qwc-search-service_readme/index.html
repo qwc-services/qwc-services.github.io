@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc search service readme - QWC - 2026.02.05</title>
+    <title>Qwc search service readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -193,6 +193,25 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   }
 }
 </code></pre>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FILTERWORD_CHARS</code></td>
+<td><code>\w.</code></td>
+<td>Characters which should be captured in the filter word regex.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
@@ -265,96 +284,26 @@ curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
 <pre><code>"search_backend": "pg"
 </code></pre>
 <p>and setting the <code>pg_feature_query</code>, <code>pg_layer_query</code> variables. See also the <a href="https://qwc-services.github.io/master/topics/Search/#configuring-the-fulltext-search-service">Search chapter in the qwc-services documentation</a>.</p>
-<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SEARCH_BACKEND</td>
-<td>Search backend, 'solr' or 'pg'</td>
-<td><code>solr</code></td>
-</tr>
-<tr>
-<td>SOLR_SERVICE_URL</td>
-<td>SOLR service URL</td>
-<td><code>http://localhost:8983/solr/gdi/select</code></td>
-</tr>
-<tr>
-<td>WORD_SPLIT_RE</td>
-<td>Word split Regex</td>
-<td><code>[\s,.:;"]+</code></td>
-</tr>
-<tr>
-<td>SEARCH_RESULT_LIMIT</td>
-<td>Result count limit per search</td>
-<td><code>50</code></td>
-</tr>
-<tr>
-<td>SEARCH_RESULT_SORT</td>
-<td>Sorting of search results (solr backend)</td>
-<td><code>score desc, sort asc</code></td>
-</tr>
-<tr>
-<td>DB_URL</td>
-<td>DB connection for search geometries view</td>
-<td></td>
-</tr>
-<tr>
-<td>PG_FEATURE_QUERY</td>
-<td>Feature query SQL (pg backend)</td>
-<td></td>
-</tr>
-<tr>
-<td>PG_FEATURE_QUERY_TEMPLATE</td>
-<td>Feature query SQL Jinja template (pg backend)</td>
-<td></td>
-</tr>
-<tr>
-<td>PG_FEATURE_QUERY</td>
-<td>Feature query SQL (pg backend)</td>
-<td></td>
-</tr>
-<tr>
-<td>TRGM_SIMILARITY_THRESHOLD</td>
-<td>Trigram similarity treshold (pg backend)</td>
-<td><code>0.3</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usagedevelopment">Usage/Development<a class="headerlink" href="#usagedevelopment" title="Permanent link">&para;</a></h2>
-<p>Set the <code>CONFIG_PATH</code> environment variable to the path containing the service config and permission files when starting this service (default: <code>config</code>).</p>
-<pre><code>export CONFIG_PATH=../qwc-docker/volumes/config
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+export SOLR_SERVICE_URL=http://localhost:8983/solr/gdi/select
+uv run src/server.py
 </code></pre>
-<p>Overide configurations, if necessary:</p>
-<pre><code>export SOLR_SERVICE_URL=http://localhost:8983/solr/gdi/select
-</code></pre>
-<p>Configure environment:</p>
-<pre><code>echo FLASK_ENV=development &gt;.flaskenv
-</code></pre>
-<p>Install dependencies and start service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
-<p>Search base URL:</p>
-<pre><code>http://localhost:5011/
-</code></pre>
-<p>Search API:</p>
-<pre><code>http://localhost:5011/api/
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:5000/api/
 </code></pre>
 <p>Examples:</p>
-<pre><code>curl 'http://localhost:5011/fts/?filter=foreground,ne_10m_admin_0_countries&amp;searchtext=austr'
-curl 'http://localhost:5011/fts/?searchtext=Country:austr'
-curl 'http://localhost:5011/fts/?filter=foreground,ne_10m_admin_0_countries&amp;searchtext=qwc'
-
-curl -g 'http://localhost:5011/geom/ne_10m_admin_0_countries/?filter=[["ogc_fid","=",90]]'
+<pre><code>curl 'http://localhost:5000/?filter=foreground,ne_10m_admin_0_countries&amp;searchtext=austr'
+curl 'http://localhost:5000/?searchtext=Country:austr'
+curl 'http://localhost:5000/?filter=foreground,ne_10m_admin_0_countries&amp;searchtext=qwc'
+curl 'http://localhost:5000/geom/ne_10m_admin_0_countries/?filter=[["ogc_fid","=",90]]'
 </code></pre>
 <h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-fulltext-search-service">Dockerhub</a>.</p>
 <p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Run all tests:</p>

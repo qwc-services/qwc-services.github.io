@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ldap auth readme - QWC - 2026.02.05</title>
+    <title>Qwc ldap auth readme - QWC - 2026.02.16</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.05
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.05</a>
+          <a href="../..">QWC - 2026.02.16</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -142,22 +142,32 @@
               
                 <p><a href="https://github.com/qwc-services/qwc-ldap-auth/actions"><img alt="" src="https://github.com/qwc-services/qwc-ldap-auth/workflows/build/badge.svg" /></a>
 <a href="https://hub.docker.com/r/sourcepole/qwc-ldap-auth"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-ldap-auth?label=Docker%20image&amp;sort=semver" /></a></p>
-<h1 id="authentication-with-ldapactive-directory">Authentication with LDAP/Active Directory<a class="headerlink" href="#authentication-with-ldapactive-directory" title="Permanent link">&para;</a></h1>
+<h1 id="qwc-ldap-auth-service">QWC LDAP Auth Service<a class="headerlink" href="#qwc-ldap-auth-service" title="Permanent link">&para;</a></h1>
+<p>Authentication with LDAP/Active Directory.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>See also <a href="https://flask-ldap3-login.readthedocs.io/en/latest/configuration.html">flask-ldap3-login</a></p>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="ldap-service-config">LDAP service config<a class="headerlink" href="#ldap-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../schemas/qwc-ldap-auth.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/ldapAuth.json</code></li>
+</ul>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables are supported:</p>
 <table>
 <thead>
 <tr>
-<th>ENV</th>
-<th>default value</th>
-<th>description</th>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>JWT_SECRET_KEY</code></td>
 <td><code>********</code></td>
-<td>secret key for JWT token (same for all services)</td>
+<td>Secret key for JWT token (same for all services)</td>
 </tr>
 <tr>
 <td><code>LDAP_HOST</code></td>
@@ -251,6 +261,7 @@
 </tr>
 </tbody>
 </table>
+<p>See also <a href="https://flask-ldap3-login.readthedocs.io/en/latest/configuration.html">flask-ldap3-login</a></p>
 <h2 id="customization">Customization<a class="headerlink" href="#customization" title="Permanent link">&para;</a></h2>
 <p>You can add a custom logo and a custom background image by setting the following <code>config</code> options:</p>
 <pre><code class="language-json">&quot;config&quot;: {
@@ -271,24 +282,18 @@
     - ./volumes/assets/Background.jpg:/srv/qwc_service/static/background.jpg
     - ./volumes/assets/logo.png:/srv/qwc_service/static/logo.jpg
 </code></pre>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Run standalone application:</p>
-<pre><code>uv run src/server.py
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
 </code></pre>
-<p>Endpoints:</p>
-<pre><code>http://localhost:5017/login
-
-http://localhost:5017/logout
-
-http://localhost:5017/verify_login
-</code></pre>
-<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
-<p>Install dependencies and run service:</p>
-<pre><code>echo FLASK_ENV=development &gt;.flaskenv
-</code></pre>
-<p>Start local service:</p>
-<pre><code>uv run src/server.py
-</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-ldap-auth">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>Testing with https://github.com/rroemhild/docker-test-openldap</p>
 <pre><code>docker run -d -p 10389:10389 -p 10636:10636 rroemhild/test-openldap:2.1
 </code></pre>
