@@ -1,16 +1,16 @@
-# Updating to qwc-map-viewer:v2026.02.01
+# Updating to qwc-map-viewer:v2026.02.01 \[2025-lts &rarr; 2026-lts\]
 
 As of `qwc-map-viewer:v2026.02.01`, the `editConfig` will not be embedded in the `themes.json` anymore, but will be dynamically loaded on-demand. This reduces the size of the initial `themes.json`. When updating to `qwc-map-viewer:v2026.02.01`, you will also need to update to `qwc-config-generator:v2026.01.30` and then run the config generator.
 
-# Updating to qwc-map-viewer:v2026.01.14
+# Updating to qwc-map-viewer:v2026.01.14 \[2025-lts &rarr; 2026-lts\]
 
 The Bookmarks plugin UI refresh in `qwc-map-viewer:v2026.01.14` also requires an update to `qwc-permalink-service:v2026.01.14`.
 
-# Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06
+# Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06 \[2025-lts &rarr; 2026-lts\]
 
 Due to some changes in how viewer asset and viewer task permissions are enforced, when updating to `qwc-map-viewer:v2026.01.06`, also the `qwc-config-generator` image should be updated to `v2026.01.06`.
 
-# Updating to qwc-map-viewer:v2025.11.12
+# Updating to qwc-map-viewer:v2025.11.12 \[2025-lts &rarr; 2026-lts\]
 
 `qwc-map-viewer:v2025.11.12` now supports reading editConfigs from imported layers if the service capabilities, returned by a `qwc-ogc-service`, report an `EditConfig` address. For this to work, also update to `qwc-config-generator:v2025.11.12` and `qwc-ogc-service:v2025.11.12` and ensure your `tenantConfig.json` contains an `edit_config` entry in the `ogc` service configuration as follows:
 ```
@@ -28,11 +28,11 @@ Due to some changes in how viewer asset and viewer task permissions are enforced
       ...
 ```
 
-# Updating to qwc-admin-gui:v2025.11.05
+# Updating to qwc-admin-gui:v2025.11.05 \[2025-lts &rarr; 2026-lts\]
 
 The `qwc-admin-gui:v2025.11.05` uses the new possibilities to abort the config generator workers introduced in `qwc-config-generator:v2025.11.05`. When updating to `qwc-admin-gui:v2025.11.05`, also update to `qwc-config-generator:v2025.11.05`.
 
-# New WFS permission model, removal of `Data (read)` resource type
+# New WFS permission model, removal of `Data (read)` resource type \[2025-lts &rarr; 2026-lts\]
 
 As of
 
@@ -45,21 +45,21 @@ a new WFS permission model has been introduced, replacing the setting `generate_
 
 Also note that the `Data (read)` resource type has been removed, as it is equivalent to `Data` without the `write` flag. Existing `Data (read)` resources will be automatically converted to `Data` by `qwc-base-db-migrate:v2025.08.05`.
 
-# Updating to qwc-config-generator:v2025.07.22
+# Updating to qwc-config-generator:v2025.07.22 \[2025-lts &rarr; 2026-lts\]
 
 As of `qwc-config-generator:v2025.07.22`, attribute resources created in the `qwc-admin-gui` shall be named by the name of the attribute, not its alias.
 
-# Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23
+# Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23 \[2025-lts &rarr; 2026-lts\]
 
 `qwc-admin.gui:v2025.04.23` now supports setting a flag that the user password must be changed on the next login, and
 and `qwc-db-auth:v2025.04.23` enforces this setting. As this requires a DB schema change, make sure you are also using
 `qwc-base-db-migrate:v2025.04.23` or newer.
 
-# Updating to qwc-permalink-service-v2025.03.19
+# Updating to qwc-permalink-service-v2025.03.19 \[2025-lts &rarr; 2026-lts\]
 
 Due to a DB schema change required by `qwc-permalink-service-v2025.03.19`, make sure you are also using `qwc-base-db-migrate-v2025.03.19` or newer.
 
-# Updating to qwc-map-viewer-demo-v2025.03.06
+# Updating to qwc-map-viewer-demo-v2025.03.06 \[2025-lts &rarr; 2026-lts\]
 
 The `qwc-map-viewer-demo` images have been replaced by the `qwc-map-viewer` images (without the `-demo` suffix). Reference this image instead in your `docker-compose.yml`:
 

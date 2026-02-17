@@ -2,11 +2,177 @@
 
 This file lists the most important changes in QWC and qwc-services between LTS releases.
 
+## 2025-lts &rarr; 2026-lts
+
+When upgrading from a 2025-lts setup, please note the entries marked with *\[2025-lts &rarr; 2026-lts\]* in the upgrade notes:
+
+* [QWC upgrade notes](./QWC2UpgradeNotes.md)
+* [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
+
+### General
+* QWC is now published on [NPM](https://www.npmjs.com/package/qwc2), which can be used as a dependency for custom QWC builds
+* Enchanced keyboard navigation throughout
+
+### Editing
+* Dynamically load editConfig for theme layers and imported layers (reduces size of initial `themes.json`, allows editing imported theme layers)
+* Add support for virtual (i.e. calculated) fields
+* Allow showing measurements while drawing
+* Add support for editing attributes of datasets with curve geometries (geometries will be read-only)
+* Add support for ValueRelation widgets with multiple selections
+* Add support for array field types
+* Add support visibility expressions for DnD designer form tabs and group boxes
+* Allow editing nested datasets with geometries
+* Allow recording GPS position for point/line geometries
+* Allow copying compatible attributes when copying existing feature
+* Extended [expression grammar](https://github.com/qgis/qwc2/blob/64b3810996ec58f9f0d6247772b56cc86a236186/utils/expr_grammar/grammar.ne)
+* Allow hiding hidden fields in [AttributeTable](../references/qwc2_plugins#attributetable)
+* The AttributeTable now uses service-side pagination by the `qwc-data-service` for loading the feature collection
+
+### Identify
+* Add new paginated display mode, enable via [`resultDisplayMode`](../references/qwc2_plugins#identify) config setting
+* Allow comparing selected identify results side-by-side
+* Add shapefile and XLSX exporters
+* The GeoJSON exporter now exports in `EPSG:4326`
+
+### Layers and LayerTree
+* Expose layer visibility presets ("themes"), as configured in the QGIS project, in the LayerTree
+* Honour layer refresh interval, as configured in the [QGIS project](../configuration/ThemesConfiguration#create-qgis-project)
+* Show control to toggle group and sublayers to LayerTree if [`groupTogglesSublayers`](../references/qwc2_plugins#layertree) is `false`
+* Allow adding separators to the LayerTree also if [`flattenGroups`](../references/qwc2_plugins#layertree) is `false`
+* Display layer style selector also for group layers in LayerTree
+
+### Localization
+* Add support for translated QWC themes, see [Translations](../topics/Translations#translated-themes)
+* Add support for `{lang}` placeholder in the [`NewsPopup`](../references/qwc2_plugins#newspopup) `newsDocument` URL
+* Add support for `$lang$` placehodler in menu item and identify attribute links
+* Add support for `translate(<fieldname>)` to translate field names in [custom HTML info templates](../topics/FeatureInfo/#custom-html-templates)
+
+### Measure
+* Allow configuring [line head and tail markers](../references/qwc2_plugins#measure) for distance and bearing measurement geometries
+* Allow drawing multiple measurement geometries, see also [`clearMeasurementsOnExit` and `clearMeasurementsOnModeChange`](../references/qwc2_plugins#measure) config settings
+* Display total line length next to geometry, also display perimeter length if [`showPerimeterLength`](../references/qwc2_plugins#measure) is set
+* Allow specifying custom `ElevationInterface` for [HeightProfile](../references/qwc2_plugins#heightprofile)
+* Add support for multiple height profiles returned by [`qwc-elevation-service`](https://github.com/qwc-services/qwc-elevation-service)
+
+### Redlining
+* Add support for transform a selection of multiple objects
+* Allow cloning selected features
+* Allow recording GPS position for point/line drawings
+* Allow setting line dash pattern
+* Allow setting and editing attributes of redlining features
+* Add specturm color picker to color buttons
+
+### Reports
+* Allow specifying multiple report templates per layer, see [Reports](../topics/Reports#configuring-the-web-client)
+* Add `single_report` mode, to generate one report with all selected features instead of one report per selected feature
+
+### Search
+* [QGIS feature search](../topics/Search/#configuring-the-qgis-feature-search): allow dynamically populating selection lists via `options_query`
+* Allow searching for catalog layers in main search field, see [`registerCatalogSearchProvider`](../references/qwc2_plugins#layercatalog)
+* Allow searching for task menu entries in main search field, see [`registerTaskSearchProvider`](../references/qwc2_plugins#topbar)
+* Allow dynamically registering search providers via 
+* Allow loading search filter regions from an external file, see [search filtering](../topics/Search/#filtering)
+
+### Other changes
+* Bookmark: Rework plugin for improved usabiliy
+* Cyclomedia: Update default cyclomediaVersion to 25.7
+* GeometryDigitizer: Allow chosing between wkt and geojson as the format for sending geometries to the target application
+* MapExport: Include external layers in DXF export and merge result
+* Portal, ThemeSwitcher: Introduce `expandGroups` config setting to control whether groups are expanded by default
+* Routing: Allow adding routing result as redlining layers
+* ThemeSwitcher: Allow displaying active theme
+* API: Allow interacting with embedded QWC instances via [`postMessage`](../references/qwc2_plugins#api)
+
+### New plugins
+* [ObliqueView](../references/qwc2_plugins#obliqueview), see also [Oblique View](../topics/ObliqueView)
+* [ObjectList](../references/qwc2_plugins#objectlist)
+* [Panoramax](../references/qwc2_plugins#panoramax)
+* [TourGuide](../references/qwc2_plugins#tourguide), see also [Tour Guide](../topics/Tourguide)
+* [ValueTool](../references/qwc2_plugins#valuetool)
+* [View3D](../references/qwc2_plugins#view3d), see also [3D View](../topics/View3D)
+
+### Services
+
+**qwc-admin-gui**
+
+* Allow aborting config-generator workers
+* Allow sending [invitation mails](https://github.com/qwc-services/qwc-admin-gui/?tab=readme-ov-file#invitations)
+
+**qwc-data-service**
+
+* Add support for pagination and sorting for dataset index endpoint
+* Optimized queries for querying datasets with joined tables
+* New [filter operators](https://github.com/qwc-services/qwc-data-service/?tab=readme-ov-file#filter-expressions): `~, HAS, HAS NOT`
+
+**qwc-document-service**
+
+* Allow using precompiled `*.jasper` templates (if `permit_subreports=true`)
+* Keep JVM alive to avoid significant per-request overhead
+* Read true font family names from font files instead of relying only on font file name convention
+
+**qwc-elevation-service**
+
+* Allow [configuring](https://github.com/qwc-services/qwc-elevation-service/?tab=readme-ov-file#elevation-service-config) multiple elevation datasets
+
+**qwc-legend-service**
+
+* Allow providing distinct [custom legend images](../topics/LegendGraphics/#providing-custom-legend-images) for layers with multiple styles
+
+**qwc-map-viewer**
+
+* Allow restricting viewer assets via `Viewer Asset` [resource permissions](../configuration/ResourcesPermissions/#viewer-asset-permissions)
+* Add `Content-Security-Policy` response header when querying `index.html`
+
+**qwc-ogc-service**
+
+* Add support for WFS-T
+* Add support for OGC API Features
+* Add a service landing page
+* Allow forcing basic auth challenge for WMS/WFS requests via [`REQUIREAUTH` query param](https://github.com/qwc-services/qwc-ogc-service?tab=readme-ov-file#basic-auth)
+
+**qwc-qgis-server**
+
+* Build release-nightly Docker images with more verbose debug output, see [Debugging](https://github.com/qwc-services/qwc-qgis-server#debugging).
+
+**qwc-qgis-server-plugins**
+
+* New [`datasource_filter_username` plugin](https://github.com/qwc-services/qwc-qgis-server-plugins?tab=readme-ov-file#datasource_filter_username)
+
+**qwc-qgs-cache-preseed**
+
+* [New service for pre-seeding the QGIS Server project cache](https://github.com/qwc-services/qwc-qgs-cache-preseed)
+
+### Full changelogs
+
+* [QWC](https://github.com/qgis/qwc2/compare/2025-lts...2026-lts)
+* [qwc-3d-tile-info-service](https://github.com/qwc-services/qwc-3d-tile-info-service/compare/a30107c...2026-lts)
+* [qwc-admin-gui](https://github.com/qwc-services/qwc-admin-gui/compare/2025-lts...2026-lts)
+* [qwc-base-db](https://github.com/qwc-services/qwc-base-db/compare/2025-lts...2026-lts)
+* [qwc-config-generator](https://github.com/qwc-services/qwc-config-generator/compare/2025-lts...2026-lts)
+* [qwc-data-service](https://github.com/qwc-services/qwc-data-service/compare/2025-lts...2026-lts)
+* [qwc-db-auth](https://github.com/qwc-services/qwc-db-auth/compare/2025-lts...2026-lts)
+* [qwc-document-service](https://github.com/qwc-services/qwc-document-service/compare/2025-lts...2026-lts)
+* [qwc-elevation-service](https://github.com/qwc-services/qwc-elevation-service/compare/2025-lts...2026-lts)
+* [qwc-ext-service](https://github.com/qwc-services/qwc-ext-service/compare/2025-lts...2026-lts)
+* [qwc-feature-info-service](https://github.com/qwc-services/qwc-feature-info-service/compare/2025-lts...2026-lts)
+* [qwc-fulltext-search-service](https://github.com/qwc-services/qwc-fulltext-search-service/compare/2025-lts...2026-lts)
+* [qwc-ldap-auth](https://github.com/qwc-services/qwc-ldap-auth/compare/2025-lts...2026-lts)
+* [qwc-legend-service](https://github.com/qwc-services/qwc-legend-service/compare/2025-lts...2026-lts)
+* [qwc-mapinfo-service](https://github.com/qwc-services/qwc-mapinfo-service/compare/2025-lts...2026-lts)
+* [qwc-map-viewer](https://github.com/qwc-services/qwc-map-viewer/compare/2025-lts...2026-lts)
+* [qwc-ogc-service](https://github.com/qwc-services/qwc-ogc-service/compare/2025-lts...2026-lts)
+* [qwc-permalink-service](https://github.com/qwc-services/qwc-permalink-service/compare/2025-lts...2026-lts)
+* [qwc-print-service](https://github.com/qwc-services/qwc-print-service/compare/2025-lts...2026-lts)
+* [qwc-qgs-cache-preseed](https://github.com/qwc-services/qwc-qgs-cache-preseed/compare/3e37335..2026-lts)
+* [qwc-registration-gui](https://github.com/qwc-services/qwc-registration-gui/compare/2025-lts...2026-lts)
+* [qwc-wms-proxy](https://github.com/qwc-services/qwc-wms-proxy/compare/2025-lts...2026-lts)
+
+
 ## 2024-lts &rarr; 2025-lts
 
 ### Upgrade notes
 
-When upgrading from a 2025-lts setup, please note the entries marked with *\[2024-lts &rarr; 2025-lts\]* in the upgrade notes:
+When upgrading from a 2024-lts setup, please note the entries marked with *\[2024-lts &rarr; 2025-lts\]* in the upgrade notes:
 
 * [QWC upgrade notes](./QWC2UpgradeNotes.md)
 * [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
