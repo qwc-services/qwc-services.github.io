@@ -42,8 +42,8 @@ Where
 
 * `service_name` is the name of the WMS service
 * `layername` is the WMS layer name
-* `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC to the legend service depending on the requested image type.
-* `resource_entry[legend_image]` and `resource_entry[legend_image_base64]` are the `legend_image` resp. `legend_image_base64` settings of a layer as configurd in the `legend` service resource configuration, for example:
+* `suffix`: empty, or one of `_thumbnail`, `_tooltip`. The suffix is passed by QWC to the legend service depending on the requested image type
+* `resource_entry[legend_image]` and `resource_entry[legend_image_base64]` are the `legend_image` resp. `legend_image_base64` settings of a layer as configured in the `legend` service resource configuration, for example:
 
 ```json
 {
