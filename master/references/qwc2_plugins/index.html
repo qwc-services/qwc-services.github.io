@@ -2425,8 +2425,8 @@ an aggregated report for all selected features.</p>
 <tr>
 <td>languages</td>
 <td><code>[{</code><br /><code>title: string,</code><br /><code>titleMsgId: string,</code><br /><code>value: string,</code><br /><code>}]</code></td>
-<td>List of available languages. Value is the lang code, title/titleMsgId the display name.</td>
-<td><code>[]</code></td>
+<td>List of available languages. Value is the lang code, title/titleMsgId the display name. Falls back to the toplevel <code>availableLocales</code> <code>config.json</code> setting if not set.</td>
+<td><code>null</code></td>
 </tr>
 <tr>
 <td>showDefaultThemeSelector</td>
