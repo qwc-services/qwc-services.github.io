@@ -24,6 +24,7 @@ The first step is to prepare a QGIS project for publishing. Besides the common t
 | Layer Map Tip        | Vector Layer Properties &rarr; Display    | The contents of the Map Tip shown when hovering over layers in the client, if displaying Map Tips is enabled in the Layer Tree. |
 | Layer Metadata       | Layer Properties &rarr; QGIS Server       | Shown in the client Layer Info dialog, invokable from the Layer Tree. |
 | Scale range          | Layer Properties &rarr; Rendering &rarr; Scale dependent visibility | The scale range within which a layer is visible, useful to improve rendering performance. |
+| Refresh interval     | Layer Properties &rarr; Rendering &rarr; Refresh layer at interval | Automatic layer refresh interval. |
 | Initial visibility   | Layers Panel                              | Initial visibility of layers and groups.         |
 | Rendering order      | Layer Order Panel or Layers Panel         | Rendering order of the layers. If layer re-ordering is enabled in `config.json`, the order from the Layer Order Panel is ignored. |
 | Print layouts        | Layout manager                            | The print layouts offered in the Print plugin.   |
