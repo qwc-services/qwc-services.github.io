@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-permalink-service/master/schemas/qwc-permalink-service.json",
+  "title": "QWC Permalink Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-permalink-service/master/schemas/qwc-permalink-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "permalink"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "db_url": {
+          "description": "DB connection URL. Defaults to postgresql:///?service=qwc_configdb.",
+          "type": "string"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: qwc_config",
+          "type": "string"
+        },
+        "permalinks_table": {
+          "description": "Permalink table. Defaults to qwc_config.permalinks.",
+          "type": "string"
+        },
+        "user_permalink_table": {
+          "description": "User permalink table. Defaults to qwc_config.user_permalinks.",
+          "type": "string"
+        },
+        "user_bookmark_table": {
+          "description": "User bookmarks table. Defaults to qwc_config.user_bookmarks.",
+          "type": "string"
+        },
+        "user_visibility_presets_table": {
+          "description": "User visibility presets table. Defaults to qwc_config.user_visibility_presets.",
+          "type": "string"
+        },
+        "bookmarks_sort_order": {
+          "description": "Bookmarks sort order, defaults to \"date DESC, description\".",
+          "type": "string"
+        },
+        "default_expiry_period": {
+          "description": "Default expiry period for permalinks, in days. Default: null (no expiry)",
+          "type": "number"
+        },
+        "store_bookmarks_by_userid": {
+          "description": "Whether to store bookmarks by userid instead of username. Default: true",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "db_url"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

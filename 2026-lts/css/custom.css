@@ -1,0 +1,14 @@
+/* Use full available screen width */
+.wy-nav-content {
+    max-width: initial!important;
+}
+
+/* Normal word-wrapping inside tables to prevent table overflowing screen width */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: initial!important;
+}
+
+img[src$="centerme"] {
+    display:block;
+    margin: 0 auto;
+}

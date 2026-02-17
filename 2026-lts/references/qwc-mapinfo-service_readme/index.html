@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc mapinfo service readme - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc mapinfo service readme";
+        var mkdocs_page_input_path = "references/qwc-mapinfo-service_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc mapinfo service readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-mapinfo-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-mapinfo-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-mapinfo-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-mapinfo-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-mapinfo-service">QWC MapInfo Service<a class="headerlink" href="#qwc-mapinfo-service" title="Permanent link">&para;</a></h1>
+<p>Additional information at a geographic position displayed with right mouse click on map.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="mapinfo-service-config">MapInfo Service config<a class="headerlink" href="#mapinfo-service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../schemas/qwc-mapinfo-service.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/mapinfoConfig.json</code></li>
+</ul>
+<p>Examples:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
+  &quot;service&quot;: &quot;mapinfo&quot;,
+  &quot;config&quot;: {
+    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+    &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
+    &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
+    &quot;info_display_col&quot;: &quot;name&quot;,
+    &quot;info_title&quot;: &quot;Country&quot;,
+    &quot;info_id&quot;: &quot;country&quot;
+  }
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
+  &quot;service&quot;: &quot;mapinfo&quot;,
+  &quot;config&quot;: {
+    &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+    &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
+    &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
+    &quot;info_display_col&quot;: &quot;name&quot;,
+    &quot;info_title&quot;: &quot;Country&quot;,
+    &quot;info_id&quot;: &quot;country&quot;,
+    &quot;info_where&quot;: &quot;pop_est &gt; 600000&quot;
+  }
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json&quot;,
+  &quot;service&quot;: &quot;mapinfo&quot;,
+  &quot;config&quot;: {
+    &quot;queries&quot;: [
+      {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        &quot;info_table&quot;: &quot;qwc_geodb.ne_10m_admin_0_countries&quot;,
+        &quot;info_geom_col&quot;: &quot;wkb_geometry&quot;,
+        &quot;info_display_col&quot;: &quot;name&quot;,
+        &quot;info_title&quot;: &quot;Country&quot;,
+        &quot;info_id&quot;: &quot;country&quot;
+      },
+      {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        &quot;info_sql&quot;: &quot;SELECT type FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
+        &quot;info_title&quot;: &quot;Type&quot;,
+        &quot;info_id&quot;: &quot;type&quot;
+      },
+      {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+        &quot;info_sql&quot;: &quot;SELECT abbrev, postal, subregion FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_contains(wkb_geometry, ST_SetSRID(ST_Point(:x, :y), :srid)) LIMIT 1&quot;,
+        &quot;info_title&quot;: [&quot;Abbreviation&quot;, &quot;Postal Code&quot;, &quot;Subregion&quot;],
+        &quot;info_id&quot;: &quot;region&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;mapinfo_query&quot;: [
+          &quot;country&quot;,
+          &quot;type&quot;,
+          &quot;region&quot;
+        ]
+      }
+    },
+    {
+      &quot;role&quot;: &quot;demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;mapinfo_query&quot;: []
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
+</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-mapinfo-service">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>Run all tests:</p>
+<pre><code>python test.py
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

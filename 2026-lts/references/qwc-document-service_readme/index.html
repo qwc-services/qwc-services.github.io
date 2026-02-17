@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc document service readme - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc document service readme";
+        var mkdocs_page_input_path = "references/qwc-document-service_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc document service readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-document-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-document-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-document-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-document-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="document-service">Document service<a class="headerlink" href="#document-service" title="Permanent link">&para;</a></h1>
+<p>The document service delivers reports from the Jasper reporting service with permission control.</p>
+<p>Report source files (<code>*.jrxml</code>) must be placed below the <code>report_dir</code> (see config below).</p>
+<p>The reports are then referenced by their template name, which corresponds to their path below <code>report_dir</code>, without extension.</p>
+<p>For instance <code>report_dir</code> is <code>/path/to/report/dir</code>, then the template name for</p>
+<pre><code> /path/to/report/dir/topic/myreport.jrxml
+</code></pre>
+<p>is <code>topic/myreport</code>.</p>
+<p>The request format is</p>
+<pre><code>http://localhost:5000/&lt;template&gt;.&lt;ext&gt;?&lt;key&gt;=&lt;value&gt;&amp;...
+</code></pre>
+<p>where</p>
+<ul>
+<li><code>ext</code> is a supported report format (<code>pdf</code>, <code>html</code>, <code>csv</code>, <code>docx</code>, <code>ods</code>, <code>odt</code>, <code>pptx</code>, <code>rtf</code>, <code>xlsx</code>, <code>xml</code>). If not specified, <code>pdf</code> is assumed.</li>
+<li>Query KVPs are passed to the Jasper as report parameters.</li>
+</ul>
+<p>Example request:</p>
+<pre><code>http://localhost:5000/topic/myreport.pdf?FEATURE_ID=1
+</code></pre>
+<p>If your report uses a PostgresSQL data adapter, use the name of the desired PG service connection as data adapter name in the report, and the connection will be automatically looked up from the <code>pg_service.conf</code> file. Alternatively, you can set the name of the desired PG service connection as <code>datasource</code> of in the service resource configuration, see below.</p>
+<p>You can generically pass the generic <code>feature</code> query parameter, which will be resolved to the report feature parameter configured in the report query string. You can pass:</p>
+<ul>
+<li>
+<p>A single or a comma-separated list of feature ids, i.e.</p>
+<p>http://localhost:5000/topic/myreport.pdf?feature=1,3,6,9</p>
+</li>
+<li>
+<p><code>*</code> to specify all features of the report datasource, i.e.</p>
+<p>http://localhost:5000/topic/myreport.pdf?feature=*</p>
+</li>
+</ul>
+<p>If multiple feature ids are specified, an aggregated report for all specified features will be returned.</p>
+<p>Alternatively, provided <code>FEATURE_ID</code> is defined as a list in your report, you can pass <code>single_report=true</code>, and the entire list of feature ids will be passed to the report, which can i.e. render them in a table.</p>
+<p>To map <code>feature</code> to the report feature parameter, and to resolve <code>feature=*</code>, the table name, primary key column and report feature parameter will be extracted, if possible, from the report query string, which is expected to be of the form</p>
+<pre><code>SELECT &lt;...&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
+</code></pre>
+<p>For more complex queries, you'll need to define <code>table</code>, <code>primary_key</code> and <code>parameter_name</code> in the report resource configuration, see below. Note that the value(s) of the <code>feature</code> query parameters are expected to be primary keys of the records of the table specified in the report query string.</p>
+<p>If your report includes external resources (i.e. images), place these below the <code>report_dir</code> and, add a <code>REPORT_DIR</code> parameter of type <code>java.lang.String</code> in the <code>.jrxml</code> and use <code>$P{REPORT_DIR}</code> in the resource location expression, for example:</p>
+<pre><code>$P{REPORT_DIR} + "mysubfolder/myimage.png"
+</code></pre>
+<p>If you may have a very large amount of input data, the report generation might result in a very large output file. This can lead to an Out-of-memory exception. To handle this, a "Virtualizer" could be used, which will cut the report into different files and save them on the hard drive during the generation process. The result generally makes the generation of the report a bit slower but it will solve the memory exception. To use a "JRSwapFileVirtualizer" for report generation, the <code>virtualizer</code> configuration has to be set (see example below).</p>
+<p>If your report requires extra fonts, place the <code>*.ttfs</code> below the <code>src/fonts</code> directory (when running locally) resp. mount them inside the <code>/srv/qwc_service/fonts/</code> when running as docker container. The font names and faces are read from the <code>*.tff</code> file metadata. Currently only static TTFs are supported, not variable font TTFs.</p>
+<p>Set <code>FLASK_DEBUG=1</code> to get additional logging output.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="json-config">JSON config<a class="headerlink" href="#json-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../schemas/qwc-document-service.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/documentConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-document-service/master/schemas/qwc-document-service.json&quot;,
+  &quot;service&quot;: &quot;document&quot;,
+  &quot;config&quot;: {
+    &quot;report_dir&quot;: &quot;/path/to/report/dir&quot;,
+    &quot;virtualizer&quot;: {
+      &quot;swapfile_blocksize&quot;: 4096,
+      &quot;swapfile_mingrowcount&quot; : 100,
+      &quot;virtualizer_maxsize&quot;: 1
+    }
+  },
+  &quot;resources&quot;: {
+    &quot;document_templates&quot;: [
+      {
+        &quot;template&quot;: &quot;demo&quot;,
+        &quot;datasource&quot;: &quot;&lt;pgservice_name&gt;&quot;,
+        &quot;table&quot;: &quot;&lt;table_name&gt;&quot;,
+        &quot;primary_key&quot;: &quot;&lt;primary_key_column_name&gt;&quot;,
+        &quot;parameter_name&quot;: &quot;&lt;report_parameter_name&gt;&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables can be set</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX_MEMORY</code></td>
+<td><code>1024M</code></td>
+<td>Maximum Java heap size for compiling, for example <code>1024M</code> or <code>2G</code>.</td>
+</tr>
+<tr>
+<td><code>FONT_DIR</code></td>
+<td><code>./fonts</code></td>
+<td>Directory where custom fonts are located.</td>
+</tr>
+<tr>
+<td><code>PGSERVICEFILE</code></td>
+<td><code>~/.pg_service.conf</code></td>
+<td>PG Service file location, used to resolve PG service names.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code>{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;document_templates&quot;: [
+          &quot;demo&quot;,
+          &quot;another demo&quot;
+        ]
+      }
+    },
+    {
+      &quot;role&quot;: &quot;demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;document_templates&quot;: []
+      }
+    }
+  ]
+}
+</code></pre>
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code># Setup venv
+uv venv .venv
+
+# Fetch JAR dependencies
+wget -P src/libs -i libs.txt
+
+export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
+</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:5000/api/
+</code></pre>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-document-auth">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc oidc auth readme - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc oidc auth readme";
+        var mkdocs_page_input_path = "references/qwc-oidc-auth_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc oidc auth readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-oidc-auth/actions"><img alt="" src="https://github.com/qwc-services/qwc-oidc-auth/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-oidc-auth"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-oidc-auth?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="openid-connect-authentication">OpenID Connect Authentication<a class="headerlink" href="#openid-connect-authentication" title="Permanent link">&para;</a></h1>
+<p>Authentication service with OpenID Connect.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/lepture/authlib">Authlib</a></li>
+<li><a href="http://flask-jwt-extended.readthedocs.io/">Flask-JWT-Extended</a></li>
+</ul>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="service-config">Service config<a class="headerlink" href="#service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../schemas/qwc-oidc-auth.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/oidcAuthConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://github.com/qwc-services/qwc-oidc-auth/raw/main/schemas/qwc-oidc-auth.json&quot;,
+  &quot;service&quot;: &quot;oidc-auth&quot;,
+  &quot;config&quot;: {
+    &quot;issuer_url&quot;: &quot;https://qwc2-dev.onelogin.com/oidc/2&quot;,
+    &quot;client_id&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxx&quot;,
+    &quot;client_secret&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;
+  }
+}
+</code></pre>
+<p>The service expects authentication service information at <code>$ISSUER_URL/.well-known/openid-configuration</code></p>
+<p>See the <a href="../schemas/qwc-oidc-auth.json">schema definition</a> for the full set of supported config variables.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<h4 id="configure-access-token-endpoint">Configure Access Token endpoint<a class="headerlink" href="#configure-access-token-endpoint" title="Permanent link">&para;</a></h4>
+<p>It is possible to authorize connection with a external Access Token in  the Authorization Header (endpoint <code>/tokenlogin</code>).</p>
+<p>For each token a configuration needs to be add in <code>authorized_api_token</code>.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://github.com/qwc-services/qwc-oidc-auth/raw/main/schemas/qwc-oidc-auth.json&quot;,
+  &quot;service&quot;: &quot;oidc-auth&quot;,
+  &quot;config&quot;: {
+    &quot;issuer_url&quot;: &quot;https://qwc2-dev.onelogin.com/oidc/2&quot;,
+    &quot;client_id&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxx&quot;,
+    &quot;client_secret&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;,
+    &quot;authorized_api_token&quot;: [{
+      &quot;keys_url&quot;: &quot;https://public_keys_url_to_decode_token&quot;,
+      &quot;claims_options&quot;:{
+        &quot;iss&quot;: {
+            &quot;essential&quot;: true,
+            &quot;values&quot;: [&quot;https://example.com&quot;, &quot;https://example.org&quot;]
+        },
+        &quot;sub&quot;: {
+            &quot;essential&quot;: true,
+            &quot;value&quot;: &quot;xxxxxxxxxxxxx&quot;
+        },
+        &quot;aud&quot;: {
+          &quot;essential&quot;: true,
+          &quot;value&quot;: &quot;api://xxxx-xxxxxxxxx-xxxxx&quot;
+        }
+      }
+    }]
+  }
+}
+</code></pre>
+<p><code>claims_options</code> are the token validation parameters which allow fine control over the content of the payload. See https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation.</p>
+<h3 id="identity-provider-configuration">Identity provider configuration<a class="headerlink" href="#identity-provider-configuration" title="Permanent link">&para;</a></h3>
+<p>CLIENT_ID and CLIENT_SECRET are defined on identity provider side.</p>
+<p>The Redirect URI is the public base URL with the endpoint /callback (Example: https://qwc2.sourcepole.ch/oauth/callback).</p>
+<p>This redirect URI can be manually configured with <code>redirect_uri</code>.</p>
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
+</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-oidc-auth">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

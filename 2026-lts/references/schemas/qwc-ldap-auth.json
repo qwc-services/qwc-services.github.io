@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-ldap-auth/master/schemas/qwc-ldap-auth.json",
+  "title": "QWC LDAP authentication service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-ldap-auth/master/schemas/qwc-ldap-auth.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "ldap-auth"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "login_hint":{
+          "description": "Login hint text, shown above login form fields. Either a string, or dictionary `{\"<lang>\": \"<text>\"}`. When providing a dictionary, the entry matching the current locale will be searched, with fallback to `en` if no entry for the current locale exists, and fallback to an empty string if no `en` entry exists.",
+          "oneOf":[
+            {"type": "string"},
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}$": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "logo_image_url": {
+          "description": "URL to a logo image to show in the login form. Default: `null`",
+          "type": "string"
+        },
+        "background_image_url": {
+          "description": "URL to a background image for the login page. Default: `null`",
+          "type": "string"
+        },
+        "db_url": {
+          "description": "DB connection URL (to sync users and user_info_fields). Can be set to an empty string if sync is not needed. Default: `postgresql:///?service=qwc_configdb`",
+          "type": "string"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: `qwc_config`",
+          "type": "string"
+        }
+      },
+      "required": [
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

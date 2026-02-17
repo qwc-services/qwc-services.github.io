@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Viewer - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Viewer";
+        var mkdocs_page_input_path = "configuration/ViewerConfiguration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">General configuration</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Viewer</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#load-time-configuration-configjson">Load-time configuration config.json</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#global-settings">Global settings</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#global-settings-overridable-per-theme">Global settings, overridable per theme</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#separate-mobile-desktop-global-settings">Separate mobile / desktop global settings</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#urls-of-external-services">URLs of external services</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#plugin-configuration">Plugin configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#customizing-the-viewer-assets">Customizing the viewer assets </a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#customizing-the-color-scheme">Customizing the color scheme</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#overriding-component-styles">Overriding component styles</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#customizing-the-application-logo">Customizing the application logo</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#providing-custom-map-thumbnails">Providing custom map thumbnails</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#personalizing-the-help-dialog">Personalizing the help dialog </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#personalizing-the-legend-print-template">Personalizing the legend print template</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#building-a-custom-viewer">Building a custom viewer </a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#application-build-time-configuration">Application build-time configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#overriding-icons">Overriding icons</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#compiling-an-application-bundle">Compiling an application bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#keeping-the-qwc-application-up-to-date">Keeping the QWC application up to date</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>General configuration &raquo;</li>
+      <li>Viewer</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="qwc-viewer-configuration">QWC Viewer Configuration<a class="headerlink" href="#qwc-viewer-configuration" title="Permanent link">&para;</a></h1>
+<p>This chapter describes how to customize the QWC viewer.</p>
+<p>First of all, it is important to keep in mind that the QWC viewer is designed to be a modular and highly customizeable application. Configuration falls into three categories:</p>
+<ul>
+<li><a href="#load-time-config">Load-time configuration</a>: configuration applied when the application is loaded.</li>
+<li><a href="#viewer-asset">Customizing the assets</a>: specify additional search providers, customize the color schemes, etc...</li>
+<li><a href="#custom-viewer">Compiling a custom viewer</a>: configure which components which are built into the application, add own plugins, etc...</li>
+</ul>
+<p>The QWC stock application (and the <code>qwc-map-viewer</code> docker image) serve as a good starting point, and for simple viewers the load-time configuration options are often sufficient to avoid the need of building a customized application.</p>
+<h2 id="load-time-configuration-configjson">Load-time configuration <code>config.json</code><a name="load-time-config"></a><a class="headerlink" href="#load-time-configuration-configjson" title="Permanent link">&para;</a></h2>
+<p>The load-time configuration <code>config.json</code> configuration file contains global viewer settings as well as the viewer plugin configuration for mobile and desktop devices. It is located as follows:</p>
+<ul>
+<li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/config.json</code></li>
+<li>Standalone viewer: <code>qwc-app/static/config.json</code></li>
+</ul>
+<p>Refer to the <a href="https://github.com/qgis/qwc2/blob/master/static/config.json">sample <code>config.json</code></a> for a concrete example.</p>
+<h3 id="global-settings">Global settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h3>
+<p>All settings are optional, with fallback to the default values as documented.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allowFractionalZoom</code></td>
+<td>Whether to allow arbitrary scales for viewing the map. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>assetsPath</code></td>
+<td>Relative path to the <code>assets</code> folder. Default: <code>"assets"</code>.</td>
+</tr>
+<tr>
+<td><code>bearingFormat</code></td>
+<td>Format of bearing measurement. Default value is <code>"bearing"</code> which shows angle in degrees, minutes and seconds with N/S prefix and W/E suffix, <code>"azimuth"</code> is shown as 0° to 360°, <code>"azimuth180"</code> is shown as -180° to +180°, <code>"bearingEW"</code> is shown as 0° to 180° with E/W suffix.</td>
+</tr>
+<tr>
+<td><code>bearingPrecision</code></td>
+<td>Defines number of decimals for bearing angle shown in degrees. Default: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>defaultColorScheme</code></td>
+<td>The color scheme to use. See <a href="#color-schemes">Color schemes</a> for details. Default: <code>"default"</code>.</td>
+</tr>
+<tr>
+<td><code>defaultFeatureStyle</code></td>
+<td>The default style to use for selection geometries and other unstyled features. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
+</tr>
+<tr>
+<td><code>defaultInteractionStyle</code></td>
+<td>The default style to use on geometries to measure, snap or edit. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
+</tr>
+<tr>
+<td><code>defaultMarkerStyle</code></td>
+<td>The default style to use as marker icon. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/FeatureStyles.js"><code>qwc2/utils/FeatureStyles.js</code></a>.</td>
+</tr>
+<tr>
+<td><code>editingAddLinkAnchors</code></td>
+<td>Whether to automatically insert link anchors in text values when editing. Default: <code>true</code>,</td>
+</tr>
+<tr>
+<td><code>editServiceCaptchaSiteKey</code></td>
+<td>ReCAPTCHA public site key for public editing, see <a href="../../topics/Editing/#recaptcha">ReCAPTCHA validation</a>.</td>
+</tr>
+<tr>
+<td><code>editTextNullValue</code></td>
+<td>A text value which represents <code>NULL</code> when editing. Default: <code>""</code>.</td>
+</tr>
+<tr>
+<td><code>fallbackDisplayFields</code></td>
+<td>List of fallback display field names, see <a href="../../topics/FeatureInfo/#displayfield">Display field</a>. Default: <code>["name", "id"]</code>.</td>
+</tr>
+<tr>
+<td><code>geodesicMeasurements</code></td>
+<td>Whether to perform measurements on the geoid. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>loadTranslationOverrides</code></td>
+<td>Whether to attempt to load tanslation overrides, see <a href="../../topics/Translations/">Translations</a>. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>localeAwareNumbers</code></td>
+<td>Whether to use locale aware numbers throughout. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>measurementPrecision</code></td>
+<td>Number of decimal digits to display in measurements. Default: <code>2</code>.</td>
+</tr>
+<tr>
+<td><code>omitUrlParameterUpdates</code></td>
+<td>Whether to omit updating the URL parameters. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>projections</code></td>
+<td>A list of map projections to register, in the format <code>{"code": "&lt;code&gt;", "proj": "&lt;proj4def&gt;", "label": "&lt;label&gt;", "precision": &lt;decimals&gt;}</code>. By default, <code>EPSG:3857</code> and <code>EPSG:4326</code> are registered.</td>
+</tr>
+<tr>
+<td><code>qgisServerVersion</code></td>
+<td>The QGIS Server major version in use. Default: <code>3</code>.</td>
+</tr>
+<tr>
+<td><code>startupTask</code></td>
+<td>Task to automatically activate on application start, in the format <code>{"key": "&lt;Task&gt;", "mode": "&lt;Mode&gt;"}</code>.</td>
+</tr>
+<tr>
+<td><code>storeAllLayersInPermalink</code></td>
+<td>Whether to store the full layertree in the permalink data, rather than only local (i.e. redlining) layers. If <code>false</code>, remote layers are re-queried from the respective services, if <code>true</code>, they are statically reloaded (meaning restored layers may be outdated compared to current service capabilities). Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>tilePreloadLevels</code></td>
+<td>For tiled layers, load low-resolution tiles up to preload levels. 0 means no preloading. Default: <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>translationsPath</code></td>
+<td>Relative path to the <code>translations</code> folder. Default: <code>"translations"</code>.</td>
+</tr>
+<tr>
+<td><code>trustWmsCapabilityURLs</code></td>
+<td>Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not <code>true</code>, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>urlPositionCrs</code></td>
+<td>The CRS used to encode the current map extent coordinates in the URL. Default: the current map projection.</td>
+</tr>
+<tr>
+<td><code>urlPositionFormat</code></td>
+<td>How to encode the current map extent in the URL, either <code>"centerAndZoom"</code> or <code>"extent"</code>. See <a href="../../topics/Interfacing/#url-parameters">URL parameters</a> for details. Default: <code>"extent"</code>.</td>
+</tr>
+<tr>
+<td><code>urlRegEx</code></td>
+<td>A <a href="https://www.freeformatter.com/json-escape.html">JSON-escaped</a> regular expression used to match URLs in feature attribute values. Default: see <a href="https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/MiscUtils.js"><code>qwc2/utils/MiscUtils.js</code></a>.</td>
+</tr>
+<tr>
+<td><code>wmsHidpi</code></td>
+<td>Whether to honour the device pixel ratio for WMS GetMap requests. Default: <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>wmsMaxGetUrlLength</code></td>
+<td>URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: <code>2048</code>.</td>
+</tr>
+<tr>
+<td><code>wmsWktPrecision</code></td>
+<td>Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: <code>4</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="global-settings-overridable-per-theme">Global settings, overridable per theme<a name="theme-overridable-settings"></a><a class="headerlink" href="#global-settings-overridable-per-theme" title="Permanent link">&para;</a></h3>
+<p>The following options can be specified globally, and also overriden per theme, see <a href="../ThemesConfiguration/"><code>themesConfig.json</code></a>.
+All settings are optional, with fallback to the default values as documented.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allowAddingOtherThemes</code></td>
+<td>Whether to allow adding another theme to a currently loaded theme. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>allowLayerTreeSeparators</code></td>
+<td>Allows users to add separator items in a flat layer tree. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>allowRemovingThemeLayers</code></td>
+<td>Whether to allow removing any theme layers from the layer tree. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>allowReorderingLayers</code></td>
+<td>Whether to allow re-ordering layers in the layer tree. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>disableImportingLocalLayers</code></td>
+<td>Whether to hide the option to import local layers from the layer tree. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>flattenLayerTreeGroups</code></td>
+<td>Whether to display a flat layer tree, omitting the groups. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>globallyDisableDetachableDialogs</code></td>
+<td>Whether to globally disable the detachable feature of popup dialogs. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>globallyDisableDockableDialogs</code></td>
+<td>Whether to globally disable the dockable feature of popup dialogs. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>globallyDisableMaximizeableDialogs</code></td>
+<td>Whether to globally disable the maximizeable feature of popup dialogs. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>identifyTool</code></td>
+<td>The name of the identify plugin to use as default identify tool. If set to an empty string, no identify tool will be active by default. Default: <code>"Identify"</code>.</td>
+</tr>
+<tr>
+<td><code>importLayerUrlPresets</code></td>
+<td>A list of predefined URLs from which the user can choose when importing layers from the layer tree. Entries must be strings or objects of the format <code>{"label": "&lt;Label&gt;", "value": "&lt;URL&gt;"}</code>.</td>
+</tr>
+<tr>
+<td><code>preserveBackgroundOnThemeSwitch</code></td>
+<td>Whether to preserve the current background layer when switching theme, if possible. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>preserveExtentOnThemeSwitch</code></td>
+<td>Whether to preserve the current map extent when switching theme, if possible (see below). Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>preserveNonThemeLayersOnThemeSwitch</code></td>
+<td>Whether to preserve non-theme layers when switching theme. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>preventSplittingGroupsWhenReordering</code></td>
+<td>Whether to prevent splitting sibling groups or the group itself when reordering items. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>searchFilterRegions</code></td>
+<td>List of predefined search filter regions, see <a href="../../topics/Search/#filtering">Search filtering</a>.</td>
+</tr>
+<tr>
+<td><code>searchThemeLayers</code></td>
+<td>Whether to allow searching for theme layers from the global search field. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>searchThemes</code></td>
+<td>Whether to allow searching for themes from the global search field. Default: <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>startupTask</code></td>
+<td>Task to automatically start when switching to the theme, in the format <code>{key: "&lt;Task&gt;", "mode": "&lt;Mode&gt;"}</code>. Takes precedence over the global <code>startupTask</code>. Note that the task is activated whenever switching to the theme, not only on application start.</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<ul>
+<li>The layer tree supports re-ordering layers via drag-and-drop if <code>allowReorderingLayers = true</code> <em>and either</em> <code>preventSplittingGroupsWhenReordering = true</code> <em>or</em> <code>flattenLayerTreeGroups = true</code>.</li>
+<li>If <code>preserveExtentOnThemeSwitch = true</code>, the current extent is preserved if it is within the new theme extent and if the current theme map projection is equal to the new theme projection. If <code>preserveExtentOnThemeSwitch = "force"</code>, the current extent is preserved regardless of whether it is within the new theme extent, but the current and new theme map projections must still match.</li>
+</ul>
+<h3 id="separate-mobile-desktop-global-settings">Separate <code>mobile</code> / <code>desktop</code> global settings<a class="headerlink" href="#separate-mobile-desktop-global-settings" title="Permanent link">&para;</a></h3>
+<p>You can specify the global settings separately for <code>mobile</code> and <code>desktop</code> by setting these in a corresponding toplevel section, i.e.:</p>
+<pre><code class="language-json">{
+  &quot;&lt;prop&gt;&quot;: &quot;&lt;value&gt;&quot;, // This property applies for both mobile and desktop
+   ...
+  &quot;mobile&quot;: {
+    &quot;&lt;prop&gt;: &quot;&lt;value&gt;&quot;, // This property applies only for mobile
+    ...
+  },
+  &quot;desktop&quot;: {
+    &quot;&lt;prop&gt;: &quot;&lt;value&gt;&quot;, // This property applies only for desktop
+    ...
+  }
+}
+</code></pre>
+<p>You can also specify separate <code>mobile</code> and <code>desktop</code> sections in the <code>config</code> block of a theme item.</p>
+<h3 id="urls-of-external-services">URLs of external services<a class="headerlink" href="#urls-of-external-services" title="Permanent link">&para;</a></h3>
+<p>Some plugins require external services (typically part of the <code>qwc-services</code> ecosystem). When using the <code>qwc-docker</code>, these configuration entries will be automatically injected into the <code>config.json</code> for enabled services.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authServiceUrl</code></td>
+<td>Typically the URL of a QWC authentication service like <code>qwc-db-auth</code>.</td>
+</tr>
+<tr>
+<td><code>editServiceUrl</code></td>
+<td>Typically the URL of the <code>qwc-data-service</code>.</td>
+</tr>
+<tr>
+<td><code>elevationServiceUrl</code></td>
+<td>Typically the URL of the <code>qwc-elevation-service</code>.</td>
+</tr>
+<tr>
+<td><code>documentService</code></td>
+<td>Typically the URL of the <code>qwc-document-service</code>.</td>
+</tr>
+<tr>
+<td><code>mapInfoService</code></td>
+<td>Typically the URL of the <code>qwc-map-info-service</code>.</td>
+</tr>
+<tr>
+<td><code>permalinkServiceUrl</code></td>
+<td>Typically the URL of the <code>qwc-permalink-service</code>.</td>
+</tr>
+<tr>
+<td><code>searchServiceUrl</code></td>
+<td>Typically the URL of the <code>qwc-fulltext-search-service</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugin-configuration">Plugin configuration<a name="plugin-configuration"></a><a class="headerlink" href="#plugin-configuration" title="Permanent link">&para;</a></h3>
+<p>The plugin configuration is entered as follows:</p>
+<pre><code class="language-json">&quot;plugins&quot;: {
+  &quot;common&quot;: [{&lt;PluginConfig&gt;}, ...],
+  &quot;mobile&quot;: [{&lt;PluginConfig&gt;}, ...],
+  &quot;desktop&quot;: [{&lt;PluginConfig&gt;}, ...]
+}
+</code></pre>
+<p>The final <code>mobile</code> and <code>desktop</code> configurations will be computed by merging the <code>common</code> configuration with the respective specific configuration. Each <code>&lt;PluginConfig&gt;</code> block is of the format</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  "name": "&lt;name&gt;",</code></td>
+<td>The plugin name.</td>
+</tr>
+<tr>
+<td><code>⁣  "cfg": {...},</code></td>
+<td>The plugin configuration options, see <a href="../../references/qwc2_plugins/">plugin reference</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "mapClickAction": &lt;"identify"|"unset"|null&gt;,</code></td>
+<td>Optional: in case the plugin activates a viewer task, determines whether a click in the map will result in the identify tool being invoked, the task being unset, or whether no particular action should be performed (default).</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Any plugin configuration option can be overridden per theme in the theme item <code>config</code> section as follows:</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: {
+    &quot;&lt;plugin_name&gt;&quot;: {
+      &quot;&lt;cfg_prop&gt;&quot;: &lt;value&gt;,
+      ...
+    },
+    ...
+  },
+  &quot;mobile&quot;: {
+    &quot;plugins: {...}, // Plugin config props applied only for mobile
+    ...
+  },
+  &quot;desktop&quot;: {
+    &quot;plugins: {...}, // Plugin config props applied only for desktop
+    ...
+  }
+}
+</code></pre>
+<p>In general, the procedure for enabling a plugin is:</p>
+<ul>
+<li>Make sure the plugin is compiled into the application (see <a href="#build-time configuration">Build-time configuration</a>).</li>
+<li>In the <code>plugins</code> section of <code>config.json</code>, below <code>common</code> (or <code>mobile</code> and/or <code>desktop</code>), add an entry
+    <code>json
+    {
+        "name": "&lt;Plugin name&gt;",
+        "cfg": {
+          &lt;Plugin configuration props&gt;
+        },
+        "order": &lt;render_order&gt;
+    }</code>
+    where <code>order</code> is optional and denotes the render order, useful to control the tab-focus order. Default is <code>0</code>, can be an arbitrary positive or negative number.</li>
+<li>For most plugins (i.e. those which launch as an explicit task in the viewer), add entries in <code>menuItems</code> and/or <code>toolbarItems</code> in the <code>TopBar</code> configuration. The format of these entires is as follows:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  "key": "&lt;key&gt;",</code></td>
+<td>The name of a plugin, i.e. <code>LayerTree</code>. The label for the entry will be looked up from the translations using the <code>appmenu.items.&lt;key&gt;</code> message identifier (see <a href="../../topics/Translations/">Translations</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "icon": "&lt;icon&gt;",</code></td>
+<td>The icon of the entry, either a built-in icon name (see below), or <code>:/&lt;path_to_asset&gt;</code> containing the path relative to <code>assetsPath</code> of an asset image.</td>
+</tr>
+<tr>
+<td><code>⁣  "themeBlacklist": ["&lt;themename&gt;", ...],</code></td>
+<td>Optional, allows specifying a blacklist of theme names or titles for which the entry should not be visible.</td>
+</tr>
+<tr>
+<td><code>⁣  "themeWhitelist": ["&lt;themename&gt;", ...],</code></td>
+<td>Optional, allows specifying a whitelist of theme names or titles for which the entry should be visible.</td>
+</tr>
+<tr>
+<td><code>⁣  "themeFlagBlacklist": ["&lt;flag1&gt;", ...],</code></td>
+<td>Optional, allows specifying a blacklist of <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a> for which the entry should not be visible.</td>
+</tr>
+<tr>
+<td><code>⁣  "themeFlagWhitelist": ["&lt;flag1&gt;", ...],</code></td>
+<td>Optional, allows specifying a whitelist of <a href="../ThemesConfiguration/#manual-theme-configuration">theme flags</a> for which the entry should be visible.</td>
+</tr>
+<tr>
+<td><code>⁣  "mode": "&lt;mode&gt;",</code></td>
+<td>Optional, depending on the plugin, a mode can be configured to launch the plugin directly in a specific mode. For instance, the <code>Measure</code> plugin supports specifying the measurement mode (<code>Point</code>, <code>LineString</code>, <code>Polygon</code>).</td>
+</tr>
+<tr>
+<td><code>⁣  "requireAuth": "&lt;true|false&gt;",</code></td>
+<td>Optional, the entry is only visible when user is logged-in.</td>
+</tr>
+<tr>
+<td><code>⁣  "shortcut": "&lt;shortcut&gt;"</code></td>
+<td>Optional, keyboard shortcut which triggers the entry, i.e. <code>"alt+shift+a"</code>.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:</em> The built-in icons are those located in <a href="https://github.com/qgis/qwc2/tree/master/icons"><code>qwc2/icons</code></a> and in <code>qwc-app/icons</code>. The built-in icon names are the respective file names, without <code>.svg</code> extension.</p>
+<p><strong>Opening external websites</strong><a name="opening-external-websites"></a></p>
+<p>As a special case, entries for opening external URLs can be defined in the <code>menuItems</code> and/or <code>toolbarItems</code> in the <code>TopBar</code> configuration as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  "key": "&lt;key&gt;",</code></td>
+<td>An arbitrary key (not used by existing plugins), used to lookup the label for the entry from the translations (as <code>appmenu.items.&lt;key&gt;</code>).</td>
+</tr>
+<tr>
+<td><code>⁣  "title": "&lt;key&gt;",</code></td>
+<td>Optional: Title to use insead of <code>appmenu.items.&lt;key&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>⁣  "icon": "&lt;icon&gt;",</code></td>
+<td>As above.</td>
+</tr>
+<tr>
+<td><code>⁣  "url": "&lt;url&gt;",</code></td>
+<td>The URL to open. Can contain as placeholders the keys listed in <a href="../../topics/Interfacing/#url-parameters">URL Parameters</a>, enclosed in <code>$</code> (i.e. <code>$e$</code> for the extent). In addition, the placeholders <code>$x$</code> and <code>$y$</code> for the individual map center coordinates as well as <code>$lang$</code> for the viewer language are also supported.</td>
+</tr>
+<tr>
+<td><code>⁣  "target": "&lt;target&gt;"</code></td>
+<td>The target where to open the URL, if empty, <code>_blank</code> is assumed. Can be <code>iframe</code> or <code>:iframedialog:&lt;windowname&gt;:&lt;options&gt;</code> (see below) to open the link in a iframe window inside QWC.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The format of the <code>:iframedialog:&lt;windowname&gt;:&lt;options&gt;</code> target is as follows:</p>
+<ul>
+<li><code>windowname</code> is used to identify the name of the iframe window within which the link will be opened, i.e. can be used to make multiple external URLs re-use the same iframe window.</li>
+<li>
+<p><code>options</code> is a sequence of <code>&lt;key&gt;=&lt;value&gt;</code>, separated by <code>:</code>, with the following options:</p>
+<ul>
+<li><code>dockable=&lt;false|left|right|top|bottom&gt;</code>: whether the window is dockable, and to which screen edge</li>
+<li><code>docked=&lt;true|false&gt;</code>: whether the window is docked by default</li>
+<li><code>splitScreenWhenDocked=&lt;true|false&gt;</code>: whether to split the screen when docked</li>
+<li><code>h=&lt;h&gt;</code>: the initial window height</li>
+<li><code>w=&lt;w&gt;</code>: the initial window width</li>
+<li><code>zIndex=&lt;zIndex&gt;</code>: the stacking zIndex for the dialog</li>
+<li><code>icon=&lt;icon&gt;</code>: the name of a build-in icon (see <a href="https://github.com/qgis/qwc2/tree/master/icons"><code>qwc2/icons</code></a>) to display in the window title bar (overrides the icon set in the <code>menuItems</code>/<code>tollbarItems</code> entry)</li>
+<li><code>title=&lt;title&gt;</code>: the title to display in the window title bar (overrides the title set in the <code>menuItems</code>/<code>tollbarItems</code> entry)</li>
+<li><code>print=&lt;true|false&gt;</code>: whether to display a print icon in the window title bar</li>
+</ul>
+</li>
+</ul>
+<h2 id="customizing-the-viewer-assets">Customizing the viewer assets <a name="viewer-assets"></a><a class="headerlink" href="#customizing-the-viewer-assets" title="Permanent link">&para;</a></h2>
+<p>The viewer assets are located as follows:</p>
+<ul>
+<li>Standalone viewer: <code>qwc-app/static/assets</code></li>
+<li><code>qwc-docker</code>: <code>qwc-docker/volumes/qwc2/assets</code></li>
+</ul>
+<p>The default structure of the assets folder is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>└─ assets/</code></td>
+<td>See <a href="#viewer-assets">Viewer assets</a></td>
+</tr>
+<tr>
+<td><code>├─ css/</code></td>
+<td>Additional style sheets, must be included by <code>index.html</code>.</td>
+</tr>
+<tr>
+<td><code>│  ├─ colorschemes.css</code></td>
+<td>Additional color schemes.</td>
+</tr>
+<tr>
+<td><code>│  └─ qwc2.css</code></td>
+<td>Additional style definitions.</td>
+</tr>
+<tr>
+<td><code>├─ img/</code></td>
+<td>Application logo etc.</td>
+</tr>
+<tr>
+<td><code>│  ├─ genmapthumbs/</code></td>
+<td>Autogenerated map thumbnails.</td>
+</tr>
+<tr>
+<td><code>│  └─ mapthumbs/</code></td>
+<td>Map thumbnails.</td>
+</tr>
+<tr>
+<td><code>├─ templates/</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>│  └─ legendprint.html</code></td>
+<td>HTML template for the legend print.</td>
+</tr>
+<tr>
+<td><code>├─ help.html</code></td>
+<td>Help dialog fragment, see <a href="#help-dialog">Help dialog</a>.</td>
+</tr>
+<tr>
+<td><code>└─ searchProviders.js</code></td>
+<td>Additional search providers, see <a href="../../topics/Search/">Search providers</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Furthermore, the application entry point <code>index.html</code> is located as follows:</p>
+<ul>
+<li>Standalone viewer: <code>qwc-app/index.html</code></li>
+<li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/index.html</code></li>
+</ul>
+<p>This file noteably specifies the application title, and references many of the assets located below the <code>assets</code> folder.</p>
+<h3 id="customizing-the-color-scheme">Customizing the color scheme<a class="headerlink" href="#customizing-the-color-scheme" title="Permanent link">&para;</a></h3>
+<p>The QWC color scheme is fully customizeable via CSS. A default color-scheme is built-in (see <a href="https://github.com/qgis/qwc2/blob/master/components/style/DefaultColorScheme.css">DefaultColorScheme.css</a>). To define a custom color scheme, copy the default color scheme to <code>assets/css/colorschemes.css</code>, add an appropriate class name to the <code>:root</code> selector, and modify the colors as desided. Two additional examples (<code>highcontrast</code> and <code>dark</code>) are provided by default in<a href="https://github.com/qgis/qwc2/blob/master/static/assets/css/colorschemes.css"><code>assets/css/colorschemes.css</code></a>.</p>
+<p>You can then modify the color scheme which is applied by default by setting <code>defaultColorScheme</code> in <code>config.json</code> to an appropriate class name (i.e. <code>highcontrast</code> or <code>dark</code>).</p>
+<p>To change the color scheme at runtime in QWC, make sure the <code>Settings</code> plugin is enabled, and in the <code>Settings</code> plugin configuration block in <code>config.json</code> list the color schemes below <code>colorSchemes</code>. Refer to the <a href="https://github.com/qgis/qwc2/blob/master/static/config.json">sample <code>config.json</code></a>.</p>
+<p><em>Note</em>: When changing the color scheme via Settings dialog in QWC, the picked color scheme is stored in the browser local storage, and this setting will override the <code>defaultColorScheme</code> setting from <code>config.json</code>. Specifying the <code>style</code> URL-parameter (see <a href="../../topics/Interfacing/#url-parameters">URL parameters</a>) will take precedence over all other settings.</p>
+<p><em>Note:</em> Make sure that <code>assets/css/colorschemes.css</code> is included in <code>index.html</code>.</p>
+<h3 id="overriding-component-styles">Overriding component styles<a class="headerlink" href="#overriding-component-styles" title="Permanent link">&para;</a></h3>
+<p>Occasionally, it may be desired to customize the styling on the QWC components. The recommended approach is to add the corresponding style overrides to <code>assets/css/qwc2.css</code>.</p>
+<p><em>Note:</em> Make sure that <code>assets/css/qwc2.css</code> is included in <code>index.html</code>.</p>
+<h3 id="customizing-the-application-logo">Customizing the application logo<a class="headerlink" href="#customizing-the-application-logo" title="Permanent link">&para;</a></h3>
+<p>The application logo in its various shapes and sizes are located below <code>assets/img/</code>. In particular, the <code>logo.svg</code> and <code>logo-mobile.svg</code> images are displayed as in the top left corner of QWC in desktop and mobile mode respectively. If you'd like to use another format than SVG (while keeping <code>logo</code> and <code>logo-mobile</code> as base name), you can change <code>logoFormat</code> in the <code>TopBar</code> configuration block in <code>config.json</code>.</p>
+<h3 id="providing-custom-map-thumbnails">Providing custom map thumbnails<a class="headerlink" href="#providing-custom-map-thumbnails" title="Permanent link">&para;</a></h3>
+<p>By default, when generating the themes configuration (see <a href="../ThemesConfiguration/#generating-theme-configuration">theme configuration</a>), a default map thumbnail is generating via WMS <code>GetMap</code>, and placed below <code>assets/img/genmapthumbs</code>. You can provide your own thumbnail images instead by placing the corresponding images below <code>assets/img/mapthumbs</code> and referencing these as <code>thumbnail</code> in you theme configuration block in <a href="../ThemesConfiguration/#writing-themes-configuration"><code>themesConig.json</code></a>.</p>
+<h3 id="personalizing-the-help-dialog">Personalizing the help dialog <a name="help-dialog"></a><a class="headerlink" href="#personalizing-the-help-dialog" title="Permanent link">&para;</a></h3>
+<p>You can personalize the help dialog by providing a plain HTML document fragment in <code>static/assets/help.html</code> and configuring the <code>Help</code> plugin accordingly in <code>config.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Help&quot;,
+  &quot;cfg&quot;: {
+    &quot;bodyContentsFragmentUrl&quot;: &quot;assets/help.html&quot;
+  }
+}
+</code></pre>
+<p><em>Note:</em> <code>$VERSION$</code> can be used in the HTML document fragment as a placeholder for the application build date.</p>
+<h3 id="personalizing-the-legend-print-template">Personalizing the legend print template<a class="headerlink" href="#personalizing-the-legend-print-template" title="Permanent link">&para;</a></h3>
+<p>The legend print template <code>assets/templates/legendprint.html</code> is used when printing the map legend from the layer tree. The only requirement for this template is that is must contain a <code>&lt;div id="legendcontainer"&gt;&lt;/div&gt;</code> element.</p>
+<h2 id="building-a-custom-viewer">Building a custom viewer <a name="custom-viewer"></a><a class="headerlink" href="#building-a-custom-viewer" title="Permanent link">&para;</a></h2>
+<p>The QWC stock application, hosted at <a href="https://github.com/qgis/qwc2/">https://github.com/qgis/qwc2/</a>, can serve as a base for building a custom application, and is published as an <a href="https://www.npmjs.com/package/qwc2">NPM package</a>. The LTS branch is published on NPM as <a href="https://www.npmjs.com/package/qwc2-lts">qwc2-lts</a>. An example of a custom application is hosted at <a href="https://github.com/qgis/qwc2-demo-app">https://github.com/qgis/qwc2-demo-app</a>.</p>
+<p>To build a custom viewer, the first step is cloning the demo application:</p>
+<pre><code class="language-bash">git clone https://github.com/qgis/qwc2-demo-app.git qwc-app
+</code></pre>
+<p>The typical layout of a QWC app source tree is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>├─ static/</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>│  ├─ assets/</code></td>
+<td>See <a href="#viewer-assets">Viewer assets</a></td>
+</tr>
+<tr>
+<td><code>│  ├─ translations/</code></td>
+<td>Translation files.</td>
+</tr>
+<tr>
+<td><code>│  ├─ config.json</code></td>
+<td>Runtime configuration file.</td>
+</tr>
+<tr>
+<td><code>├─ themesConfig.json</code></td>
+<td>Themes configuration, edited manually.</td>
+</tr>
+<tr>
+<td><code>│  └─ themes.json</code></td>
+<td>Generated theme configuration, autogenerated from <code>themesConfig.json</code>.</td>
+</tr>
+<tr>
+<td><code>├─ js/</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>│  ├─ app.jsx</code></td>
+<td>Entry point of the ReactJS application.</td>
+</tr>
+<tr>
+<td><code>│  ├─ appConfig.js</code></td>
+<td>Build-time configuration file.</td>
+</tr>
+<tr>
+<td><code>│  ├─ Help.jsx</code></td>
+<td>Built-in component of custom Help dialog, see <a href="#help-dialog">Help dialog</a>.</td>
+</tr>
+<tr>
+<td><code>│  └─ SearchProviders.js</code></td>
+<td>Built-in custom search providers, see <a href="#search-providers">Search providers</a>.</td>
+</tr>
+<tr>
+<td><code>├─ icons/</code></td>
+<td>Application icons.</td>
+</tr>
+<tr>
+<td><code>├─ index.html</code></td>
+<td>Entry point.</td>
+</tr>
+<tr>
+<td><code>├─ package.json</code></td>
+<td>NodeJS configuration file.</td>
+</tr>
+<tr>
+<td><code>└─ webpack.config.js</code></td>
+<td>Webpack configuration.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="application-build-time-configuration">Application build-time configuration<a name="build-time configuration"></a><a class="headerlink" href="#application-build-time-configuration" title="Permanent link">&para;</a></h3>
+<p>The <code>js/appConfig.js</code> is the the principal build-time configuation file, and defines:</p>
+<ul>
+<li>The default application locale, built into the application. This locale is used if no available locale matches the browser locale.</li>
+<li>Which plugins are built into the application. Plugins left out here will be completely omitted when compiling the application bundle, and will hence also reduce the size of the bundle.</li>
+<li>Various hook functions, as documented in the sample <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>js/appConfig.js</code></a>.</li>
+</ul>
+<p>Refer to the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>appConfig.js</code></a> for a concrete example.</p>
+<h3 id="overriding-icons">Overriding icons<a class="headerlink" href="#overriding-icons" title="Permanent link">&para;</a></h3>
+<p>The common application icons are located in <code>qwc2/icons</code>. They can be overridden by creating an icon with the same filename in the application specific <code>icons</code> folder.</p>
+<p><em>Note</em>: The icons in the <code>icons</code> folder are compiled into an icon font. The icons need to be black content on transparent background, and all drawings (including texts) must be converted to paths for the icons to render correctly.</p>
+<h3 id="compiling-an-application-bundle">Compiling an application bundle<a class="headerlink" href="#compiling-an-application-bundle" title="Permanent link">&para;</a></h3>
+<p>After tweaking the source files as desired, compile a deployable application bundle for production running</p>
+<pre><code class="language-bash">yarn run prod
+</code></pre>
+<p>When using <code>qwc-docker</code>, copy the contents of the <code>qwc-app/prod</code> folder to <code>qwc-docker/volumes/qwc2</code> and edit the <code>qwc-docker/docker-compose.yml</code> to use <code>qwc-map-viewer-base</code> with your custom build:</p>
+<pre><code class="language-yml">qwc-map-viewer:
+  image: sourcepole/qwc-map-viewer-base:vYYYY.MM.DD
+  environment:
+    &lt;&lt;: *qwc-service-variables
+    SERVICE_MOUNTPOINT: '/'
+  volumes:
+    - ./pg_service.conf:/srv/pg_service.conf:ro
+    - ./volumes/config:/srv/qwc_service/config:ro
+    - ./volumes/qwc2:/qwc2:ro
+</code></pre>
+<h3 id="keeping-the-qwc-application-up-to-date">Keeping the QWC application up to date<a class="headerlink" href="#keeping-the-qwc-application-up-to-date" title="Permanent link">&para;</a></h3>
+<p>To update the base QWC components, just update the version of the <code>qwc2</code> dependency in <code>package.json</code>.</p>
+<p>The <a href="../../release_notes/QWC2UpgradeNotes/">QWC Upgrade Notes</a> documents major changes, and in particular all incompatible changes between releases which require changes to the application specific code and/or configuration.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ThemesConfiguration/" class="btn btn-neutral float-left" title="Themes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ResourcesPermissions/" class="btn btn-neutral float-right" title="Resources and permissions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ThemesConfiguration/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ResourcesPermissions/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

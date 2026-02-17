@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-db-auth/master/schemas/qwc-db-auth.json",
+  "title": "QWC DB authentication service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-db-auth/master/schemas/qwc-db-auth.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "db-auth"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "db_url": {
+          "description": "DB connection URL",
+          "type": "string"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: `qwc_config`",
+          "type": "string"
+        },
+        "password_min_length": {
+          "description": "Min password length. Default: `8`",
+          "type": "integer"
+        },
+        "password_max_length": {
+          "description": "Max password length, or `-1` to disable. Default: `-1`",
+          "type": "integer"
+        },
+        "password_constraints": {
+          "description": "List of RegExes for additional password constraints. Default: `[]`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "password_min_constraints": {
+          "description": "Min number of password_constraints to match for password to be valid. Default: `0`",
+          "type": "integer"
+        },
+        "password_constraints_message": {
+          "description": "Validation message if password constraints are not met. Default: `Password does not match constraints`",
+          "type": "string"
+        },
+        "password_expiry": {
+          "description": "Number of days until password expires, or `-1` to disable. Default: `-1`",
+          "type": "integer"
+        },
+        "password_expiry_notice": {
+          "description": "Show an expiry notice within this number of days before a password expires, or `-1` to disable. Default: `-1`",
+          "type": "integer"
+        },
+        "password_update_interval": {
+          "description": "Min number of seconds before password may be changed again, or -1 to disable. Default: `-1`",
+          "type": "integer"
+        },
+        "password_allow_reuse": {
+          "description": "Set whether previous passwords may be reused or not. Default: `true`",
+          "type": "boolean"
+        },
+        "user_info_fields": {
+          "description": "List of user info fields to include in JWT identity. Default: `[]`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logo_image_url": {
+          "description": "URL to a logo image to show in the login form. Default: `null`",
+          "type": "string"
+        },
+        "background_image_url": {
+          "description": "URL to a background image for the login page. Default: `null`",
+          "type": "string"
+        },
+        "customstylesheet": {
+          "description": "URL of custom stylesheet. Default: `null`",
+          "type": "string"
+        },
+        "terms_url": {
+          "description": "URL to terms of use. Default: `null`",
+          "type": "string"
+        },
+        "login_hint": {
+          "description": "Login hint text, shown above login form fields. Either a string, or dictionary `{\"<lang>\": \"<text>\"}`. When providing a dictionary, the entry matching the current locale will be searched, with fallback to `en` if no entry for the current locale exists, and fallback to an empty string if no `en` entry exists. Default: `null`",
+          "oneOf":[
+            {"type": "string"},
+            {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}$": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "post_param_login": {
+          "description": "Whether 'username' and 'password', and possibly additional parameters, are passed as POST parameters. Additional parameters are appended to the target url query. Default: `false`",
+          "type": "boolean"
+        },
+        "max_login_attempts": {
+          "description": "Maximum login attempts before login is blocked. Default: `20`",
+          "type": "integer"
+        },
+        "totp_enabled": {
+          "description": "Enable two factor authentication using TOTP. Default: `false`",
+          "type": "boolean"
+        },
+        "totp_enabled_for_admin": {
+          "description": "Whether to enable two-factor authentication using TOTP for admin. Default: `false`",
+          "type": "boolean"
+        },
+        "totp_issuer_name": {
+          "description": "Issuer name for QR code URI. Default: `QWC Services`",
+          "type": "string"
+        },
+        "ip_blacklist_duration": {
+          "description": "How many seconds an IP will remain in the blacklist. See also `ip_blacklist_max_attempt_count`. Default: `300`",
+          "type": "integer"
+        },
+        "ip_blacklist_max_attempt_count": {
+          "description": "After how many failed login attempts an IP will be blacklisted. Should be less `than max_login_attempts`. See also `ip_blacklist_duration`. Default: `10`",
+          "type": "integer"
+        },
+        "force_password_change_first_login": {
+          "description": "Whether to force users to change the password on first login (regardless of user force_password_change setting). Default: `false`",
+          "type": "boolean"
+        },
+        "required_restore_input": {
+          "description": "Input required in password restore form. Can be one or both of `username` and `email`. Default: `['username', 'email']`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "db_url"
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

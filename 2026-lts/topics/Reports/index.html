@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Reports - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Reports";
+        var mkdocs_page_input_path = "topics/Reports.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Reports</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-document-service">Setting up the document-service</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-web-client">Configuring the web client</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#permissions">Permissions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Reports</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h1>
+<p>QWC, complemented with the <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, provides the possibility to generate reports for features of layers whose datasource is a PostgreSQL table, based on <a href="https://community.jaspersoft.com/download-jaspersoft/community-edition/">Jasper</a> report templates.</p>
+<h2 id="setting-up-the-document-service">Setting up the document-service<a class="headerlink" href="#setting-up-the-document-service" title="Permanent link">&para;</a></h2>
+<p>As a first step, set up a <a href="https://github.com/qwc-services/qwc-document-service/"><code>qwc-document-service</code></a>, placing your report templates below the <code>report_dir</code>. Read the <code>qwc-document-service</code> <a href="../../references/qwc-document-service_readme/"><code>README</code></a> for more information on setting up the service and to understand how to prepare and configure your report templates.</p>
+<p>When using <code>qwc-docker</code>, you can configure the container as follows:</p>
+<pre><code class="language-yml">  qwc-document-service:
+    image: docker.io/sourcepole/qwc-document-service:&lt;tag&gt;
+    environment:
+      &lt;&lt;: *qwc-service-variables
+      SERVICE_MOUNTPOINT: '/api/v1/document'
+      # FLASK_DEBUG: 1
+    volumes:
+      - ./pg_service.conf:/srv/pg_service.conf:ro
+      - ./volumes/reports:/reports
+      - ./volumes/reports/fonts:/srv/qwc_service/fonts
+      - ./volumes/config:/srv/qwc_service/config:ro
+</code></pre>
+<p>In addition, to ensure that the <code>qwc-config-generator</code> automatically picks up existing reports when generating the document service configuration, ensure that the reports directory is also mounted in its container:</p>
+<pre><code class="language-yml">  qwc-config-service:
+    image: docker.io/sourcepole/qwc-config-generator:&lt;tag&gt;
+    ...
+    volumes:
+      ...
+      - ./volumes/reports:/reports
+</code></pre>
+<h2 id="configuring-the-web-client">Configuring the web client<a class="headerlink" href="#configuring-the-web-client" title="Permanent link">&para;</a></h2>
+<p>As a second step, associate the report templates to theme layers to expose the reports in the web client. This is done providing a <code>featureReport</code> entry in a theme item in <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration"><code>themesConfig.json</code></a> as follows:</p>
+<pre><code class="language-json">    &quot;featureReport&quot;: {
+      &quot;&lt;layer_name1&gt;&quot;: &quot;&lt;template_name&gt;&quot;,
+      &quot;&lt;layer_name2&gt;&quot;: [
+        {
+          &quot;title&quot;: &quot;&lt;title&gt;&quot;,
+          &quot;template&quot;: &quot;&lt;template_name&gt;&quot;,
+          &quot;single_report&quot;: &lt;false|true&gt;,
+          &quot;format&quot;: &quot;&lt;pdf|docx|...&gt;&quot;
+        },
+        ...
+      ],
+      ...
+    }
+</code></pre>
+<p>The first case example displays the shorthand syntax for assigning one report template to one layer. The second example displays the syntax for assigning one or more templates to one layer, supporting the following extra options:</p>
+<ul>
+<li><code>single_report</code>: If <code>true</code>, one report will be compiled and a list of feature IDs will be passed in the report params. If <code>false</code>, one report will be compiled for each feature ID, and the result will be a multi-page report (one report per feature). Default is <code>false</code>.</li>
+<li><code>format</code>: The report format, one of <code>pdf</code>, <code>html</code>, <code>csv</code>, <code>docx</code>, <code>ods</code>, <code>odt</code>, <code>pptx</code>, <code>rtf</code>, <code>xlsx</code>, <code>xml</code>. Default is <code>pdf</code>.</li>
+</ul>
+<p>The web client will then display a link to download the report(s) for one or more selected features in the identify results dialog.</p>
+<p>In addition, the <a href="../../references/qwc2_plugins/#reports"><code>Reports</code> plugin</a> provides a convenient interface to directly select a desired report layer and download the reports for one or more, or all, features of the selected layer.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>Here is an example to configure a report for a layer, whose datasource is a PostgreSQL table, assuming a <code>qwc-docker</code> setup.</p>
+<ul>
+<li>
+<p>Create a Jasper report template using <a href="https://community.jaspersoft.com/download-jaspersoft/community-edition/">Jasper Studio</a> with the desired layout.</p>
+<ul>
+<li>To include data from the PostgreSQL datasource in your report, add a Postgres Data Adapter, using the name of the PG service definition in your <code>pg_service.conf</code> as the name of the data adapter.</li>
+<li>Create a report parameter, though which the document-service will pass the primary key of report feature.</li>
+<li>
+<p>Define the data query in the <code>Dataset and Query Dialog</code>,  in the form</p>
+<pre><code>SELECT &lt;fields&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
+</code></pre>
+<p>If you need a more complex query, you'll need to explicitly specify the <code>table_name</code>, <code>pk_column</code> and <code>FEATURE_PARAM_NAME</code> in the document template resource configuration, see below.</p>
+</li>
+<li>
+<p>If you want to include external resources (images, etc), set the resource path relative to the <code>$P{REPORT_DIR}</code> path as described in the <a href="../../references/qwc-document-service_readme/"><code>README</code></a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Save your report to the document service report dir, i.e. as <code>volumes/reports/MyReport.jrxml</code>.</p>
+<ul>
+<li>
+<p>If you included any custom fonts in your report, place these in <code>ttf</code> format in <code>volumes/reports/fonts</code>.</p>
+</li>
+<li>
+<p>If your report requires third party java classes, you can mount the corresponding JARs as volumes to <code>/srv/qwc_service/libs/</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Associate the report with a layer via <code>themesConfig.json</code> by adding the following to the desired theme configuration entry:</p>
+</li>
+</ul>
+<pre><code class="language-json">    &quot;featureReport&quot;: {
+      &quot;my_layer&quot;: &quot;MyReport&quot;
+    }
+</code></pre>
+<ul>
+<li>
+<p><em>Note</em>: <code>MyReport</code> here denotes the relative path of <code>MyReport.jrxml</code> below <code>volumes/reports</code>, without the <code>.jrxml</code> extension.</p>
+</li>
+<li>
+<p>If the name of the data adapter does not match the name of a PG service definition, or if your report contains a complex data query SQL, from which the dataset table name, primary key column of feature parameter name cannot be trivially parsed, then you need to explicitly define these <code>document_templates</code> in the <code>resources</code> block of the <code>document</code> configuration section in <code>tenantConfig.json</code>, for instance:</p>
+</li>
+</ul>
+<pre><code class="language-json">    {
+      &quot;name&quot;: &quot;document&quot;,
+      &quot;config&quot;: {...},
+      &quot;resources&quot;: {
+        &quot;document_templates&quot;: [
+          {
+            &quot;template&quot;: &quot;MyReport&quot;,
+            &quot;datasource&quot;: &quot;&lt;pg_service_name&gt;&quot;,
+            &quot;table&quot;: &quot;&lt;table_name&gt;&quot;,
+            &quot;primary_key&quot;: &quot;&lt;primary_key_column_name&gt;&quot;,
+            &quot;parameter_name&quot;: &quot;&lt;report_parameter_name&gt;&quot;
+          }
+        ]
+      }
+    }
+</code></pre>
+<ul>
+<li>
+<p>Generate the document service configuration by running the ConfigGenerator. It will automatically pick up all <code>*.jrxml</code> files and generate corresponding <code>document_templates</code> resources, complementing any manually defined resources.</p>
+</li>
+<li>
+<p>Test your report, either through the QWC interface, or via a direct call to the document service, i.e.:</p>
+<pre><code>http://localhost:8088/api/v1/document/MyReport.pdf?feature=&lt;fid&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="permissions">Permissions<a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h2>
+<p>Report permissions are managed through the <code>Document template</code> resources and permissions. They are allowed by default if <code>permissions_default_allow</code> is <code>true</code> in the <code>tenantConfig.json</code>.</p>
+<p>Permissions / restrictions will by default also be applied to any reports included as subreports by a parent report. If you set <code>permit_subreports</code> to <code>true</code> in the <code>document</code> service config in <code>tenantConfig.json</code>, subreports will always be permitted if the parent report is permitted.</p>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Check the logs of the <code>qwc-document-service</code> (in particular with <code>FLASK_DEBUG: 1</code>) to get detailed information about the report generation.</li>
+<li>Enable additional Java logging by mounting a <code>logging.properties</code> of the form</li>
+</ul>
+<pre><code># Keep global logs at WARNING level to reduce noise
+.level=WARNING
+
+# Enable detailed logging only for JasperReports
+net.sf.jasperreports.level=ALL
+handlers=java.util.logging.ConsoleHandler
+
+# Configure ConsoleHandler
+java.util.logging.ConsoleHandler.level=ALL
+java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
+</code></pre>
+<p>to <code>/srv/qwc_service/libs/logging.properties</code>, i.e.:</p>
+<pre><code>    ./volumes/logging.properties:/srv/qwc_service/libs/logging.properties:ro
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../MapFilter/" class="btn btn-neutral float-left" title="Map filtering"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../View3D/" class="btn btn-neutral float-right" title="3D View">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../MapFilter/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../View3D/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

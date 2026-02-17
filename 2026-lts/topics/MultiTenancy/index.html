@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Multi-tenancy - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Multi-tenancy";
+        var mkdocs_page_input_path = "topics/MultiTenancy.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Multi-tenancy</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#extracting-the-tenant-name-from-the-requests">Extracting the tenant name from the requests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#writing-the-tenantconfigjson">Writing the tenantConfig.json</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tenantconfig-template">tenantConfig template</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Multi-tenancy</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h1>
+<p>Multi-tenancy allows serving multiple viewer configurations from a single installation. Specifically, it allows separate theme, viewer (plugins, appearance, etc.) and user/permissions configurations for each tenant.</p>
+<p>By default, <code>qwc-docker</code> includes a single <code>default</code> tenant, with the respective configuration file located at <code>qwc-docker/volumes/config-in/default/tenantConfig.json</code>.</p>
+<p>To configure additional tenants, the main steps are as follows:</p>
+<ul>
+<li>Define how the tenant name is extracted from the requests.</li>
+<li>Write a <code>tenantConfig.json</code>, specifying the location of the configuration database, the viewer configuration and viewer assets.</li>
+</ul>
+<h2 id="extracting-the-tenant-name-from-the-requests">Extracting the tenant name from the requests<a class="headerlink" href="#extracting-the-tenant-name-from-the-requests" title="Permanent link">&para;</a></h2>
+<p>Multi-tenancy works by extracting a tenant name from the request URL and passing it to the respective QWC services. A typical setup is to run the application at the base address</p>
+<pre><code>https://&lt;hostname&gt;/&lt;tenant&gt;/
+</code></pre>
+<p>The simplest approach is to extract the tenant name in a rewrite rule and set a corresponding header which will be read by the QWC services. This can be accomplished as follows:</p>
+<ul>
+<li>Define the name of the tenant header in <code>qwc-docker/docker-compose.yml</code> by setting the <code>TENANT_HEADER</code> environment variable in the <code>qwc-service-variables</code> block, i.e.:</li>
+</ul>
+<pre><code class="language-yml">x-qwc-service-variables: &amp;qwc-service-variables
+  [...]
+  TENANT_HEADER: Tenant
+</code></pre>
+<ul>
+<li>Add rewrite rules to the <code>api-gateway</code> configuration file <code>qwc-docker/api-gateway/nginx.conf</code>, extracting the tenant name and setting the tenant header. For example</li>
+</ul>
+<pre><code>server {
+    listen       80;
+    server_name  localhost;
+
+    proxy_redirect off;
+    server_tokens off;
+
+    location ~ ^/(?&lt;t&gt;tenant1|tenant2)/ {
+        # Extract tenant
+        proxy_set_header Tenant $t;
+        # Set headers for original request host
+        proxy_set_header   Host              $http_host;
+        proxy_set_header   X-Real-IP         $remote_addr;
+        proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+
+        location ~ ^/[^/]+/auth {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-auth-service:9090;
+        }
+
+        location ~ ^/[^/]+/ows {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-ogc-service:9090;
+        }
+
+        location ~ ^/[^/]+/api/v1/featureinfo {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-feature-info-service:9090;
+        }
+
+        # etc...
+
+        location ~ ^/[^/]+/qwc_admin {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-admin-gui:9090;
+        }
+
+        # Place these last to give precedence to the other rules:
+
+        # Redirect request without trailing slash
+        location ~ ^(/[^/]+)$ {
+            return 301 $scheme://$http_host$1/;
+        }
+        location ~ ^/[^/]+/ {
+            rewrite ^/[^/]+(.+) $1 break;
+            proxy_pass http://qwc-map-viewer:9090;
+        }
+    }
+}
+</code></pre>
+<h2 id="writing-the-tenantconfigjson">Writing the <code>tenantConfig.json</code><a class="headerlink" href="#writing-the-tenantconfigjson" title="Permanent link">&para;</a></h2>
+<p>The tenant configuration file <code>tenantConfig.json</code> is located at <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/tenantConfig.json</code> with <code>&lt;tenant&gt;</code> the name of the tenant. There are a number of configuration options which specifically affect the type of multi-tenancy setup, which is very flexible. Possible choices are:</p>
+<ul>
+<li>Shared vs. separate configuration database / admin backend</li>
+<li>Shared vs. separate viewer build</li>
+<li>Shared vs. separate qgs-resources tree</li>
+<li>etc...</li>
+</ul>
+<p>In general, you need to ensure that</p>
+<ul>
+<li>All the service URLs point to locations which are handled by the api-gateway configuration.</li>
+<li>All the paths refers to locations which are mounted in <code>qwc-docker/docker-compose.yml</code>.</li>
+<li>All database connection service names refer to connections which are defined <code>qwc-docker/pg_service.conf</code>.</li>
+</ul>
+<p>A minimal configuration for tenant <code>tenant_name</code> may look as follows:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json&quot;,
+  &quot;service&quot;: &quot;config-generator&quot;,
+  &quot;config&quot;: {
+    &quot;tenant&quot;: &quot;tenant_name&quot;,
+    &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
+    &quot;config_db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+    &quot;qgis_projects_base_dir&quot;: &quot;/data&quot;,
+    &quot;qgis_projects_scan_base_dir&quot;: &quot;/data/tenant_name/scan&quot;
+    ...
+  },
+  &quot;themesConfig&quot;: &quot;./themesConfig.json&quot;,
+  &quot;services&quot;: [
+    {
+      &quot;name&quot;: &quot;adminGui&quot;,
+      &quot;config&quot;: {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+        &quot;qgs_resources_path&quot;: &quot;/qgs-resources/tenant_name/&quot;,
+        &quot;ows_prefix&quot;: &quot;/tenant_name/ows&quot;,
+        ...
+      }
+    },
+    {
+      &quot;name&quot;: &quot;dbAuth&quot;,
+      &quot;config&quot;: {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+        &quot;config_generator_service_url&quot;: &quot;http://qwc-config-service:9090&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;mapViewer&quot;,
+      &quot;generator_config&quot;: {
+        &quot;qwc2_config&quot;: {
+          &quot;qwc2_config_file&quot;: &quot;/srv/qwc_service/config-in/tenant_name/config.json&quot;,
+          &quot;qwc2_index_file&quot;: &quot;/srv/qwc_service/config-in/tenant_name/index.html&quot;
+        }
+      },
+      &quot;config&quot;: {
+        &quot;qwc2_path&quot;: &quot;/qwc2/&quot;,
+        &quot;auth_service_url&quot;: &quot;/tenant_name/auth/&quot;,
+        &quot;ogc_service_url&quot;: &quot;/tenant_name/ows/&quot;,
+        &quot;info_service_url&quot;: &quot;/tenant_name/api/v1/featureinfo/&quot;,
+        ...
+      }
+    }
+  ]
+}
+</code></pre>
+<p><em>Notes</em>:</p>
+<ul>
+<li>The database URL (<code>postgresql:///?service=qwc_configdb</code>) will determine whether a shared or sperate configuration database is used for each tenant.</li>
+<li>The <code>qwc2_config_file</code>, <code>qwc2_index_file</code>, <code>qwc2_base_dir</code> and <code>qwc2_path</code> paths will determine whether the viewer build/configuration is shared or separate for each tenant.</li>
+<li>To use a separate assets folder for each tenant, you can set an appropriate <code>assetsPath</code> in the <code>qwc2_config_file</code> of each tenant.</li>
+<li>The various service URLs in the <code>mapViewer</code> configuration and in other service configurations need to match what is expected in the <code>api-gateway</code> configuration.</li>
+<li>To separate the qgis projects per tenant (avoiding the <code>&lt;tenantname&gt;/</code> prefix on the map names), you can proceed as follows:</li>
+<li>Create subdirectories for each tenant in <code>volumes/qgs-resources</code>, i.e. <code>volumes/qgs-resources/&lt;tenant_name&gt;</code>,</li>
+<li>Set <code>default_qgis_server_url</code> to <code>http://qwc-qgis-server/ows/&lt;tenant_name&gt;</code>,</li>
+<li>Set <code>qgis_projects_base_dir</code> to <code>/data/&lt;tenant_name&gt;</code>,</li>
+<li>Make sure to remove the <code>/ows</code> prefix from the <code>url</code> of any manually configured themes in <code>themesConfig.json</code>.</li>
+</ul>
+<h2 id="tenantconfig-template"><code>tenantConfig</code> template<a class="headerlink" href="#tenantconfig-template" title="Permanent link">&para;</a></h2>
+<p>In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate <code>tenantConfig.json</code> files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a <code>tenantConfig</code> template, using the <code>$tenant$</code> placeholder where appropriate, and point to this file in the respective <code>tenantConfig.json</code> files. The contents of the template will then be merged with the contents of <code>tenantConfig.json</code>, and occurence of <code>$tenant$</code> in the template will be replaced with the current tenant name.</p>
+<p>For example, a minimal <code>tenantConfig.json</code> in <code>qwc-docker/volumes/config-in/tenant_name/</code> could look as follows:</p>
+<pre><code class="language-json">{
+  &quot;template&quot;: &quot;../tenantConfig.template.json&quot;,
+  &quot;config&quot;: {
+    &quot;tenant&quot;: &quot;tenant_name&quot;
+  },
+  &quot;themesConfig&quot;: &quot;./themesConfig.json&quot;
+}
+</code></pre>
+<p>And the <code>tenantConfig.template.json</code> in <code>qwc-docker/volumes/config-in/</code> as follows:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://github.com/qwc-services/qwc-config-generator/raw/master/schemas/qwc-config-generator.json&quot;,
+  &quot;service&quot;: &quot;config-generator&quot;,
+  &quot;config&quot;: {
+    &quot;default_qgis_server_url&quot;: &quot;http://qwc-qgis-server/ows/&quot;,
+    &quot;config_db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+    &quot;qgis_projects_base_dir&quot;: &quot;/data&quot;,
+    &quot;qgis_projects_scan_base_dir&quot;: &quot;/data/$tenant$/scan&quot;
+    ...
+  },
+  &quot;themesConfig&quot;: &quot;./themesConfig.json&quot;,
+  &quot;services&quot;: [
+    {
+      &quot;name&quot;: &quot;adminGui&quot;,
+      &quot;config&quot;: {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+        &quot;qgs_resources_path&quot;: &quot;/qgs-resources/&quot;,
+        &quot;ows_prefix&quot;: &quot;/ows&quot;,
+        ...
+      }
+    },
+    {
+      &quot;name&quot;: &quot;dbAuth&quot;,
+      &quot;config&quot;: {
+        &quot;db_url&quot;: &quot;postgresql:///?service=qwc_configdb&quot;,
+        &quot;config_generator_service_url&quot;: &quot;http://qwc-config-service:9090&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;mapViewer&quot;,
+      &quot;generator_config&quot;: {
+        &quot;qwc2_config&quot;: {
+          &quot;qwc2_config_file&quot;: &quot;/srv/qwc_service/config-in/$tenant$/config.json&quot;,
+          &quot;qwc2_index_file&quot;: &quot;/srv/qwc_service/config-in/$tenant$/index.html&quot;
+        }
+      },
+      &quot;config&quot;: {
+        &quot;qwc2_path&quot;: &quot;/qwc2/&quot;,
+        &quot;auth_service_url&quot;: &quot;/$tenant$/auth/&quot;,
+        &quot;ogc_service_url&quot;: &quot;/$tenant$/ows/&quot;,
+        &quot;info_service_url&quot;: &quot;/$tenant$/api/v1/featureinfo/&quot;,
+        ...
+      }
+    }
+  ]
+}
+</code></pre>
+<p><em>Note</em>: A <code>themesConfig</code> entry in the <code>tenantConfig</code> template is resolved relative to the <code>tenantConfig.template.json</code>, and can be used to define common themes, background layers, etc. in the template.</p>
+<h2 id="multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas<a class="headerlink" href="#multi-tenancy-with-separate-configdb-schemas" title="Permanent link">&para;</a></h2>
+<p>If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:</p>
+<ul>
+<li>Manually create the desired schemas, and set the owner to <code>qwc_admin</code>.</li>
+<li>Configure a <code>qwc-config-db-migrate</code> container in <code>docker-compose.yml</code> with the <code>QWC_CONFIG_SCHEMA</code> environment variable set to the name of the created schema, and run the container to set up the config tables.</li>
+<li>Set <code>qwc_config_schema</code> to the name of the created schema in toplevel and relevant service configuration blocks in the <code>tenantConfig.json</code> (<code>mapViewer</code>, <code>adminGui</code>, <code>dbAuth</code>).</li>
+<li>Run the config-generator manually from a command line via<pre><code>curl -X POST "http://localhost:5010/generate_configs?tenant=&lt;tenantname&gt;"
+</code></pre>
+</li>
+</ul>
+<p>to generate the service configurations to ensure that a correct configuration is available for the Admin GUI and DB Auth (ensure that port 5010 of the <code>qwc-config-service</code> container is exposed to the docker host in <code>docker-compose.yml</code>).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Interfacing/" class="btn btn-neutral float-left" title="Interfacing with applications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../references/" class="btn btn-neutral float-right" title="References">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Interfacing/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../references/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

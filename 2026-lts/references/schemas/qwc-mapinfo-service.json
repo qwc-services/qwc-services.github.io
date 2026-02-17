@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json",
+  "title": "QWC Mapinfo Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-mapinfo-service/master/schemas/qwc-mapinfo-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "mapinfo"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "db_url": {
+          "description": "DB connection for info queries",
+          "type": "string"
+        },
+        "info_table": {
+          "description": "Table to use",
+          "type": "string"
+        },
+        "info_geom_col": {
+          "description": "Geometry column in table",
+          "type": "string"
+        },
+        "info_display_col": {
+          "description": "Display text column in table",
+          "type": "string"
+        },
+        "info_title": {
+          "description": "Display title",
+          "type": ["string", "array"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "info_id": {
+          "description": "ID for permission checks",
+          "type": "string"
+        },
+        "info_where": {
+          "description": "Additional WHERE query",
+          "type": "string"
+        },
+        "queries": {
+          "title": "Info queries",
+          "type": "array",
+          "items": {
+            "title": "Query",
+            "type": "object",
+            "properties": {
+              "db_url": {
+                "description": "DB connection for info queries",
+                "type": "string"
+              },
+              "info_table": {
+                "description": "Table to use",
+                "type": "string"
+              },
+              "info_geom_col": {
+                "description": "Geometry column in table",
+                "type": "string"
+              },
+              "info_display_col": {
+                "description": "Display text column in table",
+                "type": "string"
+              },
+              "info_title": {
+                "description": "Display title",
+                "type": ["string", "array"],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "info_id": {
+                "description": "ID for permission checks",
+                "type": "string"
+              },
+              "info_where": {
+                "description": "Additional WHERE query",
+                "type": "string"
+              },
+              "info_sql": {
+                "description": "SQL query text",
+                "type": "string"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "db_url",
+                  "info_table",
+                  "info_geom_col",
+                  "info_display_col",
+                  "info_title"
+                ]
+              },
+              {
+                "required": [
+                  "db_url",
+                  "info_sql",
+                  "info_title"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "db_url",
+            "info_table",
+            "info_geom_col",
+            "info_display_col",
+            "info_title"
+          ]
+        },
+        {
+          "required": [
+            "db_url",
+            "info_sql",
+            "info_title"
+          ]
+        },
+        {
+          "required": [
+            "queries"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

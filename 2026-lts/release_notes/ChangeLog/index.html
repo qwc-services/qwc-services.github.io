@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>ChangeLog - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ChangeLog";
+        var mkdocs_page_input_path = "release_notes/ChangeLog.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Version history</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">ChangeLog</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#2025-lts-2026-lts">2025-lts &rarr; 2026-lts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#general">General</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#editing">Editing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#identify">Identify</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#layers-and-layertree">Layers and LayerTree</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#localization">Localization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#measure">Measure</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#redlining">Redlining</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#reports">Reports</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#search">Search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#other-changes">Other changes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#new-plugins">New plugins</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#services">Services</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-changelogs">Full changelogs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2024-lts-2025-lts">2024-lts &rarr; 2025-lts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#upgrade-notes">Upgrade notes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#viewer-configuration">Viewer Configuration</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#general_1">General</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#editing-attributeform-attributetable">Editing / AttributeForm / AttributeTable</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#redlining_1">Redlining</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#measure_1">Measure</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#print">Print</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#layer-tree">Layer tree</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#identify_1">Identify</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#new-plugins_1">New plugins</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#qwc-services">QWC services</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#config-generator">Config Generator</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#admin-gui">Admin GUI</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#db-auth">DB Auth</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#data-service">Data service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#document-service">Document service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#feature-info-service">Feature info service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-service">Fulltext search service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#legend-service">Legend service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#mapinfo-service">Mapinfo service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ogc-service">OGC service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-changelogs_1">Full changelogs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2023-lts-2024-lts">2023-lts &rarr; 2024-lts</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#upgrade-notes_1">Upgrade notes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#general_2">General</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#editing_1">Editing</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#featureinfo">FeatureInfo</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#heightprofile">HeightProfile</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#layertree">LayerTree</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#map">Map</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#print_1">Print</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#redlining_2">Redlining</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#search_1">Search</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#share">Share</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#new-plugins_2">New plugins</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-changelogs_2">Full changelogs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Version history &raquo;</li>
+      <li>ChangeLog</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="changelog">ChangeLog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h1>
+<p>This file lists the most important changes in QWC and qwc-services between LTS releases.</p>
+<h2 id="2025-lts-2026-lts">2025-lts &rarr; 2026-lts<a class="headerlink" href="#2025-lts-2026-lts" title="Permanent link">&para;</a></h2>
+<p>When upgrading from a 2025-lts setup, please note the entries marked with <em>[2025-lts &rarr; 2026-lts]</em> in the upgrade notes:</p>
+<ul>
+<li><a href="../QWC2UpgradeNotes/">QWC upgrade notes</a></li>
+<li><a href="../QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a></li>
+</ul>
+<h3 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h3>
+<ul>
+<li>QWC is now published on <a href="https://www.npmjs.com/package/qwc2">NPM</a>, which can be used as a dependency for custom QWC builds</li>
+<li>Enchanced keyboard navigation throughout</li>
+</ul>
+<h3 id="editing">Editing<a class="headerlink" href="#editing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dynamically load editConfig for theme layers and imported layers (reduces size of initial <code>themes.json</code>, allows editing imported theme layers)</li>
+<li>Add support for virtual (i.e. calculated) fields</li>
+<li>Allow showing measurements while drawing</li>
+<li>Add support for editing attributes of datasets with curve geometries (geometries will be read-only)</li>
+<li>Add support for ValueRelation widgets with multiple selections</li>
+<li>Add support for array field types</li>
+<li>Add support visibility expressions for DnD designer form tabs and group boxes</li>
+<li>Allow editing nested datasets with geometries</li>
+<li>Allow recording GPS position for point/line geometries</li>
+<li>Allow copying compatible attributes when copying existing feature</li>
+<li>Extended <a href="https://github.com/qgis/qwc2/blob/64b3810996ec58f9f0d6247772b56cc86a236186/utils/expr_grammar/grammar.ne">expression grammar</a></li>
+<li>Allow hiding hidden fields in <a href="../references/qwc2_plugins#attributetable">AttributeTable</a></li>
+<li>The AttributeTable now uses service-side pagination by the <code>qwc-data-service</code> for loading the feature collection</li>
+</ul>
+<h3 id="identify">Identify<a class="headerlink" href="#identify" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add new paginated display mode, enable via <a href="../references/qwc2_plugins#identify"><code>resultDisplayMode</code></a> config setting</li>
+<li>Allow comparing selected identify results side-by-side</li>
+<li>Add shapefile and XLSX exporters</li>
+<li>The GeoJSON exporter now exports in <code>EPSG:4326</code></li>
+</ul>
+<h3 id="layers-and-layertree">Layers and LayerTree<a class="headerlink" href="#layers-and-layertree" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Expose layer visibility presets ("themes"), as configured in the QGIS project, in the LayerTree</li>
+<li>Honour layer refresh interval, as configured in the <a href="../configuration/ThemesConfiguration#create-qgis-project">QGIS project</a></li>
+<li>Show control to toggle group and sublayers to LayerTree if <a href="../references/qwc2_plugins#layertree"><code>groupTogglesSublayers</code></a> is <code>false</code></li>
+<li>Allow adding separators to the LayerTree also if <a href="../references/qwc2_plugins#layertree"><code>flattenGroups</code></a> is <code>false</code></li>
+<li>Display layer style selector also for group layers in LayerTree</li>
+</ul>
+<h3 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for translated QWC themes, see <a href="../topics/Translations#translated-themes">Translations</a></li>
+<li>Add support for <code>{lang}</code> placeholder in the <a href="../references/qwc2_plugins#newspopup"><code>NewsPopup</code></a> <code>newsDocument</code> URL</li>
+<li>Add support for <code>$lang$</code> placehodler in menu item and identify attribute links</li>
+<li>Add support for <code>translate(&lt;fieldname&gt;)</code> to translate field names in <a href="../topics/FeatureInfo/#custom-html-templates">custom HTML info templates</a></li>
+</ul>
+<h3 id="measure">Measure<a class="headerlink" href="#measure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow configuring <a href="../references/qwc2_plugins#measure">line head and tail markers</a> for distance and bearing measurement geometries</li>
+<li>Allow drawing multiple measurement geometries, see also <a href="../references/qwc2_plugins#measure"><code>clearMeasurementsOnExit</code> and <code>clearMeasurementsOnModeChange</code></a> config settings</li>
+<li>Display total line length next to geometry, also display perimeter length if <a href="../references/qwc2_plugins#measure"><code>showPerimeterLength</code></a> is set</li>
+<li>Allow specifying custom <code>ElevationInterface</code> for <a href="../references/qwc2_plugins#heightprofile">HeightProfile</a></li>
+<li>Add support for multiple height profiles returned by <a href="https://github.com/qwc-services/qwc-elevation-service"><code>qwc-elevation-service</code></a></li>
+</ul>
+<h3 id="redlining">Redlining<a class="headerlink" href="#redlining" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for transform a selection of multiple objects</li>
+<li>Allow cloning selected features</li>
+<li>Allow recording GPS position for point/line drawings</li>
+<li>Allow setting line dash pattern</li>
+<li>Allow setting and editing attributes of redlining features</li>
+<li>Add specturm color picker to color buttons</li>
+</ul>
+<h3 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow specifying multiple report templates per layer, see <a href="../topics/Reports#configuring-the-web-client">Reports</a></li>
+<li>Add <code>single_report</code> mode, to generate one report with all selected features instead of one report per selected feature</li>
+</ul>
+<h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../topics/Search/#configuring-the-qgis-feature-search">QGIS feature search</a>: allow dynamically populating selection lists via <code>options_query</code></li>
+<li>Allow searching for catalog layers in main search field, see <a href="../references/qwc2_plugins#layercatalog"><code>registerCatalogSearchProvider</code></a></li>
+<li>Allow searching for task menu entries in main search field, see <a href="../references/qwc2_plugins#topbar"><code>registerTaskSearchProvider</code></a></li>
+<li>Allow dynamically registering search providers via </li>
+<li>Allow loading search filter regions from an external file, see <a href="../topics/Search/#filtering">search filtering</a></li>
+</ul>
+<h3 id="other-changes">Other changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Bookmark: Rework plugin for improved usabiliy</li>
+<li>Cyclomedia: Update default cyclomediaVersion to 25.7</li>
+<li>GeometryDigitizer: Allow chosing between wkt and geojson as the format for sending geometries to the target application</li>
+<li>MapExport: Include external layers in DXF export and merge result</li>
+<li>Portal, ThemeSwitcher: Introduce <code>expandGroups</code> config setting to control whether groups are expanded by default</li>
+<li>Routing: Allow adding routing result as redlining layers</li>
+<li>ThemeSwitcher: Allow displaying active theme</li>
+<li>API: Allow interacting with embedded QWC instances via <a href="../references/qwc2_plugins#api"><code>postMessage</code></a></li>
+</ul>
+<h3 id="new-plugins">New plugins<a class="headerlink" href="#new-plugins" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../references/qwc2_plugins#obliqueview">ObliqueView</a>, see also <a href="../topics/ObliqueView">Oblique View</a></li>
+<li><a href="../references/qwc2_plugins#objectlist">ObjectList</a></li>
+<li><a href="../references/qwc2_plugins#panoramax">Panoramax</a></li>
+<li><a href="../references/qwc2_plugins#tourguide">TourGuide</a>, see also <a href="../topics/Tourguide">Tour Guide</a></li>
+<li><a href="../references/qwc2_plugins#valuetool">ValueTool</a></li>
+<li><a href="../references/qwc2_plugins#view3d">View3D</a>, see also <a href="../topics/View3D">3D View</a></li>
+</ul>
+<h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
+<p><strong>qwc-admin-gui</strong></p>
+<ul>
+<li>Allow aborting config-generator workers</li>
+<li>Allow sending <a href="https://github.com/qwc-services/qwc-admin-gui/?tab=readme-ov-file#invitations">invitation mails</a></li>
+</ul>
+<p><strong>qwc-data-service</strong></p>
+<ul>
+<li>Add support for pagination and sorting for dataset index endpoint</li>
+<li>Optimized queries for querying datasets with joined tables</li>
+<li>New <a href="https://github.com/qwc-services/qwc-data-service/?tab=readme-ov-file#filter-expressions">filter operators</a>: <code>~, HAS, HAS NOT</code></li>
+</ul>
+<p><strong>qwc-document-service</strong></p>
+<ul>
+<li>Allow using precompiled <code>*.jasper</code> templates (if <code>permit_subreports=true</code>)</li>
+<li>Keep JVM alive to avoid significant per-request overhead</li>
+<li>Read true font family names from font files instead of relying only on font file name convention</li>
+</ul>
+<p><strong>qwc-elevation-service</strong></p>
+<ul>
+<li>Allow <a href="https://github.com/qwc-services/qwc-elevation-service/?tab=readme-ov-file#elevation-service-config">configuring</a> multiple elevation datasets</li>
+</ul>
+<p><strong>qwc-legend-service</strong></p>
+<ul>
+<li>Allow providing distinct <a href="../topics/LegendGraphics/#providing-custom-legend-images">custom legend images</a> for layers with multiple styles</li>
+</ul>
+<p><strong>qwc-map-viewer</strong></p>
+<ul>
+<li>Allow restricting viewer assets via <code>Viewer Asset</code> <a href="../configuration/ResourcesPermissions/#viewer-asset-permissions">resource permissions</a></li>
+<li>Add <code>Content-Security-Policy</code> response header when querying <code>index.html</code></li>
+</ul>
+<p><strong>qwc-ogc-service</strong></p>
+<ul>
+<li>Add support for WFS-T</li>
+<li>Add support for OGC API Features</li>
+<li>Add a service landing page</li>
+<li>Allow forcing basic auth challenge for WMS/WFS requests via <a href="https://github.com/qwc-services/qwc-ogc-service?tab=readme-ov-file#basic-auth"><code>REQUIREAUTH</code> query param</a></li>
+</ul>
+<p><strong>qwc-qgis-server</strong></p>
+<ul>
+<li>Build release-nightly Docker images with more verbose debug output, see <a href="https://github.com/qwc-services/qwc-qgis-server#debugging">Debugging</a>.</li>
+</ul>
+<p><strong>qwc-qgis-server-plugins</strong></p>
+<ul>
+<li>New <a href="https://github.com/qwc-services/qwc-qgis-server-plugins?tab=readme-ov-file#datasource_filter_username"><code>datasource_filter_username</code> plugin</a></li>
+</ul>
+<p><strong>qwc-qgs-cache-preseed</strong></p>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-qgs-cache-preseed">New service for pre-seeding the QGIS Server project cache</a></li>
+</ul>
+<h3 id="full-changelogs">Full changelogs<a class="headerlink" href="#full-changelogs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qgis/qwc2/compare/2025-lts...2026-lts">QWC</a></li>
+<li><a href="https://github.com/qwc-services/qwc-3d-tile-info-service/compare/a30107c...2026-lts">qwc-3d-tile-info-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-admin-gui/compare/2025-lts...2026-lts">qwc-admin-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-base-db/compare/2025-lts...2026-lts">qwc-base-db</a></li>
+<li><a href="https://github.com/qwc-services/qwc-config-generator/compare/2025-lts...2026-lts">qwc-config-generator</a></li>
+<li><a href="https://github.com/qwc-services/qwc-data-service/compare/2025-lts...2026-lts">qwc-data-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-db-auth/compare/2025-lts...2026-lts">qwc-db-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-document-service/compare/2025-lts...2026-lts">qwc-document-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-elevation-service/compare/2025-lts...2026-lts">qwc-elevation-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ext-service/compare/2025-lts...2026-lts">qwc-ext-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-feature-info-service/compare/2025-lts...2026-lts">qwc-feature-info-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-fulltext-search-service/compare/2025-lts...2026-lts">qwc-fulltext-search-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ldap-auth/compare/2025-lts...2026-lts">qwc-ldap-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-legend-service/compare/2025-lts...2026-lts">qwc-legend-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-mapinfo-service/compare/2025-lts...2026-lts">qwc-mapinfo-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-map-viewer/compare/2025-lts...2026-lts">qwc-map-viewer</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ogc-service/compare/2025-lts...2026-lts">qwc-ogc-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-permalink-service/compare/2025-lts...2026-lts">qwc-permalink-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-print-service/compare/2025-lts...2026-lts">qwc-print-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-qgs-cache-preseed/compare/3e37335..2026-lts">qwc-qgs-cache-preseed</a></li>
+<li><a href="https://github.com/qwc-services/qwc-registration-gui/compare/2025-lts...2026-lts">qwc-registration-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-wms-proxy/compare/2025-lts...2026-lts">qwc-wms-proxy</a></li>
+</ul>
+<h2 id="2024-lts-2025-lts">2024-lts &rarr; 2025-lts<a class="headerlink" href="#2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<h3 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h3>
+<p>When upgrading from a 2024-lts setup, please note the entries marked with <em>[2024-lts &rarr; 2025-lts]</em> in the upgrade notes:</p>
+<ul>
+<li><a href="../QWC2UpgradeNotes/">QWC upgrade notes</a></li>
+<li><a href="../QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a></li>
+</ul>
+<h3 id="viewer-configuration">Viewer Configuration<a class="headerlink" href="#viewer-configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../configuration/ThemesConfiguration#manual-theme-configuration">Config: Allow overriding plugin config per theme</a></li>
+<li><a href="../references/qwc2_plugins#api">Allow adding custom plugins via QWC API</a></li>
+<li><a href="../references/qwc2_plugins#api">Allow registering identify exporters and attribute calculators via QWC2 API</a></li>
+</ul>
+<h3 id="general_1">General<a class="headerlink" href="#general_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow detaching QWC dialogs (i.e. Attribute Table) to separate browser windows</li>
+<li><a href="../references/qwc2_plugins#overviewmap">Allow specifying OverviewMap layer independent from current background layer</a></li>
+</ul>
+<h3 id="editing-attributeform-attributetable">Editing / AttributeForm / AttributeTable<a class="headerlink" href="#editing-attributeform-attributetable" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/Editing/#expressions">Honour expressions in QGIS Attributes Form configuration for group box visibility, default value and value-relation filter as defined</a> (currently <a href="https://github.com/qgis/qwc2/blob/2025-lts/utils/expr_grammar/grammar.ne">limited grammar</a>)</li>
+<li>Allow limiting Attibute Table to current map extent</li>
+<li>Add CSV export to Attribute Table</li>
+<li>Highlight hovered / filtered features in Attribute Table</li>
+</ul>
+<h3 id="redlining_1">Redlining<a class="headerlink" href="#redlining_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for rotating labels</li>
+<li><a href="../references/qwc2_plugins#redlining">Allow configuring available tools / default color / unit length</a></li>
+<li>Add CTRL / SHIFT support to transform tool to scale objects from corner / preserving aspect ratio</li>
+</ul>
+<h3 id="measure_1">Measure<a class="headerlink" href="#measure_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Show measurement labels in map of height profile print output</li>
+</ul>
+<h3 id="print">Print<a class="headerlink" href="#print" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reworked plugin with new series print mode</li>
+</ul>
+<h3 id="layer-tree">Layer tree<a class="headerlink" href="#layer-tree" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow importing (zipped) Shapefiles</li>
+<li><a href="../references/qwc2_plugins#layertree">Add option to only show groups</a></li>
+<li><a href="../references/qwc2_plugins#layertree">Add option to show a link to the Attribute Table of a layer</a></li>
+</ul>
+<h3 id="identify_1">Identify<a class="headerlink" href="#identify_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Show layer selection and feature count</li>
+</ul>
+<h3 id="new-plugins_1">New plugins<a class="headerlink" href="#new-plugins_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../references/qwc2_plugins#portal">Portal</a></li>
+<li><a href="../references/qwc2_plugins#mapfilter">MapFilter</a></li>
+<li><a href="../references/qwc2_plugins#geometrydigitizer">GeometryDigitizer</a></li>
+<li><a href="../references/qwc2_plugins#reports">Reports</a> (see also <a href="../../topics/Reports/">Reports</a>)</li>
+<li><a href="../references/qwc2_plugins#cookiepopup">CookiePopup</a></li>
+</ul>
+<h3 id="qwc-services">QWC services<a class="headerlink" href="#qwc-services" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/MultiTenancy/#multi-tenancy-with-separate-configdb-schemas">Make <code>qwc_config</code> schema name configurable</a></li>
+</ul>
+<h3 id="config-generator">Config Generator<a class="headerlink" href="#config-generator" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create theme groups for subdirs below scan dir</li>
+<li>Add option to save scanned projects and groups in themes configuration</li>
+<li>Handle template themesConfig section in tenantConfig template</li>
+<li>Allow setting <code>generate_nested_nrel_forms</code> per dataset in the theme item editConfig</li>
+</ul>
+<h3 id="admin-gui">Admin GUI<a class="headerlink" href="#admin-gui" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow generating configuration using cached project capabilities</li>
+<li>Allow generating configuation forcing read-only dataset permissions</li>
+<li>Allow querying QGIS Server logs</li>
+<li>Add NewsPopup plugin</li>
+</ul>
+<h3 id="db-auth">DB Auth<a class="headerlink" href="#db-auth" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow configuring <code>post_param_login</code>, <code>max_login_attempts</code>, <code>totp_enabled</code>, <code>totp_issuer_name</code> in service config</li>
+<li>Display account locked status to user</li>
+<li>Reword reset password to password change, also allow unlocking account</li>
+<li>Introduce <code>totp_enabled_for_admin</code> config option</li>
+<li>Implement IP blacklisting</li>
+<li>Add <code>force_password_change_first_login</code> config setting</li>
+</ul>
+<h3 id="data-service">Data service<a class="headerlink" href="#data-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add recaptcha support for public editing</li>
+<li>Introduce separate <code>create_user_field</code> and <code>create_timestamp_field</code> for logging record creations</li>
+<li>Honour data source filter as set in the QGIS layer properties</li>
+</ul>
+<h3 id="document-service">Document service<a class="headerlink" href="#document-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Rewrite, drops the requirement on a separate <code>jasper-reporting-service</code>, see <a href="../../topics/Reports/">Reports</a></li>
+</ul>
+<h3 id="feature-info-service">Feature info service<a class="headerlink" href="#feature-info-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Support authentication via basic auth</li>
+<li>Add support for <code>text/plain</code>, <code>text/html</code> and <code>application/json</code> info formats</li>
+<li><a href="../../topics/FeatureInfo/#html-templates">Add support for specifying custom templates by placing a file in <code>info_templates_path</code></a></li>
+</ul>
+<h3 id="fulltext-search-service">Fulltext search service<a class="headerlink" href="#fulltext-search-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/Search/#fulltext-search-with-trigram-backend">Add trigram search backend</a></li>
+</ul>
+<h3 id="legend-service">Legend service<a class="headerlink" href="#legend-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Support authentication via basic auth</li>
+</ul>
+<h3 id="mapinfo-service">Mapinfo service<a class="headerlink" href="#mapinfo-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/Mapinfo/">Support returning multiple values from SQL query to <code>info_title</code></a></li>
+</ul>
+<h3 id="ogc-service">OGC service<a class="headerlink" href="#ogc-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add support for WFS 1.1.0</li>
+</ul>
+<h3 id="full-changelogs_1">Full changelogs<a class="headerlink" href="#full-changelogs_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qgis/qwc2/compare/2024-lts...2025-lts">QWC</a></li>
+<li><a href="https://github.com/qwc-services/qwc-admin-gui/compare/2024-lts...2025-lts">qwc-admin-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-base-db/compare/2024-lts...2025-lts">qwc-base-db</a></li>
+<li><a href="https://github.com/qwc-services/qwc-config-generator/compare/2024-lts...2025-lts">qwc-config-generator</a></li>
+<li><a href="https://github.com/qwc-services/qwc-data-service/compare/2024-lts...2025-lts">qwc-data-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-db-auth/compare/2024-lts...2025-lts">qwc-db-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-document-service/compare/2024-lts...2025-lts">qwc-document-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-elevation-service/compare/2024-lts...2025-lts">qwc-elevation-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ext-service/compare/2024-lts...2025-lts">qwc-ext-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-feature-info-service/compare/2024-lts...2025-lts">qwc-feature-info-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-fulltext-search-service/compare/2024-lts...2025-lts">qwc-fulltext-search-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ldap-auth/compare/2024-lts...2025-lts">qwc-ldap-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-legend-service/compare/2024-lts...2025-lts">qwc-legend-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-mapinfo-service/compare/2024-lts...2025-lts">qwc-mapinfo-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-map-viewer/compare/2024-lts...2025-lts">qwc-map-viewer</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ogc-service/compare/2024-lts...2025-lts">qwc-ogc-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-permalink-service/compare/2024-lts...2025-lts">qwc-permalink-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-print-service/compare/2024-lts...2025-lts">qwc-print-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-registration-gui/compare/2024-lts...2025-lts">qwc-registration-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-wms-proxy/compare/2024-lts...2025-lts">qwc-wms-proxy</a></li>
+<li><a href="https://github.com/qwc-services/jasper-reporting-service/compare/2024-lts...2025-lts">jasper-reporting-service</a></li>
+</ul>
+<h2 id="2023-lts-2024-lts">2023-lts &rarr; 2024-lts<a class="headerlink" href="#2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
+<h3 id="upgrade-notes_1">Upgrade notes<a class="headerlink" href="#upgrade-notes_1" title="Permanent link">&para;</a></h3>
+<p>When upgrading from a 2023-lts setup, please note the entries marked with <em>[2023-lts &rarr; 2024-lts]</em> in the upgrade notes:</p>
+<ul>
+<li><a href="../QWC2UpgradeNotes/">QWC upgrade notes</a></li>
+<li><a href="../QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a></li>
+</ul>
+<h3 id="general_2">General<a class="headerlink" href="#general_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../configuration/ViewerConfiguration/#plugin-configuration">Support common plugin configuration applied to both mobile and desktop</a></li>
+<li><a href="../../configuration/ThemesConfiguration/#background-layers">Support resource syntax in background layer definitions</a></li>
+<li><a href="../../configuration/ViewerConfiguration/#global-settings-overridable-per-theme">Support per-theme <code>startupTask</code></a></li>
+<li><a href="../../configuration/ViewerConfiguration/#separate-mobile-desktop-global-settings">Support spearate mobile/desktop sections for toplevel config properties</a></li>
+<li><a href="../../topics/MultiTenancy/#tenantconfig-template">Add support for tenantConfig templates</a></li>
+<li><a href="../../configuration/ResourcesPermissions/#restricted-themes">Add config option for redirect to login if requesting a restricted theme</a></li>
+<li><a href="../../configuration/ThemesConfiguration/#projects-in-database">Add support for configuring projects stored in database</a></li>
+<li><a href="../../configuration/ThemesConfiguration/#using-the-qgz-project-file-format">Add support for qgz projects</a></li>
+</ul>
+<h3 id="editing_1">Editing<a class="headerlink" href="#editing_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Display clickable links in editable text fields</li>
+<li>Allow generating nested 1:N relation forms (see <a href="../../topics/Editing/#1n-relations"><code>generate_nested_nrel_forms</code></a>)</li>
+<li>Joined fields as configured in QGIS the project are now handled by the <code>qwc-data-service</code></li>
+</ul>
+<h3 id="featureinfo">FeatureInfo<a class="headerlink" href="#featureinfo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/FeatureInfo/#custom-html-templates">Allow specifying a info template path rather than requiring to specify the template inline</a></li>
+</ul>
+<h3 id="heightprofile">HeightProfile<a class="headerlink" href="#heightprofile" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../references/qwc2_plugins#heightprofile">Allow printing height profile</a></li>
+</ul>
+<h3 id="layertree">LayerTree<a class="headerlink" href="#layertree" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allow importing GeoPDF files</li>
+<li>Allow zooming to layer groups</li>
+<li>Allow setting group transparency</li>
+<li>Add support for switching WMS layer styles</li>
+</ul>
+<h3 id="map">Map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Show a warning when attempting to load a non-existent theme, theme layer or background layer</li>
+<li>Allow individually controlling snapping to vertex/edge</li>
+<li>Snap to all vector layers: Redlining, GeoJSON, KML, WFS (see also <a href="../../topics/Snapping/"><code>wfs_max_scale</code></a>)</li>
+<li><a href="../../configuration/ThemesConfiguration/#external-layers">Support external MVT layers</a></li>
+</ul>
+<h3 id="print_1">Print<a class="headerlink" href="#print_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/Printing/#print-atlas">Add support for atlas printing</a></li>
+<li><a href="../../topics/Printing/">Add GeoPDF support</a></li>
+<li>Support layer resource URIs as <code>printLayer</code> (i.e. <code>wms:https://wms.geo.admin.ch#ch.are.bauzonen</code>)</li>
+<li><a href="../../configuration/ThemesConfiguration/">Improved print label configuration in <code>printLabelConfig</code></a></li>
+<li><a href="../../topics/Printing/#layout-templates">Add support for print layout templates</a></li>
+</ul>
+<h3 id="redlining_2">Redlining<a class="headerlink" href="#redlining_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add redlining support for squares, rectangles, ellipses and transform tool to scale/rotate</li>
+<li>Allow displaying measurements while drawing</li>
+<li>Add numeric input widget</li>
+<li>Support line end arrow heads</li>
+<li>Add GeoJSON/KML export</li>
+</ul>
+<h3 id="search_1">Search<a class="headerlink" href="#search_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../../topics/Search/#configuring-the-qgis-feature-search">New QGIS feature search provider</a></li>
+<li>Theme layer search (see <a href="../../configuration/ViewerConfiguration/#global-settings-overridable-per-theme"><code>searchThemeLayers</code></a>)</li>
+<li><a href="../../topics/Search/#filtering">Provider/geometry filtering to search box</a></li>
+<li>Allow configuring search highlight style (see <a href="../references/qwc2_plugins#topbar"><code>searchOptions.highlightStyle</code></a>)</li>
+</ul>
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../references/qwc2_plugins#settings">Allow setting default startup theme/bookmark for logged in user</a></li>
+</ul>
+<h3 id="share">Share<a class="headerlink" href="#share" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Permalink expiry date (see <a href="../../references/qwc-permalink-service/"><code>default_expiry_period</code></a>)</li>
+<li>Allow copying QR code to clipboards on supported browsers</li>
+</ul>
+<h3 id="new-plugins_2">New plugins<a class="headerlink" href="#new-plugins_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../references/qwc2_plugins#cyclomedia">Cyclomedia</a></li>
+<li><a href="../references/qwc2_plugins#featuresearch">QGIS FeatureSearch</a></li>
+<li><a href="../references/qwc2_plugins#mapexport">MapExport</a> (replacement for <code>RasterExport</code> and <code>DxfExport</code>)</li>
+<li><a href="../references/qwc2_plugins#maplegend">MapLegend</a></li>
+<li><a href="../references/qwc2_plugins#newspopup">NewsPopup</a></li>
+<li><a href="../references/qwc2_plugins#routing">Routing</a></li>
+</ul>
+<h3 id="full-changelogs_2">Full changelogs<a class="headerlink" href="#full-changelogs_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qgis/qwc2/compare/2023-lts...2024-lts">QWC</a></li>
+<li><a href="https://github.com/qwc-services/qwc-admin-gui/compare/2023-lts...2024-lts">qwc-admin-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-base-db/compare/2023-lts...2024-lts">qwc-base-db</a></li>
+<li><a href="https://github.com/qwc-services/qwc-config-generator/compare/2023-lts...2024-lts">qwc-config-generator</a></li>
+<li><a href="https://github.com/qwc-services/qwc-data-service/compare/2023-lts...2024-lts">qwc-data-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-db-auth/compare/2023-lts...2024-lts">qwc-db-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-document-service/compare/2023-lts...2024-lts">qwc-document-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-elevation-service/compare/2023-lts...2024-lts">qwc-elevation-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ext-service/compare/2023-lts...2024-lts">qwc-ext-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-feature-info-service/compare/2023-lts...2024-lts">qwc-feature-info-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-fulltext-search-service/compare/2023-lts...2024-lts">qwc-fulltext-search-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ldap-auth/compare/2023-lts...2024-lts">qwc-ldap-auth</a></li>
+<li><a href="https://github.com/qwc-services/qwc-legend-service/compare/2023-lts...2024-lts">qwc-legend-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-mapinfo-service/compare/2023-lts...2024-lts">qwc-mapinfo-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-map-viewer/compare/2023-lts...2024-lts">qwc-map-viewer</a></li>
+<li><a href="https://github.com/qwc-services/qwc-ogc-service/compare/2023-lts...2024-lts">qwc-ogc-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-permalink-service/compare/2023-lts...2024-lts">qwc-permalink-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-print-service/compare/2023-lts...2024-lts">qwc-print-service</a></li>
+<li><a href="https://github.com/qwc-services/qwc-registration-gui/compare/2023-lts...2024-lts">qwc-registration-gui</a></li>
+<li><a href="https://github.com/qwc-services/qwc-wms-proxy/compare/2023-lts...2024-lts">qwc-wms-proxy</a></li>
+<li><a href="https://github.com/qwc-services/jasper-reporting-service/compare/2023-lts...2024-lts">jasper-reporting-service</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../references/" class="btn btn-neutral float-left" title="References"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../QWC2UpgradeNotes/" class="btn btn-neutral float-right" title="QWC2 upgrade notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../references/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../QWC2UpgradeNotes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

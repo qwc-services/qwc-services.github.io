@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>QWC2 upgrade notes - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "QWC2 upgrade notes";
+        var mkdocs_page_input_path = "release_notes/QWC2UpgradeNotes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Version history</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC2 upgrade notes</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025820">Update to qwc2 2025.8.20</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025722">Update to qwc2 2025.7.22</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202571">Update to qwc2 2025.7.1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025625">Update to qwc2 2025.6.25</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025610">Update to qwc2 2025.6.10</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025521">Update to qwc2 2025.5.21</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202543">Update to qwc2 2025.4.3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-574fe2a-06022025">Update to qwc2 submodule revision 574fe2a (06.02.2025)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts">Update to qwc2 submodule revision 5705361 (30.12.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision 52fe6ab (11.12.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision e39dbde (26.11.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts">Update to qwc2 submodule revision bafb882 (20.11.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts">Update to qwc2 submodule revision 9cb8bab (13.11.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts">Update to qwc2 submodule revision bb6f31c (24.10.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts">Update to qwc2 submodule revision 3e1763a (15.05.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts">Update to qwc2 submodule revision c7610eb (22.02.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts">Update to qwc2 submodule revision d04e5fd (01.02.2024) [2024-lts &rarr; 2025-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision 38b242a (01.11.2023) [2023-lts &rarr; 2024-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts">Update to qwc2 submodule revision 7409372 (23.08.2023) [2023-lts &rarr; 2024-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts">Update to qwc2 submodule revision 96aaa51 (09.02.2023) [2023-lts &rarr; 2024-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts">Update to qwc2 submodule revision 2c179d0 (23.01.2023) [2023-lts &rarr; 2024-lts]</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-fe063b6-13012023">Update to qwc2 submodule revision fe063b6 (13.01.2023)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-90c613a-28112022">Update to qwc2 submodule revision 90c613a (28.11.2022)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e357152-27062022">Update to qwc2 submodule revision e357152 (27.06.2022)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-76ec566-17062022">Update to qwc2 submodule revision 76ec566 (17.06.2022)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-7929587-21042022">Update to qwc2 submodule revision 7929587 (21.04.2022)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-eb5e358-25102021">Update to qwc2 submodule revision eb5e358 (25.10.2021)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-e08aed5-18052021">Update to qwc2 submodule revision e08aed5 (18.05.2021)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-submodule-revision-317eea3-03012021">Update to qwc2 submodule revision 317eea3 (03.01.2021)</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Version history &raquo;</li>
+      <li>QWC2 upgrade notes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
+<p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-2025820">Update to qwc2 2025.8.20<a class="headerlink" href="#update-to-qwc2-2025820" title="Permanent link">&para;</a></h2>
+<p><strong>Changes to the View3D plugin setup</strong></p>
+<p>The child components of the 3D view are now loaded as plugins:</p>
+<ul>
+<li>
+<p>If you are building a custom viewer, you need to adapt the <code>appConfig.js</code> to pass the desired list of plugins to the <code>View3D</code> plugin entry as illustrated in the <a href="https://github.com/qgis/qwc2/blob/2e6ea208a06c4bd6efbebb5d6dff5cd4677ed7d6/appConfig.js#L138">stock <code>appConfig.js</code></a>. <em>NOTE</em>: Use <code>lazy</code> to delay-load the plugin only when the 3D view is actually started.</p>
+</li>
+<li>
+<p>The <code>View3D</code> plugin configuration in <code>config.json</code> needs to be adapted to include desired plugin options, see the <a href="https://github.com/qgis/qwc2/blob/2e6ea208a06c4bd6efbebb5d6dff5cd4677ed7d6/static/config.json#L478">stock <code>config.json</code></a>. In particular the <code>menuItems</code> and <code>toolbarItems</code> can and must now be explicitly specified in the <code>TopBar3D</code> plugin options.</p>
+</li>
+</ul>
+<h2 id="update-to-qwc2-2025722">Update to qwc2 2025.7.22<a class="headerlink" href="#update-to-qwc2-2025722" title="Permanent link">&para;</a></h2>
+<p><strong>Changes to EditingInterface</strong></p>
+<p><em>Note</em>: This change is only relevant if you use a custom <code>EditingInterface</code> or have custom plugins which interact with the <code>EditingInterface</code>.</p>
+<p>To add support for virtual fields, the signature of most <code>EditingInterface</code> functions was changed, see <a href="https://github.com/qgis/qwc2/blob/553c340624cd31ffaf038a4e3c3bd8b3b2f395e7/utils/EditingInterface.js">EditingInterface.js</a> for the new interface.</p>
+<h2 id="update-to-qwc2-202571">Update to qwc2 2025.7.1<a class="headerlink" href="#update-to-qwc2-202571" title="Permanent link">&para;</a></h2>
+<p><strong>ProcessNotifications moved to a built-in component</strong></p>
+<p>The <code>ProcessNotifications</code> has been moved from a plugin to a build-in component.</p>
+<p>If you are using a custom viewer build, modify your <code>appConfig.js</code> as <a href="https://github.com/qgis/qwc2/commit/cd907f27fe99e1576132ddd62d7ee6fa746d237c#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9">follows</a>.</p>
+<p>Also, remove the <code>ProcessNotifications</code> plugin config entry from <code>config.json</code>.</p>
+<h2 id="update-to-qwc2-2025625">Update to qwc2 2025.6.25<a class="headerlink" href="#update-to-qwc2-2025625" title="Permanent link">&para;</a></h2>
+<p><strong>OverviewMap moved to dedicated plugin</strong></p>
+<p>The <code>OverviewSupport</code> has been moved from a map support tool to a dedicated <code>OverviewMap</code> plugin.</p>
+<p>Make sure you register it in <code>config.json</code> as <a href="https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-c9b5b86d0c26f8a7cfef75915816d853854da00a579036406682b85b78e70351">follows</a>.</p>
+<p>If you are using a custom viewer build, modify your <code>appConfig.js</code> as <a href="https://github.com/qgis/qwc2/commit/4db8ff6723b71aadcf1e965b3adea9589fce32de#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9">follows</a>.</p>
+<p><strong>Scalebar integrated into BottomBar</strong></p>
+<p>The <code>ScalebarSupport</code> map plugin as been removed and integrated directly into the <code>BottomBar</code>.</p>
+<p>You can choose whether to display a scale bar by setting the <code>displayScalebar</code> option in the <code>BottomBar</code> config section in <code>config.json</code> (default is <code>true</code>).</p>
+<p>If you are using a custom viewer build, modify your <code>appConfig.js</code> as <a href="https://github.com/qgis/qwc2/commit/b423a77229bad441e2b57c06715d9a1b96a17177#diff-8679e68cdbc50fb08dc6e78af5313b163d06b5199f4e75a05aa5e60484fad4c9">follows</a>.</p>
+<p><strong>Map margin handling (only custom plugin code)</strong></p>
+<p>If you have custom plugins which honoured <code>state.windows.mapMargins</code> for placement within the visible map area, it is recommended to render them within the <code>MapContainer</code> element using a portal instead. See <a href="https://github.com/qgis/qwc2/commit/3175dbc79a6b3103c44bd12c81d32202009865b7">this example</a>.</p>
+<h2 id="update-to-qwc2-2025610">Update to qwc2 2025.6.10<a class="headerlink" href="#update-to-qwc2-2025610" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: This change is only relevant for custom viewer builds.</p>
+<p>The language detection mechanism has been improved, please apply the following <a href="https://github.com/qgis/qwc2/commit/118e7407f9d8b2c0fe4e6ce7fb1f26776c54ee27#diff-1fb26bc12ac780c7ad7325730ed09fc4c2c3d757c276c3dacc44bfe20faf166f">change</a> to your <code>webpack.config.js</code>.</p>
+<h2 id="update-to-qwc2-2025521">Update to qwc2 2025.5.21<a class="headerlink" href="#update-to-qwc2-2025521" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
+<ul>
+<li>The <code>changeLayerProperty</code> action now takes the layer <code>id</code>. The <code>uuid</code> field of the layer entry has been removed.</li>
+</ul>
+<h2 id="update-to-qwc2-202543">Update to qwc2 2025.4.3<a class="headerlink" href="#update-to-qwc2-202543" title="Permanent link">&para;</a></h2>
+<p><strong>Switch to npm package</strong></p>
+<p>The <a href="https://github.com/qgis/qwc2">QWC stock viewer </a> components are now published as an <a href="https://www.npmjs.com/package/qwc2">NPM package</a>.
+If you are building a custom viewer on top of the QWC stock components, it is recommended you pull it in as a dependency in <code>package.json</code> rather than as a git submodule.</p>
+<p>To this end:</p>
+<ul>
+<li>Delete the submodule and adjust the <code>package.json</code> by removing the <code>qwc2</code> workspace and adding the <code>qwc2</code> dependency, see <a href="https://github.com/qgis/qwc2-demo-app/blob/44b4d16b7c8a8684aa98317351d96de7453a922e/package.json"><code>package.json</code></a>.</li>
+<li>Modify the <code>webpack.config.js</code> as follows</li>
+</ul>
+<pre><code>- new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, &quot;qwc2&quot;, &quot;libs&quot;, &quot;openlayers&quot;)),
++ new webpack.NormalModuleReplacementPlugin(/openlayers$/, path.join(__dirname, &quot;node_modules&quot;, &quot;qwc2&quot;, &quot;libs&quot;, &quot;openlayers&quot;)),
+</code></pre>
+<p>No further code changes are necessary.</p>
+<h2 id="update-to-qwc2-submodule-revision-574fe2a-06022025">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/574fe2a">574fe2a</a> (06.02.2025)<a class="headerlink" href="#update-to-qwc2-submodule-revision-574fe2a-06022025" title="Permanent link">&para;</a></h2>
+<p><strong>Authentication plugin changes</strong></p>
+<ul>
+<li>The <code>LoginUser</code> plugin has been merged into the <code>Authentication</code> plugin, display of the login user can be enabled via the <code>showLoginUser</code> config prop:</li>
+</ul>
+<pre><code>    {
+      &quot;name&quot;: &quot;Authentication&quot;,
+      &quot;cfg&quot;: {
+        &quot;showLoginUser&quot;: true
+      }
+    }
+</code></pre>
+<ul>
+<li>The task ids of the <code>Authentication</code> plugins have been changed from previously <code>Login</code> / <code>Logout</code> to <code>Authentication</code> with modes <code>Login</code>/<code>Logout</code>. Consequently, the menu- and toolbar item entries need to be changed as follows</li>
+</ul>
+<pre><code>-      {&quot;key&quot;: &quot;Login&quot;, &quot;icon&quot;: &quot;login&quot;}
++      {&quot;key&quot;: &quot;Authentication&quot;, &quot;mode&quot;: &quot;Login&quot;, &quot;icon&quot;: &quot;login&quot;}
+</code></pre>
+<h2 id="update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/5705361">5705361</a> (30.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-5705361-30122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
+<p>The <code>browser</code> actions/reducer have been removed. To determine whether the application is running on a mobile device, use <code>ConfigUtils.isMobile()</code>.</p>
+<h2 id="update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/52fe6ab">52fe6ab</a> (11.12.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-52fe6ab-11122024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>CRS precision</strong></p>
+<p>You can now globally specify the desired ordinate display precision (number of decimals) for a CRS in <code>config.json</code> &rarr; <code>precision</code>, i.e.:</p>
+<pre><code>{
+    "code": "EPSG:2056",
+    "proj": "+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs",
+    "label": "CH1903+ / LV95",
+    "precision": 2
+}
+</code></pre>
+<p>Consequently, the <code>cooPrecision</code> and <code>degreeCooPrecision</code> config props of the <code>MapInfoToolTip</code> plugin have been removed.</p>
+<h2 id="update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e39dbde">e39dbde</a> (26.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-e39dbde-26112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Search providers rework</strong></p>
+<p>The search providers from <code>qwc2-demo-app/js/searchProviders.js</code> have been moved to the core in <code>qwc2/utils/SearchProviders.js</code>.</p>
+<p>To define custom search providers, expose them in <code>window.QWC2SearchProviders</code>, see <a href="../../topics/Search/">Search</a>.</p>
+<p>The <code>SearchBox</code> and <code>Routing</code> plugins don't take a SearchProviders object anymore, they are internally collected from the core providers and from <code>window.QWC2SearchProviders</code>.
+Consequently, modify your <code>js/appConfig.js</code> as follows:</p>
+<pre><code>-            RoutingPlugin: RoutingPlugin(SearchProviders),
++            RoutingPlugin: RoutingPlugin,
+             ...
+             TopBarPlugin: TopBarPlugin({
+-                Search: SearchBox(SearchProviders),
++                Search: SearchBox,
+</code></pre>
+<p>The format of the results returned by a Search Provider needs to be slightly updated to specify the result item type in the result group instead of the result item, see <a href="../../topics/Search/">Search</a>:</p>
+<pre><code class="language-js">results = [
+  {
+    id: &quot;&lt;categoryid&gt;&quot;,
+    ...
+    type: SearchResultType.{PLACE|THEMELAYER}, // NEW
+    items: [
+      {
+        id: &quot;&lt;item_id&gt;&quot;,
+        type: SearchResultType.{PLACE|THEMELAYER}, // OLD, remove this
+        ...
+      }
+    ]
+  }
+</code></pre>
+<p>The configuration format of the fulltext search provider has also changed, to align it with the configuration format of other providers.</p>
+<p>Old:</p>
+<pre><code class="language-json">    {
+      &quot;provider&quot;:&quot;solr&quot;, // or &quot;provider&quot;:&quot;fulltext&quot;
+      &quot;default&quot;: [&quot;&lt;facet&gt;&quot;, &quot;&lt;facet&gt;&quot;, ...],
+      &quot;layers&quot;: {&quot;&lt;layername&gt;&quot;: &quot;&lt;facet&gt;&quot;, ...}
+    }
+</code></pre>
+<p>New:</p>
+<pre><code class="language-json">    {
+      &quot;provider&quot;:&quot;fulltext&quot;,
+      &quot;params&quot;: {
+        &quot;default&quot;: [&quot;&lt;facet&gt;&quot;, &quot;&lt;facet&gt;&quot;, ...],
+        &quot;layers&quot;: {&quot;&lt;layername&gt;&quot;: &quot;&lt;facet&gt;&quot;, ...}
+      }
+    }
+</code></pre>
+<p>Also, the legacy <code>key</code> field in non-fulltext search provider configurations has been replaced with <code>provider</code>:</p>
+<p>Old:</p>
+<pre><code class="language-json">    {
+      &quot;key&quot;:&quot;&lt;providerkey&gt;&quot;,
+      &quot;params&quot;: {...}
+    }
+</code></pre>
+<p>New:</p>
+<pre><code class="language-json">    {
+      &quot;provider&quot;:&quot;&lt;providerkey&gt;&quot;,
+      &quot;params&quot;: {...}
+    }
+</code></pre>
+<h2 id="update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/bafb882">bafb882</a> (20.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-bafb882-20112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Removal of RasterExport and DxfExport plugins</strong></p>
+<p>The previously deprecated <code>RasterExport</code> and <code>DxfExport</code> plugins have been removed. Use <a href="../../references/qwc2_plugins/#mapexport"><code>MapExport</code></a> instead.</p>
+<h2 id="update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/9cb8bab">9cb8bab</a> (13.11.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-9cb8bab-13112024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><em>Note</em>: These changes are only relevant for custom plugin code. No configuration change is necessary.</p>
+<ul>
+<li>The <code>InputContainer</code> component has been moved to <code>qwc2/components/widgets/</code>.</li>
+<li>The <code>ModalDialog</code> component has been moved to <code>qwc2/components/widgets/</code>.</li>
+<li>The <code>PopupMenu</code> component has been moved to <code>qwc2/components/widgets/</code>.</li>
+<li>The <code>ReCaptchaWidget</code> component has been moved to <code>qwc2/components/widgets/</code>.</li>
+<li>The <code>Spinner</code> component has been moved to <code>qwc2/components/widgets/</code>.</li>
+<li>The <code>ButtonBar</code> <code>label</code> and <code>tooltip</code> props now expect a translated string is passed, not a msgid.</li>
+<li>The <code>ResizeableWindow</code> <code>title</code> prop now expects a translated string, not a msgid.</li>
+<li>The <code>extraControls</code> entries of the <code>ResizeableWindow</code> are expected to contain a translated <code>title</code> instead of a <code>msgid</code>.</li>
+<li>The <code>SideBar</code> <code>title</code> prop now expects a translated string, not a msgid.</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/bb6f31c">bb6f31c</a> (24.10.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-bb6f31c-24102024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Setting name change</strong></p>
+<p>The toplevel <code>config.json</code> setting <code>featureReportService</code> has been renamed to <code>documentServiceUrl</code>.</p>
+<h2 id="update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/3e1763a">3e1763a</a> (15.05.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-3e1763a-15052024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Changes to default <code>EditingInterface</code> and <code>qwc-data-service</code></strong></p>
+<p>The <code>qwc-data-service</code> and the default <code>EditingInterface</code> client editing interface have been adapted to support ReCAPTCHA verification.
+Consequently, if editing is used, the <code>qwc</code> submodule will need to be updated in parallel with the <code>qwc-data-service</code>.</p>
+<h2 id="update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/c7610eb">c7610eb</a> (22.02.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-c7610eb-22022024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Removal of <code>SelectionSupport</code></strong></p>
+<p>The <code>SelectionSupport</code> map plugin has been removed, the respective imports and references need to be removed from <code>js/appConfig.js</code>.</p>
+<p>For custom plugins relying on <code>SelectionSupport</code>, use the new <code>MapSelection</code> component instead. Look at the <code>SearchBox</code> and <code>Identify</code> plugins for some examples.</p>
+<h2 id="update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/d04e5fd">d04e5fd</a> (01.02.2024) [2024-lts &rarr; 2025-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-d04e5fd-01022024-2024-lts-2025-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Setting name change</strong></p>
+<p>The previously incorrectly named <code>HeightProfile</code> setting <code>heighProfilePrecision</code> has been renamed to <code>heightProfilePrecision</code>.</p>
+<h2 id="update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/38b242a">38b242a</a> (01.11.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-38b242a-01112023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Import svg as inline assets</strong></p>
+<p><code>qwc2/utils/FeatureStyles.js</code> now imports some SVG files as inline assets. For this to work, you need to list <code>.svg</code> in the <code>assets/inline</code> loader rules in <code>webpack.config.js</code>:</p>
+<pre><code>{
+    test: /(.woff|.woff2|.png|.jpg|.gif|.svg)/,
+    type: 'asset/inline'
+}
+</code></pre>
+<p><strong>Babel plugin changes</strong></p>
+<p>The <code>class-properties</code> and <code>object-rest-spread</code> proposals have been merged to the ECMAScript standard, and the respective babel plugins in <code>.babelrc.json</code> need to be changed to</p>
+<pre><code>"plugins": [
+    "@babel/plugin-transform-class-properties",
+    "@babel/plugin-transform-object-rest-spread"
+]
+</code></pre>
+<h2 id="update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/7409372">7409372</a> (23.08.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-7409372-23082023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
+<p><strong>MapInfoToolTip plugin instantation change</strong></p>
+<ul>
+<li>The instantation of the <code>MapInfoToolTip</code> in <code>appConfig.js</code> needs to be changed to<pre><code>MapInfoTooltipPlugin: MapInfoTooltipPlugin()
+</code></pre>
+</li>
+</ul>
+<p>Note the extra braces at the end. As a new feature, you can pass a list of <a href="/references/qwc2_plugins/#mapinfotooltip">plugins</a> to the <code>MapInfoTooltipPlugin</code>.</p>
+<p><strong>Configuration changes</strong></p>
+<ul>
+<li>The window size configuration of various plugins has been uniformized to the <code>geometry</code> config prop (rather than occasionally <code>windowSize</code> before). Affected plugins are: <code>FeatureForm</code>, <code>Identify</code>, <code>LayerCatalog</code>, <code>LayerTree</code>, <code>MapLegend</code>. Please check the respective <a href="/references/qwc2_plugins/">plugin reference</a> for more details on the new format.</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/96aaa51">96aaa51</a> (09.02.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-96aaa51-09022023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Config setting change</strong></p>
+<ul>
+<li>Geodesic measurement mode is now configured at toplevel in <code>config.json</code> via <code>geodesicMeasurements: true|false</code> rather than below <code>Map -&gt; cfg -&gt; toolsOptions -&gt; MeasurementSupport</code>.</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/2c179d0">2c179d0</a> (23.01.2023) [2023-lts &rarr; 2024-lts]<a class="headerlink" href="#update-to-qwc2-submodule-revision-2c179d0-23012023-2023-lts-2024-lts" title="Permanent link">&para;</a></h2>
+<p><strong>Dependency update</strong></p>
+<p>Most dependencies have been updated to the latest version. The following adjustments need to be performed by hand:</p>
+<ul>
+<li>Use <code>createRoot</code> in <code>app.jsx</code>, see the <a href="https://github.com/qgis/qwc2-demo-app/blob/1ec0a2ba614ddfb2bc30ab0d3db083fbcc5da524/js/app.jsx">demo <code>app.jsx</code></a>.</li>
+<li>Update <code>uuid</code> imports in external components, examples:<pre><code>import {v1 as uuidv1} from 'uuid';
+import {v4 as uuidv4} from 'uuid';
+</code></pre>
+</li>
+</ul>
+<p>and then instead of <code>uuid.v1()</code> use <code>uuidv1()</code> etc.</p>
+<ul>
+<li>Adjust <code>webpack.config.js</code> from</li>
+</ul>
+<pre><code>      {
+        test: /\.mjs$/,
+        type: 'javascript/auto'
+      }
+</code></pre>
+<p>to</p>
+<pre><code>      {
+        test: /(.mjs|.js)$/,
+        type: 'javascript/auto'
+      }
+</code></pre>
+<h2 id="update-to-qwc2-submodule-revision-fe063b6-13012023">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/fe063b6">fe063b6</a> (13.01.2023)<a class="headerlink" href="#update-to-qwc2-submodule-revision-fe063b6-13012023" title="Permanent link">&para;</a></h2>
+<p><strong>Reworked search provider support</strong></p>
+<p>The arguments and expected behaviour of the provider <code>onSearch</code> and <code>getResultGeometry</code> have changed. Please refer to the documentation chapter in the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/qwc_configuration.md#search-providers">Documentation</a>. Consult <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/SearchProviders.js">js/SearchProviders.js</a> and <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a> for full examples.</p>
+<p>It is now possible to define search providers in a external JS file loaded at runtime rather than compiled into the application bundle. See <a href="https://github.com/qgis/qwc2-demo-app/blob/master/static/assets/searchProviders.js">static/assets/searchProviders.js</a>, which is loaded by <a href="https://github.com/qgis/qwc2-demo-app/blob/master/index.html">index.html</a>.</p>
+<p><code>js/SearchProviders.js</code> now only includes <code>coordinates</code> and <code>nominatim</code> as built-in search providers for the demo application.</p>
+<p>The <code>searchProviderFactory</code> function has been removed from <code>js/SearchProviders.js</code>. Instead, custom parameters to be passed to a provider can be specified directly in the theme item <code>searchProviders</code> entry:</p>
+<pre><code>{
+  key: "&lt;providerkey2&gt;",
+  params: {...}
+}
+</code></pre>
+<p>and read from <code>searchParams.cfgParams</code> in the provider <code>onSearch</code> function.</p>
+<p><strong>Load Help dialog contents from HTML fragment</strong></p>
+<p>Instead of requiring users to implement the <code>renderHelp</code> function in <code>js/Help.jsx</code>, for simple cases the users can provide a plain HTML fragment which is loaded at runtime from the assets. Consult the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/qwc_configuration.md#help-dialog">Documentation</a>.</p>
+<h2 id="update-to-qwc2-submodule-revision-90c613a-28112022">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/90c613a">90c613a</a> (28.11.2022)<a class="headerlink" href="#update-to-qwc2-submodule-revision-90c613a-28112022" title="Permanent link">&para;</a></h2>
+<p><strong>Reworked color scheme support</strong></p>
+<p>The <code>styleConfig.js</code> file is deprecated and won't be honoured anymore for the styling of core QWC2 components. Instead, base theme colors can be defined via CSS, refer to <a href="https://github.com/qgis/qwc2-demo-app/blob/master/doc/src/qwc_configuration.md#color-schemes">documentation</a> for details.</p>
+<p><strong>Renamed config variable</strong>
+The <code>maxGetUrlLength</code> variable in <code>config.json</code> has been renamed to <code>wmsMaxGetUrlLength</code>.</p>
+<h2 id="update-to-qwc2-submodule-revision-e357152-27062022">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e357152">e357152</a> (27.06.2022)<a class="headerlink" href="#update-to-qwc2-submodule-revision-e357152-27062022" title="Permanent link">&para;</a></h2>
+<p><strong>Reworked interface for handling 1:N relations between qwc2 and qwc-data-service</strong></p>
+<p>The interface for reading and writing 1:n relations between the qwc2 and the qwc-data-service was reworked. If you are using the qwc-data-service, make sure to update to qwc-data-service-v2022.06.27 or later when updating to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e357152">e357152</a> or later.</p>
+<h2 id="update-to-qwc2-submodule-revision-76ec566-17062022">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/76ec566">76ec566</a> (17.06.2022)<a class="headerlink" href="#update-to-qwc2-submodule-revision-76ec566-17062022" title="Permanent link">&para;</a></h2>
+<p><strong>Refactoring of editing components</strong></p>
+<p>The editing components have been heavily refactored internally. The changes are mostly transparent, but two points are important:</p>
+<ul>
+<li>The <code>editDataset</code> field of an <code>editConfig</code> entry is now mandatory. <code>editConfig</code>s generated by qwc-config-generator already write this field, so this applies only to manually written <code>editConfig</code>s for use outside of qwc-services.</li>
+<li>The <code>changeEditingState</code> action has been replaced by <code>setEditContext</code> (and <code>clearEditContext</code>). This allows for storing and switching between multiple edit contexts in the application state. Custom components interacting with editing also should be changed to verify that the current edit context is the desired one.</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-7929587-21042022">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/7929587">7929587</a> (21.04.2022)<a class="headerlink" href="#update-to-qwc2-submodule-revision-7929587-21042022" title="Permanent link">&para;</a></h2>
+<p><strong>Format change for external layer resource strings</strong></p>
+<p>For a short period of time (after submodule revision <a href="https://github.com/qgis/qwc2/tree/cb870a1">cb870a1</a>), QWC2 supported external resource strings in the form <code>wms:&lt;service_url&gt;#&lt;layername&gt;?&lt;options&gt;</code>. The format has been changed to</p>
+<pre><code>wms:&lt;service_url&gt;?&lt;options&gt;#&lt;layername&gt;
+</code></pre>
+<p>i.e. by moving the query portion before the hash portion, which is inline with the URL scheme format.</p>
+<h2 id="update-to-qwc2-submodule-revision-eb5e358-25102021">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/eb5e358">eb5e358</a> (25.10.2021)<a class="headerlink" href="#update-to-qwc2-submodule-revision-eb5e358-25102021" title="Permanent link">&para;</a></h2>
+<p><strong>Update to Webpack 5, React 17</strong></p>
+<ul>
+<li>Synchronize the <code>webpack.config.js</code> and the dependencies and package scripts from the demo app <code>package.json</code>. Note that the <code>build</code> package script is now an alias with the <code>prod</code> script.</li>
+<li>Remove the <code>dist/App.js</code> script include from <code>index.html</code>, it is now added automatically by Webpack.</li>
+<li>All static files of the app need to be placed below a toplevel <code>static</code> folder, which will contain <code>assets</code>, <code>translations</code>, <code>config.json</code>, <code>themes.json</code>, etc. The <code>themesConfig</code> script will write <code>themes.json</code> to that folder.</li>
+<li>
+<p>In custom components, replace any use of <code>Swipeable</code> from <code>react-swipeable</code>:</p>
+<ul>
+<li>import {Swipeable} from 'react-swipeable';</li>
+<li>import {Swipeable} from 'qwc2/components/Swipeable';</li>
+</ul>
+</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-e08aed5-18052021">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/e08aed5">e08aed5</a> (18.05.2021)<a class="headerlink" href="#update-to-qwc2-submodule-revision-e08aed5-18052021" title="Permanent link">&para;</a></h2>
+<p><strong>Reworked Identify plugin</strong></p>
+<p>The Identify plugin has been completely reworked, and the IdentifyRegion plugin has been merged into the Identify plugin:</p>
+<ul>
+<li>Remove the IdentifyRegion plugin from <code>js/appConfig.js</code> and <code>config.json</code></li>
+<li>
+<p>Create menu/toolbar entries in config.json for the region identify tool mode by specifying <code>"mode": "Region"</code>, i.e.:</p>
+<p>{"key": "Identify", "icon": "identify_region", "mode": "Region"},</p>
+</li>
+<li>
+<p>The translation message id <code>identifyregion.info</code> has been changed to <code>infotool.clickhelpPolygon</code> (unless the string is overridden, <code>yarn run tsupdate</code> will take care of this automatically).</p>
+</li>
+<li><em>Note</em>: The identify tool state is now handled internally by the Identify component, it does not store the results in the global application state anymore.</li>
+</ul>
+<h2 id="update-to-qwc2-submodule-revision-317eea3-03012021">Update to qwc2 submodule revision <a href="https://github.com/qgis/qwc2/tree/317eea3">317eea3</a> (03.01.2021)<a class="headerlink" href="#update-to-qwc2-submodule-revision-317eea3-03012021" title="Permanent link">&para;</a></h2>
+<p><strong>Updated dependencies</strong></p>
+<p>Many dependencies in the <code>qwc2</code> submodule have been update, please run <code>yarn install</code> to update them in your application.</p>
+<p>In the demo app, also many dependencies in the application <code>package.json</code> have been updated.
+It's recommended to synchronize the application <code>package.json</code> and <code>webpack.config.js</code> with the ones of the demo app.</p>
+<p><strong>Plugins do not need to specify the reducers they use anymore</strong></p>
+<p>Action files register now the reducers they use automatically, so whenever a symbol is imported from an action file, the respective reducer is automatically enabled.</p>
+<p>If you have a custom action/reducer file outside the <code>qwc2</code> submodule folder (i.e. <code>js/{actions,reducers}/myfunctionality.js</code>), you should add lines similar to</p>
+<pre><code>import ReducerIndex from 'qwc2/reducers/index';
+import myfunctionalityReducer from '/reducers/myfunctionality';
+ReducerIndex.register("myfunctionality", myfunctionalityReducer);
+</code></pre>
+<p>to <code>js/actions/myfunctionality.js</code>.</p>
+<p>If you have custom QWC2 plugins, remove the <code>reducers</code> field of the plugin export.</p>
+<p><strong>ES6 imports</strong></p>
+<p>QWC2 now uses the ES6 import/export syntax throughout. For instance</p>
+<pre><code>const Icon = require('qwc2/components/Icon');
+const {addLayer} = require('qwc2/actions/layers');
+</code></pre>
+<p>become</p>
+<pre><code>import Icon from 'qwc2/components/Icon';
+import {addLayer} from 'qwc2/actions/layers';
+</code></pre>
+<p>And</p>
+<pre><code>module.exports = MyClass;
+</code></pre>
+<p>becomes</p>
+<pre><code>export default MyClass;
+</code></pre>
+<p>resp.</p>
+<pre><code>function foo() {...};
+function bar() {...};
+module.exports = {foo, bar};
+</code></pre>
+<p>becomes</p>
+<pre><code>export function foo() {...};
+export function bar() {...};
+</code></pre>
+<p>In particular, <code>js/appConfig.js</code> needs to be heavily adapted.</p>
+<p><strong>Update to React 16.14</strong></p>
+<p>As per React 16.3, various component lifecycle methods have been deprecated.
+All qwc2 core components are updated to avoid their use. Custom components should also be updated.
+See <a href="https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html">https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html</a> for details.</p>
+<p><strong>Reworked localization</strong></p>
+<p>Localization in QWC2 has been reworked:
+- Instead of <code>&lt;Message msgId="&lt;msgid&gt;" /&gt;</code> and <code>LocaleUtils.getMessageById()</code>, use <code>LocaleUtils.tr(&lt;msgid&gt;)</code>.
+- For message IDs which are not translated directly via <code>LocaleUtils.tr</code>, use <code>LocaleUtils.trmsg</code> to mark the string as a message ID.
+- The <code>Message</code> component has been dropped.
+- Static message IDs are now picked up automatically by <code>updateTranslations.js</code> (invoked by <code>yarn run tsupdate</code>).
+- Message IDs built at runtime will beed to be specified manually in <code>tsconfig.json</code> in the <code>extra_strings</code> section.
+- The translation files are now called <code>translations/&lt;lang&gt;-&lt;COUNTRY&gt;.json</code> rather than <code>translations/data.&lt;lang&gt;-&lt;COUNTRY&gt;</code>. The format of the files remains unchanged.
+- The <code>supportedLocales</code> section in <code>appConfig.js</code> needs to be dropped.
+- Previously, the fallback locale was specified as <code>fallbacklocale</code> in config.json. Now, it must be specified as <code>defaultLocaleData</code> in <code>appConfig.js</code>.</p>
+<p><strong>Default editing interface now shipped in the qwc2 submodule</strong></p>
+<p>The <code>js/EditingInterface.js</code> in the demo app has been moved to <code>qwc2/utils/EditingInterface.js</code>.
+This is the interface which acts as a counterpart to the <a href="https://github.com/qwc-services/qwc-data-service">QWC data service</a>.
+If you want to use a custom editing interface, you can still do so, passing it to the <code>Editing</code> plugin in <code>appConfig.js</code> as before.</p>
+<p><strong>Assets and translations path now optional</strong></p>
+<p>Assets and translations path can now be omitted from the <code>config.json</code>, and are resolved to <code>assets</code> resp <code>translations</code> relative to the <code>index.html</code> path of the QWC2 application by default.</p>
+<p>Use <code>ConfigUtils.getAssetsPath()</code> and <code>ConfigUtils.getTranslationsPath()</code> in your custom components instead of <code>ConfigUtils.getConfigProp</code>.</p>
+<p>You can still specify <code>assetsPath</code> and <code>translationsPath</code> in <code>config.json</code> to override the default values.</p>
+<p><strong>Changes to map click point/feature state</strong></p>
+<p>The previous <code>state.map.clickPoint</code> and <code>state.map.clickFeature</code> have been merged to a single <code>state.map.click</code>. The <code>clickFeatureOnMap</code> action has been removed.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ChangeLog/" class="btn btn-neutral float-left" title="ChangeLog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../QwcDockerUpgradeNotes/" class="btn btn-neutral float-right" title="qwc-docker upgrade notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ChangeLog/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../QwcDockerUpgradeNotes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

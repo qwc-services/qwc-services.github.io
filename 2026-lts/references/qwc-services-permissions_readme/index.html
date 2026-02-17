@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc services permissions readme - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc services permissions readme";
+        var mkdocs_page_input_path = "references/qwc-services-permissions_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc services permissions readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://pypi.org/project/qwc-services-core"><img alt="PyPI version" src="https://img.shields.io/pypi/v/qwc-services-core" /></a></p>
+<h1 id="qwc-services-core">QWC Services Core<a class="headerlink" href="#qwc-services-core" title="Permanent link">&para;</a></h1>
+<p>The QWC Services are a collection of microservices providing configurations for and authorized access to different QWC Map Viewer components.</p>
+<p>See <a href="https://github.com/qwc-services/qwc-docker/">QWC Docker</a> for using QWC Services with Docker.</p>
+<p>This repository contains the shared modules for QWC services.</p>
+<h1 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_SECRET_KEY</code></td>
+<td><code>&lt;random&gt;</code></td>
+<td>Secret key used to encode and decode JWTs.</td>
+</tr>
+<tr>
+<td><code>JWT_COOKIE_CSRF_PROTECT</code></td>
+<td><code>True</code></td>
+<td>Controls whether CSRF is enabled in JWT cookies.</td>
+</tr>
+<tr>
+<td><code>JWT_ACCESS_COOKIE_NAME</code></td>
+<td><code>access_token_cookie</code></td>
+<td>Name of the JWT access cookie.</td>
+</tr>
+<tr>
+<td><code>QWC_SERVICE_PREFIX</code></td>
+<td>``</td>
+<td>URL path prefix for all QWC services for single-tenant setups.</td>
+</tr>
+<tr>
+<td><code>OVERRIDE_ACCESS_COOKIE_PATH</code></td>
+<td><code>&lt;service_prefix&gt;</code></td>
+<td>Path for which the access cookie is valid.</td>
+</tr>
+<tr>
+<td><code>QWC_TENANT</code></td>
+<td>``</td>
+<td>Tenant name. Overrides the tenant name extracted from <code>TENANT_HEADER</code>.</td>
+</tr>
+<tr>
+<td><code>TENANT_HEADER</code></td>
+<td><code>&lt;empty&gt;</code></td>
+<td>The name of the HTTP header which contains the tenant name for multi-tenant setups.</td>
+</tr>
+<tr>
+<td><code>TENANT_PATH_PREFIX</code></td>
+<td><code>@service_prefix@/@tenant@</code></td>
+<td>URL path prefix for all QWC services for multi-tenant setups.</td>
+</tr>
+<tr>
+<td><code>TENANT_ACCESS_COOKIE_PATH</code></td>
+<td><code>&lt;tenant_path_prefix&gt;</code></td>
+<td>Path for which the access cookie is valid for multi-tenant setups.</td>
+</tr>
+<tr>
+<td><code>ENABLE_POOLING</code></td>
+<td><code>False</code></td>
+<td>Enable db connection pooling. Defaults are used, if the following ENV are not set.</td>
+</tr>
+<tr>
+<td><code>POOL_SIZE</code></td>
+<td><code>5</code></td>
+<td>Maximum number of possible data base connections.</td>
+</tr>
+<tr>
+<td><code>MAX_OVERFLOW</code></td>
+<td><code>10</code></td>
+<td>Additional connections beyond pool_size during peak load.</td>
+</tr>
+<tr>
+<td><code>POOL_TIMEOUT</code></td>
+<td><code>30</code></td>
+<td>Time (in seconds) to wait for a connection to become available.</td>
+</tr>
+<tr>
+<td><code>POOL_RECYCLE</code></td>
+<td><code>-1</code></td>
+<td>Time (in seconds) after idle connections will be resetted.</td>
+</tr>
+<tr>
+<td><code>CONFIG_PATH</code></td>
+<td><code>/srv/qwc_service/config</code></td>
+<td>The path under where QWC Services' configuration files reside.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h1>
+<p>This repository contains a <a href="https://just.systems/man/en/">justfile</a> with various helper tasks for releasing etc.
+Add a symlink to it in the parent directory of the qwc-services repositories:</p>
+<pre><code>ln -s qwc-services-core/scripts/justfile ..
+</code></pre>
+<p>To use a local version of QWC Services Core for development, replace the
+<code>qwc-services-core</code> module URL in <code>requirements.txt</code> of each service with an URL
+pointing to the local files:</p>
+<pre><code># git+git://github.com/qwc-services/qwc-services-core.git#egg=qwc-services-core
+file:../qwc-services-core/#egg=qwc-services-core
+</code></pre>
+<h1 id="qwc-unified-permissions">QWC unified permissions<a class="headerlink" href="#qwc-unified-permissions" title="Permanent link">&para;</a></h1>
+<p>A unified and simplified permissions format is also supported, if there is only a single WMS/WFS resource and resource permissions are identical in all QWC Services.
+This may be used as an alternative to the full QWC permission file (<a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a>)</p>
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-unified-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p><code>all_services</code>: resources permitted for a role
+* top-level dataproducts below WMS root layer or WFS layers
+* additional restricted layers
+* additional layers with write permissions (<code>"writable": true</code>)
+* document templates</p>
+<p><code>wms_name</code>: Name of WMS service and its root layer</p>
+<p><code>wfs_name</code>: WFS service name</p>
+<p><code>dataproducts</code>: nested details for dataproducts referenced from <code>all_services</code> and <code>sublayers</code></p>
+<p><code>common_resources</code>: additional resources with no restrictions
+* internal print layers
+* background layers
+* print templates
+* default Solr facets</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>Example unified permissions for the following resources:</p>
+<p>WMS layer tree:</p>
+<pre><code>* demo_wms (WMS root layer)
+  * single_layer
+  * group_layer
+    * facade_layer (facade layer)
+      * sublayer_a
+      * sublayer_b
+    * edit_layer
+    * restricted_layer
+  * osm_bg (internal print layer for 'osm' background layer)
+</code></pre>
+<p>WFS layers (potential, not all have to actually be present in the WFS project file):</p>
+<pre><code>* single_layer
+* sublayer_a
+* sublayer_b
+* edit_layer
+* restricted_layer
+</code></pre>
+<p>Background layer: <code>osm</code></p>
+<p>Print template: <code>A4 Landscape</code></p>
+<p>Document template: <code>demo_doc</code></p>
+<p>Unified <code>permissions.json</code>:</p>
+<pre><code class="language-jsonc">{
+  &quot;schema&quot;: &quot;https://github.com/qwc-services/qwc-services-core/raw/master/schemas/qwc-services-unified-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;edit_demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;all_services&quot;: {
+          // top-level dataproducts: references to &quot;dataproducts&quot;
+          &quot;single_layer&quot;: {},
+          &quot;group_layer&quot;: {},
+          &quot;facade_layer&quot;: {},
+          // document templates
+          &quot;demo_doc&quot;: {}
+        }
+      }
+    },
+    {
+      &quot;role&quot;: &quot;edit_demo&quot;,
+      &quot;permissions&quot;: {
+        &quot;all_services&quot;: {
+          // additional restricted layers
+          &quot;restricted_layer&quot;: {},
+          // additional layers with write permissions (default: writable=false)
+          &quot;edit_layer&quot;: {
+            &quot;writable&quot;: true
+          }
+        }
+      }
+    }
+  ],
+  // WMS name for wms_services
+  &quot;wms_name&quot;: &quot;demo_wms&quot;,
+  // WFS name for wfs_services
+  &quot;wfs_name&quot;: &quot;demo_wfs&quot;,
+  // details for dataproducts referenced from &quot;all_services&quot; and &quot;sublayers&quot;
+  &quot;dataproducts&quot;: [
+    // single layer
+    {
+      &quot;name&quot;: &quot;single_layer&quot;,
+      &quot;attributes&quot;: [
+        // permitted attributes, excluding &quot;geometry&quot;
+        &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+      ]
+    },
+    // group layer
+    {
+      &quot;name&quot;: &quot;group_layer&quot;,
+      &quot;sublayers&quot;: [
+        // references to other &quot;dataproducts&quot;
+        &quot;facade_layer&quot;,
+        &quot;edit_layer&quot;
+      ]
+    },
+    // facade layer
+    {
+      &quot;name&quot;: &quot;facade_layer&quot;,
+      &quot;sublayers&quot;: [
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;
+      ]
+    },
+    // facade sublayers
+    {
+      &quot;name&quot;: &quot;sublayer_a&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;a&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;sublayer_b&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;b&quot;
+      ]
+    },
+    // sublayers
+    {
+      &quot;name&quot;: &quot;edit_layer&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;description&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;restricted_layer&quot;,
+      &quot;attributes&quot;: [
+        &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+      ]
+    }
+  ],
+  // additional resources with no restrictions
+  &quot;common_resources&quot;: [
+    // internal print layers
+    &quot;osm_bg&quot;,
+    // background layers
+    &quot;osm&quot;,
+    // print templates
+    &quot;A4 Landscape&quot;,
+    // default Solr facets
+    &quot;foreground&quot;,
+    &quot;background&quot;
+  ]
+}
+</code></pre>
+<p>Full internal resource permissions expanded from unified permissions:</p>
+<p><strong>NOTE:</strong> This generates more permissions than there are actual resources in a specific service. Any surplus permissions will be ignored.</p>
+<details>
+  <summary>Expanded internal permissions</summary>
+
+**NOTE:** The internal permissions dict below has a slightly different structure than a full JSON permissions file.
+
+
+<pre><code class="language-jsonc">{
+  &quot;users&quot;: {
+    &quot;demo&quot;: [
+      &quot;edit_demo&quot;
+    ]
+  },
+  &quot;groups&quot;: {
+    &quot;demo&quot;: [
+      &quot;edit_demo&quot;
+    ]
+  },
+  &quot;roles&quot;: {
+    // public permissions
+    &quot;public&quot;: {
+      &quot;wms_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wms&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;demo_wms&quot;
+            },
+            {
+              &quot;name&quot;: &quot;group_layer&quot;
+            },
+            {
+              &quot;name&quot;: &quot;facade_layer&quot;
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_a&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;a&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_b&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;b&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;single_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;demo_doc&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm_bg&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm&quot;
+            },
+            {
+              &quot;name&quot;: &quot;A4 Landscape&quot;
+            },
+            {
+              &quot;name&quot;: &quot;foreground&quot;
+            },
+            {
+              &quot;name&quot;: &quot;background&quot;
+            }
+          ],
+          &quot;print_templates&quot;: [
+            &quot;osm_bg&quot;,
+            &quot;osm&quot;,
+            &quot;A4 Landscape&quot;,
+            &quot;foreground&quot;,
+            &quot;background&quot;
+          ]
+        }
+      ],
+      &quot;wfs_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wfs&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;sublayer_a&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;a&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;sublayer_b&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;b&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;single_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            }
+          ]
+        }
+      ],
+      &quot;background_layers&quot;: [
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ],
+      &quot;data_datasets&quot;: [
+        {
+          &quot;name&quot;: &quot;sublayer_a&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;a&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;sublayer_b&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;b&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;edit_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;single_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;, &quot;number&quot;, &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        }
+      ],
+      &quot;dataproducts&quot;: [
+        &quot;demo_wms&quot;,
+        &quot;group_layer&quot;,
+        &quot;facade_layer&quot;,
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;,
+        &quot;edit_layer&quot;,
+        &quot;single_layer&quot;,
+        &quot;demo_doc&quot;
+      ],
+      &quot;document_templates&quot;: [
+        &quot;demo_doc&quot;
+      ],
+      &quot;print_templates&quot;: [],
+      &quot;solr_facets&quot;: [
+        &quot;sublayer_a&quot;,
+        &quot;sublayer_b&quot;,
+        &quot;edit_layer&quot;,
+        &quot;single_layer&quot;,
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ]
+    },
+    // additional permissions for role edit_demo
+    &quot;edit_demo&quot;: {
+      &quot;wms_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wms&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;demo_wms&quot;
+            },
+            {
+              &quot;name&quot;: &quot;restricted_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ],
+              &quot;info_template&quot;: true
+            },
+            {
+              &quot;name&quot;: &quot;osm_bg&quot;
+            },
+            {
+              &quot;name&quot;: &quot;osm&quot;
+            },
+            {
+              &quot;name&quot;: &quot;A4 Landscape&quot;
+            },
+            {
+              &quot;name&quot;: &quot;foreground&quot;
+            },
+            {
+              &quot;name&quot;: &quot;background&quot;
+            }
+          ],
+          &quot;print_templates&quot;: [
+            &quot;osm_bg&quot;,
+            &quot;osm&quot;,
+            &quot;A4 Landscape&quot;,
+            &quot;foreground&quot;,
+            &quot;background&quot;
+          ]
+        }
+      ],
+      &quot;wfs_services&quot;: [
+        {
+          &quot;name&quot;: &quot;demo_wfs&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;restricted_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;number&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;edit_layer&quot;,
+              &quot;attributes&quot;: [
+                &quot;name&quot;, &quot;description&quot;, &quot;geometry&quot;
+              ]
+            }
+          ]
+        }
+      ],
+      &quot;background_layers&quot;: [
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ],
+      &quot;data_datasets&quot;: [
+        {
+          &quot;name&quot;: &quot;restricted_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;,
+            &quot;number&quot;,
+            &quot;description&quot;
+          ],
+          &quot;writable&quot;: false,
+          &quot;readable&quot;: true
+        },
+        {
+          &quot;name&quot;: &quot;edit_layer&quot;,
+          &quot;attributes&quot;: [
+            &quot;name&quot;,
+            &quot;description&quot;
+          ],
+          &quot;writable&quot;: true,
+          &quot;readable&quot;: true
+        }
+      ],
+      &quot;dataproducts&quot;: [
+        &quot;demo_wms&quot;,
+        &quot;restricted_layer&quot;,
+        &quot;edit_layer&quot;
+      ],
+      &quot;document_templates&quot;: [],
+      &quot;print_templates&quot;: [],
+      &quot;solr_facets&quot;: [
+        &quot;restricted_layer&quot;,
+        &quot;edit_layer&quot;,
+        &quot;osm_bg&quot;,
+        &quot;osm&quot;,
+        &quot;A4 Landscape&quot;,
+        &quot;foreground&quot;,
+        &quot;background&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+
+</details>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

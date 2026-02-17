@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Feature info - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Feature info";
+        var mkdocs_page_input_path = "topics/FeatureInfo.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Feature info</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#identify-plugin">Identify plugin</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#querying-features-via-wms-getfeatureinfo">Querying features via WMS GetFeatureInfo</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#querying-features-via-custom-sql-queries">Querying features via custom SQL queries</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#display-field">Display field </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#attribute-values-html-markup-hyperlinks-images">Attribute values: HTML markup, hyperlinks, images</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#client-side-attributes">Client side attributes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#custom-export">Custom export</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#custom-html-templates">Custom HTML templates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#localization">Localization</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-form-plugin">Feature form plugin</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions_1">Permissions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Feature info</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="feature-info">Feature info<a class="headerlink" href="#feature-info" title="Permanent link">&para;</a></h1>
+<p>The feature info displays attributes for picked objects. </p>
+<p>The following options are available for displaying feature info:</p>
+<ul>
+<li>
+<p><a href="#identify"><code>Identify</code> plugin</a>: display attributes in a table or custom HTML templates, querying the features via:</p>
+<ul>
+<li><a href="#wms-getfeatureinfo">WMS GetFeatureInfo</a></li>
+<li><a href="#db-feature-info">Custom SQL queries</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#feature-form"><code>FeatureForm</code> plugin</a>: display attributes in QGIS attribute forms, querying the features via the <code>qwc-data-service</code></p>
+</li>
+</ul>
+<p>You can configure the identify tool by setting <code>identifyTool</code> in <code>config.json</code> (or per-theme in <code>themesConfig.json</code>).</p>
+<p>By default, it is triggered when clicking on a feature in the map. You can also configure the feature info as an explicit viewer tool by setting <code>identifyTool: null</code> and <a href="../../configuration/ViewerConfiguration/#plugin-configuration">adding</a> a <code>menuItems</code> or <code>toolbarItems</code> entry.</p>
+<h2 id="identify-plugin">Identify plugin<a name="identify"></a><a class="headerlink" href="#identify-plugin" title="Permanent link">&para;</a></h2>
+<p>The identify plugin allows displaying feature attributes queried over WMS GetFeatureInfo or, by using the <code>qwc-feature-info-service</code>, from a custom SQL query.</p>
+<p>To use it as default identify-tool, set <code>identifyTool: "Identify"</code> in <code>config.json</code>.</p>
+<p>By default, results are displayed in a table. You can also display the results using a custom HTML template by using the <code>qwc-feature-info-service</code>.</p>
+<p>You can also omit empty attributes by setting <code>skipEmptyFeatureAttributes: true</code> in the theme configuration entry in <code>themesConfig.json</code>.</p>
+<p><em>Note:</em> Use of the <code>qwc-feature-info-service</code> is also recommended if the <code>qwc-data-service</code> is used for editing, to ensure attribute values containing paths to uploaded files are properly converted to clickable hyperlinks.</p>
+<h3 id="querying-features-via-wms-getfeatureinfo">Querying features via WMS GetFeatureInfo<a name="wms-getfeatureinfo"></a><a class="headerlink" href="#querying-features-via-wms-getfeatureinfo" title="Permanent link">&para;</a></h3>
+<p>Set whether a layer is identifyable in <code>QGIS → Project Properties → Data sources</code>.</p>
+<p>To highlight the geometry, make sure <code>QGIS → Project Properties → QGIS Server → Add geometry to feature response</code> is checked.</p>
+<p>You can suppress attributes globally by selecting "Do not expose via WMS" in QGIS → Layer properties → Fields.</p>
+<p>Alternatively, you can selectively restrict attributes using the <code>qwc-admin-gui</code> and assigning <code>Attribute</code> resource permissions as desired, see <a href="#permissions">Permissions</a>.</p>
+<p>If you use the <code>qwc-feature-info-service</code>, you can filter empty attributes service-side by setting <code>skip_empty_attributes: true</code> in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>.</p>
+<h2 id="querying-features-via-custom-sql-queries">Querying features via custom SQL queries<a name="db-feature-info"></a><a class="headerlink" href="#querying-features-via-custom-sql-queries" title="Permanent link">&para;</a></h2>
+<p>With the <code>qwc-feature-info-service</code>, you can query features directly from a database instead of over WMS GetFeatureInfo, by providing the <code>featureInfo</code> service configuration as described in <a href="#html-templates">HTML templates</a>, but specifying a <code>db_url</code> and <code>sql</code>, for example</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;sql&quot;,
+  &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+  &quot;sql&quot;: &quot;SELECT ogc_fid as _fid_, name, formal_en, pop_est, subregion, ST_AsText(wkb_geometry) as wkt_geom FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_Intersects(wkb_geometry, ST_GeomFromText(:geom, :srid)) LIMIT :feature_count;&quot;,
+  &quot;template&quot;: &quot;&lt;div&gt;&lt;h2&gt;Demo Template&lt;/h2&gt;Pos: {{ x }}, {{ y }}&lt;br&gt;Name: {{ feature.Name }}&lt;/div&gt;&quot;
+}
+</code></pre>
+<p>In a DB Query the following values are replaced in the SQL:</p>
+<ul>
+<li><code>:x</code>: X coordinate of query</li>
+<li><code>:y</code>: Y coordinate of query</li>
+<li><code>:srid</code>: SRID of query coordinates</li>
+<li><code>:resolution</code>: Resolution in map units per pixel</li>
+<li><code>:FI_POINT_TOLERANCE</code>: Tolerance for picking points, in pixels (default=16)</li>
+<li><code>:FI_LINE_TOLERANCE</code>: Tolerance for picking lines, in pixels (default=8)</li>
+<li><code>:FI_POLYGON_TOLERANCE</code>: Tolerance for picking polygons, in pixels (default=4)</li>
+<li><code>:i</code>: X ordinate of query point on map, in pixels</li>
+<li><code>:j</code>: Y ordinate of query point on map, in pixels</li>
+<li><code>:height</code>: Height of map output, in pixels</li>
+<li><code>:width</code>: Width of map output, in pixels</li>
+<li><code>:bbox</code>: 'Bounding box for map extent as minx,miny,maxx,maxy'</li>
+<li><code>:crs</code>: 'CRS for map extent'</li>
+<li><code>:feature_count</code>: Max feature count</li>
+<li><code>:with_geometry</code>: Whether to return geometries in response (default=1)</li>
+<li><code>:with_maptip</code>: Whether to return maptip in response (default=1)</li>
+<li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
+</ul>
+<h3 id="display-field">Display field <a name="displayfield"></a><a class="headerlink" href="#display-field" title="Permanent link">&para;</a></h3>
+<p>The display field configured in QGIS Vector Layer Properties &rarr; Display is used as display title of an identify result. If no display field ist configured, the fallback fields <code>name</code> and <code>id</code> will be tried (case-insensitive). You can configure the fallback field names by setting <code>fallbackDisplayFields</code> to the list of desired fallback field names at top-level in <code>config.json</code>. If you set <code>fallbackDisplayFields</code> to an empty list, no fallback display name will be set.</p>
+<h3 id="attribute-values-html-markup-hyperlinks-images">Attribute values: HTML markup, hyperlinks, images<a class="headerlink" href="#attribute-values-html-markup-hyperlinks-images" title="Permanent link">&para;</a></h3>
+<p>In general, HTML markup in attribute values is preserved.</p>
+<p>For displaying interactive hyperlinks, the following options are supported:</p>
+<ul>
+<li>URLs in attribute text values with no HTML markup are automatically converted to an interactive hyperlink.</li>
+<li>
+<p>Alternatively, you can enclose the URL in a HTML <code>&lt;a&gt;</code> tag in the attribute value. To open the linked page in an inline dialog within QWC, you can set the anchor target to <code>:iframedialog:&lt;dialogname&gt;:&lt;optkey&gt;=&lt;optval&gt;:&lt;optkey&gt;=&lt;optval&gt;:...</code> where the supported options are:</p>
+<ul>
+<li><code>w</code>: Dialog width in pixels, default: <code>640</code>.</li>
+<li><code>h</code>: Dialog height in pixels, default: <code>480</code>.</li>
+<li><code>title</code>: Dialog window title, by default the translation string <code>windows.&lt;dialogname&gt;</code>.</li>
+<li><code>print</code>: Whether to add a print icon for printing the dialog contents, default: <code>true</code>.</li>
+<li><code>dockable</code>: Whether the dialog can be docked, default <code>false</code>.</li>
+<li><code>docked</code>: Whether the dialog is initially docked, default <code>false</code>.</li>
+<li><code>detachable</code>: Whether the dialog can be detached, default <code>true</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code>&lt;a href=&quot;https://example.com&quot; target=&quot;:iframedialog:w=1024:h=768:title=Example&quot;&gt;Link text&lt;/a&gt;
+</code></pre>
+<p>For displaying images, the following options are supported:</p>
+<ul>
+<li>If <code>replaceImageUrls: true</code> is set in the <code>Identify</code> plugin configuration in <code>config.json</code>, attribute text values which contain exactly an URL to an image are converted to inline images. If you use the <code>qwc-feature-info-service</code>, you need to set <code>transform_image_urls</code> in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>.</li>
+<li>Alternatively, you can add a <code>&lt;img&gt;</code> tag directly in the attribute value.</li>
+</ul>
+<p>This applies in particular to <code>&lt;a /&gt;</code> anchor and <code>&lt;img /&gt;</code> tags for displaying links an images in an attribute value.</p>
+<h3 id="client-side-attributes">Client side attributes<a class="headerlink" href="#client-side-attributes" title="Permanent link">&para;</a></h3>
+<p>To compute derived attributes client-side, you can register an attribute calculator via <code>window.qwc2.addIdentifyAttributeCalculator</code>, exposed by the <a href="../../references/qwc2_plugins/#API">API</a> plugin.</p>
+<h3 id="custom-export">Custom export<a class="headerlink" href="#custom-export" title="Permanent link">&para;</a></h3>
+<p>By default, the identify dialog in QWC allows you to export the results to <code>json</code> (QWC feature storage format), <code>geojson</code> (standard GeoJSON without QWC specific fields), <code>csv</code> (single CSV with all layers) or <code>csv+zip</code> (ZIP with one CSV per layer). You can define additional export functions registering an exporter via <code>window.qwc2.addIdentifyExporter</code>, exposed by the <a href="../../references/qwc2_plugins/#API">API</a> plugin.</p>
+<h3 id="custom-html-templates">Custom HTML templates<a name="html-templates"></a><a class="headerlink" href="#custom-html-templates" title="Permanent link">&para;</a></h3>
+<p>With the <code>qwc-feature-info-service</code>, you can specify a custom HTML template for displaying the feature rather than the default table view.</p>
+<p>Mount the info templates folder into the <code>qwc-feature-info-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-feature-info-service:
+    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/info_templates:/info_templates
+</code></pre>
+<p><em>Note:</em> If mounting to another location than <code>/info_templates</code>, set the <code>info_templates_path</code> in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;featureInfo&quot;,
+  &quot;config&quot;: {
+    &quot;info_templates_path&quot;: &quot;/&lt;path&gt;/&quot;
+  }
+}
+</code></pre>
+<p>Then, info templates will be searched by name as <code>&lt;info_templates_path&gt;/&lt;service_name&gt;/&lt;layername&gt;.html</code>.</p>
+<p>Alternatively, you can specify the template in the <code>featureInfo</code> service configuration in <code>tenantConfig.json</code>, either inline or as a path:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;featureInfo&quot;,
+  &quot;config&quot;: ...,
+  &quot;resources&quot;: {
+    &quot;wms_services&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;service_name&gt;&quot;,
+        &quot;root_layer&quot;: {
+          &quot;name&quot;: &quot;&lt;root_layer_name&gt;&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;&lt;layer_name&gt;&quot;,
+              &quot;info_template&quot;: {
+                &lt;See below&gt;
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Example <code>info_template</code> with inline template:</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;wms&quot;,
+  &quot;template&quot;: &quot;&lt;div&gt;&lt;h2&gt;Demo Template&lt;/h2&gt;Pos: {{ x }}, {{ y }}&lt;br&gt;Name: {{ feature.Name }}&lt;/div&gt;&quot;
+}
+</code></pre>
+<p>Example <code>info_template</code> with template path:</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;wms&quot;,
+  &quot;template_path&quot;: &quot;/info_templates/template.html&quot;
+}
+</code></pre>
+<p>The template must only contain the body content (without <code>head</code>, <code>script</code>, <code>body</code>).</p>
+<p>This template can contain attribute value placeholders, in the form</p>
+<pre><code>{{ feature.attr }}
+</code></pre>
+<p>which are replaced with the respective values when the template is rendered (using <a href="http://jinja.pocoo.org/">Jinja2</a>).
+The following values are available in the template:</p>
+<ul>
+<li><code>x</code>, <code>y</code>, <code>crs</code>: Coordinates and CRS of info query</li>
+<li><code>feature</code>: Feature with attributes from info result as properties, e.g. <code>feature.name</code></li>
+<li><code>fid</code>: Feature ID (if present)</li>
+<li><code>bbox</code>: Feature bounding box as <code>[&lt;minx&gt;, &lt;miny&gt;, &lt;maxx&gt;, &lt;maxy&gt;]</code> (if present)</li>
+<li><code>geometry</code>: Feature geometry as WKT (if present)</li>
+<li><code>layer</code>: Layer name</li>
+</ul>
+<p>To automatically detect hyperlinks in values and replace them as HTML links as well as transform image URLs to inline images the following helper can be used in the template:</p>
+<pre><code>render_value(value)
+</code></pre>
+<p>When using <a href="../Translations/#translated-themes">localized themes</a>, if you want to make QWC translate the attribute names, enclose these in <code>translate()</code>.</p>
+<p>Example:</p>
+<pre><code class="language-xml">    &lt;div&gt;Result at coordinates {{ x }}, {{ y }}&lt;/div&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Name):&lt;/td&gt;
+            &lt;td&gt;{{ feature.name }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Description):&lt;/td&gt;
+            &lt;td&gt;{{ feature.description }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;translate(Link):&lt;/td&gt;
+            &lt;td&gt;{{ render_value(feature.link) }}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre>
+<h3 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">&para;</a></h3>
+<p>The <code>qwc-feature-info-service</code> supports switching the runtime locale by setting the <code>LOCALE</code> environment variable, i.e.:</p>
+<pre><code class="language-yml">  qwc-feature-info-service:
+    image: docker.io/sourcepole/qwc-feature-info-service:vXXXX.XX.XX
+    environment:
+      &lt;&lt;: *qwc-service-variables
+      SERVICE_MOUNTPOINT: '/api/v1/featureinfo'
+      LOCALE: 'de_DE'
+</code></pre>
+<p>In addition, the <a href="https://docs.python.org/3/library/locale.html"><code>locale</code></a> object is available in templates. This is particularly helpful for rendering locale-formatted numbers, i.e.</p>
+<pre><code class="language-html">&lt;div&gt;Area: {{ locale.format_string(&quot;%.2f&quot;, area, True) }}&lt;/div&gt;
+</code></pre>
+<h3 id="permissions">Permissions<a name="identify-permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<p>If <code>permissions_default_allow</code> is set to <code>true</code> in <code>tenantConfig.json</code>, layers and attributes are queryable by default.</p>
+<ul>
+<li>To restrict the display of single layer attributes to specific roles, create a <code>Layer</code> and <code>Attribute</code> resource (latter as child of the created <code>Layer</code> resource) and create permissions assigning the desired roles to the <code>Attribute</code> resources.</li>
+<li>To restrict whether a layer can be queried, create a <code>FeatureInfo service</code> and <code>FeatureInfo layer</code> resource (latter as child of the created <code>FeatureInfo service</code> resource), and create permissions assigning the desired roles to the <code>FeatureInfo layer</code> resources.</li>
+</ul>
+<h2 id="feature-form-plugin">Feature form plugin<a name="feature-form"></a><a class="headerlink" href="#feature-form-plugin" title="Permanent link">&para;</a></h2>
+<p>The <code>FeatureForm</code> plugin displays picked features in a feature form as configured in <code>QGIS → Layer properties → Attributes form</code>. It queries the features via <code>qwc-data-service</code>, and hence only works for layers with <code>postgresql</code> data source.</p>
+<p>See <a href="../Editing/#edit-forms">Designing the edit forms</a> for more information on designing edit forms.</p>
+<p>To use it as default identify-tool, set <code>identifyTool: "FeatureForm"</code> in <code>config.json</code>.</p>
+<p>A layer is only identifyable with the <code>FeatureForm</code> plugin if corresponding <code>Data</code> resources and permissions are configured for the layer data source in the <code>qwc-admin-gui</code>. If a write permission is configured, the feature will be editable.</p>
+<h3 id="permissions_1">Permissions<a name="feature-form-permissions"></a><a class="headerlink" href="#permissions_1" title="Permanent link">&para;</a></h3>
+<p>The <code>FeatureForm</code> plugin relies on the <code>qwc-data-service</code> and the <code>Data</code> resource permissions, see <a href="../Editing/#quick-start">Editing</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Search/" class="btn btn-neutral float-left" title="Search"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Printing/" class="btn btn-neutral float-right" title="Printing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Search/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Printing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

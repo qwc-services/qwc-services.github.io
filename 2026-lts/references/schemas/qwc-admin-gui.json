@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-admin-gui/master/schemas/qwc-admin-gui.json",
+  "title": "QWC Admin GUI",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-admin-gui/master/schemas/qwc-admin-gui.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "admin-gui"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "db_url": {
+          "description": "DB connection URL",
+          "type": "string"
+        },
+        "qwc_config_schema": {
+          "description": "The name of the DB schema which stores the qwc config. Default: qwc_config",
+          "type": "string"
+        },
+        "config_generator_service_url": {
+          "description": "Config generator URL",
+          "type": "string"
+        },
+        "auth_service_url": {
+          "description": "URL to auth service, used for login redirects. Default: `/auth/`",
+          "type": "string"
+        },
+        "totp_enabled": {
+          "description": "Show TOTP fields for two factor authentication",
+          "type": "boolean"
+        },
+        "user_info_fields": {
+          "description": "Additional user fields",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "proxy_url_whitelist": {
+          "description": "List of RegExes for whitelisted URLs",
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "proxy_timeout": {
+          "description": "Timeout in seconds for proxy requests",
+          "type": "integer"
+        },
+        "admin_gui_title": {
+          "description": "Title displayed in Admin Gui home page",
+          "type": "string"
+        },
+        "admin_gui_subtitle": {
+          "description": "Subtitle displayed in Admin Gui home page",
+          "type": "string"
+        },
+        "solr_service_url": {
+          "description": "Solr Service base URL for collection",
+          "type": "string"
+        },
+        "solr_tenant_dih": {
+          "description": "Solr DataImportHandler for tenant",
+          "type": "string"
+        },
+        "solr_tenant_dih_config_file": {
+          "description": "Path to source DataImportHandler config file for tenant",
+          "type": "string"
+        },
+        "solr_config_path": {
+          "description": "Path to Solr configs",
+          "type": "string"
+        },
+        "solr_update_check_wait": {
+          "description": "Wait time in seconds for checks during Solr index update",
+          "type": "number"
+        },
+        "solr_update_check_max_retries": {
+          "description": "Max number of retries for checks during Solr index update",
+          "type": "integer"
+        },
+        "favicon":{
+          "description": "URL to favicon",
+          "type": "string"
+        },
+        "plugins": {
+          "description": "List of plugins to load",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "input_config_path": {
+          "description": "The path to the input configs. Required for 'themes' and 'config_editor' plugin.",
+          "type": "string"
+        },
+        "qwc2_path": {
+          "description": "The path to QWC2 files. Required for 'themes' and 'alkis' plugins.",
+          "type": "string"
+        },
+        "qgs_resources_path": {
+          "description": "The path to the QGIS projects. Required for 'themes' plugin.",
+          "type": "string"
+        },
+        "info_templates_path": {
+          "description": "The path to the html info templates. Required for 'themes' plugin.",
+          "type": "string"
+        },
+        "ows_prefix": {
+          "description": "The OGC service URL path prefix, i.e. /ows. Required for 'themes' plugin.",
+          "type": "string"
+        },
+        "qgis_project_extension": {
+          "description": "The QGIS project file extension to look for. Default: '.qgs'",
+          "type": "string"
+        },
+        "default_qgis_server_url": {
+          "description": "The default Qgis server URL. Required for 'themes' plugin.",
+          "type": "string"
+        },
+        "application_name": {
+          "description": "The application name to display in the invite emails. Default: 'QWC'",
+          "type": "string"
+        },
+        "application_url": {
+          "description": "The application URL to display in the invite emails. Default: computed from the Admin GUI URL'",
+          "type": "string"
+        }
+      },
+      "required": [
+        "db_url",
+        "config_generator_service_url",
+        "totp_enabled"
+      ]
+    },
+    "resource_blacklist": {
+      "description": "List of resource types to blacklist.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "service",
+    "config"
+  ]
+}

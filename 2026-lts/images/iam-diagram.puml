@@ -1,0 +1,38 @@
+@startuml
+
+package Identity-Management{
+    component "Authentication\nService 1" as as1 {
+        artifact "Private-Key"
+    }
+    component "Authentication\nService 2" as as2 {
+        artifact "Private-Key" as pk2
+    }
+
+    component "Map Viewer" as client {
+        artifact "ID-Token"
+    }
+
+    package Benutzer-Register{
+        database "IDP" as idp
+        database "LDAP" as ldap 
+    }
+
+as1 -- idp
+as2 -- ldap
+client -- as1
+client -- as2
+}
+
+package Access-Management {
+    component dataservice as ds {
+        component "Access-Manager" {
+            file permissions.json
+            artifact "Public-Key"
+        }
+        
+    }
+}
+
+client -- ds
+
+@enduml

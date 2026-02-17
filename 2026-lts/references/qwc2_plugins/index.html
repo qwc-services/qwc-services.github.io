@@ -1,0 +1,3264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc2 plugins - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc2 plugins";
+        var mkdocs_page_input_path = "references/qwc2_plugins.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc2 plugins</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="plugin-reference">Plugin reference<a class="headerlink" href="#plugin-reference" title="Permanent link">&para;</a></h1>
+<ul>
+<li><a href="#api">API</a></li>
+<li><a href="#attributetable">AttributeTable</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#backgroundswitcher">BackgroundSwitcher</a></li>
+<li><a href="#bookmark">Bookmark</a></li>
+<li><a href="#bottombar">BottomBar</a></li>
+<li><a href="#cookiepopup">CookiePopup</a></li>
+<li><a href="#cyclomedia">Cyclomedia</a></li>
+<li><a href="#editing">Editing</a></li>
+<li><a href="#featureform">FeatureForm</a></li>
+<li><a href="#featuresearch">FeatureSearch</a></li>
+<li><a href="#geometrydigitizer">GeometryDigitizer</a></li>
+<li><a href="#heightprofile">HeightProfile</a></li>
+<li><a href="#help">Help</a></li>
+<li><a href="#homebutton">HomeButton</a></li>
+<li><a href="#identify">Identify</a></li>
+<li><a href="#layercatalog">LayerCatalog</a></li>
+<li><a href="#layertree">LayerTree</a></li>
+<li><a href="#locatebutton">LocateButton</a></li>
+<li><a href="#map">Map</a></li>
+<li><a href="#mapcompare">MapCompare</a></li>
+<li><a href="#mapcopyright">MapCopyright</a></li>
+<li><a href="#mapexport">MapExport</a></li>
+<li><a href="#mapfilter">MapFilter</a></li>
+<li><a href="#mapinfotooltip">MapInfoTooltip</a></li>
+<li><a href="#maplegend">MapLegend</a></li>
+<li><a href="#maptip">MapTip</a></li>
+<li><a href="#measure">Measure</a></li>
+<li><a href="#newspopup">NewsPopup</a></li>
+<li><a href="#objectlist">ObjectList</a></li>
+<li><a href="#obliqueview">ObliqueView</a></li>
+<li><a href="#overviewmap">OverviewMap</a></li>
+<li><a href="#panoramax">Panoramax</a></li>
+<li><a href="#portal">Portal</a></li>
+<li><a href="#print">Print</a></li>
+<li><a href="#redlining">Redlining</a></li>
+<li><a href="#reports">Reports</a></li>
+<li><a href="#routing">Routing</a></li>
+<li><a href="#scratchdrawing">ScratchDrawing</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#share">Share</a></li>
+<li><a href="#startupmarker">StartupMarker</a></li>
+<li><a href="#taskbutton">TaskButton</a></li>
+<li><a href="#themeswitcher">ThemeSwitcher</a></li>
+<li><a href="#timemanager">TimeManager</a></li>
+<li><a href="#topbar">TopBar</a></li>
+<li><a href="#tourguide">TourGuide</a></li>
+<li><a href="#valuetool">ValueTool</a></li>
+<li><a href="#view3d">View3D</a></li>
+<li><a href="#zoombutton">ZoomButton</a></li>
+</ul>
+<p><a href="#mapSupportPlugins">Map support plugins</a></p>
+<ul>
+<li><a href="#editingsupport">EditingSupport</a></li>
+<li><a href="#locatesupport">LocateSupport</a></li>
+<li><a href="#measurementsupport">MeasurementSupport</a></li>
+<li><a href="#redliningsupport">RedliningSupport</a></li>
+<li><a href="#snappingsupport">SnappingSupport</a></li>
+</ul>
+<p><a href="#plugins3d">3D Plugins</a></p>
+<ul>
+<li><a href="#backgroundswitcher3d">BackgroundSwitcher3D</a></li>
+<li><a href="#bottombar3d">BottomBar3D</a></li>
+<li><a href="#compare3d">Compare3D</a></li>
+<li><a href="#draw3d">Draw3D</a></li>
+<li><a href="#exportobjects3d">ExportObjects3D</a></li>
+<li><a href="#hideobjects3d">HideObjects3D</a></li>
+<li><a href="#identify3d">Identify3D</a></li>
+<li><a href="#layertree3d">LayerTree3D</a></li>
+<li><a href="#mapcopyright3d">MapCopyright3D</a></li>
+<li><a href="#mapexport3d">MapExport3D</a></li>
+<li><a href="#measure3d">Measure3D</a></li>
+<li><a href="#overviewmap3d">OverviewMap3D</a></li>
+<li><a href="#settings3d">Settings3D</a></li>
+<li><a href="#topbar3d">TopBar3D</a></li>
+</ul>
+<p><a href="#extraPlugins">Extra Plugins</a></p>
+<ul>
+<li><a href="#plotinfotool">PlotInfoTool</a></li>
+</ul>
+<hr />
+<h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>Exposes an API for interacting with QWC.</p>
+<p>You can interact with the API as soon as the <code>QWC2ApiReady</code> event is dispatched.</p>
+<h3 id="postmessage-interface"><code>postMessage</code> interface<a class="headerlink" href="#postmessage-interface" title="Permanent link">&para;</a></h3>
+<p>You can interact with a QWC instance from a parent application either via the <code>window.qwc2</code>
+interface (see below), if the embedded QWC runs under the same origin as the parent application,
+or via <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage"><code>postMessage</code></a>
+if the origins differ. When using <code>postMessage</code>, you must register the allowed parent origins
+via the <code>allowedMessageOrigins</code> config prop. For a QWC embedded in an iframe, a sample call could
+then be</p>
+<pre><code>qwcframe = document.getElementById(&quot;qwciframe&quot;);
+qwcframe.contentWindow.postMessage({
+  &quot;method&quot;: &quot;zoomToPoint&quot;,
+  &quot;params&quot;: [[2684764, 1247841], 18, &quot;EPSG:2056&quot;]
+}, &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;)
+</code></pre>
+<p>If you call a method which returns a value, pass a <code>requestId</code> and listen to response messages:</p>
+<pre><code>window.addEventListener(&quot;message&quot;, (ev) =&gt; {
+  console.log(ev.data.requestId);
+  console.log(ev.data.result);
+});
+qwcframe.contentWindow.postMessage(
+  {&quot;method&quot;: &quot;getState&quot;, &quot;requestId&quot;: &quot;&lt;arbitrary_id_string&gt;&quot;},
+  &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;
+)
+</code></pre>
+<p>A list of supported methods will be printed to the console if you run</p>
+<pre><code>qwcframe.contentWindow.postMessage(&quot;help&quot;, &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;)
+</code></pre>
+<p>To check the full signature of a method (including default param values), check
+the respective action function definitions as referenced in the <em><code>window.qwc2</code> API</em>
+section below. Note that you can only pass values which can be serialized via
+structured clone in the message params.</p>
+<h3 id="custom-plugins">Custom plugins<a class="headerlink" href="#custom-plugins" title="Permanent link">&para;</a></h3>
+<p>Here is an example of a custom plugin:</p>
+<pre><code>function registerPlugin() {
+    const {React, PropTypes, connect} = window.qwc2.libs;
+    const {TaskBar} = window.qwc2.components;
+
+    class CurrentTheme extends React.Component {
+        static propTypes = {
+            theme: PropTypes.object
+        };
+        render() {
+            return React.createElement(TaskBar, {task: &quot;CurrentTheme&quot;},
+                React.createElement(
+                    'span', {role: 'body'},
+                    `Current theme: ${this.props.theme?.title}`
+                )
+            );
+        }
+    }
+
+    const CurrentThemePlugin = connect(state =&gt; ({
+        theme: state.theme.current
+    }))(CurrentTheme);
+
+    window.qwc2.addPlugin(&quot;CurrentThemePlugin&quot;, CurrentThemePlugin);
+}
+if (window.qwc2) {
+    registerPlugin();
+} else {
+    window.addEventListener(&quot;QWC2ApiReady&quot;, registerPlugin);
+}
+</code></pre>
+<p><em>Note</em>: You can also write the plugin in JSX syntax, and transpile to plain JS using babel.</p>
+<p>To load custom plugins in QWC:</p>
+<ul>
+<li>
+<p>Include the custom plugin code in <code>index.html</code>, i.e.</p>
+<pre><code>&lt;script type="text/javascript" src="assets/js/currenttheme.js" &gt;&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>Enable the plugin in the plugins block of <code>config.json</code></p>
+<pre><code>{
+    "name": "CurrentTheme"
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="windowqwc2-api"><code>window.qwc2</code> API<a class="headerlink" href="#windowqwc2-api" title="Permanent link">&para;</a></h3>
+<p>The following action functions are exposed in the API:</p>
+<ul>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/display.js">display</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/editing.js">editing</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/layers.js">layers</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/locate.js">locate</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/map.js">map</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/task.js">task</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/theme.js">theme</a></li>
+<li><a href="https://github.com/qgis/qwc2/blob/master/actions/windows.js">windows</a></li>
+</ul>
+<p>I.e. <code>setCurrentTask</code> is available via <code>window.qwc2.setCurrentTask</code>.</p>
+<p>The following core libraries are accessible via <code>window.qwc2.libs</code>:</p>
+<ul>
+<li><code>axios</code></li>
+<li><code>React</code></li>
+<li><code>ReactDOM</code></li>
+<li><code>PropTypes</code></li>
+<li><code>connect</code></li>
+<li><code>ol</code></li>
+<li><code>uuid</code></li>
+<li><code>url</code></li>
+</ul>
+<p>The QWC shared components are acessible via <code>window.qwc2.components</code>, i.e. <code>window.qwc2.components.SideBar</code>.</p>
+<p>In addition, the following methods are available on <code>window.qwc2</code>:</p>
+<p><strong>addPlugin(name,plugin,translations)</strong></p>
+<p>Add custom plugin</p>
+<ul>
+<li><code>name</code>: An identifier</li>
+<li><code>plugin</code>: The plugin component class</li>
+<li><code>translations</code>: The plugin translation messages: <code>{"&lt;lang&gt;": {&lt;messages&gt;}, ...}</code></li>
+</ul>
+<p><strong>removePlugin(name)</strong></p>
+<p>Remove custom plugin</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addIdentifyAttributeCalculator(name,calcFunc)</strong></p>
+<p>Add custom attribute calculator
+(i.e. computed attributes which are added to GetFeatureInfo responses).</p>
+<ul>
+<li><code>name</code>: An identifier</li>
+<li><code>calcFunc</code>: The calculator function with signature <code>function(layer, feature)</code></li>
+</ul>
+<p>The <code>calcFunc</code> should return either a two-enty <code>[name, value]</code> pair or a one-value <code>[value]</code> array.</p>
+<p><strong>removeIdentifyAttributeCalculator(name)</strong></p>
+<p>Remove custom identify attribute calculator</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addIdentifyExporter(name,exporterConfig)</strong></p>
+<p>Add custom identify exporter</p>
+<ul>
+<li><code>name</code>: An identifier</li>
+<li><code>exporterFunc</code>: The exporter configuration</li>
+</ul>
+<p>The exporter configuration is an object of the shape</p>
+<pre><code>{
+   id: &quot;&lt;id&gt;&quot;,
+   title: &quot;&lt;title&gt;&quot;,
+   allowClipboard: &lt;true|false&gt;,
+   export: (features, callback) =&gt; {
+     callback({
+       data: &lt;blob&gt;, type: &quot;&lt;mimeType&gt;&quot;, filename: &quot;&lt;filename&gt;&quot;
+     });
+   }
+ }
+</code></pre>
+<p><strong>removeIdentifyExporter(name)</strong></p>
+<p>Remove identify exporter</p>
+<ul>
+<li><code>name</code>: The identifier</li>
+</ul>
+<p><strong>addExternalLayer(resource,optionsOrBeforeLayerName,sublayers)</strong></p>
+<p>Convenience method for adding an external layer.</p>
+<ul>
+<li><code>resource</code>: An external resource of the form <code>wms:&lt;service_url&gt;#&lt;layername&gt;</code> or <code>wmts:&lt;capabilities_url&gt;#&lt;layername&gt;</code>.</li>
+<li><code>options</code>: An object which may contain the following fields:<ul>
+<li><code>beforeLayerName</code>: Insert the new layer before the layer with the specified name. If <code>null</code> or the layer does not exist, the layer is inserted on top.</li>
+<li><code>afterLayerName</code>: Insert the new layer after the layer with the specified name. If <code>null</code> or the layer does not exist, the layer is inserted on top.</li>
+<li><code>sublayers</code>: Whether to import the sublayer structure (<code>true</code>) or just a flat layer (<code>false</code>).</li>
+</ul>
+</li>
+</ul>
+<p><strong>drawScratch(geomType,message,drawMultiple,callback,style)</strong></p>
+<p>Deprecated, use <code>window.qwc2.drawGeometry</code> instead.</p>
+<p><strong>drawGeometry(geomType,message,callback,options)</strong></p>
+<p>Draw geometries, and return these as GeoJSON to the calling application.</p>
+<ul>
+<li><code>geomType</code>: <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>Circle</code> or <code>Box</code>.</li>
+<li><code>message</code>: A descriptive string to display in the tool taskbar.</li>
+<li><code>callback</code>: A <code>function(result, crs)</code>, the <code>result</code> being an array of GeoJSON features, and <code>crs</code> the projection of the feature coordinates.</li>
+<li><code>options</code>: Optional configuration:<ul>
+<li><code>drawMultiple</code>: Whether to allow drawing multiple geometries (default: <code>false</code>).</li>
+<li><code>style</code>: A custom style object to use for the drawn features, in the same format as <code>DEFAULT_FEATURE_STYLE</code> in <code>qwc2/utils/FeatureStyles.js</code>.</li>
+<li><code>initialFeatures</code>: Array of initial geometries.</li>
+<li><code>snapping</code>: Whether snapping is available while drawing (default: <code>false</code>).</li>
+<li><code>snappingActive</code>: Whether snapping is initially active (default: <code>false</code>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>getState()</strong></p>
+<p>Return the current application state.</p>
+<h2 id="attributetable">AttributeTable<a name="attributetable"></a><a class="headerlink" href="#attributetable" title="Permanent link">&para;</a></h2>
+<p>Display the attribute table of layers in a dialog.</p>
+<p>To make a layer available in the attribute table, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
+<p>The attribute table works for both read-only as well as read-write data resources.</p>
+<p>This plugin queries the dataset via the editing service specified by
+<code>editServiceUrl</code> in <code>config.json</code> (by default the <code>qwc-data-service</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowAddForGeometryLayers</td>
+<td><code>bool</code></td>
+<td>Whether to allow adding records for datasets which have a geometry column.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 800,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'bottom'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>hideIdColumn</td>
+<td><code>bool</code></td>
+<td>Whether to hide the id (primary key) column.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>limitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to limit to the extent by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showEditFormButton</td>
+<td><code>bool</code></td>
+<td>Whether to show a button to open the edit form for selected layer. Requires the Editing plugin to be enabled.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showHiddenFields</td>
+<td><code>bool</code></td>
+<td>Whether to show hidden fields.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showLimitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to show the "Limit to extent" checkbox</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>zoomLevel</td>
+<td><code>number</code></td>
+<td>The zoom level for zooming to point features.</td>
+<td><code>1000</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="authentication">Authentication<a name="authentication"></a><a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<p>Handles authentication</p>
+<p>Invokes the the authentication service specified by <code>authServiceUrl</code> in <code>config.json</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clearLayerParam</td>
+<td><code>bool</code></td>
+<td>Whether to clear the layer parameter from the URL on login.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>idleTimeout</td>
+<td><code>number</code></td>
+<td>An idle timeout in seconds after which the user is automatically logged of.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logoutTargetUrl</td>
+<td><code>string</code></td>
+<td>An URL to redirect to on logout, instead of the viewer URL.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>requireLogin</td>
+<td><code>bool</code></td>
+<td>Whether authentication is required, i.e. the viewer automatically redirects to the login page if no user is authenticated.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showLoginUser</td>
+<td><code>bool</code></td>
+<td>Whether to display the currently logged in user below the application menu button.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="backgroundswitcher">BackgroundSwitcher<a name="backgroundswitcher"></a><a class="headerlink" href="#backgroundswitcher" title="Permanent link">&para;</a></h2>
+<p>Map button for switching the background layer.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bookmark">Bookmark<a name="bookmark"></a><a class="headerlink" href="#bookmark" title="Permanent link">&para;</a></h2>
+<p>Allows managing user bookmarks.</p>
+<p>Bookmarks are only allowed for authenticated users.</p>
+<p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openOnClick</td>
+<td><code>bool</code></td>
+<td>Whether to directly open the bookmark on click / middle click, instead of showing dedicated open buttons.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="bottombar">BottomBar<a name="bottombar"></a><a class="headerlink" href="#bottombar" title="Permanent link">&para;</a></h2>
+<p>Bottom bar, displaying mouse coordinate, scale, etc.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>additionalBottomBarLinks</td>
+<td><code>[{</code><br /><code>label: string,</code><br /><code>labelMsgId: string,</code><br /><code>side: string,</code><br /><code>url: string,</code><br /><code>urlTarget: string,</code><br /><code>icon: string,</code><br /><code>}]</code></td>
+<td>Additional bottombar links.<code>side</code> can be <code>left</code> or <code>right</code> (default).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>coordinateFormatter</td>
+<td><code>func</code></td>
+<td>Custom coordinate formatter, as <code>(coordinate, crs) =&gt; string</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>displayCoordinates</td>
+<td><code>bool</code></td>
+<td>Whether to display the coordinates in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>displayScalebar</td>
+<td><code>bool</code></td>
+<td>Whether to display the scalebar in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>displayScales</td>
+<td><code>bool</code></td>
+<td>Whether to display the scale in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>scalebarOptions</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_ScaleLine-ScaleLine.html">OpenLayers API doc</a></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>termsUrl</td>
+<td><code>string</code></td>
+<td>The URL of the terms label anchor.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>termsUrlIcon</td>
+<td><code>string</code></td>
+<td>Icon of the terms inline window. Relevant only when <code>termsUrlTarget</code> is <code>iframe</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>termsUrlTarget</td>
+<td><code>string</code></td>
+<td>The target where to open the terms URL. If <code>iframe</code>, it will be displayed in an inline window, otherwise in a new tab. You can also use the <code>:iframedialog:&lt;dialogname&gt;:&lt;options&gt;</code> syntax to set up the inline window.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>viewertitleUrl</td>
+<td><code>string</code></td>
+<td>The URL of the viewer title label anchor.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>viewertitleUrlIcon</td>
+<td><code>string</code></td>
+<td>Icon of the viewer title inline window. Relevant only when <code>viewertitleUrl</code> is <code>iframe</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>viewertitleUrlTarget</td>
+<td><code>string</code></td>
+<td>The target where to open the viewer title URL. If <code>iframe</code>, it will be displayed in an inline window, otherwise in a new tab. You can also use the <code>:iframedialog:&lt;dialogname&gt;:&lt;options&gt;</code> syntax to set up the inline window.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cookiepopup">CookiePopup<a name="cookiepopup"></a><a class="headerlink" href="#cookiepopup" title="Permanent link">&para;</a></h2>
+<p>A simple popup to notify that cookies are used.</p>
+<h2 id="cyclomedia">Cyclomedia<a name="cyclomedia"></a><a class="headerlink" href="#cyclomedia" title="Permanent link">&para;</a></h2>
+<p>Cyclomedia integration for QWC2.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apikey</td>
+<td><code>string</code></td>
+<td>The Cyclomedia API key</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>clientId</td>
+<td><code>string</code></td>
+<td>OAuth client ID.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>credentialUserInfoFields</td>
+<td><code>{</code><br /><code>username: string,</code><br /><code>password: string,</code><br /><code>}</code></td>
+<td>Fields from user_infos which contain username and password which will be pre-inserted into the login form.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>cyclomediaVersion</td>
+<td><code>string</code></td>
+<td>The cyclomedia version.</td>
+<td><code>'25.7'</code></td>
+</tr>
+<tr>
+<td>displayMeasurements</td>
+<td><code>bool</code></td>
+<td>Whether to display Cyclomedia measurement geometries on the map.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 640,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>loginRedirectUri</td>
+<td><code>string</code></td>
+<td>The relative path to the redirect login handling of oauth.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logoutRedirectUri</td>
+<td><code>string</code></td>
+<td>The relative path to the redirect logout handling of oauth.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>maxMapScale</td>
+<td><code>number</code></td>
+<td>The maximum map scale above which the recordings WFS won't be displayed.</td>
+<td><code>5000</code></td>
+</tr>
+<tr>
+<td>projection</td>
+<td><code>string</code></td>
+<td>The projection to use for Cyclomedia.</td>
+<td><code>'EPSG:3857'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="editing">Editing<a name="editing"></a><a class="headerlink" href="#editing" title="Permanent link">&para;</a></h2>
+<p>Allows editing geometries and attributes of datasets.</p>
+<p>The attribute form is generated from the QGIS attribute form configuration.</p>
+<p>This plugin queries the dataset via the editing service specified by
+<code>editServiceUrl</code> in <code>config.json</code> (by default the <code>qwc-data-service</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowCloneGeometry</td>
+<td><code>bool</code></td>
+<td>Whether to enable the "Clone existing geometry" functionality.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>omitReadOnlyDatasets</td>
+<td><code>bool</code></td>
+<td>Whether to omit read only datasets from the dataset selection menu.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showAttributeTableButton</td>
+<td><code>bool</code></td>
+<td>Whether to show a button to open the AttributeTable (if the plugin is available).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+<tr>
+<td>snapping</td>
+<td><code>bool</code></td>
+<td>Whether snapping is available when editing.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>snappingActive</td>
+<td><code>{bool, string}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>string</code></td>
+<td>The default width of the editing sidebar, as a CSS width string.</td>
+<td><code>"30em"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="featureform">FeatureForm<a name="featureform"></a><a class="headerlink" href="#featureform" title="Permanent link">&para;</a></h2>
+<p>Displays queried feature attributes in a form.</p>
+<p>The attribute form is generated from the QGIS attribute form configuration.</p>
+<p>This plugin queries the feature via the editing service specified by
+<code>editServiceUrl</code> in <code>config.json</code> (by default the <code>qwc-data-service</code>), rather than over WMS
+GetFeatureInfo like the <code>Identify</code> plugin.</p>
+<p>You need to create and permit <code>Data</code> resources for datasets which should be queryable via <code>FeatureForm</code>.
+If the dataset it editable, the feature attributes can be edited directly in the displayed form.</p>
+<p>Can be used as default identify tool by setting <code>"identifyTool": "FeatureForm"</code> in <code>config.json</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exitTaskOnResultsClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the task when the results window is closed.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 320,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="featuresearch">FeatureSearch<a name="featuresearch"></a><a class="headerlink" href="#featuresearch" title="Permanent link">&para;</a></h2>
+<p>Displays a dialog with a search form for configured QGIS feature searches with one or more input fields.</p>
+<p>See <a href="../../topics/Search/#configuring-the-qgis-feature-search">Configuring the QGIS feature search</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enableExport</td>
+<td><code>{bool, array}</code></td>
+<td>Whether to enable the export functionality. Either <code>true|false</code> or a list of single allowed formats (builtin formats: <code>json</code>, <code>geojson</code>, <code>csv</code>, <code>csvzip</code>, <code>shapefile</code>, <code>xlsx</code>). If a list is provided, the export formats will be sorted according to that list, and the default format will be the first format of the list.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="geometrydigitizer">GeometryDigitizer<a name="geometrydigitizer"></a><a class="headerlink" href="#geometrydigitizer" title="Permanent link">&para;</a></h2>
+<p>Allows digitizing geometries to send to configured applications.</p>
+<p>Configure the available target applications in <code>themesConfig.json</code>:</p>
+<pre><code>{
+  &quot;themes&quot;: {
+    &quot;items&quot;: [{
+      ...
+      &quot;pluginData&quot;: {
+        &quot;geometryLinks&quot;: [&quot;&lt;geomLinkName&gt;&quot;, &quot;&lt;geomLinkName&gt;&quot;, ...]
+      }
+    }],
+  },
+  &quot;pluginData&quot;: {
+    &quot;geometryLinks&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;geomLinkName&gt;&quot;,                 // Link name referenced in theme item
+        &quot;title&quot;: &quot;&lt;geomLinkTitle&gt;&quot;,               // Link title, displayed in the selection combo
+        &quot;geomType&quot;: [&quot;&lt;geomType&gt;&quot;, &quot;&lt;geomType&gt;&quot;], // Supported geometry types (Point, LineString, Polygon)
+        &quot;format&quot;: &quot;wkt|geojson&quot;,                  // Format of data to send to application
+        &quot;url&quot;: &quot;&lt;targetApplicationUrl&gt;&quot;,          // Application target URL, receiving the POST submit. Can contain the $username$ placeholder parameter.
+        &quot;params&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;, ...}       // Optional: additional form parameters to post to URL
+        &quot;target&quot;: &quot;&lt;target&gt;&quot; | {                  // Optional: form POST target which to display the result
+          &quot;iframedialog&quot;: true,                   // Use an iframe dialog
+          &quot;w&quot;: &lt;dialogWidth&gt;,                     // Dialog width
+          &quot;h&quot;: &lt;dialogHeight&gt;                     // Dialog height
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>If you are using <code>qwc-services</code>, you will need to explicitly permit the geometry links in the <code>qwc-admin-gui</code> as follows:</p>
+<ul>
+<li>Create and permit a <code>Plugin</code> resource with name <code>geometryLinks</code></li>
+<li>Create and permit <code>Plugin data</code> resources with name equal to <code>&lt;geomLinkName&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>styleActive</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style of active geometries (i.e. supported by the selected application)</td>
+<td><code>{</code><br /><code>strokeColor: [0, 160, 0, 1],</code><br /><code>fillColor: [0, 160, 0, 0.33]</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>styleInactive</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style of inactive (i.e. not supported by the selected application)</td>
+<td><code>{</code><br /><code>strokeColor: [127, 127, 127, 1],</code><br /><code>fillColor: [127, 127, 127, 0.33]</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="heightprofile">HeightProfile<a name="heightprofile"></a><a class="headerlink" href="#heightprofile" title="Permanent link">&para;</a></h2>
+<p>Displays a height profile along a measured line.</p>
+<p>Triggered automatically when a line is measured via the <code>Measure</code> plugin.</p>
+<p>Requires <code>elevationServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-elevation-service</code>,
+or a custom elevation interface to be exposed in <code>window.QWC2ElevationInterface</code>, see
+<a href="https://github.com/qgis/qwc2/blob/master/utils/ElevationInterface.js">ElevationInterface.js</a>.</p>
+<p>The print height profile functionality requires a template located by default at <code>assets/templates/heightprofileprint.html</code>
+with containing a container element with <code>id=heightprofilecontainer</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height</td>
+<td><code>number</code></td>
+<td>The height of the height profile widget in pixels.</td>
+<td><code>150</code></td>
+</tr>
+<tr>
+<td>heightProfilePrecision</td>
+<td><code>number</code></td>
+<td>The precision of displayed and exported values (0: no decimals, 1: 1 decimal position, etc).</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>samples</td>
+<td><code>number</code></td>
+<td>The number of elevation samples to query.</td>
+<td><code>500</code></td>
+</tr>
+<tr>
+<td>templatePath</td>
+<td><code>string</code></td>
+<td>Template location for the height profile print functionality</td>
+<td><code>":/templates/heightprofileprint.html"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="help">Help<a name="help"></a><a class="headerlink" href="#help" title="Permanent link">&para;</a></h2>
+<p>Displays a custom help dialog in a sidebar.</p>
+<p>Define the help contents by specifying the <code>bodyContentsFragmentUrl</code> prop.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bodyContentsFragmentUrl</td>
+<td><code>string</code></td>
+<td>URL to a document containing a HTML fragment to display in the Help sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="homebutton">HomeButton<a name="homebutton"></a><a class="headerlink" href="#homebutton" title="Permanent link">&para;</a></h2>
+<p>Map button for reverting to the home extent of the theme.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>themeFlagBlacklist</td>
+<td><code>[string]</code></td>
+<td>Omit the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagWhitelist</td>
+<td><code>[string]</code></td>
+<td>Only show the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identify">Identify<a name="identify"></a><a class="headerlink" href="#identify" title="Permanent link">&para;</a></h2>
+<p>Displays queried feature attributes.</p>
+<p>Uses WMS GetFeatureInfo to query features and displays the result in
+table, as a HTML fragment or as plain text based on the supported GetFeatureInfo
+format.</p>
+<p>Extendable in combination with the <code>qwc-feature-info-service</code>, which provides support
+for customized queries and templates for the result presentation.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attributeCalculator</td>
+<td><code>func</code></td>
+<td>Optional function for computing derived attributes. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>attributeTransform</td>
+<td><code>func</code></td>
+<td>Optional function for transforming attribute values. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>clearResultsOnClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the identify results when exiting the identify tool.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>customExporters</td>
+<td><code>array</code></td>
+<td>Optional list of custom exporters to offer along with the built-in exporters. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>enableAggregatedReports</td>
+<td><code>bool</code></td>
+<td>Whether to enable the aggregated report download button.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableCompare</td>
+<td><code>bool</code></td>
+<td>Whether to enable the possibility select results for comparison.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableExport</td>
+<td><code>{bool, array}</code></td>
+<td>Whether to enable the export functionality. Either <code>true|false</code> or a list of single allowed formats (builtin formats: <code>json</code>, <code>geojson</code>, <code>csv</code>, <code>csvzip</code>, <code>shapefile</code>, <code>xlsx</code>). If a list is provided, the export formats will be sorted according to that list, and the default format will be the first format of the list.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>exitTaskOnResultsClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the task when the results window is closed.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>exportGeometry</td>
+<td><code>bool</code></td>
+<td>Whether to include the geometry in exported features. Default: <code>true</code>.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>highlightAllResults</td>
+<td><code>bool</code></td>
+<td>Whether to highlight all results if no result is hovered</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>initialRadiusUnits</td>
+<td><code>string</code></td>
+<td>The initial radius units of the identify dialog in radius mode. One of 'm', 'ft', 'km', 'mi'.</td>
+<td><code>'m'</code></td>
+</tr>
+<tr>
+<td>params</td>
+<td><code>object</code></td>
+<td>Extra params to append to the GetFeatureInfo request (i.e. <code>FI_POINT_TOLERANCE</code>, <code>FI_LINE_TOLERANCE</code>, <code>feature_count</code>, ...). Additionally, <code>region_feature_count</code> and <code>radius_feature_count</code> are supported.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>replaceImageUrls</td>
+<td><code>bool</code></td>
+<td>Whether to replace an attribute value containing an URL to an image with an inline image.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>resultDisplayMode</td>
+<td><code>string</code></td>
+<td>Result display mode, one of <code>tree</code>, <code>flat</code>, <code>paginated</code>.</td>
+<td><code>'flat'</code></td>
+</tr>
+<tr>
+<td>resultGridSize</td>
+<td><code>number</code></td>
+<td>Target cell size of the result grid in comparison mode.</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td>resultMultiDisplay</td>
+<td><code>bool</code></td>
+<td>Whether multi-display mode should be enabled by default, only relevant if <code>resultDisplayMode</code> is <code>paginated</code>.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showLayerSelector</td>
+<td><code>bool</code></td>
+<td>Whether to show a layer selector to filter the identify results by layer.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showLayerTitles</td>
+<td><code>bool</code></td>
+<td>Whether to prefix the identify result titles with the respecitve layer name.</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="layercatalog">LayerCatalog<a name="layercatalog"></a><a class="headerlink" href="#layercatalog" title="Permanent link">&para;</a></h2>
+<p>Displays a pre-configured catalog of external layers in a window.</p>
+<p>Configured through a catalog JSON containing a tree of external layer identifiers.</p>
+<p>For <code>wms</code> layers, <code>sublayers: false</code> denotes that the sublayer structure of the added layer should not
+be exposed in the layer tree.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;catalog&quot;: [
+    {
+      &quot;title&quot;: &quot;Öffentlicher Verkehr swissTLMRegio&quot;,
+      &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.vec200-transportation-oeffentliche-verkehr&quot;,
+      &quot;sublayers&quot;: false
+    },
+    {
+      &quot;title&quot;: &quot;Gewässerschutz&quot;,
+       &quot;resource&quot;: &quot;wms:https://geo.so.ch/api/wms#ch.so.afu.gewaesserschutz[50]&quot;
+    },
+    {
+      &quot;title&quot;: &quot;Landeskarten&quot;,
+      &quot;sublayers&quot;: [
+        {
+          &quot;title&quot;: &quot;Landeskarte 1:1 Million | LK1000&quot;,
+          &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.pixelkarte-farbe-pk1000.noscale&quot;
+        },
+        {
+          &quot;title&quot;: &quot;Landeskarte 1:100`000 | LK100&quot;,
+          &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.pixelkarte-farbe-pk100.noscale&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>catalogUrl</td>
+<td><code>string</code></td>
+<td>The URL to the catalog JSON file.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 320,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>levelBasedIndentSize</td>
+<td><code>bool</code></td>
+<td>Whether to increase the indent size dynamically according to the current level (<code>true</code>) or keep the indent size constant (<code>false</code>).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>registerCatalogSearchProvider</td>
+<td><code>bool</code></td>
+<td>Whether to register a search provider which allows searching catalog layers through the global search field.</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="layertree">LayerTree<a name="layertree"></a><a class="headerlink" href="#layertree" title="Permanent link">&para;</a></h2>
+<p>Displays the map layer tree in a sidebar.</p>
+<p>The print legend functionality requires a template located by default at assets/templates/legendprint.html
+with containing a container element with id=legendcontainer.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addLayerSeparator</td>
+<td><code>func</code></td>
+<td>Whether to allow adding separator entries in the layer tree, useful for organizing the tree.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowCompare</td>
+<td><code>bool</code></td>
+<td>Whether to enable the compare function. Requires the <code>MapCompare</code> plugin.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>allowImport</td>
+<td><code>bool</code></td>
+<td>Whether to allow importing external layers.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>allowLayerTreeSeparators</td>
+<td><code>bool</code></td>
+<td>Whether to allow adding layer tree separators.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowMapTips</td>
+<td><code>bool</code></td>
+<td>Whether to allow enabling map tips.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>allowRemovingThemeLayers</td>
+<td><code>bool</code></td>
+<td>Whether to allow removing theme layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowSelectIdentifyableLayers</td>
+<td><code>bool</code></td>
+<td>Whether to allow selection of identifyable layers. The <code>showQueryableIcon</code> property should be <code>true</code> to be able to select identifyable layers.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>bboxDependentLegend</td>
+<td><code>{bool, string}</code></td>
+<td>Whether to display a BBOX dependent legend. Can be <code>true|false|"theme"</code>, latter means only for theme layers.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>enableLegendPrint</td>
+<td><code>bool</code></td>
+<td>Whether to enable the legend print functionality.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableServiceInfo</td>
+<td><code>bool</code></td>
+<td>Whether to display a service info button to display the WMS service metadata.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableVisibleFilter</td>
+<td><code>bool</code></td>
+<td>Whether to display a button to filter invisible layers from the layertree.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>extraLegendParameters</td>
+<td><code>string</code></td>
+<td>Additional parameters to pass to the GetLegendGraphics request.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>fallbackDrag</td>
+<td><code>bool</code></td>
+<td>Whether to use the fallback logic for drag-and-drop.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>flattenGroups</td>
+<td><code>bool</code></td>
+<td>Whether to display a flat layer tree, omitting any groups.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>grayUnchecked</td>
+<td><code>bool</code></td>
+<td>Whether to display unchecked layers gray in the layertree.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>groupTogglesSublayers</td>
+<td><code>bool</code></td>
+<td>Whether toggling a group also toggles all sublayers.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>infoInSettings</td>
+<td><code>bool</code></td>
+<td>Whether to display the layer info button inside the layer settings menu rather than next to the layer title.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>layerInfoGeometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
+<td>Default layer info window geometry with size, position and docking status.</td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: null,</code><br /><code>initialY: null,</code><br /><code>initiallyDocked: false</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>onlyGroups</td>
+<td><code>bool</code></td>
+<td>Whether to only display layer groups but not individual layers in layertree.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>scaleDependentLegend</td>
+<td><code>{bool, string}</code></td>
+<td>Whether to display a scale dependent legend. Can be <code>true|false|"theme"</code>, latter means only for theme layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showAttributeTableLink</td>
+<td><code>bool</code></td>
+<td>Whether to display an icon linking to the layer attribute table in the layer options menu.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showLegendIcons</td>
+<td><code>bool</code></td>
+<td>Whether to display legend icons.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showQueryableIcon</td>
+<td><code>bool</code></td>
+<td>Whether to display the queryable icon to indicate that a layer is identifyable.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showRootEntry</td>
+<td><code>bool</code></td>
+<td>Whether to display the root entry of the layertree.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showStyleSelector</td>
+<td><code>bool</code></td>
+<td>Whether to show the style selection menu for layers with multiple styles.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showToggleAllLayersCheckbox</td>
+<td><code>bool</code></td>
+<td>Whether to display a checkbox to toggle all layers.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+<tr>
+<td>templatePath</td>
+<td><code>string</code></td>
+<td>Template location for the legend print functionality</td>
+<td><code>":/templates/legendprint.html"</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>string</code></td>
+<td>The initial width of the layertree, as a CSS width string.</td>
+<td><code>"25em"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="locatebutton">LocateButton<a name="locatebutton"></a><a class="headerlink" href="#locatebutton" title="Permanent link">&para;</a></h2>
+<p>Map button for controling the locate (GPS) state.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td>themeFlagBlacklist</td>
+<td><code>[string]</code></td>
+<td>Omit the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagWhitelist</td>
+<td><code>[string]</code></td>
+<td>Only show the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="map">Map<a name="map"></a><a class="headerlink" href="#map" title="Permanent link">&para;</a></h2>
+<p>The main map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mapOptions</td>
+<td><code>{</code><br /><code>zoomDuration: number,</code><br /><code>enableRotation: bool,</code><br /><code>rotation: number,</code><br /><code>panStepSize: number,</code><br /><code>panPageSize: number,</code><br /><code>constrainExtent: bool,</code><br /><code>kineticPanParams: object,</code><br /><code>}</code></td>
+<td>Zoom duration in ms, rotation in degrees, panStepSize and panPageSize as fraction of map width/height.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>showLoading</td>
+<td><code>bool</code></td>
+<td>Whether to display the loading spinner when layers are loading.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>swipeGeometryTypeBlacklist</td>
+<td><code>[string]</code></td>
+<td>A list of layer geometry types to ignore when determining the top-most layer to compare.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>swipeLayerNameBlacklist</td>
+<td><code>[string]</code></td>
+<td>A list of layer names to ignore when determining the top-most layer to compare. You can use <code>*</code> as a wildcard character.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>toolsOptions</td>
+<td><code>object</code></td>
+<td>Options to pass to the map support plugins, in the form <code>{"&lt;Name&gt;": {&lt;options&gt;}}</code>.<br />Refer to the documentation of the <a href="#mapSupportPlugins">Map support plugins</a> for settable options.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>viewSwitcherPosition</td>
+<td><code>number</code></td>
+<td>Position of the view switcher button.</td>
+<td><code>6</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapcompare">MapCompare<a name="mapcompare"></a><a class="headerlink" href="#mapcompare" title="Permanent link">&para;</a></h2>
+<p>Allows comparing the top layer with the rest of the map.</p>
+<p>Activated through a checkbox in the LayerTree.</p>
+<h2 id="mapcopyright">MapCopyright<a name="mapcopyright"></a><a class="headerlink" href="#mapcopyright" title="Permanent link">&para;</a></h2>
+<p>Displays layer attributions in the bottom right corner of the map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefixCopyrightsWithLayerNames</td>
+<td><code>bool</code></td>
+<td>Whether to prepend the layer name to the attribution string.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showThemeCopyrightOnly</td>
+<td><code>bool</code></td>
+<td>Whether to only display the attribution of the theme, omitting external layers.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapexport">MapExport<a name="mapexport"></a><a class="headerlink" href="#mapexport" title="Permanent link">&para;</a></h2>
+<p>Allows exporting a selected portion of the map to a variety of formats.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowedFormats</td>
+<td><code>[string]</code></td>
+<td>Whitelist of allowed export format mimetypes. If empty, supported formats are listed.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowedScales</td>
+<td><code>{[number], bool}</code></td>
+<td>List of scales at which to export the map. If empty, scale can be freely specified. If <code>false</code>, the map can only be exported at the current scale.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>defaultFormat</td>
+<td><code>string</code></td>
+<td>Default export format mimetype. If empty, first available format is used.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>defaultScaleFactor</td>
+<td><code>number</code></td>
+<td>The factor to apply to the map scale to determine the initial export map scale (if <code>allowedScales</code> is not <code>false</code>).</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>dpis</td>
+<td><code>[number]</code></td>
+<td>List of dpis at which to export the map. If empty, the default server dpi is used.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>exportExternalLayers</td>
+<td><code>bool</code></td>
+<td>Whether to include external layers in the image. Requires QGIS Server 3.x!</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>fileNameTemplate</td>
+<td><code>string</code></td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{themeTitle}</code>, <code>{timestamp}</code>.</td>
+<td><code>'{theme}_{timestamp}'</code></td>
+</tr>
+<tr>
+<td>forceAvailableFormats</td>
+<td><code>array</code></td>
+<td>Formats to force as available even if the map capabilities report otherwise. Useful if a serviceUrl is defined in a format configuration.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>formatConfiguration</td>
+<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>serviceUrl: string,</code><br /><code>}],</code><br /><code>}</code></td>
+<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.<br /> <code>serviceUrl</code> is the address of a custom service to use instead of the layer OWS service url.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>pageSizes</td>
+<td><code>[{</code><br /><code>name: string,</code><br /><code>width: number,</code><br /><code>height: number,</code><br /><code>}]</code></td>
+<td>List of image sizes to offer, in addition to the free-hand selection. The width and height are in millimeters.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapfilter">MapFilter<a name="mapfilter"></a><a class="headerlink" href="#mapfilter" title="Permanent link">&para;</a></h2>
+<p>Allows filtering the map content via QGIS Server WMS FILTER.</p>
+<p>See <a href="../../topics/MapFilter">Map filtering</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowCustomFilters</td>
+<td><code>bool</code></td>
+<td>Whether to allow custom filters.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowFilterByGeom</td>
+<td><code>bool</code></td>
+<td>Whether to allow filter by geometry. Requires the filter_geom plugin from qwc-qgis-server-plugins, and the filter will only be applied to postgis layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>allowFilterByTime</td>
+<td><code>bool</code></td>
+<td>Whether to display the temporal filter if temporal dimensions are found.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>highlightStyle</td>
+<td><code>{</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>}</code></td>
+<td>The style used for highlighting filter geometries.</td>
+<td><code>{</code><br /><code>strokeColor: [0, 0, 0],</code><br /><code>fillColor: [255, 255, 0, 0.25]</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot). Set to -1 to hide the button.</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapinfotooltip">MapInfoTooltip<a name="mapinfotooltip"></a><a class="headerlink" href="#mapinfotooltip" title="Permanent link">&para;</a></h2>
+<p>Provides map context information when right-clicking on the map.</p>
+<p>Displays the coordinates at the picked position by default.</p>
+<p>If <code>elevationServiceUrl</code> in <code>config.json</code> to points to a <code>qwc-elevation-service</code>,
+or a custom elevation interface is exposed in <code>window.QWC2ElevationInterface</code> (see
+<a href="https://github.com/qgis/qwc2/blob/master/utils/ElevationInterface.js">ElevationInterface.js</a>), the
+height at the picked position is also displayed.</p>
+<p>If <code>mapInfoService</code> in <code>config.json</code> points to a <code>qwc-mapinfo-service</code>, additional
+custom information according to the <code>qwc-mapinfo-service</code> configuration is returned.</p>
+<p>You can pass additional plugin components to the <code>MapInfoTooltip</code> in <code>appConfig.js</code>:</p>
+<pre><code class="language-json">MapInfoTooltipPlugin: MapInfoTooltipPlugin([FirstPlugin, SecondPlugin])
+</code></pre>
+<p>where a Plugin is a React component of the form</p>
+<pre><code class="language-jsx">class MapInfoTooltipPlugin extends React.Component {
+  static propTypes = {
+    point: PropTypes.object,
+    closePopup: PropTypes.func
+  }
+  render() { return ...; }
+};
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>elevationPrecision</td>
+<td><code>number</code></td>
+<td>The number of decimal places to display for elevation values.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>plugins</td>
+<td><code>array</code></td>
+<td>Additional plugin components for the map info tooltip.</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="maplegend">MapLegend<a name="maplegend"></a><a class="headerlink" href="#maplegend" title="Permanent link">&para;</a></h2>
+<p>Displays the map legend in a floating dialog.</p>
+<p>The user can toggle whether to display only layers which are enabled, visible in the current extent and/or visible at the current scale.</p>
+<p>See https://docs.qgis.org/3.28/en/docs/server_manual/services/wms.html#wms-getlegendgraphic for supported extra legend params.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addGroupTitles</td>
+<td><code>bool</code></td>
+<td>Whether to add group titles to the legend.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>addLayerTitles</td>
+<td><code>bool</code></td>
+<td>Whether to add layer titles to the legend. Note that often the legend image itself already contains the layer title.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>bboxDependentLegend</td>
+<td><code>bool</code></td>
+<td>Whether to display a BBOX-dependent legend by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>excludeLayers</td>
+<td><code>array</code></td>
+<td>List of layernames to exclude from the legend.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>extraLegendParameters</td>
+<td><code>string</code></td>
+<td>Extra parameters to add to the GetLegendGraphics request.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. A locked window is not closeable and not resizeable. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 320,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>lockedWindow</td>
+<td><code>bool</code></td>
+<td>Whether the legend window is locked (always visible, not moveable or closeable). Set position and size via <code>geometry</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>onlyVisibleLegend</td>
+<td><code>bool</code></td>
+<td>Whether to only include enabled layers in the legend by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>scaleDependentLegend</td>
+<td><code>bool</code></td>
+<td>Whether to display a scale-dependent legend by default.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="maptip">MapTip<a name="maptip"></a><a class="headerlink" href="#maptip" title="Permanent link">&para;</a></h2>
+<p>Displays maptips by hovering over features on the map.</p>
+<p>Queries the map tips configured in the QGIS layer properites over GetFeatureInfo.</p>
+<p>The map tip needs to be configured in QGIS Layer Properties &rarr; Display.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>layerFeatureCount</td>
+<td><code>number</code></td>
+<td>The maximum number of feature maptips to display for a single layer.</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td><code>string</code></td>
+<td>The maximum height of the maptip popop bubble, as a CSS string.</td>
+<td><code>"15em"</code></td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td><code>string</code></td>
+<td>The maximum height of the maptip popop bubble, as a CSS string.</td>
+<td><code>"20em"</code></td>
+</tr>
+<tr>
+<td>showFeatureSelection</td>
+<td><code>bool</code></td>
+<td>Whether to show the maptip feature selection on the map or not</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="measure">Measure<a name="measure"></a><a class="headerlink" href="#measure" title="Permanent link">&para;</a></h2>
+<p>Allows measuring points/lines/areas on the map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bearingHeadMarker</td>
+<td><code>string</code></td>
+<td>Head marker of bearing line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>bearingTailMarker</td>
+<td><code>string</code></td>
+<td>Tail marker of bearing line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>clearMeasurementsOnExit</td>
+<td><code>bool</code></td>
+<td>Whether to clear measurements when exiting measurement tool.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>clearMeasurementsOnModeChange</td>
+<td><code>bool</code></td>
+<td>Whether to clear measurements when changing measurement mode.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>lineHeadMarker</td>
+<td><code>string</code></td>
+<td>Head marker of distance line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>lineTailMarker</td>
+<td><code>string</code></td>
+<td>Tail marker of distance line measurement geometry. Can be one of <code>OUTARROW</code>, <code>INARROW</code>, <code>LINE</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>markerScale</td>
+<td><code>number</code></td>
+<td>Scale factor for all heade/tail markers.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>showMeasureModeSwitcher</td>
+<td><code>bool</code></td>
+<td>Whether to show the widget to switch between measure modes.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showPerimeterLength</td>
+<td><code>bool</code></td>
+<td>Whether to show the perimeter length of area measurements.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>snapping</td>
+<td><code>bool</code></td>
+<td>Whether snapping is available when editing.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>snappingActive</td>
+<td><code>{bool, string}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="newspopup">NewsPopup<a name="newspopup"></a><a class="headerlink" href="#newspopup" title="Permanent link">&para;</a></h2>
+<p>Displays a newsletter in a popup dialog.</p>
+<p>The popup won't be dispayed anymore, if the user chooses so, until a newer
+revision is published (specified via newsRev prop).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>newsDocument</td>
+<td><code>string</code></td>
+<td>URL to the news HTML document to display in the popup. Can contain <code>{lang}</code> as a placeholder which will be replaced with the current viewer language.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>newsRev</td>
+<td><code>string</code></td>
+<td>Revision of the document.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showInSidebar</td>
+<td><code>bool</code></td>
+<td>Whether to show the news in a sidebar instead of a popup.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>sidebarWidth</td>
+<td><code>string</code></td>
+<td>The default width of the sidebar, as a CSS width string.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="objectlist">ObjectList<a name="objectlist"></a><a class="headerlink" href="#objectlist" title="Permanent link">&para;</a></h2>
+<p>Display layer object lists in a dialog.</p>
+<p>The object list is similar to the attribute table, but displays only the display field for each object and contains no edit functionality.</p>
+<p>To make a layer available in the object list, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
+<p>This plugin queries the dataset via the editing service specified by
+<code>editServiceUrl</code> in <code>config.json</code> (by default the <code>qwc-data-service</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to limit to the extent by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showLimitToExtent</td>
+<td><code>bool</code></td>
+<td>Whether to show the "Limit to extent" checkbox</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>zoomLevel</td>
+<td><code>number</code></td>
+<td>The zoom level for zooming to point features.</td>
+<td><code>1000</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="obliqueview">ObliqueView<a name="obliqueview"></a><a class="headerlink" href="#obliqueview" title="Permanent link">&para;</a></h2>
+<p>Display oblique satellite imagery.</p>
+<p>See <a href="../../topics/ObliqueView">Oblique View</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 640,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>initialScale</td>
+<td><code>number</code></td>
+<td>The initial map scale.</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td>scales</td>
+<td><code>[number]</code></td>
+<td>A list of allowed map scales, in decreasing order.</td>
+<td><code>[20000, 10000, 5000, 2500, 1000, 500, 250]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overviewmap">OverviewMap<a name="overviewmap"></a><a class="headerlink" href="#overviewmap" title="Permanent link">&para;</a></h2>
+<p>Overview map support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td><code>object</code></td>
+<td>See <a href="https://openlayers.org/en/latest/apidoc/module-ol_control_OverviewMap-OverviewMap.html">OpenLayers API doc</a> for general options.<br /> Additionally, you can specify:<br /> - <code>layer</code>: Custom overview layer, in the same form as background layer definitions (<code>{type: "&lt;wms|wmts&gt;", "url": ...}</code>).<br /> - <code>viewOptions</code>: Options for the OverviewMap View, see <a href="https://openlayers.org/en/latest/apidoc/module-ol_View.html">OpenLayers API doc</a>.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="panoramax">Panoramax<a name="panoramax"></a><a class="headerlink" href="#panoramax" title="Permanent link">&para;</a></h2>
+<p>Panoramax Integration for QWC2.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loadSequencesTiles</td>
+<td><code>bool</code></td>
+<td>Whether or not to load the layer containing the image sequences.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>panoramaxInstance</td>
+<td><code>string</code></td>
+<td>URL of the Panoramax instance.</td>
+<td><code>'api.panoramax.xyz'</code></td>
+</tr>
+<tr>
+<td>tileMode</td>
+<td><code>string</code></td>
+<td>Mode for the image sequences layer: either WMS (Require a custom URL) or MVT(EPSG:3857 only).</td>
+<td><code>'mvt'</code></td>
+</tr>
+<tr>
+<td>wmsUrl</td>
+<td><code>string</code></td>
+<td>URL of the WMS image sequences layer.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="portal">Portal<a name="portal"></a><a class="headerlink" href="#portal" title="Permanent link">&para;</a></h2>
+<p>Displays a landing lage, consisting of a full-screen theme switcher and a configurable menu.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bottomBarLinks</td>
+<td><code>[{</code><br /><code>href: string,</code><br /><code>label: string,</code><br /><code>labelmsgid: string,</code><br /><code>target: string,</code><br /><code>}]</code></td>
+<td>Links to show in the portal bottom bar</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>collapsibleGroups</td>
+<td><code>bool</code></td>
+<td>Whether to allow collapsing groups in the theme switcher.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>expandGroups</td>
+<td><code>bool</code></td>
+<td>Whether to expand theme groups by default.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logo</td>
+<td><code>string</code></td>
+<td>Name of a logo image below assets/img.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>menuItems</td>
+<td><code>array</code></td>
+<td>Portal menu items, in the same format as the TopBar menu items.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>showMenuOnStartup</td>
+<td><code>bool</code></td>
+<td>Whether the menu should be visible on startup.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>topBarText</td>
+<td><code>string</code></td>
+<td>Portal title text to show in the top bar.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="print">Print<a name="print"></a><a class="headerlink" href="#print" title="Permanent link">&para;</a></h2>
+<p>Invokes QGIS Server WMS GetPrint to print the map to PDF.</p>
+<p>Uses the print layouts defined in the QGIS project.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowGeoPdfExport</td>
+<td><code>bool</code></td>
+<td>Whether to allow GeoPDF export. Requires QGIS Server 3.32 or newer.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>defaultDpi</td>
+<td><code>number</code></td>
+<td>The default print dpi.</td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td>defaultScaleFactor</td>
+<td><code>number</code></td>
+<td>The factor to apply to the map scale to determine the initial print map scale.</td>
+<td><code>0.5</code></td>
+</tr>
+<tr>
+<td>displayPrintSeries</td>
+<td><code>bool</code></td>
+<td>Show an option to print a series of extents.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>displayRotation</td>
+<td><code>bool</code></td>
+<td>Whether to display the printing rotation control.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>fileNameTemplate</td>
+<td><code>string</code></td>
+<td>Template for the name of the generated files when downloading. Can contain the placeholders <code>{layout}</code>, <code>{username}</code>, <code>{tenant}</code>, <code>{theme}</code>, <code>{themeTitle}</code>, <code>{timestamp}</code>.</td>
+<td><code>'{theme}_{timestamp}'</code></td>
+</tr>
+<tr>
+<td>formats</td>
+<td><code>[string]</code></td>
+<td>Export layout format mimetypes. If format is not supported by QGIS Server, print will fail.</td>
+<td><code>['application/pdf', 'image/jpeg', 'image/png', 'image/svg']</code></td>
+</tr>
+<tr>
+<td>gridInitiallyEnabled</td>
+<td><code>bool</code></td>
+<td>Whether the grid is enabled by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>hideAutopopulatedFields</td>
+<td><code>bool</code></td>
+<td>Whether to hide form fields which contain autopopulated values (i.e. search result label).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>inlinePrintOutput</td>
+<td><code>bool</code></td>
+<td>Whether to display the print output in an inline dialog instead triggering a download.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>layoutHidePrefix</td>
+<td><code>string</code></td>
+<td>Hide layouts which begin with this prefix.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>layoutSortOrder</td>
+<td><code>string</code></td>
+<td>Layout sort order, asc or desc.</td>
+<td><code>'asc'</code></td>
+</tr>
+<tr>
+<td>movePrintSeries</td>
+<td><code>bool</code></td>
+<td>Whether to allow moving the extent while selecting the print series.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>printExternalLayers</td>
+<td><code>bool</code></td>
+<td>Whether to print external layers. Requires QGIS Server 3.x!</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>printMapHighlights</td>
+<td><code>bool</code></td>
+<td>Whether to print highlights on the map, e.g. selected features or redlining.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>restrictToPrintScales</td>
+<td><code>bool</code></td>
+<td>Restrict print scale to list of predefined print scales, if any.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>scaleFactor</td>
+<td><code>number</code></td>
+<td>Scale factor to apply to line widths, font sizes, ... of redlining drawings passed to GetPrint.</td>
+<td><code>1.9</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="redlining">Redlining<a name="redlining"></a><a class="headerlink" href="#redlining" title="Permanent link">&para;</a></h2>
+<p>Allows drawing figures and text labels on the map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allowGeometryLabels</td>
+<td><code>bool</code></td>
+<td>Whether to allow labeling geometric figures.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>defaultAreaUnit</td>
+<td><code>string</code></td>
+<td>Default area unit. Options: <code>metric</code>, <code>imperial</code>, <code>sqm</code>, <code>ha</code>, <code>sqkm</code>, <code>sqft</code>, <code>acre</code>, <code>sqmi</code></td>
+<td><code>'metric'</code></td>
+</tr>
+<tr>
+<td>defaultBorderColor</td>
+<td><code>array</code></td>
+<td>Default border color. In format <code>[r, g, b, a]</code>.</td>
+<td><code>[255, 0, 0, 1]</code></td>
+</tr>
+<tr>
+<td>defaultFillColor</td>
+<td><code>array</code></td>
+<td>Default fill color. In format <code>[r, g, b, a]</code>.</td>
+<td><code>[255, 255, 255, 1]</code></td>
+</tr>
+<tr>
+<td>defaultLengthUnit</td>
+<td><code>string</code></td>
+<td>Default length unit. Options: <code>metric</code>, <code>imperial</code>, <code>m</code>, <code>km</code>, <code>ft</code>, <code>mi</code></td>
+<td><code>'metric'</code></td>
+</tr>
+<tr>
+<td>defaultTextFillColor</td>
+<td><code>array</code></td>
+<td>Default text fill color. In format <code>[r, g, b, a]</code>.</td>
+<td><code>[0, 0, 0, 1]</code></td>
+</tr>
+<tr>
+<td>defaultTextOutlineColor</td>
+<td><code>array</code></td>
+<td>Default text outline color. In format <code>[r, g, b, a]</code>.</td>
+<td><code>[255, 255, 255, 1]</code></td>
+</tr>
+<tr>
+<td>hiddenTools</td>
+<td><code>array</code></td>
+<td>Tools to hide. Available tools: <code>Circle</code>, <code>Ellipse</code>, <code>Square</code>, <code>Box</code>, <code>HandDrawing</code>, <code>Transform</code>, <code>NumericInput</code>, <code>Buffer</code>, <code>Export</code>.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>predefinedBorderColors</td>
+<td><code>[array]</code></td>
+<td>Predefined border colors. In format <code>[[r, g, b, a], ...]</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>predefinedDashPatterns</td>
+<td><code>[array]</code></td>
+<td>Predefined dash patterns. In format <code>[&lt;dash-array&gt;, ...]</code>, where a dash-array is list of alternating dash and gap widths, i.e. <code>[8 4]</code> for long dashes followed by shorter gaps.</td>
+<td><code>[[], [8, 8], [1, 8], [8, 8, 1, 8]]</code></td>
+</tr>
+<tr>
+<td>predefinedFillColors</td>
+<td><code>[array]</code></td>
+<td>Predefined fill colors. In format <code>[[r, g, b, a], ...]</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>snapping</td>
+<td><code>bool</code></td>
+<td>Whether snapping is available when editing.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>snappingActive</td>
+<td><code>{bool, string}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reports">Reports<a name="reports"></a><a class="headerlink" href="#reports" title="Permanent link">&para;</a></h2>
+<p>Allow generating reports for selected features.</p>
+<p>This plugin displays all available reports for the current theme,
+allows selecting one or more or all features of the layer, and finally generating
+an aggregated report for all selected features.</p>
+<p>Requires <code>documentServiceUrl</code> in <code>config.json</code> to point to a <code>qwc-document-service</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="routing">Routing<a name="routing"></a><a class="headerlink" href="#routing" title="Permanent link">&para;</a></h2>
+<p>Compute routes and isochrones.</p>
+<p>Requires <code>routingServiceUrl</code> in <code>config.json</code> pointing to a Valhalla routing service.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabledModes</td>
+<td><code>[string]</code></td>
+<td>List of enabled routing modes.</td>
+<td><code>["auto", "heavyvehicle", "transit", "bicycle", "pedestrian"]</code></td>
+</tr>
+<tr>
+<td>enabledProviders</td>
+<td><code>[string]</code></td>
+<td>List of search providers to use for routing location search.</td>
+<td><code>["coordinates", "nominatim"]</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 640,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>showPinLabels</td>
+<td><code>bool</code></td>
+<td>Whether to label the routing waypoint pins with the route point number.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>units</td>
+<td><code>object</code></td>
+<td>Set of units for isochrone time/distance intervals to use.</td>
+<td><code>{</code><br /><code>time: {</code><br /><code>min: 1,</code><br /><code>s: 60</code><br /><code>},</code><br /><code>distance: {</code><br /><code>km: 1,</code><br /><code>m: 1000</code><br /><code>}</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>zoomAuto</td>
+<td><code>bool</code></td>
+<td>Automatically zoom to the extent of the route</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="scratchdrawing">ScratchDrawing<a name="scratchdrawing"></a><a class="headerlink" href="#scratchdrawing" title="Permanent link">&para;</a></h2>
+<p>Task which which can be invoked by other tools to draw a geometry and pass it to a callback.</p>
+<p>Only useful for third-party code, i.e. over the JavaScript API.</p>
+<p>Invoke as <code>setCurrentTask("ScratchDrawing", null, null, {callback: &lt;function(features, crs)&gt;});</code></p>
+<h2 id="settings">Settings<a name="settings"></a><a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<p>Settings panel.</p>
+<p>Allows configuring language and color scheme.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>colorSchemes</td>
+<td><code>[{</code><br /><code>title: string,</code><br /><code>titleMsgId: string,</code><br /><code>value: string,</code><br /><code>}]</code></td>
+<td>List of available color schemes. Value is the css class name, title/titleMsgId the display name.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>languages</td>
+<td><code>[{</code><br /><code>title: string,</code><br /><code>titleMsgId: string,</code><br /><code>value: string,</code><br /><code>}]</code></td>
+<td>List of available languages. Value is the lang code, title/titleMsgId the display name.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>showDefaultThemeSelector</td>
+<td><code>bool</code></td>
+<td>Whether to show a selector to set the default theme/bookmark (of a logged in user).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="share">Share<a name="share"></a><a class="headerlink" href="#share" title="Permanent link">&para;</a></h2>
+<p>Share the current map as a URL/permalink.</p>
+<p>Compact permalinks will be generated if <code>permalinkServiceUrl</code> in <code>config.json</code> points to a <code>qwc-permalink-service</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>restrictableGroups</td>
+<td><code>array</code></td>
+<td>List of groups for which a permalink may optionally be restricted (only displayed for a logged-in user).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showLink</td>
+<td><code>bool</code></td>
+<td>Show the map URL.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showQRCode</td>
+<td><code>bool</code></td>
+<td>Show the QR code of the map URL.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showSocials</td>
+<td><code>{bool, [string]}</code></td>
+<td>Show the social buttons. Either <code>true</code> or <code>false</code>to enable/disable all, or an array of specific buttons to display (possible choices: <code>email</code>, <code>facebook</code>, <code>twitter</code>, <code>linkedin</code>, <code>whatsapp</code>).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="startupmarker">StartupMarker<a name="startupmarker"></a><a class="headerlink" href="#startupmarker" title="Permanent link">&para;</a></h2>
+<p>Displays a marker when starting up the viewer.</p>
+<p>The marked is displayed in the center of the map if <code>c=&lt;x&gt;,&lt;y&gt;&amp;hc=1</code> is set in the URL.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>removeMode</td>
+<td><code>string</code></td>
+<td>When to remove the marker. Possible choices: onpan, onzoom, onclickonmarker.</td>
+<td><code>'onpan'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="taskbutton">TaskButton<a name="taskbutton"></a><a class="headerlink" href="#taskbutton" title="Permanent link">&para;</a></h2>
+<p>Generic map button to launch a task.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td><code>string</code></td>
+<td>The icon name.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>mode</td>
+<td><code>string</code></td>
+<td>The task mode.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>task</td>
+<td><code>string</code></td>
+<td>The task name.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagBlacklist</td>
+<td><code>[string]</code></td>
+<td>Omit the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagWhitelist</td>
+<td><code>[string]</code></td>
+<td>Only show the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="themeswitcher">ThemeSwitcher<a name="themeswitcher"></a><a class="headerlink" href="#themeswitcher" title="Permanent link">&para;</a></h2>
+<p>Theme switcher panel.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>collapsibleGroups</td>
+<td><code>bool</code></td>
+<td>Whether to allow collapsing theme groups.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>expandGroups</td>
+<td><code>bool</code></td>
+<td>Whether to expand theme groups by default.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>hideAddThemeButton</td>
+<td><code>bool</code></td>
+<td>Whether to hide the add theme button. Note: the button will also be hidden if the global option <code>allowAddingOtherThemes</code> is <code>false</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>hideAddThemeLayersButton</td>
+<td><code>bool</code></td>
+<td>Whether to hide the add theme layers button. Note: the button will also be hidden if the global option <code>allowAddingOtherThemes</code> is <code>false</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showActiveTheme</td>
+<td><code>bool</code></td>
+<td>Whether to display the currently active theme below the application menu button. Default: false</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showDefaultThemeSelector</td>
+<td><code>bool</code></td>
+<td>Whether to show an icon to select the default theme/bookmark (of a logged in user).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showLayerAfterChangeTheme</td>
+<td><code>bool</code></td>
+<td>Whether to show the LayerTree by default after switching the theme.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showThemeFilter</td>
+<td><code>bool</code></td>
+<td>Wether to show the theme filter field in the top bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+<tr>
+<td>themeLayersListWindowSize</td>
+<td><code>{</code><br /><code>width: number,</code><br /><code>height: number,</code><br /><code>}</code></td>
+<td>The default window size for the theme layers dialog.</td>
+<td><code>{width: 400, height: 300}</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>string</code></td>
+<td>Default width as a CSS string.</td>
+<td><code>"50%"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="timemanager">TimeManager<a name="timemanager"></a><a class="headerlink" href="#timemanager" title="Permanent link">&para;</a></h2>
+<p>Allows controling the time dimension of temporal WMS layers.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cursorFormat</td>
+<td><code>string</code></td>
+<td>The format of the time cursor label. Either <code>date</code>, <code>time</code> or <code>datetime</code>.</td>
+<td><code>"datetime"</code></td>
+</tr>
+<tr>
+<td>dateFormat</td>
+<td><code>string</code></td>
+<td>The date format in the time controls, i.e. YYYY-MM-DD.</td>
+<td><code>"YYYY-MM-DD[\n]HH:mm:ss"</code></td>
+</tr>
+<tr>
+<td>defaultAnimationInterval</td>
+<td><code>number</code></td>
+<td>The default interval for the temporal animation, in seconds.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>defaultEnabled</td>
+<td><code>bool</code></td>
+<td>Default for TimeManager enabled when loading application. <code>true</code> or <code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>defaultFeatureCount</td>
+<td><code>number</code></td>
+<td>The default number of features that will be requested.</td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td>defaultStepSize</td>
+<td><code>number</code></td>
+<td>The default step size for the temporal animation, in step units.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>defaultStepUnit</td>
+<td><code>string</code></td>
+<td>The default step unit for the temporal animation, one of <code>ms</code>, <code>s</code>, <code>m</code>, <code>d</code>, <code>M</code>, <code>y</code>, <code>10y</code>, <code>100y</code></td>
+<td><code>"d"</code></td>
+</tr>
+<tr>
+<td>defaultTimelineDisplay</td>
+<td><code>string</code></td>
+<td>The default timeline display mode. One of <code>hidden</code>, <code>minimal</code>, <code>features</code>, <code>layers</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>defaultTimelineMode</td>
+<td><code>string</code></td>
+<td>The default timeline mode. One of <code>fixed</code>, <code>infinite</code>.</td>
+<td><code>"fixed"</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 800,</code><br /><code>initialHeight: 320,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>markerConfiguration</td>
+<td><code>{</code><br /><code>markersAvailable: bool,</code><br /><code>gradient: [string],</code><br /><code>markerOffset: array,</code><br /><code>markerPins: bool,</code><br /><code>}</code></td>
+<td>The feature marker configuration.</td>
+<td><code>{</code><br /><code>markersAvailable: true,</code><br /><code>gradient: ["#f7af7d", "#eacc6e", "#fef89a", "#c5e09b", "#a3d29c", "#7cc096", "#79c8c5", "#34afce"],</code><br /><code>markerOffset: [0, 0],</code><br /><code>markerPins: true</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>stepUnits</td>
+<td><code>[string]</code></td>
+<td>The available temporal animation step units.</td>
+<td><code>["s", "m", "h", "d", "M", "y"]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="topbar">TopBar<a name="topbar"></a><a class="headerlink" href="#topbar" title="Permanent link">&para;</a></h2>
+<p>Top bar, containing the logo, searchbar, task buttons and app menu.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appMenuClearsTask</td>
+<td><code>bool</code></td>
+<td>Whether opening the app menu clears the active task.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>appMenuCompact</td>
+<td><code>bool</code></td>
+<td>Whether show an appMenu compact (menu visible on icons hover) - Only available for desktop client.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>appMenuFilterField</td>
+<td><code>bool</code></td>
+<td>Whether to display the filter field in the app menu.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>appMenuHidden</td>
+<td><code>bool</code></td>
+<td>Whether to hide the app menu (useful primarely as a theme specific setting).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>appMenuShortcut</td>
+<td><code>string</code></td>
+<td>The shortcut for tiggering the app menu, i.e. alt+shift+m.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>appMenuVisibleOnStartup</td>
+<td><code>bool</code></td>
+<td>Whether to open the app menu on application startup.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logoFormat</td>
+<td><code>string</code></td>
+<td>The logo file format.</td>
+<td><code>"svg"</code></td>
+</tr>
+<tr>
+<td>logoSrc</td>
+<td><code>string</code></td>
+<td>The logo image URL if a different source than the default <code>assets/img/logo.&lt;ext&gt;</code> and <code>assets/img/logo-mobile.&lt;ext&gt;</code> is desired.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>logoUrl</td>
+<td><code>string</code></td>
+<td>The hyperlink to open when the logo is clicked.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>menuItems</td>
+<td><code>array</code></td>
+<td>The menu items. Refer to the corresponding chapter of the viewer documentation and the sample config.json.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>registerTaskSearchProvider</td>
+<td><code>bool</code></td>
+<td>Whether to register a search provider which allows searching menu tasks through the global search field.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>searchOptions</td>
+<td><code>{</code><br /><code>allowAddLayerAsGroup: bool,</code><br /><code>allowSearchFilters: bool,</code><br /><code>focusOnStartup: bool,</code><br /><code>hideResultLabels: bool,</code><br /><code>highlightStyle: {</code><br /><code>strokeColor: array,</code><br /><code>strokeWidth: number,</code><br /><code>strokeDash: array,</code><br /><code>fillColor: array,</code><br /><code>},</code><br /><code>minScaleDenom: number,</code><br /><code>resultLimit: number,</code><br /><code>sectionsDefaultCollapsed: bool,</code><br /><code>showHighlightMarker: bool,</code><br /><code>showLayerAfterChangeTheme: bool,</code><br /><code>showLayerResultsBeforePlaces: bool,</code><br /><code>showResultInSearchText: bool,</code><br /><code>zoomToLayers: bool,</code><br /><code>}</code></td>
+<td>Options passed down to the search component.</td>
+<td><code>{</code><br /><code>allowAddLayerAsGroup: true,</code><br /><code>showHighlightMarker: true,</code><br /><code>showResultInSearchText: true,</code><br /><code>minScaleDenom: 1000</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>toolbarItems</td>
+<td><code>array</code></td>
+<td>The toolbar. Refer to the corresponding chapter of the viewer documentation and the sample config.json.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>toolbarItemsShortcutPrefix</td>
+<td><code>string</code></td>
+<td>The keyboard shortcut prefix for triggering toolbar tasks. I.e. alt+shift. The task are then triggered by <prefix>+{1,2,3,...} for the 1st, 2nd, 3rd... toolbar icon.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tourguide">TourGuide<a name="tourguide"></a><a class="headerlink" href="#tourguide" title="Permanent link">&para;</a></h2>
+<p>Launches a tour guide of the application, as configured by a configuration file.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tourGuideUrl</td>
+<td><code>string</code></td>
+<td>Url of the Tourguide JSON configuration.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="valuetool">ValueTool<a name="valuetool"></a><a class="headerlink" href="#valuetool" title="Permanent link">&para;</a></h2>
+<p>Displays raster band values of active raster layers at the hovered mouse position,
+queried via GetFeatureInfo.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td><code>bool</code></td>
+<td>The number of decimal places to display for elevation values.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="view3d">View3D<a name="view3d"></a><a class="headerlink" href="#view3d" title="Permanent link">&para;</a></h2>
+<p>Displays a 3D map view.</p>
+<p>See <a href="../../topics/View3D">3D View</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>controlsPosition</td>
+<td><code>string</code></td>
+<td>The position of the navigation controls. Either <code>top</code> or <code>bottom</code>.</td>
+<td><code>'top'</code></td>
+</tr>
+<tr>
+<td>defaultFov</td>
+<td><code>number</code></td>
+<td>The default field of view (<code>20</code>: min, <code>100</code>: max).</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td>defaultSceneQuality</td>
+<td><code>number</code></td>
+<td>The default scene quality factor (<code>20</code>: min, <code>100</code>: max).</td>
+<td><code>100</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>}</code></td>
+<td>Default window geometry.</td>
+<td><code>{</code><br /><code>initialWidth: 600,</code><br /><code>initialHeight: 800,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: true</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>mouseButtons</td>
+<td><code>{</code><br /><code>left: string,</code><br /><code>middle: string,</code><br /><code>right: string,</code><br /><code>}</code></td>
+<td>Mouse buttons assignment. You can assign <code>pan</code>, <code>rotate</code>, <code>zoom</code> to each button.</td>
+<td><code>{</code><br /><code>left: 'pan',</code><br /><code>middle: 'zoom',</code><br /><code>right: 'rotate'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>pluginOptions</td>
+<td><code>object</code></td>
+<td>Options to pass to the 3D plugins, in the form <code>{"&lt;PluginName&gt;": {&lt;options&gt;}}</code>.<br />Refer to the documentation of the <a href="#plugins3d">3D plugins</a> for settable options.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="zoombutton">ZoomButton<a name="zoombutton"></a><a class="headerlink" href="#zoombutton" title="Permanent link">&para;</a></h2>
+<p>Map button for zooming the map.</p>
+<p>Two specific plugins exist: ZoomInPlugin and ZoomOutPlugin, which are instances of ZoomButton for the respective zoom directions.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enableZoomByBoxSelection</td>
+<td><code>bool</code></td>
+<td>Enable zoom in or out by box selection.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagBlacklist</td>
+<td><code>[string]</code></td>
+<td>Omit the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>themeFlagWhitelist</td>
+<td><code>[string]</code></td>
+<td>Only show the button in themes matching one of these flags.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="map-support-plugins">Map support plugins<a name="mapSupportPlugins"></a><a class="headerlink" href="#map-support-plugins" title="Permanent link">&para;</a></h1>
+<p>These plugins must be listed as children of the <a href="#map">Map</a> plugin.</p>
+<h2 id="editingsupport">EditingSupport<a name="editingsupport"></a><a class="headerlink" href="#editingsupport" title="Permanent link">&para;</a></h2>
+<p>Editing support for the map component.</p>
+<h2 id="locatesupport">LocateSupport<a name="locatesupport"></a><a class="headerlink" href="#locatesupport" title="Permanent link">&para;</a></h2>
+<p>GPS locate support for the map component.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drawCircle</td>
+<td><code>bool</code></td>
+<td>Whether to draw an accuracy circle around the location point.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>metric</td>
+<td><code>bool</code></td>
+<td>Whether to display the accuracy in meters (<code>true</code>) or in feet (<code>false</code>).</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showPopup</td>
+<td><code>bool</code></td>
+<td>Whether to show a popup displaying accuracy information when clicking on the location point.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>startupMode</td>
+<td><code>string</code></td>
+<td>The geolocation startup mode. Either <code>DISABLED</code>, <code>ENABLED</code> or <code>FOLLOWING</code>.</td>
+<td><code>"DISABLED"</code></td>
+</tr>
+<tr>
+<td>stopFollowingOnDrag</td>
+<td><code>bool</code></td>
+<td>Whether to stop following when the map is dragged.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>trackingOptions</td>
+<td><code>object</code></td>
+<td>Tracking options, as documented in the <a href="https://www.w3.org/TR/geolocation-API/#position_options_interface">HTML5 Geolocation spec</a></td>
+<td><code>{</code><br /><code>maximumAge: 2000,</code><br /><code>enableHighAccuracy: true,</code><br /><code>timeout: 10000</code><br /><code>}</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="measurementsupport">MeasurementSupport<a name="measurementsupport"></a><a class="headerlink" href="#measurementsupport" title="Permanent link">&para;</a></h2>
+<p>Measurement support for the map component.</p>
+<h2 id="redliningsupport">RedliningSupport<a name="redliningsupport"></a><a class="headerlink" href="#redliningsupport" title="Permanent link">&para;</a></h2>
+<p>Redlining support for the map component.</p>
+<h2 id="snappingsupport">SnappingSupport<a name="snappingsupport"></a><a class="headerlink" href="#snappingsupport" title="Permanent link">&para;</a></h2>
+<p>Snapping support for the map component.</p>
+<hr />
+<h1 id="3d-plugins">3D Plugins<a name="plugins3d"></a><a class="headerlink" href="#3d-plugins" title="Permanent link">&para;</a></h1>
+<p>These plugins must be listed as children of the <a href="#view3d">View3D</a> plugin.</p>
+<h2 id="backgroundswitcher3d">BackgroundSwitcher3D<a name="backgroundswitcher3d"></a><a class="headerlink" href="#backgroundswitcher3d" title="Permanent link">&para;</a></h2>
+<p>Map button for switching the background layer of the 3D map.</p>
+<h2 id="bottombar3d">BottomBar3D<a name="bottombar3d"></a><a class="headerlink" href="#bottombar3d" title="Permanent link">&para;</a></h2>
+<p>Bottom bar of the 3D map, displaying coordinates, projection, etc.</p>
+<h2 id="compare3d">Compare3D<a name="compare3d"></a><a class="headerlink" href="#compare3d" title="Permanent link">&para;</a></h2>
+<p>Split-screen and compare objects in the 3D map.</p>
+<h2 id="draw3d">Draw3D<a name="draw3d"></a><a class="headerlink" href="#draw3d" title="Permanent link">&para;</a></h2>
+<p>Draw objects in the 3D map.</p>
+<h2 id="exportobjects3d">ExportObjects3D<a name="exportobjects3d"></a><a class="headerlink" href="#exportobjects3d" title="Permanent link">&para;</a></h2>
+<p>Export objects from the 3D map.</p>
+<h2 id="hideobjects3d">HideObjects3D<a name="hideobjects3d"></a><a class="headerlink" href="#hideobjects3d" title="Permanent link">&para;</a></h2>
+<p>Hide objects in the 3D map.</p>
+<h2 id="identify3d">Identify3D<a name="identify3d"></a><a class="headerlink" href="#identify3d" title="Permanent link">&para;</a></h2>
+<p>Query attributes of objects in the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>tileInfoServiceUrl</td>
+<td><code>string</code></td>
+<td>URL to service for querying additional tile information.<br />Can contain the <code>{tileset}</code> and <code>{objectid}</code> placeholders.<br />Expected to return a JSON dict with attributes.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="layertree3d">LayerTree3D<a name="layertree3d"></a><a class="headerlink" href="#layertree3d" title="Permanent link">&para;</a></h2>
+<p>Layer and object tree for the 3D map</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>importedTilesBaseUrl</td>
+<td><code>string</code></td>
+<td>Base URL of imported tile sets.</td>
+<td><code>':/'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapcopyright3d">MapCopyright3D<a name="mapcopyright3d"></a><a class="headerlink" href="#mapcopyright3d" title="Permanent link">&para;</a></h2>
+<p>Displays layer attributions in the bottom right corner of the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefixCopyrightsWithLayerNames</td>
+<td><code>bool</code></td>
+<td>Whether to prepend the layer name to the attribution string.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>showThemeCopyrightOnly</td>
+<td><code>bool</code></td>
+<td>Whether to only display the attribution of the theme, omitting external layers.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapexport3d">MapExport3D<a name="mapexport3d"></a><a class="headerlink" href="#mapexport3d" title="Permanent link">&para;</a></h2>
+<p>Export the 3D map image to raster formats.</p>
+<h2 id="measure3d">Measure3D<a name="measure3d"></a><a class="headerlink" href="#measure3d" title="Permanent link">&para;</a></h2>
+<p>Measure in the 3D map.</p>
+<h2 id="overviewmap3d">OverviewMap3D<a name="overviewmap3d"></a><a class="headerlink" href="#overviewmap3d" title="Permanent link">&para;</a></h2>
+<p>Overview map for the 3D map.</p>
+<h2 id="settings3d">Settings3D<a name="settings3d"></a><a class="headerlink" href="#settings3d" title="Permanent link">&para;</a></h2>
+<p>Settings panel for the 3D map.</p>
+<h2 id="topbar3d">TopBar3D<a name="topbar3d"></a><a class="headerlink" href="#topbar3d" title="Permanent link">&para;</a></h2>
+<p>Bottom bar of the 3D map, including the search bar, tool bar and menu.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>menuItems</td>
+<td><code>array</code></td>
+<td>The menu items, in the same format as the 2D <code>TopBar</code> menu items.<br />You can include entries for the View3D plugins.<br />You can also include entries for 2D plugins which are compatible with the 3D view (i.e. <code>ThemeSwitcher</code>, <code>Share</code>, etc.),<br />these will be displayed only in fullsceen 3D mode.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>searchOptions</td>
+<td><code>{</code><br /><code>minScaleDenom: number,</code><br /><code>}</code></td>
+<td>Options passed down to the search component.</td>
+<td><code>{</code><br /><code>minScaleDenom: 1000</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>toolbarItems</td>
+<td><code>array</code></td>
+<td>The toolbar, in the same format as the 2D <code>TopBar</code> toolbar items.<br />You can include entries for the View3D plugins.<br />You can also include entries for 2D plugins which are compatible with the 3D view (i.e. <code>ThemeSwitcher</code>, <code>Share</code>, etc.),<br />these will be displayed only in fullsceen 3D mode.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="extra-plugins">Extra plugins<a name="extraPlugins"></a><a class="headerlink" href="#extra-plugins" title="Permanent link">&para;</a></h1>
+<p>These plugins are not enabled in the stock viewer, and must be enabled in a custom viewer build.</p>
+<h2 id="plotinfotool">PlotInfoTool<a name="plotinfotool"></a><a class="headerlink" href="#plotinfotool" title="Permanent link">&para;</a></h2>
+<p>Plugin for requesting plot information, including Swiss Public-law Restrictions on landownership (PLR) cadastre.</p>
+<p><strong><code>config.json</code> sample configuration:</strong></p>
+<pre><code>{
+  &quot;name&quot;: &quot;PlotInfoTool&quot;,
+  &quot;cfg&quot;: {
+    &quot;toolLayers&quot;: [&quot;&lt;layer_name&gt;&quot;, ...],
+    &quot;infoQueries&quot;: [
+      {
+        &quot;key&quot;: &quot;plotdescr&quot;,
+        &quot;titleMsgId&quot;: &quot;plotdescr.title&quot;,
+        &quot;query&quot;: &quot;/plot/$egrid$&quot;,
+        &quot;pdfQuery&quot;: null,
+        &quot;urlKey&quot;: &quot;cadastre_egrid&quot;
+      },
+      {
+        &quot;key&quot;: &quot;oereb&quot;,
+        &quot;titleMsgId&quot;: &quot;oereb.title&quot;,
+        &quot;query&quot;: &quot;/oereb/json/$egrid$&quot;,
+        &quot;pdfQuery&quot;: &quot;/oereb/pdf/$egrid$&quot;,
+        &quot;pdfTooltip&quot;: &quot;oereb.requestPdf&quot;,
+        &quot;urlKey&quot;: &quot;oereb_egrid&quot;,
+        &quot;cfg&quot;: {
+          &quot;subthemes&quot;: {
+            &quot;LandUsePlans&quot;: [&quot;Grundnutzung&quot;, &quot;Überlagerungen&quot;, &quot;Linienbezogene Festlegungen&quot;, &quot;Objektbezogene Festlegungen&quot;]
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>toolLayers</code>: List of layers to load when activating tool.</li>
+<li><code>infoQueries</code>: List of additional info queries to offer in the dialog (PLR cadastre query is built-in). By default, these render some HTML data in an iframe. If a custom component is needed for rendering the result, see configuration in <code>appConfig.js</code> below.</li>
+<li><code>key</code>: A unique key name.</li>
+<li><code>title</code>: The human visible title.</li>
+<li><code>titleMsgId</code>: Instead of <code>title</code>, a message id for the title which will be looked up in the translations.</li>
+<li><code>query</code>: The query to perform to retreive the info. Must return HTML, which is then rendered in an iframe. <code>$egrid$</code> is replaced with the EGRID of the current plot. If the specified URL is relative, it is resolved with respect to <code>plotInfoService</code> as defined in <code>config.json</code>.</li>
+<li><code>pdfQuery</code>: Optional query to retreive a PDF report, which is then presented as a download the the user. Again, <code>$egrid$</code> is replaced with the EGRID of the current plot.</li>
+<li><code>pdfTooltip</code>: Message id for the pdf button tooltip.</li>
+<li><code>urlKey</code>: Optional query parameter key name. If QWC2 is started with <code>&lt;urlKey&gt;=&lt;egrid&gt;</code> in the URL, the plot info tool is automatically enabled and the respective query performed.</li>
+<li><code>cfg</code>: Arbitrary custom config to pass to a custom component, see <code>appConfig.js</code> configuration below.</li>
+</ul>
+<p><strong><code>appConfig.js</code> configuration:</strong></p>
+<p>Sample <code>PlotInfoToolPlugin</code> configuration, as can be defined in the <code>cfg</code> section of <code>pluginsDef</code> in <code>appConfig.js</code>:</p>
+<pre><code>PlotInfoToolPlugin: {
+  themeLayerRestorer: require('./themeLayerRestorer'),
+  customInfoComponents: {
+    oereb: require('qwc2-extra/components/OerebDocument')
+  }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>themeLayerRestorer</code>: Function which restores theme layers, used for loading the <code>toolLayers</code> specified in the configuration in <code>config.json</code>. See <code>themeLayerRestorer</code> in the <a href="https://github.com/qgis/qwc2-demo-app/blob/master/js/appConfig.js">sample <code>appConfig.js</code></a>.</li>
+<li>
+<p><code>customInfoComponents</code>: Customized components for rendering plot info query results. The <code>key</code> specifies a the info query for which this component should be used, as specified in <code>infoQueries</code> in config.json (see above). An example of a minimal custom component:</p>
+<p>class CustomPlotInfoComponent extends React.Component {
+    static propTypes = {
+      data: PropTypes.object, // PropType according to format of data returned by the specified query URL
+      config: PropTypes.object // Custom configuration
+    }
+    render() {
+      return (<div>{this.props.data.field}</div>);
+    }
+  };</p>
+<p>module.exports = CustomPlotInfoComponent;</p>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qwc ogc service readme - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qwc ogc service readme";
+        var mkdocs_page_input_path = "references/qwc-ogc-service_readme.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Qwc ogc service readme</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://github.com/qwc-services/qwc-ogc-service/actions"><img alt="" src="https://github.com/qwc-services/qwc-ogc-service/workflows/build/badge.svg" /></a>
+<a href="https://hub.docker.com/r/sourcepole/qwc-ogc-service"><img alt="docker" src="https://img.shields.io/docker/v/sourcepole/qwc-ogc-service?label=Docker%20image&amp;sort=semver" /></a></p>
+<h1 id="qwc-ogc-service">QWC OGC Service<a class="headerlink" href="#qwc-ogc-service" title="Permanent link">&para;</a></h1>
+<p>Provide OGC services with permission filters as a proxy to a QGIS server.</p>
+<p>It suppports proxying WMS, WFS, WFS-T and OGC API Features.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The static config and permission files are stored as JSON files in <code>$CONFIG_PATH</code> with subdirectories for each tenant,
+e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>default</code>.</p>
+<h3 id="service-config">Service config<a class="headerlink" href="#service-config" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../schemas/qwc-ogc-service.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/ogcConfig.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-ogc-service/v2/schemas/qwc-ogc-service.json&quot;,
+  &quot;service&quot;: &quot;ogc&quot;,
+  &quot;config&quot;: {
+    &quot;default_qgis_server_url&quot;: &quot;http://localhost:8001/ows/&quot;,
+    &quot;oapi_qgis_server_url&quot;: &quot;http://localhost:8001/wfs3/&quot;
+  },
+  &quot;resources&quot;: {
+    &quot;wms_services&quot;: [
+      {
+        &quot;name&quot;: &quot;qwc_demo&quot;,
+        &quot;wms_url&quot;: &quot;http://localhost:8001/ows/qwc_demo&quot;,
+        &quot;online_resources&quot;: {
+          &quot;service&quot;: &quot;http://localhost:5013/qwc_demo&quot;,
+          &quot;feature_info&quot;: &quot;http://localhost:5013/qwc_demo&quot;,
+          &quot;legend&quot;: &quot;http://localhost:5013/qwc_demo&quot;
+        },
+        &quot;root_layer&quot;: {
+          &quot;name&quot;: &quot;qwc_demo&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;edit_demo&quot;,
+              &quot;layers&quot;: [
+                {
+                  &quot;name&quot;: &quot;edit_points&quot;,
+                  &quot;title&quot;: &quot;Edit Points&quot;,
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
+                  &quot;queryable&quot;: true
+                },
+                {
+                  &quot;name&quot;: &quot;edit_lines&quot;,
+                  &quot;title&quot;: &quot;Edit Lines&quot;,
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
+                  &quot;queryable&quot;: true
+                },
+                {
+                  &quot;name&quot;: &quot;edit_polygons&quot;,
+                  &quot;title&quot;: &quot;Edit Polygons&quot;,
+                  &quot;attributes&quot;: {
+                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
+                  },
+                  &quot;queryable&quot;: true
+                }
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;geographic_lines&quot;
+            },
+            {
+              &quot;name&quot;: &quot;country_names&quot;
+            },
+            {
+              &quot;name&quot;: &quot;states_provinces&quot;
+            },
+            {
+              &quot;name&quot;: &quot;countries&quot;,
+              &quot;title&quot;: &quot;Countries&quot;,
+              &quot;attributes&quot;: {
+                &quot;name&quot;: &quot;name&quot;, &quot;formal_en&quot;: &quot;formal_en&quot;, &quot;pop_est&quot;: &quot;pop_est&quot;, &quot;subregion&quot;: &quot;subregion&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+              },
+              &quot;queryable&quot;: true
+            }
+          ]
+        },
+        &quot;print_url&quot;: &quot;http://localhost:5013/qwc_demo&quot;,
+        &quot;print_templates&quot;: [&quot;A4 Landscape&quot;],
+        &quot;internal_print_layers&quot;: [&quot;bluemarble_bg&quot;, &quot;osm_bg&quot;]
+      }
+    ],
+    &quot;wfs_services&quot;: [
+      {
+        &quot;name&quot;: &quot;qwc_demo&quot;,
+        &quot;wfs_url&quot;: &quot;http://localhost:8001/ows/qwc_demo_wfs&quot;,
+        &quot;online_resource&quot;: &quot;http://localhost:5013/qwc_demo&quot;,
+        &quot;layers&quot;: [
+          {
+            &quot;name&quot;: &quot;edit_points&quot;,
+            &quot;attributes&quot;: {
+              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+            }
+          },
+          {
+            &quot;name&quot;: &quot;edit_lines&quot;,
+            &quot;attributes&quot;: {
+              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p><strong>Note</strong>: <code>wfs_services</code> example for a separate QGIS project <code>qwc_demo_wfs</code> with WFS enabled.</p>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/qwc-services/qwc-services-core/blob/master/schemas/qwc-services-permissions.json">JSON schema</a></li>
+<li>File location: <code>$CONFIG_PATH/&lt;tenant&gt;/permissions.json</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://raw.githubusercontent.com/qwc-services/qwc-services-core/master/schemas/qwc-services-permissions.json&quot;,
+  &quot;users&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;groups&quot;: [&quot;demo&quot;],
+      &quot;roles&quot;: []
+    }
+  ],
+  &quot;groups&quot;: [
+    {
+      &quot;name&quot;: &quot;demo&quot;,
+      &quot;roles&quot;: [&quot;demo&quot;]
+    }
+  ],
+  &quot;roles&quot;: [
+    {
+      &quot;role&quot;: &quot;public&quot;,
+      &quot;permissions&quot;: {
+        &quot;wms_services&quot;: [
+          {
+            &quot;name&quot;: &quot;qwc_demo&quot;,
+            &quot;layers&quot;: [
+              {
+                &quot;name&quot;: &quot;qwc_demo&quot;
+              },
+              {
+                &quot;name&quot;: &quot;edit_demo&quot;
+              },
+              {
+                &quot;name&quot;: &quot;edit_points&quot;,
+                &quot;attributes&quot;: [
+                  &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
+                ]
+              },
+              {
+                &quot;name&quot;: &quot;edit_lines&quot;,
+                &quot;attributes&quot;: [
+                  &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
+                ]
+              },
+              {
+                &quot;name&quot;: &quot;edit_polygons&quot;,
+                &quot;attributes&quot;: [
+                  &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;, &quot;maptip&quot;
+                ]
+              },
+              {
+                &quot;name&quot;: &quot;geographic_lines&quot;
+              },
+              {
+                &quot;name&quot;: &quot;country_names&quot;
+              },
+              {
+                &quot;name&quot;: &quot;states_provinces&quot;
+              },
+              {
+                &quot;name&quot;: &quot;countries&quot;,
+                &quot;attributes&quot;: [
+                  &quot;name&quot;, &quot;formal_en&quot;, &quot;pop_est&quot;, &quot;subregion&quot;, &quot;geometry&quot;
+                ]
+              },
+              {
+                &quot;name&quot;: &quot;bluemarble_bg&quot;
+              },
+              {
+                &quot;name&quot;: &quot;osm_bg&quot;
+              }
+            ],
+            &quot;print_templates&quot;: [&quot;A4 Landscape&quot;]
+          }
+        ]
+      },
+      &quot;wfs_services&quot;: [
+        {
+          &quot;name&quot;: &quot;qwc_demo&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;edit_points&quot;,
+              &quot;attributes&quot;: [
+                &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;
+              ]
+            },
+            {
+              &quot;name&quot;: &quot;edit_lines&quot;,
+              &quot;attributes&quot;: [
+                &quot;id&quot;, &quot;name&quot;, &quot;description&quot;, &quot;num&quot;, &quot;value&quot;, &quot;type&quot;, &quot;amount&quot;, &quot;validated&quot;, &quot;datetime&quot;, &quot;geometry&quot;
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<p><strong>Note</strong>: <code>layers</code> in <code>wms_services</code> is a flat list of all permitted layers, group layers and internal print layers.</p>
+<h3 id="supported-services-and-landing-page">Supported services and landing page<a class="headerlink" href="#supported-services-and-landing-page" title="Permanent link">&para;</a></h3>
+<p>The OGC Service supports:</p>
+<ul>
+<li>
+<p>WMS</p>
+<p>http://<ogc-service-url>/<service_name>?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=...</p>
+</li>
+<li>
+<p>WFS (version 1.0.0 and 1.1.0), including WFS-T</p>
+<p>http://<ogc-service-url>/<service_name>?SERVICE=WFS&amp;VERSION=1.1.0&amp;REQUEST=...</p>
+</li>
+<li>
+<p>OGC API features</p>
+<p>http://<ogc-service-url>/<service_name>/<features></p>
+</li>
+</ul>
+<p>A landing page will be returned when requesting the service root endpoint (i.e. <code>http://&lt;ogc-service-url&gt;/</code>). It displays an overview of all available services/datasets.</p>
+<p>The landing page is rendered from templates which are located at <a href="src/templates/ogcapi">src/templates/ogcapi</a>.
+You can customize the landing page by modifying these templates, resp. if using Docker by mounting the modified templates to <code>/srv/qwc_service/templates/ogcapi/</code>.</p>
+<h3 id="basic-auth">Basic Auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
+<p>The OGC service be configured to accept password authentication using Basic authentication.</p>
+<p>Example:</p>
+<pre><code class="language-json">  &quot;config&quot;: {
+    &quot;basic_auth_login_url&quot;: [&quot;http://qwc-auth-service:9090/verify_login&quot;]
+  },
+</code></pre>
+<p>To force the <code>qwc-ogc-service</code> to return a <code>401 Unauthorized</code> response if not authenticated, pass <code>REQUIREAUTH=1</code> to the <code>WMS</code> or <code>WFS</code> request args, example:</p>
+<pre><code>http://&lt;ogc-service-url&gt;/&lt;service_nae&gt;?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;REQUIREAUTH=1
+</code></pre>
+<h3 id="marker-params">Marker params<a class="headerlink" href="#marker-params" title="Permanent link">&para;</a></h3>
+<p>The OGC service supports specifying marker parameters to insert a SLD styled marker into GetMap requests via QGIS Server <code>HIGHLIGHT_SYMBOL</code> and <code>HIGHLIGHT_GEOM</code>. To use this feature, provide a SLD template and parameter definitions in the ogc service config, for example:</p>
+<pre><code>"marker_template": "&lt;StyledLayerDescriptor&gt;&lt;UserStyle&gt;&lt;se:Name&gt;Marker&lt;/se:Name&gt;&lt;se:FeatureTypeStyle&gt;&lt;se:Rule&gt;&lt;se:Name&gt;Single symbol&lt;/se:Name&gt;&lt;se:PointSymbolizer&gt;&lt;se:Graphic&gt;&lt;se:Mark&gt;&lt;se:WellKnownName&gt;circle&lt;/se:WellKnownName&gt;&lt;se:Fill&gt;&lt;se:SvgParameter name=\"fill\"&gt;$FILL$&lt;/se:SvgParameter&gt;&lt;/se:Fill&gt;&lt;se:Stroke&gt;&lt;se:SvgParameter name=\"stroke\"&gt;$STROKE$&lt;/se:SvgParameter&gt;&lt;se:SvgParameter name=\"stroke-width\"&gt;$STROKE_WIDTH$&lt;/se:SvgParameter&gt;&lt;/se:Stroke&gt;&lt;/se:Mark&gt;&lt;se:Size&gt;$SIZE$&lt;/se:Size&gt;&lt;/se:Graphic&gt;&lt;/se:PointSymbolizer&gt;&lt;/se:Rule&gt;&lt;/se:FeatureTypeStyle&gt;&lt;/UserStyle&gt;&lt;/StyledLayerDescriptor&gt;",
+"marker_params": {
+  "size": {
+    "default": 10,
+    "type": "number"
+  },
+  "fill": {
+    "default": "FFFFFF",
+    "type": "color"
+  },
+  "stroke": {
+    "default": "FF0000",
+    "type": "color"
+  },
+  "stroke_width": {
+    "default": 5,
+    "type": "number"
+  }
+</code></pre>
+<p>Note:</p>
+<ul>
+<li>Use <code>$&lt;PARAM_NAME&gt;$</code> as parameter placeholders in the SLD template.</li>
+<li>You can selectively override the default values via environment variables by setting <code>MARKER_&lt;PARAM_NAME&gt;</code> (i.e. <code>MARKER_SIZE</code>) to the desired values.</li>
+</ul>
+<p>You can then specify the <code>MARKER</code> URL query parameter in <code>GetMap</code> requests to inject a marker as follows:</p>
+<pre><code>...?SERVICE=WMS&amp;REQUEST=GetMap&amp;...&amp;MARKER=X-&gt;123456|Y-&gt;123456|STROKE-&gt;000FFA...
+</code></pre>
+<p><code>X</code> and <code>Y</code> are compulsory and specify the marker position in map CRS, any other additional parameters are optional and will override the default values if provided. All parameters have to written in uppercase.</p>
+<h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
+<p>Install dependencies and run:</p>
+<pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
+uv run src/server.py
+</code></pre>
+<p>To use configs from a <code>qwc-docker</code> setup, set <code>CONFIG_PATH=&lt;...&gt;/qwc-docker/volumes/config</code>.</p>
+<p>Set <code>FLASK_DEBUG=1</code> for additional debug output.</p>
+<p>Set <code>FLASK_RUN_PORT=&lt;port&gt;</code> to change the default port (default: <code>5000</code>).</p>
+<p>API documentation:</p>
+<pre><code>http://localhost:$FLASK_RUN_PORT/api/
+</code></pre>
+<h2 id="docker-usage">Docker usage<a class="headerlink" href="#docker-usage" title="Permanent link">&para;</a></h2>
+<p>The Docker image is published on <a href="https://hub.docker.com/r/sourcepole/qwc-ogc-service">Dockerhub</a>.</p>
+<p>See sample <a href="https://github.com/qwc-services/qwc-docker/blob/master/docker-compose-example.yml">docker-compose.yml</a> of <a href="https://github.com/qwc-services/qwc-docker">qwc-docker</a>.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

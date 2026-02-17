@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Oblique View - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Oblique View";
+        var mkdocs_page_input_path = "topics/ObliqueView.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">General configuration</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ThemesConfiguration/">Themes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../configuration/ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Selected topics</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Oblique View</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-oblique-aerial-imagery-datasets">Configuring the oblique aerial imagery datasets</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions </a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>Selected topics &raquo;</li>
+      <li>Oblique View</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="oblique-aerial-imagery">Oblique aerial imagery<a class="headerlink" href="#oblique-aerial-imagery" title="Permanent link">&para;</a></h1>
+<p>QWC allows displaying oblique aerial imagery via the <a href="../../references/qwc2_plugins/#obliqueview">ObliqueView</a> plugin and the <a href="https://github.com/qwc-services/qwc-oblique-imagery-service">qwc-oblique-imagery-service</a>.</p>
+<p>If you are using <code>qwc-docker</code>, you can set up the <code>qwc-oblique-imagery-service</code> as follows:</p>
+<pre><code class="language-yml">  qwc-oblique-imagery-service:
+    image: docker.io/sourcepole/qwc-oblique-imagery-service:&lt;tag&gt;
+    environment:
+      &lt;&lt;: *qwc-service-variables
+      SERVICE_MOUNTPOINT: '/api/v1/oblique-imagery'
+    volumes:
+      - ./volumes/config:/srv/qwc_service/config:ro
+      - ./volumes/oblique-images:/images:ro
+</code></pre>
+<p>Remember to also add the corresponding route to the <code>api-gateway/nginx.conf</code>.</p>
+<p>Finally, set the <code>obliqueImageryServiceUrl</code> in the viewer <code>config.json</code>, i.e. to <code>/api/v1/oblique-imagery</code>.</p>
+<h2 id="configuring-the-oblique-aerial-imagery-datasets">Configuring the oblique aerial imagery datasets<a class="headerlink" href="#configuring-the-oblique-aerial-imagery-datasets" title="Permanent link">&para;</a></h2>
+<p>Aerial imagery datasets are expected to be provided as georeferenced TIFF images (where the georeferencing is cleary an approximation since the images are shot from an oblique camera).</p>
+<p>Places these images below <code>volumes/oblique-images/&lt;dataset_name&gt;</code>, and configure the dataset in the <code>obliqueImagery</code> service section in the <code>tenantConfig.json</code>:</p>
+<pre><code class="language-json">    {
+      &quot;name&quot;: &quot;obliqueImagery&quot;,
+      &quot;config&quot;: {},
+      &quot;resources&quot;: {
+        &quot;oblique_image_datasets&quot;:[
+          {
+            &quot;name&quot;: &quot;&lt;dataset_name&gt;&quot;,
+            &quot;crs&quot;: &quot;&lt;epsg_code&gt;&quot;,
+            &quot;pattern_north&quot;:&quot;*_North_*.tif&quot;,
+            &quot;pattern_east&quot;:&quot;*_East_*.tif&quot;,
+            &quot;pattern_south&quot;:&quot;*_South_*.tif&quot;,
+            &quot;pattern_west&quot;:&quot;*_West_*.tif&quot;
+          }
+        ]
+      }
+    }
+</code></pre>
+<p>The images shot in the four cardinal directions are distinguished by the <code>pattern_*</code> settings.</p>
+<p>Finally, configure the available oblique datasets for desired themes in the <code>themesConfig.json</code> as follows:</p>
+<pre><code class="language-json">    {
+      &quot;url&quot;: &quot;&lt;wms_url&gt;&quot;,
+      &quot;title&quot;: &quot;&lt;theme title&gt;&quot;,
+      ...
+      &quot;obliqueDatasets&quot;: [
+        {
+          &quot;dataset&quot;: &quot;&lt;dataset_name&gt;&quot;,
+          &quot;default&quot;: &lt;false|true&gt;,
+          &quot;backgroundLayer&quot;: &quot;&lt;background_layer_name&gt;&quot;,
+          &quot;backgroundOpacity&quot;: &lt;0-255&gt;,
+          &quot;title&quot;: &quot;&lt;dataset_title&gt;&quot;,
+          &quot;titleMsgId&quot;: &quot;&lt;dataset_title_msgid&gt;&quot;
+        },
+        ...
+      ]
+    }
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>dataset</code> is must be set to a dataset configured in <code>tenantConfig.json</code></li>
+<li><code>default</code> denotes whether the dataset displayed by default (relevant if multiple datasets are configured)</li>
+<li><code>backgroundLayer</code> is the name of a background layer, as also used in the <code>backgroundLayers</code> section of the theme configuration</li>
+<li><code>backgroundOpacity</code> specifies the opacity of the background layer (<code>0</code> is transparent, <code>255</code> is fully opaque)</li>
+<li><code>title</code> resp. <code>titleMsgId</code> specify the title resp. title translation message id of the dataset as displayed in the dataset switcher in QWC.</li>
+</ul>
+<h3 id="permissions">Permissions <a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
+<p>To restrict oblique datasets, create a <code>Oblique Image Dataset</code> resource named according to the name of the dataset and create permissions assigning the desired roles to the resources.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../View3D/" class="btn btn-neutral float-left" title="3D View"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Translations/" class="btn btn-neutral float-right" title="Translations">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../View3D/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Translations/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

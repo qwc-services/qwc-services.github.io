@@ -1,0 +1,369 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/qwc-services/qwc-feature-info-service/master/schemas/qwc-feature-info-service.json",
+  "title": "QWC FeatureInfo Service",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "title": "JSON Schema",
+      "description": "Reference to JSON schema of this config",
+      "type": "string",
+      "format": "uri",
+      "default": "https://raw.githubusercontent.com/qwc-services/qwc-feature-info-service/master/schemas/qwc-feature-info-service.json"
+    },
+    "service": {
+      "title": "Service name",
+      "type": "string",
+      "const": "feature-info"
+    },
+    "config": {
+      "title": "Config options",
+      "type": "object",
+      "properties": {
+        "default_info_template": {
+          "description": "Default HTML info template. Default: `null`",
+          "type": "string"
+        },
+        "basic_auth_login_url": {
+          "description": "Login verification URL for requests with basic auth. Example: `http://qwc-auth-service:9090/verify_login`. Default: `null`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "default_info_template_path": {
+          "description": "Path to the default HTML info template. Default: `null`",
+          "type": "string"
+        },
+        "default_info_template_base64": {
+          "description": "Default HTML info template in Base64 encoding. Default: `null`",
+          "type": "string",
+          "contentEncoding": "base64"
+        },
+        "info_templates_path": {
+          "description": "Path where custom info templates are store. Default: `/info_templates/`",
+          "type": "string"
+        },
+        "default_qgis_server_url": {
+          "description": "Default URL for WMS GetFeatureInfo queries. Default: `http://localhost:8001/ows/`",
+          "type": "string"
+        },
+        "network_timeout": {
+          "description": "Network timeout for requests forwarded to the QGIS Server, in seconds. Default: `30`",
+          "type": "number"
+        },
+        "qgis_server_url_tenant_suffix": {
+          "description": "If qgs_resources are placed in tenant specific subdirs, set this property to the respective subdir path portion. Default: `<empty>`",
+          "type": "string"
+        },
+        "data_service_url": {
+          "description": "Data service URL (external) for constructing attachment urls. Default: `/api/v1/data/`",
+          "type": "string"
+        },
+        "transform_image_urls": {
+          "description": "Whether to transform image URLs to inline images. Default: `true`",
+          "type": "boolean"
+        },
+        "skip_empty_attributes": {
+          "description": "Whether to skip empty feature attributes in WMS GetFeatureInfo responses. Default: `false`",
+          "type": "boolean"
+        },
+        "use_permission_attribute_order": {
+          "description": " Whether to order the attributes according to order of the permitted attribute names in WMS GetFeatureInfo responses, rather than the order returned by WMS GetFeatureInfo. Default: `false`",
+          "type": "boolean"
+        },
+        "qgis_server_identity_parameter": {
+          "description": "Name of the GET parameter through which the active QWC user will be sent to QGIS Server, to be used i.e. in plugins. Default: `QWC_USERNAME`",
+          "type": "string"
+        }
+      }
+    },
+    "resources": {
+      "title": "Resources",
+      "type": "object",
+      "properties": {
+        "wms_services": {
+          "title": "WMS service",
+          "type": "array",
+          "items": {
+            "title": "WMS",
+            "description": "WMS service with nested layers and group layers",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "WMS service name",
+                "type": "string"
+              },
+              "root_layer": {
+                "description": "Root layer of WMS (layer or group layer)",
+                "oneOf": [
+                  {"$ref": "#/definitions/layer"},
+                  {"$ref": "#/definitions/group_layer"},
+                  {"type": "null"}
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "root_layer"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "service",
+    "config",
+    "resources"
+  ],
+  "definitions": {
+    "layer": {
+      "title": "Layer",
+      "description": "Single layer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layer"
+        },
+        "title": {
+          "description": "Layer title",
+          "type": "string"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Attribute name",
+                "type": "string"
+              },
+              "alias": {
+                "type": "string"
+              },
+              "format": {
+                "description": "Formatting expression for converting attribute values",
+                "type": "string"
+              },
+              "format_base64": {
+                "description": "Formatting expression for converting attribute values, in Base64 encoding",
+                "type": "string",
+                "contentEncoding": "base64"
+              },
+              "json_attribute_aliases": {
+                "title": "JSON attribute aliases",
+                "description": "Aliases for attributes in JSON values of type list",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "description": "Attribute name in JSON value",
+                      "type": "string"
+                    },
+                    "alias": {
+                      "description": "Alias for attribute in JSON value",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "alias"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "info_template": {
+          "title": "Info template",
+          "oneOf": [
+            {"$ref": "#/definitions/wms_info_template"},
+            {"$ref": "#/definitions/sql_info_template"},
+            {"$ref": "#/definitions/module_info_template"}
+          ]
+        },
+        "display_field": {
+          "title": "Display field",
+          "description": "Show value of this attribute in feature result header",
+          "type": "string"
+        },
+        "feature_report": {
+          "title": "Feature report",
+          "description": "Name of corresponding feature report",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "group_layer": {
+      "title": "Group Layer",
+      "description": "Group layer with nested sublayers",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "WMS group layer name",
+          "type": "string"
+        },
+        "type": {
+          "description": "Layer type",
+          "type": "string",
+          "const": "layergroup"
+        },
+        "title": {
+          "description": "Group title",
+          "type": "string"
+        },
+        "layers": {
+          "description": "Sublayers of this group layer (layers or group layers)",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"$ref": "#/definitions/layer"},
+              {"$ref": "#/definitions/group_layer"}
+            ]
+          }
+        },
+        "hide_sublayers": {
+          "title": "Hide sublayers",
+          "description": "Hide sublayers of this group layer if set, to make the group layer look like a regular layer (Facade layer)",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "layers"
+      ],
+      "additionalProperties": false
+    },
+    "wms_info_template": {
+      "description": "Info template for WMS GetFeatureInfo",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "wms"
+        },
+        "wms_url": {
+          "description": "Custom WMS URL if different from `default_qgis_server_url`",
+          "type": "string"
+        },
+        "template": {
+          "description": "HTML template for info result",
+          "type": "string"
+        },
+        "template_path": {
+          "description": "Path to HTML template for info result",
+          "type": "string"
+        },
+        "template_base64": {
+          "description": "HTML template for info result, in Base64 encoding",
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "sql_info_template": {
+      "description": "Info template for DB Query",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "sql"
+        },
+        "db_url": {
+          "description": "Database connection string",
+          "type": "string"
+        },
+        "sql": {
+          "description": "Query SQL",
+          "type": "string"
+        },
+        "sql_base64": {
+          "description": "Query SQL in Base64 encoding",
+          "type": "string",
+          "contentEncoding": "base64"
+        },
+        "template": {
+          "description": "HTML template for info result",
+          "type": "string"
+        },
+        "template_path": {
+          "description": "Path to HTML template for info result",
+          "type": "string"
+        },
+        "template_base64": {
+          "description": "HTML template for info result, in Base64 encoding",
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "type",
+            "db_url",
+            "sql"
+          ]
+        },
+        {
+          "required": [
+            "type",
+            "db_url",
+            "sql_base64"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "module_info_template": {
+      "description": "Info template using WMS GetFeatureInfo",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "module"
+        },
+        "module": {
+          "description": "Custom info module name",
+          "type": "string"
+        },
+        "template": {
+          "description": "HTML template for info result",
+          "type": "string"
+        },
+        "template_path": {
+          "description": "Path to HTML template for info result.",
+          "type": "string"
+        },
+        "template_base64": {
+          "description": "HTML template for info result, in Base64 encoding",
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "type",
+        "module"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Themes - QWC - 2026.02.16</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+        <link href="../../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Themes";
+        var mkdocs_page_input_path = "configuration/ThemesConfiguration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.16
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">QWC</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../QuickStart/">Quick start</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">General configuration</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Themes</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#creating-and-publishing-a-qgis-project">Creating and publishing a QGIS project</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ensuring-valid-datasources">Ensuring valid datasources</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-themes-in-themesconfigjson">Configuring the themes in themesConfig.json </a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#automatic-theme-configuration">Automatic theme configuration </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#manual-theme-configuration">Manual theme configuration </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#external-layers">External layers </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#theme-info-links">Theme info links </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#plugin-data">Plugin data </a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#background-layers">Background layers </a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generating-the-themes-configuration">Generating the themes configuration </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#storing-projects-in-database">Storing projects in database </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-qgz-project-file-format">Using the QGZ project file format </a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#split-categorized-layers">Split categorized layers</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ViewerConfiguration/">Viewer</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ResourcesPermissions/">Resources and permissions</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ServiceConfiguration/">Services</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Selected topics</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Search/">Search</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/FeatureInfo/">Feature info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Printing/">Printing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapExport/">Map export</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Mapinfo/">Map info</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Editing/">Editing</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Snapping/">Snapping</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/TimeManager/">Temporal layers</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Tourguide/">Tour Guide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/LegendGraphics/">Legend graphics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MapFilter/">Map filtering</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Reports/">Reports</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/View3D/">3D View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/ObliqueView/">Oblique View</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Translations/">Translations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/authentication/">Authentication</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/Interfacing/">Interfacing with applications</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../topics/MultiTenancy/">Multi-tenancy</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../references/">References</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Version history</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../UserGuide/">User guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../FAQ/">FAQ</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">QWC - 2026.02.16</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>QWC &raquo;</li>
+          <li>General configuration &raquo;</li>
+      <li>Themes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="themes-configuration">Themes configuration<a class="headerlink" href="#themes-configuration" title="Permanent link">&para;</a></h1>
+<p>A theme corresponds to a QGIS project, published as WMS and served by QGIS Server.</p>
+<p>The basic steps for configuring a theme are:</p>
+<ul>
+<li><a href="#create-qgis-project">Create a QGIS project and deploy it to QGIS Server</a></li>
+<li><a href="#writing-themes-configuration">Writing the QWC theme configuration</a></li>
+<li><a href="#generating-themes-configuration">Generating the themes configuration</a></li>
+</ul>
+<h2 id="creating-and-publishing-a-qgis-project">Creating and publishing a QGIS project<a name="create-qgis-project"></a><a class="headerlink" href="#creating-and-publishing-a-qgis-project" title="Permanent link">&para;</a></h2>
+<p>The first step is to prepare a QGIS project for publishing. Besides the common tasks of adding and styling layers, the following table gives an overview of settings which influence how the theme is displayed in QWC:</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Map projection</td>
+<td>Project Properties &rarr; CRS</td>
+<td>Map projection used in QWC.</td>
+</tr>
+<tr>
+<td>Service Metadata</td>
+<td>Project Properties &rarr; QGIS Server &rarr; Service capabilities</td>
+<td>Shown in the theme info dialog, invokable from the Layer Tree panel titlebar.</td>
+</tr>
+<tr>
+<td>Title, keywords</td>
+<td>Project Properties &rarr; QGIS Server &rarr; Service capabilities</td>
+<td>Theme title, displayed in the Theme Switcher, and keywords, useful for filtering.</td>
+</tr>
+<tr>
+<td>Map extent</td>
+<td>Project Properties &rarr; QGIS Server &rarr; WMS &rarr; Advertised extent</td>
+<td>The extent used as initial map extent when loading the theme, unless overridden in <code>themesConfig.json</code>.</td>
+</tr>
+<tr>
+<td>Queryable layers</td>
+<td>Project Properties &rarr; Data sources</td>
+<td>Mark layers as identifyable by the client.</td>
+</tr>
+<tr>
+<td>FeatureInfo geometry</td>
+<td>Project Properties &rarr; QGIS Server &rarr; WMS Capabilities &rarr; Add geometry to feature response</td>
+<td>Return feature geometries with the GetFeatureInfo request. Allows the client to highlight the selected features.</td>
+</tr>
+<tr>
+<td>Layer Display Field</td>
+<td>Vector Layer Properties &rarr; Display</td>
+<td>The field used in the identify results.</td>
+</tr>
+<tr>
+<td>Layer Map Tip</td>
+<td>Vector Layer Properties &rarr; Display</td>
+<td>The contents of the Map Tip shown when hovering over layers in the client, if displaying Map Tips is enabled in the Layer Tree.</td>
+</tr>
+<tr>
+<td>Layer Metadata</td>
+<td>Layer Properties &rarr; QGIS Server</td>
+<td>Shown in the client Layer Info dialog, invokable from the Layer Tree.</td>
+</tr>
+<tr>
+<td>Scale range</td>
+<td>Layer Properties &rarr; Rendering &rarr; Scale dependent visibility</td>
+<td>The scale range within which a layer is visible, useful to improve rendering performance.</td>
+</tr>
+<tr>
+<td>Refresh interval</td>
+<td>Layer Properties &rarr; Rendering &rarr; Refresh layer at interval</td>
+<td>Automatic layer refresh interval.</td>
+</tr>
+<tr>
+<td>Initial visibility</td>
+<td>Layers Panel</td>
+<td>Initial visibility of layers and groups.</td>
+</tr>
+<tr>
+<td>Rendering order</td>
+<td>Layer Order Panel or Layers Panel</td>
+<td>Rendering order of the layers. If layer re-ordering is enabled in <code>config.json</code>, the order from the Layer Order Panel is ignored.</td>
+</tr>
+<tr>
+<td>Print layouts</td>
+<td>Layout manager</td>
+<td>The print layouts offered in the Print plugin.</td>
+</tr>
+<tr>
+<td>Print layout labels</td>
+<td>Layout manager</td>
+<td>Print layout labels with an ID will be exposed in the Print plugin. Note: a label ID starting with <code>__</code> will not be exposed.</td>
+</tr>
+<tr>
+<td>Attribute form</td>
+<td>Vector Layer Properties &rarr; Attributes Form</td>
+<td>The configured attribute form will be displayed when editing in QWC.</td>
+</tr>
+<tr>
+<td>External layers</td>
+<td>Layer Properties &rarr; QGIS Server &rarr; Data URL</td>
+<td>Mark the layer as an external layer to avoid cascaded requests. See <a href="#external-layers">Configuring external layers</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>Then, store the project in the publishing directory of your QGIS Server instance. When using <code>qwc-docker</code>, store the project as <code>*.qgs</code> below <code>qwc-docker/volumes/qgs-resources</code>.</p>
+<p>Alternatively, when using <code>qwc-docker</code>, you can also store the project in a database in QGIS using Project &rarr; Save To &rarr; PostgreSQL (see <a href="#projects-in-database">Storing projects in database</a>).</p>
+<h3 id="ensuring-valid-datasources">Ensuring valid datasources<a class="headerlink" href="#ensuring-valid-datasources" title="Permanent link">&para;</a></h3>
+<p>A common issue is that the project will reference datasources in locations which cannot be resolved when QGIS Server reads the project, in particular when running QGIS Server inside a docker container. To avoid such issues:</p>
+<ul>
+<li>Make sure that any file-based resources are located on the same level or below the level of the <code>*.qgs</code> project file. Remember to copy all resources along with the <code>*.qgs</code> project file to the server.</li>
+<li>Load any PostgreSQL datasource in QGIS using a service, and make sure the service definition exists both in the <code>pg_service.conf</code> on your host system as well as in the <code>qwc_docker/pg_service.conf</code> and <code>qwc_docker/pg_service-write.conf</code> which are mounted inside the docker containers. For instance, to use default <code>qwc-docker</code> database, use the <code>qwc_geodb</code> service and add the service definition to your host <code>pg_service.conf</code> as follows:</li>
+</ul>
+<pre><code>[qwc_geodb]
+host=localhost
+port=5439
+dbname=qwc_demo
+user=qwc_service
+password=qwc_service
+sslmode=disable
+</code></pre>
+<h2 id="configuring-the-themes-in-themesconfigjson">Configuring the themes in <code>themesConfig.json</code> <a name="writing-themes-configuration"></a><a class="headerlink" href="#configuring-the-themes-in-themesconfigjson" title="Permanent link">&para;</a></h2>
+<p>The next step is to configure the theme for QWC. There are two approaches:</p>
+<ul>
+<li><a href="#automatic-theme-configuration">Automatic theme configuration</a> (only when using <code>qwc-docker</code>): Just copy the project file to the designated location and the <code>qwc-config-generator</code> will automatically generate a theme configuration using default parameters.</li>
+<li><a href="#manual-theme-configuration">Manual theme configuration</a>: Manually configure a theme with the full set of configuration options.</li>
+</ul>
+<h3 id="automatic-theme-configuration">Automatic theme configuration <a name="automatic-theme-configuration"></a><a class="headerlink" href="#automatic-theme-configuration" title="Permanent link">&para;</a></h3>
+<p>When using <code>qwc-docker</code>, save your QGIS projects below <code>qwc-docker/volumes/qgs-resources/scan</code>. Adjust the default settings (<code>defaultBackgroundLayers</code>, <code>defaultSearchProviders</code>, etc.) as desired in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>. Then <a href="#generating-theme-configuration">generate the theme configuration</a>.</p>
+<p>You can configure an automatically configured theme as default theme by setting <code>defaultTheme</code> in <code>themesConfig.json</code> to the path to the QGIS project file below <code>qwc-docker/volumes/qgs-resources</code>, without the <code>.qgs</code> extension. For example to set <code>qwc-docker/volumes/qgs-resources/scan/project.qgs</code> as default theme, you'd write</p>
+<pre><code>...
+"defaultTheme": "scan/project"
+...
+</code></pre>
+<p>To use a custom thumbnail for an automatically configured theme, place a an image called <code>&lt;project_basename&gt;.png</code> in <code>qwc-docker/volumes/qwc2/assets/img/mapthumbs</code>. For example. if the project is called <code>project_name.qgs</code>, the name thumbnail image would be named <code>project_name.png</code>.</p>
+<p><em>Note:</em> The auto-scan directory can be is controlled by <code>qgis_projects_scan_base_dir</code> in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>.</p>
+<h3 id="manual-theme-configuration">Manual theme configuration <a name="manual-theme-configuration"></a><a class="headerlink" href="#manual-theme-configuration" title="Permanent link">&para;</a></h3>
+<p>The theme configuration file is located as follows:</p>
+<ul>
+<li>Standalone viewer: <code>qwc-app/static/themesConfig.json</code></li>
+<li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code></li>
+</ul>
+<p><em>Note</em>: when using <code>qwc-docker</code>, the themes configuration may also be embedded as <code>themesConfig</code> directly in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/tenantConfig.json</code>.</p>
+<p>The <code>themesConfig.json</code> file contains a list of themes, optionally organized in groups, as well as a list of background layers:</p>
+<pre><code class="language-json">{
+  &quot;themes&quot;: {
+    &quot;items&quot;: [
+      { &lt;ThemeDefinition&gt; },
+      ...
+    ], &quot;groups&quot;: [
+      {
+        &quot;title&quot;: &quot;&lt;Group title&gt;&quot;,
+        &quot;titleMsgId&quot;: &quot;&lt;Group title translation msgID&gt;&quot;,
+        &quot;items&quot;: [{ &lt;ThemeDefinition&gt; }, ...],
+        &quot;groups&quot;: [ { &lt;Group&gt; }, ...]
+        },
+        ...
+    ],
+    &quot;externalLayers&quot;: [
+      { &lt;ExternalLayerDefinition&gt; },
+      ...
+    ],
+    &quot;themeInfoLinks&quot;: [
+      { &lt;ThemeInfoLinkDefinition&gt; },
+      ...
+    ],
+    &quot;pluginData&quot;: {
+      &quot;&lt;PluginName&gt;&quot;: [{ &lt;PluginDataReource&gt;}, ...],
+      ...
+    },
+    &quot;backgroundLayers&quot;: [
+      { &lt;BackgroundLayerDefinition&gt; },
+      ...
+    ],
+  },
+  &quot;defaultBackgroundLayers&quot;: &quot;&lt;Default background layers, see theme definition below&gt;&quot;,
+  &quot;defaultWMSVersion&quot;: &quot;&lt;Default WMS version, i.e. 1.3.0&gt;&quot;,
+  &quot;defaultScales&quot;: [&lt;Scale denominators, see theme definition below&gt;],
+  &quot;defaultPrintScales&quot; [&lt;Scale denominators, see theme definition below&gt;],
+  &quot;defaultPrintResolutions&quot;: [&lt;DPIs, see theme definition below&gt;],
+  &quot;defaultSearchProviders&quot;: [&lt;Search providers, see theme definition below&gt;],
+  &quot;defaultPrintGrid&quot;: [&lt;Print grid, see theme definition below&gt;],
+  &quot;defaultTheme&quot;: &quot;&lt;Default theme id&gt;&quot;
+}
+</code></pre>
+<p>Refer to <a href="#external-layers">External layers</a>, <a href="#theme-info-links">Theme info links</a>, <a href="#plugin-data">Plugin data</a> and <a href="#background-layers">Background layers</a> for the format of the respective definitions.</p>
+<p>Refer to the <a href="https://github.com/qwc-services/qwc-docker/blob/master/volumes/config-in/default/themesConfig.json">sample <code>themesConfig.json</code></a> for a complete example.</p>
+<p>The format of the theme definitions is as follows:</p>
+<!-- Important: Use U+00A0 non-breaking spaces ( ) in code blocks -->
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"id": "&lt;id&gt;",</code></td>
+<td>Theme identificator. Autogenerated if not specified.</td>
+</tr>
+<tr>
+<td><code>"url": "&lt;WMS URL&gt;",</code></td>
+<td>The address of desired WMS served by QGIS Server.</td>
+</tr>
+<tr>
+<td><code>"additionalMouseCrs": ["&lt;EPSG code&gt;"],</code></td>
+<td>Optional, list of additional projections for displaying the mouse position. WGS84 and <code>mapCrs</code> are available by default. Additional projections definitions must be added to <code>config.json</code>.</td>
+</tr>
+<tr>
+<td><code>"attribution": "&lt;Attribution&gt;",</code></td>
+<td>Optional, attribution which will be shown in the bottom right corner of the map.</td>
+</tr>
+<tr>
+<td><code>"attributionUrl": "&lt;URL&gt;",</code></td>
+<td>Optional, link associated to the attribution</td>
+</tr>
+<tr>
+<td><code>"backgroundLayers": [{,</code></td>
+<td>Optional, list of available background layers, defaults to <code>defaultBackgroundLayers</code>.</td>
+</tr>
+<tr>
+<td><code>⁣  "name": "&lt;Background layer name&gt;",</code></td>
+<td>Name of matching <code>BackgroundLayerDefinition</code>, see <a href="#background-layers">below</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "overview": &lt;boolean&gt;,</code></td>
+<td>Optional, set the layer as the overview map layer (i.e. this layer will be displayed in the overview map regardless of the background layer visible in the main map).</td>
+</tr>
+<tr>
+<td><code>⁣  "printLayer": "&lt;layer name&gt;"\|[&lt;list&gt;],</code></td>
+<td>Optional, a QGIS layer name or layer resource string to use as matching background layer when printing. Alternatively, a list <code>[{"maxScale": &lt;scale&gt;, "name": "&lt;layer name&gt;"}, ..., {"maxScale": null, "name": "&lt;layer name&gt;"}]</code> can be provided, ordered in ascending order by <code>maxScale</code>. The last entry should have <code>maxScale</code> <code>null</code>, as the layer used for all remaining scales. If omitted, no background is printed, unless layer is of type <code>wms</code> and <code>printExternalLayers</code> is <code>true</code> in the Print plugin configuration. See <a href="../../topics/Printing/">Printing</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "visibility": &lt;boolean&gt;</code></td>
+<td>Optional, initial visibility of the layer when theme is loaded.</td>
+</tr>
+<tr>
+<td><code>}],</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"collapseLayerGroupsBelowLevel": &lt;level&gt;,</code></td>
+<td>Optional, layer tree level below which to initially collapse groups. By default the tree is completely expanded.</td>
+</tr>
+<tr>
+<td><code>"config": {</code></td>
+<td>Optional, per-theme configuration entries which override the global entries in <code>config.json</code>, see <a href="../ViewerConfiguration/">Viewer Configuration</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "&lt;...&gt;": ...,</code></td>
+<td>Global config settings overridden in theme, see <a href="../ViewerConfiguration/#theme-overridable-settings"><code>config.json</code></a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "desktop": {...},</code></td>
+<td>Desktop specific global and plugin configuration overridden in theme.</td>
+</tr>
+<tr>
+<td><code>⁣  "mobile": {...},</code></td>
+<td>Mobile specific global and plugin configuration overridden in theme.</td>
+</tr>
+<tr>
+<td><code>⁣  "plugins": {...}</code></td>
+<td>Plugin configuration overridden in theme, See <a href="../ViewerConfiguration/#plugin-configuration"><code>config.json</code></a>.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"defaultDisplayCrs": "&lt;EPSG code&gt;",</code></td>
+<td>Optional, defines default measuring CRS for coordinates used in BottomBar and Measure, defaults to mapCrs/project projection.</td>
+</tr>
+<tr>
+<td><code>"defaultPrintLayout": "&lt;name&gt;",</code></td>
+<td>Optional, name of print layout to select by default.</td>
+</tr>
+<tr>
+<td><code>"description": "&lt;Description&gt;",</code></td>
+<td>Optional, an additional description to show below the theme title.</td>
+</tr>
+<tr>
+<td><code>"editConfig": {&lt;editConfig&gt;}</code></td>
+<td>Optional, object containing the editing configuration for the theme, see <a href="../../topics/Editing/#edit-config">Editing</a>. Usually auto-generated by the ConfigGenerator.</td>
+</tr>
+<tr>
+<td><code>"extent": [&lt;xmin&gt;, &lt;ymin&gt;, &lt;xmax&gt;, &lt;ymax&gt;],</code></td>
+<td>Optional, override theme extent. In <code>mapCrs</code>.</td>
+</tr>
+<tr>
+<td><code>"externalLayers": [{</code></td>
+<td>Optional, external layers to use as replacements for internal layers.</td>
+</tr>
+<tr>
+<td><code>⁣  "internalLayer": "&lt;QGis_layer_name&gt;",</code></td>
+<td>Name of an internal layer, as contained in the QGIS project, to replace with the external layer.</td>
+</tr>
+<tr>
+<td><code>⁣  "name": "&lt;external_layer_name&gt;"</code></td>
+<td>Name of the external layer, matching a <code>ExternalLayerDefinition</code>, see <a href="#external-layers">below</a>.</td>
+</tr>
+<tr>
+<td><code>}],</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"extraDxfParameters": "&lt;&amp;KEY=VALUE&gt;",</code></td>
+<td>Optional, <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html?highlight=dxf#format-options">additional query parameters</a> to append to DXF export request.</td>
+</tr>
+<tr>
+<td><code>"extraLegendParameters": "&lt;&amp;KEY=VALUE&gt;",</code></td>
+<td>Optional, <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#getlegendgraphics">additional query parameters</a> to append to GetLegendGraphic request.</td>
+</tr>
+<tr>
+<td><code>"extraPrintParameters": "&lt;&amp;KEY=VALUE&gt;",</code></td>
+<td>Optional, additional query parameters to append to GetPrint request (requires QGIS Server &gt;= 3.32.0).</td>
+</tr>
+<tr>
+<td><code>"extraPrintLayers": ["&lt;layername&gt;", ...],</code></td>
+<td>Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC LayerTree.</td>
+</tr>
+<tr>
+<td><code>"featureReport": {</code></td>
+<td>Optional, available feature report templates.</td>
+</tr>
+<tr>
+<td><code>⁣  "&lt;LayerId&gt;": &lt;TemplateCfg&gt;</code></td>
+<td>WMS sublayer ID and associated template ID to pass to the <code>documentService</code>. See <a href="../../topics/Reports/">Reports</a>.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"flags": ["&lt;flag1&gt;", "&lt;flag2&gt;", ...],</code></td>
+<td>Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See <a href="../ViewerConfiguration/#plugin-configuration">Plugin Configuration</a>.</td>
+</tr>
+<tr>
+<td><code>"format": "&lt;mimetype&gt;",</code></td>
+<td>Optional, the format to use for WMS GetMap. Defaults to <code>image/png</code>.</td>
+</tr>
+<tr>
+<td><code>"hidden_in_ows_landing_page": &lt;true|false&gt;,</code></td>
+<td>Optional, whether the service should be hidden from the OGC Service OWS landing page. Default: <code>false</code></td>
+</tr>
+<tr>
+<td><code>"layerTreeHiddenSublayers": ["&lt;layername&gt;", ...],</code></td>
+<td>Optional: list of sublayer names to omit in layertree (but still displayed in map).</td>
+</tr>
+<tr>
+<td><code>"lockedVisibilityPreset":  "&lt;name&gt;",</code></td>
+<td>Optional: lock styles of theme layers to those set in the specified visibility preset.</td>
+</tr>
+<tr>
+<td><code>"mapCrs": "&lt;EPSG code&gt;",</code></td>
+<td>Optional, map projection, defaults to project projection.</td>
+</tr>
+<tr>
+<td><code>"mapTips": &lt;boolean&gt;|null,</code></td>
+<td>Optional, per-theme setting whether map-tips are unavailable (<code>null</code>), disabled by default (<code>false</code>) or enabled by default (<code>true</code>).</td>
+</tr>
+<tr>
+<td><code>"minSearchScaleDenom": &lt;number&gt;,</code></td>
+<td>Optional, minimum scale to enforce when zooming to search results. Takes precedence over value in <code>config.json</code>.</td>
+</tr>
+<tr>
+<td><code>"predefinedFilters": [{&lt;filter_config&gt;}, ...],</code></td>
+<td>Optional: predefined filter configuration, see <a href="../../references/qwc2_plugins/#mapfilter">MapFilter</a>.</td>
+</tr>
+<tr>
+<td><code>"pluginData": {</code></td>
+<td>Optional, data to pass to custom plugins.</td>
+</tr>
+<tr>
+<td><code>⁣  "&lt;PluginName&gt;": ["&lt;plugin_data_resource_name&gt;"],</code></td>
+<td>A list of plugin resource names for the specified plugin. See <a href="#plugin-data">below</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  ...</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"printGrid": [</code></td>
+<td>List of grid scale-dependent grid intervals to use when printing. If omitted, defaults to <code>defaultPrintGrid</code>.</td>
+</tr>
+<tr>
+<td><code>⁣  {"s": &lt;Scale1&gt;, "x": &lt;Width1&gt;, "y": &lt;Height1&gt;},</code></td>
+<td>Keep this list sorted in descending order by scale denominator.</td>
+</tr>
+<tr>
+<td><code>⁣  {"s": &lt;Scale2&gt;, "x": &lt;Width2&gt;, "y": &lt;Height2&gt;}</code></td>
+<td>In this example, <code>{x: &lt;Width2&gt;, y: &lt;Height2&gt;}</code> will be used for <code>&lt;Scale1&gt; &gt; Scale &gt;= &lt;Scale2&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>],</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"printLabelBlacklist": ["&lt;LabelId&gt;", ...]</code></td>
+<td>Optional, list of composer label ids to not expose in the print dialog.</td>
+</tr>
+<tr>
+<td><code>"printLabelConfig": {</code></td>
+<td>Optional, configuration of the text input fields for print layout labels.</td>
+</tr>
+<tr>
+<td><code>⁣  "&lt;LabelId&gt;": {</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  ⁣  "defaultValue": "&lt;value"&gt;,</code></td>
+<td>Optional, default value.</td>
+</tr>
+<tr>
+<td><code>⁣  ⁣  "options": ["&lt;value1&gt;","&lt;value2&gt;",...],</code></td>
+<td>Optional, to display a ComboBox with the specified options instead of a free-input textfield.</td>
+</tr>
+<tr>
+<td><code>⁣  ⁣  &lt;textarea config&gt;</code></td>
+<td>Optional, additional <a href="https://react.dev/reference/react-dom/components/textarea"><code>textarea</code> properties</a>, i.e. <code>maxLength</code>, <code>rows</code>, <code>placeholder</code>, ...</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"printLabelForAttribution": "&lt;ID&gt;",</code></td>
+<td>Optional, an ID of a print layout label to which the current attribution text (if any) will be written to when printing.</td>
+</tr>
+<tr>
+<td><code>"printLabelForSearchResult": "&lt;ID&gt;",</code></td>
+<td>Optional, an ID of a print layout label to which the current search result text (if any) will be written to when printing.</td>
+</tr>
+<tr>
+<td><code>"printResolutions": [&lt;DPIs&gt;],</code></td>
+<td>List of available print resolutions. If an empty list, resolutions are freely choseable. If omitted, defaults to <code>defaultPrintResolutions</code>.</td>
+</tr>
+<tr>
+<td><code>"printScales": [&lt;Scale denominators&gt;],</code></td>
+<td>List of denominators of allowed print scales. If omitted, defaults to <code>defaultPrintScales</code>.</td>
+</tr>
+<tr>
+<td><code>"printTemplateBlacklist": [&lt;template_name&gt;],</code></td>
+<td>Optional, list of print template names to ignore.</td>
+</tr>
+<tr>
+<td><code>"skipEmptyFeatureAttributes": &lt;boolean&gt;,</code></td>
+<td>Optional, whether to skip empty attributes in the identify results. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>"themeInfoLinks": {</code></td>
+<td>Optional, custom links to additional resources, shown as a menu in the theme selector in the theme switcher.</td>
+</tr>
+<tr>
+<td><code>⁣  "entries": ["&lt;link_name&gt;", ...],</code></td>
+<td>List of theme info link names, see <a href="#theme-info-links">below</a>.</td>
+</tr>
+<tr>
+<td><code>⁣  "title": "&lt;Menu title&gt;",</code></td>
+<td>An arbitrary string shown as title of the menu.</td>
+</tr>
+<tr>
+<td><code>⁣  "titleMsgId": "&lt;Menu title msgID&gt;"</code></td>
+<td>Alternative to <code>title</code>, a message ID, translated through the translation files.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"title": "&lt;Custom title&gt;",</code></td>
+<td>Optional, override WMS title.</td>
+</tr>
+<tr>
+<td><code>"thumbnail": "&lt;Filename&gt;",</code></td>
+<td>Optional, image file in <code>assets/img/mapthumbs</code> (see <a href="../ViewerConfiguration/#viewer-asset">Viewer assets</a>). If omitted, <code>&lt;project_basename&gt;.png</code> will be used if it exists below <code>assets/img/mapthumbs</code>, otherwise it is autogenerated via WMS GetMap.</td>
+</tr>
+<tr>
+<td><code>"scales": [&lt;Scale denominators&gt;],</code></td>
+<td>List of denominators of allowed map scales. If omitted, defaults to <code>defaultScales</code>.</td>
+</tr>
+<tr>
+<td><code>"snapping": {...},</code></td>
+<td>Optional, snapping configuration, see <a href="../../topics/Snapping/">Snapping</a>.</td>
+</tr>
+<tr>
+<td><code>"startupView":  "&lt;view&gt;",</code></td>
+<td>Optional: the view mode to initially display the theme in. Allowed values are <code>2d</code>, <code>3d</code> and <code>3d2d</code>. Default is <code>2d</code>.</td>
+</tr>
+<tr>
+<td><code>"tiled": &lt;boolean&gt;,</code></td>
+<td>Optional, use tiled WMS, defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>"tileSize": [&lt;tile_width&gt;, &lt;tile_height&gt;]</code></td>
+<td>Optional, the WMS tile width and height.</td>
+</tr>
+<tr>
+<td><code>"searchProviders": ["&lt;Provider&gt;"],</code></td>
+<td>Optional, list of search providers, see <a href="../../topics/Search/">Search</a>. Defaults to <code>defaultSearchProviders</code>.</td>
+</tr>
+<tr>
+<td><code>"visibilityPresetsBlacklist": ["&lt;name&gt;", ...],</code></td>
+<td>Optional: list of visibility presets (QGIS layer themes) to exclude. You can use<code>*</code> as a wildcard character.</td>
+</tr>
+<tr>
+<td><code>"watermark": {</code></td>
+<td>Optional, configuration of watermark to add to raster export images.</td>
+</tr>
+<tr>
+<td><code>⁣  "backgroundcolor": "#RRGGBB",</code></td>
+<td>Optional, frame background color.</td>
+</tr>
+<tr>
+<td><code>⁣  "framecolor": "#RRGGBB",</code></td>
+<td>Optional, frame color.</td>
+</tr>
+<tr>
+<td><code>⁣  "framewidth": &lt;number&gt;,</code></td>
+<td>Optional, frame width.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontcolor": "#RRGGBB",</code></td>
+<td>Optional, font color.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontfamily": "&lt;Font family&gt;",</code></td>
+<td>Optional, font family.</td>
+</tr>
+<tr>
+<td><code>⁣  "fontsize": &lt;number&gt;,</code></td>
+<td>Optional, font size.</td>
+</tr>
+<tr>
+<td><code>⁣  "text": "&lt;text&gt;",</code></td>
+<td>Arbitrary text.</td>
+</tr>
+<tr>
+<td><code>⁣  "texpadding": &lt;number&gt;</code></td>
+<td>Optional, padding between text and frame, in points.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"wmsBasicAuth": "{</code></td>
+<td>Optional, allows to authenticate to QGIS Server during themes.json generation. NOTE: these credentials will solely be used by <code>yarn run themesConfig</code> and won't be stored in <code>themes.json</code>.</td>
+</tr>
+<tr>
+<td><code>⁣  "username": &lt;username&gt;,</code></td>
+<td>Optional: http basic authentication username.</td>
+</tr>
+<tr>
+<td><code>⁣  "password": &lt;password&gt;</code></td>
+<td>Optional: http basic authentication password.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"wmsOnly": &lt;true|false&gt;,</code></td>
+<td>Optional, whether the entry should only be configured as a WMS, and not as a theme.</td>
+</tr>
+</tbody>
+</table>
+<p>A bare minimum theme entry might look as follows:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;theme_id&quot;,
+  &quot;title&quot;: &quot;My theme&quot;,
+  &quot;url&quot;: &quot;/ows/my_theme&quot;,
+  &quot;mapCrs&quot;: &quot;EPSG:3857&quot;,
+  &quot;backgroundLayers&quot;: [{&quot;name&quot;: &quot;background_layer_name&quot;}],
+  &quot;searchProviders&quot; [&quot;coordinates&quot;]
+}
+</code></pre>
+<p><em>Note:</em></p>
+<ul>
+<li>The theme identifier <code>id</code> can be freely defined and will appear in the viewer URL as the <code>t</code> query parameter.</li>
+<li>When using <code>qwc-docker</code>, the <code>url</code> can be specified as <code>/ows/&lt;relative_path_to_qgs&gt;</code> where <code>relative_path_to_qgs</code> is the path to the QGIS project file below <code>qwc-docker/volumes/qgs-resources</code>, without the <code>.qgs</code> extension. In the above sample, the project file would be located at <code>qwc-docker/volumes/qgs-resources/my_theme.qgs</code>.</li>
+</ul>
+<h3 id="external-layers">External layers <a name="external-layers"></a><a class="headerlink" href="#external-layers" title="Permanent link">&para;</a></h3>
+<p>External layers can be used to selectively replace layers in a QGIS project with a layer from an external source, for instance in the case of a WMS layer embedded in a QGIS project, to avoid cascading WMS requests. They are handled transparently by QWC (they are positioned in the layer tree identically to the internal layer they replace), but the <code>GetMap</code> and <code>GetFeatureInfo</code> requests are sent directly to the specified WMS Service.</p>
+<p><strong>Configuring external layers via Data Url</strong></p>
+<p>The simplest way to define an external layer is to set the "Data Url" for a layer in QGIS (Layer Properties &rarr; QGIS Server &rarr; Data Url) to a string of these forms</p>
+<pre><code class="language-text">wms:&lt;service_url&gt;?&lt;options&gt;#&lt;layername&gt;
+wmts:&lt;capabilities_url&gt;?&lt;options&gt;#&lt;layername&gt;
+mvt:&lt;tile_url&gt;|&lt;style_url&gt;
+</code></pre>
+<p>For instance:</p>
+<pre><code class="language-text">wms:http://wms.geo.admin.ch?tiled=false&amp;infoFormat=application/geojson#ch.are.bauzonen
+wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml?crs=EPSG:2056#ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill
+mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.bev.gv.at/styles/kataster/style_vermv.json
+</code></pre>
+<p><em>Note:</em> Support for WMTS/MVT in Data Url is currently only implemented when using <code>qwc-docker</code>.</p>
+<p><em>Note:</em> You can pass parameters which control the behaviour of the WMS client in QGIS Server by prefexing the parameters with <code>extwms.</code> when the layer is requested by QGIS Server, i.e. when printing. Example to override the step width/heigth of the QGIS WMS Client:</p>
+<pre><code class="language-text">wms:http://wms.geo.admin.ch?extwms.stepWidth=4096&amp;extwms.stepHeight=4096#ch.swisstopo.pixelkarte-farbe-pk1000.noscale
+</code></pre>
+<p><strong>Manually configuring external layers</strong></p>
+<p>Rather than setting the "Data Url", you can provide a manual <code>ExternalLayerDefinition</code> as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>⁣  "name": "&lt;external_layer_name&gt;",</code></td>
+<td>The name of the external layer, as referenced in the theme definitions.</td>
+</tr>
+<tr>
+<td><code>⁣  "type": "&lt;layer_type&gt;",</code></td>
+<td>Layer type, "wms" or "wmts"</td>
+</tr>
+<tr>
+<td><code>⁣  "url": "&lt;wms_baseurl&gt;",</code></td>
+<td>The WMS URL or WMTS resource URL for the external layer.</td>
+</tr>
+<tr>
+<td><code>}</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>For external WMS layers, the following additional parameters apply:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"params": {</code></td>
+<td>Parameters for the GetMap request.</td>
+</tr>
+<tr>
+<td><code>⁣  "LAYERS": "&lt;wms_layername&gt;,..."</code>,</td>
+<td>Comma-separated list of WMS layer names.</td>
+</tr>
+<tr>
+<td><code>⁣  "OPACITIES": "&lt;0-255&gt;,..."</code></td>
+<td>Optional, if WMS server supports opacities.</td>
+</tr>
+<tr>
+<td><code>},</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>"featureInfoUrl": "&lt;wms_featureinfo_baseurl&gt;",</code></td>
+<td>Optional, base URL for WMS GetFeatureInfo, if different from <code>url</code>.</td>
+</tr>
+<tr>
+<td><code>"legendUrl": "&lt;wms_legendgraphic_baseurl&gt;"   ,</code></td>
+<td>Optional, base URL for WMS GetLegendGraphic, if different from <code>url</code>.</td>
+</tr>
+<tr>
+<td><code>"queryLayers": ["&lt;wms_featureinfo_layername&gt;", ...],</code></td>
+<td>Optional, list of GetFeatureInfo query layers, if different from <code>params.LAYERS</code>.</td>
+</tr>
+<tr>
+<td><code>"infoFormats": ["&lt;featureinfo_format&gt;", ...]</code></td>
+<td>List of GetFeatureInfo query formats which the WMS service supports.</td>
+</tr>
+</tbody>
+</table>
+<p>For external WMTS layers, the following additional parameters apply (you can use the <a href="https://github.com/qgis/qwc2/blob/master/scripts/wmts_config_generator.py"><code>qwc2/scripts/wmts_config_generator.py</code></a> script to obtain these values):</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"tileMatrixSet": "&lt;tile_matrix_set_name&gt;",</code></td>
+<td>The name of the tile matrix set.</td>
+</tr>
+<tr>
+<td><code>"originX": &lt;origin_x&gt;,</code></td>
+<td>The X origin of the tile matrix.</td>
+</tr>
+<tr>
+<td><code>"originY": &lt;origin_y&gt;,</code></td>
+<td>The Y origin of the tile matrix.</td>
+</tr>
+<tr>
+<td><code>"projection": "EPSG:&lt;code&gt;",</code></td>
+<td>The layer projection.</td>
+</tr>
+<tr>
+<td><code>"resolutions": [&lt;resolution&gt;, ...],</code></td>
+<td>The list of WMTS resolutions.</td>
+</tr>
+<tr>
+<td><code>"tileSize": [&lt;tile_width&gt;, &lt;tile_height&gt;]</code></td>
+<td>The tile width and height.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="theme-info-links">Theme info links <a name="theme-info-links"></a><a class="headerlink" href="#theme-info-links" title="Permanent link">&para;</a></h3>
+<p>You can specify links to display in an info-menu next to the respective theme title in the theme switcher entries.</p>
+<p>The format of a <code>ThemeInfoLinkDefinition</code> is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"name": "&lt;link_name&gt;",</code></td>
+<td>The name of the link, as referenced in the theme definitions.</td>
+</tr>
+<tr>
+<td><code>"title": "&lt;link_title&gt;",</code></td>
+<td>The title for the link, as displayed in the info menu of the theme entry in the theme switcher.</td>
+</tr>
+<tr>
+<td><code>"url": "&lt;link&gt;",</code></td>
+<td>A link URL.</td>
+</tr>
+<tr>
+<td><code>"target": "&lt;link_target&gt;"</code></td>
+<td>The link target, i.e. <code>_blank</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: When using <code>qwc-services</code>, theme info links must be explicitly permitted by creating appropriate <code>Theme info link</code> resources and permissions in the <code>qwc-admin-gui</code>.</p>
+<h3 id="plugin-data">Plugin data <a name="plugin-data"></a><a class="headerlink" href="#plugin-data" title="Permanent link">&para;</a></h3>
+<p>Plugin data is useful to provide a per-theme configuration for custom plugins. The format for a <code>PluginDataReource</code> is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"name": "&lt;resource_name&gt;",</code></td>
+<td>The name of the resource.</td>
+</tr>
+<tr>
+<td><code>"...": ...,</code></td>
+<td>Arbitrary additional fields.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: When using <code>qwc-services</code>, theme plugin data entries must be explicitly permitted by creating appropriate <code>Plugin data</code> resources (as child of a respective <code>Plugin</code> resource) and permissions in the <code>qwc-admin-gui</code>.</p>
+<h3 id="background-layers">Background layers <a name="background-layers"></a><a class="headerlink" href="#background-layers" title="Permanent link">&para;</a></h3>
+<p>Background layers are handled completely client-side and do not appear in the layer tree.</p>
+<p>The format of the background layer definitions is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"name": "&lt;Name&gt;",</code></td>
+<td>The name of the background layer, used in the theme definitions.</td>
+</tr>
+<tr>
+<td><code>"title": "&lt;Title&gt;",</code></td>
+<td>The title of the background layer, as displayed in the background switcher.</td>
+</tr>
+<tr>
+<td><code>"titleMsgId": "&lt;Title msgID&gt;",</code></td>
+<td>Alternative to <code>title</code>, a message ID, translated through the translation files.</td>
+</tr>
+<tr>
+<td><code>"attribution": "&lt;Attribution&gt;",</code></td>
+<td>Optional, attribution which will be shown in the bottom right corner of the map.</td>
+</tr>
+<tr>
+<td><code>"attributionUrl": "&lt;URL&gt;",</code></td>
+<td>Optional, link associated to the attribution</td>
+</tr>
+<tr>
+<td><code>"group": "&lt;GroupId&gt;",</code></td>
+<td>Optional, a group ID string. Background layers with the same group ID will be grouped together in the background switcher.</td>
+</tr>
+<tr>
+<td><code>"layerConfig": {...},</code></td>
+<td>Optional, extra OpenLayers layer configuration, according to the <a href="https://openlayers.org/en/latest/apidoc">API</a> of the specific layer type.</td>
+</tr>
+<tr>
+<td><code>"minScale": &lt;min_scale&gt;,</code></td>
+<td>Optional, minimum scale denominator from which to render the layer.</td>
+</tr>
+<tr>
+<td><code>"maxScale": &lt;max_scale&gt;,</code></td>
+<td>Optional, maximum scale denominator from which to render the layer.</td>
+</tr>
+<tr>
+<td><code>"opacity": &lt;opacity&gt;,</code></td>
+<td>Optional, the layer opacity (between <code>0</code> and <code>255</code>). Default: <code>255</code>.</td>
+</tr>
+<tr>
+<td><code>"sourceConfig": {...},</code></td>
+<td>Optional, extra OpenLayers source configuration, according to the <a href="https://openlayers.org/en/latest/apidoc">API</a> of the specific source type.</td>
+</tr>
+<tr>
+<td><code>"thumbnail": "&lt;Filename&gt;",</code></td>
+<td>Optional, image file in <code>assets/img/mapthumbs</code> (see <a href="../ViewerConfiguration/#viewer-asset">Viewer assets</a>). Defaults to <code>img/mapthumbs/default.jpg</code>.</td>
+</tr>
+<tr>
+<td><code>"type": "&lt;Type&gt;",</code></td>
+<td>The background layer type, i.e. <code>wms</code> or <code>wmts</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;Layer params&gt;</code></td>
+<td>Parameters according to the specified layer type.</td>
+</tr>
+</tbody>
+</table>
+<p>Some minimal examples of supported background layers:</p>
+<ul>
+<li><em>WMS</em>:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;swissboundaries&quot;,
+  &quot;type&quot;:&quot;wms&quot;,
+  &quot;url&quot;:&quot;https://wms.geo.admin.ch&quot;,
+  &quot;projection:&quot;:&quot;EPSG:2056&quot;,
+  &quot;params&quot;: {
+    &quot;LAYERS&quot;: &quot;ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill&quot;,
+    &quot;VERSION&quot;: &quot;1.3.0&quot;,
+    ...
+  }
+}
+</code></pre>
+<ul>
+<li><em>WMTS</em>:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;name&quot;:&quot;bluemarble&quot;,
+  &quot;type&quot;:&quot;wmts&quot;,
+  &quot;url&quot;:&quot;http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief/default/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpeg&quot;,
+  &quot;bbox&quot;:{
+    &quot;bounds&quot;:[-180.0,-85.051129,180.0,85.051129],
+    &quot;crs&quot;:&quot;EPSG:4326&quot;
+  },
+  &quot;originX&quot;:-20037508.34278925,
+  &quot;originY&quot;:20037508.34278925,
+  &quot;projection:&quot;:&quot;EPSG:3857&quot;,
+  &quot;resolutions&quot;:[156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781],
+  &quot;tileMatrixPrefix&quot;:&quot;&quot;,
+  &quot;tileMatrixSet&quot;:&quot;GoogleMapsCompatible_Level8&quot;,
+  &quot;tileSize&quot;:[256,256]
+}
+</code></pre>
+<p><em>Note</em>: You can use the helper python script located at <code>qwc2/scripts/wmts_config_generator.py</code> to easily generate WMTS background layer configurations.</p>
+<ul>
+<li><em>OpenStreetMap</em>:</li>
+</ul>
+<pre><code class="language-json">  {
+    &quot;name&quot;:&quot;mapnik&quot;,
+    &quot;type&quot;:&quot;osm&quot;
+  }
+</code></pre>
+<ul>
+<li><em>Bing</em>:</li>
+</ul>
+<pre><code class="language-json">  {
+    &quot;name&quot;: &quot;bing&quot;,
+    &quot;type&quot;: &quot;bing&quot;,
+    &quot;apiKey&quot;: &quot;&lt;get from https://www.bingmapsportal.com/&gt;&quot;,
+    &quot;imagerySet&quot;: &quot;&lt;Aerial|AerialWithLabelsOnDemand|RoadOnDemand|CanvasDark|OrdnanceSurvey&gt;&quot;
+  }
+</code></pre>
+<ul>
+<li><em>XYZ</em>:</li>
+</ul>
+<pre><code class="language-json">  {
+    &quot;name&quot;: &quot;OpenCycleMap&quot;,
+    &quot;type&quot;: &quot;xyz&quot;,
+    &quot;url&quot;:&quot;https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png&quot;
+  }
+</code></pre>
+<ul>
+<li><em>VectorTiles</em>: (note: if the tile projection is not <code>EPSG:3857</code>, you need to specifiy <code>projection</code> and <code>tileGridConfig</code>. If labels are cropped you could also set <code>declutter</code> to <code>true</code>)</li>
+</ul>
+<pre><code class="language-json">  {
+    &quot;name&quot;: &quot;mvt_example&quot;,
+    &quot;type&quot;: &quot;mvt&quot;,
+    &quot;url&quot;: &quot;http://foobar.baz/tileset/{z}/{x}/{y}.pbf&quot;,
+    &quot;style&quot;: &quot;http://foobar.baz/style.json&quot;,
+    &quot;declutter&quot;: false,
+    &quot;projection&quot;: &quot;EPSG:XXXX&quot;,
+    &quot;tileGridConfig&quot;: {
+      &quot;origin&quot;: [&lt;x&gt;, &lt;y&gt;],
+      &quot;resolutions&quot;: [&lt;resolutions&gt;]
+    }
+  }
+</code></pre>
+<p>Alternatively, WMS and WMTS background layers can also be defined specifiying a resource identifier. For example:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;:&quot;ch.swisstopo.pixelkarte-grau&quot;,
+    &quot;title&quot;:&quot;National map (gray)&quot;,
+    &quot;resource&quot;: &quot;wmts:https://wmts10.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml#ch.swisstopo.pixelkarte-grau&quot;,
+    &quot;projection&quot;: &quot;EPSG:2056&quot;,
+    &quot;thumbnail&quot;:&quot;img/mapthumbs/default.jpg&quot;
+}
+</code></pre>
+<p>A background layer definition can also be a group of layers, in the format</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;&lt;Name&gt;&quot;,
+  &quot;title&quot;: &quot;&lt;Title&gt;&quot;,
+  &quot;type&quot;: &quot;group&quot;,
+  &quot;items&quot;: [
+    { &lt;BackgroundLayerDefinition&gt; },
+    { &lt;BackgroundLayerDefinition&gt; },
+    ...
+  ]
+}
+</code></pre>
+<p>Instead of specifiying a full background layer definition in a group, you can also reference an existing one with <code>"ref": "&lt;bg_layer_name&gt;"</code>, and selectively override certain properties, such as <code>minScale</code> and <code>maxScale</code>:</p>
+<pre><code class="language-json">{
+  ...
+  &quot;items&quot;: [
+    {
+      &quot;ref&quot;: &quot;&lt;bg_layer_name&gt;&quot;,
+      &quot;minScale&quot;: &lt;min_scale&gt;,
+      &quot;maxScale&quot;: &lt;max_scale&gt;
+    },
+    ...
+  ]
+}
+</code></pre>
+<h2 id="generating-the-themes-configuration">Generating the themes configuration <a name="generating-theme-configuration"></a><a class="headerlink" href="#generating-the-themes-configuration" title="Permanent link">&para;</a></h2>
+<p>The file ultimately read by the QWC viewer is the <code>themes.json</code> configuration, which includes the contents of <code>themesConfig.json</code> completed with additional data obtained from the QGIS Project.</p>
+<ul>
+<li>
+<p>When using <code>qwc-docker</code>, you can generate the themes from the <code>qwc-admin-gui</code> administration backend, running on <a href="http://localhost:8088/qwc_admin">http://localhost:8088/qwc_admin</a> by default. Log in as <code>admin</code> user, then press the green <code>Generate service configuration</code> button. This will invoce the<code>qwc-config-generator</code>, which will generate <code>mapViewerConfig.json</code> located below <code>qwc-docker/volumes/config/&lt;tentant&gt;</code>. You can then inspect the generated <code>themes.json</code> at <a href="http://localhost:8088/themes.json">http://localhost:8088/themes.json</a>.</p>
+</li>
+<li>
+<p>When using QWC as a standalone viewer, the <code>themes.json</code> can be generated by invoking</p>
+</li>
+</ul>
+<pre><code class="language-bash">yarn run themesconfig
+</code></pre>
+<p>Note: this command is automatically invoked when starting the development server via <code>yarn start</code>.</p>
+<p>If working in an environment without node, using the equivalent command</p>
+<pre><code class="language-bash">python3 qwc2/scripts/themesConfig.py
+</code></pre>
+<p>If you want to manage multiple <code>themesConfig.json</code> files, you can specify which while should be processed by the theme generation script via the <code>QWC2_THEMES_CONFIG</code> environment variable.</p>
+<h2 id="storing-projects-in-database">Storing projects in database <a name="projects-in-database"></a><a class="headerlink" href="#storing-projects-in-database" title="Permanent link">&para;</a></h2>
+<p>When you are using <code>qwc-docker</code>, you can configure QWC to read the QGIS projects directly from the database. To do this, proceed as follows:</p>
+<ul>
+<li>Set up a PostgreSQL database connection in QGIS, checking the "Allow saving/loading QGIS projects in the database" option.</li>
+<li>Save the project to the configured database in QGIS using Project &rarr; Save To &rarr; PostgreSQL.</li>
+<li>Add a <code>qgisprojects</code> service definition for the used database to <code>qwc-docker/pg_service.conf</code>.</li>
+<li>Write a theme configuration entry in <code>themesConfig.json</code> using with <code>"url": "/ows/pg/&lt;schema&gt;/&lt;projectname&gt;"</code>, where <code>schema</code> and <code>projectname</code> as as specified when saving the project in QGIS.</li>
+</ul>
+<h2 id="using-the-qgz-project-file-format">Using the QGZ project file format <a name="qgz-file-format"></a><a class="headerlink" href="#using-the-qgz-project-file-format" title="Permanent link">&para;</a></h2>
+<p>You can configure <code>qwc-docker</code> to look for <code>qgz</code> project files instead of <code>qgs</code> project files as follows:</p>
+<ul>
+<li>Set <code>qgis_project_extension</code> to <code>.qgz</code> in the toplevel <code>config</code> section of <code>tenantConfig.json</code>.</li>
+<li>If using <code>qwc-docker</code>, set <code>QGIS_PROJECT_SUFFIX=qgz</code> in the <code>qwc-qgis-server</code> environment in <code>docker-compose.yml</code>.</li>
+</ul>
+<h2 id="split-categorized-layers">Split categorized layers<a class="headerlink" href="#split-categorized-layers" title="Permanent link">&para;</a></h2>
+<p>By default, symbol categories of a <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">classified</a> layer won't be exposed via WMS and hence in QWC.</p>
+<p>To expose symbol categories as separate layers via WMS, you can use the <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">split_categorized</a> QGIS Server plugin.</p>
+<p>To configure the plugin in <code>qwc-docker</code>, proceed as follows:</p>
+<ul>
+<li>Download the <a href="https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized">split_categorized</a>, i.e. to <code>volumes/qgis-server-plugins/split_categorized</code> and configure the <code>qwc-qgis-server</code> container as follows:</li>
+</ul>
+<pre><code class="language-yml">  qwc-qgis-server:
+    image: docker.io/sourcepole/qwc-qgis-server:&lt;TAG&gt;
+    volumes:
+      - ./volumes/qgis-server-plugins/split_categorized:/usr/share/qgis/python/plugins/split_categorized:ro
+    ...
+</code></pre>
+<ul>
+<li>
+<p>For all layers that you want to split, create the <a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_vector/vector_properties.html#variables-properties">variable</a> <code>convert_categorized_layer</code> and set it to <code>true</code>.</p>
+</li>
+<li>
+<p>Generate the <a href="#generating-theme-configuration">themes configuration</a>.</p>
+</li>
+</ul>
+<p><em>Note:</em> <code>ELSE</code> symbol rules are currently unsupported, respectively will display the entire layer contents.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../QuickStart/" class="btn btn-neutral float-left" title="Quick start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ViewerConfiguration/" class="btn btn-neutral float-right" title="Viewer">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../QuickStart/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ViewerConfiguration/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/extend-search.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+      <script src="../../js/version-select.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
