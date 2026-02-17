@@ -103,7 +103,7 @@ Restricted viewer task items are then removed from the menu and toolbar in the m
 
 The `Viewer asset` resource defines viewer assets (i.e. files below the QWC assets folder) which can be restricted.
 
-The resource name is a file path below the assets folder (i.e. `pdfs/mydocument.pdf` for `<baseurl>/assets/pdfs/mydocument.pdf`). The path can also contain wildcards (i.e. `pdfs/restricted/`), in which case all matching files will be restricted to permitted users only.
+The resource name is a file path below the assets folder (i.e. `pdfs/mydocument.pdf` for `<baseurl>/assets/pdfs/mydocument.pdf`). The path can also contain wildcards (i.e. `pdfs/restricted/*`), in which case all matching files will be restricted to permitted users only.
 
 Accessing a viewer asset which is not permitted will result in a `404 Not Found` error.
 
