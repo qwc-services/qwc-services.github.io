@@ -4,7 +4,15 @@ QWC Viewer translations are available for [multiple languags](https://github.com
 
 By default, QWC will attempt to load the translation matching your browser language. Alternatively, you can explicitly specify the language by adding the `lang=<lang>` query parameter to the application URL, i.e. `lang=de-CH`.
 
-The [Settings Plugin](../references/qwc2_plugins.md#settings) furthermore allows graphically switching the language within QWC, with the list of available languages configured via the `languages` plugin configuration property.
+The [Settings Plugin](../references/qwc2_plugins.md#settings) furthermore allows graphically switching the language within QWC, reading the list of available languages from the toplevel `availableLocales` setting in `config.json`, i.e.:
+```
+"availableLocales": {
+    "en-US": "English",
+    "de-CH": "Deutsch",
+    "fr-FR": "Français",
+    "it-IT": "Italiano"
+}
+```
 
 ### Translated themes <a name="translated-themes"></a>
 
@@ -20,17 +28,7 @@ As a prerequisite, the [`get_translations`](https://github.com/qwc-services/qwc-
     ...
 ```
 
-Also, ensure a `tsconfig.json` file exists in in `volumes/qwc2/translations` containing the list of translatable languages, for example:
-```
-{
-  "languages": [
-    "de-DE",
-    "de-CH",
-    "en-US",
-    "it-IT"
-  ]
-}
-  ```
+Also, ensure the available viewer locales are declared in the toplevel `availableLocales` setting in `config.json`, see above.
 
 Then, to localize a theme:
 
