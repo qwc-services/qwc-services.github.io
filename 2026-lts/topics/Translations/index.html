@@ -157,7 +157,14 @@
                 <h2 id="translations">Translations <a name="translations"></a><a class="headerlink" href="#translations" title="Permanent link">&para;</a></h2>
 <p>QWC Viewer translations are available for <a href="https://github.com/qgis/qwc2/tree/master/static/translations">multiple languags</a> (with varying degree of competeness).</p>
 <p>By default, QWC will attempt to load the translation matching your browser language. Alternatively, you can explicitly specify the language by adding the <code>lang=&lt;lang&gt;</code> query parameter to the application URL, i.e. <code>lang=de-CH</code>.</p>
-<p>The <a href="../../references/qwc2_plugins/#settings">Settings Plugin</a> furthermore allows graphically switching the language within QWC, with the list of available languages configured via the <code>languages</code> plugin configuration property.</p>
+<p>The <a href="../../references/qwc2_plugins/#settings">Settings Plugin</a> furthermore allows graphically switching the language within QWC, reading the list of available languages from the toplevel <code>availableLocales</code> setting in <code>config.json</code>, i.e.:</p>
+<pre><code>&quot;availableLocales&quot;: {
+    &quot;en-US&quot;: &quot;English&quot;,
+    &quot;de-CH&quot;: &quot;Deutsch&quot;,
+    &quot;fr-FR&quot;: &quot;Français&quot;,
+    &quot;it-IT&quot;: &quot;Italiano&quot;
+}
+</code></pre>
 <h3 id="translated-themes">Translated themes <a name="translated-themes"></a><a class="headerlink" href="#translated-themes" title="Permanent link">&para;</a></h3>
 <p>QWC also supports localized themes, including in particular the theme name, layer and attribute names.</p>
 <p>As a prerequisite, the <a href="https://github.com/qwc-services/qwc-qgis-server-plugins?tab=readme-ov-file#get_translations"><code>get_translations</code></a> QGIS Server plugin needs be enabled, i.e. when using <code>qwc-qgis-server</code>:</p>
@@ -167,26 +174,15 @@
       - ./volumes/qgis-server-plugins/get_translations:/usr/share/qgis/python/plugins/get_translations:ro
     ...
 </code></pre>
-<p>Also, ensure a <code>tsconfig.json</code> file exists in in <code>volumes/qwc2/translations</code> containing the list of translatable languages, for example:</p>
-<pre><code>{
-  &quot;languages&quot;: [
-    &quot;de-DE&quot;,
-    &quot;de-CH&quot;,
-    &quot;en-US&quot;,
-    &quot;it-IT&quot;
-  ]
-}
-  ```
-
-Then, to localize a theme:
-
-1. In `QGIS → Project Properties → General`, generate a project translation file by selecting the source language and pressing `Generate TS File`.
-2. Rename the generated `&lt;projectname&gt;.ts` to `&lt;projectname&gt;_&lt;lang&gt;.ts`, where `&lt;lang&gt;` is language code like `de` or `de-CH`.
-3. Open the `&lt;projectname&gt;_&lt;lang&gt;.ts` with the `Qt Linguist` application and fill out the translations. Note that translations need to be marked as &quot;finished&quot; in Qt Linguist.
-
-Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file `&lt;projectname&gt;_&lt;lang&gt;.json` structured as follows:
-```json
-{
+<p>Also, ensure the available viewer locales are declared in the toplevel <code>availableLocales</code> setting in <code>config.json</code>, see above.</p>
+<p>Then, to localize a theme:</p>
+<ol>
+<li>In <code>QGIS → Project Properties → General</code>, generate a project translation file by selecting the source language and pressing <code>Generate TS File</code>.</li>
+<li>Rename the generated <code>&lt;projectname&gt;.ts</code> to <code>&lt;projectname&gt;_&lt;lang&gt;.ts</code>, where <code>&lt;lang&gt;</code> is language code like <code>de</code> or <code>de-CH</code>.</li>
+<li>Open the <code>&lt;projectname&gt;_&lt;lang&gt;.ts</code> with the <code>Qt Linguist</code> application and fill out the translations. Note that translations need to be marked as "finished" in Qt Linguist.</li>
+</ol>
+<p>Since the QGIS project translations mechanism does not currently allow translating some project strings which are useful for QWC, these need to be defined in an auxiliary translation file <code>&lt;projectname&gt;_&lt;lang&gt;.json</code> structured as follows:</p>
+<pre><code class="language-json">{
   &quot;layertree&quot;: {
     &quot;&lt;layer_name&gt;&quot;: &quot;&lt;translated_layer_name&gt;&quot;,
     ...
