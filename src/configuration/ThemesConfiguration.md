@@ -121,6 +121,7 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
   "defaultPrintScales" [<Scale denominators, see theme definition below>],
   "defaultPrintResolutions": [<DPIs, see theme definition below>],
   "defaultSearchProviders": [<Search providers, see theme definition below>],
+  "defaultMapTips": <boolean>|null,
   "defaultPrintGrid": [<Print grid, see theme definition below>],
   "defaultTheme": "<Default theme id>"
 }
@@ -174,7 +175,7 @@ The format of the theme definitions is as follows:
 | `"layerTreeHiddenSublayers": ["<layername>", ...],`  | Optional: list of sublayer names to omit in layertree (but still displayed in map).                   |
 | `"lockedVisibilityPreset":  "<name>",`               | Optional: lock styles of theme layers to those set in the specified visibility preset.                |
 | `"mapCrs": "<EPSG code>",`                           | Optional, map projection, defaults to project projection.                                             |
-| `"mapTips": <boolean>|null,`                         | Optional, per-theme setting whether map-tips are unavailable (`null`), disabled by default (`false`) or enabled by default (`true`). |
+| `"mapTips": <boolean>|null,`                         | Optional, per-theme setting whether map-tips are disabled by default (`false`) or enabled by default (`true`). If `null` or undefined, defaults to `defaultMapTips`. |
 | `"minSearchScaleDenom": <number>,`                   | Optional, minimum scale to enforce when zooming to search results. Takes precedence over value in `config.json`. |
 | `"predefinedFilters": [{<filter_config>}, ...],`     | Optional: predefined filter configuration, see [MapFilter](../references/qwc2_plugins.md#mapfilter).  |
 | `"pluginData": {`                                    | Optional, data to pass to custom plugins.                                                             |
