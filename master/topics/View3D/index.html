@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>3D View - QWC - 2026.02.17</title>
+    <title>3D View - QWC - 2026.02.23</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.17
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.23
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -140,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.17</a>
+          <a href="../..">QWC - 2026.02.23</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -229,25 +229,35 @@
     ],
     &quot;tiles3d&quot;: [
          {
+             &quot;type&quot;: &quot;tiles3d&quot;,
              &quot;name&quot;: &quot;&lt;uinque_name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;visibility&quot;: &lt;true|false&gt;,
              &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
              &quot;idAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-             &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;, &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
+             &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;: &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
              &quot;style&quot;: &quot;&lt;styleName&gt;&quot;,
              &quot;colorAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
              &quot;alphaAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
              &quot;labelAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
-         }
-    ],
-    &quot;objects3d&quot;: [
+        },
         {
+             &quot;type&quot;: &quot;object3d&quot;,
              &quot;name&quot;: &quot;&lt;uinque_name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;visibility&quot;: &lt;true|false&gt;
+        },
+        {
+            &quot;type&quot;: &quot;group&quot;,
+            &quot;title&quot;: &quot;&lt;title&gt;&quot;,
+            &quot;visibility&quot;: &lt;true|false&gt;,
+            &quot;expanded&quot;: &lt;true|false&gt;,
+            &quot;mutuallyExclusive&quot;: &lt;true|false&gt;,
+            &quot;items&quot;: [
+                &lt;children&gt;
+            ]
         }
     ]
 }
@@ -265,19 +275,16 @@
 </ul>
 </li>
 <li>
-<p>The <code>tiles3d</code> entry contains an optional list of 3d tiles to add to the scene, with:</p>
+<p><code>objects</code> can contain entries of type <code>tiles3d</code> (a 3D tiles tileset), <code>object3d</code> (a GLTF object) or <code>group</code>. For a <code>tiles3d</code> entry, you can also specify:</p>
 <ul>
+<li><code>baseColor</code>: the fallback color for the tile objects, defaults to <code>white</code>.</li>
 <li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
 <li><code>styles</code>: optional, available tileset styles. Takes precedente over <code>colorAttr</code>, <code>alphaAttr</code>, <code>labelAttr</code>.</li>
 <li><code>style</code>: optional, tileset style enabled by default.</li>
-<li><code>baseColor</code>: the fallback color for the tile objects, defaults to <code>white</code>.</li>
 <li><code>colorAttr</code>: optional, feature properties table attribute which stores the feature color, as a <code>0xRRGGBB</code> integer.</li>
 <li><code>alphaAttr</code>: optional, feature properties table attribute which stores the feature alpha (transparency), as an integer between <code>0</code> and <code>255</code>.</li>
 <li><code>labelAttr</code>: optional, feature properties table attribute which stores the feature label, displayed above the geometry.</li>
 </ul>
-</li>
-<li>
-<p>The <code>objects3d</code> entry contains an optional list of GLTF objects to add to the scene.</p>
 </li>
 </ul>
 <p>You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D/3D view via <code>startupView</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme item configuration</a>.</p>
