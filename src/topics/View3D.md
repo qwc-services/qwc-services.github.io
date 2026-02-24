@@ -73,25 +73,35 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
     ],
     "tiles3d": [
          {
+             "type": "tiles3d",
              "name": "<uinque_name>",
              "url": "<url_to_tileset.json>",
              "title": "<title>",
              "visibility": <true|false>,
              "baseColor": "<css RGB(A) color string>",
              "idAttr": "<tile_feature_attr>",
-             "styles": {"<styleName>", "<url_to_tilesetStyle.json>", ...},
+             "styles": {"<styleName>": "<url_to_tilesetStyle.json>", ...},
              "style": "<styleName>",
              "colorAttr": "<tile_feature_attr>",
              "alphaAttr": "<tile_feature_attr>",
              "labelAttr": "<tile_feature_attr>",
-         }
-    ],
-    "objects3d": [
+        },
         {
+             "type": "object3d",
              "name": "<uinque_name>",
              "url": "<url_to_file.gltf>",
              "title": "<title>",
              "visibility": <true|false>
+        },
+        {
+            "type": "group",
+            "title": "<title>",
+            "visibility": <true|false>,
+            "expanded": <true|false>,
+            "mutuallyExclusive": <true|false>,
+            "items": [
+                <children>
+            ]
         }
     ]
 }
@@ -106,17 +116,15 @@ Where:
     - `visibility` controls the initially visibile background layer
     - `overview: true` controls the name of background layer to display in the overview map. If no background layer is marked with `overview: true`, the currently visibile background layer id dipslayed in the overview map.
 
-- The `tiles3d` entry contains an optional list of 3d tiles to add to the scene, with:
+- `objects` can contain entries of type `tiles3d` (a 3D tiles tileset), `object3d` (a GLTF object) or `group`. For a `tiles3d` entry, you can also specify:
 
+    - `baseColor`: the fallback color for the tile objects, defaults to `white`.
     - `idAttr`: feature properties table attribute which stores the object id, used for styling and passed to `tileInfoServiceUrl` of the `Identify3D` plugin. Default: `id`.
     - `styles`: optional, available tileset styles. Takes precedente over `colorAttr`, `alphaAttr`, `labelAttr`.
     - `style`: optional, tileset style enabled by default.
-    - `baseColor`: the fallback color for the tile objects, defaults to `white`.
     - `colorAttr`: optional, feature properties table attribute which stores the feature color, as a `0xRRGGBB` integer.
     - `alphaAttr`: optional, feature properties table attribute which stores the feature alpha (transparency), as an integer between `0` and `255`.
     - `labelAttr`: optional, feature properties table attribute which stores the feature label, displayed above the geometry.
-
-- The `objects3d` entry contains an optional list of GLTF objects to add to the scene.
 
 You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D/3D view via `startupView` in the [theme item configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration).
 
