@@ -1,3 +1,7 @@
+# Updating to qwc-map-viewer:v2026.02.24
+
+In `qwc-map-viewer:v2026.02.24`, the `tiles3d` and `objects3d` fields of a `map3d` configuration block have been replaced by a unified `objects` field, see [View3D](../topics/View3D.md). Consequently, also the `3D Tiles Tileset` resource type has been renamed to `3D Object`. Therefore, when updating to `qwc-map-viewer:v2026.02.24`, also update to `qwc-base-db-migrate:v2026.02.24`, `qwc-config-generator:v2026.02.24` and `qwc-admin-gui:v2026.02.24`.
+
 # Updating to qwc-map-viewer:v2026.02.01 \[2025-lts &rarr; 2026-lts\]
 
 As of `qwc-map-viewer:v2026.02.01`, the `editConfig` will not be embedded in the `themes.json` anymore, but will be dynamically loaded on-demand. This reduces the size of the initial `themes.json`. When updating to `qwc-map-viewer:v2026.02.01`, you will also need to update to `qwc-config-generator:v2026.01.30` and then run the config generator.
