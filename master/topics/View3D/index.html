@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>3D View - QWC - 2026.02.23</title>
+    <title>3D View - QWC - 2026.02.24</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.23
+          <a href="../.." class="icon icon-home"> QWC - 2026.02.24
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -140,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.23</a>
+          <a href="../..">QWC - 2026.02.24</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -227,10 +227,10 @@
          {&quot;name&quot;: &quot;&lt;name_of_background_layer&gt;&quot;},
          ...
     ],
-    &quot;tiles3d&quot;: [
+    &quot;objects&quot;: [
          {
              &quot;type&quot;: &quot;tiles3d&quot;,
-             &quot;name&quot;: &quot;&lt;uinque_name&gt;&quot;,
+             &quot;name&quot;: &quot;&lt;unique_name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;visibility&quot;: &lt;true|false&gt;,
@@ -244,13 +244,14 @@
         },
         {
              &quot;type&quot;: &quot;object3d&quot;,
-             &quot;name&quot;: &quot;&lt;uinque_name&gt;&quot;,
+             &quot;name&quot;: &quot;&lt;unique_name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;visibility&quot;: &lt;true|false&gt;
         },
         {
             &quot;type&quot;: &quot;group&quot;,
+            &quot;name&quot;: &quot;&lt;unique_name&gt;&quot;,
             &quot;title&quot;: &quot;&lt;title&gt;&quot;,
             &quot;visibility&quot;: &lt;true|false&gt;,
             &quot;expanded&quot;: &lt;true|false&gt;,
@@ -275,7 +276,7 @@
 </ul>
 </li>
 <li>
-<p><code>objects</code> can contain entries of type <code>tiles3d</code> (a 3D tiles tileset), <code>object3d</code> (a GLTF object) or <code>group</code>. For a <code>tiles3d</code> entry, you can also specify:</p>
+<p><code>objects</code> can contain entries of type <code>tiles3d</code> (a 3D tiles tileset), <code>object3d</code> (a GLTF object) or <code>group</code>. The <code>name</code> of the entry serves as its unique identifier, and is also used filter the entries by <a href="#permissions">permissions</a>. For a <code>tiles3d</code> entry, you can also specify:</p>
 <ul>
 <li><code>baseColor</code>: the fallback color for the tile objects, defaults to <code>white</code>.</li>
 <li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
@@ -290,7 +291,7 @@
 <p>You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D/3D view via <code>startupView</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme item configuration</a>.</p>
 <p><em>NOTE</em>: If a theme contains a <code>map3d</code> configuration, a view switcher map button will automatically be displayed.</p>
 <h3 id="permissions">Permissions <a name="permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
-<p>To restrict 3D tiles configured in <code>tiles3d</code> of a <code>map3d</code> theme configuration, create a <code>3D Tiles Tileset</code> resource named according to the <code>name</code> of the <code>tiles3d</code> entry and create permissions assigning the desired roles to the resources.</p>
+<p>To restrict 3D objects configured in <code>objects</code> of a <code>map3d</code> theme configuration, create a <code>3D Object</code> resource named according to the <code>name</code> of the desired entry and create permissions assigning the desired roles to the resources.</p>
 <h3 id="styling-3d-tiles">Styling 3D tiles<a class="headerlink" href="#styling-3d-tiles" title="Permanent link">&para;</a></h3>
 <p>The tileset style JSON is a <a href="https://github.com/CesiumGS/3d-tiles/tree/main/specification/Styling">3D Tiles stylesheet</a>,
 of which currently the <code>color</code> section is supported, and which may in addition also contain a <code>featureStyles</code> section as follows:</p>
