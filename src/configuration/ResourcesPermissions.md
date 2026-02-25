@@ -23,7 +23,7 @@ The following resource types are available:
 | `├─ Data (update)`     | Dataset for updating features.                                                              |
 | `├─ Data (delete)`     | Dataset for deleting features.                                                              |
 | `├─ Print template`    | Print composer template of a QGIS Project.                                                  |
-| `╰─ 3D Tiles Tileset`  | 3D tiles tileset, see [3D view](../topics/View3D.md).                                       |
+| `╰─ 3D Object`         | 3D object, see [3D view](../topics/View3D.md).                                              |
 | `FeatureInfo service`  | Feature info service, see [Info permissions](../topics/FeatureInfo.md#identify-permissions).|
 | `╰─ FeatureInfo layer` | Feature info layer.                                                                         |
 | `   ╰─ Attribute`      | Attribute of an info layer.                                                                 |

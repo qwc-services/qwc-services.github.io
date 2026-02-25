@@ -133,7 +133,7 @@ You can control whether a theme is loaded by default in 2D, 3D or splitscreen 2D
 
 ### Permissions <a name="permissions"></a>
 
-To restrict 3D tiles configured in `tiles3d` of a `map3d` theme configuration, create a `3D Tiles Tileset` resource named according to the `name` of the `tiles3d` entry and create permissions assigning the desired roles to the resources.
+To restrict 3D objects configured in `objects` of a `map3d` theme configuration, create a `3D Object` resource named according to the `name` of the desired entry and create permissions assigning the desired roles to the resources.
 
 ### Styling 3D tiles
 
