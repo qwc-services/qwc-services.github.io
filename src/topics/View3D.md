@@ -71,10 +71,10 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
          {"name": "<name_of_background_layer>"},
          ...
     ],
-    "tiles3d": [
+    "objects": [
          {
              "type": "tiles3d",
-             "name": "<uinque_name>",
+             "name": "<unique_name>",
              "url": "<url_to_tileset.json>",
              "title": "<title>",
              "visibility": <true|false>,
@@ -88,13 +88,14 @@ Next, to add a 3D View to a theme, add a `map3d` configuration to the desired th
         },
         {
              "type": "object3d",
-             "name": "<uinque_name>",
+             "name": "<unique_name>",
              "url": "<url_to_file.gltf>",
              "title": "<title>",
              "visibility": <true|false>
         },
         {
             "type": "group",
+            "name": "<unique_name>",
             "title": "<title>",
             "visibility": <true|false>,
             "expanded": <true|false>,
@@ -116,7 +117,7 @@ Where:
     - `visibility` controls the initially visibile background layer
     - `overview: true` controls the name of background layer to display in the overview map. If no background layer is marked with `overview: true`, the currently visibile background layer id dipslayed in the overview map.
 
-- `objects` can contain entries of type `tiles3d` (a 3D tiles tileset), `object3d` (a GLTF object) or `group`. For a `tiles3d` entry, you can also specify:
+- `objects` can contain entries of type `tiles3d` (a 3D tiles tileset), `object3d` (a GLTF object) or `group`. The `name` of the entry serves as its unique identifier, and is also used filter the entries by [permissions](#permissions). For a `tiles3d` entry, you can also specify:
 
     - `baseColor`: the fallback color for the tile objects, defaults to `white`.
     - `idAttr`: feature properties table attribute which stores the object id, used for styling and passed to `tileInfoServiceUrl` of the `Identify3D` plugin. Default: `id`.
