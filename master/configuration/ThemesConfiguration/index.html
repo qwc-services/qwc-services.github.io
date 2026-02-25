@@ -356,6 +356,7 @@ sslmode=disable
   &quot;defaultPrintScales&quot; [&lt;Scale denominators, see theme definition below&gt;],
   &quot;defaultPrintResolutions&quot;: [&lt;DPIs, see theme definition below&gt;],
   &quot;defaultSearchProviders&quot;: [&lt;Search providers, see theme definition below&gt;],
+  &quot;defaultMapTips&quot;: &lt;boolean&gt;|null,
   &quot;defaultPrintGrid&quot;: [&lt;Print grid, see theme definition below&gt;],
   &quot;defaultTheme&quot;: &quot;&lt;Default theme id&gt;&quot;
 }
@@ -534,7 +535,7 @@ sslmode=disable
 </tr>
 <tr>
 <td><code>"mapTips": &lt;boolean&gt;|null,</code></td>
-<td>Optional, per-theme setting whether map-tips are unavailable (<code>null</code>), disabled by default (<code>false</code>) or enabled by default (<code>true</code>).</td>
+<td>Optional, per-theme setting whether map-tips are disabled by default (<code>false</code>) or enabled by default (<code>true</code>). If <code>null</code> or undefined, defaults to <code>defaultMapTips</code>.</td>
 </tr>
 <tr>
 <td><code>"minSearchScaleDenom": &lt;number&gt;,</code></td>
