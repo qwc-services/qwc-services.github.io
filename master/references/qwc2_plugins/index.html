@@ -241,7 +241,7 @@ qwcframe.contentWindow.postMessage({
 }, &quot;http://&lt;qwc_hostname&gt;:&lt;port&gt;&quot;)
 </code></pre>
 <p>You can also post multiple calls at once as follows:</p>
-<pre><code>* qwcframe.contentWindow.postMessage([{
+<pre><code>qwcframe.contentWindow.postMessage([{
   &quot;method&quot;: &quot;zoomToPoint&quot;,
   &quot;params&quot;: [[2684764, 1247841], 18, &quot;EPSG:2056&quot;]
 }, {
@@ -403,6 +403,7 @@ if (window.qwc2) {
 <p>Deprecated, use <code>window.qwc2.drawGeometry</code> instead.</p>
 <p><strong>drawGeometry(geomType,message,callback,options)</strong></p>
 <p>Draw geometries, and return these as GeoJSON to the calling application.</p>
+<p><em>NOTE</em>: when calling <code>drawGeometry</code> through the <code>postMessage</code> interface, omit the <code>callback</code> parameter. The response will be sent via the response message.</p>
 <ul>
 <li><code>geomType</code>: <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>Circle</code> or <code>Box</code>.</li>
 <li><code>message</code>: A descriptive string to display in the tool taskbar.</li>
@@ -418,6 +419,8 @@ if (window.qwc2) {
 </ul>
 <p><strong>getState()</strong></p>
 <p>Return the current application state.</p>
+<p><strong>onMapClick(callback)</strong></p>
+<p>Fires the callback on the next click on the map.</p>
 <h2 id="attributetable">AttributeTable<a name="attributetable"></a><a class="headerlink" href="#attributetable" title="Permanent link">&para;</a></h2>
 <p>Display the attribute table of layers in a dialog.</p>
 <p>To make a layer available in the attribute table, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
