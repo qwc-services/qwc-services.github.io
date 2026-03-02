@@ -14,7 +14,7 @@ The child components of the 3D view are now loaded as plugins:
 - The `View3D` plugin configuration in `config.json` needs to be adapted to include desired plugin options, see the [stock `config.json`](https://github.com/qgis/qwc2/blob/2e6ea208a06c4bd6efbebb5d6dff5cd4677ed7d6/static/config.json#L478). In particular the `menuItems` and `toolbarItems` can and must now be explicitly specified in the `TopBar3D` plugin options.
 
 
-Update to qwc2 2025.7.22
+Update to qwc2 2025.7.22 \[2025-lts &rarr; 2026-lts\]
 ------------------------
 
 **Changes to EditingInterface**
@@ -23,7 +23,7 @@ Update to qwc2 2025.7.22
 
 To add support for virtual fields, the signature of most `EditingInterface` functions was changed, see [EditingInterface.js](https://github.com/qgis/qwc2/blob/553c340624cd31ffaf038a4e3c3bd8b3b2f395e7/utils/EditingInterface.js) for the new interface.
 
-Update to qwc2 2025.7.1
+Update to qwc2 2025.7.1 \[2025-lts &rarr; 2026-lts\]
 -----------------------
 
 **ProcessNotifications moved to a built-in component**
@@ -34,7 +34,7 @@ If you are using a custom viewer build, modify your `appConfig.js` as [follows](
 
 Also, remove the `ProcessNotifications` plugin config entry from `config.json`.
 
-Update to qwc2 2025.6.25
+Update to qwc2 2025.6.25 \[2025-lts &rarr; 2026-lts\]
 ------------------------
 
 **OverviewMap moved to dedicated plugin**
@@ -59,21 +59,21 @@ If you are using a custom viewer build, modify your `appConfig.js` as [follows](
 If you have custom plugins which honoured `state.windows.mapMargins` for placement within the visible map area, it is recommended to render them within the `MapContainer` element using a portal instead. See [this example](https://github.com/qgis/qwc2/commit/3175dbc79a6b3103c44bd12c81d32202009865b7).
 
 
-Update to qwc2 2025.6.10
+Update to qwc2 2025.6.10 \[2025-lts &rarr; 2026-lts\]
 ------------------------
 
 *Note*: This change is only relevant for custom viewer builds.
 
 The language detection mechanism has been improved, please apply the following [change](https://github.com/qgis/qwc2/commit/118e7407f9d8b2c0fe4e6ce7fb1f26776c54ee27#diff-1fb26bc12ac780c7ad7325730ed09fc4c2c3d757c276c3dacc44bfe20faf166f) to your `webpack.config.js`.
 
-Update to qwc2 2025.5.21
+Update to qwc2 2025.5.21 \[2025-lts &rarr; 2026-lts\]
 ------------------------
 
 *Note*: These changes are only relevant for custom plugin code. No configuration change is necessary.
 
 - The `changeLayerProperty` action now takes the layer `id`. The `uuid` field of the layer entry has been removed.
 
-Update to qwc2 2025.4.3
+Update to qwc2 2025.4.3 \[2025-lts &rarr; 2026-lts\]
 -----------------------
 
 **Switch to npm package**
@@ -92,7 +92,7 @@ To this end:
 
 No further code changes are necessary.
 
-Update to qwc2 submodule revision [574fe2a](https://github.com/qgis/qwc2/tree/574fe2a) (06.02.2025)
+Update to qwc2 submodule revision [574fe2a](https://github.com/qgis/qwc2/tree/574fe2a) (06.02.2025) \[2025-lts &rarr; 2026-lts\]
 ---------------------------------------------------------------------------------------------------
 
 **Authentication plugin changes**
