@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.02.27</title>
+    <title>Qwc2 plugins - QWC - 2026.03.02</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.02.27
+          <a href="../.." class="icon icon-home"> QWC - 2026.03.02
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.02.27</a>
+          <a href="../..">QWC - 2026.03.02</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -226,7 +226,9 @@
 <hr />
 <h2 id="api">API<a name="api"></a><a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <p>Exposes an API for interacting with QWC.</p>
-<p>You can interact with the API as soon as the <code>QWC2ApiReady</code> event is dispatched.</p>
+<p>You can interact with the API as soon as the <code>QWC2ApiReady</code> event is dispatched.
+If you are using the <code>postMessage</code> interface, a <code>QWC2ApiReady</code> message will be sent to
+all origins listed in <code>allowedMessageOrigins</code>.</p>
 <h3 id="postmessage-interface"><code>postMessage</code> interface<a class="headerlink" href="#postmessage-interface" title="Permanent link">&para;</a></h3>
 <p>You can interact with a QWC instance from a parent application either via the <code>window.qwc2</code>
 interface (see below), if the embedded QWC runs under the same origin as the parent application,
@@ -421,6 +423,7 @@ if (window.qwc2) {
 <p>Return the current application state.</p>
 <p><strong>onMapClick(callback)</strong></p>
 <p>Fires the callback on the next click on the map.</p>
+<p><em>NOTE</em>: when calling <code>onMapClick</code> through the <code>postMessage</code> interface, omit the <code>callback</code> parameter. The response will be sent via the response message.</p>
 <h2 id="attributetable">AttributeTable<a name="attributetable"></a><a class="headerlink" href="#attributetable" title="Permanent link">&para;</a></h2>
 <p>Display the attribute table of layers in a dialog.</p>
 <p>To make a layer available in the attribute table, create a a data resource and matching permissions for it in the <code>qwc-admin-gui</code>.</p>
@@ -1241,12 +1244,6 @@ with containing a container element with id=legendcontainer.</p>
 </thead>
 <tbody>
 <tr>
-<td>addLayerSeparator</td>
-<td><code>func</code></td>
-<td>Whether to allow adding separator entries in the layer tree, useful for organizing the tree.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
 <td>allowCompare</td>
 <td><code>bool</code></td>
 <td>Whether to enable the compare function. Requires the <code>MapCompare</code> plugin.</td>
@@ -1261,7 +1258,7 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>allowLayerTreeSeparators</td>
 <td><code>bool</code></td>
-<td>Whether to allow adding layer tree separators.</td>
+<td>Whether to allow adding separator entries in the layer tree, useful for organizing the tree.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
