@@ -65,8 +65,6 @@ All settings are optional, with fallback to the default values as documented.
 | Setting                              | Description |
 |--------------------------------------|-------------|
 |`allowAddingOtherThemes`              | Whether to allow adding another theme to a currently loaded theme. Default: `false`. |
-|`allowLayerTreeSeparators`            | Allows users to add separator items in a flat layer tree. Default: `false`.   |
-|`allowRemovingThemeLayers`            | Whether to allow removing any theme layers from the layer tree. Default: `false`. |
 |`allowReorderingLayers`               | Whether to allow re-ordering layers in the layer tree. Default: `false`.      |
 |`disableImportingLocalLayers`         | Whether to hide the option to import local layers from the layer tree. Default: `false`. |
 |`flattenLayerTreeGroups`              | Whether to display a flat layer tree, omitting the groups. Default: `false`.  |
