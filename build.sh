@@ -5,7 +5,7 @@ branch_main="main"
 if [[ "$branch" == *-lts ]]; then
     branch_main=$branch
 fi
-
+echo "Building for branch $branch..."
 echo "* Setting up venv..."
 rm -rf .venv
 python3 -mvenv .venv
