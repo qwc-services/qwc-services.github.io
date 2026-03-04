@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.0.1-lts</title>
+    <title>Qwc2 plugins - QWC - 2026.0.3-lts</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.0.1-lts
+          <a href="../.." class="icon icon-home"> QWC - 2026.0.3-lts
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.0.1-lts</a>
+          <a href="../..">QWC - 2026.0.3-lts</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -213,6 +213,7 @@
 <li><a href="#layertree3d">LayerTree3D</a></li>
 <li><a href="#mapcopyright3d">MapCopyright3D</a></li>
 <li><a href="#mapexport3d">MapExport3D</a></li>
+<li><a href="#maplight3d">MapLight3D</a></li>
 <li><a href="#measure3d">Measure3D</a></li>
 <li><a href="#overviewmap3d">OverviewMap3D</a></li>
 <li><a href="#settings3d">Settings3D</a></li>
@@ -3109,6 +3110,32 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="mapexport3d">MapExport3D<a name="mapexport3d"></a><a class="headerlink" href="#mapexport3d" title="Permanent link">&para;</a></h2>
 <p>Export the 3D map image to raster formats.</p>
+<h2 id="maplight3d">MapLight3D<a name="maplight3d"></a><a class="headerlink" href="#maplight3d" title="Permanent link">&para;</a></h2>
+<p>Control the map illumination.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultDay</td>
+<td><code>number</code></td>
+<td>Default viewer day (1-365)</td>
+<td><code>182</code></td>
+</tr>
+<tr>
+<td>defaultTime</td>
+<td><code>string</code></td>
+<td>Default viewer time (00:00-23:59)</td>
+<td><code>'12:00'</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="measure3d">Measure3D<a name="measure3d"></a><a class="headerlink" href="#measure3d" title="Permanent link">&para;</a></h2>
 <p>Measure in the 3D map.</p>
 <h2 id="overviewmap3d">OverviewMap3D<a name="overviewmap3d"></a><a class="headerlink" href="#overviewmap3d" title="Permanent link">&para;</a></h2>
