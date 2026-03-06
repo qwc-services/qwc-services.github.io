@@ -234,6 +234,7 @@
              &quot;url&quot;: &quot;&lt;url_to_tileset.json&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
              &quot;visibility&quot;: &lt;true|false&gt;,
+             &quot;snap&quot;: &lt;true|false&gt;,
              &quot;baseColor&quot;: &quot;&lt;css RGB(A) color string&gt;&quot;,
              &quot;idAttr&quot;: &quot;&lt;tile_feature_attr&gt;&quot;,
              &quot;styles&quot;: {&quot;&lt;styleName&gt;&quot;: &quot;&lt;url_to_tilesetStyle.json&gt;&quot;, ...},
@@ -247,7 +248,8 @@
              &quot;name&quot;: &quot;&lt;unique_name&gt;&quot;,
              &quot;url&quot;: &quot;&lt;url_to_file.gltf&gt;&quot;,
              &quot;title&quot;: &quot;&lt;title&gt;&quot;,
-             &quot;visibility&quot;: &lt;true|false&gt;
+             &quot;visibility&quot;: &lt;true|false&gt;,
+             &quot;snap&quot;: &lt;true|false&gt;
         },
         {
             &quot;type&quot;: &quot;group&quot;,
@@ -255,7 +257,7 @@
             &quot;title&quot;: &quot;&lt;title&gt;&quot;,
             &quot;visibility&quot;: &lt;true|false&gt;,
             &quot;expanded&quot;: &lt;true|false&gt;,
-            &quot;mutuallyExclusive&quot;: &lt;true|false&gt;,
+            &quot;mutuallyExclusive&quot;: &lt;false|true&gt;,
             &quot;items&quot;: [
                 &lt;children&gt;
             ]
@@ -276,7 +278,7 @@
 </ul>
 </li>
 <li>
-<p><code>objects</code> can contain entries of type <code>tiles3d</code> (a 3D tiles tileset), <code>object3d</code> (a GLTF object) or <code>group</code>. The <code>name</code> of the entry serves as its unique identifier, and is also used filter the entries by <a href="#permissions">permissions</a>. For a <code>tiles3d</code> entry, you can also specify:</p>
+<p><code>objects</code> can contain entries of type <code>tiles3d</code> (a 3D tiles tileset), <code>object3d</code> (a GLTF object) or <code>group</code>. The <code>name</code> of the entry serves as its unique identifier, and is also used filter the entries by <a href="#permissions">permissions</a>. The <code>snap</code> field allows controlling whether the object/tileset should be included in the list of snappable scene objects when drawing. For a <code>tiles3d</code> entry, you can also specify:</p>
 <ul>
 <li><code>baseColor</code>: the fallback color for the tile objects, defaults to <code>white</code>.</li>
 <li><code>idAttr</code>: feature properties table attribute which stores the object id, used for styling and passed to <code>tileInfoServiceUrl</code> of the <code>Identify3D</code> plugin. Default: <code>id</code>.</li>
