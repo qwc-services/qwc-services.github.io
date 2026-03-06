@@ -25,33 +25,33 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * Allow recording GPS position for point/line geometries
 * Allow copying compatible attributes when copying existing feature
 * Extended [expression grammar](https://github.com/qgis/qwc2/blob/64b3810996ec58f9f0d6247772b56cc86a236186/utils/expr_grammar/grammar.ne)
-* Allow hiding hidden fields in [AttributeTable](../references/qwc2_plugins#attributetable)
+* Allow hiding hidden fields in [AttributeTable](../qwc2_plugins#attributetable)
 * The AttributeTable now uses service-side pagination by the `qwc-data-service` for loading the feature collection
 
 ### Identify
-* Add new paginated display mode, enable via [`resultDisplayMode`](../references/qwc2_plugins#identify) config setting
+* Add new paginated display mode, enable via [`resultDisplayMode`](../qwc2_plugins#identify) config setting
 * Allow comparing selected identify results side-by-side
 * Add shapefile and XLSX exporters
 * The GeoJSON exporter now exports in `EPSG:4326`
 
 ### Layers and LayerTree
 * Expose layer visibility presets ("themes"), as configured in the QGIS project, in the LayerTree
-* Honour layer refresh interval, as configured in the [QGIS project](../configuration/ThemesConfiguration#create-qgis-project)
-* Show control to toggle group and sublayers to LayerTree if [`groupTogglesSublayers`](../references/qwc2_plugins#layertree) is `false`
-* Allow adding separators to the LayerTree also if [`flattenGroups`](../references/qwc2_plugins#layertree) is `false`
+* Honour layer refresh interval, as configured in the [QGIS project](../../configuration/ThemesConfiguration#create-qgis-project)
+* Show control to toggle group and sublayers to LayerTree if [`groupTogglesSublayers`](../qwc2_plugins#layertree) is `false`
+* Allow adding separators to the LayerTree also if [`flattenGroups`](../qwc2_plugins#layertree) is `false`
 * Display layer style selector also for group layers in LayerTree
 
 ### Localization
-* Add support for translated QWC themes, see [Translations](../topics/Translations#translated-themes)
-* Add support for `{lang}` placeholder in the [`NewsPopup`](../references/qwc2_plugins#newspopup) `newsDocument` URL
+* Add support for translated QWC themes, see [Translations](../../topics/Translations#translated-themes)
+* Add support for `{lang}` placeholder in the [`NewsPopup`](../qwc2_plugins#newspopup) `newsDocument` URL
 * Add support for `$lang$` placehodler in menu item and identify attribute links
-* Add support for `translate(<fieldname>)` to translate field names in [custom HTML info templates](../topics/FeatureInfo/#custom-html-templates)
+* Add support for `translate(<fieldname>)` to translate field names in [custom HTML info templates](../../topics/FeatureInfo/#custom-html-templates)
 
 ### Measure
-* Allow configuring [line head and tail markers](../references/qwc2_plugins#measure) for distance and bearing measurement geometries
-* Allow drawing multiple measurement geometries, see also [`clearMeasurementsOnExit` and `clearMeasurementsOnModeChange`](../references/qwc2_plugins#measure) config settings
-* Display total line length next to geometry, also display perimeter length if [`showPerimeterLength`](../references/qwc2_plugins#measure) is set
-* Allow specifying custom `ElevationInterface` for [HeightProfile](../references/qwc2_plugins#heightprofile)
+* Allow configuring [line head and tail markers](../qwc2_plugins#measure) for distance and bearing measurement geometries
+* Allow drawing multiple measurement geometries, see also [`clearMeasurementsOnExit` and `clearMeasurementsOnModeChange`](../qwc2_plugins#measure) config settings
+* Display total line length next to geometry, also display perimeter length if [`showPerimeterLength`](../qwc2_plugins#measure) is set
+* Allow specifying custom `ElevationInterface` for [HeightProfile](../qwc2_plugins#heightprofile)
 * Add support for multiple height profiles returned by [`qwc-elevation-service`](https://github.com/qwc-services/qwc-elevation-service)
 
 ### Redlining
@@ -63,15 +63,15 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * Add specturm color picker to color buttons
 
 ### Reports
-* Allow specifying multiple report templates per layer, see [Reports](../topics/Reports#configuring-the-web-client)
+* Allow specifying multiple report templates per layer, see [Reports](../../topics/Reports#configuring-the-web-client)
 * Add `single_report` mode, to generate one report with all selected features instead of one report per selected feature
 
 ### Search
 * [QGIS feature search](../topics/Search/#configuring-the-qgis-feature-search): allow dynamically populating selection lists via `options_query`
-* Allow searching for catalog layers in main search field, see [`registerCatalogSearchProvider`](../references/qwc2_plugins#layercatalog)
-* Allow searching for task menu entries in main search field, see [`registerTaskSearchProvider`](../references/qwc2_plugins#topbar)
+* Allow searching for catalog layers in main search field, see [`registerCatalogSearchProvider`](../qwc2_plugins#layercatalog)
+* Allow searching for task menu entries in main search field, see [`registerTaskSearchProvider`](../qwc2_plugins#topbar)
 * Allow dynamically registering search providers via 
-* Allow loading search filter regions from an external file, see [search filtering](../topics/Search/#filtering)
+* Allow loading search filter regions from an external file, see [search filtering](../../topics/Search/#filtering)
 
 ### Other changes
 * Bookmark: Rework plugin for improved usabiliy
@@ -81,15 +81,15 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * Portal, ThemeSwitcher: Introduce `expandGroups` config setting to control whether groups are expanded by default
 * Routing: Allow adding routing result as redlining layers
 * ThemeSwitcher: Allow displaying active theme
-* API: Allow interacting with embedded QWC instances via [`postMessage`](../references/qwc2_plugins#api)
+* API: Allow interacting with embedded QWC instances via [`postMessage`](../qwc2_plugins#api)
 
 ### New plugins
-* [ObliqueView](../references/qwc2_plugins#obliqueview), see also [Oblique View](../topics/ObliqueView)
-* [ObjectList](../references/qwc2_plugins#objectlist)
-* [Panoramax](../references/qwc2_plugins#panoramax)
-* [TourGuide](../references/qwc2_plugins#tourguide), see also [Tour Guide](../topics/Tourguide)
-* [ValueTool](../references/qwc2_plugins#valuetool)
-* [View3D](../references/qwc2_plugins#view3d), see also [3D View](../topics/View3D)
+* [ObliqueView](../qwc2_plugins#obliqueview), see also [Oblique View](../../topics/ObliqueView)
+* [ObjectList](../qwc2_plugins#objectlist)
+* [Panoramax](../qwc2_plugins#panoramax)
+* [TourGuide](../qwc2_plugins#tourguide), see also [Tour Guide](../../topics/Tourguide)
+* [ValueTool](../qwc2_plugins#valuetool)
+* [View3D](../qwc2_plugins#view3d), see also [3D View](../../topics/View3D)
 
 ### Services
 
