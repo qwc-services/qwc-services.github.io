@@ -541,3 +541,12 @@ Next, create the resources in the Admin GUI to control the search permissions:
 *Note*: For both `Search facet` and `Dataproduct` resources you can create wildcard resources by setting the name to `*`. This is useful to assign permissions for all available facets/dataproducts with one single resource.
 
 Finally, create permissions for the newly created resources and regenerate the service configuration.
+
+## Automatically generate QGIS Search Provider
+
+When using the config generator, QGIS Search Providers can be automatically created both for the SearchBar and for the FeatureSearch plugin.
+
+* SearchBar: will create a search that queries all queryable QGIS layers, using each layer's Display Name
+* FeatureSearch: will create a search for each queryable layer, which includes all searchable fields
+
+This behavior is disabled by default. To enable this, you must set the QGIS Project Variable `qwc_autogen_searchproviders` to `true`.
