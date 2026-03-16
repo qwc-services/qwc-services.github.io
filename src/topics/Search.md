@@ -214,6 +214,8 @@ In it's simples form, you can configure the theme search provider entry as follo
 
 where `expression` is a WMS GetFeatureInfo `FILTER` expression, for example `"\"name\" ILIKE '%$TEXT$%'"`. `$TEXT$` will be replaced by the search text entered by the user, `name` corresponds to a field name of the specified layer.
 
+### Using multiple input fields
+
 A more complex form, useable through the [`FeatureSearch`](../references/qwc2_plugins.md#featuresearch) plugin, allows defining a field configuration for multiple input fields. A full example is as follows:
 
 ```json
@@ -233,6 +235,8 @@ A more complex form, useable through the [`FeatureSearch`](../references/qwc2_pl
   }
 ```
 
+*Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
+
 Here, each field will provide a value which is substituted in the expression. Any [HTML Input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) type is supported (i.e. `text`, `number`, `range`, ...), with options depending on the input type.
 
 In addition, the `select` field type is supported to display a ComboBox. You can specify the options:
@@ -251,7 +255,38 @@ In addition, the `select` field type is supported to display a ComboBox. You can
     "label_field": "<label_field>"
 ```
 
-*Note*: `qgis` provider searches are exposed to the search field only if no `fields` are specified (i.e. single input search). The `FeatureSearch` plugin on the other hand will list all `qgis` provider searches.
+*Note*: Such filters don't support querying nullable values. In the example above, if GENDER is not provided by the user, the database won't return NULL values. If your data has NULL values, use [data service filter expressions](#using-data-service-filter-expressions) intead (see below).
+
+### Using data service filter expressions
+
+In addition to supporting native `FILTER` expression, it is also possible to provide a data service filter expression, analoguous to the expressions used in [Map filtering](./MapFilter.md):
+
+```json
+  {
+    "provider": "qgis",
+    "params": {
+      "title": "Person search",
+      "expression": {
+        "persons": [
+          ["name", "ILIKE", "%$NAME$%"],
+          "and",
+          ["age", ">=", "$AGE"],
+          "and",
+          ["gender", "=", "$GENDER$"]
+        ]
+      },
+      "fields": {
+        "NAME": {"label": "Name", "type": "text"},
+        "AGE": {"label": "Min. age", "type": "number", "options": {"min": 0}},
+        "GENDER": {"label": "Gender", "type": "select", "options": [{"value": "f", "label": "Female"}, {"value": "m", "label": "Male"}]}
+      }
+    }
+  }
+```
+
+If the filter is built only with `and` operators and simple binary operators (`ILIKE`, `=`, `<`, `=<`, `>=`, `!=`), the search will remove all empty subexpressions. This enables querying nullable values. In the example above, if only name is provided by the user in the search form, the filter will become `("name" ILIKE "%$NAME$%")`.
+
+### Customizing search
 
 In addition to the configuration described above, you can specify these additional parameters in `params`:
 
