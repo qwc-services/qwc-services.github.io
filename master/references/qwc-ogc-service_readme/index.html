@@ -416,6 +416,36 @@ You can customize the landing page by modifying these templates, resp. if using 
 <pre><code>...?SERVICE=WMS&amp;REQUEST=GetMap&amp;...&amp;MARKER=X-&gt;123456|Y-&gt;123456|STROKE-&gt;000FFA...
 </code></pre>
 <p><code>X</code> and <code>Y</code> are compulsory and specify the marker position in map CRS, any other additional parameters are optional and will override the default values if provided. All parameters have to written in uppercase.</p>
+<h3 id="allow-extra-formats">Allow extra formats<a class="headerlink" href="#allow-extra-formats" title="Permanent link">&para;</a></h3>
+<p>You can choose extra formats to allow to OUTPUTFORMAT parameter of WFS GetFeature request.
+Please note that the returned data will be unfiltered.</p>
+<p>Example:</p>
+<pre><code class="language-json">  &quot;config&quot;: {
+    &quot;allow_outputformat_unfiltered&quot;: {
+          &quot;shp&quot;: &quot;shp&quot;,
+          &quot;application/x-zipped-shp&quot;: &quot;shp&quot;,
+          &quot;tab&quot;: &quot;tab&quot;,
+          &quot;application/x-zipped-tab&quot;: &quot;tab&quot;,
+          &quot;mif&quot;: &quot;mif&quot;,
+          &quot;application/x-zipped-mif&quot;: &quot;mif&quot;,
+          &quot;kml&quot;: &quot;kml&quot;,
+          &quot;application/vnd.google-earth.kml+xml&quot;: &quot;kml&quot;,
+          &quot;gpkg&quot;: &quot;gpkg&quot;,
+          &quot;application/geopackage+vnd.sqlite3&quot;: &quot;gpkg&quot;,
+          &quot;gpx&quot;: &quot;gpx&quot;,
+          &quot;application/gpx+xml&quot;: &quot;gpx&quot;,
+          &quot;ods&quot;: &quot;ods&quot;,
+          &quot;application/vnd.oasis.opendocument.spreadsheet&quot;: &quot;ods&quot;,
+          &quot;xlsx&quot;: &quot;xlsx&quot;,
+          &quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;: &quot;xlsx&quot;,
+          &quot;csv&quot;: &quot;csv&quot;,
+          &quot;text/csv&quot;: &quot;csv&quot;,
+          &quot;fgb&quot;: &quot;fgb&quot;,
+          &quot;application/x-fgb&quot;: &quot;fgb&quot;
+       }
+  },
+</code></pre>
+<p>Adding these formats is particularly useful when using the QGIS Server plugin qgis-wfsOutputExtension (https://github.com/3liz/qgis-wfsOutputExtension/tree/master).</p>
 <h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
 <p>Install dependencies and run:</p>
 <pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;

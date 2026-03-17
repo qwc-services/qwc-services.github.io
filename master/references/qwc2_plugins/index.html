@@ -215,6 +215,7 @@
 <li><a href="#mapexport3d">MapExport3D</a></li>
 <li><a href="#maplight3d">MapLight3D</a></li>
 <li><a href="#measure3d">Measure3D</a></li>
+<li><a href="#measureobjects3d">MeasureObjects3D</a></li>
 <li><a href="#overviewmap3d">OverviewMap3D</a></li>
 <li><a href="#settings3d">Settings3D</a></li>
 <li><a href="#topbar3d">TopBar3D</a></li>
@@ -1394,6 +1395,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>showTitlebarSettingsMenu</td>
+<td><code>bool</code></td>
+<td>Whether to show a settings menu in the titlebar which groups all titlebar buttons.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>showToggleAllLayersCheckbox</td>
 <td><code>bool</code></td>
 <td>Whether to display a checkbox to toggle all layers.</td>
@@ -1465,8 +1472,8 @@ with containing a container element with id=legendcontainer.</p>
 <tbody>
 <tr>
 <td>mapOptions</td>
-<td><code>{</code><br /><code>zoomDuration: number,</code><br /><code>enableRotation: bool,</code><br /><code>rotation: number,</code><br /><code>panStepSize: number,</code><br /><code>panPageSize: number,</code><br /><code>constrainExtent: bool,</code><br /><code>kineticPanParams: object,</code><br /><code>}</code></td>
-<td>Zoom duration in ms, rotation in degrees, panStepSize and panPageSize as fraction of map width/height.<br />- <code>zoomDuration</code>: undefined<br />- <code>enableRotation</code>: undefined<br />- <code>rotation</code>: undefined<br />- <code>panStepSize</code>: undefined<br />- <code>panPageSize</code>: undefined<br />- <code>constrainExtent</code>: undefined<br />- <code>kineticPanParams</code>: undefined</td>
+<td><code>{</code><br /><code>zoomDuration: number,</code><br /><code>enableRotation: bool,</code><br /><code>rotation: number,</code><br /><code>panStepSize: number,</code><br /><code>panPageSize: number,</code><br /><code>constrainExtent: bool,</code><br /><code>constrainOnlyCenter: bool,</code><br /><code>kineticPanParams: object,</code><br /><code>}</code></td>
+<td>Zoom duration in ms, rotation in degrees, panStepSize and panPageSize as fraction of map width/height.<br />- <code>zoomDuration</code>: undefined<br />- <code>enableRotation</code>: undefined<br />- <code>rotation</code>: undefined<br />- <code>panStepSize</code>: undefined<br />- <code>panPageSize</code>: undefined<br />- <code>constrainExtent</code>: undefined<br />- <code>constrainOnlyCenter</code>: undefined<br />- <code>kineticPanParams</code>: undefined</td>
 <td><code>{}</code></td>
 </tr>
 <tr>
@@ -3177,6 +3184,8 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="measure3d">Measure3D<a name="measure3d"></a><a class="headerlink" href="#measure3d" title="Permanent link">&para;</a></h2>
 <p>Measure in the 3D map.</p>
+<h2 id="measureobjects3d">MeasureObjects3D<a name="measureobjects3d"></a><a class="headerlink" href="#measureobjects3d" title="Permanent link">&para;</a></h2>
+<p>Displays the measurements of the oriented bounds of objects selected in the 3D map.</p>
 <h2 id="overviewmap3d">OverviewMap3D<a name="overviewmap3d"></a><a class="headerlink" href="#overviewmap3d" title="Permanent link">&para;</a></h2>
 <p>Overview map for the 3D map.</p>
 <h2 id="settings3d">Settings3D<a name="settings3d"></a><a class="headerlink" href="#settings3d" title="Permanent link">&para;</a></h2>

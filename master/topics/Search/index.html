@@ -73,6 +73,14 @@
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-nominatim-openstreetmap-location-search">Configuring the nominatim (OpenStreetMap) location search </a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-qgis-feature-search">Configuring the QGIS feature search </a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#using-multiple-input-fields">Using multiple input fields</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#using-data-service-filter-expressions">Using data service filter expressions</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#customizing-search">Customizing search</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-fulltext-search-service">Configuring the fulltext search service </a>
         <ul>
@@ -83,6 +91,8 @@
     <li class="toctree-l4"><a class="reference internal" href="#configuring-the-search-for-a-theme">Configuring the search for a theme</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automatically-generate-qgis-search-provider">Automatically generate QGIS Search Provider</a>
     </li>
     </ul>
                 </li>
@@ -540,6 +550,7 @@
   }
 </code></pre>
 <p>where <code>expression</code> is a WMS GetFeatureInfo <code>FILTER</code> expression, for example <code>"\"name\" ILIKE '%$TEXT$%'"</code>. <code>$TEXT$</code> will be replaced by the search text entered by the user, <code>name</code> corresponds to a field name of the specified layer.</p>
+<h3 id="using-multiple-input-fields">Using multiple input fields<a class="headerlink" href="#using-multiple-input-fields" title="Permanent link">&para;</a></h3>
 <p>A more complex form, useable through the <a href="../../references/qwc2_plugins/#featuresearch"><code>FeatureSearch</code></a> plugin, allows defining a field configuration for multiple input fields. A full example is as follows:</p>
 <pre><code class="language-json">  {
     &quot;provider&quot;: &quot;qgis&quot;,
@@ -556,6 +567,7 @@
     }
   }
 </code></pre>
+<p><em>Note</em>: <code>qgis</code> provider searches are exposed to the search field only if no <code>fields</code> are specified (i.e. single input search). The <code>FeatureSearch</code> plugin on the other hand will list all <code>qgis</code> provider searches.</p>
 <p>Here, each field will provide a value which is substituted in the expression. Any <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">HTML Input</a> type is supported (i.e. <code>text</code>, <code>number</code>, <code>range</code>, ...), with options depending on the input type.</p>
 <p>In addition, the <code>select</code> field type is supported to display a ComboBox. You can specify the options:</p>
 <ul>
@@ -575,7 +587,32 @@
     &quot;value_field&quot;: &quot;&lt;value_field&gt;&quot;,
     &quot;label_field&quot;: &quot;&lt;label_field&gt;&quot;
 </code></pre>
-<p><em>Note</em>: <code>qgis</code> provider searches are exposed to the search field only if no <code>fields</code> are specified (i.e. single input search). The <code>FeatureSearch</code> plugin on the other hand will list all <code>qgis</code> provider searches.</p>
+<p><em>Note</em>: Such filters don't support querying nullable values. In the example above, if GENDER is not provided by the user, the database won't return NULL values. If your data has NULL values, use <a href="#using-data-service-filter-expressions">data service filter expressions</a> intead (see below).</p>
+<h3 id="using-data-service-filter-expressions">Using data service filter expressions<a class="headerlink" href="#using-data-service-filter-expressions" title="Permanent link">&para;</a></h3>
+<p>In addition to supporting native <code>FILTER</code> expression, it is also possible to provide a data service filter expression, analoguous to the expressions used in <a href="../MapFilter/">Map filtering</a>:</p>
+<pre><code class="language-json">  {
+    &quot;provider&quot;: &quot;qgis&quot;,
+    &quot;params&quot;: {
+      &quot;title&quot;: &quot;Person search&quot;,
+      &quot;expression&quot;: {
+        &quot;persons&quot;: [
+          [&quot;name&quot;, &quot;ILIKE&quot;, &quot;%$NAME$%&quot;],
+          &quot;and&quot;,
+          [&quot;age&quot;, &quot;&gt;=&quot;, &quot;$AGE&quot;],
+          &quot;and&quot;,
+          [&quot;gender&quot;, &quot;=&quot;, &quot;$GENDER$&quot;]
+        ]
+      },
+      &quot;fields&quot;: {
+        &quot;NAME&quot;: {&quot;label&quot;: &quot;Name&quot;, &quot;type&quot;: &quot;text&quot;},
+        &quot;AGE&quot;: {&quot;label&quot;: &quot;Min. age&quot;, &quot;type&quot;: &quot;number&quot;, &quot;options&quot;: {&quot;min&quot;: 0}},
+        &quot;GENDER&quot;: {&quot;label&quot;: &quot;Gender&quot;, &quot;type&quot;: &quot;select&quot;, &quot;options&quot;: [{&quot;value&quot;: &quot;f&quot;, &quot;label&quot;: &quot;Female&quot;}, {&quot;value&quot;: &quot;m&quot;, &quot;label&quot;: &quot;Male&quot;}]}
+      }
+    }
+  }
+</code></pre>
+<p>If the filter is built only with <code>and</code> operators and simple binary operators (<code>ILIKE</code>, <code>=</code>, <code>&lt;</code>, <code>=&lt;</code>, <code>&gt;=</code>, <code>!=</code>), the search will remove all empty subexpressions. This enables querying nullable values. In the example above, if only name is provided by the user in the search form, the filter will become <code>("name" ILIKE "%$NAME$%")</code>.</p>
+<h3 id="customizing-search">Customizing search<a class="headerlink" href="#customizing-search" title="Permanent link">&para;</a></h3>
 <p>In addition to the configuration described above, you can specify these additional parameters in <code>params</code>:</p>
 <ul>
 <li><code>featureCount</code>: A number, passed as <code>feature_count</code> to the GetFeatureInfo request to control the maximum number of returned features. If not specified, defaults to <code>100</code>.</li>
@@ -860,6 +897,13 @@ curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
 </ul>
 <p><em>Note</em>: For both <code>Search facet</code> and <code>Dataproduct</code> resources you can create wildcard resources by setting the name to <code>*</code>. This is useful to assign permissions for all available facets/dataproducts with one single resource.</p>
 <p>Finally, create permissions for the newly created resources and regenerate the service configuration.</p>
+<h2 id="automatically-generate-qgis-search-provider">Automatically generate QGIS Search Provider<a class="headerlink" href="#automatically-generate-qgis-search-provider" title="Permanent link">&para;</a></h2>
+<p>When using the config generator, QGIS Search Providers can be automatically created both for the SearchBar and for the FeatureSearch plugin.</p>
+<ul>
+<li>SearchBar: will create a search that queries all queryable QGIS layers, using each layer's Display Name</li>
+<li>FeatureSearch: will create a search for each queryable layer, which includes all searchable fields</li>
+</ul>
+<p>This behavior is disabled by default. To enable this, you must set the QGIS Project Variable <code>qwc_autogen_searchproviders</code> to <code>true</code>.</p>
               
             </div>
           </div><footer>
