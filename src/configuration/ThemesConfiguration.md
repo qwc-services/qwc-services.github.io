@@ -169,6 +169,9 @@ The format of the theme definitions is as follows:
 | `"featureReport": {`                                 | Optional, available feature report templates.                                                         |
 | `⁣  "<LayerId>": <TemplateCfg>`                       | WMS sublayer ID and associated template ID to pass to the `documentService`. See [Reports](../topics/Reports.md). |
 | `},`                                                 |                                                                                                       |
+| `"filter": {`                                        | Optional, fixed filter to apply to the theme.                                                         |
+| `  "layerfilter": {"<layername>": <expression>, ...}`| Layer expressions, see [MapFilter](../topics/MapFilter.md) for details on the expression format.      |
+| `},`                                                 |                                                                                                       |
 | `"flags": ["<flag1>", "<flag2>", ...],`              | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"format": "<mimetype>",`                            | Optional, the format to use for WMS GetMap. Defaults to `image/png`.                                  |
 | `"hidden_in_ows_landing_page": <true|false>,`        | Optional, whether the service should be hidden from the OGC Service OWS landing page. Default: `false`|
