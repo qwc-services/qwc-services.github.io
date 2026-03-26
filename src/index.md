@@ -6,8 +6,6 @@ QGIS Web Client (QWC) is a modular next generation responsive web client for QGI
 
 ![Overview](images/overview.png?style=centerme)
 
-The core concept of QWC is to display QGIS Projects which are published by QGIS Server via WMS.
-
 There are two ways to run QWC:
 
 - As part of the *qwc-services* ecosystem, includes additional services to which includes additional services to extend the viewer functionality (such as user administration, editing, etc.). This is the recommended approach.
@@ -53,6 +51,7 @@ qwc-services also provides the following enterprise relevant functionalities:
 
 ## Explore
 
+* [Homepage](https://qwc.app)
 * [Developer Quickstart](QuickStart.md)
 * [User guide](UserGuide.md)
 * Some public viewers: [QWC demo instance](https://qwc2.sourcepole.ch) | [Glarus](https://map.geo.gl.ch/) | [Solothurn](https://geo.so.ch/map/) | [Oslandia](https://qgis.oslandia.net/) | [Erft Verband](http://webgis.erftverband.de)
