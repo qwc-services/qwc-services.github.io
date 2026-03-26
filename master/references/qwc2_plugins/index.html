@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.03.18</title>
+    <title>Qwc2 plugins - QWC - 2026.03.24</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.03.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.03.24
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -106,7 +106,7 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../release_notes/ChangeLog/">ChangeLog</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC2 upgrade notes</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QWC2UpgradeNotes/">QWC viewer upgrade notes</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../release_notes/QwcDockerUpgradeNotes/">qwc-docker upgrade notes</a>
                 </li>
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.03.18</a>
+          <a href="../..">QWC - 2026.03.24</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -181,6 +181,7 @@
 <li><a href="#reports">Reports</a></li>
 <li><a href="#routing">Routing</a></li>
 <li><a href="#scratchdrawing">ScratchDrawing</a></li>
+<li><a href="#sensorthingstool">SensorThingsTool</a></li>
 <li><a href="#settings">Settings</a></li>
 <li><a href="#share">Share</a></li>
 <li><a href="#startupmarker">StartupMarker</a></li>
@@ -2438,6 +2439,109 @@ an aggregated report for all selected features.</p>
 <p>Task which which can be invoked by other tools to draw a geometry and pass it to a callback.</p>
 <p>Only useful for third-party code, i.e. over the JavaScript API.</p>
 <p>Invoke as <code>setCurrentTask("ScratchDrawing", null, null, {callback: &lt;function(features, crs)&gt;});</code></p>
+<h2 id="sensorthingstool">SensorThingsTool<a name="sensorthingstool"></a><a class="headerlink" href="#sensorthingstool" title="Permanent link">&para;</a></h2>
+<p>Query and display sensor data from SensorThings APIs.</p>
+<p>Allows picking Locations in the map and displaying their Datastreams as a chart.</p>
+<p><strong><code>config.json</code> sample configuration:</strong></p>
+<p>Add tool to <code>TopBar</code> <code>menuItems</code> and/or <code>toolbarItems</code>:</p>
+<pre><code>{&quot;key&quot;: &quot;SensorThingsTool&quot;, &quot;icon&quot;: &quot;report&quot;}
+</code></pre>
+<p>Sample plugin configuration for Fraunhofer SensorThings API with air quality data:</p>
+<pre><code>{
+  &quot;name&quot;: &quot;SensorThingsTool&quot;,
+  &quot;cfg&quot;: {
+    &quot;sensorThingsApiUrls&quot;: [
+      {
+        &quot;url&quot;: &quot;https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1&quot;
+      }
+    ],
+    &quot;timeFormats&quot;: {
+      &quot;tooltip&quot;: &quot;DD.MM.YYYY HH:mm:ss&quot;,
+      &quot;millisecond&quot;: &quot;HH:mm:ss.SSS&quot;,
+      &quot;second&quot;: &quot;HH:mm:ss&quot;,
+      &quot;minute&quot;: &quot;HH:mm&quot;,
+      &quot;hour&quot;: &quot;DD.MM.YY HH:mm&quot;,
+      &quot;day&quot;: &quot;DD.MM.YY&quot;,
+      &quot;week&quot;: &quot;ll&quot;,
+      &quot;month&quot;: &quot;MM.YYYY&quot;,
+      &quot;quarter&quot;: &quot;[Q]Q - YYYY&quot;,
+      &quot;year&quot;: &quot;YYYY&quot;
+    }
+  }
+}
+</code></pre>
+<p>Additional theme specific <code>sensorThingsApiUrls</code> may be added to the <code>themesConfig.json</code> as follows:</p>
+<pre><code>{
+  &quot;themes&quot;: {
+    &quot;items&quot;: [
+      {
+        ...
+        &quot;pluginData&quot;: {
+          &quot;sensorThingsTool&quot;: [&quot;&lt;configName&gt;&quot;]
+        }
+      }
+    ],
+    &quot;pluginData&quot;: {
+      &quot;sensorThingsTool&quot;: [
+        {
+          &quot;name&quot;: &quot;&lt;configName&gt;&quot;,
+          &quot;sensorThingsApiUrls&quot;: [
+            {
+              &quot;url&quot;: &quot;&lt;SensorThings API base URL&gt;&quot;,
+              &quot;locationsFilter&quot;: &quot;&lt;optional Locations filter&gt;&quot;
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>If you are using <code>qwc-services</code>, you will need to explicitly permit the <code>sensorThingsTool</code> plugin configs in the <code>qwc-admin-gui</code> as follows:
+* Create and permit a <code>Plugin</code> resource with the name <code>sensorThingsTool</code>
+* Create and permit <code>Plugin data</code> resources with names of corresponding <code>&lt;configName&gt;</code>s</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queryTolerance</td>
+<td><code>number</code></td>
+<td>Map picking tolerance in pixels</td>
+<td><code>16</code></td>
+</tr>
+<tr>
+<td>sensorThingsApiUrls</td>
+<td><code>[{</code><br /><code>url: string,</code><br /><code>locationsFilter: string,</code><br /><code>}]</code></td>
+<td>List of configurations for SensorThings API URLs.<br />These are active for all themes. Theme specific URLs may be added in the <code>themesConfig.json</code>.<br />The optional <code>locationsFilter</code> is applied to Locations queries.</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td>timeFormats</td>
+<td><code>object</code></td>
+<td>Formatting patterns for displaying time values</td>
+<td><code>{</code><br /><code>tooltip: 'YYYY-MM-DD HH:mm:ss',</code><br /><code>millisecond: 'HH:mm:ss.SSS',</code><br /><code>second: 'HH:mm:ss',</code><br /><code>minute: 'HH:mm',</code><br /><code>hour: 'HH:mm',</code><br /><code>day: 'MM-DD',</code><br /><code>week: 'YYYY-MM-DD',</code><br /><code>month: 'YYYY-MM',</code><br /><code>quarter: '[Q]Q - YYYY',</code><br /><code>year: 'YYYY'</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>windowSize</td>
+<td><code>object</code></td>
+<td>Default size of the SensorThings Query window</td>
+<td><code>{width: 800, height: 600}</code></td>
+</tr>
+<tr>
+<td>zoomFactor</td>
+<td><code>number</code></td>
+<td>Zoom factor for chart zoom buttons</td>
+<td><code>1.5</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="settings">Settings<a name="settings"></a><a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
 <p>Settings panel.</p>
 <p>Allows configuring language and color scheme.</p>
@@ -2936,10 +3040,22 @@ queried via GetFeatureInfo.</p>
 <td><code>30</code></td>
 </tr>
 <tr>
+<td>defaultPointSize</td>
+<td><code>number</code></td>
+<td>The default point size for point cloud tiles (<code>0</code>: min, <code>20</code>: max). Automatic size computation when the value is <code>0</code>.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
 <td>defaultSceneQuality</td>
 <td><code>number</code></td>
 <td>The default scene quality factor (<code>20</code>: min, <code>100</code>: max).</td>
 <td><code>100</code></td>
+</tr>
+<tr>
+<td>forceAllowInspector</td>
+<td><code>bool</code></td>
+<td>Whether to allow opening the inspector in production environment.</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>geometry</td>
@@ -3196,6 +3312,24 @@ queried via GetFeatureInfo.</p>
 <p>Overview map for the 3D map.</p>
 <h2 id="settings3d">Settings3D<a name="settings3d"></a><a class="headerlink" href="#settings3d" title="Permanent link">&para;</a></h2>
 <p>Settings panel for the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>showPointSizeSlider</td>
+<td><code>bool</code></td>
+<td>Whether to show a slider to set the point size for point cloud tiles.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="topbar3d">TopBar3D<a name="topbar3d"></a><a class="headerlink" href="#topbar3d" title="Permanent link">&para;</a></h2>
 <p>Bottom bar of the 3D map, including the search bar, tool bar and menu.</p>
 <table>
