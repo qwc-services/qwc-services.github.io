@@ -70,7 +70,6 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * [QGIS feature search](../topics/Search/#configuring-the-qgis-feature-search): allow dynamically populating selection lists via `options_query`
 * Allow searching for catalog layers in main search field, see [`registerCatalogSearchProvider`](../qwc2_plugins#layercatalog)
 * Allow searching for task menu entries in main search field, see [`registerTaskSearchProvider`](../qwc2_plugins#topbar)
-* Allow dynamically registering search providers via 
 * Allow loading search filter regions from an external file, see [search filtering](../../topics/Search/#filtering)
 
 ### Other changes
