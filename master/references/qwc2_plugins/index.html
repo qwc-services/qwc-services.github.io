@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.03.30</title>
+    <title>Qwc2 plugins - QWC - 2026.04.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.03.30
+          <a href="../.." class="icon icon-home"> QWC - 2026.04.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.03.30</a>
+          <a href="../..">QWC - 2026.04.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -219,6 +219,7 @@
 <li><a href="#measureobjects3d">MeasureObjects3D</a></li>
 <li><a href="#overviewmap3d">OverviewMap3D</a></li>
 <li><a href="#settings3d">Settings3D</a></li>
+<li><a href="#sunexposure3d">SunExposure3D</a></li>
 <li><a href="#topbar3d">TopBar3D</a></li>
 </ul>
 <p><a href="#extraPlugins">Extra Plugins</a></p>
@@ -1119,6 +1120,12 @@ for customized queries and templates for the result presentation.</p>
 <td><code>'m'</code></td>
 </tr>
 <tr>
+<td>longAttributesDisplay</td>
+<td><code>{"wrap", "ellipsis"}</code></td>
+<td>How to handle long attribute names / values.</td>
+<td><code>'wrap'</code></td>
+</tr>
+<tr>
 <td>params</td>
 <td><code>object</code></td>
 <td>Extra params to append to the GetFeatureInfo request (i.e. <code>FI_POINT_TOLERANCE</code>, <code>FI_LINE_TOLERANCE</code>, <code>feature_count</code>, ...). Additionally, <code>region_feature_count</code> and <code>radius_feature_count</code> are supported.</td>
@@ -1132,8 +1139,8 @@ for customized queries and templates for the result presentation.</p>
 </tr>
 <tr>
 <td>resultDisplayMode</td>
-<td><code>string</code></td>
-<td>Result display mode, one of <code>tree</code>, <code>flat</code>, <code>paginated</code>.</td>
+<td><code>{"tree", "flat", "paginated"}</code></td>
+<td>Result display mode.</td>
 <td><code>'flat'</code></td>
 </tr>
 <tr>
@@ -1600,8 +1607,8 @@ with containing a container element with id=legendcontainer.</p>
 </tr>
 <tr>
 <td>formatConfiguration</td>
-<td><code>{</code><br /><code>format: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>serviceUrl: string,</code><br /><code>}],</code><br /><code>}</code></td>
-<td>Custom export configuration per format.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.<br /> <code>serviceUrl</code> is the address of a custom service to use instead of the layer OWS service url.<br />- <code>format</code>: undefined</td>
+<td><code>&lt;key&gt;: [{</code><br /><code>name: string,</code><br /><code>labelMsgId: string,</code><br /><code>extraQuery: string,</code><br /><code>formatOptions: string,</code><br /><code>baseLayer: string,</code><br /><code>projections: array,</code><br /><code>serviceUrl: string,</code><br /><code>}]</code></td>
+<td>Custom format export configuration. Specify a format mime-type (i.e. <code>application/dxf</code>) as key, and an array of one or more configurations as value.<br /> If more than one configuration per format is provided, a selection combo will be displayed.<br /> <code>labelMsgId</code> is a translation string message id for the combo label. If not defined, <code>name</code> will be displayed.<br /> <code>extraQuery</code> will be appended to the query string (replacing any existing parameters).<br /> <code>formatOptions</code> will be passed as FORMAT_OPTIONS.<br /> <code>baseLayer</code> will be appended to the LAYERS instead of the background layer.<br /> <code>projections</code> is a list of export projections. If empty, the map projection is automatically used.<br /> <code>serviceUrl</code> is the address of a custom service to use instead of the layer OWS service url.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -1676,7 +1683,7 @@ with containing a container element with id=legendcontainer.</p>
 or a custom elevation interface is exposed in <code>window.QWC2ElevationInterface</code> (see
 <a href="https://github.com/qgis/qwc2/blob/master/utils/ElevationInterface.js">ElevationInterface.js</a>), the
 height at the picked position is also displayed.</p>
-<p>If <code>mapInfoService</code> in <code>config.json</code> points to a <code>qwc-mapinfo-service</code>, additional
+<p>If <code>mapInfoServiceUrl</code> in <code>config.json</code> points to a <code>qwc-mapinfo-service</code>, additional
 custom information according to the <code>qwc-mapinfo-service</code> configuration is returned.</p>
 <p>You can pass additional plugin components to the <code>MapInfoTooltip</code> in <code>appConfig.js</code>:</p>
 <pre><code class="language-json">MapInfoTooltipPlugin: MapInfoTooltipPlugin([FirstPlugin, SecondPlugin])
@@ -1705,6 +1712,12 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 <td><code>number</code></td>
 <td>The number of decimal places to display for elevation values.</td>
 <td><code>0</code></td>
+</tr>
+<tr>
+<td>includeWGS84</td>
+<td><code>bool</code></td>
+<td>Whether to display WGS84 coordinates in addition to map CRS coordinates.</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>plugins</td>
@@ -3330,6 +3343,8 @@ queried via GetFeatureInfo.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="sunexposure3d">SunExposure3D<a name="sunexposure3d"></a><a class="headerlink" href="#sunexposure3d" title="Permanent link">&para;</a></h2>
+<p>Compute sun exposure of terrain and objects within a selected area on the 3D map.</p>
 <h2 id="topbar3d">TopBar3D<a name="topbar3d"></a><a class="headerlink" href="#topbar3d" title="Permanent link">&para;</a></h2>
 <p>Bottom bar of the 3D map, including the search bar, tool bar and menu.</p>
 <table>

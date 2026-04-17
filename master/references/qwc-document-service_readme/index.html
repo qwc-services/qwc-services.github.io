@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc document service readme - QWC - 2026.03.30</title>
+    <title>Qwc document service readme - QWC - 2026.04.13</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.03.30
+          <a href="../.." class="icon icon-home"> QWC - 2026.04.13
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.03.30</a>
+          <a href="../..">QWC - 2026.04.13</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -174,11 +174,15 @@
 </li>
 </ul>
 <p>If multiple feature ids are specified, an aggregated report for all specified features will be returned.</p>
-<p>Alternatively, provided <code>FEATURE_ID</code> is defined as a list in your report, you can pass <code>single_report=true</code>, and the entire list of feature ids will be passed to the report, which can i.e. render them in a table.</p>
 <p>To map <code>feature</code> to the report feature parameter, and to resolve <code>feature=*</code>, the table name, primary key column and report feature parameter will be extracted, if possible, from the report query string, which is expected to be of the form</p>
 <pre><code>SELECT &lt;...&gt; FROM &lt;table_name&gt; WHERE &lt;pk_column&gt; = $P{&lt;FEATURE_PARAM_NAME&gt;}
 </code></pre>
 <p>For more complex queries, you'll need to define <code>table</code>, <code>primary_key</code> and <code>parameter_name</code> in the report resource configuration, see below. Note that the value(s) of the <code>feature</code> query parameters are expected to be primary keys of the records of the table specified in the report query string.</p>
+<p>If you pass a list of features you can add <code>single_report=true</code> to the request, and the entire list of feature ids will be passed to the report, which can i.e. render them in a table. Therefore the provided parameter <code>FEATURE_ID</code> has to be defined as a list by assigning the class <code>java.util.ArrayList</code> and a nested type name (like <code>java.lang.String</code> or <code>java.lang.Number</code>) in the report definition.</p>
+<p>Furthermore adjust the report query string in the form of:</p>
+<pre><code>SELECT &lt;...&gt; FROM &lt;table_name&gt; WHERE $X{IN, &lt;pk_column&gt;, &lt;FEATURE_PARAM_NAME&gt;}
+</code></pre>
+<p>As this is a "complex query", you need to define <code>table</code>, <code>primary_key</code> and <code>parameter_name</code> in the report resource configuration as mentioned above.</p>
 <p>If your report includes external resources (i.e. images), place these below the <code>report_dir</code> and, add a <code>REPORT_DIR</code> parameter of type <code>java.lang.String</code> in the <code>.jrxml</code> and use <code>$P{REPORT_DIR}</code> in the resource location expression, for example:</p>
 <pre><code>$P{REPORT_DIR} + "mysubfolder/myimage.png"
 </code></pre>
