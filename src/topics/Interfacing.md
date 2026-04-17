@@ -18,6 +18,7 @@ The following parameters can appear in the URL of the QWC application:
 - `st`: The search text
 - `hp`, `hf`: Startup highlight parameters used in conjunction with the `qwc-fulltext-search-service`, see below.
 - `f`: A filter configuration, see [Map filtering](./MapFilter.md).
+- `task`: Task to automatically activate on application start, i.e `task={"key":"LayerTree"}`, `task={"key":"Measure","mode":"Polygon"}` or `task={"key":"Editing","data":{"layer":"qwc_demo#edit_polygons","feature":3}}`. Takes precedence over the theme configuration and global configuration parameters `startupTask`.
 - `localConfig`: Override the name of the loaded config file, i.e. to load `myconfig.json` instead of the default `config.json`, pass `localConfig=myconfig`.
 - `v`: Which view to load: `2d` for the 2D view, `3d` for the fullscreen 3D view, `3d2d` for the split-screen 3D/2D view, `oblique` for the oblique view.
 - `v3d`: The 3D view, as `camera_x,camera_y,camera_z,target_x,target_y,target_z,h`, where `camera` is the camera position, `target` the scene target ("look at") position. If `h` is specified and non-zero, a first-person-view is assumed and `h` denotes the height above terrain of the camera.
