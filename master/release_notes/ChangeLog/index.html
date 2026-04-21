@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>ChangeLog - QWC - 2026.04.13</title>
+    <title>ChangeLog - QWC - 2026.04.20</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.04.13
+          <a href="../.." class="icon icon-home"> QWC - 2026.04.20
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -236,7 +236,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.04.13</a>
+          <a href="../..">QWC - 2026.04.20</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -280,12 +280,12 @@
 <li>Allow recording GPS position for point/line geometries</li>
 <li>Allow copying compatible attributes when copying existing feature</li>
 <li>Extended <a href="https://github.com/qgis/qwc2/blob/64b3810996ec58f9f0d6247772b56cc86a236186/utils/expr_grammar/grammar.ne">expression grammar</a></li>
-<li>Allow hiding hidden fields in <a href="../qwc2_plugins#attributetable">AttributeTable</a></li>
+<li>Allow hiding hidden fields in <a href="../../references/qwc2_plugins#attributetable">AttributeTable</a></li>
 <li>The AttributeTable now uses service-side pagination by the <code>qwc-data-service</code> for loading the feature collection</li>
 </ul>
 <h3 id="identify">Identify<a class="headerlink" href="#identify" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Add new paginated display mode, enable via <a href="../qwc2_plugins#identify"><code>resultDisplayMode</code></a> config setting</li>
+<li>Add new paginated display mode, enable via <a href="../../references/qwc2_plugins#identify"><code>resultDisplayMode</code></a> config setting</li>
 <li>Allow comparing selected identify results side-by-side</li>
 <li>Add shapefile and XLSX exporters</li>
 <li>The GeoJSON exporter now exports in <code>EPSG:4326</code></li>
@@ -294,23 +294,23 @@
 <ul>
 <li>Expose layer visibility presets ("themes"), as configured in the QGIS project, in the LayerTree</li>
 <li>Honour layer refresh interval, as configured in the <a href="../../configuration/ThemesConfiguration#create-qgis-project">QGIS project</a></li>
-<li>Show control to toggle group and sublayers to LayerTree if <a href="../qwc2_plugins#layertree"><code>groupTogglesSublayers</code></a> is <code>false</code></li>
-<li>Allow adding separators to the LayerTree also if <a href="../qwc2_plugins#layertree"><code>flattenGroups</code></a> is <code>false</code></li>
+<li>Show control to toggle group and sublayers to LayerTree if <a href="../../references/qwc2_plugins#layertree"><code>groupTogglesSublayers</code></a> is <code>false</code></li>
+<li>Allow adding separators to the LayerTree also if <a href="../../references/qwc2_plugins#layertree"><code>flattenGroups</code></a> is <code>false</code></li>
 <li>Display layer style selector also for group layers in LayerTree</li>
 </ul>
 <h3 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Add support for translated QWC themes, see <a href="../../topics/Translations#translated-themes">Translations</a></li>
-<li>Add support for <code>{lang}</code> placeholder in the <a href="../qwc2_plugins#newspopup"><code>NewsPopup</code></a> <code>newsDocument</code> URL</li>
+<li>Add support for <code>{lang}</code> placeholder in the <a href="../../references/qwc2_plugins#newspopup"><code>NewsPopup</code></a> <code>newsDocument</code> URL</li>
 <li>Add support for <code>$lang$</code> placehodler in menu item and identify attribute links</li>
 <li>Add support for <code>translate(&lt;fieldname&gt;)</code> to translate field names in <a href="../../topics/FeatureInfo/#custom-html-templates">custom HTML info templates</a></li>
 </ul>
 <h3 id="measure">Measure<a class="headerlink" href="#measure" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Allow configuring <a href="../qwc2_plugins#measure">line head and tail markers</a> for distance and bearing measurement geometries</li>
-<li>Allow drawing multiple measurement geometries, see also <a href="../qwc2_plugins#measure"><code>clearMeasurementsOnExit</code> and <code>clearMeasurementsOnModeChange</code></a> config settings</li>
-<li>Display total line length next to geometry, also display perimeter length if <a href="../qwc2_plugins#measure"><code>showPerimeterLength</code></a> is set</li>
-<li>Allow specifying custom <code>ElevationInterface</code> for <a href="../qwc2_plugins#heightprofile">HeightProfile</a></li>
+<li>Allow configuring <a href="../../references/qwc2_plugins#measure">line head and tail markers</a> for distance and bearing measurement geometries</li>
+<li>Allow drawing multiple measurement geometries, see also <a href="../../references/qwc2_plugins#measure"><code>clearMeasurementsOnExit</code> and <code>clearMeasurementsOnModeChange</code></a> config settings</li>
+<li>Display total line length next to geometry, also display perimeter length if <a href="../../references/qwc2_plugins#measure"><code>showPerimeterLength</code></a> is set</li>
+<li>Allow specifying custom <code>ElevationInterface</code> for <a href="../../references/qwc2_plugins#heightprofile">HeightProfile</a></li>
 <li>Add support for multiple height profiles returned by <a href="https://github.com/qwc-services/qwc-elevation-service"><code>qwc-elevation-service</code></a></li>
 </ul>
 <h3 id="redlining">Redlining<a class="headerlink" href="#redlining" title="Permanent link">&para;</a></h3>
@@ -330,8 +330,8 @@
 <h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="../topics/Search/#configuring-the-qgis-feature-search">QGIS feature search</a>: allow dynamically populating selection lists via <code>options_query</code></li>
-<li>Allow searching for catalog layers in main search field, see <a href="../qwc2_plugins#layercatalog"><code>registerCatalogSearchProvider</code></a></li>
-<li>Allow searching for task menu entries in main search field, see <a href="../qwc2_plugins#topbar"><code>registerTaskSearchProvider</code></a></li>
+<li>Allow searching for catalog layers in main search field, see <a href="../../references/qwc2_plugins#layercatalog"><code>registerCatalogSearchProvider</code></a></li>
+<li>Allow searching for task menu entries in main search field, see <a href="../../references/qwc2_plugins#topbar"><code>registerTaskSearchProvider</code></a></li>
 <li>Allow loading search filter regions from an external file, see <a href="../../topics/Search/#filtering">search filtering</a></li>
 </ul>
 <h3 id="other-changes">Other changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
@@ -343,16 +343,16 @@
 <li>Portal, ThemeSwitcher: Introduce <code>expandGroups</code> config setting to control whether groups are expanded by default</li>
 <li>Routing: Allow adding routing result as redlining layers</li>
 <li>ThemeSwitcher: Allow displaying active theme</li>
-<li>API: Allow interacting with embedded QWC instances via <a href="../qwc2_plugins#api"><code>postMessage</code></a></li>
+<li>API: Allow interacting with embedded QWC instances via <a href="../../references/qwc2_plugins#api"><code>postMessage</code></a></li>
 </ul>
 <h3 id="new-plugins">New plugins<a class="headerlink" href="#new-plugins" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="../qwc2_plugins#obliqueview">ObliqueView</a>, see also <a href="../../topics/ObliqueView">Oblique View</a></li>
-<li><a href="../qwc2_plugins#objectlist">ObjectList</a></li>
-<li><a href="../qwc2_plugins#panoramax">Panoramax</a></li>
-<li><a href="../qwc2_plugins#tourguide">TourGuide</a>, see also <a href="../../topics/Tourguide">Tour Guide</a></li>
-<li><a href="../qwc2_plugins#valuetool">ValueTool</a></li>
-<li><a href="../qwc2_plugins#view3d">View3D</a>, see also <a href="../../topics/View3D">3D View</a></li>
+<li><a href="../../references/qwc2_plugins#obliqueview">ObliqueView</a>, see also <a href="../../topics/ObliqueView">Oblique View</a></li>
+<li><a href="../../references/qwc2_plugins#objectlist">ObjectList</a></li>
+<li><a href="../../references/qwc2_plugins#panoramax">Panoramax</a></li>
+<li><a href="../../references/qwc2_plugins#tourguide">TourGuide</a>, see also <a href="../../topics/Tourguide">Tour Guide</a></li>
+<li><a href="../../references/qwc2_plugins#valuetool">ValueTool</a></li>
+<li><a href="../../references/qwc2_plugins#view3d">View3D</a>, see also <a href="../../topics/View3D">3D View</a></li>
 </ul>
 <h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <p><strong>qwc-admin-gui</strong></p>
