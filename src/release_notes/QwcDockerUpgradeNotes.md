@@ -1,20 +1,25 @@
-# Updating to qwc-map-viewer:v2026.02.24
+Updating to qwc-map-viewer:v2026.02.24
+------------------------
 
 In `qwc-map-viewer:v2026.02.24`, the `tiles3d` and `objects3d` fields of a `map3d` configuration block have been replaced by a unified `objects` field, see [View3D](../topics/View3D.md). Consequently, also the `3D Tiles Tileset` resource type has been renamed to `3D Object`. Therefore, when updating to `qwc-map-viewer:v2026.02.24`, also update to `qwc-base-db-migrate:v2026.02.24`, `qwc-config-generator:v2026.02.24` and `qwc-admin-gui:v2026.02.24`.
 
-# Updating to qwc-map-viewer:v2026.02.01 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-map-viewer:v2026.02.01 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 As of `qwc-map-viewer:v2026.02.01`, the `editConfig` will not be embedded in the `themes.json` anymore, but will be dynamically loaded on-demand. This reduces the size of the initial `themes.json`. When updating to `qwc-map-viewer:v2026.02.01`, you will also need to update to `qwc-config-generator:v2026.01.30` and then run the config generator.
 
-# Updating to qwc-map-viewer:v2026.01.14 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-map-viewer:v2026.01.14 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 The Bookmarks plugin UI refresh in `qwc-map-viewer:v2026.01.14` also requires an update to `qwc-permalink-service:v2026.01.14`.
 
-# Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-map-viewer:v2026.01.06 and qwc-config-generator:v2026.01.06 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 Due to some changes in how viewer asset and viewer task permissions are enforced, when updating to `qwc-map-viewer:v2026.01.06`, also the `qwc-config-generator` image should be updated to `v2026.01.06`.
 
-# Updating to qwc-map-viewer:v2025.11.12 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-map-viewer:v2025.11.12 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 `qwc-map-viewer:v2025.11.12` now supports reading editConfigs from imported layers if the service capabilities, returned by a `qwc-ogc-service`, report an `EditConfig` address. For this to work, also update to `qwc-config-generator:v2025.11.12` and `qwc-ogc-service:v2025.11.12` and ensure your `tenantConfig.json` contains an `edit_config` entry in the `ogc` service configuration as follows:
 ```
@@ -32,11 +37,13 @@ Due to some changes in how viewer asset and viewer task permissions are enforced
       ...
 ```
 
-# Updating to qwc-admin-gui:v2025.11.05 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-admin-gui:v2025.11.05 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 The `qwc-admin-gui:v2025.11.05` uses the new possibilities to abort the config generator workers introduced in `qwc-config-generator:v2025.11.05`. When updating to `qwc-admin-gui:v2025.11.05`, also update to `qwc-config-generator:v2025.11.05`.
 
-# New WFS permission model, removal of `Data (read)` resource type \[2025-lts &rarr; 2026-lts\]
+New WFS permission model, removal of `Data (read)` resource type \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 As of
 
@@ -49,21 +56,25 @@ a new WFS permission model has been introduced, replacing the setting `generate_
 
 Also note that the `Data (read)` resource type has been removed, as it is equivalent to `Data` without the `write` flag. Existing `Data (read)` resources will be automatically converted to `Data` by `qwc-base-db-migrate:v2025.08.05`.
 
-# Updating to qwc-config-generator:v2025.07.22 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-config-generator:v2025.07.22 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 As of `qwc-config-generator:v2025.07.22`, attribute resources created in the `qwc-admin-gui` shall be named by the name of the attribute, not its alias.
 
-# Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-admin-gui:v2025.04.23 and qwc-db-auth:v2025.04.23 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 `qwc-admin.gui:v2025.04.23` now supports setting a flag that the user password must be changed on the next login, and
 and `qwc-db-auth:v2025.04.23` enforces this setting. As this requires a DB schema change, make sure you are also using
 `qwc-base-db-migrate:v2025.04.23` or newer.
 
-# Updating to qwc-permalink-service-v2025.03.19 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-permalink-service-v2025.03.19 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 Due to a DB schema change required by `qwc-permalink-service-v2025.03.19`, make sure you are also using `qwc-base-db-migrate-v2025.03.19` or newer.
 
-# Updating to qwc-map-viewer-demo-v2025.03.06 \[2025-lts &rarr; 2026-lts\]
+Updating to qwc-map-viewer-demo-v2025.03.06 \[2025-lts &rarr; 2026-lts\]
+------------------------
 
 The `qwc-map-viewer-demo` images have been replaced by the `qwc-map-viewer` images (without the `-demo` suffix). Reference this image instead in your `docker-compose.yml`:
 
@@ -73,19 +84,23 @@ The `qwc-map-viewer-demo` images have been replaced by the `qwc-map-viewer` imag
 +    image: docker.io/sourcepole/qwc-map-viewer:<tag>
 ```
 
-# Updating to qwc-permalink-service-v2024.12.14 \[2024-lts &rarr; 2025-lts\]
+Updating to qwc-permalink-service-v2024.12.14 \[2024-lts &rarr; 2025-lts\]
+------------------------
 
 When updating to `qwc-permalink-service-v2024.12.14`, make sure to also update to `qwc-config-db-migrate-v2024.12.14` to update the schema of the `user_bookmarks` table. The bookmarks are now stored by user id instead of username.
 
-# qwc-services v2024.11.18 mass update update \[2024-lts &rarr; 2025-lts\]
+qwc-services v2024.11.18 mass update update \[2024-lts &rarr; 2025-lts\]
+------------------------
 
 As a result of `PyJWT` 2.10.0 enforcing that the JWT `sub` claim values must be strings, `qwc-services-core` 1.3.34 was updated to store the qwc identity in a separate `qwc_identity` claim, and all QWC images were updated to use this version. Consequently, if you use any QWC Service image version v2024.11.18 or newer, you will also need to update any other QWC Service image to this or a newer version to ensure that correct that the JWTs are issued and read correctly by all services.
 
-# New qwc-document-service, jasper-reporting-service obsolete \[2024-lts &rarr; 2025-lts\]
+New qwc-document-service, jasper-reporting-service obsolete \[2024-lts &rarr; 2025-lts\]
+------------------------
 
 As of 2024.09.15, the `jasper-reporting-service` is obsolete, its functionality has been integrated into the `qwc-document-service`. Check out the new [Reports](../topics/Reports.md) chapter to learn more about integrating the reporting functionality into QWC.
 
-# Split categorized layers functionality rewritten as QGIS Server plugin \[2024-lts &rarr; 2025-lts\]
+Split categorized layers functionality rewritten as QGIS Server plugin \[2024-lts &rarr; 2025-lts\]
+------------------------
 
 As of 2024.02.02 the split categorized layers functionality previously part of `qwc-config-generator` has been rewritten as a [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized).
 
@@ -93,11 +108,13 @@ This greatly simplifies the handling of such projects. The `-noqgis` image tag s
 
 See the [categorized layers documentation](https://qwc-services.github.io/master/configuration/ThemesConfiguration/#split-categorized-layers) for instructions how to configure the new `split_categorized` plugin.
 
-# Updating to qwc-data-service v2024.05.21 \[2024-lts &rarr; 2025-lts\]
+Updating to qwc-data-service v2024.05.21 \[2024-lts &rarr; 2025-lts\]
+------------------------
 
 The `qwc-data-service` version 2024.05.21 introduces two now logging fields `create_user_field` and `create_timestamp_field`. Record creation will now be logged to these fields, if set, and record updates will be logged to `edit_user_field` and `edit_timestamp_field`. Previously, both record creation and updates were logged to `edit_user_field` and `edit_timestamp_field`. As of v2024.05.21, you need to set `create_user_field` and `create_timestamp_field` (also to the same values as `edit_user_field` and `edit_timestamp_field`) if you want to log creation.
 
-# 2023.10.24 qwc-base-db rework \[2023-lts &rarr; 2024-lts\]
+2023.10.24 qwc-base-db rework \[2023-lts &rarr; 2024-lts\]
+------------------------
 
 As of 2023.10.24 the QWC base DB image has been reworked as follows:
 
@@ -149,7 +166,8 @@ Note:
 - See the [`qwc-base-db` README](https://github.com/qwc-services/qwc-base-db) for more information.
 - As of `2023.10.24` the name of the database was changed to the more generic `qwc_services` instead of `qwc_demo`.
 
-# Upgrading to qwc service images v2022.01.26
+Upgrading to qwc service images v2022.01.26
+------------------------
 
 The `qwc-uwsgi-base` images have been changed to allow for configurable UID/GID of the `uwsgi` process. The default is `UID=33` and `GID=33`, you can override it by setting the `SERVICE_UID` and `SERVICE_GID` environment variables in `docker-compose.yml`.
 
@@ -159,12 +177,14 @@ As a consequence, `/var/www` is not necessarily anymore the home directory of th
     - ./pg_service.conf:/srv/pg_service.conf:ro
     [...]
 
-# Upgrading to qwc-config-generator-v2022.01.12
+Upgrading to qwc-config-generator-v2022.01.12
+------------------------
 
 - `scanned_projects_path_prefix` has been dropped as a config setting. Instead, `qgis_projects_scan_base_dir` must be a directory below `qgis_projects_base_dir`, and the prefix is automatically computed internally.
 - `scanned_projects_path_prefix` has been added as a config setting as the output path for preprocessed qgis projects. It must be a directory below `qgis_projects_base_dir` to which the config service is allowed to write.
 
-# Upgrading from qwc service images v2021.x to v2022.01.08 or later
+Upgrading from qwc service images v2021.x to v2022.01.08 or later
+------------------------
 
 Starting with v2022.01.08, the requirements of all services where updated to use Flask-JWT-Extended 4.3.1.
 
