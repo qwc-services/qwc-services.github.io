@@ -158,7 +158,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
    - Set `qgis_projects_base_dir` to `/data/<tenant_name>`,
    - Make sure to remove the `/ows` prefix from the `url` of any manually configured themes in `themesConfig.json`.
 
-## `tenantConfig` template
+## `tenantConfig.json` template
 
 In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate `tenantConfig.json` files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a `tenantConfig` template, using the `$tenant$` placeholder where appropriate, and point to this file in the respective `tenantConfig.json` files. The contents of the template will then be merged with the contents of `tenantConfig.json`, and occurence of `$tenant$` in the template will be replaced with the current tenant name.
 
@@ -226,6 +226,21 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
 ```
 
 *Note*: A `themesConfig` entry in the `tenantConfig` template is resolved relative to the `tenantConfig.template.json`, and can be used to define common themes, background layers, etc. in the template.
+
+## `config.json` template
+
+Similar to the `tenantConfig.json` templates, the `config.json` can also inherit a template configuration, which may contain the `$tenant$` placeholder.
+
+For example, a minimal `config.json` in `qwc-docker/volumes/config-in/tenant_name/` could look as follows:
+
+```json
+{
+  "template": "../config.template.json",
+  ...
+}
+```
+
+And the `config.template.json` in `qwc-docker/volumes/config-in/` can be a regular viewer config, and specify for instance `"assetsPath": "assets/$tenant$"`.
 
 ## Multi-Tenancy with separate ConfigDB schemas
 If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:
