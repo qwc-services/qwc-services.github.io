@@ -102,7 +102,9 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#writing-the-tenantconfigjson">Writing the tenantConfig.json</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tenantconfig-template">tenantConfig template</a>
+    <li class="toctree-l3"><a class="reference internal" href="#tenantconfigjson-template">tenantConfig.json template</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configjson-template">config.json template</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas</a>
     </li>
@@ -301,7 +303,7 @@
 <li>Set <code>qgis_projects_base_dir</code> to <code>/data/&lt;tenant_name&gt;</code>,</li>
 <li>Make sure to remove the <code>/ows</code> prefix from the <code>url</code> of any manually configured themes in <code>themesConfig.json</code>.</li>
 </ul>
-<h2 id="tenantconfig-template"><code>tenantConfig</code> template<a class="headerlink" href="#tenantconfig-template" title="Permanent link">&para;</a></h2>
+<h2 id="tenantconfigjson-template"><code>tenantConfig.json</code> template<a class="headerlink" href="#tenantconfigjson-template" title="Permanent link">&para;</a></h2>
 <p>In particular when managing a large number of tenants, it can be tedious and error-prone to manage separate <code>tenantConfig.json</code> files for each tenant which might be nearly identical aside from the tenant name. To alleviate this, you can create a <code>tenantConfig</code> template, using the <code>$tenant$</code> placeholder where appropriate, and point to this file in the respective <code>tenantConfig.json</code> files. The contents of the template will then be merged with the contents of <code>tenantConfig.json</code>, and occurence of <code>$tenant$</code> in the template will be replaced with the current tenant name.</p>
 <p>For example, a minimal <code>tenantConfig.json</code> in <code>qwc-docker/volumes/config-in/tenant_name/</code> could look as follows:</p>
 <pre><code class="language-json">{
@@ -361,6 +363,15 @@
 }
 </code></pre>
 <p><em>Note</em>: A <code>themesConfig</code> entry in the <code>tenantConfig</code> template is resolved relative to the <code>tenantConfig.template.json</code>, and can be used to define common themes, background layers, etc. in the template.</p>
+<h2 id="configjson-template"><code>config.json</code> template<a class="headerlink" href="#configjson-template" title="Permanent link">&para;</a></h2>
+<p>Similar to the <code>tenantConfig.json</code> templates, the <code>config.json</code> can also inherit a template configuration, which may contain the <code>$tenant$</code> placeholder.</p>
+<p>For example, a minimal <code>config.json</code> in <code>qwc-docker/volumes/config-in/tenant_name/</code> could look as follows:</p>
+<pre><code class="language-json">{
+  &quot;template&quot;: &quot;../config.template.json&quot;,
+  ...
+}
+</code></pre>
+<p>And the <code>config.template.json</code> in <code>qwc-docker/volumes/config-in/</code> can be a regular viewer config, and specify for instance <code>"assetsPath": "assets/$tenant$"</code>.</p>
 <h2 id="multi-tenancy-with-separate-configdb-schemas">Multi-Tenancy with separate ConfigDB schemas<a class="headerlink" href="#multi-tenancy-with-separate-configdb-schemas" title="Permanent link">&para;</a></h2>
 <p>If a separate DB config for each tenant is desired, as an alternative to configuring separate databases, it is possible to use a shared database with separate schemas. This can be achieved as follows:</p>
 <ul>
