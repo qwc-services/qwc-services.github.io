@@ -175,6 +175,14 @@ The format of the theme definitions is as follows:
 | `"flags": ["<flag1>", "<flag2>", ...],`              | Optional, list of arbitrary flag names. The visibility of menu items, toolbar items and map buttons can be controlled based on the flags a theme declares. See [Plugin Configuration](ViewerConfiguration.md#plugin-configuration). |
 | `"format": "<mimetype>",`                            | Optional, the format to use for WMS GetMap. Defaults to `image/png`.                                  |
 | `"hidden_in_ows_landing_page": <true|false>,`        | Optional, whether the service should be hidden from the OGC Service OWS landing page. Default: `false`|
+| `"labelProfiles": {`                                 | Optional, predefined labelling profiles, used by the Redlining plugin.                                |
+| `  "<layer_name>": [{`                               | Name of the layer.                                                                                    |
+| `    "name": "<profile_name>",`                      | Name of the profile.                                                                                  |
+| `    "title": "<profile_title>"`,                    | Optional, title of the profile.                                                                       |
+| `    "expression": "<label_expression>"`             | Label expression, in QGIS expression syntax, i.e. `'Text: ' || "fieldname"`                           |
+| `  }, ...],`                                         |                                                                                                       |
+| `  ...`                                              |                                                                                                       |
+| `},`                                                 |                                                                                                       |
 | `"layerTreeHiddenSublayers": ["<layername>", ...],`  | Optional: list of sublayer names to omit in layertree (but still displayed in map).                   |
 | `"lockedVisibilityPreset":  "<name>",`               | Optional: lock styles of theme layers to those set in the specified visibility preset.                |
 | `"mapCrs": "<EPSG code>",`                           | Optional, map projection, defaults to project projection.                                             |
