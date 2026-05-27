@@ -179,8 +179,9 @@ The format of the theme definitions is as follows:
 | `"labelProfiles": {`                                 | Optional, predefined labelling profiles, used by the Redlining plugin.                                |
 | `  "<layer_name>": [{`                               | Name of the layer.                                                                                    |
 | `    "name": "<profile_name>",`                      | Name of the profile.                                                                                  |
-| `    "title": "<profile_title>"`,                    | Optional, title of the profile.                                                                       |
-| `    "expression": "<label_expression>"`             | Label expression, in QGIS expression syntax, i.e. `'Text: ' || "fieldname"`                           |
+| `    "title": "<profile_title>",`                    | Optional, title of the profile.                                                                       |
+| `    "expression": "<label_expression>",`            | Label expression, in QGIS expression syntax, i.e. `'Text: ' || "fieldname"`.                          |
+| `    "size": <size>`                                 | Size of the label, default is `1`.                                                                    |
 | `  }, ...],`                                         |                                                                                                       |
 | `  ...`                                              |                                                                                                       |
 | `},`                                                 |                                                                                                       |
