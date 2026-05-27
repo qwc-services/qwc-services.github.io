@@ -123,6 +123,7 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
   "defaultSearchProviders": [<Search providers, see theme definition below>],
   "defaultMapTips": <boolean>|null,
   "defaultPrintGrid": [<Print grid, see theme definition below>],
+  "defaultLabelProfiles": {<Label profiles, see theme definition below>},
   "defaultTheme": "<Default theme id>"
 }
 ```
