@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.05.11</title>
+    <title>Qwc2 plugins - QWC - 2026.05.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.11
+          <a href="../.." class="icon icon-home"> QWC - 2026.05.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.11</a>
+          <a href="../..">QWC - 2026.05.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -192,6 +192,7 @@
 <li><a href="#tourguide">TourGuide</a></li>
 <li><a href="#valuetool">ValueTool</a></li>
 <li><a href="#view3d">View3D</a></li>
+<li><a href="#visibilitypreset">VisibilityPreset</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
 </ul>
 <p><a href="#mapSupportPlugins">Map support plugins</a></p>
@@ -564,15 +565,33 @@ if (window.qwc2) {
 </thead>
 <tbody>
 <tr>
+<td>buttonClickAction</td>
+<td><code>string</code></td>
+<td>The button click action, either <code>select</code> or <code>cycle</code>.</td>
+<td><code>'select'</code></td>
+</tr>
+<tr>
+<td>buttonDisplayMode</td>
+<td><code>string</code></td>
+<td>The button display mode, either <code>button</code> or <code>thumbnail</code>.</td>
+<td><code>'button'</code></td>
+</tr>
+<tr>
 <td>position</td>
 <td><code>number</code></td>
 <td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
 <td><code>0</code></td>
 </tr>
+<tr>
+<td>showGroupThumbnails</td>
+<td><code>bool</code></td>
+<td>Whether to show the thumbnails of the group children when hovering a group item.</td>
+<td><code>undefined</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="bookmark">Bookmark<a name="bookmark"></a><a class="headerlink" href="#bookmark" title="Permanent link">&para;</a></h2>
-<p>Allows managing user bookmarks.</p>
+<p>Allows managing user bookmarks which are storing the current view, including the location and zoom level.</p>
 <p>Bookmarks are only allowed for authenticated users.</p>
 <p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code>.</p>
 <table>
@@ -628,6 +647,12 @@ if (window.qwc2) {
 <td><code>bool</code></td>
 <td>Whether to display the coordinates in the bottom bar.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>displayQuickSelectDropdown</td>
+<td><code>bool</code></td>
+<td>Whether to display a dropdown menu for the selection of user bookmarks and visibility presets in the bottom bar.</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>displayScalebar</td>
@@ -1573,7 +1598,7 @@ with containing a container element with id=legendcontainer.</p>
 <tr>
 <td>allowedFormats</td>
 <td><code>[string]</code></td>
-<td>Whitelist of allowed export format mimetypes. If empty, supported formats are listed.</td>
+<td>Whitelist of allowed export format mimetypes. If empty, supported formats are listed. Formats are sorted according to this list, and the first entry becomes the default format. Supported mimetypes are: <code>image/jpeg</code>, <code>image/png</code>, <code>image/png; mode=16bit</code>, <code>image/png; mode=8bit</code>, <code>image/png; mode=1bit</code>, <code>image/geotiff</code>, <code>image/tiff</code>, <code>application/dxf</code>, <code>application/pdf</code>.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -2170,6 +2195,12 @@ revision is published (specified via newsRev prop).</p>
 <td><code>[]</code></td>
 </tr>
 <tr>
+<td>showCloseButton</td>
+<td><code>bool</code></td>
+<td>Whether to show a button to close the portal without selecting a theme.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
 <td>showMenuOnStartup</td>
 <td><code>bool</code></td>
 <td>Whether the menu should be visible on startup.</td>
@@ -2376,7 +2407,7 @@ revision is published (specified via newsRev prop).</p>
 <td>predefinedDashPatterns</td>
 <td><code>[array]</code></td>
 <td>Predefined dash patterns. In format <code>[&lt;dash-array&gt;, ...]</code>, where a dash-array is list of alternating dash and gap widths, i.e. <code>[8 4]</code> for long dashes followed by shorter gaps.</td>
-<td><code>[[], [8, 8], [1, 8], [8, 8, 1, 8]]</code></td>
+<td><code>[[], [4], [8, 8], [1, 8], [8, 8, 1, 8]]</code></td>
 </tr>
 <tr>
 <td>predefinedFillColors</td>
@@ -3120,6 +3151,36 @@ queried via GetFeatureInfo.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="visibilitypreset">VisibilityPreset<a name="visibilitypreset"></a><a class="headerlink" href="#visibilitypreset" title="Permanent link">&para;</a></h2>
+<p>Allows managing custom user visibility presets, which are storing the currently selected layers without location or
+ zoom level.</p>
+<p>Visibility presets are only allowed for authenticated users.</p>
+<p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code> with tables setup for visibility presets
+ (see <code>qwc-permalink-service</code> documentation for details).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openOnClick</td>
+<td><code>bool</code></td>
+<td>Whether to directly open the bookmark on click / middle click, instead of showing dedicated open buttons.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="zoombutton">ZoomButton<a name="zoombutton"></a><a class="headerlink" href="#zoombutton" title="Permanent link">&para;</a></h2>
 <p>Map button for zooming the map.</p>
 <p>Two specific plugins exist: ZoomInPlugin and ZoomOutPlugin, which are instances of ZoomButton for the respective zoom directions.</p>
@@ -3225,6 +3286,42 @@ queried via GetFeatureInfo.</p>
 <p>These plugins must be listed as children of the <a href="#view3d">View3D</a> plugin.</p>
 <h2 id="backgroundswitcher3d">BackgroundSwitcher3D<a name="backgroundswitcher3d"></a><a class="headerlink" href="#backgroundswitcher3d" title="Permanent link">&para;</a></h2>
 <p>Map button for switching the background layer of the 3D map.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buttonClickAction</td>
+<td><code>string</code></td>
+<td>The button click action, either <code>select</code> or <code>cycle</code>.</td>
+<td><code>'select'</code></td>
+</tr>
+<tr>
+<td>buttonDisplayMode</td>
+<td><code>string</code></td>
+<td>The button display mode, either <code>button</code> or <code>thumbnail</code>.</td>
+<td><code>'button'</code></td>
+</tr>
+<tr>
+<td>position</td>
+<td><code>number</code></td>
+<td>The position slot index of the map button, from the bottom (0: bottom slot).</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>showGroupThumbnails</td>
+<td><code>bool</code></td>
+<td>Whether to show the thumbnails of the group children when hovering a group item.</td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="bottombar3d">BottomBar3D<a name="bottombar3d"></a><a class="headerlink" href="#bottombar3d" title="Permanent link">&para;</a></h2>
 <p>Bottom bar of the 3D map, displaying coordinates, projection, etc.</p>
 <h2 id="compare3d">Compare3D<a name="compare3d"></a><a class="headerlink" href="#compare3d" title="Permanent link">&para;</a></h2>
