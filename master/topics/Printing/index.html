@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Printing - QWC - 2026.05.26</title>
+    <title>Printing - QWC - 2026.05.27</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.26
+          <a href="../.." class="icon icon-home"> QWC - 2026.05.27
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -138,7 +138,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.26</a>
+          <a href="../..">QWC - 2026.05.27</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -266,6 +266,39 @@
 <li>
 <p>Finally, place your <code>*.qpt</code> print layouts in <code>volumes/print-layouts</code> and run the ConfigGenerator.</p>
 </li>
+</ul>
+<p>You can also include additional print layouts to specific themes by listing them in the <code>extraPrintTemplates</code> field of a theme item. For example, you can have</p>
+<pre><code>volumes/qgis-server-plugins/print_templates
+ ├─ tenant_name
+ │  ├─ layout1.qpt
+ │  └─ layout2.qpt
+ ├─ other_dir
+ │  ├─ layout4.qpt
+ │  └─ layout5.qpt
+ └─ layout6.qpt
+</code></pre>
+<p>and, in <code>tenantConfig.json</code></p>
+<pre><code class="language-json">{
+  &quot;config&quot;: {
+    &quot;qgis_print_layouts_dir&quot;: &quot;/layouts&quot;,
+    &quot;qgis_print_layouts_tenant_subdir&quot;: &quot;tenant_name&quot;
+    ...
+  }
+  ...
+}
+</code></pre>
+<p>and finally in a theme item in <code>themesConfig.json</code>:</p>
+<pre><code class="language-json">{
+   ...
+   &quot;extraPrintTemplates&quot;: [&quot;other_dir/*.qpt&quot;, &quot;layout6.qpt&quot;]
+   ...
+}
+</code></pre>
+<p>The theme will then allow printing with:</p>
+<ul>
+<li>The templates which are embedded in the project,</li>
+<li>The templates loaded from the tenant specific print template directory,</li>
+<li>Any other templates explicitly listed via <code>extraPrintTemplates</code>.</li>
 </ul>
               
             </div>

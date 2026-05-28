@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.05.26</title>
+    <title>Qwc2 plugins - QWC - 2026.05.27</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.26
+          <a href="../.." class="icon icon-home"> QWC - 2026.05.27
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.26</a>
+          <a href="../..">QWC - 2026.05.27</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -192,7 +192,6 @@
 <li><a href="#tourguide">TourGuide</a></li>
 <li><a href="#valuetool">ValueTool</a></li>
 <li><a href="#view3d">View3D</a></li>
-<li><a href="#visibilitypreset">VisibilityPreset</a></li>
 <li><a href="#zoombutton">ZoomButton</a></li>
 </ul>
 <p><a href="#mapSupportPlugins">Map support plugins</a></p>
@@ -591,7 +590,7 @@ if (window.qwc2) {
 </tbody>
 </table>
 <h2 id="bookmark">Bookmark<a name="bookmark"></a><a class="headerlink" href="#bookmark" title="Permanent link">&para;</a></h2>
-<p>Allows managing user bookmarks which are storing the current view, including the location and zoom level.</p>
+<p>Allows managing user bookmarks.</p>
 <p>Bookmarks are only allowed for authenticated users.</p>
 <p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code>.</p>
 <table>
@@ -647,12 +646,6 @@ if (window.qwc2) {
 <td><code>bool</code></td>
 <td>Whether to display the coordinates in the bottom bar.</td>
 <td><code>true</code></td>
-</tr>
-<tr>
-<td>displayQuickSelectDropdown</td>
-<td><code>bool</code></td>
-<td>Whether to display a dropdown menu for the selection of user bookmarks and visibility presets in the bottom bar.</td>
-<td><code>false</code></td>
 </tr>
 <tr>
 <td>displayScalebar</td>
@@ -3148,36 +3141,6 @@ queried via GetFeatureInfo.</p>
 <td><code>object</code></td>
 <td>Options to pass to the 3D plugins, in the form <code>{"&lt;PluginName&gt;": {&lt;options&gt;}}</code>.<br />Refer to the documentation of the <a href="#plugins3d">3D plugins</a> for settable options.</td>
 <td><code>{}</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="visibilitypreset">VisibilityPreset<a name="visibilitypreset"></a><a class="headerlink" href="#visibilitypreset" title="Permanent link">&para;</a></h2>
-<p>Allows managing custom user visibility presets, which are storing the currently selected layers without location or
- zoom level.</p>
-<p>Visibility presets are only allowed for authenticated users.</p>
-<p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code> with tables setup for visibility presets
- (see <code>qwc-permalink-service</code> documentation for details).</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>openOnClick</td>
-<td><code>bool</code></td>
-<td>Whether to directly open the bookmark on click / middle click, instead of showing dedicated open buttons.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>side</td>
-<td><code>string</code></td>
-<td>The side of the application on which to display the sidebar.</td>
-<td><code>'right'</code></td>
 </tr>
 </tbody>
 </table>

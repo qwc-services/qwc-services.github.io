@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resources and permissions - QWC - 2026.05.26</title>
+    <title>Resources and permissions - QWC - 2026.05.27</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.26
+          <a href="../.." class="icon icon-home"> QWC - 2026.05.27
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -65,6 +65,8 @@
     <li class="toctree-l4"><a class="reference internal" href="#map-permissions">Map permissions</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#default-theme-per-role">Default theme per role</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#viewer-task-permissions">Viewer task permissions</a>
     </li>
@@ -144,7 +146,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.26</a>
+          <a href="../..">QWC - 2026.05.27</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -289,6 +291,10 @@
 <td><code>╰─ Plugin data</code></td>
 <td>Plugin resource name <a href="../ThemesConfiguration/#plugin-data">Plugin data</a> entries.</td>
 </tr>
+<tr>
+<td><code>Default theme</code></td>
+<td>Name of a default theme, see <a href="#default-theme">Default theme per role</a>.</td>
+</tr>
 </tbody>
 </table>
 <p><em>Note</em>: New resource types, i.e. for custom QWC plugins, can be inserted into the <code>qwc_config.resource_types</code> table of the QWC configuration database..</p>
@@ -318,6 +324,13 @@ A special role is <code>public</code>. The <code>public</code> role always appli
 <p><code>Map</code>, <code>Layer</code>, <code>Attributes</code>, <code>Print template</code> and <code>3D Tiles Tileset</code> resources are permitted by default if <code>permissions_default_allow</code> is <code>true</code>.</p>
 <p>The <code>Data</code> and subordinate <code>Attribute</code> resources control whether access to a dataset is permitted via the <a href="https://github.com/qwc-services/qwc-data-service">qwc-data-service</a>. <code>Data</code> resources are not permitted by default. They are used for controlling the dataset accessible for <a href="../../topics/Editing/">Editing</a> and by the <a href="../../topics/FeatureInfo/#feature-form">FeatureForm</a>.</p>
 <p>For more detailed <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> permissions <code>Data (create)</code>, <code>Data (update)</code> and <code>Date (delete)</code> can be used instead of <code>Data</code>. A <code>Data</code> permission with <code>write=true</code> permits all CRUD operations.</p>
+<h2 id="default-theme-per-role">Default theme per role<a name="default-theme"></a><a class="headerlink" href="#default-theme-per-role" title="Permanent link">&para;</a></h2>
+<p>In <code>themesConfig.json</code> you can globally set the default theme. In addition, you can set a default theme per role as follows:</p>
+<ul>
+<li>Create a <code>Default Theme</code> resource, with the name of the desired theme as resource name.</li>
+<li>Create a permission for this resource for a desired role.</li>
+</ul>
+<p>The default theme for users assigned to this role will then be changed accordingly. If a user is assigned to multiple roles, the default theme with the highest priority (as can be set when creating the permission) will be used.</p>
 <h2 id="viewer-task-permissions">Viewer task permissions<a name="viewer-task-permissions"></a><a class="headerlink" href="#viewer-task-permissions" title="Permanent link">&para;</a></h2>
 <p>The <code>Viewer task</code> resource defines viewer functionalities (e.g. <code>Print</code> or <code>MapExport</code>) which can be restricted.</p>
 <p>The resource name will be matched against:</p>
