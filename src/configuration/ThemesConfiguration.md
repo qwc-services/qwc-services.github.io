@@ -167,6 +167,7 @@ The format of the theme definitions is as follows:
 | `"extraLegendParameters": "<&KEY=VALUE>",`           | Optional, [additional query parameters](https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#getlegendgraphics) to append to GetLegendGraphic request. |
 | `"extraPrintParameters": "<&KEY=VALUE>",`            | Optional, additional query parameters to append to GetPrint request (requires QGIS Server >= 3.32.0). |
 | `"extraPrintLayers": ["<layername>", ...],`          | Optional, extra list of layers to mark as internal print layers, i.e. which are omitted from the QWC LayerTree. |
+| `"extraPrintTemplates": ["<qpt_path>"; ...]`         | Optional, list of paths to extra print templates which should be added to the theme. See [Printing](../topics/Printing.md#layout-templates). |
 | `"featureReport": {`                                 | Optional, available feature report templates.                                                         |
 | `⁣  "<LayerId>": <TemplateCfg>`                       | WMS sublayer ID and associated template ID to pass to the `documentService`. See [Reports](../topics/Reports.md). |
 | `},`                                                 |                                                                                                       |

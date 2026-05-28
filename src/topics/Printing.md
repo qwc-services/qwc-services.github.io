@@ -142,3 +142,39 @@ qwc-config-service:
 * In a multi-tenant environment, to provide separate print layouts for each tenant, organize the layouts in separate directories for each tenant below `qgis_print_layouts_dir`, and specify `qgis_print_layouts_tenant_subdir` in the respective `tenantConfig.json` to point to the desired subdir path.
 
 * Finally, place your `*.qpt` print layouts in `volumes/print-layouts` and run the ConfigGenerator.
+
+You can also include additional print layouts to specific themes by listing them in the `extraPrintTemplates` field of a theme item. For example, you can have
+```
+volumes/qgis-server-plugins/print_templates
+ ├─ tenant_name
+ │  ├─ layout1.qpt
+ │  └─ layout2.qpt
+ ├─ other_dir
+ │  ├─ layout4.qpt
+ │  └─ layout5.qpt
+ └─ layout6.qpt
+```
+and, in `tenantConfig.json`
+```json
+{
+  "config": {
+    "qgis_print_layouts_dir": "/layouts",
+    "qgis_print_layouts_tenant_subdir": "tenant_name"
+    ...
+  }
+  ...
+}
+```
+and finally in a theme item in `themesConfig.json`:
+```json
+{
+   ...
+   "extraPrintTemplates": ["other_dir/*.qpt", "layout6.qpt"]
+   ...
+}
+```
+The theme will then allow printing with:
+
+- The templates which are embedded in the project,
+- The templates loaded from the tenant specific print template directory,
+- Any other templates explicitly listed via `extraPrintTemplates`.
