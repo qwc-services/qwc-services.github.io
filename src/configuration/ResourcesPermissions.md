@@ -42,6 +42,7 @@ The following resource types are available:
 | `Map info query`       | Map info query identifier, see [Map info permissions](../topics/Mapinfo.md#permissions).    |
 | `Plugin`               | Plugin name of [Plugin data](ThemesConfiguration.md#plugin-data) entries.                   |
 | `╰─ Plugin data`       | Plugin resource name [Plugin data](ThemesConfiguration.md#plugin-data) entries.             |
+| `Default theme`        | Name of a default theme, see [Default theme per role](#default-theme).                      |
 
 *Note*: New resource types, i.e. for custom QWC plugins, can be inserted into the `qwc_config.resource_types` table of the QWC configuration database..
 
@@ -84,6 +85,15 @@ The `Print template` resource permissions control access to a QGIS print layout.
 The `Data` and subordinate `Attribute` resources control whether access to a dataset is permitted via the [qwc-data-service](https://github.com/qwc-services/qwc-data-service). `Data` resources are not permitted by default. They are used for controlling the dataset accessible for [Editing](../topics/Editing.md) and by the [FeatureForm](../topics/FeatureInfo.md#feature-form).
 
 For more detailed [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) permissions `Data (create)`, `Data (update)` and `Date (delete)` can be used instead of `Data`. A `Data` permission with `write=true` permits all CRUD operations.
+
+## Default theme per role<a name="default-theme"></a>
+
+In `themesConfig.json` you can globally set the default theme. In addition, you can set a default theme per role as follows:
+
+- Create a `Default Theme` resource, with the name of the desired theme as resource name.
+- Create a permission for this resource for a desired role.
+
+The default theme for users assigned to this role will then be changed accordingly. If a user is assigned to multiple roles, the default theme with the highest priority (as can be set when creating the permission) will be used.
 
 ## Viewer task permissions<a name="viewer-task-permissions"></a>
 
