@@ -1,3 +1,8 @@
+Updating to qwc-map-viewer:v2026.06.09
+------------------------
+
+As of `qwc-map-viewer:v2026.06.09`, the limitation that 1:N relation child table foreign keys must refer to parent primary keys has been removed. When updating to `qwc-map-viewer:v2026.06.09`, you must also update to `qwc-config-generator:v2026.06.09` and `qwc-data-service:v2026.06.09`. Also, if you implemented a custom `EditingInterface`, note that the signature of `getRelations` has changed, and that the `qwc-data-service` has a new `/relations` endpoint for returning relation values.
+
 Updating to qwc-map-viewer:v2026.02.24
 ------------------------
 
