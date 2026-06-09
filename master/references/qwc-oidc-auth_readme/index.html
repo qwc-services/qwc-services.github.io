@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc oidc auth readme - QWC - 2026.05.27</title>
+    <title>Qwc oidc auth readme - QWC - 2026.06.09</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.27
+          <a href="../.." class="icon icon-home"> QWC - 2026.06.09
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.27</a>
+          <a href="../..">QWC - 2026.06.09</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -205,9 +205,12 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 </code></pre>
 <p><code>claims_options</code> are the token validation parameters which allow fine control over the content of the payload. See https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation.</p>
 <h3 id="identity-provider-configuration">Identity provider configuration<a class="headerlink" href="#identity-provider-configuration" title="Permanent link">&para;</a></h3>
-<p>CLIENT_ID and CLIENT_SECRET are defined on identity provider side.</p>
-<p>The Redirect URI is the public base URL with the endpoint /callback (Example: https://qwc2.sourcepole.ch/oauth/callback).</p>
+<p><code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>are defined on identity provider side.</p>
+<p>The redirect URI is the public base URL with the endpoint <code>/callback</code> (Example: https://qwc2.sourcepole.ch/oauth/callback).</p>
 <p>This redirect URI can be manually configured with <code>redirect_uri</code>.</p>
+<h3 id="end-session-on-logout">End session on logout<a class="headerlink" href="#end-session-on-logout" title="Permanent link">&para;</a></h3>
+<p>To end the OpenID session on when <code>/logout</code> is called, set <code>"end_session_on_logout": true</code> in the service config.
+If your OpenID provider does not provide a <code>end_session_endpoint</code> in the <code>.well-known/openid-configuration</code>, you can set a custom logout URL via <code>session_logout_url</code>.</p>
 <h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
 <p>Install dependencies and run:</p>
 <pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;

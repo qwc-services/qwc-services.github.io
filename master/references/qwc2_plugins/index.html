@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.05.27</title>
+    <title>Qwc2 plugins - QWC - 2026.06.09</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.05.27
+          <a href="../.." class="icon icon-home"> QWC - 2026.06.09
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.05.27</a>
+          <a href="../..">QWC - 2026.06.09</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -3207,6 +3207,12 @@ queried via GetFeatureInfo.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>followScale</td>
+<td><code>number</code></td>
+<td>Scale denominator to zoom to when entering follow mode. If not set, the map zoom level is not changed.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>metric</td>
 <td><code>bool</code></td>
 <td>Whether to display the accuracy in meters (<code>true</code>) or in feet (<code>false</code>).</td>
@@ -3287,6 +3293,24 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="bottombar3d">BottomBar3D<a name="bottombar3d"></a><a class="headerlink" href="#bottombar3d" title="Permanent link">&para;</a></h2>
 <p>Bottom bar of the 3D map, displaying coordinates, projection, etc.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayCoordinates</td>
+<td><code>bool</code></td>
+<td>Whether to display the coordinates in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="compare3d">Compare3D<a name="compare3d"></a><a class="headerlink" href="#compare3d" title="Permanent link">&para;</a></h2>
 <p>Split-screen and compare objects in the 3D map.</p>
 <h2 id="draw3d">Draw3D<a name="draw3d"></a><a class="headerlink" href="#draw3d" title="Permanent link">&para;</a></h2>
@@ -3344,6 +3368,18 @@ queried via GetFeatureInfo.</p>
 <td><code>string</code></td>
 <td>Base URL of imported tile sets.</td>
 <td><code>':/'</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td><code>string</code></td>
+<td>The initial width of the layertree, as a CSS width string.</td>
+<td><code>'25em'</code></td>
 </tr>
 </tbody>
 </table>
@@ -3436,7 +3472,7 @@ queried via GetFeatureInfo.</p>
 <h2 id="sunexposure3d">SunExposure3D<a name="sunexposure3d"></a><a class="headerlink" href="#sunexposure3d" title="Permanent link">&para;</a></h2>
 <p>Compute sun exposure of terrain and objects within a selected area on the 3D map.</p>
 <h2 id="topbar3d">TopBar3D<a name="topbar3d"></a><a class="headerlink" href="#topbar3d" title="Permanent link">&para;</a></h2>
-<p>Bottom bar of the 3D map, including the search bar, tool bar and menu.</p>
+<p>Top bar of the 3D map, including the search bar, tool bar and menu.</p>
 <table>
 <thead>
 <tr>
