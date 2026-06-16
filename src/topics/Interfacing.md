@@ -29,6 +29,7 @@ The `l` parameter lists all layers in the map (redlining and background layers) 
 <layername>[<transparency>]{<style>}!
 ```
 where
+
 - `layername` is the WMS name of a theme layer or group, or an external layer resource string in the format
 ```text
 <wms|wfs>:<service_url>#<layername>
