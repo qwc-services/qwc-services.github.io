@@ -9,6 +9,10 @@ When upgrading from a 2025-lts setup, please note the entries marked with *\[202
 * [QWC upgrade notes](./QWC2UpgradeNotes.md)
 * [qwc-docker upgrade notes](./QwcDockerUpgradeNotes.md)
 
+A change with a title like *Update to qwc2 2025.7.22 \[2025-lts → 2026-lts\]* means that
+that change has been done in 2025 but has **not** been included in the 2025-lts release
+but has only been included in the 2026-lts release!
+
 ### General
 * QWC is now published on [NPM](https://www.npmjs.com/package/qwc2), which can be used as a dependency for custom QWC builds
 * Enchanced keyboard navigation throughout
