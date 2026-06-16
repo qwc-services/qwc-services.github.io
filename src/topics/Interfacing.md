@@ -31,10 +31,11 @@ The `l` parameter lists all layers in the map (redlining and background layers) 
 where
 
 - `layername` is the WMS name of a theme layer or group, or an external layer resource string in the format
-```text
-<wms|wfs>:<service_url>#<layername>
-```
-   for external layers, i.e. `wms:https://wms.geo.admin.ch/?#ch.are.bauzonen`.
+    ```text
+    <wms|wfs>:<service_url>#<layername>
+    ```
+    for external layers, i.e. `wms:https://wms.geo.admin.ch/?#ch.are.bauzonen`.
+
 - `<transparency>` denotes the layer transparency, betwen 0 and 100. If the `[<transparency>]` portion is omitted, the layer is fully opaque.
 - `<style>` denotes the layer style name. If the `{<style>}` portion is omitted, the style named `default` will be used, if one exists, or the first available style otherwise.
 - `!` denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.
