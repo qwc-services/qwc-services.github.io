@@ -182,14 +182,18 @@
 </code></pre>
 <p>where</p>
 <ul>
-<li><code>layername</code> is the WMS name of a theme layer or group, or an external layer resource string in the format</li>
+<li>
+<p><code>layername</code> is the WMS name of a theme layer or group, or an external layer resource string in the format
+    <code>text
+    &lt;wms|wfs&gt;:&lt;service_url&gt;#&lt;layername&gt;</code>
+    for external layers, i.e. <code>wms:https://wms.geo.admin.ch/?#ch.are.bauzonen</code>.</p>
+</li>
+<li>
+<p><code>&lt;transparency&gt;</code> denotes the layer transparency, betwen 0 and 100. If the <code>[&lt;transparency&gt;]</code> portion is omitted, the layer is fully opaque.</p>
+</li>
+<li><code>&lt;style&gt;</code> denotes the layer style name. If the <code>{&lt;style&gt;}</code> portion is omitted, the style named <code>default</code> will be used, if one exists, or the first available style otherwise.</li>
+<li><code>!</code> denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.</li>
 </ul>
-<pre><code class="language-text">&lt;wms|wfs&gt;:&lt;service_url&gt;#&lt;layername&gt;
-</code></pre>
-<p>for external layers, i.e. <code>wms:https://wms.geo.admin.ch/?#ch.are.bauzonen</code>.
-- <code>&lt;transparency&gt;</code> denotes the layer transparency, betwen 0 and 100. If the <code>[&lt;transparency&gt;]</code> portion is omitted, the layer is fully opaque.
-- <code>&lt;style&gt;</code> denotes the layer style name. If the <code>{&lt;style&gt;}</code> portion is omitted, the style named <code>default</code> will be used, if one exists, or the first available style otherwise.
-- <code>!</code> denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.</p>
 <p><em>Note</em>: If group name is specified instead of the layer name, QWC will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.</p>
 <p>The <code>urlPositionFormat</code> parameter in <code>config.json</code> determines whether the extent or the center and scale appears in the URL.</p>
 <p>The <code>urlPositionCrs</code> parameter in <code>config.json</code> determines the projection to use for the extent resp. center coordinates in the URL. By default the map projection of the current theme is used. If <code>urlPositionCrs</code> is equal to the map projection, the <code>crs</code> parameter is omitted in the URL.</p>
