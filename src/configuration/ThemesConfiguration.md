@@ -122,11 +122,14 @@ The `themesConfig.json` file contains a list of themes, optionally organized in 
   "defaultPrintResolutions": [<DPIs, see theme definition below>],
   "defaultSearchProviders": [<Search providers, see theme definition below>],
   "defaultMapTips": <boolean>|null,
+  "defaultMapCrs": "<EPSG:XXXX>",
+  "defaultMapExtent": [xxmin>, <ymin>, <xmax>, <ymax>],
   "defaultPrintGrid": [<Print grid, see theme definition below>],
   "defaultLabelProfiles": {<Label profiles, see theme definition below>},
   "defaultTheme": "<Default theme id>"
 }
 ```
+The `defaultMapCrs`, `defaultMapExtent`, `defaultScales` and `defaultBackgroundLayers` will also be used to construct an empty theme, if there is no default theme resp. if the default theme cannot be loaded. The `defaultMapExtent` should be specified in the CRS specified in `defaultMapCrs`. If latter is not defined, it is assumed to be `EPSG:3857`.
 
 Refer to [External layers](#external-layers), [Theme info links](#theme-info-links), [Plugin data](#plugin-data) and [Background layers](#background-layers) for the format of the respective definitions.
 
