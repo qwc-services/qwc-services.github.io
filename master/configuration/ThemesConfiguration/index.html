@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Themes - QWC - 2026.06.10</title>
+    <title>Themes - QWC - 2026.06.17</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.06.10
+          <a href="../.." class="icon icon-home"> QWC - 2026.06.17
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -156,7 +156,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.06.10</a>
+          <a href="../..">QWC - 2026.06.17</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -357,11 +357,14 @@ sslmode=disable
   &quot;defaultPrintResolutions&quot;: [&lt;DPIs, see theme definition below&gt;],
   &quot;defaultSearchProviders&quot;: [&lt;Search providers, see theme definition below&gt;],
   &quot;defaultMapTips&quot;: &lt;boolean&gt;|null,
+  &quot;defaultMapCrs&quot;: &quot;&lt;EPSG:XXXX&gt;&quot;,
+  &quot;defaultMapExtent&quot;: [xxmin&gt;, &lt;ymin&gt;, &lt;xmax&gt;, &lt;ymax&gt;],
   &quot;defaultPrintGrid&quot;: [&lt;Print grid, see theme definition below&gt;],
   &quot;defaultLabelProfiles&quot;: {&lt;Label profiles, see theme definition below&gt;},
   &quot;defaultTheme&quot;: &quot;&lt;Default theme id&gt;&quot;
 }
 </code></pre>
+<p>The <code>defaultMapCrs</code>, <code>defaultMapExtent</code>, <code>defaultScales</code> and <code>defaultBackgroundLayers</code> will also be used to construct an empty theme, if there is no default theme resp. if the default theme cannot be loaded. The <code>defaultMapExtent</code> should be specified in the CRS specified in <code>defaultMapCrs</code>. If latter is not defined, it is assumed to be <code>EPSG:3857</code>.</p>
 <p>Refer to <a href="#external-layers">External layers</a>, <a href="#theme-info-links">Theme info links</a>, <a href="#plugin-data">Plugin data</a> and <a href="#background-layers">Background layers</a> for the format of the respective definitions.</p>
 <p>Refer to the <a href="https://github.com/qwc-services/qwc-docker/blob/master/volumes/config-in/default/themesConfig.json">sample <code>themesConfig.json</code></a> for a complete example.</p>
 <p>The format of the theme definitions is as follows:</p>
@@ -464,7 +467,7 @@ sslmode=disable
 </tr>
 <tr>
 <td><code>"extent": [&lt;xmin&gt;, &lt;ymin&gt;, &lt;xmax&gt;, &lt;ymax&gt;],</code></td>
-<td>Optional, override theme extent. In <code>mapCrs</code>.</td>
+<td>Optional, override the initial theme extent. In <code>mapCrs</code>.</td>
 </tr>
 <tr>
 <td><code>"externalLayers": [{</code></td>
@@ -585,6 +588,10 @@ sslmode=disable
 <tr>
 <td><code>"mapCrs": "&lt;EPSG code&gt;",</code></td>
 <td>Optional, map projection, defaults to project projection.</td>
+</tr>
+<tr>
+<td><code>"mapExtent": "&lt;EPSG code&gt;",</code></td>
+<td>Optional, the extent of the full allowed area of the map.</td>
 </tr>
 <tr>
 <td><code>"mapTips": &lt;boolean&gt;|null,</code></td>
