@@ -110,9 +110,13 @@ A script will take care of merging the translations from the `qwc2` package into
 
     yarn run tsupdate
 
-Translations are stored inside the respective `translations` folder as regular plain-text JSON files, named `<lang>.json` and can be freely edited with any text editor.
+This script accepts a `--basePath=` parameter, which can be used to specify the source path of your custom qwc2 application. For example, when building an application where the source is the `src` folder, you must invoke the script as follows:
 
-The `tsconfig.json` files stored inside the respective `translations` folder contains the list of languages for which translations should be generated and a list of message IDs to include in the translation. The `tsupdate` script will automatically scan the code for message IDs (looking for static strings passed to `LocaleUtils.tr` and `LocaleUtils.trmsg`), store these in `tsconfig.json` and automatically create resp. update the translation files.
+    yarn run tsupdate --basePath=src 
+    
+Translations are stored inside the respective `translations` folder as regular plain-text JSON files, named `<lang>.json` and can be freely edited with any text editor. 
+
+The `tsconfig.json` files stored inside the respective `translations` folder contains the list of languages for which translations should be generated and a list of message IDs to include in the translation. The `tsupdate` script will automatically scan the code for message IDs (looking for static strings passed to `LocaleUtils.tr` and `LocaleUtils.trmsg`), store these in `tsconfig.json` and automatically create resp. update the translation files. 
 
 In some cases `tsconfig.json` will not pick up a message ID (for instance, if it is computed at runtime). In these cases, the message IDs can be added manually to the `extra_strings` section of the `tsconfig.json`.
 
@@ -121,6 +125,25 @@ Also it may be desired to override a translation inherited from the QWC componen
 To add a new language, list it in `qwc-app/qwc2/translations/tsconfig.json` and run `yarn run tsupdate`, then complete the messages taking the english translation file as reference.
 
 When adding or modifying translations at QWC components level, please contribute them by submitting a pull request to the [upstream qwc2 repository](https://github.com/qgis/qwc2).
+
+### Variable replacement in translation strings
+
+Variables in translation strings can be defined in two ways: by position or by name. For each of these, `LocaleUtils.tr` accepts different parameters:
+```json
+"messages": {
+  "example": {
+    "nameBased": "This is a {foo} based example. {bar} !",
+    "positionBased": "This is a {0} based example. {1} !" 
+  }
+}
+```
+```js
+LocaleUtils.tr("exemple.namedBase", {foo: "named", bar: "Great"}) 
+// Will print "This is a named based example. Great !"
+
+LocaleUtils.tr("exemple.positionBased", "position", "Cool") 
+// Will print "This is a position based example. Cool !"
+```
 
 ### Selectively overriding translation strings
 
