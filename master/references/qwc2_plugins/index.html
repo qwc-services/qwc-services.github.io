@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.06.17</title>
+    <title>Qwc2 plugins - QWC - 2026.07.01</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.06.17
+          <a href="../.." class="icon icon-home"> QWC - 2026.07.01
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.06.17</a>
+          <a href="../..">QWC - 2026.07.01</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -1149,8 +1149,14 @@ for customized queries and templates for the result presentation.</p>
 <tr>
 <td>highlightAllResults</td>
 <td><code>bool</code></td>
-<td>Whether to highlight all results if no result is hovered</td>
+<td>Whether to highlight all results if no result is hovered.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>identifySearchResults</td>
+<td><code>bool</code></td>
+<td>Whether to trigger an identify when selecting a search result.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>initialRadiusUnits</td>
@@ -1995,6 +2001,12 @@ revision is published (specified via newsRev prop).</p>
 </thead>
 <tbody>
 <tr>
+<td>embedIframe</td>
+<td><code>bool</code></td>
+<td>Whether to embed the news document in an iframe instead of a div.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
 <td>newsDocument</td>
 <td><code>string</code></td>
 <td>URL to the news HTML document to display in the popup. Can contain <code>{lang}</code> as a placeholder which will be replaced with the current viewer language.</td>
@@ -2593,6 +2605,24 @@ an aggregated report for all selected features.</p>
 </thead>
 <tbody>
 <tr>
+<td>autoAddFirstDatastream</td>
+<td><code>bool</code></td>
+<td>Automatically add the first Datastream when selecting a Location in the map.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>autoAdjustPeriod</td>
+<td><code>{</code><br /><code>intervalBefore: number,</code><br /><code>}</code></td>
+<td>Automatically adjust the visible period when adding a Datastream. Set <code>null</code> to disable.<br />Sets the period begin to <code>intervalBefore</code> before the earliest last Observation of all visible Datastreams.<br />Sets the period end to now.<br />- <code>intervalBefore</code>: Interval in seconds.</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td>clearAllOnClose</td>
+<td><code>bool</code></td>
+<td>Remove all Locations and Datastreams when closing the main window.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
 <td>queryTolerance</td>
 <td><code>number</code></td>
 <td>Map picking tolerance in pixels</td>
@@ -2799,6 +2829,12 @@ and controlling layers in a single interface.</p>
 </thead>
 <tbody>
 <tr>
+<td>allowRemovingThemeLayers</td>
+<td><code>bool</code></td>
+<td>Whether to allow removing theme layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>bboxDependentLegend</td>
 <td><code>{bool, string}</code></td>
 <td>Whether to display a BBOX dependent legend. Can be <code>true|false|"theme"</code>, latter means only for theme layers.</td>
@@ -2811,10 +2847,28 @@ and controlling layers in a single interface.</p>
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>fillIfWiderThanPerc</td>
+<td><code>number</code></td>
+<td>Make panel fill screen width if wider than the specified screen width percentage.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>maxWidth</td>
+<td><code>string</code></td>
+<td>Maximum width of panel (ignored <code>fillIfWiderThanPerc</code> is set).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>scaleDependentLegend</td>
 <td><code>{bool, string}</code></td>
 <td>Whether to display a scale dependent legend. Can be <code>true|false|"theme"</code>, latter means only for theme layers.</td>
 <td><code>undefined</code></td>
+</tr>
+<tr>
+<td>side</td>
+<td><code>string</code></td>
+<td>The side of the application on which to display the sidebar.</td>
+<td><code>'right'</code></td>
 </tr>
 </tbody>
 </table>
@@ -3153,6 +3207,12 @@ queried via GetFeatureInfo.</p>
 <td><code>string</code></td>
 <td>The position of the navigation controls. Either <code>top</code> or <code>bottom</code>.</td>
 <td><code>'top'</code></td>
+</tr>
+<tr>
+<td>defaultColorLayerVisibility</td>
+<td><code>bool</code></td>
+<td>Whether 2D layers should be visible by default when opening the 3D view.</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>defaultFov</td>
