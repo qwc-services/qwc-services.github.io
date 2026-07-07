@@ -2,6 +2,13 @@
 
 This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.
 
+Update to qwc2 2026.7.7
+-----------------------
+
+** Changes to the `LayerCatalog`**
+
+A new `asGroup` option has been introduced for the catalog files loaded by the  `LayerCatalog` plugin. The previous `sublayers: false` option should be rewritten as `asGroup: false`. See [LayerCatalog](../../references/qwc2_plugins#layercatalog).
+
 Update to qwc2 2025.8.20
 ------------------------
 
