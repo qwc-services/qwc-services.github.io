@@ -1223,19 +1223,23 @@ for customized queries and templates for the result presentation.</p>
 <h2 id="layercatalog">LayerCatalog<a name="layercatalog"></a><a class="headerlink" href="#layercatalog" title="Permanent link">&para;</a></h2>
 <p>Displays a pre-configured catalog of external layers in a window.</p>
 <p>Configured through a catalog JSON containing a tree of external layer identifiers.</p>
-<p>For <code>wms</code> layers, <code>sublayers: false</code> denotes that the sublayer structure of the added layer should not
-be exposed in the layer tree.</p>
+<p>For catalog entries containing a <code>wms</code> resource, you can specify <code>"asGroup": &lt;true|false|"option"&gt;</code>, which behaves as follows:</p>
+<ul>
+<li><code>false</code>: imports the layer as a flat layer, without sublayer structure. This is the default behaviour for entries without sublayers if <code>asGroup</code> is not specified.</li>
+<li><code>true</code>:  imports the layer as a group, with sublayer structure. If the catalog entry has sublayers, the sublayer structure will be filtered to only include these sublayers.</li>
+<li><code>"option"</code>: imports the layer as a flat layer when clicking on the catalog entry, but displays an icon to optionally import the layer as a group layer. This is the default behaviour for entries with sublayers if <code>asGroup</code> is not specified.</li>
+</ul>
 <p>Example:</p>
 <pre><code class="language-json">{
   &quot;catalog&quot;: [
     {
       &quot;title&quot;: &quot;Öffentlicher Verkehr swissTLMRegio&quot;,
       &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.vec200-transportation-oeffentliche-verkehr&quot;,
-      &quot;sublayers&quot;: false
+      &quot;asGroup&quot;: true
     },
     {
       &quot;title&quot;: &quot;Gewässerschutz&quot;,
-       &quot;resource&quot;: &quot;wms:https://geo.so.ch/api/wms#ch.so.afu.gewaesserschutz[50]&quot;
+      &quot;resource&quot;: &quot;wms:https://geo.so.ch/api/wms#ch.so.afu.gewaesserschutz[50]&quot;
     },
     {
       &quot;title&quot;: &quot;Landeskarten&quot;,
@@ -1249,6 +1253,19 @@ be exposed in the layer tree.</p>
           &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.pixelkarte-farbe-pk100.noscale&quot;
         }
       ]
+    },
+    {
+      &quot;title&quot;: &quot;Edit Demo&quot;,
+      &quot;resource&quot;: &quot;wms:https://demo.qwc.app/ows/qwc_demo#edit_demo&quot;,
+      &quot;sublayers&quot;: [{
+        &quot;title&quot;: &quot;Edit Points&quot;,
+        &quot;resource&quot;: &quot;wms:https://demo.qwc.app/ows/qwc_demo#edit_points&quot;
+      },
+      {
+        &quot;title&quot;: &quot;Edit Lines&quot;,
+        &quot;resource&quot;: &quot;wms:https://demo.qwc.app/ows/qwc_demo#edit_lines&quot;
+      }],
+      &quot;asGroup&quot;: &quot;option&quot;
     }
   ]
 }

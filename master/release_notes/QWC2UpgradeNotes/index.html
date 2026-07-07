@@ -108,6 +108,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="./">QWC viewer upgrade notes</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-202677">Update to qwc2 2026.7.7</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025820">Update to qwc2 2025.8.20</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#update-to-qwc2-2025722-2025-lts-2026-lts">Update to qwc2 2025.7.22 [2025-lts &rarr; 2026-lts]</a>
@@ -204,6 +206,9 @@
               
                 <h1 id="upgrade-notes">Upgrade notes<a class="headerlink" href="#upgrade-notes" title="Permanent link">&para;</a></h1>
 <p>This document describes configuration and code incompatibilites, as well as other aspects, which need to addressed when updating to a new version of the QWC viewer.</p>
+<h2 id="update-to-qwc2-202677">Update to qwc2 2026.7.7<a class="headerlink" href="#update-to-qwc2-202677" title="Permanent link">&para;</a></h2>
+<p><strong> Changes to the <code>LayerCatalog</code></strong></p>
+<p>A new <code>asGroup</code> option has been introduced for the catalog files loaded by the  <code>LayerCatalog</code> plugin. The previous <code>sublayers: false</code> option should be rewritten as <code>asGroup: false</code>. See <a href="../../references/qwc2_plugins#layercatalog">LayerCatalog</a>.</p>
 <h2 id="update-to-qwc2-2025820">Update to qwc2 2025.8.20<a class="headerlink" href="#update-to-qwc2-2025820" title="Permanent link">&para;</a></h2>
 <p><strong>Changes to the View3D plugin setup</strong></p>
 <p>The child components of the 3D view are now loaded as plugins:</p>
