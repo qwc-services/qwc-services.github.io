@@ -98,6 +98,10 @@
           "description": "Whether info service/layer/attribute permissions should be inherited from the corresponding map/layer/attribute. Only useful if `permissions_default_allow=false`. Default: `false`",
           "type": "boolean"
         },
+        "default_map_role": {
+          "description": "Default role to permit maps for, if no other permissions exist. Default: `null`",
+          "type": "string"
+        },
         "validate_schema": {
           "description": "Validate configuration against schema. Example: `true`",
           "type": "boolean"

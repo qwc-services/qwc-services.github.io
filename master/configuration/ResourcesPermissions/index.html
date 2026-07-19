@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Resources and permissions - QWC - 2026.07.01</title>
+    <title>Resources and permissions - QWC - 2026.07.09</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.07.01
+          <a href="../.." class="icon icon-home"> QWC - 2026.07.09
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -146,7 +146,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.07.01</a>
+          <a href="../..">QWC - 2026.07.09</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -305,9 +305,10 @@ A special role is <code>public</code>. The <code>public</code> role always appli
 <p>The <code>write</code> flag is only used for <code>Data</code> and <code>WFS Layer</code> resources and determines whether the dataset / WFS layer is read-only or writeable (the respective  <code>create</code> / <code>update</code> / <code>delete</code> allow for fine-grained CRUD permission control).</p>
 <p>By using the <code>permissions_default_allow</code> configuration setting in <code>tenantConfig.json</code>, some resources can be set to be permitted or restricted by default if no permissions are set (default: <code>false</code>). Among affected resources are <code>Map</code>, <code>Layer</code>, <code>Print template</code>, <code>Viewer task</code>, <code>FeatureInfo service</code>, <code>FeatureInfo layer</code>. E.g.:</p>
 <ul>
-<li><code>permissions_default_allow=true</code>: all maps and layers are permitted by default</li>
-<li><code>permissions_default_allow=false</code>: maps and layers are only available if their resources and permissions are explicitly configured</li>
+<li><code>permissions_default_allow=true</code>: all maps and layers are permitted by default.</li>
+<li><code>permissions_default_allow=false</code>: maps and layers are only available if their resources and permissions are explicitly configured. Note that this means that every single map, layer and also group layer will need to be explicitly permitted!</li>
 </ul>
+<p>As a tradeoff between <code>permissions_default_allow=true</code> and <code>permissions_default_allow=false</code>, you can set use <code>permissions_default_allow=true</code> with <code>default_map_role=&lt;role&gt;</code>. This will permit all maps for the specified role by default, while default-permitting all map layers. If <code>default_map_role</code> is set, you can permit a map for <code>public</code> by creating an explicit <code>public</code> role permission on the map resource.</p>
 <p>Based on the user's identity (user name and/or group name), all corresponding roles and their permissions and restrictions are collected from the QWC configuration database by the <a href="https://github.com/qwc-services/qwc-config-generator">QWC Config Generator</a>, which then generates a <code>permissions.json</code> file.</p>
 <p>The QWC services will read the <code>permissions.json</code> to filter the responses according to these permissions and restrictions, by using <code>PermissionClient::resource_permissions()</code> or <code>PermissionClient::resource_restrictions()</code> from <a href="https://github.com/qwc-services/qwc-services-core">QWC Services Core</a>.</p>
 <h3 id="map-permissions">Map permissions<a name="map-permissions"></a><a class="headerlink" href="#map-permissions" title="Permanent link">&para;</a></h3>

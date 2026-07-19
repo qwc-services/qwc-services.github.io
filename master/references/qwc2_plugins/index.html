@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.07.01</title>
+    <title>Qwc2 plugins - QWC - 2026.07.09</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.07.01
+          <a href="../.." class="icon icon-home"> QWC - 2026.07.09
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.07.01</a>
+          <a href="../..">QWC - 2026.07.09</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -1087,6 +1087,12 @@ for customized queries and templates for the result presentation.</p>
 </thead>
 <tbody>
 <tr>
+<td>appendResultsByDefault</td>
+<td><code>bool</code></td>
+<td>Whether to append results by default (without having to press <code>CTRL</code> when clicking).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>attributeCalculator</td>
 <td><code>func</code></td>
 <td>Optional function for computing derived attributes. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
@@ -1097,6 +1103,12 @@ for customized queries and templates for the result presentation.</p>
 <td><code>func</code></td>
 <td>Optional function for transforming attribute values. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
 <td><code>undefined</code></td>
+</tr>
+<tr>
+<td>availableRegionModes</td>
+<td><code>[string]</code></td>
+<td>Available region identify modes.</td>
+<td><code>['Region', 'Radius', 'Circle', 'Rectangle']</code></td>
 </tr>
 <tr>
 <td>clearResultsOnClose</td>
@@ -1303,6 +1315,12 @@ for customized queries and templates for the result presentation.</p>
 <td><code>bool</code></td>
 <td>Whether to register a search provider which allows searching catalog layers through the global search field.</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td>toggleGroupOnClick</td>
+<td><code>bool</code></td>
+<td>Whether clicking the group name toggles the WMS group rather than loading the grouped layer.</td>
+<td><code>false</code></td>
 </tr>
 </tbody>
 </table>
@@ -3572,6 +3590,24 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="mapexport3d">MapExport3D<a name="mapexport3d"></a><a class="headerlink" href="#mapexport3d" title="Permanent link">&para;</a></h2>
 <p>Export the 3D map image to raster formats.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formats</td>
+<td><code>[string]</code></td>
+<td>Export layout format mimetypes. Only the default values are supported.</td>
+<td><code>['image/jpeg', 'image/png', 'image/tiff', 'application/pdf']</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="maplight3d">MapLight3D<a name="maplight3d"></a><a class="headerlink" href="#maplight3d" title="Permanent link">&para;</a></h2>
 <p>Control the map illumination.</p>
 <table>
