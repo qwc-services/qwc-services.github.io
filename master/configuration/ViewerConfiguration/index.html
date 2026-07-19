@@ -847,7 +847,7 @@ All settings are optional, with fallback to the default values as documented.</p
 <p><em>Note</em>: The icons in the <code>icons</code> folder are compiled into an icon font. The icons need to be black content on transparent background, and all drawings (including texts) must be converted to paths for the icons to render correctly.</p>
 <h3 id="compiling-an-application-bundle">Compiling an application bundle<a class="headerlink" href="#compiling-an-application-bundle" title="Permanent link">&para;</a></h3>
 <p>After tweaking the source files as desired, compile a deployable application bundle for production running</p>
-<pre><code class="language-bash">yarn run prod
+<pre><code class="language-bash">npm run prod
 </code></pre>
 <p>When using <code>qwc-docker</code>, copy the contents of the <code>qwc-app/prod</code> folder to <code>qwc-docker/volumes/qwc2</code> and edit the <code>qwc-docker/docker-compose.yml</code> to use <code>qwc-map-viewer-base</code> with your custom build:</p>
 <pre><code class="language-yml">qwc-map-viewer:

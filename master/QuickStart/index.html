@@ -206,21 +206,21 @@ cp api-gateway/nginx-example.conf api-gateway/nginx.conf
 </ul>
 <h2 id="running-qwc-as-a-standalone-viewer">Running QWC as a standalone viewer<a class="headerlink" href="#running-qwc-as-a-standalone-viewer" title="Permanent link">&para;</a></h2>
 <p>If you don't need the advanced functionalities provided by <code>qwc-services</code> or want to integrate QWC in another environment, you can run QWC as a standalone viewer.</p>
-<p>To work with QWC, you will need a minimal development environment consisting of <a href="https://git-scm.com/">git</a>, <a href="https://nodejs.org/">node</a> and <a href="https://yarnpkg.com">yarn</a>. You will also need a running QGIS Server instance which serves your projects.</p>
+<p>To work with QWC, you will need a minimal development environment consisting of <a href="https://git-scm.com/">git</a> and <a href="https://nodejs.org/">node</a>. You will also need a running QGIS Server instance which serves your projects.</p>
 <p>The fastest way to get started is by cloning the stock application:</p>
 <pre><code class="language-bash">git clone https://github.com/qgis/qwc2.git
 </code></pre>
 <p>Next, install all required dependencies:</p>
 <pre><code class="language-bash">cd qwc2
-yarn install
+npm install
 </code></pre>
 <p>Then, start a local development application:</p>
-<pre><code class="language-bash">yarn start
+<pre><code class="language-bash">npm start
 </code></pre>
 <p>The development application will run by default on <a href="http://localhost:8081">http://localhost:8081</a>.</p>
 <p>At this point, you can customize and configure the application according to your needs, as described in detail in the following chapters.</p>
 <p>The final step is to compile a deployable application bundle for production:</p>
-<pre><code class="language-bash">yarn run prod
+<pre><code class="language-bash">npm run prod
 </code></pre>
 <p>You can then deploy the contents of the <code>prod</code> folder to your web server.</p>
 <p>Next steps:</p>
