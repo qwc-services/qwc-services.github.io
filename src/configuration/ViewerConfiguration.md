@@ -347,7 +347,7 @@ The common application icons are located in `qwc2/icons`. They can be overridden
 
 After tweaking the source files as desired, compile a deployable application bundle for production running
 ```bash
-yarn run prod
+npm run prod
 ```
 When using `qwc-docker`, copy the contents of the `qwc-app/prod` folder to `qwc-docker/volumes/qwc2` and edit the `qwc-docker/docker-compose.yml` to use `qwc-map-viewer-base` with your custom build:
 ```yml

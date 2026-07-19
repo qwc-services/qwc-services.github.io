@@ -61,7 +61,7 @@ Next steps:
 
 If you don't need the advanced functionalities provided by `qwc-services` or want to integrate QWC in another environment, you can run QWC as a standalone viewer.
 
-To work with QWC, you will need a minimal development environment consisting of [git](https://git-scm.com/), [node](https://nodejs.org/) and [yarn](https://yarnpkg.com). You will also need a running QGIS Server instance which serves your projects.
+To work with QWC, you will need a minimal development environment consisting of [git](https://git-scm.com/) and [node](https://nodejs.org/). You will also need a running QGIS Server instance which serves your projects.
 
 The fastest way to get started is by cloning the stock application:
 ```bash
@@ -70,11 +70,11 @@ git clone https://github.com/qgis/qwc2.git
 Next, install all required dependencies:
 ```bash
 cd qwc2
-yarn install
+npm install
 ```
 Then, start a local development application:
 ```bash
-yarn start
+npm start
 ```
 The development application will run by default on <http://localhost:8081>.
 
@@ -82,7 +82,7 @@ At this point, you can customize and configure the application according to your
 
 The final step is to compile a deployable application bundle for production:
 ```bash
-yarn run prod
+npm run prod
 ```
 You can then deploy the contents of the `prod` folder to your web server.
 

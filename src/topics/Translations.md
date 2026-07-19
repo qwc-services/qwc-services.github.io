@@ -106,9 +106,9 @@ The service will then check if `myfile_<lang>-<COUNTRY>.ext` or `myfile_<lang>.e
 
 When working inside a `qwc-app` source folder, the translations are located at `qwc-app/static/translations`.
 
-A script will take care of merging the translations from the `qwc2` package into the application translations. This way, when updating the `qwc2` dependency, new translations are automatically obtained. This script is automatically invoked on `yarn start`, but can also be manually invoked using
+A script will take care of merging the translations from the `qwc2` package into the application translations. This way, when updating the `qwc2` dependency, new translations are automatically obtained. This script is automatically invoked on `npm start`, but can also be manually invoked using
 
-    yarn run tsupdate
+    npm run tsupdate
 
 Translations are stored inside the respective `translations` folder as regular plain-text JSON files, named `<lang>.json` and can be freely edited with any text editor.
 
@@ -118,7 +118,7 @@ In some cases `tsconfig.json` will not pick up a message ID (for instance, if it
 
 Also it may be desired to override a translation inherited from the QWC components at application level. To prevent `tsupdate` from continuously reverting the overridden translation, the respective message IDs can be added to the `overrides` section in the application `tsconfig.json` file.
 
-To add a new language, list it in `qwc-app/qwc2/translations/tsconfig.json` and run `yarn run tsupdate`, then complete the messages taking the english translation file as reference.
+To add a new language, list it in `qwc-app/qwc2/translations/tsconfig.json` and run `npm run tsupdate`, then complete the messages taking the english translation file as reference.
 
 When adding or modifying translations at QWC components level, please contribute them by submitting a pull request to the [upstream qwc2 repository](https://github.com/qgis/qwc2).
 
