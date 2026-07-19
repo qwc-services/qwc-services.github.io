@@ -57,8 +57,10 @@ The `write` flag is only used for `Data` and `WFS Layer` resources and determine
 
 By using the `permissions_default_allow` configuration setting in `tenantConfig.json`, some resources can be set to be permitted or restricted by default if no permissions are set (default: `false`). Among affected resources are `Map`, `Layer`, `Print template`, `Viewer task`, `FeatureInfo service`, `FeatureInfo layer`. E.g.:
 
-* `permissions_default_allow=true`: all maps and layers are permitted by default
-* `permissions_default_allow=false`: maps and layers are only available if their resources and permissions are explicitly configured
+* `permissions_default_allow=true`: all maps and layers are permitted by default.
+* `permissions_default_allow=false`: maps and layers are only available if their resources and permissions are explicitly configured. Note that this means that every single map, layer and also group layer will need to be explicitly permitted!
+
+As a tradeoff between `permissions_default_allow=true` and `permissions_default_allow=false`, you can set use `permissions_default_allow=true` with `default_map_role=<role>`. This will permit all maps for the specified role by default, while default-permitting all map layers. If `default_map_role` is set, you can permit a map for `public` by creating an explicit `public` role permission on the map resource.
 
 Based on the user's identity (user name and/or group name), all corresponding roles and their permissions and restrictions are collected from the QWC configuration database by the [QWC Config Generator](https://github.com/qwc-services/qwc-config-generator), which then generates a `permissions.json` file.
 
