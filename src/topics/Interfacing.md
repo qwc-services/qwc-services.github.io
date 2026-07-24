@@ -51,6 +51,7 @@ The `urlPositionCrs` parameter in `config.json` determines the projection to use
 If a search text passed via `st` results in a unique result, the viewer automatically zooms to this result on startup. If the search result does not provide a bounding box, the `minScale` defined in the `searchOptions` of the `TopBar` configuration in `config.json` is used.
 
 When using the `qwc-fulltext-search-service`, you can hightlight a feature on startup as follows:
+
 - Either specify `hp=<facet_name>&hf=<filter_expr>`
 - Or specify `st=<filter_expr>&hp=<facet_name>`
 
