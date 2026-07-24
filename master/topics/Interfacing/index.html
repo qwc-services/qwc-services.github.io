@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Interfacing with applications - QWC - 2026.07.09</title>
+    <title>Interfacing with applications - QWC - 2026.07.18</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.07.09
+          <a href="../.." class="icon icon-home"> QWC - 2026.07.18
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -136,7 +136,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.07.09</a>
+          <a href="../..">QWC - 2026.07.18</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -199,9 +199,11 @@
 <p>The <code>urlPositionCrs</code> parameter in <code>config.json</code> determines the projection to use for the extent resp. center coordinates in the URL. By default the map projection of the current theme is used. If <code>urlPositionCrs</code> is equal to the map projection, the <code>crs</code> parameter is omitted in the URL.</p>
 <h3 id="highlight-feature-on-startup">Highlight feature on startup<a class="headerlink" href="#highlight-feature-on-startup" title="Permanent link">&para;</a></h3>
 <p>If a search text passed via <code>st</code> results in a unique result, the viewer automatically zooms to this result on startup. If the search result does not provide a bounding box, the <code>minScale</code> defined in the <code>searchOptions</code> of the <code>TopBar</code> configuration in <code>config.json</code> is used.</p>
-<p>When using the <code>qwc-fulltext-search-service</code>, you can hightlight a feature on startup as follows:
-- Either specify <code>hp=&lt;facet_name&gt;&amp;hf=&lt;filter_expr&gt;</code>
-- Or specify <code>st=&lt;filter_expr&gt;&amp;hp=&lt;facet_name&gt;</code></p>
+<p>When using the <code>qwc-fulltext-search-service</code>, you can hightlight a feature on startup as follows:</p>
+<ul>
+<li>Either specify <code>hp=&lt;facet_name&gt;&amp;hf=&lt;filter_expr&gt;</code></li>
+<li>Or specify <code>st=&lt;filter_expr&gt;&amp;hp=&lt;facet_name&gt;</code></li>
+</ul>
 <p>See <a href="../Search/#fulltext-search">Fulltext search</a> for more details.</p>
 <h2 id="launching-external-websites">Launching external websites<a class="headerlink" href="#launching-external-websites" title="Permanent link">&para;</a></h2>
 <p>QWC menu entries can be configured to launch external websites as described in <a href="../../configuration/ViewerConfiguration/#opening-external-websites">opening external websites</a>.</p>

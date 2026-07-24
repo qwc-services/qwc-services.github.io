@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.07.09</title>
+    <title>Qwc2 plugins - QWC - 2026.07.18</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.07.09
+          <a href="../.." class="icon icon-home"> QWC - 2026.07.18
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.07.09</a>
+          <a href="../..">QWC - 2026.07.18</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -182,6 +182,7 @@
 <li><a href="#routing">Routing</a></li>
 <li><a href="#scratchdrawing">ScratchDrawing</a></li>
 <li><a href="#sensorthingstool">SensorThingsTool</a></li>
+<li><a href="#serviceinfo">ServiceInfo</a></li>
 <li><a href="#settings">Settings</a></li>
 <li><a href="#share">Share</a></li>
 <li><a href="#startupmarker">StartupMarker</a></li>
@@ -2689,6 +2690,32 @@ an aggregated report for all selected features.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="serviceinfo">ServiceInfo<a name="serviceinfo"></a><a class="headerlink" href="#serviceinfo" title="Permanent link">&para;</a></h2>
+<p>Displays Service info window with theme informations.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. A locked window is not closeable and not resizeable. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).<br />- <code>initialWidth</code>: undefined<br />- <code>initialHeight</code>: undefined<br />- <code>initialX</code>: undefined<br />- <code>initialY</code>: undefined<br />- <code>initiallyDocked</code>: undefined<br />- <code>side</code>: undefined</td>
+<td><code>{</code><br /><code>initialWidth: 480,</code><br /><code>initialHeight: 480,</code><br /><code>initialX: null,</code><br /><code>initialY: null,</code><br /><code>initiallyDocked: false</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>showLayerTree</td>
+<td><code>bool</code></td>
+<td>Whether to show LayerTree alongside the plugin. Default: false.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="settings">Settings<a name="settings"></a><a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
 <p>Settings panel.</p>
 <p>Allows configuring language and color scheme.</p>
@@ -3295,10 +3322,10 @@ queried via GetFeatureInfo.</p>
 </table>
 <h2 id="visibilitypreset">VisibilityPreset<a name="visibilitypreset"></a><a class="headerlink" href="#visibilitypreset" title="Permanent link">&para;</a></h2>
 <p>Allows managing custom user visibility presets, which are storing the currently selected layers without location or
- zoom level.</p>
+zoom level.</p>
 <p>Visibility presets are only allowed for authenticated users.</p>
 <p>Requires <code>permalinkServiceUrl</code> to point to a <code>qwc-permalink-service</code> with tables setup for visibility presets
- (see <code>qwc-permalink-service</code> documentation for details).</p>
+(see <code>qwc-permalink-service</code> documentation for details).</p>
 <table>
 <thead>
 <tr>
