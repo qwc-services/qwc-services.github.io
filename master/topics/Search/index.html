@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Search - QWC - 2026.07.18</title>
+    <title>Search - QWC - 2026.08.02</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.07.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.08.02
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -84,7 +84,7 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#configuring-the-fulltext-search-service">Configuring the fulltext search service </a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-trigram-backend">Fulltext search with Trigram backend</a>
+    <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-postrgres-backend">Fulltext search with Postrgres backend</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#fulltext-search-with-solr-backend">Fulltext search with Solr backend</a>
     </li>
@@ -156,7 +156,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.07.18</a>
+          <a href="../..">QWC - 2026.08.02</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -633,16 +633,16 @@
 <pre><code class="language-json">{
     &quot;name&quot;: &quot;search&quot;,
     &quot;config&quot;: {
-        &quot;search_backend&quot;: &quot;&lt;solr|trgm&gt;&quot;,
+        &quot;search_backend&quot;: &quot;&lt;solr|pg&gt;&quot;,
         &quot;word_split_re&quot;: &quot;[\\s,.:;\&quot;]+&quot;,
         &quot;search_result_limit&quot;: 50,
         &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
-        // trgm specific configuration, see below
-        &quot;trgm_feature_query&quot;: &quot;&lt;see below&gt;&quot;,
-        &quot;trgm_feature_query_template&quot;: &quot;&lt;see below&gt;&quot;,
-        &quot;trgm_layer_query&quot;: &quot;&lt;see below&gt;&quot;,
-        &quot;trgm_layer_query_template&quot;: &quot;&lt;see below&gt;&quot;,
-        &quot;trgm_similarity_threshold&quot;: &quot;0.3&quot;
+        // pg specific configuration, see below
+        &quot;pg_feature_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;pg_feature_query_template&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;pg_layer_query&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;pg_layer_query_template&quot;: &quot;&lt;see below&gt;&quot;,
+        &quot;pg_similarity_threshold&quot;: &quot;0.3&quot;
         // solr specific configuration, see below
         &quot;solr_service_url&quot;: &quot;http://localhost:8983/solr/gdi/select&quot;,
         &quot;search_result_sort&quot;: &quot;score desc, sort asc&quot;,
@@ -663,8 +663,8 @@
 }
 </code></pre>
 <ul>
-<li>The <code>search_backend</code> specifies the search backend to use, either <code>solr</code> or <code>trgm</code>. Default: <code>solr</code>.</li>
-<li>The <code>db_url</code> specifies the DB which contains the search index (searched either by <code>solr</code> or by the specified <code>trgm</code> queries).</li>
+<li>The <code>search_backend</code> specifies the search backend to use, either <code>solr</code> or <code>pg</code>. Default: <code>solr</code>.</li>
+<li>The <code>db_url</code> specifies the DB which contains the search index (searched either by <code>solr</code> or by the specified <code>pg</code> queries).</li>
 <li>The <code>word_split_re</code> specifies the regular expression which is used to split the search string into single words. Default: <code>[\\s,.:;\"]+</code>.</li>
 <li><code>search_result_limit</code> specifies the maximum number of feature results returned by a search. Default: <code>50</code>.</li>
 </ul>
@@ -677,15 +677,17 @@
 <li><code>geometry_column</code> specifies the name of the geometry column in this table.</li>
 <li><code>search_id_col</code> specifies the name of the id column in this table. If unset, field from search filter expression is used.</li>
 </ul>
-<h3 id="fulltext-search-with-trigram-backend">Fulltext search with Trigram backend<a class="headerlink" href="#fulltext-search-with-trigram-backend" title="Permanent link">&para;</a></h3>
-<p>To configure a fulltext search with the trigram backend, set <code>search_backend</code> to <code>trgm</code> and specify a <code>trgm_feature_query</code> and optionally a <code>trgm_layer_query</code>. The feature and layer query SQL can contain following placeholders:</p>
+<h3 id="fulltext-search-with-postrgres-backend">Fulltext search with Postrgres backend<a class="headerlink" href="#fulltext-search-with-postrgres-backend" title="Permanent link">&para;</a></h3>
+<p>To configure a fulltext search with the postgres backend, set <code>search_backend</code> to <code>pg</code> and specify a <code>pg_feature_query</code> and optionally a <code>pg_layer_query</code>. </p>
+<p><em>Note</em>: Previously the Postgres backend was referred to as Trigram backend, and was activated by setting <code>search_backend</code> to <code>trgm</code>.</p>
+<p>The feature and layer query SQL can contain following placeholders:</p>
 <ul>
 <li><code>:term</code>: The full search text</li>
 <li><code>:terms</code>: A list of search text words (i.e. the full search text split by whitespace).</li>
 <li><code>:thres</code>: The trigram similarity treshold value (note that the service will also separately execute <code>SET pg_trgm.similarity_threshold = &lt;value&gt;</code>).</li>
 <li><code>:facets</code>: The permitted search facets, as a list.</li>
 </ul>
-<p>The <code>trgm_feature_query</code> must return the following fields:</p>
+<p>The <code>pg_feature_query</code> must return the following fields:</p>
 <ul>
 <li><code>display</code>: The label to display in the search results.</li>
 <li><code>facet_id</code>: The facet name (as configured in <code>resources</code> =&gt; <code>facets</code>).</li>
@@ -695,11 +697,15 @@
 <li><code>srid</code>: The SRID of the bbox coordinates (i.e. <code>3857</code>).</li>
 <li><code>id_in_quotes</code>: Whether the id field value should be quoted.</li>
 </ul>
+<p>And optionally:</p>
+<ul>
+<li><code>center</code>: The feature center, as a <code>[x, y]</code> string.</li>
+</ul>
 <p>Example:</p>
-<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
+<pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(searchterms, :term) sml
 FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :term || '%' ORDER BY sml DESC;",
 </code></pre>
-<p>The <code>trgm_layer_query</code> must return the following fields:</p>
+<p>The <code>pg_layer_query</code> must return the following fields:</p>
 <ul>
 <li><code>display</code>: The label to display in the search results.</li>
 <li><code>dataproduct_id</code>: The id of the dataproduct.</li>
@@ -708,13 +714,13 @@ FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :
 <li><code>stacktype</code>: The layer stacktype, <code>foreground</code> or <code>background</code>.</li>
 </ul>
 <p><em>Note</em>: The layer query relies on an additional service, configured as <code>dataproductServiceUrl</code> in the viewer <code>config.json</code>, which resolves the <code>dataproduct_id</code> to a QWC theme sublayer object, like the <a href="https://github.com/qwc-services/sogis-dataproduct-service"><code>sogis-dataproduct-service</code></a>.</p>
-<p>In alternative to specifying <code>trgm_feature_query</code> and/or <code>trgm_layer_query</code>, you can set <code>trgm_feature_query_template</code> and/or <code>trgm_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
+<p>In alternative to specifying <code>pg_feature_query</code> and/or <code>pg_layer_query</code>, you can set <code>pg_feature_query_template</code> and/or <code>pg_layer_query_template</code> to a <a href="https://jinja.palletsprojects.com/en/stable/templates/">Jinja template string</a> which generates the final SQL query. The following variables are available in the template string:</p>
 <ul>
 <li><code>searchtext</code>: the full search text, as a string</li>
 <li><code>words</code>: the single words of the search text, as an array</li>
 <li><code>facets</code>: the permitted search facets, as an array.</li>
 </ul>
-<p>Example for <code>trgm_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
+<p>Example for <code>pg_feature_query_template</code> to generate an "unrolled" query for each word in the searchtext:</p>
 <pre><code>SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
 WHERE {% for word in words %} searchterms ILIKE '%' || '{{ word }}' || '%' {% if not loop.last %} AND {% endif %} {% endfor %}
 ORDER BY {% for word in words %} similarity(searchterms, '{{ word }}') {% if not loop.last %} + {% endif %} {% endfor %} DESC
