@@ -311,16 +311,16 @@ A facet references a searchable dataset. The configuration of the fulltext searc
 {
     "name": "search",
     "config": {
-        "search_backend": "<solr|trgm>",
+        "search_backend": "<solr|pg>",
         "word_split_re": "[\\s,.:;\"]+",
         "search_result_limit": 50,
         "db_url": "postgresql:///?service=qwc_geodb",
-        // trgm specific configuration, see below
-        "trgm_feature_query": "<see below>",
-        "trgm_feature_query_template": "<see below>",
-        "trgm_layer_query": "<see below>",
-        "trgm_layer_query_template": "<see below>",
-        "trgm_similarity_threshold": "0.3"
+        // pg specific configuration, see below
+        "pg_feature_query": "<see below>",
+        "pg_feature_query_template": "<see below>",
+        "pg_layer_query": "<see below>",
+        "pg_layer_query_template": "<see below>",
+        "pg_similarity_threshold": "0.3"
         // solr specific configuration, see below
         "solr_service_url": "http://localhost:8983/solr/gdi/select",
         "search_result_sort": "score desc, sort asc",
@@ -341,8 +341,8 @@ A facet references a searchable dataset. The configuration of the fulltext searc
 }
 ```
 
-- The `search_backend` specifies the search backend to use, either `solr` or `trgm`. Default: `solr`.
-- The `db_url` specifies the DB which contains the search index (searched either by `solr` or by the specified `trgm` queries).
+- The `search_backend` specifies the search backend to use, either `solr` or `pg`. Default: `solr`.
+- The `db_url` specifies the DB which contains the search index (searched either by `solr` or by the specified `pg` queries).
 - The `word_split_re` specifies the regular expression which is used to split the search string into single words. Default: `[\\s,.:;\"]+`.
 - `search_result_limit` specifies the maximum number of feature results returned by a search. Default: `50`.
 
@@ -356,16 +356,20 @@ The facets describe a searchable dataset and are referenced by the search index:
 - `search_id_col` specifies the name of the id column in this table. If unset, field from search filter expression is used.
 
 
-### Fulltext search with Trigram backend
+### Fulltext search with Postrgres backend
 
-To configure a fulltext search with the trigram backend, set `search_backend` to `trgm` and specify a `trgm_feature_query` and optionally a `trgm_layer_query`. The feature and layer query SQL can contain following placeholders:
+To configure a fulltext search with the postgres backend, set `search_backend` to `pg` and specify a `pg_feature_query` and optionally a `pg_layer_query`. 
+
+*Note*: Previously the Postgres backend was referred to as Trigram backend, and was activated by setting `search_backend` to `trgm`.
+
+The feature and layer query SQL can contain following placeholders:
 
 - `:term`: The full search text
 - `:terms`: A list of search text words (i.e. the full search text split by whitespace).
 - `:thres`: The trigram similarity treshold value (note that the service will also separately execute `SET pg_trgm.similarity_threshold = <value>`).
 - `:facets`: The permitted search facets, as a list.
 
-The `trgm_feature_query` must return the following fields:
+The `pg_feature_query` must return the following fields:
 
 * `display`: The label to display in the search results.
 * `facet_id`: The facet name (as configured in `resources` => `facets`).
@@ -375,12 +379,16 @@ The `trgm_feature_query` must return the following fields:
 * `srid`: The SRID of the bbox coordinates (i.e. `3857`).
 * `id_in_quotes`: Whether the id field value should be quoted.
 
+And optionally:
+
+* `center`: The feature center, as a `[x, y]` string.
+
 Example:
 
-    SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(suchbegriffe, :term) sml
+    SELECT display, facet_id, id_field_name, feature_id, bbox, srid, similarity(searchterms, :term) sml
     FROM public.search_index WHERE searchterms % :term OR searchterms ILIKE '%' || :term || '%' ORDER BY sml DESC;",
 
-The `trgm_layer_query` must return the following fields:
+The `pg_layer_query` must return the following fields:
 
 * `display`: The label to display in the search results.
 * `dataproduct_id`: The id of the dataproduct.
@@ -390,13 +398,13 @@ The `trgm_layer_query` must return the following fields:
 
 *Note*: The layer query relies on an additional service, configured as `dataproductServiceUrl` in the viewer `config.json`, which resolves the `dataproduct_id` to a QWC theme sublayer object, like the [`sogis-dataproduct-service`](https://github.com/qwc-services/sogis-dataproduct-service).
 
-In alternative to specifying `trgm_feature_query` and/or `trgm_layer_query`, you can set `trgm_feature_query_template` and/or `trgm_layer_query_template` to a [Jinja template string](https://jinja.palletsprojects.com/en/stable/templates/) which generates the final SQL query. The following variables are available in the template string:
+In alternative to specifying `pg_feature_query` and/or `pg_layer_query`, you can set `pg_feature_query_template` and/or `pg_layer_query_template` to a [Jinja template string](https://jinja.palletsprojects.com/en/stable/templates/) which generates the final SQL query. The following variables are available in the template string:
 
 * `searchtext`: the full search text, as a string
 * `words`: the single words of the search text, as an array
 * `facets`: the permitted search facets, as an array.
 
-Example for `trgm_feature_query_template` to generate an "unrolled" query for each word in the searchtext:
+Example for `pg_feature_query_template` to generate an "unrolled" query for each word in the searchtext:
 
     SELECT display, facet_id, id_field_name, feature_id, bbox, srid FROM public.search_index
     WHERE {% for word in words %} searchterms ILIKE '%' || '{{ word }}' || '%' {% if not loop.last %} AND {% endif %} {% endfor %}
