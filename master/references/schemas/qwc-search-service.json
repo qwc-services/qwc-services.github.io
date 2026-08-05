@@ -63,7 +63,7 @@
           "type": "string"
         },
         "pg_facet_search_limit": {
-          "description": "Postgres search result limit per facet. Controls the `facetlimit` parameter passed to the `trgm_feature_query`. Note: `trgm_facet_search_limit + 1` will be passed to the query, and the results will be limited to `trgm_facet_search_limit` in the backed, in order to discover where more than `trgm_facet_search_limit` results exist, in which case the backend will return `count: -1` in the facet result counts. ",
+          "description": "Postgres search result limit per facet. Controls the `facetlimit` parameter passed to the `pg_feature_query`. Note: `pg_facet_search_limit + 1` will be passed to the query, and the results will be limited to `pg_facet_search_limit` in the backed, in order to discover where more than `pg_facet_search_limit` results exist, in which case the backend will return `count: -1` in the facet result counts. ",
           "type": "number",
           "default": 50
         },
