@@ -183,6 +183,7 @@
 <li>Configure the QGIS PostgreSQL connection using a service name, add the corresponding service definition to your host <code>pg_service.conf</code> and to <code>qwc-docker/pg_service-write.conf</code>. Make sure your database host is reachable within the docker containers!</li>
 <li>Especially when your primary key field type is <code>serial</code>, you'll want to mark the corresponding field widget type as <code>Hidden</code> in the QGIS Attributes Form settings.</li>
 <li>Create a <code>Data</code> resource as child of the corresponding <code>Map</code> resource in the administration backend, and create a new permission for the <code>Map</code> and <code>Data</code> resources for the roles which should be allowed to edit the layer.</li>
+<li>When using joins, any data source filter SQL set on the QGIS layer must use fully qualified table names, i.e. <code>&lt;schema&gt;.&lt;table&gt;</code>. </li>
 <li><em>Note:</em> if you leave the "Write" checkbox in the <code>Data</code> resource permission unchecked, the dataset will be available as read-only, which can be useful if you want to use the <code>AttributeTable</code> and/or <code>FeatureForm</code> to just display the dataset without allowing any edits.</li>
 <li>Run the config generator from the administration backend to update service configuration.</li>
 </ul>
