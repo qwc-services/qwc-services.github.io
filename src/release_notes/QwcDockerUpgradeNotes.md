@@ -1,3 +1,9 @@
+QWC Base DB 17 and 18 postgres version mismatch before 07.08.2026
+-----------------------------------------------------------------
+
+The `qwc-base-db:17` and `qwc-base-db:18` images built before `07.08.2026` were incorrectly built from a Postgres 16 base image. If one of these images was used, please change to `qwc-base-db:16` and then, if desired, dump and restore the DB to upgrade to `qwc-base-db:17` or `qwc-base-db:18`.
+
+
 Updating to qwc-map-viewer:v2026.06.09
 ------------------------
 
