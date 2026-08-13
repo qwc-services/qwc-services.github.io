@@ -1,3 +1,8 @@
+Updating to qwc-map-viewer:v2026.08.13
+------------------------
+
+In `qwc-map-viewer:v2026.08.13`, bookmarks were improved to support public bookmarks (i.e. bookmarks which will be visible for all users). To allow a user to publish a public bookmark, permit a `capability` Resource with name `public_bookmarks` in the QWC Admin Gui. This functionality will require also updating to `qwc-config-db-migrate:v2026.08.13`, `qwc-admin-gui:v2026.08.13` and `qwc-permalink-service:v2026.08.13`.
+
 QWC Base DB 17 and 18 postgres version mismatch before 07.08.2026
 -----------------------------------------------------------------
 
