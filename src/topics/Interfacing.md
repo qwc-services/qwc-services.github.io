@@ -67,3 +67,6 @@ The `API` plugin exposes many application actions via the `window.qwc2` object a
 
 See [api_examples.js](https://github.com/qgis/qwc2-demo-app/blob/master/static/api_examples.js) for some concrete examples.
 
+## `postMessage API`
+
+The `API` plugin also exposes the JS API via `postMessage` for cross-origin calls between a parent window and a child QWC iframe. See [API plugin reference](../references/qwc2_plugins.md#api) for more details.
