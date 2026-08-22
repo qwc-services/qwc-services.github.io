@@ -1,3 +1,8 @@
+v2026.08.21 mass image update
+------------------------
+
+`qwc-services-core` has been updated to `1.7.0` in all QWC service images, which will now internally use a distinct `JWT_SECRET_KEY` for each JWT `access_token_cookie` cookie path on multi-tenant setups. Consequently, users with multi-tenant setups will need to update all QWC services to `v2026.08.21` to ensure that the JWT tokens can be correctly decoded across services.
+
 Updating to qwc-map-viewer:v2026.08.13
 ------------------------
 
