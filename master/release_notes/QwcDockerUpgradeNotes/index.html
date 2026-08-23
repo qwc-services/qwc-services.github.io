@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>qwc-docker upgrade notes - QWC - 2026.08.21</title>
+    <title>qwc-docker upgrade notes - QWC - 2026.08.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.08.21
+          <a href="../.." class="icon icon-home"> QWC - 2026.08.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -126,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.08.21</a>
+          <a href="../..">QWC - 2026.08.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -144,8 +144,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="v20260821-mass-image-update">v2026.08.21 mass image update<a class="headerlink" href="#v20260821-mass-image-update" title="Permanent link">&para;</a></h2>
-<p><code>qwc-services-core</code> has been updated to <code>1.7.0</code> in all QWC service images, which will now internally use a distinct <code>JWT_SECRET_KEY</code> for each JWT <code>access_token_cookie</code> cookie path on multi-tenant setups. Consequently, users with multi-tenant setups will need to update all QWC services to <code>v2026.08.21</code> to ensure that the JWT tokens can be correctly decoded across services.</p>
+                <h2 id="v20260822-mass-image-update">v2026.08.22 mass image update<a class="headerlink" href="#v20260822-mass-image-update" title="Permanent link">&para;</a></h2>
+<p><code>qwc-services-core</code> has been updated to <code>1.7.0</code> in all QWC service images, which will now internally use a distinct <code>JWT_SECRET_KEY</code> for each JWT <code>access_token_cookie</code> cookie path on multi-tenant setups. Consequently, users with multi-tenant setups will need to update all QWC services to <code>v2026.08.22</code> to ensure that the JWT tokens can be correctly decoded across services.</p>
 <h2 id="updating-to-qwc-map-viewerv20260813">Updating to qwc-map-viewer:v2026.08.13<a class="headerlink" href="#updating-to-qwc-map-viewerv20260813" title="Permanent link">&para;</a></h2>
 <p>In <code>qwc-map-viewer:v2026.08.13</code>, bookmarks were improved to support public bookmarks (i.e. bookmarks which will be visible for all users). To allow a user to publish a public bookmark, permit a <code>capability</code> Resource with name <code>public_bookmarks</code> in the QWC Admin Gui. This functionality will require also updating to <code>qwc-config-db-migrate:v2026.08.13</code>, <code>qwc-config-generator:v2026.08.13</code>, <code>qwc-admin-gui:v2026.08.13</code> and <code>qwc-permalink-service:v2026.08.13</code>.</p>
 <h2 id="qwc-base-db-17-and-18-postgres-version-mismatch-before-07082026">QWC Base DB 17 and 18 postgres version mismatch before 07.08.2026<a class="headerlink" href="#qwc-base-db-17-and-18-postgres-version-mismatch-before-07082026" title="Permanent link">&para;</a></h2>
