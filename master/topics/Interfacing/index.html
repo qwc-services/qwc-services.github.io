@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Interfacing with applications - QWC - 2026.08.22</title>
+    <title>Interfacing with applications - QWC - 2026.08.24</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.08.22
+          <a href="../.." class="icon icon-home"> QWC - 2026.08.24
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -138,7 +138,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.08.22</a>
+          <a href="../..">QWC - 2026.08.24</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -180,7 +180,7 @@
 <li><code>bl3d</code>: The visible background layer in the 3D view.</li>
 </ul>
 <p>The <code>l</code> parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form</p>
-<pre><code class="language-text">&lt;layername&gt;[&lt;transparency&gt;]{&lt;style&gt;}!
+<pre><code class="language-text">&lt;layername&gt;[&lt;transparency&gt;]{&lt;style&gt;}!-
 </code></pre>
 <p>where</p>
 <ul>
@@ -195,6 +195,7 @@
 </li>
 <li><code>&lt;style&gt;</code> denotes the layer style name. If the <code>{&lt;style&gt;}</code> portion is omitted, the style named <code>default</code> will be used, if one exists, or the first available style otherwise.</li>
 <li><code>!</code> denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.</li>
+<li><code>-</code> denotes that the layer is omitted from the querylayer (relevant in particular if <code>allowSelectIdentifyableLayers</code> is set in the <a href="../../references/qwc2_plugins/#layertree"><code>LayerTree</code> configuration</a>).</li>
 </ul>
 <p><em>Note</em>: If group name is specified instead of the layer name, QWC will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.</p>
 <p>The <code>urlPositionFormat</code> parameter in <code>config.json</code> determines whether the extent or the center and scale appears in the URL.</p>
