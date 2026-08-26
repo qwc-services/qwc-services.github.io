@@ -26,7 +26,7 @@ The following parameters can appear in the URL of the QWC application:
 
 The `l` parameter lists all layers in the map (redlining and background layers) as a comma separated list of entries of the form
 ```text
-<layername>[<transparency>]{<style>}!
+<layername>[<transparency>]{<style>}!-
 ```
 where
 
@@ -39,6 +39,7 @@ where
 - `<transparency>` denotes the layer transparency, betwen 0 and 100. If the `[<transparency>]` portion is omitted, the layer is fully opaque.
 - `<style>` denotes the layer style name. If the `{<style>}` portion is omitted, the style named `default` will be used, if one exists, or the first available style otherwise.
 - `!` denotes that the layer is invisible (i.e. unchecked in the layer tree). If omitted, the layer is visible.
+- `-` denotes that the layer is omitted from the querylayer (relevant in particular if `allowSelectIdentifyableLayers` is set in the [`LayerTree` configuration](../references/qwc2_plugins.md#layertree)).
 
 *Note*: If group name is specified instead of the layer name, QWC will automatically resolve this to all layer names contained in that group, and will apply transparency and visibility settings as specified for the group.
 
