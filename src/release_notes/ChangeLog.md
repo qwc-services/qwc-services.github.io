@@ -65,6 +65,7 @@ but has only been included in the 2026-lts release!
 * Allow setting line dash pattern
 * Allow setting and editing attributes of redlining features
 * Add specturm color picker to color buttons
+* Allow choosing a circle, square or star symbol when drawing points
 
 ### Reports
 * Allow specifying multiple report templates per layer, see [Reports](../../topics/Reports#configuring-the-web-client)

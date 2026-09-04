@@ -155,7 +155,7 @@ In *Redlining* tool, user can add some annotations to the map in different tempo
 ![qwc-app-menu-maptools-redlining](images/userguide/qwc-menu-maptools-redlining.png)
 
 Drawing options are :
-* point
+* point (circle, square or star symbol)
 * polyline
 * polygon
 * circle
