@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.08.24</title>
+    <title>Qwc2 plugins - QWC - 2026.09.17</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.08.24
+          <a href="../.." class="icon icon-home"> QWC - 2026.09.17
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.08.24</a>
+          <a href="../..">QWC - 2026.09.17</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -153,6 +153,7 @@
 <li><a href="#editing">Editing</a></li>
 <li><a href="#featureform">FeatureForm</a></li>
 <li><a href="#featuresearch">FeatureSearch</a></li>
+<li><a href="#featureselection">FeatureSelection</a></li>
 <li><a href="#geometrydigitizer">GeometryDigitizer</a></li>
 <li><a href="#heightprofile">HeightProfile</a></li>
 <li><a href="#help">Help</a></li>
@@ -486,6 +487,12 @@ if (window.qwc2) {
 <td><code>bool</code></td>
 <td>Whether to limit to the extent by default.</td>
 <td><code>false</code></td>
+</tr>
+<tr>
+<td>showColumnFilters</td>
+<td><code>bool</code></td>
+<td>Whether to show column filter fields.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>showEditFormButton</td>
@@ -839,8 +846,8 @@ if (window.qwc2) {
 </tr>
 <tr>
 <td>snappingActive</td>
-<td><code>{bool, string}</code></td>
-<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>{bool, string, array}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>edge</code>, <code>vertex</code>, <code>intersection</code>, <code>perpendicular</code>, a combination of these as an array, or <code>false</code> or <code>true</code> (i.e. all snapping modes disabled or enabled).</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -904,10 +911,171 @@ If the dataset it editable, the feature attributes can be edited directly in the
 <td><code>true</code></td>
 </tr>
 <tr>
+<td>showZoomToResults</td>
+<td><code>bool</code></td>
+<td>Show zoom to all results button.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>side</td>
 <td><code>string</code></td>
 <td>The side of the application on which to display the sidebar.</td>
 <td><code>'right'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="featureselection">FeatureSelection<a name="featureselection"></a><a class="headerlink" href="#featureselection" title="Permanent link">&para;</a></h2>
+<p>Displays queried feature attributes.</p>
+<p>This plugin offers basically the same functionality as the Identify plugin, but as dedicated tool.
+In particular with <code>clearResultsOnClose: false</code>, it allows managing a persistent list of selected features,
+while still allowing to transiently identify features with the Identify plugin.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appendResultsByDefault</td>
+<td><code>bool</code></td>
+<td>Whether to append results by default (without having to press <code>CTRL</code> when clicking).</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>availableRegionModes</td>
+<td><code>[string]</code></td>
+<td>Available region identify modes.</td>
+<td><code>['Region', 'Radius', 'Circle', 'Rectangle']</code></td>
+</tr>
+<tr>
+<td>clearResultsOnClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the identify results when exiting the identify tool.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableAggregatedReports</td>
+<td><code>bool</code></td>
+<td>Whether to enable the aggregated report download button.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableCompare</td>
+<td><code>bool</code></td>
+<td>Whether to enable the possibility select results for comparison.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>enableExport</td>
+<td><code>{bool, array}</code></td>
+<td>Whether to enable the export functionality. Either <code>true|false</code> or a list of single allowed formats (builtin formats: <code>json</code>, <code>geojson</code>, <code>csv</code>, <code>csvzip</code>, <code>shapefile</code>, <code>xlsx</code>). If a list is provided, the export formats will be sorted according to that list, and the default format will be the first format of the list.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>exitTaskOnResultsClose</td>
+<td><code>bool</code></td>
+<td>Whether to clear the task when the results window is closed.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>exportGeometry</td>
+<td><code>bool</code></td>
+<td>Whether to include the geometry in exported features. Default: <code>true</code>.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>geometry</td>
+<td><code>{</code><br /><code>initialWidth: number,</code><br /><code>initialHeight: number,</code><br /><code>initialX: number,</code><br /><code>initialY: number,</code><br /><code>initiallyDocked: bool,</code><br /><code>side: string,</code><br /><code>minimizeable: bool,</code><br /><code>}</code></td>
+<td>Default window geometry with size, position and docking status. Positive position values (including '0') are related to top (InitialY) and left (InitialX), negative values (including '-0') to bottom (InitialY) and right (InitialX).<br />- <code>initialWidth</code>: undefined<br />- <code>initialHeight</code>: undefined<br />- <code>initialX</code>: undefined<br />- <code>initialY</code>: undefined<br />- <code>initiallyDocked</code>: undefined<br />- <code>side</code>: undefined<br />- <code>minimizeable</code>: undefined</td>
+<td><code>{</code><br /><code>initialWidth: 240,</code><br /><code>initialHeight: 320,</code><br /><code>initialX: 0,</code><br /><code>initialY: 0,</code><br /><code>initiallyDocked: false,</code><br /><code>side: 'left',</code><br /><code>minimizeable: false</code><br /><code>}</code></td>
+</tr>
+<tr>
+<td>highlightAllResults</td>
+<td><code>bool</code></td>
+<td>Whether to highlight all results if no result is hovered.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>initialRadiusUnits</td>
+<td><code>string</code></td>
+<td>The initial radius units of the identify dialog in radius mode. One of 'm', 'ft', 'km', 'mi'.</td>
+<td><code>'m'</code></td>
+</tr>
+<tr>
+<td>longAttributesDisplay</td>
+<td><code>{"wrap", "ellipsis"}</code></td>
+<td>How to handle long attribute names / values.</td>
+<td><code>'wrap'</code></td>
+</tr>
+<tr>
+<td>onlyShowDialogWithResults</td>
+<td><code>bool</code></td>
+<td>Whether to only show the results dialog if there are results to display.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>params</td>
+<td><code>object</code></td>
+<td>Extra params to append to the GetFeatureInfo request (i.e. <code>FI_POINT_TOLERANCE</code>, <code>FI_LINE_TOLERANCE</code>, <code>feature_count</code>, ...). Additionally, <code>region_feature_count</code> is supported.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>persistResultsOnWindowClose</td>
+<td><code>bool</code></td>
+<td>Whether to persist the results when the window is closed. Only relevant if <code>clearResultsOnClose</code> is <code>false</code>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>replaceImageUrls</td>
+<td><code>bool</code></td>
+<td>Whether to replace an attribute value containing an URL to an image with an inline image.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>resultDisplayMode</td>
+<td><code>{"tree", "flat", "paginated", "table"}</code></td>
+<td>Result display mode.</td>
+<td><code>'flat'</code></td>
+</tr>
+<tr>
+<td>resultGridSize</td>
+<td><code>number</code></td>
+<td>Target cell size of the result grid in comparison mode.</td>
+<td><code>200</code></td>
+</tr>
+<tr>
+<td>resultMultiDisplay</td>
+<td><code>bool</code></td>
+<td>Whether multi-display mode should be enabled by default, only relevant if <code>resultDisplayMode</code> is <code>paginated</code>.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>showLayerSelector</td>
+<td><code>bool</code></td>
+<td>Whether to show a layer selector to filter the identify results by layer.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showLayerTitles</td>
+<td><code>bool</code></td>
+<td>Whether to prefix the identify result titles with the respecitve layer name.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>showZoomToResults</td>
+<td><code>bool</code></td>
+<td>Show zoom to all results button.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>skipEmptyFeatureAttributes</td>
+<td><code>bool</code></td>
+<td>Whether to skip empty feature attributes.</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody>
 </table>
@@ -1018,6 +1186,12 @@ with containing a container element with <code>id=heightprofilecontainer</code>.
 <h2 id="help">Help<a name="help"></a><a class="headerlink" href="#help" title="Permanent link">&para;</a></h2>
 <p>Displays a custom help dialog in a sidebar.</p>
 <p>Define the help contents by specifying the <code>bodyContentsFragmentUrl</code> prop.</p>
+<p>Further variants can be configured through the <code>modes</code> prop, selected by the <code>mode</code> of the
+app menu or toolbar entry which opens them, i.e. to display a privacy policy next to the
+regular help contents:</p>
+<pre><code>{"name": "Help", "cfg": {"bodyContentsFragmentUrl": "assets/help.html", "modes": {"Privacy": {"icon": "lock", "bodyContentsFragmentUrl": "assets/privacy.html"}}}}
+{"key": "Help", "mode": "Privacy", "icon": "lock"}
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -1033,6 +1207,12 @@ with containing a container element with <code>id=heightprofilecontainer</code>.
 <td><code>string</code></td>
 <td>URL to a document containing a HTML fragment to display in the Help sidebar.</td>
 <td><code>undefined</code></td>
+</tr>
+<tr>
+<td>modes</td>
+<td><code>&lt;key&gt;: {</code><br /><code>bodyContentsFragmentUrl: string,</code><br /><code>icon: string,</code><br /><code>title: string,</code><br /><code>}</code></td>
+<td>Alternative help contents, keyed by the <code>mode</code> of the app menu or toolbar entry which opens them.<br /> <code>icon</code> defaults to <code>info</code>, <code>title</code> to the <code>appmenu.items.Help&lt;mode&gt;</code> message.</td>
+<td><code>{}</code></td>
 </tr>
 <tr>
 <td>side</td>
@@ -1093,20 +1273,8 @@ for customized queries and templates for the result presentation.</p>
 <tbody>
 <tr>
 <td>appendResultsByDefault</td>
-<td><code>{false, true, "task"}</code></td>
-<td>Whether to append results by default (without having to press <code>CTRL</code> when clicking). To append results by default only when Identify is run as a task, set to <code>task</code>.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>attributeCalculator</td>
-<td><code>func</code></td>
-<td>Optional function for computing derived attributes. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
-<td><code>undefined</code></td>
-</tr>
-<tr>
-<td>attributeTransform</td>
-<td><code>func</code></td>
-<td>Optional function for transforming attribute values. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
+<td><code>bool</code></td>
+<td>Whether to append results by default (without having to press <code>CTRL</code> when clicking).</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -1120,12 +1288,6 @@ for customized queries and templates for the result presentation.</p>
 <td><code>bool</code></td>
 <td>Whether to clear the identify results when exiting the identify tool.</td>
 <td><code>true</code></td>
-</tr>
-<tr>
-<td>customExporters</td>
-<td><code>array</code></td>
-<td>Optional list of custom exporters to offer along with the built-in exporters. See js/IdentifyExtensions.js for details. This prop can be specified in the appConfig.js cfg section.</td>
-<td><code>[]</code></td>
 </tr>
 <tr>
 <td>enableAggregatedReports</td>
@@ -1196,7 +1358,7 @@ for customized queries and templates for the result presentation.</p>
 <tr>
 <td>params</td>
 <td><code>object</code></td>
-<td>Extra params to append to the GetFeatureInfo request (i.e. <code>FI_POINT_TOLERANCE</code>, <code>FI_LINE_TOLERANCE</code>, <code>feature_count</code>, ...). Additionally, <code>region_feature_count</code> and <code>radius_feature_count</code> are supported.</td>
+<td>Extra params to append to the GetFeatureInfo request (i.e. <code>FI_POINT_TOLERANCE</code>, <code>FI_LINE_TOLERANCE</code>, <code>feature_count</code>, ...). Additionally, <code>region_feature_count</code> is supported.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -1236,15 +1398,15 @@ for customized queries and templates for the result presentation.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
-<td>skipEmptyFeatureAttributes</td>
+<td>showZoomToResults</td>
 <td><code>bool</code></td>
-<td>Whether to skip empty feature attributes.</td>
+<td>Show zoom to all results button.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
-<td>taskResultDisplayMode</td>
-<td><code>{"tree", "flat", "paginated", "table"}</code></td>
-<td>Result display mode when Identify is run as a task. Defaults to <code>resultDisplayMode</code>.</td>
+<td>skipEmptyFeatureAttributes</td>
+<td><code>bool</code></td>
+<td>Whether to skip empty feature attributes.</td>
 <td><code>undefined</code></td>
 </tr>
 </tbody>
@@ -1656,10 +1818,14 @@ with containing a container element with id=legendcontainer.</p>
 </tbody>
 </table>
 <h2 id="mapdropimport">MapDropImport<a name="mapdropimport"></a><a class="headerlink" href="#mapdropimport" title="Permanent link">&para;</a></h2>
-<p>Adds layers by dropping supported files (KML, KMZ, GeoJSON, zipped Shapefile, GeoPDF) onto the map.</p>
+<p>Adds layers by dropping supported files (KML, KMZ, GeoJSON, zipped Shapefile, GeoPDF, DXF) onto the map.</p>
+<p>Dropped DXF files are interpreted in the map CRS, use the ImportLayer panel to pick a different one.</p>
 <p>Disabled if <code>disableImportingLocalLayers</code> is set in the theme or global config.</p>
 <h2 id="mapexport">MapExport<a name="mapexport"></a><a class="headerlink" href="#mapexport" title="Permanent link">&para;</a></h2>
 <p>Allows exporting a selected portion of the map to a variety of formats.</p>
+<p>Unless a fixed <code>pageSizes</code> entry is selected, the export extent is drawn freely on the map and
+the corner handles resize it in both directions independently. Hold <code>Shift</code> while dragging a
+corner to preserve the aspect ratio of the selection.</p>
 <table>
 <thead>
 <tr>
@@ -2042,8 +2208,8 @@ custom information according to the <code>qwc-mapinfo-service</code> configurati
 </tr>
 <tr>
 <td>snappingActive</td>
-<td><code>{bool, string}</code></td>
-<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>{bool, string, array}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>edge</code>, <code>vertex</code>, <code>intersection</code>, <code>perpendicular</code>, a combination of these as an array, or <code>false</code> or <code>true</code> (i.e. all snapping modes disabled or enabled).</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
@@ -2370,8 +2536,8 @@ revision is published (specified via newsRev prop).</p>
 </tr>
 <tr>
 <td>layoutHidePrefix</td>
-<td><code>string</code></td>
-<td>Hide layouts which begin with this prefix.</td>
+<td><code>{string, [string]}</code></td>
+<td>Hide layouts which begin with this prefix, or with any of the prefixes in the specified list.</td>
 <td><code>undefined</code></td>
 </tr>
 <tr>
@@ -2481,7 +2647,7 @@ revision is published (specified via newsRev prop).</p>
 <tr>
 <td>hiddenTools</td>
 <td><code>array</code></td>
-<td>Tools to hide. Available tools: <code>Circle</code>, <code>Ellipse</code>, <code>Square</code>, <code>Box</code>, <code>HandDrawing</code>, <code>Transform</code>, <code>NumericInput</code>, <code>Buffer</code>, <code>FeatureLabel</code>, <code>Export</code>.</td>
+<td>Tools to hide. Available tools: <code>PointSquare</code>, <code>PointStar</code>, <code>PointTriangle</code>, <code>Circle</code>, <code>Ellipse</code>, <code>Square</code>, <code>Box</code>, <code>HandDrawing</code>, <code>Transform</code>, <code>NumericInput</code>, <code>Buffer</code>, <code>FeatureLabel</code>, <code>Export</code>.</td>
 <td><code>[]</code></td>
 </tr>
 <tr>
@@ -2510,8 +2676,8 @@ revision is published (specified via newsRev prop).</p>
 </tr>
 <tr>
 <td>snappingActive</td>
-<td><code>{bool, string}</code></td>
-<td>Whether snapping is enabled by default when editing.<br /> Either <code>false</code>, <code>edge</code>, <code>vertex</code> or <code>true</code> (i.e. both vertex and edge).</td>
+<td><code>{bool, string, array}</code></td>
+<td>Whether snapping is enabled by default when editing.<br /> Either <code>edge</code>, <code>vertex</code>, <code>intersection</code>, <code>perpendicular</code>, a combination of these as an array, or <code>false</code> or <code>true</code> (i.e. all snapping modes disabled or enabled).</td>
 <td><code>true</code></td>
 </tr>
 </tbody>
