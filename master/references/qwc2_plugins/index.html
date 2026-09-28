@@ -1054,6 +1054,12 @@ while still allowing to transiently identify features with the Identify plugin.<
 <td><code>false</code></td>
 </tr>
 <tr>
+<td>selectionSerializeKeys</td>
+<td><code>object</code></td>
+<td>Lookup of <code>{"&lt;layerUrl#layerName&gt;": "&lt;key&gt;"}</code> of keys (i.e. the feature attribute name) used when serializing selections. If <code>selectionSerializeKeys</code> is set, only the layers listed will be exported.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>showLayerSelector</td>
 <td><code>bool</code></td>
 <td>Whether to show a layer selector to filter the identify results by layer.</td>
@@ -1384,6 +1390,12 @@ for customized queries and templates for the result presentation.</p>
 <td><code>bool</code></td>
 <td>Whether multi-display mode should be enabled by default, only relevant if <code>resultDisplayMode</code> is <code>paginated</code>.</td>
 <td><code>false</code></td>
+</tr>
+<tr>
+<td>selectionSerializeKeys</td>
+<td><code>object</code></td>
+<td>Lookup of <code>{"&lt;layerUrl#layerName&gt;": "&lt;key&gt;"}</code> of keys (i.e. the feature attribute name) used when serializing selections. If <code>selectionSerializeKeys</code> is set, only the layers listed will be exported.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>showLayerSelector</td>
