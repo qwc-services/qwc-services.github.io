@@ -52,7 +52,7 @@ All settings are optional, with fallback to the default values as documented.
 |`trustWmsCapabilityURLs`             | Whether to trust the GetMap etc. URLs reported in WMS service capabilities. If not `true`, the protocol, host and pathname portion of the URLs are inherited from the called capabilities URL. Default: `false`. |
 |`urlPositionCrs`                     | The CRS used to encode the current map extent coordinates in the URL. Default: the current map projection. |
 |`urlPositionFormat`                  | How to encode the current map extent in the URL, either `"centerAndZoom"` or `"extent"`. See [URL parameters](../topics/Interfacing.md#url-parameters) for details. Default: `"extent"`. |
-|`urlRegEx`                           | A [JSON-escaped](https://www.freeformatter.com/json-escape.html) regular expression used to match URLs in feature attribute values. Default: see [`qwc2/utils/MiscUtils.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/MiscUtils.js). |
+|`urlRegEx`                           | A [JSON-escaped](https://jsonviewertool.com/json-escape) regular expression used to match URLs in feature attribute values. The linked tool returns the escaped content without surrounding quotes. Default: see [`qwc2/utils/MiscUtils.js`](https://raw.githubusercontent.com/qgis/qwc2/refs/heads/master/utils/MiscUtils.js). |
 |`wmsHidpi`                           | Whether to honour the device pixel ratio for WMS GetMap requests. Default: `true`. |
 |`wmsMaxGetUrlLength`                 | URL length limit before switching to a POST request for GetMap and GetFeatureInfo. Default: `2048`. |
 |`wmsWktPrecision`                    | Precision (as number of decimals) of WKT geometries passed in WMS requests. Default: `4`. |
