@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.09.27</title>
+    <title>Qwc2 plugins - QWC - 2026.09.30</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.09.27
+          <a href="../.." class="icon icon-home"> QWC - 2026.09.30
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.09.27</a>
+          <a href="../..">QWC - 2026.09.30</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -340,7 +340,7 @@ if (window.qwc2) {
 <p>I.e. <code>setCurrentTask</code> is available via <code>window.qwc2.setCurrentTask</code>.</p>
 <p>The following core libraries are accessible via <code>window.qwc2.libs</code>:</p>
 <ul>
-<li><code>axios</code></li>
+<li><code>axios</code> (the viewer's own client instance, see <code>utils/Request.js</code>)</li>
 <li><code>React</code></li>
 <li><code>ReactDOM</code></li>
 <li><code>PropTypes</code></li>
@@ -3497,6 +3497,12 @@ queried via GetFeatureInfo.</p>
 <td><code>number</code></td>
 <td>The default scene quality factor (<code>20</code>: min, <code>100</code>: max).</td>
 <td><code>100</code></td>
+</tr>
+<tr>
+<td>defaultSync2dLayers</td>
+<td><code>bool</code></td>
+<td>Whether to enable synchronization of 2D layer states (visibility, opacity) to the 3D view by default.</td>
+<td><code>undefined</code></td>
 </tr>
 <tr>
 <td>forceAllowInspector</td>
