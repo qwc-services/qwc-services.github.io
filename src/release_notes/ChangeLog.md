@@ -37,6 +37,7 @@ but has only been included in the 2026-lts release!
 * Allow comparing selected identify results side-by-side
 * Add shapefile and XLSX exporters
 * The GeoJSON exporter now exports in `EPSG:4326`
+* Allow identifying features by attribute on startup via the `if` URL parameter, see [Identify features on startup](../../topics/Interfacing#identify-features-on-startup)
 
 ### Layers and LayerTree
 * Expose layer visibility presets ("themes"), as configured in the QGIS project, in the LayerTree
