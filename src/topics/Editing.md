@@ -18,7 +18,9 @@ To make a layer editable, follow these steps:
 * Especially when your primary key field type is `serial`, you'll want to mark the corresponding field widget type as `Hidden` in the QGIS Attributes Form settings.
 * Create a `Data` resource as child of the corresponding `Map` resource in the administration backend, and create a new permission for the `Map` and `Data` resources for the roles which should be allowed to edit the layer.
 * When using joins, any data source filter SQL set on the QGIS layer must use fully qualified table names, i.e. `<schema>.<table>`. 
-* *Note:* if you leave the "Write" checkbox in the `Data` resource permission unchecked, the dataset will be available as read-only, which can be useful if you want to use the `AttributeTable` and/or `FeatureForm` to just display the dataset without allowing any edits.
+* *Note:*
+    - If you leave the "Write" checkbox in the `Data` resource permission unchecked, the dataset will be available as read-only, which can be useful if you want to use the `AttributeTable` and/or `FeatureForm` to just display the dataset without allowing any edits.
+    - To disallow editing the geometry while allowing editing the attributes, create a `geometry` Attribute resource as child of the respective `Data` resource and add a permission for the roles which should be allowed to edit it. Any other roles will then not be able to edit the geometry.
 * Run the config generator from the administration backend to update service configuration.
 
 ## Designing the edit forms<a name="edit-forms"></a>
