@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc2 plugins - QWC - 2026.09.30</title>
+    <title>Qwc2 plugins - QWC - 2026.10.15</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.09.30
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.15
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.09.30</a>
+          <a href="../..">QWC - 2026.10.15</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -363,12 +363,13 @@ if (window.qwc2) {
 <ul>
 <li><code>name</code>: The identifier</li>
 </ul>
-<p><strong>addIdentifyAttributeCalculator(name,calcFunc)</strong></p>
+<p><strong>addIdentifyAttributeCalculator(name,calcFunc,before)</strong></p>
 <p>Add custom attribute calculator
 (i.e. computed attributes which are added to GetFeatureInfo responses).</p>
 <ul>
 <li><code>name</code>: An identifier</li>
 <li><code>calcFunc</code>: The calculator function with signature <code>function(layer, feature)</code></li>
+<li><code>before</code>: Whether to add these computed attributes before the GetFeatureInfo response attributes.</li>
 </ul>
 <p>The <code>calcFunc</code> should return either a two-enty <code>[name, value]</code> pair or a one-value <code>[value]</code> array.</p>
 <p><strong>removeIdentifyAttributeCalculator(name)</strong></p>
@@ -659,6 +660,12 @@ if (window.qwc2) {
 <td>displayCoordinates</td>
 <td><code>bool</code></td>
 <td>Whether to display the coordinates in the bottom bar.</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>displayNavHistory</td>
+<td><code>bool</code></td>
+<td>Whether to display the map navigation history controls.</td>
 <td><code>true</code></td>
 </tr>
 <tr>
@@ -1537,6 +1544,12 @@ with containing a container element with id=legendcontainer.</p>
 </thead>
 <tbody>
 <tr>
+<td>addImportedLayersBehind</td>
+<td><code>func</code></td>
+<td>Whether to add imported layers behind the existing tree layers.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>allowCompare</td>
 <td><code>bool</code></td>
 <td>Whether to enable the compare function. Requires the <code>MapCompare</code> plugin.</td>
@@ -1577,6 +1590,12 @@ with containing a container element with id=legendcontainer.</p>
 <td><code>{bool, string}</code></td>
 <td>Whether to display a BBOX dependent legend. Can be <code>true|false|"theme"</code>, latter means only for theme layers.</td>
 <td><code>false</code></td>
+</tr>
+<tr>
+<td>dndDelay</td>
+<td><code>number</code></td>
+<td>The DnD delay when dragging a layer tree entry, in milliseconds.</td>
+<td><code>200</code></td>
 </tr>
 <tr>
 <td>enableLegendPrint</td>
@@ -2442,6 +2461,12 @@ revision is published (specified via newsRev prop).</p>
 <td><code>undefined</code></td>
 </tr>
 <tr>
+<td>keepMenuOpen</td>
+<td><code>bool</code></td>
+<td>Whether to keep menu open.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
 <td>logo</td>
 <td><code>string</code></td>
 <td>Name of a logo image below assets/img.</td>
@@ -2587,12 +2612,6 @@ revision is published (specified via newsRev prop).</p>
 <td><code>bool</code></td>
 <td>Restrict print scale to list of predefined print scales, if any.</td>
 <td><code>undefined</code></td>
-</tr>
-<tr>
-<td>scaleFactor</td>
-<td><code>number</code></td>
-<td>Scale factor to apply to line widths, font sizes, ... of redlining drawings passed to GetPrint.</td>
-<td><code>1.9</code></td>
 </tr>
 <tr>
 <td>side</td>
@@ -3028,10 +3047,6 @@ an aggregated report for all selected features.</p>
 <h2 id="taskbutton">TaskButton<a name="taskbutton"></a><a class="headerlink" href="#taskbutton" title="Permanent link">&para;</a></h2>
 <p>Generic map button to launch a task.</p>
 <p>The <code>task</code> generally corresponds to the <code>key</code> of a menuItem or toolbaritem.</p>
-<p>The following special values for <code>task</code> are suppported:</p>
-<ul>
-<li><code>ServiceInfo</code>: Open the service info of the current theme.</li>
-</ul>
 <table>
 <thead>
 <tr>
