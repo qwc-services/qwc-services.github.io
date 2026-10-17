@@ -51,6 +51,7 @@ update:
     echo "* QWC2 Client" >> src/references/index.md
     echo "" >> src/references/index.md
     echo "    - [Plugin reference](qwc2_plugins.md)" >> src/references/index.md
+    echo "    - [Themes configuration schema reference](qwc2_themesConfig.md)" >> src/references/index.md
     echo "" >> src/references/index.md
     echo "qwc-base-db_readme.md" >> src/references/.gitignore
     echo "* qwc-base-db" >> src/references/index.md
@@ -61,6 +62,15 @@ update:
     echo "* qwc-qgs-cache-preseed" >> src/references/index.md
     echo "" >> src/references/index.md
     echo "    - [README](qwc-qgs-cache-preseed_readme.md)" >> src/references/index.md
+
+    echo "* Generating themes configuration schema reference..."
+    mkdir -p src/references/schemas/qwc2
+    for schema in themesConfig theme themeBackgroundLayer searchProvider predefinedFilter map3d; do
+        wget -q -O src/references/schemas/qwc2/$schema.json https://raw.githubusercontent.com/qgis/qwc2/${branch}/schemas/$schema.json
+    done
+    .venv/bin/generate-schema-doc --config template_name=md src/references/schemas/qwc2/themesConfig.json src/references/qwc2_themesConfig.md
+    echo "qwc2_themesConfig.md" >> src/references/.gitignore
+
     mkdir -p tmp
     echo "* Downloading schema versions..."
     if [ "$branch" == *-lts ]; then
