@@ -61,6 +61,14 @@ User labels appear as free-text input fields in the QWC print dialog. To configu
 
 You can can customize the input field (max length, number of rows) by setting the `printLabelConfig` in the [theme configuration](../configuration/ThemesConfiguration.md#manual-theme-configuration).
 
+The `defaultValue` of a label can contain the placeholders `{username}` and `{user_infos.<field>}`, which are replaced with the values of the logged in user. Set `hidden` to `true` to not show the field in the print dialog and just submit the default value, i.e. for a "created by" label:
+
+```json
+"printLabelConfig": {
+    "author": {"defaultValue": "{user_infos.first_name} {user_infos.surname}", "hidden": true}
+}
+```
+
 Also, in the theme configuration, you can also set:
 
 * `printLabelForSearchResult`: The `id` of the label to which to write the current search result label, if any.
