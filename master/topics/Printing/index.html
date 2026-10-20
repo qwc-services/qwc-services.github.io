@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Printing - QWC - 2026.10.15</title>
+    <title>Printing - QWC - 2026.10.18</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.15
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -140,7 +140,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.15</a>
+          <a href="../..">QWC - 2026.10.18</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -199,6 +199,11 @@
 <p>User labels appear as free-text input fields in the QWC print dialog. To configure user labels, it is sufficient to add item <code>id</code>s to layout label items in the print layout. The specified <code>id</code> will appear as input field label in the QWC print dialog.</p>
 <p><em>Note</em>: Label <code>id</code>s beginning with <code>__</code> (two underscore characters) are ignored as user labels by QWC.</p>
 <p>You can can customize the input field (max length, number of rows) by setting the <code>printLabelConfig</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration</a>.</p>
+<p>The <code>defaultValue</code> of a label can contain the placeholders <code>{username}</code> and <code>{user_infos.&lt;field&gt;}</code>, which are replaced with the values of the logged in user. Set <code>hidden</code> to <code>true</code> to not show the field in the print dialog and just submit the default value, i.e. for a "created by" label:</p>
+<pre><code class="language-json">&quot;printLabelConfig&quot;: {
+    &quot;author&quot;: {&quot;defaultValue&quot;: &quot;{user_infos.first_name} {user_infos.surname}&quot;, &quot;hidden&quot;: true}
+}
+</code></pre>
 <p>Also, in the theme configuration, you can also set:</p>
 <ul>
 <li><code>printLabelForSearchResult</code>: The <code>id</code> of the label to which to write the current search result label, if any.</li>
