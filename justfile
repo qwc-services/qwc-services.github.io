@@ -62,6 +62,15 @@ update:
     echo "" >> src/references/index.md
     echo "    - [README](qwc-qgs-cache-preseed_readme.md)" >> src/references/index.md
     mkdir -p tmp
+
+    echo "* Generating theme definition reference..."
+    rm -rf generated
+    mkdir -p tmp/qwc2-schemas generated
+    for schema in theme themeBackgroundLayer searchProvider predefinedFilter map3d; do
+        wget -q -O tmp/qwc2-schemas/$schema.json https://raw.githubusercontent.com/qgis/qwc2/${branch}/schemas/$schema.json
+    done
+    .venv/bin/python3 scripts/schema_table.py tmp/qwc2-schemas/theme.json generated/qwc2_themeDefinition.md
+
     echo "* Downloading schema versions..."
     if [ "$branch" == *-lts ]; then
         wget -q -O tmp/schema-versions.json https://github.com/qwc-services/qwc-config-generator/raw/${branch}/schemas/schema-versions.json
