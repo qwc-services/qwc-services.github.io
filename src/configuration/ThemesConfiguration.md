@@ -207,7 +207,8 @@ The format of the theme definitions is as follows:
 | `"printLabelBlacklist": ["<LabelId>", ...]`          | Optional, list of composer label ids to not expose in the print dialog.                               |
 | `"printLabelConfig": {`                              | Optional, configuration of the text input fields for print layout labels.                             |
 | `⁣  "<LabelId>": {`                                   |                                                                                                       |
-| `⁣  ⁣  "defaultValue": "<value">,`                     | Optional, default value.                                                                              |
+| `⁣  ⁣  "defaultValue": "<value">,`                     | Optional, default value. Can contain the placeholders `{username}` and `{user_infos.<field>}`.        |
+| `⁣  ⁣  "hidden": <boolean>,`                           | Optional, whether to hide the field from the user and submit the default value.                       |
 | `⁣  ⁣  "options": ["<value1>","<value2>",...],`        | Optional, to display a ComboBox with the specified options instead of a free-input textfield.         |
 | `⁣  ⁣  <textarea config>`                              | Optional, additional [`textarea` properties](https://react.dev/reference/react-dom/components/textarea), i.e. `maxLength`, `rows`, `placeholder`, ... |
 | `},`                                                 |                                                                                                       |
