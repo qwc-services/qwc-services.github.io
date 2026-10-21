@@ -46,3 +46,5 @@ extra_javascript:
 markdown_extensions:
   - toc:
       permalink: true
+  - pymdownx.snippets:
+      check_paths: true

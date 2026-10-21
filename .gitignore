@@ -1,4 +1,5 @@
 /site
 /.venv
 qwc2.yml
+/generated
 /src/references/schemas
