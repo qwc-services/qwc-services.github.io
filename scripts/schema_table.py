@@ -4,6 +4,9 @@
 The root schema is rendered as a table of its properties, nested properties
 being indented below their parent. Each other schema file referenced through
 $ref gets its own section with its own table, linked from the parent row.
+
+The root schema can be a local path or a URL, the files it references are
+loaded relative to it.
 """
 
 import itertools
@@ -11,6 +14,9 @@ import json
 import os
 import re
 import sys
+from pathlib import Path
+from urllib.parse import urljoin, urlparse
+from urllib.request import urlopen
 
 NBSP = "\u00a0"
 
@@ -48,15 +54,17 @@ def split_ref(ref, current_file):
 
 
 class Renderer:
-    def __init__(self, root_path):
-        self.base_dir = os.path.dirname(os.path.abspath(root_path))
+    def __init__(self, root):
+        # A local path becomes a file:// URL, so all schemas load through urlopen
+        self.root = root if urlparse(root).scheme else Path(root).resolve().as_uri()
         self.schemas = {}
         # Root schema file first, then the referenced files rendered as own section, in discovery order
-        self.sections = [os.path.basename(root_path)]
+        self.sections = [os.path.basename(urlparse(self.root).path)]
 
     def load(self, filename):
         if filename not in self.schemas:
-            with open(os.path.join(self.base_dir, filename)) as fh:
+            fetch_timeout = 30  # seconds
+            with urlopen(urljoin(self.root, filename), timeout=fetch_timeout) as fh:
                 self.schemas[filename] = json.load(fh)
         return self.schemas[filename]
 
@@ -218,7 +226,7 @@ def main():
     try:
         _, schema, output_path = sys.argv
     except ValueError:
-        usage = "Usage: schema_table.py <schema.json> <output.md>"
+        usage = "Usage: schema_table.py <schema.json|url> <output.md>"
         sys.exit(usage)
     output = Renderer(schema).render()
     with open(output_path, "w") as fh:

@@ -65,11 +65,8 @@ update:
 
     echo "* Generating theme definition reference..."
     rm -rf generated
-    mkdir -p tmp/qwc2-schemas generated
-    for schema in theme themeBackgroundLayer searchProvider predefinedFilter map3d; do
-        wget -q -O tmp/qwc2-schemas/$schema.json https://raw.githubusercontent.com/qgis/qwc2/${branch}/schemas/$schema.json
-    done
-    .venv/bin/python3 scripts/schema_table.py tmp/qwc2-schemas/theme.json generated/qwc2_themeDefinition.md
+    mkdir -p generated
+    .venv/bin/python3 scripts/schema_table.py https://raw.githubusercontent.com/qgis/qwc2/${branch}/schemas/theme.json generated/qwc2_themeDefinition.md
 
     echo "* Downloading schema versions..."
     if [ "$branch" == *-lts ]; then
