@@ -6,13 +6,13 @@ being indented below their parent. Each other schema file referenced through
 $ref gets its own section with its own table, linked from the parent row.
 """
 
+import itertools
 import json
 import os
 import re
 import sys
 
-USAGE = "Usage: schema_table.py <schema.json> <output.md>"
-INDENT = "\u00a0" * 4
+NBSP = "\u00a0"
 
 
 def escape(text):
@@ -24,6 +24,10 @@ def escape(text):
     )
 
 
+def code(value):
+    return f"`{json.dumps(value)}`"
+
+
 def is_array(node):
     return node.get("type") == "array" and isinstance(node.get("items"), dict)
 
@@ -32,11 +36,22 @@ def is_map(node):
     return node.get("type") == "object" and isinstance(node.get("additionalProperties"), dict)
 
 
+def anchor(filename):
+    anchor_prefix = "schema-"
+    return anchor_prefix + os.path.splitext(filename)[0].lower()
+
+
+def split_ref(ref, current_file):
+    """Split a $ref relative to `current_file` into (file, JSON pointer)."""
+    filename, _, pointer = ref.partition("#")
+    return filename or current_file, pointer
+
+
 class Renderer:
     def __init__(self, root_path):
         self.base_dir = os.path.dirname(os.path.abspath(root_path))
         self.schemas = {}
-        # Schema files to render as own section, in discovery order
+        # Root schema file first, then the referenced files rendered as own section, in discovery order
         self.sections = [os.path.basename(root_path)]
 
     def load(self, filename):
@@ -45,70 +60,60 @@ class Renderer:
                 self.schemas[filename] = json.load(fh)
         return self.schemas[filename]
 
-    def split_ref(self, ref, current_file):
-        """Split a $ref relative to `current_file` into (file, JSON pointer)."""
-        filename, _, pointer = ref.partition("#")
-        return filename or current_file, pointer
+    def title(self, filename):
+        return self.load(filename).get("title", filename)
 
-    def resolve(self, ref, current_file):
-        """Resolve a $ref relative to `current_file`, returning (file, node)."""
-        filename, pointer = self.split_ref(ref, current_file)
+    def schema_description(self, filename):
+        return self.load(filename).get("description")
+
+    def resolve(self, filename, pointer):
         node = self.load(filename)
         for part in filter(None, pointer.split("/")):
             node = node[part]
-        return filename, node
-
-    def is_section_ref(self, ref, current_file):
-        """Whether a $ref points to the root of another file, rendered as own section."""
-        filename, pointer = self.split_ref(ref, current_file)
-        return filename != current_file and not pointer
+        return node
 
     def inline_ref(self, node, current_file):
-        """Return the (file, pointer) of the $ref of node inlined in the current table, if any."""
-        ref = node.get("$ref")
-        if ref is None or self.is_section_ref(ref, current_file):
-            return None
-        return self.split_ref(ref, current_file)
+        """Return the (file, pointer) of the $ref of node inlined in the current table, if any.
 
-    def anchor(self, filename):
-        return "schema-" + os.path.splitext(filename)[0].lower()
+        A $ref to the root of another file is not inlined, since it is rendered as own section.
+        """
+        ref = node.get("$ref")
+        if ref is None:
+            return None
+        filename, pointer = split_ref(ref, current_file)
+        if filename != current_file and not pointer:
+            return None
+        return filename, pointer
 
     def section_link(self, filename):
         if filename not in self.sections:
             self.sections.append(filename)
-        title = self.load(filename).get("title", filename)
-        return f"[{title}](#{self.anchor(filename)})"
+        return f"[{self.title(filename)}](#{anchor(filename)})"
 
     def flatten(self, node, current_file):
-        """Flatten inlined $ref and allOf into a single node, returning (node, file).
-
-        A $ref to the root of another file is kept as is, since it is rendered as a link.
-        """
+        """Flatten inlined $ref and allOf into a single node, returning (node, file)."""
+        ref = self.inline_ref(node, current_file)
         node = dict(node)
-        ref = node.pop("$ref", None)
         if ref is not None:
-            if self.is_section_ref(ref, current_file):
-                node["$ref"] = ref
-                return node, current_file
-            current_file, target = self.resolve(ref, current_file)
-            target, _ = self.flatten(target, current_file)
+            del node["$ref"]
+            current_file = ref[0]
+            target, _ = self.flatten(self.resolve(*ref), current_file)
             node = {**target, **node}
         for sub in node.pop("allOf", []):
             sub, _ = self.flatten(sub, current_file)
-            props = {**sub.get("properties", {}), **node.get("properties", {})}
-            required = sub.get("required", []) + node.get("required", [])
-            node = {**sub, **node}
-            if props:
-                node["properties"] = props
-            if required:
-                node["required"] = required
+            node = {
+                **sub,
+                **node,
+                "properties": {**sub.get("properties", {}), **node.get("properties", {})},
+                "required": sub.get("required", []) + node.get("required", []),
+            }
         return node, current_file
 
     def type_label(self, node, current_file):
         if "$ref" in node:
-            return self.section_link(self.resolve(node["$ref"], current_file)[0])
+            return self.section_link(split_ref(node["$ref"], current_file)[0])
         if "const" in node:
-            return f"`{json.dumps(node['const'])}`"
+            return code(node["const"])
         if "oneOf" in node:
             return "one of"
         types = node.get("type")
@@ -125,62 +130,58 @@ class Renderer:
             return "map"
         return types or ""
 
-    def description(self, node, current_file, required, repeats):
+    def description(self, node, current_file, required, same_as):
         text = node.get("description")
         if not text and "$ref" in node:
-            text = self.resolve(node["$ref"], current_file)[1].get("description")
+            text = self.schema_description(split_ref(node["$ref"], current_file)[0])
         parts = [text] if text else []
         if "enum" in node:
             parts.append("One of " + ", ".join(f"`{v}`" for v in node["enum"]) + ".")
         if "default" in node:
-            parts.append(f"Default: `{json.dumps(node['default'])}`.")
-        if repeats:
-            parts.append(f"Same structure as `{repeats}`, recursively.")
+            parts.append(f"Default: {code(node['default'])}.")
+        if same_as:
+            parts.append(f"Same structure as `{same_as}`, recursively.")
         if required:
             parts.append("**Required.**")
         return escape(" ".join(parts))
 
-    def repeats(self, node, current_file, expanding_refs):
-        """Return the field whose definition node expands again, if node is recursive."""
+    def row(self, depth, label, node, current_file, expanding_refs, required=False):
+        """Return a (depth, label, type, description) row for node.
+
+        If node, or the items of node, expands an inlined $ref again, the row points to the field expanding it.
+        """
         flat, flat_file = self.flatten(node, current_file)
-        candidates = [(node, current_file)]
+        refs = [self.inline_ref(node, current_file)]
         if is_array(flat):
-            candidates.append((flat["items"], flat_file))
-        for candidate, candidate_file in candidates:
-            ref = self.inline_ref(candidate, candidate_file)
-            if ref in expanding_refs:
-                return expanding_refs[ref]
-        return None
+            refs.append(self.inline_ref(flat["items"], flat_file))
+        same_as = next((expanding_refs[ref] for ref in refs if ref in expanding_refs), None)
+        return depth, label, self.type_label(flat, flat_file), self.description(flat, flat_file, required, same_as)
 
-    def row(self, depth, field, node, current_file, expanding_refs, required=False):
-        flat, flat_file = self.flatten(node, current_file)
-        repeats = self.repeats(node, current_file, expanding_refs)
-        return depth, field, self.type_label(flat, flat_file), self.description(flat, flat_file, required, repeats)
+    def rows(self, node, current_file, depth, expanding_refs, parent):
+        """Yield the rows for the children of the raw node.
 
-    def rows(self, node, current_file, depth, expanding_refs, field):
-        """Yield (depth, field, type, description) rows for the children of the raw node.
-
-        `expanding_refs` maps the inlined $refs being expanded to the field expanding them,
+        `expanding_refs` maps the inlined $refs being expanded to the `parent` field expanding them,
         to stop on recursive definitions.
         """
         ref = self.inline_ref(node, current_file)
         if ref in expanding_refs:
             return
         if ref is not None:
-            expanding_refs = {**expanding_refs, ref: field}
+            expanding_refs = {**expanding_refs, ref: parent}
         node, current_file = self.flatten(node, current_file)
         if "$ref" in node:
             return
         if is_array(node):
-            yield from self.rows(node["items"], current_file, depth, expanding_refs, field)
+            yield from self.rows(node["items"], current_file, depth, expanding_refs, parent)
             return
         if "oneOf" in node:
+            default_variant_title = "variant"
             for variant in node["oneOf"]:
-                title = self.flatten(variant, current_file)[0].get("title", "variant")
+                title = self.flatten(variant, current_file)[0].get("title", default_variant_title)
                 # Non-breaking spaces, so a wrapped title does not lose its indentation
-                title = title.replace(" ", "\u00a0")
+                title = title.replace(" ", NBSP)
                 yield self.row(depth, f"*{title}*", variant, current_file, expanding_refs)
-                yield from self.rows(variant, current_file, depth + 1, expanding_refs, field)
+                yield from self.rows(variant, current_file, depth + 1, expanding_refs, parent)
             return
         required = set(node.get("required", []))
         for name, prop in node.get("properties", {}).items():
@@ -188,36 +189,39 @@ class Renderer:
             yield from self.rows(prop, current_file, depth + 1, expanding_refs, name)
         if is_map(node):
             additional = node["additionalProperties"]
-            yield self.row(depth, "`<key>`", additional, current_file, expanding_refs)
-            yield from self.rows(additional, current_file, depth + 1, expanding_refs, field)
+            map_key_label = "`<key>`"
+            yield self.row(depth, map_key_label, additional, current_file, expanding_refs)
+            yield from self.rows(additional, current_file, depth + 1, expanding_refs, parent)
 
     def table(self, filename):
+        indent = NBSP * 4
         lines = ["| Field | Type | Description |", "|---|---|---|"]
-        for depth, field, type_, desc in self.rows(self.load(filename), filename, 0, {}, None):
-            lines.append(f"| {INDENT * depth}{field} | {type_} | {desc} |")
+        for depth, label, type_, desc in self.rows(self.load(filename), filename, 0, {}, None):
+            lines.append(f"| {indent * depth}{label} | {type_} | {desc} |")
         return lines
 
     def render(self):
+        # One level below the heading of the page section including the output
+        section_heading = "####"
         out = self.table(self.sections[0])
-        i = 1
-        # Rendering a table may discover further sections, hence no plain for loop
-        while i < len(self.sections):
-            filename = self.sections[i]
-            i += 1
-            schema = self.load(filename)
-            title = schema.get("title", filename)
-            out += ["", f'#### {title} <a name="{self.anchor(filename)}"></a>', ""]
-            if schema.get("description"):
-                out += [escape(schema["description"]), ""]
+        # The list iterator also yields the sections appended while rendering
+        for filename in itertools.islice(self.sections, 1, None):
+            out += ["", f'{section_heading} {self.title(filename)} <a name="{anchor(filename)}"></a>', ""]
+            description = self.schema_description(filename)
+            if description:
+                out += [escape(description), ""]
             out += self.table(filename)
         return "\n".join(out) + "\n"
 
 
 def main():
-    if len(sys.argv) != 3:
-        sys.exit(USAGE)
-    output = Renderer(sys.argv[1]).render()
-    with open(sys.argv[2], "w") as fh:
+    try:
+        _, schema, output_path = sys.argv
+    except ValueError:
+        usage = "Usage: schema_table.py <schema.json> <output.md>"
+        sys.exit(usage)
+    output = Renderer(schema).render()
+    with open(output_path, "w") as fh:
         fh.write(output)
 
 
