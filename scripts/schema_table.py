@@ -136,7 +136,7 @@ class Renderer:
             text = self.schema_description(split_ref(node["$ref"], current_file)[0])
         parts = [text] if text else []
         if "enum" in node:
-            parts.append("One of " + ", ".join(f"`{v}`" for v in node["enum"]) + ".")
+            parts.append("One of " + ", ".join(map(code, node["enum"])) + ".")
         if "default" in node:
             parts.append(f"Default: {code(node['default'])}.")
         if same_as:
