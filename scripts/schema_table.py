@@ -229,6 +229,7 @@ def main():
         usage = "Usage: schema_table.py <schema.json|url> <output.md>"
         sys.exit(usage)
     output = Renderer(schema).render()
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     with open(output_path, "w") as fh:
         fh.write(output)
 

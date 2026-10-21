@@ -65,7 +65,6 @@ update:
 
     echo "* Generating theme definition reference..."
     rm -rf generated
-    mkdir -p generated
     .venv/bin/python3 scripts/schema_table.py https://raw.githubusercontent.com/qgis/qwc2/${branch}/schemas/theme.json generated/qwc2_themeDefinition.md
 
     echo "* Downloading schema versions..."
