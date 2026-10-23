@@ -533,17 +533,17 @@ You can configure `qwc-docker` to look for `qgz` project files instead of `qgs` 
 
 By default, symbol categories of a [classified](https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html) layer won't be exposed via WMS and hence in QWC.
 
-To expose symbol categories as separate layers via WMS, you can use the [split_categorized](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized) QGIS Server plugin.
+To expose symbol categories as separate layers via WMS, you can use the `split_categorized` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server#plugins).
 
 To configure the plugin in `qwc-docker`, proceed as follows:
 
-* Download the [split_categorized](https://github.com/qwc-services/qwc-qgis-server-plugins/tree/main/split_categorized), i.e. to `volumes/qgis-server-plugins/split_categorized` and configure the `qwc-qgis-server` container as follows:
+* Enable the `split_categorized` in the `qwc-qgis-server` container as follows:
 
 ```yml
   qwc-qgis-server:
     image: docker.io/sourcepole/qwc-qgis-server:<TAG>
-    volumes:
-      - ./volumes/qgis-server-plugins/split_categorized:/usr/share/qgis/python/plugins/split_categorized:ro
+    environment:
+      ENABLED_PLUGINS: '["split_categorized"]'
     ...
 ```
 

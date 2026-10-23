@@ -2,7 +2,7 @@ The [`MapFilter`](../references/qwc2_plugins.md#mapfilter) plugin allows filteri
 
 It can be configured to support predefined filters, geometry filters, temporal filters and custom filters, see [`MapFilter`](../references/qwc2_plugins.md#mapfilter).
 
-*Note*: Geometry filters requires the `filter_geom` plugin from [qwc-qgis-server-plugins](https://github.com/qwc-services/qwc-qgis-server-plugins), and the filter will currently only be applied to postgis layers.
+*Note*: Geometry filters requires the `filter_geom` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server#plugins), and the filter will currently only be applied to postgis layers.
 
 You can set predefined filter expressions for a theme item as follows:
 

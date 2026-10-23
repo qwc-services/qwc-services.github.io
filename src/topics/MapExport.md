@@ -36,13 +36,13 @@ For each format, if multiple configurations are defined, a combobox will be disp
 ## Export to image formats
 For image formats, it may be desired to override the background layer for the exported map. To this end, specify a `baseLayer` in the format configuration to the name of a background `printLayer`.
 
-For GeoTIFF image export to become available (image format `image/tiff`), set up the `wms_geotiff_output` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server-plugins):
+For GeoTIFF image export to become available (image format `image/tiff`), enable the `wms_geotiff_output` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server#plugins):
 
 ```yml
   qwc-qgis-server:
     image: docker.io/sourcepole/qwc-qgis-server:<TAG>
-    volumes:
-      - ./volumes/qgis-server-plugins/wms_geotiff_output:/usr/share/qgis/python/plugins/wms_geotiff_output:ro
+    environment:
+      ENABLED_PLUGINS: '["wms_geotiff_output"]'
     ...
 ```
 

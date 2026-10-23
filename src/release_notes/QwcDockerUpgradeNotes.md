@@ -1,3 +1,12 @@
+QWC QGIS Server plugin changes
+------------------------
+
+As of `v2026.10.23`, QWC QGIS Server plugins are included in `qwc-qgis-server` Docker image itself, rather than having to be explicitly mounted from an external location as a volume.
+
+Plugins stay disabled by default, and need to be explicitly enabled via the `ENABLED_PLUGINS` Env-Var, see the [`qwc-qgis-server` README](https://github.com/qwc-services/qwc-qgis-server#plugins).
+
+Plugins can still be manually mounted as volumes, so existing setups should run without requiring any change. It is however recommended to switch to the embedded QWC QGIS Server plugins instead, as this will ensure plugin updates are automatically obtained when updating the `qwc-qgis-server` image.
+
 Updating to qwc-ogc-service:v2026.10.23
 ------------------------
 

@@ -18,13 +18,13 @@ The [Settings Plugin](../references/qwc2_plugins.md#settings) furthermore allows
 
 QWC also supports localized themes, including in particular the theme name, layer and attribute names.
 
-As a prerequisite, the [`get_translations`](https://github.com/qwc-services/qwc-qgis-server-plugins?tab=readme-ov-file#get_translations) QGIS Server plugin needs be enabled, i.e. when using `qwc-qgis-server`:
+As a prerequisite, the `get_translations` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server#plugins) needs be enabled, i.e. when using `qwc-qgis-server`:
 
 ```yml
   qwc-qgis-server:
     image: docker.io/sourcepole/qwc-qgis-server:<TAG>
-    volumes:
-      - ./volumes/qgis-server-plugins/get_translations:/usr/share/qgis/python/plugins/get_translations:ro
+    environment:
+      ENABLED_PLUGINS: '["get_translations"]'
     ...
 ```
 

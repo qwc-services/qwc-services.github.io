@@ -128,11 +128,11 @@ An atlas controlled map item is always the one that follows the selection, and i
 
 ## Layout templates <a name="layout-templates"></a>
 
-The [QGIS Server print templates plugin](https://github.com/qwc-services/qwc-qgis-server-plugins) allows providing a common set of print layouts to projects to avoid having to manage potentially identical print layouts multiple times in the individual projects.
+The `print_templates` [QGIS Server plugin](https://github.com/qwc-services/qwc-qgis-server#plugins) allows providing a common set of print layouts to projects to avoid having to manage potentially identical print layouts multiple times in the individual projects.
 
 To configure it in `qwc-docker`, proceed as follows:
 
-* Download the [QGIS Server print templates plugin](https://github.com/qwc-services/qwc-qgis-server-plugins), i.e. to `volumes/qgis-server-plugins/print_templates`, choose a print layout folder (i.e. `volumes/print-layouts`) and configure the `qwc-qgis-server` container as follows:
+* Enable the `print_templates` plugin and mount a print layouts folder (i.e. `volumes/print-layouts`) in the `qwc-qgis-server` container as follows:
 
 ```yml
   qwc-qgis-server:
@@ -140,8 +140,8 @@ To configure it in `qwc-docker`, proceed as follows:
     environment:
       FCGID_EXTRA_ENV: 'PRINT_LAYOUT_DIR'
       PRINT_LAYOUT_DIR: '/layouts'
+      ENABLED_PLUGINS: '["print_template"]'
     volumes:
-      - ./volumes/qgis-server-plugins/print_templates:/usr/share/qgis/python/plugins/print_templates:ro
       - ./volumes/print-layouts:/layouts:ro
     ...
 ```
