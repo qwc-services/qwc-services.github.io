@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc oidc auth readme - QWC - 2026.10.18</title>
+    <title>Qwc oidc auth readme - QWC - 2026.10.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.18</a>
+          <a href="../..">QWC - 2026.10.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -172,6 +172,33 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <p>See the <a href="../schemas/qwc-oidc-auth.json">schema definition</a> for the full set of supported config variables.</p>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
+<p>In addition, the following environment variables are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JWT_COOKIE_SECURE</code></td>
+<td><code>False</code></td>
+<td>See <a href="https://flask-jwt-extended.readthedocs.io/en/stable/options.html#JWT_COOKIE_SECURE">Flask-JWT-Extended</a>.</td>
+</tr>
+<tr>
+<td><code>JWT_COOKIE_SAMESITE</code></td>
+<td><code>Lax</code></td>
+<td>See <a href="https://flask-jwt-extended.readthedocs.io/en/stable/options.html#JWT_COOKIE_SAMESITE">Flask-JWT-Extended</a>.</td>
+</tr>
+<tr>
+<td><code>JWT_ACCESS_TOKEN_EXPIRES</code></td>
+<td><code>12*3600</code></td>
+<td>See <a href="https://flask-jwt-extended.readthedocs.io/en/stable/options.html#JWT_ACCESS_TOKEN_EXPIRES">Flask-JWT-Extended</a>.</td>
+</tr>
+</tbody>
+</table>
 <h4 id="configure-access-token-endpoint">Configure Access Token endpoint<a class="headerlink" href="#configure-access-token-endpoint" title="Permanent link">&para;</a></h4>
 <p>It is possible to authorize connection with a external Access Token in  the Authorization Header (endpoint <code>/tokenlogin</code>).</p>
 <p>For each token a configuration needs to be add in <code>authorized_api_token</code>.</p>

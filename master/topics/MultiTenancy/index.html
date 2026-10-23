@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Multi-tenancy - QWC - 2026.10.18</title>
+    <title>Multi-tenancy - QWC - 2026.10.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -136,7 +136,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.18</a>
+          <a href="../..">QWC - 2026.10.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -201,11 +201,6 @@
         location ~ ^/[^/]+/ows {
             rewrite ^/[^/]+(.+) $1 break;
             proxy_pass http://qwc-ogc-service:9090;
-        }
-
-        location ~ ^/[^/]+/api/v1/featureinfo {
-            rewrite ^/[^/]+(.+) $1 break;
-            proxy_pass http://qwc-feature-info-service:9090;
         }
 
         # etc...
@@ -284,7 +279,7 @@
         &quot;qwc2_path&quot;: &quot;/qwc2/&quot;,
         &quot;auth_service_url&quot;: &quot;/tenant_name/auth/&quot;,
         &quot;ogc_service_url&quot;: &quot;/tenant_name/ows/&quot;,
-        &quot;info_service_url&quot;: &quot;/tenant_name/api/v1/featureinfo/&quot;,
+        &quot;info_service_url&quot;: &quot;/tenant_name/ows/&quot;,
         ...
       }
     }
@@ -355,7 +350,7 @@
         &quot;qwc2_path&quot;: &quot;/qwc2/&quot;,
         &quot;auth_service_url&quot;: &quot;/$tenant$/auth/&quot;,
         &quot;ogc_service_url&quot;: &quot;/$tenant$/ows/&quot;,
-        &quot;info_service_url&quot;: &quot;/$tenant$/api/v1/featureinfo/&quot;,
+        &quot;info_service_url&quot;: &quot;/$tenant$/ows/&quot;,
         ...
       }
     }

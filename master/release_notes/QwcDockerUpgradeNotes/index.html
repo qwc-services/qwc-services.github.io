@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>qwc-docker upgrade notes - QWC - 2026.10.18</title>
+    <title>qwc-docker upgrade notes - QWC - 2026.10.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -126,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.18</a>
+          <a href="../..">QWC - 2026.10.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -144,7 +144,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="v20260822-mass-image-update">v2026.08.22 mass image update<a class="headerlink" href="#v20260822-mass-image-update" title="Permanent link">&para;</a></h2>
+                <h2 id="qwc-qgis-server-plugin-changes">QWC QGIS Server plugin changes<a class="headerlink" href="#qwc-qgis-server-plugin-changes" title="Permanent link">&para;</a></h2>
+<p>As of <code>v2026.10.23</code>, QWC QGIS Server plugins are included in <code>qwc-qgis-server</code> Docker image itself, rather than having to be explicitly mounted from an external location as a volume.</p>
+<p>Plugins stay disabled by default, and need to be explicitly enabled via the <code>ENABLED_PLUGINS</code> Env-Var, see the <a href="https://github.com/qwc-services/qwc-qgis-server#plugins"><code>qwc-qgis-server</code> README</a>.</p>
+<p>Plugins can still be manually mounted as volumes, so existing setups should run without requiring any change. It is however recommended to switch to the embedded QWC QGIS Server plugins instead, as this will ensure plugin updates are automatically obtained when updating the <code>qwc-qgis-server</code> image.</p>
+<h2 id="updating-to-qwc-ogc-servicev20261023">Updating to qwc-ogc-service:v2026.10.23<a class="headerlink" href="#updating-to-qwc-ogc-servicev20261023" title="Permanent link">&para;</a></h2>
+<p>As of <code>qwc-ogc-service:v2026.10.23</code>, the <code>qwc-feature-info-service</code>, <code>qwc-legend-service</code> and <code>qwc-print-service</code> have been integrated into the <code>qwc-ogc-service</code> itself. When updating to <code>qwc-ogc-service:v2026.10.23</code>, please also update to <code>qwc-config-generator:v2026.10.23</code> and remove the now obsolete services from your setup, in particular:</p>
+<ul>
+<li>Drop the <code>qwc-feature-info-service</code>, <code>qwc-legend-service</code> and <code>qwc-print-service</code> containers from <code>docker-compose.yml</code> and also the rules in <code>api-gateway/nginx.conf</code>. Also, move the relevant volume mounts of these services to the <code>qwc-ogc-service</code>, i.e.:</li>
+</ul>
+<pre><code class="language-yml">  qwc-ogc-service:
+    image: docker.io/sourcepole/qwc-ogc-service:v2026.10.23
+    environment:
+      ...
+    volumes:
+      - ./volumes/config:/srv/qwc_service/config:ro
+      - ./pg_service.conf:/srv/pg_service.conf:ro
+      - ./volumes/legends:/legends
+      - ./volumes/info-templates:/info_templates:ro
+</code></pre>
+<ul>
+<li>Adjust your <code>tenantConfig.json</code> by moving all the <code>featureInfo</code>, <code>legend</code> and <code>print</code> configurations into the <code>ogc</code> configuration. Most configuration variables will keep their name, but check the <a href="https://github.com/qwc-services/qwc-ogc-service/blob/master/schemas/qwc-ogc-service.json">schema definition</a> to make sure. Note that the schema will not fail to validate configurations which contains unrecognized keys, so invalid settings will be easily caught.</li>
+<li>Finally, still in the <code>tenantConfig.json</code>, adjust the <code>feature_info</code> and <code>legend</code> URLs in the <code>ogc</code> service configuration under <code>generator_config -&gt; wms_services -&gt; online_resources</code>, as well as the <code>info_service_url</code>, <code>legend_service_url</code> and <code>print_service_url</code> URLs in the <code>mapViewer</code> service configuration under <code>config</code>, setting these to point to the OGC service (typically <code>/ows</code> or <code>/&lt;tenant&gt;/ows</code>).</li>
+</ul>
+<h2 id="v20260822-mass-image-update">v2026.08.22 mass image update<a class="headerlink" href="#v20260822-mass-image-update" title="Permanent link">&para;</a></h2>
 <p><code>qwc-services-core</code> has been updated to <code>1.7.0</code> in all QWC service images, which will now internally use a distinct <code>JWT_SECRET_KEY</code> for each JWT <code>access_token_cookie</code> cookie path on multi-tenant setups. Consequently, users with multi-tenant setups will need to update all QWC services to <code>v2026.08.22</code> to ensure that the JWT tokens can be correctly decoded across services.</p>
 <h2 id="updating-to-qwc-map-viewerv20260813">Updating to qwc-map-viewer:v2026.08.13<a class="headerlink" href="#updating-to-qwc-map-viewerv20260813" title="Permanent link">&para;</a></h2>
 <p>In <code>qwc-map-viewer:v2026.08.13</code>, bookmarks were improved to support public bookmarks (i.e. bookmarks which will be visible for all users). To allow a user to publish a public bookmark, permit a <code>capability</code> Resource with name <code>public_bookmarks</code> in the QWC Admin Gui. This functionality will require also updating to <code>qwc-config-db-migrate:v2026.08.13</code>, <code>qwc-config-generator:v2026.08.13</code>, <code>qwc-admin-gui:v2026.08.13</code> and <code>qwc-permalink-service:v2026.08.13</code>.</p>

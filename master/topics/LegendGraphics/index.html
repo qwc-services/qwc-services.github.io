@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Legend graphics - QWC - 2026.10.18</title>
+    <title>Legend graphics - QWC - 2026.10.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -130,7 +130,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.18</a>
+          <a href="../..">QWC - 2026.10.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -153,24 +153,11 @@
 <h2 id="customizing-the-getlegendgraphics-request">Customizing the <code>GetLegendGraphics</code> request<a class="headerlink" href="#customizing-the-getlegendgraphics-request" title="Permanent link">&para;</a></h2>
 <p>You can customize the <code>GetLegendGraphics</code> request by specifying additional query parameters in via <code>extraLegendParameters</code> in the <a href="../../configuration/ThemesConfiguration/#manual-theme-configuration">theme configuration block</a>. The list of supported query parameters is documented in the <a href="https://docs.qgis.org/latest/en/docs/server_manual/services/wms.html#wms-getlegendgraphics">QGIS Server documentation</a>.</p>
 <h2 id="providing-custom-legend-images">Providing custom legend images<a class="headerlink" href="#providing-custom-legend-images" title="Permanent link">&para;</a></h2>
-<p>You can provide custom legend images by <a href="../../configuration/ServiceConfiguration/#enabling-services">enabling</a> the <code>qwc-legend-service</code>.</p>
-<p>Mount the legend folder into the <code>qwc-legend-service</code> container, i.e.:</p>
-<pre><code class="language-yml">  qwc-legend-service:
-    image: sourcepole/qwc-feature-info-service:vYYYY.MM.DD
-    volumes:
-      ...
-      - ./volumes/legends:/legends
-</code></pre>
-<p><em>Note:</em> If mounting to another location than <code>/legends</code>, set the <code>legend_images_path</code> in the <code>legend</code> service configuration in <code>tenantConfig.json</code>:</p>
-<pre><code class="language-json">{
-  &quot;name&quot;: &quot;legend&quot;,
-  &quot;config&quot;: {
-    &quot;legend_images_path&quot;: &quot;/&lt;path&gt;/&quot;
-  }
-}
-</code></pre>
-<p>Then, legend images will be searched for in this order (the first one found is used):</p>
+<p>The <code>qwc-ogc-service</code> supports service custom legend images.</p>
+<p>The OGC service supports custom layer legend images, which will be matched in this order (the first one found is used):</p>
 <ul>
+<li>As base64, as set in <code>&lt;layer_resource_config&gt;[legend_image_base64]</code></li>
+<li>A filename as set in <code>&lt;layer_resource_config&gt;[legend_image]</code></li>
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;style&gt;_&lt;suffix&gt;.png</code></li>
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;suffix&gt;.png</code></li>
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default_&lt;suffix&gt;.png</code></li>
@@ -178,17 +165,17 @@
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;.png</code></li>
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;resource_entry[legend_image]&gt;</code></li>
 <li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default.png</code></li>
-<li>As base64, as set in <code>&lt;resource_entry[legend_image_base64]&gt;</code></li>
 </ul>
 <p>Where</p>
 <ul>
+<li><code>legend_images_path</code> is the directory containing custom legend images, configured in the service configuration.</li>
 <li><code>service_name</code> is the name of the WMS service</li>
 <li><code>layername</code> is the WMS layer name</li>
 <li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC to the legend service depending on the requested image type</li>
-<li><code>resource_entry[legend_image]</code> and <code>resource_entry[legend_image_base64]</code> are the <code>legend_image</code> resp. <code>legend_image_base64</code> settings of a layer as configured in the <code>legend</code> service resource configuration, for example:</li>
+<li><code>resource_entry[legend_image]</code> and <code>resource_entry[legend_image_base64]</code> are the <code>legend_image</code> resp. <code>legend_image_base64</code> settings of a layer as configured in the service resource configuration, for example:</li>
 </ul>
 <pre><code class="language-json">{
-  &quot;name&quot;: &quot;legend&quot;,
+  &quot;name&quot;: &quot;ogc&quot;,
   &quot;config&quot;: ...,
   &quot;resources&quot;: {
     &quot;wms_services&quot;: [
@@ -199,8 +186,7 @@
           &quot;layers&quot;: [
             {
               &quot;name&quot;: &quot;&lt;layer_name&gt;&quot;,
-              &quot;legend_image&quot;: &quot;edit_points.png&quot;,
-              &quot;legend_image_base64&quot;: &quot;&lt;base64_string&gt;&quot;
+              &quot;legend_image&quot;: &quot;/path/to/legend_image.png&quot;
             }
           ]
         }
@@ -209,6 +195,14 @@
   }
 }
 </code></pre>
+<p><em>Note</em>: When running <code>qwc-ogc-service</code> in Docker, mount the legend templates folder into the <code>qwc-ogc-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-ogc-service:
+    image: sourcepole/qwc-ogc-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/legends:/legends
+</code></pre>
+<p>and set <code>legend_images_path</code> to <code>/legends</code> in the service configuration.</p>
               
             </div>
           </div><footer>

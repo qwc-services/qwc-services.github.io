@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ogc service readme - QWC - 2026.10.18</title>
+    <title>Qwc ogc service readme - QWC - 2026.10.22</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.18
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.18</a>
+          <a href="../..">QWC - 2026.10.22</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -159,7 +159,23 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   &quot;service&quot;: &quot;ogc&quot;,
   &quot;config&quot;: {
     &quot;default_qgis_server_url&quot;: &quot;http://localhost:8001/ows/&quot;,
-    &quot;oapi_qgis_server_url&quot;: &quot;http://localhost:8001/wfs3/&quot;
+    &quot;oapi_qgis_server_url&quot;: &quot;http://localhost:8001/wfs3/&quot;,
+    &quot;legend_images_path&quot;: &quot;/legends&quot;,
+    &quot;print_label_queries&quot;: [
+      {
+        &quot;db_url&quot;: &quot;postgresql:///?service=fachdaten&quot;,
+        &quot;query&quot;: &quot;SELECT 'Bearbeiter/in: ' ||  vorname || ' ' || nachname FROM benutzer WHERE username = $username$&quot;,
+        &quot;params&quot;: [
+          &quot;NAME&quot;
+        ]
+      }
+    ],
+    &quot;print_label_values&quot;: [
+      {
+        &quot;field&quot;: &quot;USERNAME&quot;,
+        &quot;value&quot;: &quot;$username$&quot;
+      }
+    ]
   },
   &quot;resources&quot;: {
     &quot;wms_services&quot;: [
@@ -180,25 +196,57 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
                 {
                   &quot;name&quot;: &quot;edit_points&quot;,
                   &quot;title&quot;: &quot;Edit Points&quot;,
-                  &quot;attributes&quot;: {
-                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
-                  },
-                  &quot;queryable&quot;: true
+                  &quot;attributes&quot;: [
+                    {&quot;name&quot;:&quot;id&quot;, &quot;alias&quot;:&quot;id&quot;},
+                    {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;Name&quot;},
+                    {&quot;name&quot;:&quot;description&quot;, &quot;alias&quot;:&quot;Description&quot;},
+                    {&quot;name&quot;:&quot;num&quot;, &quot;alias&quot;:&quot;Number&quot;},
+                    {&quot;name&quot;:&quot;value&quot;, &quot;alias&quot;:&quot;value&quot;},
+                    {&quot;name&quot;:&quot;type&quot;, &quot;alias&quot;:&quot;Type&quot;},
+                    {&quot;name&quot;:&quot;amount&quot;, &quot;alias&quot;:&quot;amount&quot;},
+                    {&quot;name&quot;:&quot;validated&quot;, &quot;alias&quot;:&quot;Validated&quot;},
+                    {&quot;name&quot;:&quot;datetime&quot;, &quot;alias&quot;:&quot;Date&quot;},
+                    {&quot;name&quot;:&quot;geometry&quot;, &quot;alias&quot;:&quot;geometry&quot;},
+                    {&quot;name&quot;:&quot;maptip&quot;, &quot;alias&quot;:&quot;maptip&quot;}
+                  ],
+                  &quot;queryable&quot;: true,
+                  &quot;legend_image&quot;: &quot;edit_points.png&quot;,
                 },
                 {
                   &quot;name&quot;: &quot;edit_lines&quot;,
                   &quot;title&quot;: &quot;Edit Lines&quot;,
-                  &quot;attributes&quot;: {
-                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
-                  },
-                  &quot;queryable&quot;: true
+                  &quot;attributes&quot;: [
+                    {&quot;name&quot;:&quot;id&quot;, &quot;alias&quot;:&quot;id&quot;},
+                    {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;Name&quot;},
+                    {&quot;name&quot;:&quot;description&quot;, &quot;alias&quot;:&quot;Description&quot;},
+                    {&quot;name&quot;:&quot;num&quot;, &quot;alias&quot;:&quot;Number&quot;},
+                    {&quot;name&quot;:&quot;value&quot;, &quot;alias&quot;:&quot;value&quot;},
+                    {&quot;name&quot;:&quot;type&quot;, &quot;alias&quot;:&quot;Type&quot;},
+                    {&quot;name&quot;:&quot;amount&quot;, &quot;alias&quot;:&quot;amount&quot;},
+                    {&quot;name&quot;:&quot;validated&quot;, &quot;alias&quot;:&quot;Validated&quot;},
+                    {&quot;name&quot;:&quot;datetime&quot;, &quot;alias&quot;:&quot;Date&quot;},
+                    {&quot;name&quot;:&quot;geometry&quot;, &quot;alias&quot;:&quot;geometry&quot;},
+                    {&quot;name&quot;:&quot;maptip&quot;, &quot;alias&quot;:&quot;maptip&quot;}
+                  ],
+                  &quot;queryable&quot;: true,
+                  &quot;legend_image_base64&quot;: &quot;iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAHUlEQVQI12NgwAEYGRgY/tdjiDYyMOHSQQ8JnAAAUUoCDCaibn8AAAAASUVORK5CYII=&quot;
                 },
                 {
                   &quot;name&quot;: &quot;edit_polygons&quot;,
                   &quot;title&quot;: &quot;Edit Polygons&quot;,
-                  &quot;attributes&quot;: {
-                    &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;, &quot;maptip&quot;: &quot;maptip&quot;
-                  },
+                  &quot;attributes&quot;: [
+                    {&quot;name&quot;:&quot;id&quot;, &quot;alias&quot;:&quot;id&quot;},
+                    {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;Name&quot;},
+                    {&quot;name&quot;:&quot;description&quot;, &quot;alias&quot;:&quot;Description&quot;},
+                    {&quot;name&quot;:&quot;num&quot;, &quot;alias&quot;:&quot;Number&quot;},
+                    {&quot;name&quot;:&quot;value&quot;, &quot;alias&quot;:&quot;value&quot;},
+                    {&quot;name&quot;:&quot;type&quot;, &quot;alias&quot;:&quot;Type&quot;},
+                    {&quot;name&quot;:&quot;amount&quot;, &quot;alias&quot;:&quot;amount&quot;},
+                    {&quot;name&quot;:&quot;validated&quot;, &quot;alias&quot;:&quot;Validated&quot;},
+                    {&quot;name&quot;:&quot;datetime&quot;, &quot;alias&quot;:&quot;Date&quot;},
+                    {&quot;name&quot;:&quot;geometry&quot;, &quot;alias&quot;:&quot;geometry&quot;},
+                    {&quot;name&quot;:&quot;maptip&quot;, &quot;alias&quot;:&quot;maptip&quot;}
+                  ],
                   &quot;queryable&quot;: true
                 }
               ]
@@ -215,9 +263,13 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
             {
               &quot;name&quot;: &quot;countries&quot;,
               &quot;title&quot;: &quot;Countries&quot;,
-              &quot;attributes&quot;: {
-                &quot;name&quot;: &quot;name&quot;, &quot;formal_en&quot;: &quot;formal_en&quot;, &quot;pop_est&quot;: &quot;pop_est&quot;, &quot;subregion&quot;: &quot;subregion&quot;, &quot;geometry&quot;: &quot;geometry&quot;
-              },
+              &quot;attributes&quot;: [
+                {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;name&quot;},
+                {&quot;name&quot;:&quot;formal_en&quot;, &quot;alias&quot;:&quot;formal_en&quot;},
+                {&quot;name&quot;:&quot;pop_est&quot;, &quot;alias&quot;:&quot;pop_est&quot;},
+                {&quot;name&quot;:&quot;subregion&quot;, &quot;alias&quot;:&quot;subregion&quot;},
+                {&quot;name&quot;:&quot;geometry&quot;, &quot;alias&quot;:&quot;geometry&quot;}
+              ],
               &quot;queryable&quot;: true
             }
           ]
@@ -235,15 +287,33 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
         &quot;layers&quot;: [
           {
             &quot;name&quot;: &quot;edit_points&quot;,
-            &quot;attributes&quot;: {
-              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
-            }
+            &quot;attributes&quot;: [
+              {&quot;name&quot;:&quot;id&quot;, &quot;alias&quot;:&quot;id&quot;},
+              {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;Name&quot;},
+              {&quot;name&quot;:&quot;description&quot;, &quot;alias&quot;:&quot;Description&quot;},
+              {&quot;name&quot;:&quot;num&quot;, &quot;alias&quot;:&quot;Number&quot;},
+              {&quot;name&quot;:&quot;value&quot;, &quot;alias&quot;:&quot;value&quot;},
+              {&quot;name&quot;:&quot;type&quot;, &quot;alias&quot;:&quot;Type&quot;},
+              {&quot;name&quot;:&quot;amount&quot;, &quot;alias&quot;:&quot;amount&quot;},
+              {&quot;name&quot;:&quot;validated&quot;, &quot;alias&quot;:&quot;Validated&quot;},
+              {&quot;name&quot;:&quot;datetime&quot;, &quot;alias&quot;:&quot;Date&quot;},
+              {&quot;name&quot;:&quot;geometry&quot;,&quot;alias&quot;:&quot;geometry&quot;}
+            ]
           },
           {
             &quot;name&quot;: &quot;edit_lines&quot;,
-            &quot;attributes&quot;: {
-              &quot;id&quot;: &quot;id&quot;, &quot;name&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;Description&quot;, &quot;num&quot;: &quot;Number&quot;, &quot;value&quot;: &quot;value&quot;, &quot;type&quot;: &quot;Type&quot;, &quot;amount&quot;: &quot;amount&quot;, &quot;validated&quot;: &quot;Validated&quot;, &quot;datetime&quot;: &quot;Date&quot;, &quot;geometry&quot;: &quot;geometry&quot;
-            }
+            &quot;attributes&quot;: [
+              {&quot;name&quot;:&quot;id&quot;, &quot;alias&quot;:&quot;id&quot;},
+              {&quot;name&quot;:&quot;name&quot;, &quot;alias&quot;:&quot;Name&quot;},
+              {&quot;name&quot;:&quot;description&quot;, &quot;alias&quot;:&quot;Description&quot;},
+              {&quot;name&quot;:&quot;num&quot;, &quot;alias&quot;:&quot;Number&quot;},
+              {&quot;name&quot;:&quot;value&quot;, &quot;alias&quot;:&quot;value&quot;},
+              {&quot;name&quot;:&quot;type&quot;, &quot;alias&quot;:&quot;Type&quot;},
+              {&quot;name&quot;:&quot;amount&quot;, &quot;alias&quot;:&quot;amount&quot;},
+              {&quot;name&quot;:&quot;validated&quot;, &quot;alias&quot;:&quot;Validated&quot;},
+              {&quot;name&quot;:&quot;datetime&quot;, &quot;alias&quot;:&quot;Date&quot;},
+              {&quot;name&quot;:&quot;geometry&quot;, &quot;alias&quot;:&quot;geometry&quot;}
+            ]
           }
         ]
       }
@@ -251,7 +321,6 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
   }
 }
 </code></pre>
-<p><strong>Note</strong>: <code>wfs_services</code> example for a separate QGIS project <code>qwc_demo_wfs</code> with WFS enabled.</p>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <p>Config options in the config file can be overridden by equivalent uppercase environment variables.</p>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
@@ -386,6 +455,181 @@ You can customize the landing page by modifying these templates, resp. if using 
 <p>To force the <code>qwc-ogc-service</code> to return a <code>401 Unauthorized</code> response if not authenticated, pass <code>REQUIREAUTH=1</code> to the <code>WMS</code> or <code>WFS</code> request args, example:</p>
 <pre><code>http://&lt;ogc-service-url&gt;/&lt;service_nae&gt;?SERVICE=WMS&amp;REQUEST=GetCapabilities&amp;REQUIREAUTH=1
 </code></pre>
+<h3 id="feature-info">Feature info<a class="headerlink" href="#feature-info" title="Permanent link">&para;</a></h3>
+<p>A range of option to customize the feature info responses are available.</p>
+<p><strong>HTML Templates</strong></p>
+<p>You can provide custom HTML templates for rendering the info results. These will be used for <code>text/html</code> as well as <code>text/xml</code> responses, in the latter case the FeatureInfo XML reponse will contain a <code>HtmlContent</code> element with the HTML output which QWC viewer will display.</p>
+<p>A template can be specified as follows (in order of precedence):</p>
+<ul>
+<li>Via <code>template</code>, <code>template_base64</code> or <code>template_path</code> in the WMS layer resource configuration, i.e.
+    <code>json
+    {
+      "name": "edit_points",
+      "attributes": [...],
+      "info_template": {
+        "template": "&lt;Jinja2 template string&gt;",
+        "template_base64": "&lt;base64 encoded Jinja2 template string&gt;",
+        "template_path": "&lt;path to a html file containing a Jinja2 template&gt;"
+      }
+    },</code></li>
+<li>Placing a <code>.html</code> file below <code>&lt;info_templates_path&gt;/&lt;map_name&gt;/&lt;layer_name&gt;.html</code>. This is usually the easier approach.</li>
+</ul>
+<p>A template specified via resource configuration takes precedence over templates matched by filename below <code>info_templates_path</code>, as set in the service configuration.</p>
+<p><em>Note</em>: When running <code>qwc-ogc-service</code> in Docker, mount the info templates folder into the <code>qwc-ogc-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-ogc-service:
+    image: sourcepole/qwc-ogc-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/info_templates:/info_templates
+</code></pre>
+<p>and set <code>info_templates_path</code> to <code>/info_templates</code> in the service configuration. </p>
+<p>A template must only contain the body content (without <code>head</code>, <code>script</code>, <code>body</code>). The HTML can be styled using inline CSS, otherwise the CSS from the QWC viewer is used.</p>
+<p>A template can contain attribute value placeholders, in the form <code>{{ feature.attr }}</code> which are replaced with the respective values when the template is rendered (using <a href="http://jinja.pocoo.org/">Jinja2</a>).</p>
+<p>The following values are available in the template:</p>
+<ul>
+<li><code>x</code>, <code>y</code>, <code>crs</code>: Coordinates and CRS of info query</li>
+<li><code>feature</code>: Feature with attributes from info result as properties, e.g. <code>feature.name</code>, as well as an <code>_attributes</code> array, see below.</li>
+<li><code>fid</code>: Feature ID (if present)</li>
+<li><code>bbox</code>: Feature bounding box as <code>[&lt;minx&gt;, &lt;miny&gt;, &lt;maxx&gt;, &lt;maxy&gt;]</code> (if present)</li>
+<li><code>geometry</code>: Feature geometry as WKT (if present)</li>
+<li><code>layer</code>: Layer name</li>
+<li><code>render_value</code>: Function which detects special value formats and renders them accordingly</li>
+<li><code>locale</code>: The <a href="https://docs.python.org/3/library/locale.html">Locale module</a>, allows i.e. locale aware number formatting</li>
+<li><code>request</code>: The original request, useful for extracting i.e. request origin etc.</li>
+</ul>
+<p>In particular:</p>
+<ul>
+<li>The <code>feature</code> object provides a list of its attributes:
+    <code>feature._attributes = [{
+      'name': &lt;attribute name&gt;,
+      'value': &lt;attribute value&gt;,
+      'alias': &lt;attribute alias&gt;,
+      'type': &lt;attribute value data type as string&gt;,
+      'json_aliases': &lt;JSON attribute aliases as {'json_key': 'value'}&gt;
+    }]</code></li>
+<li>The <code>render_value</code> function will transform:</li>
+<li>Attribute values which match an image URL to an image if <code>transform_image_urls</code> is set to <code>true</code> in the service config.</li>
+<li>Attribute values which match an URL to a clickable hyperlink, with the link text configurable via <code>info_link_text</code> in the service config.</li>
+<li>Attribute values which match an email to a cllickable <code>mailto:</code> hyperlink.</li>
+<li>
+<p>Structured JSON attributes to subtables, as described below</p>
+</li>
+<li>
+<p>When the <code>qwc-ogc-service</code> Docker container, you can set the locale used by <code>locale</code> by setting the <code>LANG</code> environment variable. Since the <code>qwc-ogc-service</code> Docker image is based on Alpine and only contains minimal locale support, you may need to provide your own <a href="https://docs.python.org/3/library/locale.html?locale.localeconv">locale convention</a> overrides, especially for number formatting, via the <code>LOCALECONV_OVERRIDES</code> environment variable. For example:
+    <code>yml
+    environment:
+      LANG: 'de_DE.UTF-8'
+      LOCALECONV_OVERRIDES: '{"decimal_point": ",", "thousands_sep": "\'", "grouping": [3, 0]}'</code>
+    In a template, you can then use i.e. <code>{{ locale.format("%.3f", feature.number, grouping=True) }}</code>.</p>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-xml">    &lt;div&gt;Result at coordinates {{ x }}, {{ y }}&lt;/div&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Name:&lt;/td&gt;
+            &lt;td&gt;{{ feature.name }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Description:&lt;/td&gt;
+            &lt;td&gt;{{ feature.description }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Link:&lt;/td&gt;
+            &lt;td&gt;{{ render_value(feature.link) }}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+</code></pre>
+<p>When using <a href="https://docs.qwc.app/master/topics/Translations#translated-themes">localized themes</a>, you can make the QWC viewer translate the attribute names by enclosing these in <code>translate()</code>, i.e. <code>translate(Description)</code>.</p>
+<p><strong>Structured JSON attribute values</strong></p>
+<p>Attribute values which parse as JSON lists or dicts will be rendered as sub-tables in HTML templates if rendered via <code>render_value</code>.</p>
+<p>The following formats are supported:</p>
+<ul>
+<li>Flat list, i.e. <code>["Value 1", "Value 2", ...]</code></li>
+<li>Dictionaries, i.e. <code>{"key1: "Value 1", "key2": "Value 2", ...}</code></li>
+<li>List of dictionaries, i.e. <code>[{"key1: "Value 1", "key2": "Value 2", ...}, {"key1: "Value 1", "key2": "Value 2", ...}]</code></li>
+</ul>
+<p>Keys can be mapped to aliases via <code>json_attributes</code>, i.e.</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;jsonfield&quot;,
+  &quot;alias&quot;: &quot;JSON Field&quot;,
+  &quot;json_attributes&quot;: [
+    {&quot;name&quot;: &quot;key1&quot;, &quot;alias&quot;: &quot;Key 1&quot;},
+    {&quot;name&quot;: &quot;key2&quot;, &quot;alias&quot;: &quot;Key 2&quot;},
+]}
+</code></pre>
+<p><strong>WMS, SQL and custom module info queries</strong></p>
+<p>By default, WMS <code>GetFeatureInfo</code> are forwarded to the internal QGIS Server. You can instead query another server, or query a DB via SQL,
+or implement a custom module which queries the feature from an arbitrary source.</p>
+<p><em>WMS query</em>:</p>
+<p>Example configuration:</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;wms&quot;,  
+  &quot;wms_url&quot;: &quot;&lt;Custom WMS URL if different from `default_qgis_server_url`&gt;&quot;
+}
+</code></pre>
+<p><em>DB query</em>:</p>
+<p>Example configuration:</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;sql&quot;,
+  &quot;db_url&quot;: &quot;postgresql:///?service=qwc_geodb&quot;,
+  &quot;sql&quot;: &quot;SELECT ogc_fid AS _fid_, name, formal_en, pop_est, subregion, ST_AsText(wkb_geometry) AS wkt_geom, Box2D(wkb_geometry) AS bbox FROM qwc_geodb.ne_10m_admin_0_countries WHERE ST_Intersects(wkb_geometry, ST_GeomFromText(:geom, :srid)) LIMIT :feature_count;&quot;
+}
+</code></pre>
+<p>In a DB query the following values are replaced in the SQL:</p>
+<ul>
+<li><code>:x</code>: X coordinate of query</li>
+<li><code>:y</code>: Y coordinate of query</li>
+<li><code>:srid</code>: SRID of query coordinates</li>
+<li><code>:resolution</code>: Resolution in map units per pixel</li>
+<li><code>:FI_POINT_TOLERANCE</code>: Tolerance for picking points, in pixels (default=16)</li>
+<li><code>:FI_LINE_TOLERANCE</code>: Tolerance for picking lines, in pixels (default=8)</li>
+<li><code>:FI_POLYGON_TOLERANCE</code>: Tolerance for picking polygons, in pixels (default=4)</li>
+<li><code>:i</code>: X ordinate of query point on map, in pixels</li>
+<li><code>:j</code>: Y ordinate of query point on map, in pixels</li>
+<li><code>:height</code>: Height of map output, in pixels</li>
+<li><code>:width</code>: Width of map output, in pixels</li>
+<li><code>:bbox</code>: 'Bounding box for map extent as minx,miny,maxx,maxy'</li>
+<li><code>:crs</code>: 'CRS for map extent'</li>
+<li><code>:feature_count</code>: Max feature count</li>
+<li><code>:with_geometry</code>: Whether to return geometries in response (default=1)</li>
+<li><code>:with_maptip</code>: Whether to return maptip in response (default=1)</li>
+<li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
+</ul>
+<p>The query should return the feature ID as <code>_fid_</code>, the WKT geometry as <code>wkt_geom</code> and the BBOX as <code>bbox</code>. All other selected columns are used as feature attributes.</p>
+<p><em>Custom module</em>:</p>
+<p>Example configuration:</p>
+<pre><code class="language-json">&quot;info_template&quot;: {
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;module&quot;: &quot;&lt;module_name&gt;&quot;
+}
+</code></pre>
+<p>Custom info modules must be placed in <code>./ogc/custom_info_modules/&lt;module name&gt;</code> and must provide the following method:</p>
+<pre><code class="language-python">def layer_info(layer, x, y, crs, params, identity)
+</code></pre>
+<p>See <a href="src/ogc/custom_info_modules/example.py">the example module</a>.</p>
+<p><strong>Attribute formats</strong></p>
+<p>You can apply some basic attribute formatting without having to use templates. This formatting will be applied for all <code>INFO_FORMAT</code>s.</p>
+<ul>
+<li><em>Date conversion rules</em>: There are the following built-in conversion rules which format datetime strings
+    <code>"%Y-%m-%dT%H:%M:%S.%f" =&gt; "%d.%m.%Y %H:%M:%S"
+    "%Y-%m-%dT%H:%M:%S" =&gt; "%d.%m.%Y %H:%M:%S"
+    "%Y-%m-%d" =&gt; "%d.%m.%Y"</code>
+  You can override these in the service config by setting <code>date_conversion_rules</code>.</li>
+<li>You can format a number value specifing an attribute format according to the <a href="https://docs.python.org/3/library/string.html#format-specification-mini-language">Python format language</a>, for example
+    <code>json
+    "attributes": [
+      {"name": "num", "alias": "Number", "format": " &gt;+10.3f"}
+      ...
+    ]</code></li>
+<li>You can transform attribute values with a fixed lookup dictionary, for example
+    <code>json
+    "attributes": [
+      {"name": "bool", "alias": "Boolean", "format": '{"0": "False", "1": "True"}'}
+      ...
+    ]</code></li>
+<li>Attachments URLs (as written into the feature attributes by the <code>qwc-data-service</code> when uploading files) will be automatically resolved to absolute URLs relative to the <code>data_service_url</code>, as configured in the OGC service configuration (defaults to <code>/api/v1/data</code>).</li>
+</ul>
 <h3 id="marker-params">Marker params<a class="headerlink" href="#marker-params" title="Permanent link">&para;</a></h3>
 <p>The OGC service supports specifying marker parameters to insert a SLD styled marker into GetMap requests via QGIS Server <code>HIGHLIGHT_SYMBOL</code> and <code>HIGHLIGHT_GEOM</code>. To use this feature, provide a SLD template and parameter definitions in the ogc service config, for example:</p>
 <pre><code>"marker_template": "&lt;StyledLayerDescriptor&gt;&lt;UserStyle&gt;&lt;se:Name&gt;Marker&lt;/se:Name&gt;&lt;se:FeatureTypeStyle&gt;&lt;se:Rule&gt;&lt;se:Name&gt;Single symbol&lt;/se:Name&gt;&lt;se:PointSymbolizer&gt;&lt;se:Graphic&gt;&lt;se:Mark&gt;&lt;se:WellKnownName&gt;circle&lt;/se:WellKnownName&gt;&lt;se:Fill&gt;&lt;se:SvgParameter name=\"fill\"&gt;$FILL$&lt;/se:SvgParameter&gt;&lt;/se:Fill&gt;&lt;se:Stroke&gt;&lt;se:SvgParameter name=\"stroke\"&gt;$STROKE$&lt;/se:SvgParameter&gt;&lt;se:SvgParameter name=\"stroke-width\"&gt;$STROKE_WIDTH$&lt;/se:SvgParameter&gt;&lt;/se:Stroke&gt;&lt;/se:Mark&gt;&lt;se:Size&gt;$SIZE$&lt;/se:Size&gt;&lt;/se:Graphic&gt;&lt;/se:PointSymbolizer&gt;&lt;/se:Rule&gt;&lt;/se:FeatureTypeStyle&gt;&lt;/UserStyle&gt;&lt;/StyledLayerDescriptor&gt;",
@@ -416,9 +660,89 @@ You can customize the landing page by modifying these templates, resp. if using 
 <pre><code>...?SERVICE=WMS&amp;REQUEST=GetMap&amp;...&amp;MARKER=X-&gt;123456|Y-&gt;123456|STROKE-&gt;000FFA...
 </code></pre>
 <p><code>X</code> and <code>Y</code> are compulsory and specify the marker position in map CRS, any other additional parameters are optional and will override the default values if provided. All parameters have to written in uppercase.</p>
-<h3 id="allow-extra-formats">Allow extra formats<a class="headerlink" href="#allow-extra-formats" title="Permanent link">&para;</a></h3>
+<h3 id="custom-legend-graphics">Custom legend graphics<a class="headerlink" href="#custom-legend-graphics" title="Permanent link">&para;</a></h3>
+<p>The OGC service supports custom layer legend images, which will be matched in this order (the first one found is used):</p>
+<ul>
+<li>As base64, as set in <code>&lt;layer_resource_config&gt;[legend_image_base64]</code></li>
+<li>A filename as set in <code>&lt;layer_resource_config&gt;[legend_image]</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;style&gt;_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default_&lt;suffix&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;_&lt;style&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/&lt;layername&gt;.png</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;resource_entry[legend_image]&gt;</code></li>
+<li>A filename matching <code>&lt;legend_images_path&gt;/&lt;service_name&gt;/default.png</code></li>
+</ul>
+<p>Where</p>
+<ul>
+<li><code>legend_images_path</code> is the directory containing custom legend images, configured in the service configuration.</li>
+<li><code>service_name</code> is the name of the WMS service</li>
+<li><code>layername</code> is the WMS layer name</li>
+<li><code>suffix</code>: empty, or one of <code>_thumbnail</code>, <code>_tooltip</code>. The suffix is passed by QWC to the legend service depending on the requested image type</li>
+<li><code>resource_entry[legend_image]</code> and <code>resource_entry[legend_image_base64]</code> are the <code>legend_image</code> resp. <code>legend_image_base64</code> settings of a layer as configured in the service resource configuration, for example:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;ogc&quot;,
+  &quot;config&quot;: ...,
+  &quot;resources&quot;: {
+    &quot;wms_services&quot;: [
+      {
+        &quot;name&quot;: &quot;&lt;service name&gt;&quot;,
+        &quot;root_layer&quot;: {
+          &quot;name&quot;: &quot;&lt;root_layer_name&gt;&quot;,
+          &quot;layers&quot;: [
+            {
+              &quot;name&quot;: &quot;&lt;layer_name&gt;&quot;,
+              &quot;legend_image&quot;: &quot;/path/to/legend_image.png&quot;
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p><em>Note</em>: When running <code>qwc-ogc-service</code> in Docker, mount the legend templates folder into the <code>qwc-ogc-service</code> container, i.e.:</p>
+<pre><code class="language-yml">  qwc-ogc-service:
+    image: sourcepole/qwc-ogc-service:vYYYY.MM.DD
+    volumes:
+      ...
+      - ./volumes/legends:/legends
+</code></pre>
+<p>and set <code>legend_images_path</code> to <code>/legends</code> in the service configuration. </p>
+<h3 id="injected-getprint-labels-and-print-project-suffix">Injected GetPrint labels and print project suffix<a class="headerlink" href="#injected-getprint-labels-and-print-project-suffix" title="Permanent link">&para;</a></h3>
+<p>Specifying <code>print_label_queries</code> in the service config allows configuring additional parameters to inject into the WMS <code>GetPrint</code> request, which will be computed from a DB query.</p>
+<p>The format is as follows:</p>
+<pre><code>"print_label_queries": [
+  {
+    "db_url": "&lt;db_url&gt;",
+    "query": "&lt;query&gt;",
+    "params": ["&lt;ParamName1&gt;", ...]
+  },{
+    ...
+  }
+]
+</code></pre>
+<p>where:</p>
+<ul>
+<li><code>query</code> is an arbitrary query, returning exactly one row. The <code>$username$</code> placeholder can be used to inject the current username.</li>
+<li><code>params</code> is an array of parameter names to inject. The same number of parameters as number of returned values by the query must be specified.</li>
+</ul>
+<p>Similarly, <code>print_label_values</code> allows configuring additional static parameters to inject into the WMS <code>GetPrint</code> request.
+The format is as follows:</p>
+<pre><code>"print_label_values": [
+  {
+    "field": "&lt;ParamName1&gt;",
+    "value": "&lt;value&gt;"
+  },{
+    ...
+  }
+]
+</code></pre>
+<p>Finally, you can specify a suffix for the print projects if you want to use a separate project for printing by setting <code>print_qgs_postfix</code>.</p>
+<h3 id="extra-wfs-output-formats">Extra WFS output formats<a class="headerlink" href="#extra-wfs-output-formats" title="Permanent link">&para;</a></h3>
 <p>You can choose extra formats to allow to OUTPUTFORMAT parameter of WFS GetFeature request.
-Please note that the returned data will be unfiltered.</p>
+<strong>Please note that the returned data will be unfiltered.</strong></p>
 <p>Example:</p>
 <pre><code class="language-json">  &quot;config&quot;: {
     &quot;allow_outputformat_unfiltered&quot;: {
@@ -445,7 +769,7 @@ Please note that the returned data will be unfiltered.</p>
        }
   },
 </code></pre>
-<p>Adding these formats is particularly useful when using the QGIS Server plugin qgis-wfsOutputExtension (https://github.com/3liz/qgis-wfsOutputExtension/tree/master).</p>
+<p>Adding these formats is particularly useful when using the QGIS Server plugin <code>qgis-wfsOutputExtension</code> (https://github.com/3liz/qgis-wfsOutputExtension/tree/master).</p>
 <h2 id="run-locally">Run locally<a class="headerlink" href="#run-locally" title="Permanent link">&para;</a></h2>
 <p>Install dependencies and run:</p>
 <pre><code>export CONFIG_PATH=&lt;CONFIG_PATH&gt;
