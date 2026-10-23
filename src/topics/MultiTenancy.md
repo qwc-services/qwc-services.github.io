@@ -53,11 +53,6 @@ server {
             proxy_pass http://qwc-ogc-service:9090;
         }
 
-        location ~ ^/[^/]+/api/v1/featureinfo {
-            rewrite ^/[^/]+(.+) $1 break;
-            proxy_pass http://qwc-feature-info-service:9090;
-        }
-
         # etc...
 
         location ~ ^/[^/]+/qwc_admin {
@@ -138,7 +133,7 @@ A minimal configuration for tenant `tenant_name` may look as follows:
         "qwc2_path": "/qwc2/",
         "auth_service_url": "/tenant_name/auth/",
         "ogc_service_url": "/tenant_name/ows/",
-        "info_service_url": "/tenant_name/api/v1/featureinfo/",
+        "info_service_url": "/tenant_name/ows/",
         ...
       }
     }
@@ -217,7 +212,7 @@ And the `tenantConfig.template.json` in `qwc-docker/volumes/config-in/` as follo
         "qwc2_path": "/qwc2/",
         "auth_service_url": "/$tenant$/auth/",
         "ogc_service_url": "/$tenant$/ows/",
-        "info_service_url": "/$tenant$/api/v1/featureinfo/",
+        "info_service_url": "/$tenant$/ows/",
         ...
       }
     }

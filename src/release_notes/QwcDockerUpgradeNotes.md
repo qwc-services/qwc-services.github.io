@@ -1,3 +1,23 @@
+Updating to qwc-ogc-service:v2026.10.23
+------------------------
+
+As of `qwc-ogc-service:v2026.10.23`, the `qwc-feature-info-service`, `qwc-legend-service` and `qwc-print-service` have been integrated into the `qwc-ogc-service` itself. When updating to `qwc-ogc-service:v2026.10.23`, please also update to `qwc-config-generator:v2026.10.23` and remove the now obsolete services from your setup, in particular:
+
+- Drop the `qwc-feature-info-service`, `qwc-legend-service` and `qwc-print-service` containers from `docker-compose.yml` and also the rules in `api-gateway/nginx.conf`. Also, move the relevant volume mounts of these services to the `qwc-ogc-service`, i.e.:
+```yml
+  qwc-ogc-service:
+    image: docker.io/sourcepole/qwc-ogc-service:v2026.10.23
+    environment:
+      ...
+    volumes:
+      - ./volumes/config:/srv/qwc_service/config:ro
+      - ./pg_service.conf:/srv/pg_service.conf:ro
+      - ./volumes/legends:/legends
+      - ./volumes/info-templates:/info_templates:ro
+```
+- Adjust your `tenantConfig.json` by moving all the `featureInfo`, `legend` and `print` configurations into the `ogc` configuration. Most configuration variables will keep their name, but check the [schema definition](https://github.com/qwc-services/qwc-ogc-service/blob/master/schemas/qwc-ogc-service.json) to make sure. Note that the schema will not fail to validate configurations which contains unrecognized keys, so invalid settings will be easily caught.
+- Finally, still in the `tenantConfig.json`, adjust the `feature_info` and `legend` URLs in the `ogc` service configuration under `generator_config -> wms_services -> online_resources`, as well as the `info_service_url`, `legend_service_url` and `print_service_url` URLs in the `mapViewer` service configuration under `config`, setting these to point to the OGC service (typically `/ows` or `/<tenant>/ows`).
+
 v2026.08.22 mass image update
 ------------------------
 
