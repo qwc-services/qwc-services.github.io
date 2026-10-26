@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc ogc service readme - QWC - 2026.10.22</title>
+    <title>Qwc ogc service readme - QWC - 2026.10.26</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.22
+          <a href="../.." class="icon icon-home"> QWC - 2026.10.26
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.22</a>
+          <a href="../..">QWC - 2026.10.26</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -487,7 +487,8 @@ You can customize the landing page by modifying these templates, resp. if using 
 <p>A template can contain attribute value placeholders, in the form <code>{{ feature.attr }}</code> which are replaced with the respective values when the template is rendered (using <a href="http://jinja.pocoo.org/">Jinja2</a>).</p>
 <p>The following values are available in the template:</p>
 <ul>
-<li><code>x</code>, <code>y</code>, <code>crs</code>: Coordinates and CRS of info query</li>
+<li><code>x</code>, <code>y</code>: Coordinates of the query if <code>BBOX</code> was passed in the <code>GetFeatureInfo</code> params, else 0</li>
+<li><code>crs</code>: CRS of the query coordinates</li>
 <li><code>feature</code>: Feature with attributes from info result as properties, e.g. <code>feature.name</code>, as well as an <code>_attributes</code> array, see below.</li>
 <li><code>fid</code>: Feature ID (if present)</li>
 <li><code>bbox</code>: Feature bounding box as <code>[&lt;minx&gt;, &lt;miny&gt;, &lt;maxx&gt;, &lt;maxy&gt;]</code> (if present)</li>
@@ -578,24 +579,25 @@ or implement a custom module which queries the feature from an arbitrary source.
 </code></pre>
 <p>In a DB query the following values are replaced in the SQL:</p>
 <ul>
-<li><code>:x</code>: X coordinate of query</li>
-<li><code>:y</code>: Y coordinate of query</li>
+<li><code>:x</code>: X coordinate of query if <code>BBOX</code> was passed in the <code>GetFeatureInfo</code> params, else 0</li>
+<li><code>:y</code>: Y coordinate of query if <code>BBOX</code> was passed in the <code>GetFeatureInfo</code> params, else 0</li>
 <li><code>:srid</code>: SRID of query coordinates</li>
 <li><code>:resolution</code>: Resolution in map units per pixel</li>
-<li><code>:FI_POINT_TOLERANCE</code>: Tolerance for picking points, in pixels (default=16)</li>
-<li><code>:FI_LINE_TOLERANCE</code>: Tolerance for picking lines, in pixels (default=8)</li>
-<li><code>:FI_POLYGON_TOLERANCE</code>: Tolerance for picking polygons, in pixels (default=4)</li>
+<li><code>:FI_POINT_TOLERANCE</code>: Tolerance for picking points, in pixels</li>
+<li><code>:FI_LINE_TOLERANCE</code>: Tolerance for picking lines, in pixels</li>
+<li><code>:FI_POLYGON_TOLERANCE</code>: Tolerance for picking polygons, in pixels</li>
 <li><code>:i</code>: X ordinate of query point on map, in pixels</li>
 <li><code>:j</code>: Y ordinate of query point on map, in pixels</li>
 <li><code>:height</code>: Height of map output, in pixels</li>
 <li><code>:width</code>: Width of map output, in pixels</li>
-<li><code>:bbox</code>: 'Bounding box for map extent as minx,miny,maxx,maxy'</li>
-<li><code>:crs</code>: 'CRS for map extent'</li>
+<li><code>:bbox</code>: Bounding box for map extent as <code>minx,miny,maxx,maxy</code></li>
+<li><code>:crs</code>: CRS for map extent</li>
 <li><code>:feature_count</code>: Max feature count</li>
-<li><code>:with_geometry</code>: Whether to return geometries in response (default=1)</li>
-<li><code>:with_maptip</code>: Whether to return maptip in response (default=1)</li>
+<li><code>:with_geometry</code>: Whether to return geometries in response</li>
+<li><code>:with_maptip</code>: Whether to return maptip in response</li>
 <li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
 </ul>
+<p>Parameters which were not passed in the <code>GetFeatureInfo</code> request will be passed with value <code>NULL</code>.</p>
 <p>The query should return the feature ID as <code>_fid_</code>, the WKT geometry as <code>wkt_geom</code> and the BBOX as <code>bbox</code>. All other selected columns are used as feature attributes.</p>
 <p><em>Custom module</em>:</p>
 <p>Example configuration:</p>
