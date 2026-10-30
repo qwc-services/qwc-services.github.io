@@ -291,7 +291,7 @@ If the filter is built only with `and` operators and simple binary operators (`I
 In addition to the configuration described above, you can specify these additional parameters in `params`:
 
 * `featureCount`: A number, passed as `feature_count` to the GetFeatureInfo request to control the maximum number of returned features. If not specified, defaults to `100`.
-* `resultTitle`: A format string for the result title. Allowed placeholders are: `{layername}` for the layer name and `{<fieldname>}` for the value of `fieldname`. If not the layer name followed by the feature displayfield will be shown.*
+* `resultTitle`: A format string for the result title. Allowed placeholders are: `{layername}` for the layer name and `{<fieldname>}` for the value of `fieldname`. If not the layer name followed by the feature displayfield will be shown.
 * `priority`: Optional. Controls the order of search providers in the search results. Providers with a higher priority are displayed first.
 * `description`: An arbitrary descriptive text which will be displayed above the search fields in the `FeatureSearch` plugin.
 * `default`: Whether the search is selected by default when opening the `FeatureSearch` plugin.
