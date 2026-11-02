@@ -14,7 +14,7 @@ The QWC stock application (and the `qwc-map-viewer` docker image) serve as a goo
 
 The load-time configuration `config.json` configuration file contains global viewer settings as well as the viewer plugin configuration for mobile and desktop devices. It is located as follows:
 
-- `qwc-docker`: `qwc-docker/volumes/config-in/<tentant>/config.json`
+- `qwc-docker`: `qwc-docker/volumes/config-in/<tenant>/config.json`
 - Standalone viewer: `qwc-app/static/config.json`
 
 Refer to the [sample `config.json`](https://github.com/qgis/qwc2/blob/master/static/config.json) for a concrete example.
