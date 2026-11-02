@@ -62,32 +62,6 @@
           "description": "Jinja template string to generate the layer query SQL. The following variables are passed to the template: `searchtext` (the full search text, as a string), `words` (the single words of the search text, as an array) and `facets` (the permitted search facets, as an array). The generated SQL can accept the same placeholder parameters and must return the columns as documented in `pg_layer_query`.",
           "type": "string"
         },
-        "pg_facet_search_limit": {
-          "description": "Postgres search result limit per facet. Controls the `facetlimit` parameter passed to the `pg_feature_query`. Note: `pg_facet_search_limit + 1` will be passed to the query, and the results will be limited to `pg_facet_search_limit` in the backed, in order to discover where more than `pg_facet_search_limit` results exist, in which case the backend will return `count: -1` in the facet result counts. ",
-          "type": "number",
-          "default": 50
-        },
-        "trgm_feature_query": {
-          "description": "DEPRECATED - use pg_feature_query instead",
-          "type": "string"
-        },
-        "trgm_feature_query_template": {
-          "description": "DEPRECATED - use pg_feature_query_template instead",
-          "type": "string"
-        },
-        "trgm_layer_query": {
-          "description": "DEPRECATED - use pg_layer_query instead",
-          "type": "string"
-        },
-        "trgm_layer_query_template": {
-          "description": "DEPRECATED - use pg_layer_query_template instead",
-          "type": "string"
-        },
-        "trgm_facet_search_limit": {
-          "description": "DEPRECATED - use pg_facet_search_limit instead",
-          "type": "number",
-          "default": 50
-        },
         "trgm_similarity_threshold": {
           "description": "Trigram similarity treshold. Default: 0.3",
           "type": "number"
@@ -102,12 +76,23 @@
           "type": "integer",
           "default": 50
         },
+        "facet_search_limit": {
+          "description": "Search result limit per facet. Controls the `facetlimit` parameter passed to the `pg_feature_query`. Note: `facet_search_limit + 1` will be passed to the query, and the results will be limited to `pg_facet_search_limit` in the backed, in order to discover where more than `facet_search_limit` results exist, in which case the backend will return `count: -1` in the facet result counts.",
+          "type": "number",
+          "default": 50
+        },
+        "set_search_result_limit_per_facet": {
+          "description": "Whether to apply the `search_result_limit` per facet. Note that this will replace `facet_search_limit` with the global search limit.",
+          "type": "boolean",
+          "default": false
+        },
         "db_url": {
           "description": "Default DB connection for geometry result query",
           "type": "string"
         }
       },
-      "required": []
+      "required": [],
+      "additionalProperties": false
     },
     "resources": {
       "title": "Resources",

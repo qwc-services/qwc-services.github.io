@@ -303,21 +303,21 @@ sslmode=disable
 <li><a href="#manual-theme-configuration">Manual theme configuration</a>: Manually configure a theme with the full set of configuration options.</li>
 </ul>
 <h3 id="automatic-theme-configuration">Automatic theme configuration <a name="automatic-theme-configuration"></a><a class="headerlink" href="#automatic-theme-configuration" title="Permanent link">&para;</a></h3>
-<p>When using <code>qwc-docker</code>, save your QGIS projects below <code>qwc-docker/volumes/qgs-resources/scan</code>. Adjust the default settings (<code>defaultBackgroundLayers</code>, <code>defaultSearchProviders</code>, etc.) as desired in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>. Then <a href="#generating-theme-configuration">generate the theme configuration</a>.</p>
+<p>When using <code>qwc-docker</code>, save your QGIS projects below <code>qwc-docker/volumes/qgs-resources/scan</code>. Adjust the default settings (<code>defaultBackgroundLayers</code>, <code>defaultSearchProviders</code>, etc.) as desired in <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/themesConfig.json</code>. Then <a href="#generating-theme-configuration">generate the theme configuration</a>.</p>
 <p>You can configure an automatically configured theme as default theme by setting <code>defaultTheme</code> in <code>themesConfig.json</code> to the path to the QGIS project file below <code>qwc-docker/volumes/qgs-resources</code>, without the <code>.qgs</code> extension. For example to set <code>qwc-docker/volumes/qgs-resources/scan/project.qgs</code> as default theme, you'd write</p>
 <pre><code>...
 "defaultTheme": "scan/project"
 ...
 </code></pre>
 <p>To use a custom thumbnail for an automatically configured theme, place a an image called <code>&lt;project_basename&gt;.png</code> in <code>qwc-docker/volumes/qwc2/assets/img/mapthumbs</code>. For example. if the project is called <code>project_name.qgs</code>, the name thumbnail image would be named <code>project_name.png</code>.</p>
-<p><em>Note:</em> The auto-scan directory can be is controlled by <code>qgis_projects_scan_base_dir</code> in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code>.</p>
+<p><em>Note:</em> The auto-scan directory can be is controlled by <code>qgis_projects_scan_base_dir</code> in <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/themesConfig.json</code>.</p>
 <h3 id="manual-theme-configuration">Manual theme configuration <a name="manual-theme-configuration"></a><a class="headerlink" href="#manual-theme-configuration" title="Permanent link">&para;</a></h3>
 <p>The theme configuration file is located as follows:</p>
 <ul>
 <li>Standalone viewer: <code>qwc-app/static/themesConfig.json</code></li>
-<li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/themesConfig.json</code></li>
+<li><code>qwc-docker</code>: <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/themesConfig.json</code></li>
 </ul>
-<p><em>Note</em>: when using <code>qwc-docker</code>, the themes configuration may also be embedded as <code>themesConfig</code> directly in <code>qwc-docker/volumes/config-in/&lt;tentant&gt;/tenantConfig.json</code>.</p>
+<p><em>Note</em>: when using <code>qwc-docker</code>, the themes configuration may also be embedded as <code>themesConfig</code> directly in <code>qwc-docker/volumes/config-in/&lt;tenant&gt;/tenantConfig.json</code>.</p>
 <p>The <code>themesConfig.json</code> file contains a list of themes, optionally organized in groups, as well as a list of background layers:</p>
 <pre><code class="language-json">{
   &quot;themes&quot;: {
@@ -2111,7 +2111,7 @@ mvt:https://kataster.bev.gv.at/tiles/kataster/{z}/{x}/{y}.pbf|https://kataster.b
 <p>The file ultimately read by the QWC viewer is the <code>themes.json</code> configuration, which includes the contents of <code>themesConfig.json</code> completed with additional data obtained from the QGIS Project.</p>
 <ul>
 <li>
-<p>When using <code>qwc-docker</code>, you can generate the themes from the <code>qwc-admin-gui</code> administration backend, running on <a href="http://localhost:8088/qwc_admin">http://localhost:8088/qwc_admin</a> by default. Log in as <code>admin</code> user, then press the green <code>Generate service configuration</code> button. This will invoce the<code>qwc-config-generator</code>, which will generate <code>mapViewerConfig.json</code> located below <code>qwc-docker/volumes/config/&lt;tentant&gt;</code>. You can then inspect the generated <code>themes.json</code> at <a href="http://localhost:8088/themes.json">http://localhost:8088/themes.json</a>.</p>
+<p>When using <code>qwc-docker</code>, you can generate the themes from the <code>qwc-admin-gui</code> administration backend, running on <a href="http://localhost:8088/qwc_admin">http://localhost:8088/qwc_admin</a> by default. Log in as <code>admin</code> user, then press the green <code>Generate service configuration</code> button. This will invoce the<code>qwc-config-generator</code>, which will generate <code>mapViewerConfig.json</code> located below <code>qwc-docker/volumes/config/&lt;tenant&gt;</code>. You can then inspect the generated <code>themes.json</code> at <a href="http://localhost:8088/themes.json">http://localhost:8088/themes.json</a>.</p>
 </li>
 <li>
 <p>When using QWC as a standalone viewer, the <code>themes.json</code> can be generated by invoking</p>
