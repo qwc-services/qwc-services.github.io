@@ -209,6 +209,8 @@ In a DB query the following values are replaced in the SQL:
 
 The query should return the feature ID as `_fid_`, the WKT geometry as `wkt_geom` and the BBOX as `bbox`. All other selected columns are used as feature attributes.
 
+*Note*: when using the `qwc-config-generator` to automatically generate the layer resource configuration, all attributes returned by the query must also exist in the QGIS layer, or else they will be filtered from the info response. If you return attributes which are missing in the QGIS layer datasource, you'll need to add these as calculated fields in the QGIS layer properties.
+
 ### Permissions<a name="identify-permissions"></a>
 
 If `permissions_default_allow` is set to `true` in `tenantConfig.json`, layers and attributes are queryable by default.
