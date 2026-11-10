@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc map viewer readme - QWC - 2026.10.26</title>
+    <title>Qwc map viewer readme - QWC - 2026.11.07</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.26
+          <a href="../.." class="icon icon-home"> QWC - 2026.11.07
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.26</a>
+          <a href="../..">QWC - 2026.11.07</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -305,6 +305,12 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 }
 </code></pre>
 <p>These will be added as <code>user_infos</code> in the <code>config.json</code> response if present in the current identity.</p>
+<h3 id="db-news-entries">DB news entries<a class="headerlink" href="#db-news-entries" title="Permanent link">&para;</a></h3>
+<p>The QWC <a href="https://docs.qwc.app/master/references/qwc2_plugins/#newspopup">NewsPopup plugin</a> allows displaying a newsletter in a popup dialog.</p>
+<p>The newsletter contents may be a static URL of HTML fragment, as manually configured in the <code>config.json</code>, or alternatively the HTML fragments can be
+stored in the <code>qwc_config.news_entries</code> DB table. Each table row contains a HTML fragment and a publish date and optionally a language.</p>
+<p>If <code>qwc_config.news_entries</code> are present, and no <code>newsDocument</code> or <code>newsDocumentBody</code> exists in the <code>config.json</code>, the <code>qwc-map-viewer</code> will automatically
+inject a <code>newsDocumentBody</code> constructed from the <code>qwc_config.news_entries</code> table. Entries will be filtered by language (entries whose language match the viewer language, or with unspecified language) and sorted in descending order by publish date.</p>
 <h3 id="options-for-handling-restricted-themes">Options for handling restricted themes<a class="headerlink" href="#options-for-handling-restricted-themes" title="Permanent link">&para;</a></h3>
 <p>Optional settings for restricted themes:</p>
 <pre><code class="language-json">&quot;config&quot;: {

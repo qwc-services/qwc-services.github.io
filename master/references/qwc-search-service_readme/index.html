@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Qwc search service readme - QWC - 2026.10.26</title>
+    <title>Qwc search service readme - QWC - 2026.11.07</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> QWC - 2026.10.26
+          <a href="../.." class="icon icon-home"> QWC - 2026.11.07
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -124,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">QWC - 2026.10.26</a>
+          <a href="../..">QWC - 2026.11.07</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -263,18 +263,14 @@ e.g. <code>$CONFIG_PATH/default/*.json</code>. The default tenant name is <code>
 <p>in the search service config.</p>
 <p>Solr Administration User Interface: http://localhost:8983/solr/</p>
 <p>Core overview: http://localhost:8983/solr/#/gdi/core-overview</p>
-<p>Solr Ref guide: https://lucene.apache.org/solr/guide/8_0/
-Indexing: https://lucene.apache.org/solr/guide/8_0/uploading-structured-data-store-data-with-the-data-import-handler.html#dataimporthandler-commands</p>
-<p><code>solr-precreate</code> creates core in <code>/var/solr/data/gdi</code>.
-After a configuration change remove the content of <code>/var/solr/data</code>
-e.g. with <code>sudo rm -rf volumes/solr/data/*</code></p>
-<pre><code>curl 'http://localhost:8983/solr/gdi/dih_geodata?command=full-import'
-curl 'http://localhost:8983/solr/gdi/dih_geodata?command=status'
-curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:austr*'
-
-curl 'http://localhost:8983/solr/gdi/dih_metadata?command=full-import&amp;clean=false'
-curl 'http://localhost:8983/solr/gdi/dih_metadata?command=status'
-curl 'http://localhost:8983/solr/gdi/select?q=search_1_stem:qwc_demo'
+<p>Solr reference guide: https://lucene.apache.org/solr/guide/8_0/</p>
+<p>Indexing: https://lucene.apache.org/solr/guide/8_0/uploading-structured-data-store-data-with-the-data-import-handler.html#dataimporthandler-commands</p>
+<p>After a configuration change remove the content of <code>/var/solr/data</code>, e.g. with <code>sudo rm -rf volumes/solr/data/*</code>, then execute</p>
+<pre><code>curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=full-import'
+</code></pre>
+<p>where CONFIG_NAME is for instance <code>dih_geodata_config</code>.</p>
+<p>You can check the status with</p>
+<pre><code>curl 'http://localhost:8983/solr/gdi/CONFIG_NAME?command=status'
 </code></pre>
 <p>If you encounter permission problems with the solr service then try the following command:</p>
 <pre><code>chown 8983:8983 volumes/solr/data
