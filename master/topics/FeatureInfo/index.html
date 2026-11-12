@@ -346,7 +346,6 @@
 <li><code>:geom</code>: The <code>filter_geom</code> passed to the <code>GetFeatureInfo</code> request, if any, otherwise <code>POINT(x y)</code></li>
 </ul>
 <p>The query should return the feature ID as <code>_fid_</code>, the WKT geometry as <code>wkt_geom</code> and the BBOX as <code>bbox</code>. All other selected columns are used as feature attributes.</p>
-<p><em>Note</em>: when using the <code>qwc-config-generator</code> to automatically generate the layer resource configuration, all attributes returned by the query must also exist in the QGIS layer, or else they will be filtered from the info response. If you return attributes which are missing in the QGIS layer datasource, you'll need to add these as calculated fields in the QGIS layer properties.</p>
 <h3 id="permissions">Permissions<a name="identify-permissions"></a><a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <p>If <code>permissions_default_allow</code> is set to <code>true</code> in <code>tenantConfig.json</code>, layers and attributes are queryable by default.</p>
 <ul>
