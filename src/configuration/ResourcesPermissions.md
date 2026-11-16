@@ -121,7 +121,7 @@ Accessing a viewer asset which is not permitted will result in a `404 Not Found`
 
 ## WFS/OAPIF permissions<a name="wfs-permissions"></a>
 
-WFS and OGC API Features (OAPIF) services are disabled by default and need to be explicitly permitted to be exposed by the `qwc-ogc-service`. The services also need to be published in in `QGIS → Project Properties → QGIS Server → WFS/OAPIF`.
+WFS and OGC API Features (OAPIF) services are disabled by default and need to be explicitly permitted to be exposed by the `qwc-ogc-service`. The services also need to be published in in `QGIS → Project Properties → QGIS Server → WFS/OAPIF`. WFS services can be enabled and exposed by default with `wfs_service_permissions_default_allow` configuration setting (default: `false`).
 
 The `WFS Service` resource permissions control whether a WFS service is exposed by the `qwc-ogc-service`. If a `WFS Service` is permitted, all its (published) child layers are permitted by default, without write permissions.
 
