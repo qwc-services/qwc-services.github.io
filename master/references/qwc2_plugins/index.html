@@ -1452,13 +1452,15 @@ for customized queries and templates for the result presentation.</p>
 <li><code>"option"</code>: imports the layer as a flat layer when clicking on the catalog entry, but displays an icon to optionally import the layer as a group layer. This is the default behaviour for entries with sublayers if <code>asGroup</code> is not specified.</li>
 </ul>
 <p>You can set a default fallback value for <code>asGroup</code> via the  <code>defaultAsGroupValue</code> <code>LayerCatalog</code> configuration option.</p>
+<p>You can specify custom search terms which should be matched against the catalog filter text in <code>searchterms</code>.</p>
 <p>Example:</p>
 <pre><code class="language-json">{
   &quot;catalog&quot;: [
     {
       &quot;title&quot;: &quot;Öffentlicher Verkehr swissTLMRegio&quot;,
       &quot;resource&quot;: &quot;wms:http://wms.geo.admin.ch#ch.swisstopo.vec200-transportation-oeffentliche-verkehr&quot;,
-      &quot;asGroup&quot;: true
+      &quot;asGroup&quot;: true,
+      &quot;searchterms&quot;: [&quot;haltestellen&quot;, &quot;bus&quot;, &quot;zug&quot;, &quot;tram&quot;]
     },
     {
       &quot;title&quot;: &quot;Gewässerschutz&quot;,
