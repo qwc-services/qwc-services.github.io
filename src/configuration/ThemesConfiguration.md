@@ -59,6 +59,8 @@ The next step is to configure the theme for QWC. There are two approaches:
 - [Automatic theme configuration](#automatic-theme-configuration) (only when using `qwc-docker`): Just copy the project file to the designated location and the `qwc-config-generator` will automatically generate a theme configuration using default parameters.
 - [Manual theme configuration](#manual-theme-configuration): Manually configure a theme with the full set of configuration options.
 
+The manually configured themes can also be [edited in the Admin GUI](../references/qwc-admin-gui_readme.md#themes-plugin) (only when using `qwc-services`), in a form instead of the JSON file.
+
 ### Automatic theme configuration <a name="automatic-theme-configuration"></a>
 
 When using `qwc-docker`, save your QGIS projects below `qwc-docker/volumes/qgs-resources/scan`. Adjust the default settings (`defaultBackgroundLayers`, `defaultSearchProviders`, etc.) as desired in `qwc-docker/volumes/config-in/<tenant>/themesConfig.json`. Then [generate the theme configuration](#generating-theme-configuration).
